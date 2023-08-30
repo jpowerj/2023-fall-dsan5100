@@ -22,89 +22,13 @@ Today's Planned Schedule:
 | | Start | End | Topic | Slides | Notes |
 |:- |:- |:- |:- |:-:|:-:|
 | **Lecture** | 12:30pm | 12:35pm | [*About Me*] | [<i class="bi bi-file-slides"></i>](about-slides.html){target="_blank"} | [<i class="bi bi-journals"></i>](about.qmd){target="_blank"} |
-| | 12:35pm | 12:50pm | Computer Fundamentals | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/computer-fundamentals/presentation.html#/computer-fundamentals" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/computer-fundamentals/notes.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 12:50pm | 1:05pm | Coding Fundamentals | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/coding-methods/presentation.html#/title-slide" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/coding-methods/notes.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 1:05pm | 1:20pm | HTML and CSS | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/html-css-basics/presentation.html#/html-and-css" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/html-css-basics/notes.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 1:20pm | 1:35pm | Objects and Classes | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/object-and-classes/presentation.html#/title-slide" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/object-and-classes/demo.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 1:35pm | 1:50pm | <a class="icon-link" href="https://georgetown.instructure.com/courses/173310/quizzes/199039" target="_blank"><i class="bi bi-ui-radios pe-1"></i>Quiz 1.1 (Canvas)</a> | | |
+| | 12:35pm | 12:50pm | Review | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/review" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#review" target="_blank"><i class="bi bi-journals"></i></a> |
+| | 12:50pm | 1:05pm | Sampling and Combinatorics | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/sampling-and-combinatorics" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#sampling-and-combinatorics" target="_blank"><i class="bi bi-journals"></i></a> |
+| | 1:05pm | 1:20pm | Probability Fundamentals | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/probability-fundamentals" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#probability-fundamentals" target="_blank"><i class="bi bi-journals"></i></a> |
+| | 1:20pm | 1:35pm | Univariate Statistics | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/univariate-statistics" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#univariate-statistics" target="_blank"><i class="bi bi-journals"></i></a> |
+| | 1:35pm | 1:50pm | Multivariate Statistics | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/multi-variable-statistics" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#multi-variable-statistics" target="_blank"><i class="bi bi-journals"></i></a> |
 | **Break!** | 1:50pm | 2:00pm | | | |
-| **Lab** | 2:00pm | 2:25pm | Lab 1 Part I: Coding Demonstration | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/demo-gu-domains-CLI/presentation.html#/coding-demonstration" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/demo-gu-domains-CLI/notes.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 2:25pm | 2:50pm | Lab 1 Part II: HTML/CSS Demonstration | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/html-and-css/presentation.html#/html-and-css" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/html-and-css/demo.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 2:50pm | 3:00pm | Lab 1 Assignment Overview | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/assignments/lab-1.1/presentation.html#/lab-1.1-assignment" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/assignments/lab-1.1/assignment.html" target="_blank"><i class="bi bi-journals"></i></a> |
+| **Lab** | 2:00pm | 2:50pm | Lab Demonstrations | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/demo-gu-domains-CLI/presentation.html#/coding-demonstration" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/demo-gu-domains-CLI/notes.html" target="_blank"><i class="bi bi-journals"></i></a> |
+| | 2:50pm | 3:00pm | Lab Assignment Overview | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/html-and-css/presentation.html#/html-and-css" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/html-and-css/demo.html" target="_blank"><i class="bi bi-journals"></i></a> |
 
 : {tbl-colwidths="[12,12,12,52,6,6]"} 
-
-```{=html}
-<!--
-<table>
-<colgroup>
-    <col span="1" style="width: 14%;">
-       <col span="1" style="width: 8%;">
-       <col span="1" style="width: 8%;">
-       <col span="1" style="width: 54%;">
-       <col span="1" style="width: 8%;">
-       <col span="1" style="width: 8%;">
-</colgroup>
-<thead>
-    <tr>
-        <th></th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Topic</th>
-        <th>a</th>
-        <th>b</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td rowspan="4"><span data-qmd="**Lecture**"></span></td>
-        <td>12:30pm</td>
-        <td>12:50pm</td>
-        <td>Computer Fundamentals</td>
-        <td>
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>12:50pm</td>
-        <td>1:10pm</td>
-        <td>Coding Fundamentals</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1:10pm</td>
-        <td>1:30pm</td>
-        <td>HTML and CSS</td>
-    </tr>
-    <tr>
-        <td>1:30pm</td>
-        <td>1:50pm</td>
-        <td>Objects and Classes</td>
-    </tr>
-    <tr>
-        <td><span data-qmd="**Break!**"></span></td>
-        <td>1:50pm</td>
-        <td>2:00pm</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td rowspan="3"><span data-qmd="**Lab**"></span></td>
-        <td>2:00pm</td>
-        <td>2:25pm</td>
-        <td>Part I: Coding Demonstration</td>
-    </tr>
-    <tr>
-        <td>2:25pm</td>
-        <td>2:50pm</td>
-        <td>Part II: HTML/CSS Demonstration</td>
-    </tr>
-    <tr>
-        <td>2:50pm</td>
-        <td>3:00pm</td>
-        <td>Lab Assignment Overview</td>
-    </tr>
-</tbody>
-</table>
--->
-```
