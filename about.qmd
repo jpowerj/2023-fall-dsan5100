@@ -1,0 +1,62 @@
+---
+format:
+  html:
+    cache: true
+  revealjs:
+    cache: true
+    output-file: about-slides.html
+---
+
+## Prof. Jeff Introduction! {.crunch-title}
+
+* Born and raised in **NW DC** &rarr; high school in **Rockville, MD**
+* **University of Maryland**: Computer Science, Math, Economics *(2008-2012)*
+
+![](images/jj_dc_map.png){fig-align="center"}
+
+## Grad School {.crunch-title .crunch-cols .crunch-list}
+
+* Studied abroad in **Beijing** (Peking University/北大) &rarr; internship with Huawei in **Hong Kong** (HKUST)
+
+::: columns
+::: {.column width="55%"}
+* **Stanford** for MS in Computer Science *(2012-2014)*
+* Research Economist at **UC Berkeley** *(2014-2015)*
+
+:::
+::: {.column width="45%"}
+
+![](images/bay_area_crop.png)
+
+:::
+:::
+
+* **Columbia** (NYC) for PhD[+Postdoc] in Political Science *(2015-2023)*
+
+## Dissertation (Political Science + History) {.small-title}
+
+*"Our Word is Our Weapon": Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada*
+
+![](images/diss.png){fig-align="center"}
+
+## Research (Labor Economics) {.smaller}
+
+* <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20180150" target="_blank">"Monopsony in Online Labor Markets"</a>
+  * Machine Learning to enhance causal estimates of the effect of **job description language** on **uptake rate**
+* <a href="https://ieeexplore.ieee.org/document/9346539" target="_blank">"Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements"</a>
+  * Linguistic (dependency) parses of CBAs &rarr; time series of **worker** vs. **employer** rights and responsibilities over time
+* "Freedom as Non-Domination in the Labor Market"
+  * Game-theoretic models of Douglassian (republican) liberty[^douglass] for workers: **monopsony** vs. **labor discipline**
+
+::: {.footer .small-footer}
+
+[^douglass]: Frederick Douglass: "It was *slavery itself*, not its mere *incidents*, that I hated."
+
+:::
+
+<!-- ## Most Recently...
+
+* Chapter on "Freedom as Non-Domination in the Labor Market and in the Workplace" in *Republican Liberty: Philosophical, Political, and Economic Perspectives* (Cambridge University Press, 2024)
+* Submitted papers:
+  * "Meaning, Understanding, and Digitization in the History of Ideas"
+  * "Quantifying Cultural Diplomacy: The Soviet Union and the Diffusion of Marxism in the Third World, 1945--1991" -->

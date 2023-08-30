@@ -1,0 +1,13 @@
+/* css styles */
+
+a.disabled {
+    /* Make the disabled links grayish*/
+    color: gray;
+    /* And disable the pointer events */
+    pointer-events: none;
+  }
+
+.subtitle {
+    font-size: 12pt !important;
+    line-height: 0.8em !important;
+}

@@ -1,0 +1,19 @@
+---
+title: "Week 1: Welcome to DSAN 5100!"
+date: 2023-08-24
+lecnum: 1
+categories:
+  - "Class Sessions"
+---
+
+*(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)*
+
+
+::: {.callout-note}
+
+# Today's Links
+
+* <a class="icon-link" href="https://jfh.georgetown.domains/dsan5100/slides/W01/notes.html" target="_blank"><i class="bi bi-journals pe-1"></i>Week 1 Lecture Notes</a>
+* <a class="icon-link" href="https://georgetown.zoom.us/rec/play/zZvBLK3H175wk69lR6skKCFKGb_S6FmESIRxTu2SE7q7c8M0MnxbxYX46MO09-o2mg0biGBUiR1ZscXQ.1ARqgeDY-rdi5HfI?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Fgeorgetown.zoom.us%2Frec%2Fshare%2FRgeOsCy5-XgXjeAkX94sZV8jD4vpXHGsTfG6mT02fRbHt3RLdsnQANR3izjsqDZ_.aollBOTov27FcoQX" target="_blank"><i class="bi bi-film pe-1"></i>Week 1 Lecture Recording</a>
+
+:::
