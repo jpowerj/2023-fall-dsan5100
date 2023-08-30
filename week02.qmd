@@ -28,7 +28,7 @@ Today's Planned Schedule:
 | | 1:20pm | 1:35pm | Univariate Statistics | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/univariate-statistics" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#univariate-statistics" target="_blank"><i class="bi bi-journals"></i></a> |
 | | 1:35pm | 1:50pm | Multivariate Statistics | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/presentation.html#/multi-variable-statistics" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#multi-variable-statistics" target="_blank"><i class="bi bi-journals"></i></a> |
 | **Break!** | 1:50pm | 2:00pm | | | |
-| **Lab** | 2:00pm | 2:50pm | Lab Demonstrations | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/demo-gu-domains-CLI/presentation.html#/coding-demonstration" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/slides/demo-gu-domains-CLI/notes.html" target="_blank"><i class="bi bi-journals"></i></a> |
-| | 2:50pm | 3:00pm | Lab Assignment Overview | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/html-and-css/presentation.html#/html-and-css" target="_blank"><i class="bi bi-file-slides"></i></a> | <a href="https://jfh.georgetown.domains/dsan5000/slides-and-labs/_site/content/labs/code-demos/html-and-css/demo.html" target="_blank"><i class="bi bi-journals"></i></a> |
+| **Lab** | 2:00pm | 2:50pm | Lab Demonstrations | | <a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html" target="_blank"><i class="bi bi-journals"></i></a> |
+| | 2:50pm | 3:00pm | Lab Assignment Overview | | <a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html" target="_blank"><i class="bi bi-journals"></i></a> |
 
-: {tbl-colwidths="[12,12,12,52,6,6]"} 
+: {tbl-colwidths="[12,12,12,54,5,5]"} 
