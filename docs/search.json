@@ -1,80 +1,374 @@
 [
   {
-    "objectID": "week02.html",
-    "href": "week02.html",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "objectID": "w01/index.html",
+    "href": "w01/index.html",
+    "title": "Week 1: Welcome to DSAN 5100!",
     "section": "",
-    "text": "Today’s Links\n\n\n\n\nWeek 2 Lecture Notes\nLab 1 Demonstration (In class)\nLab 1 Assignment (Homework)\n\n\n\nToday’s Planned Schedule:\n\n\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\nSlides\nNotes\n\n\n\n\nLecture\n12:30pm\n12:35pm\n[About Me]\n\n\n\n\n\n12:35pm\n12:50pm\nReview\n\n\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics\n\n\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals\n\n\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics\n\n\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics\n\n\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\n\n\nLab\n2:00pm\n2:50pm\nLab Demonstrations\n\n\n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+    "text": "(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)\n\n\n\n\n\n\nToday’s Links\n\n\n\n\nWeek 1 Lecture Notes\nWeek 1 Lecture Recording"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
+    "objectID": "about/index.html",
+    "href": "about/index.html",
     "title": "",
     "section": "",
     "text": "Born and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
   },
   {
-    "objectID": "about.html#prof.-jeff-introduction",
-    "href": "about.html#prof.-jeff-introduction",
+    "objectID": "about/index.html#prof.-jeff-introduction",
+    "href": "about/index.html#prof.-jeff-introduction",
     "title": "",
     "section": "",
     "text": "Born and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
   },
   {
-    "objectID": "about.html#grad-school",
-    "href": "about.html#grad-school",
+    "objectID": "about/index.html#grad-school",
+    "href": "about/index.html#grad-school",
     "title": "",
     "section": "Grad School",
     "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia (NYC) for PhD[+Postdoc] in Political Science (2015-2023)"
   },
   {
-    "objectID": "about.html#dissertation-political-science-history",
-    "href": "about.html#dissertation-political-science-history",
+    "objectID": "about/index.html#dissertation-political-science-history",
+    "href": "about/index.html#dissertation-political-science-history",
     "title": "",
     "section": "Dissertation (Political Science + History)",
     "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
   },
   {
-    "objectID": "about.html#research-labor-economics",
-    "href": "about.html#research-labor-economics",
+    "objectID": "about/index.html#research-labor-economics",
+    "href": "about/index.html#research-labor-economics",
     "title": "",
     "section": "Research (Labor Economics)",
     "text": "Research (Labor Economics)\n\n“Monopsony in Online Labor Markets”\n\nMachine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”\n\nLinguistic (dependency) parses of CBAs → time series of worker vs. employer rights and responsibilities over time\n\n“Freedom as Non-Domination in the Labor Market”\n\nGame-theoretic models of Douglassian (republican) liberty1 for workers: monopsony vs. labor discipline"
   },
   {
-    "objectID": "about.html#footnotes",
-    "href": "about.html#footnotes",
+    "objectID": "about/index.html#footnotes",
+    "href": "about/index.html#footnotes",
     "title": "",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nFrederick Douglass: “It was slavery itself, not its mere incidents, that I hated.”↩︎"
   },
   {
-    "objectID": "about-slides.html#prof.-jeff-introduction",
-    "href": "about-slides.html#prof.-jeff-introduction",
+    "objectID": "about/about-slides.html#prof.-jeff-introduction",
+    "href": "about/about-slides.html#prof.-jeff-introduction",
     "title": "",
     "section": "Prof. Jeff Introduction!",
     "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
   },
   {
-    "objectID": "about-slides.html#grad-school",
-    "href": "about-slides.html#grad-school",
+    "objectID": "about/about-slides.html#grad-school",
+    "href": "about/about-slides.html#grad-school",
     "title": "",
     "section": "Grad School",
     "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia (NYC) for PhD[+Postdoc] in Political Science (2015-2023)"
   },
   {
-    "objectID": "about-slides.html#dissertation-political-science-history",
-    "href": "about-slides.html#dissertation-political-science-history",
+    "objectID": "about/about-slides.html#dissertation-political-science-history",
+    "href": "about/about-slides.html#dissertation-political-science-history",
     "title": "",
     "section": "Dissertation (Political Science + History)",
     "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
   },
   {
-    "objectID": "about-slides.html#research-labor-economics",
-    "href": "about-slides.html#research-labor-economics",
+    "objectID": "about/about-slides.html#research-labor-economics",
+    "href": "about/about-slides.html#research-labor-economics",
     "title": "",
     "section": "Research (Labor Economics)",
     "text": "Research (Labor Economics)\n\n“Monopsony in Online Labor Markets”\n\nMachine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”\n\nLinguistic (dependency) parses of CBAs → time series of worker vs. employer rights and responsibilities over time\n\n“Freedom as Non-Domination in the Labor Market”\n\nGame-theoretic models of Douglassian (republican) liberty1 for workers: monopsony vs. labor discipline\n\n\n\n\n\n\n\n\n\n\nFrederick Douglass: “It was slavery itself, not its mere incidents, that I hated.”"
+  },
+  {
+    "objectID": "w02/notes.html",
+    "href": "w02/notes.html",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "",
+    "text": "Start\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+  },
+  {
+    "objectID": "w02/notes.html#schedule",
+    "href": "w02/notes.html#schedule",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "",
+    "text": "Start\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+  },
+  {
+    "objectID": "w02/notes.html#prof.-jeff-introduction",
+    "href": "w02/notes.html#prof.-jeff-introduction",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Prof. Jeff Introduction!",
+    "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
+  },
+  {
+    "objectID": "w02/notes.html#grad-school",
+    "href": "w02/notes.html#grad-school",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Grad School",
+    "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia (NYC) for PhD[+Postdoc] in Political Science (2015-2023)"
+  },
+  {
+    "objectID": "w02/notes.html#dissertation-political-science-history",
+    "href": "w02/notes.html#dissertation-political-science-history",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Dissertation (Political Science + History)",
+    "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
+  },
+  {
+    "objectID": "w02/notes.html#research-labor-economics",
+    "href": "w02/notes.html#research-labor-economics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Research (Labor Economics)",
+    "text": "Research (Labor Economics)\n\n“Monopsony in Online Labor Markets”\n\nMachine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”\n\nLinguistic (dependency) parses of CBAs → time series of worker vs. employer rights and responsibilities over time\n\n“Freedom as Non-Domination in the Labor Market”\n\nGame-theoretic models of Douglassian (republican) liberty1 for workers: monopsony vs. labor discipline"
+  },
+  {
+    "objectID": "w02/notes.html#deterministic-processes",
+    "href": "w02/notes.html#deterministic-processes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Deterministic Processes",
+    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\n\n\nImage credit: Tenor.com\n\n\n\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
+  },
+  {
+    "objectID": "w02/notes.html#holy-grail-deterministic-model-newtonian-physics",
+    "href": "w02/notes.html#holy-grail-deterministic-model-newtonian-physics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\n(a) Newton’s Law of Universal Gravitation\n\n\n\nFigure 1: Doctor Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+  },
+  {
+    "objectID": "w02/notes.html#but-what-happens-when",
+    "href": "w02/notes.html#but-what-happens-when",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "But What Happens When…",
+    "text": "But What Happens When…\n\\[\n\\text{Outcome}\\left(\\text{Dice Roll}\\right) = \\; ?\\frac{?_1?_2}{?^2}\n\\]\n\n\n\nPre-Enlightenment\n\n\n\n\nHans Sebald Beham, Fortuna (1541), CC BY 4.0, via Wikimedia Commons\n\n\n\n\nPost-Enlightenment\n\n\n\n\nBlaise Pascal, Traité du triangle arithmétique (1665). Public Domain, via Internet Archive"
+  },
+  {
+    "objectID": "w02/notes.html#random-processes",
+    "href": "w02/notes.html#random-processes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Random Processes",
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n# Need to include this for caching\nsource(\"../assets/code/globals.r\")\nsource(\"../assets/code/ggplot_globals.r\")\nplot_circ_with_distr &lt;- function(N, radii, ptitle, alpha=0.1) {\n  theta &lt;- seq(0, 360, 4)\n  #hist(radii)\n  circ_df &lt;- expand.grid(x = theta, y = radii)\n  #circ_df\n  ggplot(circ_df, aes(x = x, y = y, group = y)) +\n      geom_path(alpha = alpha, color = cbPalette[1], linewidth=g_linesize) +\n      # Plot the full unit circle\n      geom_path(data = data.frame(x = theta, y = 1), aes(x = x), linewidth=g_linesize) +\n      geom_point(data = data.frame(x = 0, y = 0), aes(x = x), size = g_pointsize) +\n      coord_polar(theta = \"x\", start = -pi / 2, direction = -1) +\n      ylim(0, 1) +\n      # scale_x_continuous(limits=c(0,360), breaks=seq(0,360,by=45)) +\n      scale_x_continuous(limits = c(0, 360), breaks = NULL) +\n      dsan_theme(\"quarter\") +\n      labs(\n          title = ptitle,\n          x = NULL,\n          y = NULL\n      ) +\n      # See https://stackoverflow.com/a/19821839\n      theme(\n          axis.line = element_blank(),\n          axis.text = element_blank(),\n          axis.ticks = element_blank(),\n          axis.title = element_blank(),\n          panel.border = element_blank(),\n          panel.grid.major=element_blank(),\n          panel.grid.minor=element_blank(),\n          plot.margin = unit(c(0,0,0,0), \"cm\"),\n          title = element_text(size=18)\n      )\n}\nN &lt;- 500\nradii &lt;- runif(N, 0, 1)\ntitle &lt;- paste0(N, \" Uniformly-Distributed Radii\")\nalpha &lt;- 0.2\nplot_circ_with_distr(N, radii, title, alpha)\n\nWarning message in file(filename, \"r\", encoding = encoding):\n\"cannot open file '../assets/code/globals.r': No such file or directory\"\n\n\nERROR: Error in file(filename, \"r\", encoding = encoding): cannot open the connection\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)"
+  },
+  {
+    "objectID": "w02/notes.html#data-ground-truth-noise",
+    "href": "w02/notes.html#data-ground-truth-noise",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Data = Ground Truth + Noise",
+    "text": "Data = Ground Truth + Noise\n\nDepressing but true origin of statistics (as opposed to probability): the Plague 😷\n\n\n\n\n\n\n\nGround Truth: The Great Plague (Lord Have Mercy on London, Unknown Artist, circa 1665, via Wikimedia Commons)\n\n\n\n\n\n\n\nNoisy Data (Recorded amidst chaos): London Bill of Mortality, 1665 (Public Domain, Wellcome Collection)"
+  },
+  {
+    "objectID": "w02/notes.html#random-variables",
+    "href": "w02/notes.html#random-variables",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Random Variables",
+    "text": "Random Variables\n\nIn algebra, to solve problems we work with variables\nIn probability theory, to solve problems we work with random variables\nRecall the difference between random and deterministic: \\(A = \\pi r^2\\) tells us that, given a value of \\(r\\), we can solve for the unique value of \\(A\\)\nIn probability theory, however, there is no one “true” value of a random variable \\(X\\).\nLet \\(X = f(N)\\) mean that \\(X\\) is the result of a rolled die, where the die has \\(N\\) sides.\nPlugging in \\(N = 6\\) (standard 6-sided die) still doesn’t mean we know “the” value of \\(X\\). However, (if the die is fair) we do know\n\n\\[\n\\Pr(X = 1) = \\Pr(X = 2) = \\cdots = \\Pr(X = 6) = \\frac{1}{6}\n\\]"
+  },
+  {
+    "objectID": "w02/notes.html#discrete-vs.-continuous",
+    "href": "w02/notes.html#discrete-vs.-continuous",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Discrete vs. Continuous",
+    "text": "Discrete vs. Continuous\n\nMany complicated definitions, often misleading or unintuitive!\nHow I want you to remember: How many possible values between two known values?\nDiscrete: e.g., number of siblings\n\nI have 2 siblings, you have 3 siblings… How many values (sibling counts) in between?\n\nContinuous: e.g., temperature\n\nIt is 27.0° C in my room, 28.0° C in your room… How many values (temperatures) in between?\n\nSo, if \\(X\\) is the result of a rolled die, is \\(X\\) discrete or continuous? How many values can be rolled between 3 and 4?"
+  },
+  {
+    "objectID": "w02/notes.html#thinking-about-independence",
+    "href": "w02/notes.html#thinking-about-independence",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Thinking About Independence",
+    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
+  },
+  {
+    "objectID": "w02/notes.html#naïve-definition-of-probability",
+    "href": "w02/notes.html#naïve-definition-of-probability",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Naïve Definition of Probability",
+    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
+  },
+  {
+    "objectID": "w02/notes.html#example-flipping-two-coins",
+    "href": "w02/notes.html#example-flipping-two-coins",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Example: Flipping Two Coins",
+    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/notes.html#events-neq-outcomes",
+    "href": "w02/notes.html#events-neq-outcomes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Events \\(\\neq\\) Outcomes!",
+    "text": "Events \\(\\neq\\) Outcomes!\n\nOutcomes are things, events are sets of things\nSubtle but extremely important distinction!\nIn the coin flip example:\n\nThe event \\(E_1 = \\{HT\\}\\) can be confused with the outcome \\(HT\\).\nSo, try to remember instead the event \\(E_2 = \\{TH, HT, HH\\}\\): it is more clear, in this case, how this event does not correspond to any individual outcome"
+  },
+  {
+    "objectID": "w02/notes.html#back-to-the-naïve-definition",
+    "href": "w02/notes.html#back-to-the-naïve-definition",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Back to the Naïve Definition",
+    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
+  },
+  {
+    "objectID": "w02/notes.html#combinatorics-ice-cream-possibilities",
+    "href": "w02/notes.html#combinatorics-ice-cream-possibilities",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Combinatorics: Ice Cream Possibilities",
+    "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nG\n\n  \n\ncone\n\n Cone Type   \n\nflavCake\n\n Flavor   \n\ncone-&gt;flavCake\n\n  Cake   \n\nflavWaf\n\n Flavor   \n\ncone-&gt;flavWaf\n\n  Waffle   \n\ncakeVanilla\n\n Vanilla Cake Cone   \n\nflavCake-&gt;cakeVanilla\n\n  Vanilla   \n\ncakeChoc\n\n Chocolate Cake Cone   \n\nflavCake-&gt;cakeChoc\n\n  Chocolate   \n\ncakeSwirl\n\n Swirl Cake Cone   \n\nflavCake-&gt;cakeSwirl\n\n  Swirl   \n\nwafVanilla\n\n Vanilla Waffle Cone   \n\nflavWaf-&gt;wafVanilla\n\n  Vanilla   \n\nwafChoc\n\n Chocolate Waffle Cone   \n\nflavWaf-&gt;wafChoc\n\n  Chocolate   \n\nwafSwirl\n\n Swirl Waffle Cone   \n\nflavWaf-&gt;wafSwirl\n\n  Swirl"
+  },
+  {
+    "objectID": "w02/notes.html#probability-fundamentals",
+    "href": "w02/notes.html#probability-fundamentals",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Probability Fundamentals",
+    "text": "Probability Fundamentals\n\nProbability Fundamentals"
+  },
+  {
+    "objectID": "w02/notes.html#statistics",
+    "href": "w02/notes.html#statistics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Statistics",
+    "text": "Statistics\n\nStatistics"
+  },
+  {
+    "objectID": "w02/notes.html#footnotes",
+    "href": "w02/notes.html#footnotes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nFrederick Douglass: “It was slavery itself, not its mere incidents, that I hated.”↩︎"
+  },
+  {
+    "objectID": "w02/index.html#schedule",
+    "href": "w02/index.html#schedule",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+  },
+  {
+    "objectID": "w02/index.html#prof.-jeff-introduction",
+    "href": "w02/index.html#prof.-jeff-introduction",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Prof. Jeff Introduction!",
+    "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
+  },
+  {
+    "objectID": "w02/index.html#grad-school",
+    "href": "w02/index.html#grad-school",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Grad School",
+    "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia (NYC) for PhD[+Postdoc] in Political Science (2015-2023)"
+  },
+  {
+    "objectID": "w02/index.html#dissertation-political-science-history",
+    "href": "w02/index.html#dissertation-political-science-history",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Dissertation (Political Science + History)",
+    "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
+  },
+  {
+    "objectID": "w02/index.html#research-labor-economics",
+    "href": "w02/index.html#research-labor-economics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Research (Labor Economics)",
+    "text": "Research (Labor Economics)\n\n“Monopsony in Online Labor Markets”\n\nMachine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”\n\nLinguistic (dependency) parses of CBAs → time series of worker vs. employer rights and responsibilities over time\n\n“Freedom as Non-Domination in the Labor Market”\n\nGame-theoretic models of Douglassian (republican) liberty1 for workers: monopsony vs. labor discipline\n\n\n\n\n\n\nFrederick Douglass: “It was slavery itself, not its mere incidents, that I hated.”"
+  },
+  {
+    "objectID": "w02/index.html#deterministic-processes",
+    "href": "w02/index.html#deterministic-processes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Deterministic Processes",
+    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\nImage credit: Tenor.com\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
+  },
+  {
+    "objectID": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
+    "href": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\n(a) Newton’s Law of Universal Gravitation\n\n\n\nFigure 1: Doctor Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+  },
+  {
+    "objectID": "w02/index.html#but-what-happens-when",
+    "href": "w02/index.html#but-what-happens-when",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "But What Happens When…",
+    "text": "But What Happens When…\n\\[\n\\text{Outcome}\\left(\\text{Dice Roll}\\right) = \\; ?\\frac{?_1?_2}{?^2}\n\\]\n\n\n\nPre-Enlightenment\n\n\n\n\nHans Sebald Beham, Fortuna (1541), CC BY 4.0, via Wikimedia Commons\n\n\n\n\nPost-Enlightenment\n\n\n\n\nBlaise Pascal, Traité du triangle arithmétique (1665). Public Domain, via Internet Archive"
+  },
+  {
+    "objectID": "w02/index.html#random-processes",
+    "href": "w02/index.html#random-processes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Random Processes",
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\nERROR: Error in file(filename, \"r\", encoding = encoding): cannot open the connection"
+  },
+  {
+    "objectID": "w02/index.html#data-ground-truth-noise",
+    "href": "w02/index.html#data-ground-truth-noise",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Data = Ground Truth + Noise",
+    "text": "Data = Ground Truth + Noise\n\nDepressing but true origin of statistics (as opposed to probability): the Plague 😷\n\n\n\n\n\n\n\nGround Truth: The Great Plague (Lord Have Mercy on London, Unknown Artist, circa 1665, via Wikimedia Commons)\n\n\n\n\n\n\n\nNoisy Data (Recorded amidst chaos): London Bill of Mortality, 1665 (Public Domain, Wellcome Collection)"
+  },
+  {
+    "objectID": "w02/index.html#random-variables",
+    "href": "w02/index.html#random-variables",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Random Variables",
+    "text": "Random Variables\n\nIn algebra, to solve problems we work with variables\nIn probability theory, to solve problems we work with random variables\nRecall the difference between random and deterministic: \\(A = \\pi r^2\\) tells us that, given a value of \\(r\\), we can solve for the unique value of \\(A\\)\nIn probability theory, however, there is no one “true” value of a random variable \\(X\\).\nLet \\(X = f(N)\\) mean that \\(X\\) is the result of a rolled die, where the die has \\(N\\) sides.\nPlugging in \\(N = 6\\) (standard 6-sided die) still doesn’t mean we know “the” value of \\(X\\). However, (if the die is fair) we do know\n\n\\[\n\\Pr(X = 1) = \\Pr(X = 2) = \\cdots = \\Pr(X = 6) = \\frac{1}{6}\n\\]"
+  },
+  {
+    "objectID": "w02/index.html#discrete-vs.-continuous",
+    "href": "w02/index.html#discrete-vs.-continuous",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Discrete vs. Continuous",
+    "text": "Discrete vs. Continuous\n\nMany complicated definitions, often misleading or unintuitive!\nHow I want you to remember: How many possible values between two known values?\nDiscrete: e.g., number of siblings\n\nI have 2 siblings, you have 3 siblings… How many values (sibling counts) in between?\n\nContinuous: e.g., temperature\n\nIt is 27.0° C in my room, 28.0° C in your room… How many values (temperatures) in between?\n\nSo, if \\(X\\) is the result of a rolled die, is \\(X\\) discrete or continuous? How many values can be rolled between 3 and 4?"
+  },
+  {
+    "objectID": "w02/index.html#thinking-about-independence",
+    "href": "w02/index.html#thinking-about-independence",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Thinking About Independence",
+    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
+  },
+  {
+    "objectID": "w02/index.html#naïve-definition-of-probability",
+    "href": "w02/index.html#naïve-definition-of-probability",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Naïve Definition of Probability",
+    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
+  },
+  {
+    "objectID": "w02/index.html#example-flipping-two-coins",
+    "href": "w02/index.html#example-flipping-two-coins",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Example: Flipping Two Coins",
+    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/index.html#events-neq-outcomes",
+    "href": "w02/index.html#events-neq-outcomes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Events \\(\\neq\\) Outcomes!",
+    "text": "Events \\(\\neq\\) Outcomes!\n\nOutcomes are things, events are sets of things\nSubtle but extremely important distinction!\nIn the coin flip example:\n\nThe event \\(E_1 = \\{HT\\}\\) can be confused with the outcome \\(HT\\).\nSo, try to remember instead the event \\(E_2 = \\{TH, HT, HH\\}\\): it is more clear, in this case, how this event does not correspond to any individual outcome"
+  },
+  {
+    "objectID": "w02/index.html#back-to-the-naïve-definition",
+    "href": "w02/index.html#back-to-the-naïve-definition",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Back to the Naïve Definition",
+    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
+  },
+  {
+    "objectID": "w02/index.html#combinatorics-ice-cream-possibilities",
+    "href": "w02/index.html#combinatorics-ice-cream-possibilities",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Combinatorics: Ice Cream Possibilities",
+    "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nG\n\n  \n\ncone\n\n Cone Type   \n\nflavCake\n\n Flavor   \n\ncone-&gt;flavCake\n\n  Cake   \n\nflavWaf\n\n Flavor   \n\ncone-&gt;flavWaf\n\n  Waffle   \n\ncakeVanilla\n\n Vanilla Cake Cone   \n\nflavCake-&gt;cakeVanilla\n\n  Vanilla   \n\ncakeChoc\n\n Chocolate Cake Cone   \n\nflavCake-&gt;cakeChoc\n\n  Chocolate   \n\ncakeSwirl\n\n Swirl Cake Cone   \n\nflavCake-&gt;cakeSwirl\n\n  Swirl   \n\nwafVanilla\n\n Vanilla Waffle Cone   \n\nflavWaf-&gt;wafVanilla\n\n  Vanilla   \n\nwafChoc\n\n Chocolate Waffle Cone   \n\nflavWaf-&gt;wafChoc\n\n  Chocolate   \n\nwafSwirl\n\n Swirl Waffle Cone   \n\nflavWaf-&gt;wafSwirl\n\n  Swirl"
+  },
+  {
+    "objectID": "w02/index.html#probability-fundamentals",
+    "href": "w02/index.html#probability-fundamentals",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Probability Fundamentals",
+    "text": "Probability Fundamentals\n\nProbability Fundamentals"
+  },
+  {
+    "objectID": "w02/index.html#statistics",
+    "href": "w02/index.html#statistics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Statistics",
+    "text": "Statistics\n\nStatistics"
   },
   {
     "objectID": "index.html",
@@ -82,12 +376,5 @@
     "title": "DSAN 5100, Section 03 (Thursdays)",
     "section": "",
     "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nThursday, August 31, 2023\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "week01.html",
-    "href": "week01.html",
-    "title": "Week 1: Welcome to DSAN 5100!",
-    "section": "",
-    "text": "(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)\n\n\n\n\n\n\nToday’s Links\n\n\n\n\nWeek 1 Lecture Notes\nWeek 1 Lecture Recording"
   }
 ]

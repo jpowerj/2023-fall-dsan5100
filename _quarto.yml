@@ -13,11 +13,9 @@ website:
       - "---"
       - href: index.qmd
         text: "Section 03 Home"
-      - href: about.qmd
-        text: "About Me"
-      - href: week01.qmd
+      - href: w01/index.qmd
         text: "Week 1: Aug 24"
-      - href: week02.qmd
+      - href: w02/index.ipynb
         text: "Week 2: Aug 31"
       # - href: 2023-09-05.qmd
       #   text: "Week 3: Sep 6"

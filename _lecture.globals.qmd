@@ -1,0 +1,132 @@
+::: {.hidden}
+
+```{r}
+#| label: r-globals
+#| echo: false
+set.seed(1948)
+knitr::opts_template$set(
+    tikz_settings = list(
+        fig.ext = "svg",
+        fig.align = "center",
+        engine.opts = list(dvisvgm.opts = "--font-format=woff")
+    ),
+    tikz_settings_fancy = list(
+        fig.ext = "svg",
+        fig.align = "center",
+        engine.opts = list(
+            dvisvgm.opts = "--font-format=woff",
+            template = "../assets/code/tikz2pdf.tex"
+        )
+    )
+)
+disp <- function(df, obs_per_page = 6, custom_callback = NULL, ...) {
+    # If length of df is less than obs_per_page, disable pagination
+    dom_str <- "tp"
+    if (nrow(df) <= obs_per_page) {
+        dom_str <- "t"
+    }
+    return(DT::datatable(
+        df,
+        extensions = c("FixedColumns", "FixedHeader"),
+        options = list(
+            pageLength = obs_per_page,
+            scrollX = TRUE,
+            paging = TRUE,
+            dom = dom_str,
+            fixedHeader = TRUE,
+            filter = FALSE,
+            ordering = FALSE,
+            language = list(
+                "paginate" = list(
+                    "previous" = "<i class='bi bi-chevron-left'></i>",
+                    "next" = "<i class='bi bi-chevron-right'></i>"
+                )
+            ),
+            callback = custom_callback
+        )
+        )
+    )
+}
+
+#library(knitr)
+## define a method for objects of the class data.frame
+#knit_print.data.frame <- function(x, ...) {
+#    #res <- paste(c("", "", disp(x)), collapse = "\n")
+#    asis_output(disp(x))
+#}
+## register the method
+#registerS3method("knit_print", "data.frame", knit_print.data.frame)
+
+# For slides
+library(ggplot2)
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+options(ggplot2.discrete.colour = cbPalette)
+# Theme generator, for given sizes
+dsan_theme <- function(plot_type = "full") {
+    if (plot_type == "full") {
+        custom_base_size <- 16
+    } else if (plot_type == "half") {
+        custom_base_size <- 22
+    } else if (plot_type == "quarter") {
+        custom_base_size <- 28
+    } else {
+        # plot_type == "col"
+        custom_base_size <- 22
+    }
+    theme <- theme_classic(base_size = custom_base_size) +
+        theme(
+            plot.title = element_text(hjust = 0.5),
+            plot.subtitle = element_text(hjust = 0.5),
+            legend.title = element_text(hjust = 0.5),
+            legend.box.background = element_rect(colour = "black")
+        )
+    return(theme)
+}
+
+knitr::opts_chunk$set(fig.align = "center")
+g_pointsize <- 5
+g_linesize <- 1
+# Technically it should always be linewidth
+g_linewidth <- 1
+g_textsize <- 14
+
+remove_legend_title <- function() {
+    return(theme(
+        legend.title = element_blank(),
+        legend.spacing.y = unit(0, "mm")
+    ))
+}
+
+```
+:::
+
+::: {.hidden}
+$$
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
+\newcommand{\definedas}{\overset{\text{defn}}{=}}
+\newcommand{\definedalign}{\overset{\phantom{\text{defn}}}{=}}
+\newcommand{\eqeventual}{\overset{\text{eventually}}{=}}
+\newcommand{\expect}[1]{\mathbb{E}[#1]}
+\newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
+\newcommand{\fw}[1]{\texttt{#1}}
+\newcommand{\given}{\mid}
+\newcommand{\green}[1]{\color{green}{#1}}
+\newcommand{\heads}{\outcome{heads}}
+\newcommand{\lik}{\mathcal{L}}
+\newcommand{\mle}{\textsf{ML}}
+\newcommand{\orange}[1]{\color{orange}{#1}}
+\newcommand{\outcome}[1]{\textsf{#1}}
+\newcommand{\param}[1]{{\color{purple} #1}}
+\newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
+\newcommand{\prob}[1]{P\left( #1 \right)}
+\newcommand{\purp}[1]{\color{purple}{#1}}
+\newcommand{\spacecap}{\; \cap \;}
+\newcommand{\spacewedge}{\; \wedge \;}
+\newcommand{\tails}{\outcome{tails}}
+\newcommand{\Var}[1]{\text{Var}[#1]}
+\newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
+$$
+
+:::

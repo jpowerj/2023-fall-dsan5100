@@ -1,0 +1,907 @@
+---
+title: "Introduction to Probabilistic Modeling"
+subtitle: "*DSAN 5100: Probabilistic Modeling and Statistical Computing*"
+date: last-modified
+institute: "<a href=\"mailto:jj1088@georgetown.edu\">`jj1088@georgetown.edu`</a>"
+author: "Jeff Jacobs"
+categories:
+  - "Lecture Slides"
+format:
+  revealjs:
+    include-in-header: {"text": "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"}
+    cache: false
+metadata-files: 
+  - "../_revealjs.globals.yml"
+---
+
+## Deterministic Processes {data-name="Deterministic vs. Random"}
+
+{{< include ../_lecture.globals.qmd >}}
+
+* Given a set of inputs, we can compute the outcome *exactly*
+* Example: Given the radius of a circle, we can compute its area *without any uncertainty*. $r \mapsto \pi r^2$
+* (The fact that we *can* compute the outcome doesn't mean that it's easy to do so! See, e.g., the <a href="https://en.wikipedia.org/wiki/Double_pendulum" target="_blank">double pendulum</a>)
+
+![](/assets/img/pendulum.gif){fig-align="center" .notopmargin}
+
+::: {.aside}
+Image credit: <a href="https://tenor.com/view/double-pendulum-pendulum-chaos-theory-gif-25511149" target="_blank">Tenor.com</a>
+:::
+
+::: {.notes}
+The pendulum example points to the fact that the notion of a *chaotic* system, one which is "sensitive to initial conditions", is different from that of a *stochastic* system.
+:::
+
+## Random Processes
+
+::: columns
+::: {.column width="50%"}
+
+* Can't compute the outcome *exactly*, but **can still say something** about potential outcomes!
+* Example: randomly chosen radius $r \in [0,1]$, what can we say about $A = \pi r^2$?
+  * Unif: $[0,\pi]$ equally likely
+  * Exp: closer to $0$ more likely
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| label: random-circles-unif
+#| fig-align: center
+#| fig-height: 5.5
+#| classes: "nobotmargin"
+plot_circ_with_distr <- function(N, radii, ptitle, alpha=0.1) {
+  theta <- seq(0, 360, 4)
+  #hist(radii)
+  circ_df <- expand.grid(x = theta, y = radii)
+  #circ_df
+  ggplot(circ_df, aes(x = x, y = y, group = y)) +
+      geom_path(alpha = alpha, color = cbPalette[1], linewidth=g_linesize) +
+      # Plot the full unit circle
+      geom_path(data = data.frame(x = theta, y = 1), aes(x = x), linewidth=g_linesize) +
+      geom_point(data = data.frame(x = 0, y = 0), aes(x = x), size = g_pointsize) +
+      coord_polar(theta = "x", start = -pi / 2, direction = -1) +
+      ylim(0, 1) +
+      # scale_x_continuous(limits=c(0,360), breaks=seq(0,360,by=45)) +
+      scale_x_continuous(limits = c(0, 360), breaks = NULL) +
+      dsan_theme("quarter") +
+      labs(
+          title = ptitle,
+          x = NULL,
+          y = NULL
+      ) +
+      # See https://stackoverflow.com/a/19821839
+      theme(
+          axis.line = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          panel.border = element_blank(),
+          panel.grid.major=element_blank(),
+          panel.grid.minor=element_blank(),
+          plot.margin = unit(c(0,0,0,0), "cm"),
+          title = element_text(size=18)
+      )
+}
+N <- 500
+radii <- runif(N, 0, 1)
+title <- paste0(N, " Uniformly-Distributed Radii")
+alpha <- 0.2
+plot_circ_with_distr(N, radii, title, alpha)
+```
+
+```{r}
+#| label: random-circles-exp
+#| fig-align: center
+#| fig-height: 5.5
+#| classes: "nobotmargin"
+library(ggplot2)
+N <- 1000
+radii <- rexp(N, 4)
+title <- paste0(N, " Exponentially-Distributed Radii")
+plot_circ_with_distr(N, radii, title, alpha=0.15)
+```
+:::
+:::
+
+## {.unnumbered .smaller}
+
+* Sometimes called "stochastic" processes. $\neq$ chaos, $\neq$ disorder! Social consequences:
+
+```{=html}
+<iframe src="https://ncase.me/polygons/" width="100%" height="82.5%" class="r-stretch" style="margin-bottom: 0px !important;"></iframe>
+```
+
+<div>
+<a href="https://ncase.me/polygons/" target="_blank" class="smallertext">Parable of the Polygons &rarr;</a> <div class="smallertext" style="float: right;">[Then check out @schelling_micromotives_1978]</div>
+</div>
+
+## The Emergence of Order
+
+::: columns
+::: {.column width="50%"}
+
+```{mermaid}
+%%| fig-height: 6.25
+%%| label: random-walk-diagram
+flowchart LR
+    A["Start at x=0"] -->|Heads| C["Move Left 1"]
+    A -->|Tails| D["Move Right 1"]
+    C -->|Tails| E["Move Left 1"]
+    C -->|Heads| F["Move Right 1"]
+    D -->|Tails| G["Move Left 1"]
+    D -->|Heads| H["Move Right 1"]
+    E -.->|Tails| I["..."]:::emptyNode
+    E -.->|Heads| J["..."]:::emptyNode
+    F -.->|Tails| K["..."]:::emptyNode
+    F -.->|Heads| L["..."]:::emptyNode
+    G -.->|Tails| M["..."]:::emptyNode
+    G -.->|Heads| N["..."]:::emptyNode
+    H -.->|Tails| O["..."]:::emptyNode
+    H -.->|Heads| P["..."]:::emptyNode
+    classDef emptyNode fill:#ffffff,stroke:#ffffff
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| cache: true
+#| label: random-walk-16
+library(tibble)
+library(ggplot2)
+library(ggExtra)
+library(dplyr)
+library(tidyr)
+# From McElreath!
+gen_histo <- function(reps, num_steps) {
+  support <- c(-1,1)
+  pos <-replicate(reps, sum(sample(support,num_steps,replace=TRUE,prob=c(0.5,0.5))))
+  #print(mean(pos))
+  #print(var(pos))
+  pos_df <- tibble(x=pos)
+  clt_distr <- function(x) dnorm(x, 0, sqrt(num_steps))
+  plot <- ggplot(pos_df, aes(x=x)) +
+    geom_histogram(aes(y = after_stat(density)), fill=cbPalette[1], binwidth = 2) +
+    stat_function(fun = clt_distr) +
+    dsan_theme("quarter") +
+    theme(title=element_text(size=16)) +
+    labs(
+      title=paste0(reps," Random Walks, ",num_steps," Steps")
+    )
+  return(plot)
+}
+gen_walkplot <- function(num_people, num_steps, opacity=0.15) {
+  support <- c(-1, 1)
+  # Unique id for each person
+  pid <- seq(1, num_people)
+  pid_tib <- tibble(pid)
+  pos_df <- tibble()
+  end_df <- tibble()
+  all_steps <- t(replicate(num_people, sample(support, num_steps, replace = TRUE, prob = c(0.5, 0.5))))
+  csums <- t(apply(all_steps, 1, cumsum))
+  csums <- cbind(0, csums)
+  # Last col is the ending positions
+  ending_pos <- csums[, dim(csums)[2]]
+  end_tib <- tibble(pid = seq(1, num_people), endpos = ending_pos, x = num_steps)
+  # Now convert to tibble
+  ctib <- as_tibble(csums, name_repair = "none")
+  merged_tib <- bind_cols(pid_tib, ctib)
+  long_tib <- merged_tib %>% pivot_longer(!pid)
+  # Convert name -> step_num
+  long_tib <- long_tib %>% mutate(step_num = strtoi(gsub("V", "", name)) - 1)
+  # print(end_df)
+  grid_color <- rgb(0, 0, 0, 0.1)
+
+  # And plot!
+  walkplot <- ggplot(
+      long_tib,
+      aes(
+          x = step_num,
+          y = value,
+          group = pid,
+          # color=factor(label)
+      )
+  ) +
+      geom_line(linewidth = g_linesize, alpha = opacity, color = cbPalette[1]) +
+      geom_point(data = end_tib, aes(x = x, y = endpos), alpha = 0) +
+      scale_x_continuous(breaks = seq(0, num_steps, num_steps / 4)) +
+      scale_y_continuous(breaks = seq(-20, 20, 10)) +
+      dsan_theme("quarter") +
+      theme(
+          legend.position = "none",
+          title = element_text(size = 16)
+      ) +
+      theme(
+          panel.grid.major.y = element_line(color = grid_color, linewidth = 1, linetype = 1)
+      ) +
+      labs(
+          title = paste0(num_people, " Random Walks, ", num_steps, " Steps")
+      )
+}
+wp1 <- gen_walkplot(500, 16, 0.05)
+ggMarginal(wp1, margins = "y", type = "histogram", yparams = list(binwidth = 1))
+```
+```{r}
+#| fig-height: 6
+#| cache: true
+#| label: random-walk-64
+library(ggExtra)
+wp2 <- gen_walkplot(5000,64,0.008) +
+  ylim(-30,30)
+ggMarginal(wp2, margins = "y", type = "histogram", yparams = list(binwidth = 1))
+```
+:::
+:::
+
+::: {.unnumbered .hidden}
+
+<!-- just the histograms -->
+
+```{r}
+#| fig-height: 3.4
+#| label: walk-histo-16
+p2 <- gen_histo(1000, 16)
+p2
+```
+
+```{r}
+#| fig-height: 3.4
+#| label: walk-histo-32
+p3 <- gen_histo(10000, 32)
+p3
+```
+
+:::
+
+## "Random" is Ambiguous! {.smaller}
+
+* Economists distinguish *risk* from *uncertainty* and *ignorance*
+* *Risk*: non-deterministic, but we can model the likely/unlikely outcomes given inputs.
+  * $\text{roll a fair die} \mapsto \text{outcome} \in \{$<span><i class="bi bi-dice-1"></i></span>,<span><i class="bi bi-dice-2"></i></span>,<span><i class="bi bi-dice-3"></i></span>,<span><i class="bi bi-dice-4"></i></span>,<span><i class="bi bi-dice-5"></i></span>,<span><i class="bi bi-dice-6"></i></span>$\}, P($<span><i class="bi bi-dice-5"></i></span>$) = \frac{1}{6}$
+* *Uncertainty*[^knight]: non-deterministic and we have no feasible model of likely/unlikely outcomes given inputs, though we know the range of possible outcomes.
+  * $\text{US stock market} \mapsto \text{outcome} \in \{\text{crash},\text{doesn't crash}\}, P(\text{crash}) = \; ?$
+  *  $\text{random code} \mapsto \text{outcome} \in \{\text{halt},\text{run forever}\}, P(\text{halt}) = \; ?$[^halt]
+*  *Ignorance*: Non-deterministic, and we don't even know the range of possible outcomes.
+   *  $\text{find a swan} \mapsto \text{outcome} \in \{$<i class="bi bi-airplane"></i>$\}, P($<i class="bi bi-airplane"></i>$) = 1 \implies P($<i class="bi bi-airplane-fill"></i>$) = 0$[^swan]
+
+[^knight]: Sometimes called "Knightian uncertainty" after [@knight_risk_1921], which introduced the distinction. See also [@silver_signal_2012].
+
+[^halt]: $P(\text{halt})$ is called <a href="https://en.wikipedia.org/wiki/Chaitin%27s_constant" target="_blank">Chaitin's constant</a>, and is not computable.
+
+[^swan]: In the "West", the first black swan was discovered by Dutch explorer <a href="https://en.wikipedia.org/wiki/Willem_de_Vlamingh" target="_blank">Willem de Vlamingh</a> in 1697, in present-day Perth, Australia. Until then, "swans are white" was a tautology like "grass is green".
+
+## Random Variables
+
+* Just as $2 \cdot 3$ is shorthand for $2 + 2 + 2$, we can define a *variable* $X$ as shorthand for outcome of a random process.
+$$
+\begin{align*}
+\{ &\text{result of dice roll was 1}, \\
+&\text{result of dice roll was 2}, \\
+&\text{result of dice roll was 3}, \\
+&\text{result of dice roll was 4}, \\
+&\text{result of dice roll was 5}, \\
+&\text{result of dice roll was 6}\} \rightsquigarrow X \in \{1,\ldots,6\}
+\end{align*}
+$$
+
+## Doing Math with Events {.smaller}
+
+* Now we can do *math* with the events and outcomes!
+$$
+\begin{align*}
+\text{two rolls} \mapsto P(\text{rolls sum to 10}) &= P(X + Y = 10) \\
+&= P(Y = 10 - X)
+\end{align*}
+$$
+* $P(\text{first roll above mean}) = P\left(X > \frac{X+Y}{2}\right) = P(2X > X+Y) = P(X > Y)$
+* Just remember that probability $P(\cdot)$ is always probability of an *event*---random variables are just shorthand for quantifiable events.
+* Not all events can be simplified via random variables!
+  * $\text{catch a fish} \mapsto P(\text{trout}), P(\text{bass}), \ldots$
+* What types of events *can* be quantified like this?
+
+::: {.notes}
+
+The answer is, broadly, any situation where you're modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we're modeling dice, it makes sense to say e.g. "result is 6" + "result is 3" = "total is 9". More on the next page!
+
+:::
+
+## Types of Variables {.smaller}
+
+* **Categorical**
+  * No meaningful way to order values: $\{\text{trout}, \text{bass}, \ldots \}$
+* **Ordinal**
+  * Can place in order (bigger, smaller), though *gaps* aren't meaningful: $\{\color{orange}{\text{great}},\color{orange}{\text{greater}},\color{orange}{\text{greatest}}\}$
+  * $\color{orange}{\text{greater}} \overset{?}{=} 2\cdot \color{orange}{\text{great}} - 1$
+* **Cardinal**
+  * Can place in order, and gaps are meaningful $\implies$ can do "standard" math with them! $\{\color{blue}{1},\color{blue}{2},\ldots,\color{blue}{10}\}$
+  * $\color{blue}{7} \overset{✅}{=} 2 \cdot \color{blue}{4} - 1$
+
+## Continuous vs. Discrete
+
+* Within cardinal variables, we distinguish between **continuous** and **discrete** variables.
+* **Continuous**: Infinitely-many values in the gap between two chosen values.
+  * How many numbers in $[0,1]$? Where do we start counting?
+* **Discrete**: No values in the gap between two chosen values.
+  * How many numbers in $\{0, 1\}$? Answer: 2.
+
+::: {.aside}
+For the math majors: this differs from mathematical cardinality, since e.g. $\mathbb{R}$ and $\mathbb{Q}$ are both continuous here, while $\mathbb{N}$ is discrete, even though $|\mathbb{Q}| = |\mathbb{N}| = \aleph_0$ and $|\mathbb{R}| = 2^{\aleph_0}$.
+:::
+
+## Probability Mass vs. Probability Density {.smaller .small-title}
+
+* **Cumulative Distribution Function** (CDF): $F_X(v) = P(X \leq v)$
+* For **discrete** RV $X \in S$, **Probability Mass Function** (pmf) $p_X(v)$:
+  $$
+  \begin{align*}
+  p_X(v) &= P(X = v) = F_X(v) - F_X(v-1) \\
+  \implies F_X(v) &= \sum_{\{w: \; w \leq v\}}p_X(w)
+  \end{align*}
+  $$
+* For **continuous** RV $X \in S \subseteq \mathbb{R}$, **Probability Density Function** (pdf) $f_X(v)$:
+  $$
+  \begin{align*}
+  f_X(v) &= \frac{d}{dx}F_X(v) \\
+  \implies F_X(v) &= \int_{-\infty}^v f_X(w)dw
+  \end{align*}
+  $$
+
+::: {.aside}
+
+Frustratingly, the CDF/pmf/pdf is usually written using $X$ and $x$, like $F_X(x) = P(X \leq x)$. To me this is extremely confusing, since the capitalized $X$ is a random variable (not a number) while the lowercase $x$ is some particular value, like $3$. So, to emphasize this difference, I use $X$ for the RV and $v$ for the **value** at which we're checking the CDF/pmf/pdf.
+
+Also note the capitalized CDF but lowercase pmf/pdf, matching the mathematical notation where $f_X(v)$ is the derivative of $F_X(v)$.
+
+:::
+
+## Probability Density $\neq$ Probability {.smaller}
+
+* **BEWARE**: $f_X(v) \neq P(X = v)$!
+* Long story short, for continuous variables, $P(X = v) = 0$[^measurezero]
+* Hence, we instead construct a PDF $f_X(v)$ that enables us to calculate $P(X \in [a,b])$ by integrating: $f_X(v)$ is whatever function satisfies $P(X \in [a,b]) = \int_{a}^bf_X(v)dv$.
+* i.e., instead of $p_X(v) = P(X = v)$ from discrete world, the relevant function here is $f_X(v)$, the probability **density** of $X$ at $v$:
+  $$
+  f_X(v) = \lim_{\varepsilon \to 0}\frac{P(X \in [v-\varepsilon, v + \varepsilon])}{2\varepsilon} = \lim_{\varepsilon \to 0}\frac{F(v + \varepsilon) - F(v - \varepsilon)}{2\varepsilon} = \frac{d}{dx}F_X(v)
+  $$
+
+[^measurezero]: For intuition: $X \sim U[0,10] \implies P(X = \pi) = \frac{|\{v \in \mathbb{R}:\; v = \pi\}|}{|\mathbb{R}|} = \frac{1}{2^{\aleph_0}} \approx 0$. That is, finding the $\pi$ needle in the $\mathbb{R}$ haystack is a one-in-$\left(\infty^\infty\right)$ event. A similar issue occurs if $S$ is countably-infinite, like $S = \mathbb{N}$: $P(X = 3) = \frac{|\{x \in \mathbb{N} : \; x = 3\}|}{|\mathbb{N}|} = \frac{1}{\aleph_0}$.
+
+## Visualizing Discrete RVs
+
+* **Ultimate Probability Pro-Tip**: When you hear "discrete distribution", think of a bar graph, probability = bar height:
+```{r, fig.align="center"}
+#| fig-align: center
+#| label: dicrete-bar-graph
+library(ggplot2)
+options(ggplot2.discrete.colour = cbPalette)
+global_theme <- ggplot2::theme_classic() + ggplot2::theme(
+    plot.title = element_text(hjust = 0.5, size = 18),
+    axis.title = element_text(size = 16),
+    axis.text = element_text(size = 14),
+    legend.title = element_text(size = 16, hjust = 0.5),
+    legend.text = element_text(size = 14),
+    legend.box.background = element_rect(colour = "black")
+)
+knitr::opts_chunk$set(fig.align = "center")
+g_pointsize <- 6
+library(tidyverse)
+library(tibble)
+distribution <- tribble(
+  ~Event, ~Probability, ~label,
+  "A", 0.25, "P(A) = 0.25",
+  "B", 0.25, "P(B) = 0.25",
+  "C", 0.5, "P(C) = 0.5"
+)
+ggplot(distribution, aes(x=Event, y=Probability, fill=Event)) +
+  geom_bar(stat="identity", alpha=0.5) +
+  geom_text(aes(label = label), position = position_dodge(width = 0.9), vjust = -0.25, size=6) +
+  ggtitle("Discrete Probability Distribution") +
+  dsan_theme() +
+  theme(legend.position = "none") +
+  ylim(0,0.5) +
+  coord_cartesian(clip = "off") +
+  scale_fill_manual(values=cbPalette)
+```
+
+## Visualizing Continuous RVs
+
+* This works even for **continuous** distributions, if you focus on the **area under the curve** instead of the height:
+
+```{r}
+#| label: continuous-area
+funcShaded <- function(x, lower_bound, upper_bound) {
+    y <- dnorm(x)
+    y[x < lower_bound | x > upper_bound] <- NA
+    return(y)
+}
+funcShadedBound1 <- function(x) funcShaded(x, -Inf, 0)
+funcShadedBound2 <- function(x) funcShaded(x, 0.2, 1.8)
+funcShadedBound3 <- function(x) funcShaded(x, 2, Inf)
+
+norm_plot <- ggplot(data.frame(x=c(-3,3)), aes(x = x)) +
+    stat_function(fun = dnorm) +
+    labs(
+      title="Continuous Probability Distribution",
+      x="Event",
+      y="Probability Density"
+    ) +
+    dsan_theme() +
+    theme(legend.position = "none") +
+    coord_cartesian(clip = "off")
+label_df <- tribble(
+  ~x, ~y, ~label,
+  -0.8, 0.1, "P(X < 0) = 0.5",
+  1.0, 0.05, "P(0.2 < X < 1.8)\n= 0.385",
+  2.5,0.1,"P(X > 1.96)\n= 0.025"
+)
+shaded_plot <- norm_plot +
+  stat_function(fun = funcShadedBound1, geom = "area", fill=cbPalette[1], alpha = 0.5) +
+  stat_function(fun = funcShadedBound2, geom = "area", fill=cbPalette[2], alpha = 0.5) +
+  stat_function(fun = funcShadedBound3, geom = "area", fill=cbPalette[3], alpha = 0.5) +
+  geom_text(label_df, mapping=aes(x = x, y = y, label = label), size=6)
+shaded_plot
+```
+
+## Looking Ahead: Classification vs. Regression {.smaller}
+
+* What types of vars are we guessing for **classification** tasks?
+  * Answer: Discrete variables
+  * Binary classification $\leftrightarrow$ Dichotomous variables: $X \in \{T, F\}$. Example: $X \in \{\text{spam}, \text{not spam}\}$
+* **Regression** tasks?
+  * Answer: Continuous variables. $X \in \mathbb{R}$. Example: predicted temperature
+* And where does probability come in?
+  * Answer: Allows us to quantify $P(\mathcal{H} \given X)$!
+  * $\mathcal{H}_1 = \text{email is spam}$, $\mathcal{H}_0 = \text{email is not spam}$
+
+## "Grammar of Graphics" (GG) {.smaller data-name="Data Visualization"}
+
+* The bar graph vs. histogram tip was for visualizing *in your head*. What about **presenting to the world**?
+* "Grammar of graphics": Just as we combine nouns and verbs together to form sentences (John jumped high), we can combine *graphical primitives* (lines, shapes, coordinates) with *data* together to form visualizations:
+
+![](/assets/img/grammar-of-graphics.png){fig-align="center"}
+
+## Graphical Primitives + Data {.smaller}
+
+| Layer | Function | Explanation |
+| - | - | - |
+| Data | `ggplot(data)` | The raw data that you want to visualize |
+| Aesthetics | `aes()` | Aesthetic mappings of the geometric and statistical objects |
+| Layers | `geom_*()` | The geometric shapes and statistical summaries representing the data |
+| Scales | `scale_*()` | Maps between the data and the aesthetic dimensions |
+| Coordinate System | `coord_*()` | Maps data into the plane of the data rectangle |
+| Facets | `facet_*()` | The arrangement of the data into a grid of plots |
+| Visual Themes | `theme()` | The overall visual defaults of a plot |
+
+: {tbl-colwidths="[16,20,64]"}
+
+::: {.aside}
+Adapted from [this discussion](https://twitter.com/CedScherer/status/1229418108122783744/photo/1). See the official <a href="https://ggplot2-book.org/mastery.html" target="_blank">`ggplot2` book</a> ([ggplot2-book.org](https://ggplot2-book.org)) for more!
+:::
+
+## `ggplot2` In Practice {.smaller}
+
+* In practice, there are a few central graphical primitives you'll use over and over again.
+
+::: columns
+::: {.column width="50%"}
+* You already saw `geom_bar()`
+```{r}
+#| fig-height: 7
+#| echo: true
+#| label: geom-bar-demo
+bar_data <- tribble(
+  ~Category, ~Value,
+  "A", 100,
+  "B", 200
+)
+ggplot(bar_data, aes(x=Category, y=Value)) +
+  geom_bar(stat="identity") +
+  dsan_theme("quarter")
+```
+:::
+::: {.column width="50%"}
+* and `stat_function()`
+```{r}
+#| echo: true
+#| label: stat-function-demo
+#| fig-height: 7
+ggplot(data.frame(x=c(-4,4)), aes(x=x)) +
+  stat_function(fun=dnorm, linewidth=g_linewidth) +
+  dsan_theme("quarter")
+```
+:::
+:::
+
+## Common Geometries {.smaller}
+
+::: columns
+::: {.column width="50%"}
+* `geom_point()` for scatterplots
+```{r}
+#| label: geom-point-demo
+#| fig-height: 8
+#| echo: true
+N_scatter <- 50
+random_points <- data.frame(x=runif(N_scatter,0,1),y=runif(N_scatter,0,1))
+ggplot(random_points, aes(x=x, y=y)) +
+  geom_point(size = g_pointsize) +
+  dsan_theme("quarter")
+```
+:::
+::: {.column width="50%"}
+* And `geom_line()` for line graphs
+```{r,fig.height=8,echo="true"}
+#| label: geom-line-demo
+#| fig-height: 8
+#| echo: true
+N_line <- 15
+rand_line <- data.frame(x=seq(1,N_line),y=runif(N_line,0,10))
+ggplot(rand_line, aes(x=x, y=y)) +
+  geom_line(linewidth = g_linewidth) +
+  dsan_theme("quarter")
+```
+:::
+:::
+
+## Common Geometries II {.smaller}
+
+* Which can be used together in a single plot:
+
+```{r,echo="true"}
+#| label: geom-line-point-demo
+#| echo: true
+ggplot(rand_line, aes(x=x,y=y)) +
+  geom_line(linewidth=g_linewidth) + geom_point(size=g_pointsize/2) +
+  dsan_theme("full")
+```
+
+## Common Continuous Distributions {data-name="Probability Distributions"}
+
+* Normal
+* Uniform
+* $\chi^2$ (Chi-Squared)
+
+## Normal Distribution {.smaller}
+
+::: columns
+::: {.column width="50%"}
+* You already saw the **Standard Normal** Distribution:
+```{r}
+#| label: standard-normal-demo
+#| fig-height: 6.5
+ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
+    stat_function(fun = dnorm, linewidth = g_linewidth) +
+    geom_area(stat = "function", fun = dnorm, fill = cbPalette[1], xlim = c(-3, 3), alpha=0.2) +
+    #geom_area(stat = "function", fun = dnorm, fill = "blue", xlim = c(0, 2))
+    dsan_theme("quarter") +
+    labs(
+      x = "v",
+      y = "Density f(v)"
+    )
+```
+:::
+::: {.column width="50%"}
+* More general form: Normal Distribution
+  * "RV $X$ is normally distributed with <span class="param">mean</span> $\param{\mu}$ and <span class="param">standard deviation</span> $\param{\sigma}$"
+    * Translates to $X \sim N(\color{purple}{\mu},\color{purple}{\sigma})$
+  * $\color{purple}{\mu}$ and $\color{purple}{\sigma}$ are <span style="color: purple;">**parameters**</span>[^purple]: the "knobs" or "sliders" which change the location/shape of the distribution
+  * "Standard" normal just means $\param{\mu} = 0$, $\param{\sigma} = 1$
+  * Can always convert between them by **normalizing**: if $X \sim \mathcal{N}(\param{\mu}, \param{\sigma})$, then
+
+  $$
+  Z = \frac{X - \param{\mu}}{\param{\sigma}} \sim \mathcal{N}(0,1)
+  $$
+:::
+:::
+
+[^purple]: Throughout the course, remember, <span style="color:purple;">**purrple**</span> is for <span style="color:purple;">**purrameters**</span>
+
+## Real Data
+
+<!-- * <a href="https://www.ncdrisc.org/data-downloads-height.html" target="_blank">25,000 heights from a random sample</a> from *Lancet* meta-analysis -->
+
+* Heights (cm) for 18K professional athletes
+
+```{r}
+#| code-fold: true
+#| echo: true
+#| warning: false
+#| label: height-plot
+#| fig-align: center
+library(readr)
+height_df <- read_csv("https://gist.githubusercontent.com/jpowerj/9a23807fb71a5f6b6c2f37c09eb92ab3/raw/89fc6b8f0c57e41ebf4ce5cdf2b3cad6b2dd798c/sports_heights.csv")
+mean_height <- mean(height_df$height_cm)
+sd_height <- sd(height_df$height_cm)
+height_density <- function(x) dnorm(x, mean_height, sd_height)
+ggplot(height_df, aes(x = height_cm)) +
+    geom_histogram(aes(y = after_stat(density)), binwidth = 5.0) +
+    #stat_function(fun = height_density, linewidth = g_linewidth) +
+    geom_area(stat = "function", fun = height_density, color="black", linewidth = g_linewidth, fill = cbPalette[1], alpha=0.2) +
+    labs(
+      title=paste0("Distribution of heights (cm), N=",nrow(height_df)," athletes\nMean=",round(mean_height,2),", SD=",round(sd_height,2)),
+      x="Height (cm)",
+      y="Probability Density"
+    ) +
+    dsan_theme("full")
+```
+
+## Uniform Distribution {.crunch-math .small-math}
+
+::: columns
+::: {.column width="50%"}
+
+* $X \sim \mathcal{U}[a,b]$: all values in $[a,b]$ equally likely
+
+* Helpful for gaining intuition around probability **density**: what is the total area under the curve (shaded)?
+
+:::
+::: {.column width="50%"}
+
+
+```{r}
+#| label: uniform-demo
+#| fig-align: center
+#| fig-height: 7.5
+library(ggplot2)
+myUnif1 <- function(x) ifelse(abs(x) <= 2, 0.25, NA)
+myUnif0 <- function(x) ifelse(abs(x) >= 2, 0, NA)
+ggplot(data=data.frame(x=c(-4,4)), aes(x=x)) +
+  stat_function(fun=myUnif0, linewidth = g_linewidth) +
+  stat_function(fun=myUnif1, linewidth = g_linewidth) +
+  geom_vline(xintercept=-2, linewidth = g_linewidth*1.5, linetype = "dashed", color = cbPalette[7]) +
+  geom_vline(xintercept=2, linewidth = g_linewidth*1.5, linetype = "dashed", color = cbPalette[7]) +
+  geom_area(stat = "function", fun = myUnif1, fill = cbPalette[1], alpha = 0.2) +
+  dsan_theme("quarter") +
+  labs(
+    x = "v",
+    y = "Density f(v)",
+    title = "Uniform Distribution U[-2,2]"
+  )
+```
+
+:::
+:::
+
+::: {.notopmargin}
+$$
+\underbrace{\int_{-\infty}^{\infty}f_X(v)dv}_{P(-\infty \, < \, X \, < \, \infty)} = \underbrace{\int_{-2}^{2}f_X(v)dv}_{P(-2 \, \lt \, X \, < \, 2)} = 1
+$$
+:::
+
+## Chi-Squared Distribution {.small-math .small-inline .crunch-math}
+
+If $X_1, \ldots, X_n \sim \mathcal{N}(0,1)$, then
+
+$$
+Z = \sum_{i=1}^n X_i^2 \sim \chi^2(n)
+$$
+
+```{r}
+#| label: chi-sq-demo
+#| fig-align: center
+#| fig-height: 3.5
+library(ggplot2)
+chisq_df <- 2
+myChiSq <- function(x) dchisq(x, chisq_df)
+ggplot(data=data.frame(x=c(0,10)), aes(x=x)) +
+  #stat_function(fun=myChiSq, linewidth = g_linewidth) +
+  geom_area(stat = "function", fun = myChiSq, fill = cbPalette[1], color="black", alpha=0.2, linewidth = g_linewidth) +
+  dsan_theme("full") +
+  xlim(0.01,10) +
+  labs(
+    title = paste0("Chi-Squared Distribution with df = ",chisq_df),
+    x = "v",
+    y = "Density f(v)"
+  )
+```
+
+::: {.aside}
+
+Notice that, since $\sigma = \frac{1}{n}\sum_{i=1}^n (x - \mu)^2$, chi-squared is a natural **prior** for $\sigma$, or many other quantities that are sums of squares (we'll see many throughout the course!)
+
+:::
+
+## Common Discrete Distributions
+
+* Bernoulli
+* Binomial
+* Geometric
+
+## Bernoulli Distribution
+
+* Single trial with two outcomes, **"success"** ($1$) or **"failure"** ($0$): basic model of a **coin flip** (heads = $1$, tails = $0$)
+* $X \sim \text{Bern}(\param{p}) \implies X \in \{0,1\}, \; P(1) = \param{p}$.
+
+```{r}
+#| label: bernoulli-demo
+#| fig-align: center
+library(ggplot2)
+library(tibble)
+bern_tibble <- tribble(
+  ~Outcome, ~Probability,
+  "Failure", 0.2,
+  "Success", 0.8
+)
+ggplot(data = bern_tibble, aes(x=Outcome, y=Probability)) +
+  geom_bar(stat = "identity") +
+  dsan_theme("half") +
+  labs(
+    y = "Probability Mass"
+  )
+```
+
+## Binomial Distribution
+
+* **Number of successes** in $\param{N}$ Bernoulli trials. $X \sim \text{Binom}(\param{N},\param{k},\param{p}) \implies X \in \{0, 1, \ldots, N\}$
+  * $P(X = k)  = \binom{N}{k}p^k(1-p)^{N-k}$: probability of $k$ successes out of $N$ trials.
+  * $\binom{N}{k} = \frac{N!}{k!(N-k)!}$: "Binomial coefficient". How many groups of size $k$ can be formed?[^binom]
+
+[^binom]: A fun way to never have to memorize or compute these: imagine a pyramid like $\genfrac{}{}{0pt}{}{}{\boxed{\phantom{1}}}\genfrac{}{}{0pt}{}{\boxed{\phantom{1}}}{}\genfrac{}{}{0pt}{}{}{\boxed{\phantom{1}}}$, where the boxes are slots for numbers, and put a $1$ in the box at the top. In the bottom row, fill each slot with the sum of the two numbers above-left and above-right of it. Since $1 + \text{(nothing)} = 1$, this looks like: $\genfrac{}{}{0pt}{}{}{1}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{1}$. Continue filling in the pyramid this way, so the next row looks like $\genfrac{}{}{0pt}{}{}{1}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{2}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{1}$, then $\genfrac{}{}{0pt}{}{}{1}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{3}\genfrac{}{}{0pt}{}{2}{}\genfrac{}{}{0pt}{}{}{3}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{1}$, and so on. The $k$th number in the $N$th row (counting from $0$) is $\binom{N}{k}$. For the triangle written out to the 7th row, see Appendix I at end of slideshow.
+
+## Visualizing the Binomial
+
+```{r}
+#| label: binomial-demo
+#| echo: true
+#| fig-align: center
+k <- seq(0, 10)
+prob <- dbinom(k, 10, 0.5)
+bar_data <- tibble(k, prob)
+ggplot(bar_data, aes(x=k, y=prob)) +
+  geom_bar(stat="identity") +
+  labs(
+    title="Binomial Distribution, N = 10, p = 0.5",
+    y="Probability Mass"
+  ) +
+  scale_x_continuous(breaks=seq(0,10)) +
+  dsan_theme("full")
+```
+
+::: {.notes}
+So who can tell me, from this plot, the approximate probability of getting 4 heads when flipping a coin 10 times?
+:::
+
+## Geometric Distribution
+
+* **Geometric**: Likelihood that we need $k$ trials to get our first success. $X \sim \text{Geom}(k,p) \implies X \in \{0, 1, \ldots\}$
+  * $P(X = k) = (1-p)^{k-1}p$
+  * Probability of $k-1$ failures followed by a success
+
+```{r}
+#| label: geometric-demo
+#| fig-align: center
+library(ggplot2)
+k <- seq(0, 8)
+prob <- dgeom(k, 0.5)
+bar_data <- tibble(k, prob)
+ggplot(bar_data, aes(x = k, y = prob)) +
+    geom_bar(stat = "identity") +
+    labs(
+        title = "Geometric Distribution, p = 0.5",
+        y = "Probability Mass"
+    ) +
+    scale_x_continuous(breaks = seq(0, 8)) +
+    dsan_theme("half")
+```
+
+## Less Common (But Important) Distributions {.smaller}
+
+* **Discrete Uniform**: $N$ equally-likely outcomes
+  * $X \sim U\{\param{a},\param{b}\} \implies X \in \{a, a+1, \ldots, b\}, P(X = k) = \frac{1}{b - a + 1}$
+* **Beta**: $X \sim \text{Beta}(\param{\alpha}, \param{\beta})$: *conjugate prior* for Bernoulli, Binomial, and Geometric distributions.
+  * Intuition: If we use Beta to encode our prior hypothesis, then observe data drawn from Binomial, distribution of our *updated* hypothesis is still Beta.
+  * $\underbrace{P(\text{biased}) = P(\text{unbiased})}_{\text{Prior: }\text{Beta}(\param{\alpha}, \param{\beta})} \rightarrow$ Observe $\underbrace{\frac{8}{10}\text{ heads}}_{\text{Data}} \rightarrow \underbrace{P(\text{biased}) = 0.65}_{\text{Posterior: }\text{Beta}(\param{\alpha + 8}, \param{\beta + 2})}$
+* **Dirichlet**: $\mathbf{X} = (X_1, X_2, \ldots, X_K) \sim \text{Dir}(\boldsymbol\alpha)$
+  * $K$-dimensional extension of Beta (thus, conjugate prior for Multinomial)
+
+<!-- TODO: see why \param doesn't work for the bolded \alpha -->
+
+::: {.notes}
+We can now use $\text{Beta}(\alpha + 8, \beta + 2)$ as a prior for our next set of trials (encoding our knowledge up to that point), and update further once we know the results (to yet another Beta distribution).
+:::
+
+## Sample World vs. Population World {.smaller data-name="Sampling"}
+
+<!-- | | Sample | Population |
+| - | - | - |
+| Measurements | Sample Statistics | Population Parameters |
+| Data Collection Method | Survey | Census |
+| What we want to know | True Value | True Value |
+| What We Know | Sample Proportion | True Value |
+| What do we do with it? | Make inference about true value | Sit back and relax |
+| How sure are we? | [95%] Confidence Interval | 100% Sure | -->
+
+| | Mean | Variance | Proportion | # Observations |
+| - | - | - | - | - |
+| **Population World** (Parameters) | $\mu$ | $\sigma^2$ | $p$ | $N$ |
+| **Inference** | $\Uparrow$ | $\Uparrow$ | $\Uparrow$ | $\Uparrow$ |
+| **Sample World** (Statistics) | $\overline{X}$ | $s^2$ | $\widehat{p}$ | $n$ (sample size) |
+
+: {tbl-colwidths="[30,16,16,16,22]"}
+
+* Inference is the *reason* we have these strange statistical notions: $z$-scores, confidence intervals, "statistical significance", critical points, etc.
+* How can we leverage our **sample statistics**, using statistical tools (like `R`), to make good guesses about **population parameters**?
+
+## What Does This Look Like In Practice? {.smaller}
+
+* Frequentist approach (for now): $CI_{\alpha} = \overline{X} \pm z_{\alpha}\frac{s}{\sqrt{n}}$
+  * e.g., $CI_{0.95} = \overline{X} \pm 1.96\frac{s}{\sqrt{n}}$
+
+```{r}
+#| label: diminishing
+N <- 1000000
+pop_df <- tibble(x=rnorm(N, 100, 3))
+lbounds <- c()
+means <- c()
+ubounds <- c()
+sample_sizes <- c()
+for (sample_mag in seq(from=1, to=5, by=0.5)) {
+  n <- 10^sample_mag
+  data <- sample_n(pop_df, n)
+  sample_mean <- mean(data$x)
+  sample_sd <- sd(data$x)
+  margin <- 1.96 * sample_sd / n^(1/2)
+  interval <- c(sample_mean - margin, sample_mean + margin)
+  lbounds <- c(lbounds, sample_mean - margin)
+  means <- c(means, sample_mean)
+  ubounds <- c(ubounds, sample_mean + margin)
+  sample_sizes <- c(sample_sizes, n)
+}
+result_df <- tibble(n=sample_sizes,lbound=lbounds,mean=means,ubound=ubounds)
+base_plot <- ggplot(result_df, aes(x=n, y=mean)) +
+  geom_point(aes(color="black")) +
+  geom_line(color="black") +
+  geom_ribbon(aes(ymin=lbound, ymax=ubound, fill=cbPalette[1]), alpha=0.3) +
+  geom_hline(aes(yintercept=100, linetype="dashed"), color="purple") +
+  scale_color_manual("", values=c("black","purple"), labels=c("Sample Mean X","True Mean mu")) +
+  scale_linetype_manual("", values="dashed", labels="True Mean mu") +
+  scale_fill_manual("", values=cbPalette[1], labels="95% CI") +
+  dsan_theme() +
+  theme(
+    legend.title = element_blank(),
+    legend.spacing.y=unit(0, "mm")
+  ) +
+  labs(
+      title = "Estimates of Population Mean for Increasing Sample Sizes",
+      x="n (Sample Size)",
+      y="Estimate"
+  )
+log_plot <- base_plot + scale_x_log10(breaks=c(10,100,1000,10000,100000), labels=c("10","100","1000","10000","100000"))
+log_plot
+```
+
+## Diminishing Returns to More Samples
+
+* Same plot, but without log-scale $x$-axis:
+
+```{r}
+#| label: diminishing-logscale
+lin_plot <- base_plot +
+  ylim(99,101)
+lin_plot
+```
+
+::: {.notes}
+The key takeaway here is, roughly: each "jump" in accuracy requires twice as much new data as the previous jump in accuracy.
+:::
+
+## Key Takeaways {.smaller}
+
+* **Bayesian** probability = probability with **hypothesis testing** built-in
+  * $P(\text{hypothesis} \given{} \text{data}) = \frac{P(\text{data} \given \text{hypothesis})P(\text{hypothesis})}{P(\text{data})}$
+* We can model random processes using **random variables**, continuous or discrete
+* `ggplot2` gives us a "Grammar of Graphics"
+  * Data + Aesthetic Mappings + Geometric Layers
+* Visualize **discrete** probabilities as bar graphs: $P(X = v)$
+* Visualize **continuous** probabilities as areas under a curve: $P(v_0 < X < v_1)$
+* Statistical inference = using **samples** to make good guesses about **population**, with known margins of error
+
+## References
+
+::: {#refs}
+:::
+
+## Appendix I: The Binomial Triangle
+
+![](images/binomial_triangle.svg)
