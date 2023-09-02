@@ -11,14 +11,7 @@
     "href": "w02/index.html",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "",
-    "text": "Start\nEnd\nTopic\nRecording\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
-  },
-  {
-    "objectID": "w02/index.html#schedule",
-    "href": "w02/index.html#schedule",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "",
-    "text": "Start\nEnd\nTopic\nRecording\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+    "text": "Open slides in new window →"
   },
   {
     "objectID": "w02/index.html#prof.-jeff-introduction",
@@ -60,7 +53,7 @@
     "href": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/index.html#but-what-happens-when",
@@ -182,25 +175,25 @@
     "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
   },
   {
-    "objectID": "w02/index.html#probability-fundamentals",
-    "href": "w02/index.html#probability-fundamentals",
+    "objectID": "w02/index.html#probability-fundamentals-1",
+    "href": "w02/index.html#probability-fundamentals-1",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Probability Fundamentals",
     "text": "Probability Fundamentals\n\nProbability Fundamentals"
   },
   {
-    "objectID": "w02/index.html#statistics",
-    "href": "w02/index.html#statistics",
+    "objectID": "w02/index.html#univariate-statistics",
+    "href": "w02/index.html#univariate-statistics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Statistics",
-    "text": "Statistics\n\nStatistics"
+    "section": "Univariate Statistics",
+    "text": "Univariate Statistics\n\nStatistics"
   },
   {
-    "objectID": "w02/slides.html#schedule",
-    "href": "w02/slides.html#schedule",
+    "objectID": "w02/index.html#multivariate-statistics",
+    "href": "w02/index.html#multivariate-statistics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\nRecording\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+    "section": "Multivariate Statistics",
+    "text": "Multivariate Statistics\n\nMultivariate Statistics"
   },
   {
     "objectID": "w02/slides.html#prof.-jeff-introduction",
@@ -242,7 +235,7 @@
     "href": "w02/slides.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/slides.html#but-what-happens-when",
@@ -256,7 +249,7 @@
     "href": "w02/slides.html#random-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)\n\nWarning: Removed 1456 rows containing missing values (`geom_path()`)."
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely"
   },
   {
     "objectID": "w02/slides.html#data-ground-truth-noise",
@@ -364,18 +357,25 @@
     "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
   },
   {
-    "objectID": "w02/slides.html#probability-fundamentals",
-    "href": "w02/slides.html#probability-fundamentals",
+    "objectID": "w02/slides.html#probability-fundamentals-1",
+    "href": "w02/slides.html#probability-fundamentals-1",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Probability Fundamentals",
     "text": "Probability Fundamentals\n\nProbability Fundamentals"
   },
   {
-    "objectID": "w02/slides.html#statistics",
-    "href": "w02/slides.html#statistics",
+    "objectID": "w02/slides.html#univariate-statistics",
+    "href": "w02/slides.html#univariate-statistics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Statistics",
-    "text": "Statistics\n\nStatistics"
+    "section": "Univariate Statistics",
+    "text": "Univariate Statistics\n\nStatistics"
+  },
+  {
+    "objectID": "w02/slides.html#multivariate-statistics",
+    "href": "w02/slides.html#multivariate-statistics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Multivariate Statistics",
+    "text": "Multivariate Statistics\n\nMultivariate Statistics"
   },
   {
     "objectID": "index.html",

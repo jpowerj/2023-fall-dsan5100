@@ -25,7 +25,7 @@ format:
     simplemenu:
       flat: true
       barhtml:
-        header: "<div class='menubar'><ul class='menu'></ul></div>"
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
       scale: 0.5
     theme: [default, "../_jjslides.scss"]
     revealjs-plugins:
@@ -33,23 +33,32 @@ format:
     include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"}
 ---
 
-## Schedule {.smaller data-name="Schedule"}
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .smaller-title data-name="Schedule"}
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:35pm | [About Me &rarr;](#prof.-jeff-introduction) | <a href="./recording-w02-1.html" target="_blank"><i class="bi bi-film"></i></a> |
-| | 12:35pm | 12:50pm | [Review &rarr;](#deterministic-processes) | <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2cfca6ca-568c-44ae-9b9a-b071015e5bee" target="_blank"><i class="bi bi-film"></i></a> |
-| | 12:50pm | 1:05pm | [Sampling and Combinatorics &rarr;](#sampling-and-combinatorics) | <a href="https://georgetown.zoom.us/rec/share/uXarx10aHMeIaBZ9bSpxtOo_9whOVIl1a7Z3tkdtNURjQFBEtNfyTu6QuFNnlHQ2.Ka3Gsrj-gaHHXbY5" target="_blank"><i class="bi bi-film"></i></a> |
-| | 1:05pm | 1:20pm | [Probability Fundamentals &rarr;](#probability-fundamentals) | |
-| | 1:20pm | 1:35pm | [Univariate Statistics &rarr;](#univariate-statistics) | |
-| | 1:35pm | 1:50pm | [Multivariate Statistics &rarr;](#multivariate-statistics) | |
+| **Lecture** | 12:30pm | 12:40pm | [About Me &rarr;](#prof.-jeff-introduction) | <a href="./recording-w02-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 12:55pm | [Review &rarr;](#deterministic-processes) | <a href="./recording-w02-2.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:55pm | 1:10pm | [Sampling and Combinatorics &rarr;](#sampling-and-combinatorics) | <a href="./recording-w02-3.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:10pm | 1:25pm | [Probability Fundamentals &rarr;](#probability-fundamentals) | <a href="./recording-w02-4.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:25pm | 1:50pm | [Statistics Fundamentals &rarr;](#univariate-statistics) | <a href="./recording-w02-5.html" target="_blank"><i class="bi bi-film"></i></a> |
 | **Break!** | 1:50pm | 2:00pm | | |
-| **Lab** | 2:00pm | 2:50pm | [Lab 1 Demonstrations <i class="bi bi-box-arrow-up-right" style="font-size: 1.25rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html){target="_blank"} | |
-| | 2:50pm | 3:00pm | [Lab Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.25rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html){target="_blank"} | |
+| **Lab** | 2:00pm | 2:50pm | [Lab 1 Demonstrations <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html){target="_blank"} | |
+| | 2:50pm | 3:00pm | [Lab Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html){target="_blank"} | |
 
 : {tbl-colwidths="[12,12,12,54,5,5]"} 
 
-## Prof. Jeff Introduction! {.crunch-title data-name="About Me"}
+# About Me {data-stack-name="About Me"}
+
+## Prof. Jeff Introduction! {.crunch-title}
 
 * Born and raised in **NW DC** &rarr; high school in **Rockville, MD**
 * **University of Maryland**: Computer Science, Math, Economics *(2008-2012)*
@@ -111,7 +120,9 @@ format:
 
 <!-- ){.notopmargin fig-align="center" height=325 style="margin-top: 0px !important;"} -->
 
-## Deterministic Processes {data-name="Review"}
+# Review {data-stack-name="Review"}
+
+## Deterministic Processes
 
 * Given a set of inputs, we can compute the outcome *exactly*
 * Example: Given the radius of a circle, we can compute its area *without any uncertainty*. $r \mapsto \pi r^2$
@@ -400,7 +411,9 @@ Two random variables $X$ and $Y$ are **independent** if learning information abo
 
 :::
 
-## Naïve Definition of Probability {.smaller data-name="Combinatorics"}
+# Combinatorics {data-stack-name="Combinatorics"}
+
+## Naïve Definition of Probability {.smaller}
 
 * **Sample Space**: The set of all possible **outcomes** of an experiment
 * **Event**: A **subset** of the sample space
@@ -577,10 +590,18 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
 
 :::
 
-## Probability Fundamentals {data-name="Probability"}
+# Probability Fundamentals {data-stack-name="Probability"}
+
+## Probability Fundamentals
 
 * Probability Fundamentals
 
-## Statistics {data-name="Statistics"}
+# Statistics {data-stack-name="Statistics"}
+
+## Univariate Statistics
 
 * Statistics
+
+## Multivariate Statistics
+
+* Multivariate Statistics
