@@ -210,6 +210,14 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
   <li><a href="#events-neq-outcomes" id="toc-events-neq-outcomes" class="nav-link" data-scroll-target="#events-neq-outcomes">Events <span class="math inline">\(\neq\)</span> Outcomes!</a></li>
   <li><a href="#back-to-the-naïve-definition" id="toc-back-to-the-naïve-definition" class="nav-link" data-scroll-target="#back-to-the-naïve-definition">Back to the Naïve Definition</a></li>
   <li><a href="#combinatorics-ice-cream-possibilities" id="toc-combinatorics-ice-cream-possibilities" class="nav-link" data-scroll-target="#combinatorics-ice-cream-possibilities">Combinatorics: Ice Cream Possibilities</a></li>
+  <li><a href="#grouping-vs.-ordering" id="toc-grouping-vs.-ordering" class="nav-link" data-scroll-target="#grouping-vs.-ordering">Grouping vs.&nbsp;Ordering</a></li>
+  <li><a href="#does-order-matter" id="toc-does-order-matter" class="nav-link" data-scroll-target="#does-order-matter">Does Order Matter?</a></li>
+  <li><a href="#permutations-vs.-combinations" id="toc-permutations-vs.-combinations" class="nav-link" data-scroll-target="#permutations-vs.-combinations">Permutations vs.&nbsp;Combinations</a></li>
+  <li><a href="#no-need-to-memorize" id="toc-no-need-to-memorize" class="nav-link" data-scroll-target="#no-need-to-memorize">No Need to Memorize!</a></li>
+  <li><a href="#with-or-without-replacement" id="toc-with-or-without-replacement" class="nav-link" data-scroll-target="#with-or-without-replacement">With or Without Replacement?</a></li>
+  <li><a href="#how-many-possible-samples" id="toc-how-many-possible-samples" class="nav-link" data-scroll-target="#how-many-possible-samples">How Many Possible Samples?</a></li>
+  <li><a href="#probability-fundamentals" id="toc-probability-fundamentals" class="nav-link" data-scroll-target="#probability-fundamentals">Probability Fundamentals</a></li>
+  <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -246,7 +254,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Thursday, August 31, 2023</p>
+      <p class="date">Friday Sep 1, 2023, 23:51:46</p>
     </div>
   </div>
   
@@ -485,15 +493,15 @@ Model-&gt;Obs
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust1" class="cluster">
-<title>
-cluster_04
-</title>
-<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <g id="clust2" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust2" class="cluster">
 <title>
 cluster_03
 </title>
-<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <!-- Tree --> <g id="node1" class="node">
+<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <g id="clust1" class="cluster">
+<title>
+cluster_04
+</title>
+<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <!-- Tree --> <g id="node1" class="node">
 <title>
 Tree
 </title>
@@ -792,91 +800,213 @@ Naïve Definition of Probability
 <li>This is why we begin studying probability by studying <strong>combinatorics</strong>: the mathematics of <strong>counting</strong></li>
 </ul>
 </section>
-<section id="combinatorics-ice-cream-possibilities" class="level2">
-<h2 class="anchored" data-anchor-id="combinatorics-ice-cream-possibilities">Combinatorics: Ice Cream Possibilities</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<svg width="672" height="480" viewbox="0.00 0.00 559.87 314.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 310)">
-<title>
-G
-</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-310 555.87,-310 555.87,4 -4,4"></polygon> <!-- cone --> <g id="node1" class="node">
-<title>
-cone
-</title>
-<ellipse fill="none" stroke="black" cx="53.68" cy="-139" rx="53.85" ry="18"></ellipse> <text text-anchor="middle" x="53.68" y="-134.8" font-family="Times,serif" font-size="14.00">Cone Type</text> </g> <!-- flavCake --> <g id="node2" class="node">
-<title>
-flavCake
-</title>
-<ellipse fill="none" stroke="black" cx="218.46" cy="-193" rx="36.5" ry="18"></ellipse> <text text-anchor="middle" x="218.46" y="-188.8" font-family="Times,serif" font-size="14.00">Flavor</text> </g> <!-- cone&#45;&gt;flavCake --> <g id="edge1" class="edge">
-<title>
-cone-&gt;flavCake
-</title>
-<path fill="none" stroke="black" d="M92.43,-151.52C118.17,-160.06 152.16,-171.34 178.21,-179.98"></path> <polygon fill="black" stroke="black" points="177.17,-183.32 187.77,-183.15 179.38,-176.68 177.17,-183.32"></polygon> <text text-anchor="middle" x="144.78" y="-177.2" font-family="Times,serif" font-size="14.00">Cake</text> </g> <!-- flavWaf --> <g id="node3" class="node">
-<title>
-flavWaf
-</title>
-<ellipse fill="none" stroke="black" cx="218.46" cy="-112" rx="36.5" ry="18"></ellipse> <text text-anchor="middle" x="218.46" y="-107.8" font-family="Times,serif" font-size="14.00">Flavor</text> </g> <!-- cone&#45;&gt;flavWaf --> <g id="edge2" class="edge">
-<title>
-cone-&gt;flavWaf
-</title>
-<path fill="none" stroke="black" d="M102.2,-131.12C124.8,-127.37 151.64,-122.92 173.74,-119.25"></path> <polygon fill="black" stroke="black" points="174.55,-122.67 183.84,-117.58 173.4,-115.76 174.55,-122.67"></polygon> <text text-anchor="middle" x="144.78" y="-127.2" font-family="Times,serif" font-size="14.00">Waffle</text> </g> <!-- cakeVanilla --> <g id="node4" class="node">
-<title>
-cakeVanilla
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-288" rx="84.53" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-283.8" font-family="Times,serif" font-size="14.00">Vanilla Cake Cone</text> </g> <!-- flavCake&#45;&gt;cakeVanilla --> <g id="edge3" class="edge">
-<title>
-flavCake-&gt;cakeVanilla
-</title>
-<path fill="none" stroke="black" d="M247.11,-204.46C285.2,-220.25 354.4,-248.93 400.95,-268.22"></path> <polygon fill="black" stroke="black" points="399.65,-271.47 410.23,-272.07 402.33,-265.01 399.65,-271.47"></polygon> <text text-anchor="middle" x="301.09" y="-259.2" font-family="Times,serif" font-size="14.00">Vanilla</text> </g> <!-- cakeChoc --> <g id="node5" class="node">
-<title>
-cakeChoc
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-234" rx="95.49" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-229.8" font-family="Times,serif" font-size="14.00">Chocolate Cake Cone</text> </g> <!-- flavCake&#45;&gt;cakeChoc --> <g id="edge4" class="edge">
-<title>
-flavCake-&gt;cakeChoc
-</title>
-<path fill="none" stroke="black" d="M252.79,-198.96C283.35,-204.43 329.8,-212.74 369.79,-219.89"></path> <polygon fill="black" stroke="black" points="369.35,-223.37 379.81,-221.68 370.58,-216.48 369.35,-223.37"></polygon> <text text-anchor="middle" x="301.09" y="-221.2" font-family="Times,serif" font-size="14.00">Chocolate</text> </g> <!-- cakeSwirl --> <g id="node6" class="node">
-<title>
-cakeSwirl
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-180" rx="77.04" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-175.8" font-family="Times,serif" font-size="14.00">Swirl Cake Cone</text> </g> <!-- flavCake&#45;&gt;cakeSwirl --> <g id="edge5" class="edge">
-<title>
-flavCake-&gt;cakeSwirl
-</title>
-<path fill="none" stroke="black" d="M254.77,-191C283.94,-189.34 326.54,-186.93 364.39,-184.78"></path> <polygon fill="black" stroke="black" points="364.62,-188.27 374.41,-184.21 364.22,-181.28 364.62,-188.27"></polygon> <text text-anchor="middle" x="301.09" y="-193.2" font-family="Times,serif" font-size="14.00">Swirl</text> </g> <!-- wafVanilla --> <g id="node7" class="node">
-<title>
-wafVanilla
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-126" rx="91.45" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-121.8" font-family="Times,serif" font-size="14.00">Vanilla Waffle Cone</text> </g> <!-- flavWaf&#45;&gt;wafVanilla --> <g id="edge6" class="edge">
-<title>
-flavWaf-&gt;wafVanilla
-</title>
-<path fill="none" stroke="black" d="M254.77,-114.16C280.72,-115.74 317.29,-117.98 351.7,-120.08"></path> <polygon fill="black" stroke="black" points="351.62,-123.58 361.81,-120.69 352.05,-116.59 351.62,-123.58"></polygon> <text text-anchor="middle" x="301.09" y="-122.2" font-family="Times,serif" font-size="14.00">Vanilla</text> </g> <!-- wafChoc --> <g id="node8" class="node">
-<title>
-wafChoc
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-72" rx="102.4" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-67.8" font-family="Times,serif" font-size="14.00">Chocolate Waffle Cone</text> </g> <!-- flavWaf&#45;&gt;wafChoc --> <g id="edge7" class="edge">
-<title>
-flavWaf-&gt;wafChoc
-</title>
-<path fill="none" stroke="black" d="M252.79,-106.18C282.42,-101.01 326.99,-93.23 366.14,-86.4"></path> <polygon fill="black" stroke="black" points="367.24,-89.76 376.48,-84.6 366.03,-82.87 367.24,-89.76"></polygon> <text text-anchor="middle" x="301.09" y="-98.2" font-family="Times,serif" font-size="14.00">Chocolate</text> </g> <!-- wafSwirl --> <g id="node9" class="node">
-<title>
-wafSwirl
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-18" rx="83.96" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-13.8" font-family="Times,serif" font-size="14.00">Swirl Waffle Cone</text> </g> <!-- flavWaf&#45;&gt;wafSwirl --> <g id="edge8" class="edge">
-<title>
-flavWaf-&gt;wafSwirl
-</title>
-<path fill="none" stroke="black" d="M247.11,-100.66C285.09,-85.08 354,-56.83 400.54,-37.74"></path> <polygon fill="black" stroke="black" points="401.9,-40.96 409.82,-33.93 399.24,-34.49 401.9,-40.96"></polygon> <text text-anchor="middle" x="301.09" y="-70.2" font-family="Times,serif" font-size="14.00">Swirl</text> </g> </g>
-</svg>
+<section id="combinatorics-ice-cream-possibilities" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="combinatorics-ice-cream-possibilities">Combinatorics: Ice Cream Possibilities</h2>
+<style>
+.quarto-layout-cell {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+</style>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ice_cream1.svg" class="img-fluid figure-img" width="406"></p>
+<figcaption class="figure-caption">The <span class="math inline">\(6 = 2 \cdot 3\)</span> possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ice_cream2.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The <span class="math inline">\(6 = 3 \cdot 2\)</span> possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.</figcaption>
+</figure>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="grouping-vs.-ordering" class="level2">
+<h2 class="anchored" data-anchor-id="grouping-vs.-ordering">Grouping vs.&nbsp;Ordering</h2>
+<ul>
+<li>In standard statistics/combinatorics introductions you’ll learn different counting formulas for when <strong>order matters</strong> vs.&nbsp;when order <strong>doesn’t matter</strong></li>
+<li>This is not a <strong>mathematical</strong> distinction so much as a <strong>pragmatic</strong> distinction: what are you trying to <strong>accomplish</strong> by counting?</li>
+<li>Problems with extremely similar descriptions can differ in small detail, so that the <strong>units you need to distinguish between</strong> in one version differ from the units you need to distinguish between in the other.</li>
+</ul>
+</section>
+<section id="does-order-matter" class="level2 smaller small-title crunch-lists">
+<h2 class="smaller small-title crunch-lists anchored" data-anchor-id="does-order-matter">Does Order Matter?</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Example: Student Government vs. Student Sports">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Student Government vs.&nbsp;Student Sports
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Consider a school where students can either <strong>try out for the swim team</strong> or <strong>run for a position in the student government</strong></li>
+<li>The swim team has <strong>4 slots</strong>, but slots aren’t differentiated: you’re either <strong>on</strong> the team (one of the 4 chosen students) or <strong>not</strong></li>
+<li>The student government also has <strong>4 slots</strong>, but there is a difference between the slots: first slot is <strong>President</strong>, second is <strong>Vice President</strong>, third is <strong>Secretary</strong>, and fourth is <strong>Treasurer</strong>.</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Simple case (for intuition): the school only has <strong>4 students</strong>. In this case, how many ways are there to form the <strong>swim team</strong>? What about the <strong>student government</strong>?
+<ul>
+<li><strong>Swim team</strong>: <span class="math inline">\(1\)</span> <strong>way</strong>. You have only one choice, to let all 4 students onto the team</li>
+<li><strong>Student government</strong>: <span class="math inline">\(4 \cdot 3 \cdot 2 \cdot 1 = 24\)</span> <strong>ways</strong>. You have to let all 4 students in, <strong>but you have a choice</strong> of who is President, Vice President, Secretary, and Treasurer</li>
+</ul></li>
+<li>How did we get <span class="math inline">\(4 \cdot 3 \cdot 2 \cdot 1\)</span>? (Think about the ice cream example…)
+<ul>
+<li>Start by choosing the President: 4 choices</li>
+<li>Now choose the Vice President: only 3 students left to choose from</li>
+<li>Now choose the Secretary: only 2 students left to choose from</li>
+<li>Now choose the Treasurer: only 1 student left to choose from</li>
+</ul></li>
+</ul>
+</section>
+<section id="permutations-vs.-combinations" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="permutations-vs.-combinations">Permutations vs.&nbsp;Combinations</h2>
+<ul>
+<li><strong>Permutations</strong>: How many ways can I choose groups of size <span class="math inline">\(k\)</span> out of <span class="math inline">\(n\)</span> total objects, where <strong>order within groups matters</strong>: <span class="math inline">\(P_{n,k}\)</span> (sometimes written <span class="math inline">\(_nP_k\)</span>).
+<ul>
+<li>In this case, we want to count <span class="math inline">\((a,b)\)</span> and <span class="math inline">\((b,a)\)</span> as two separate groups</li>
+</ul></li>
+<li><strong>Combinations</strong>: How many ways can I choose groups of size <span class="math inline">\(k\)</span> out of <span class="math inline">\(n\)</span> total objects, where <strong>order in the groups doesn’t matter</strong>: <span class="math inline">\(C_{n,k}\)</span> (sometimes written <span class="math inline">\(_nC_k,\binom{n}{k}\)</span>).
+<ul>
+<li>In this case, we <strong>don’t</strong> want to count <span class="math inline">\((a, b)\)</span> and <span class="math inline">\((b, a)\)</span> as two separate groups…</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+P_{n,k} = \frac{n!}{(n-k)!}, \; C_{n,k} = \frac{n!}{k!(n-k)!}
+\end{align*}
+\]</span></p>
+</section>
+<section id="no-need-to-memorize" class="level2 smaller crunch-title crunch-math">
+<h2 class="smaller crunch-title crunch-math anchored" data-anchor-id="no-need-to-memorize">No Need to Memorize!</h2>
+<style>
+p {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+</style>
+<ul>
+<li>Key point: you don’t have to remember these as <strong>two separate formulas</strong>!</li>
+<li>The number of <strong>combinations</strong> is based on the number of <strong>permutations</strong>, but <strong>corrected</strong> for <strong>double counting</strong>: e.g., corrected for the fact that <span class="math inline">\((a,b) \neq (b,a)\)</span> when counting permutations but <span class="math inline">\((a,b) = (b,a)\)</span> when counting combinations.</li>
+</ul>
+<p><span class="math display">\[
+C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}{\leftarrow \text{Duplicate groups}}
+\]</span></p>
+<p>Where does <span class="math inline">\(k!\)</span> come from? <em>(How many different orderings can we make of the same group?)</em></p>
+<ul>
+<li><p><span class="math inline">\(k = 2\)</span>: <span class="math inline">\((\underbrace{\boxed{\phantom{a}}}_{\text{2 choices}},\underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 2\)</span></p></li>
+<li><p><span class="math inline">\(k = 3\)</span>: <span class="math inline">\((\underbrace{\boxed{\phantom{a}}}_{\text{3 choices}},\underbrace{\boxed{\phantom{a}}}_{\text{2 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 6\)</span></p></li>
+<li><p><span class="math inline">\(k = 4\)</span>: <span class="math inline">\((\underbrace{\boxed{\phantom{a}}}_{\text{4 choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{3 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{2 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 24\)</span></p></li>
+</ul>
+</section>
+<section id="with-or-without-replacement" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="with-or-without-replacement">With or Without Replacement?</h2>
+<ul>
+<li>Boils down to: can the same object be included in my sample more than once?</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Without Replacement</th>
+<th>With Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Most statistical problems</strong>: “Check off” objects as you collect data about them, so that each observation in your data is <strong>unique</strong></td>
+<td>Very special (but very important!) set of statistical problems: allow objects to appear in your sample <strong>multiple times</strong>, to “squeeze” more information out of the sample (<em>called <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)" target="_blank">Bootstrapping</a>—much more on this later in the course!</em>)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-many-possible-samples" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="how-many-possible-samples">How Many Possible Samples?</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Example: How Many Possible Samples?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: How Many Possible Samples?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From a population of <span class="math inline">\(N = 3\)</span>, how many ways can we take samples of size <span class="math inline">\(k = 2\)</span>?</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Without Replacement</th>
+<th>With Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(3 \cdot 2 = 6\)</span> ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)</td>
+<td><span class="math inline">\(3\cdot 3 = 3^2 = 9\)</span> ways (3 objects to choose from for first element of sample, <em>still</em> 3 objects to choose from for second element of sample)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Result: How Many Possible Samples">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Result: How Many Possible Samples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From a population of size <span class="math inline">\(N\)</span>, how many ways can we take samples of size <span class="math inline">\(k\)</span>? (Try to extrapolate from above examples before looking at answer!)</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Without Replacement</th>
+<th style="text-align: center;">With Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\displaystyle \underbrace{N \cdot (N-1) \cdot \cdots \cdot (N - k + 1)}_{k\text{ times}} = \frac{N!}{(N - k )!}\)</span><br><br><em>(This formula should look somewhat familiar…)</em></td>
+<td style="text-align: center;"><span class="math inline">\(\displaystyle \underbrace{N \cdot N \cdot \cdots \cdot N}_{k\text{ times}} = N^k\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="probability-fundamentals" class="level2" data-name="Probability">
+<h2 data-name="Probability" class="anchored" data-anchor-id="probability-fundamentals">Probability Fundamentals</h2>
+<ul>
+<li>Probability Fundamentals</li>
+</ul>
+</section>
+<section id="statistics" class="level2" data-name="Statistics">
+<h2 data-name="Statistics" class="anchored" data-anchor-id="statistics">Statistics</h2>
+<ul>
+<li>Statistics</li>
+</ul>
 
 
 </section>

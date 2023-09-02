@@ -130,7 +130,7 @@
     "href": "w02/notes.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/notes.html#but-what-happens-when",
@@ -207,7 +207,63 @@
     "href": "w02/notes.html#combinatorics-ice-cream-possibilities",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Combinatorics: Ice Cream Possibilities",
-    "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nG\n\n  \n\ncone\n\n Cone Type   \n\nflavCake\n\n Flavor   \n\ncone-&gt;flavCake\n\n  Cake   \n\nflavWaf\n\n Flavor   \n\ncone-&gt;flavWaf\n\n  Waffle   \n\ncakeVanilla\n\n Vanilla Cake Cone   \n\nflavCake-&gt;cakeVanilla\n\n  Vanilla   \n\ncakeChoc\n\n Chocolate Cake Cone   \n\nflavCake-&gt;cakeChoc\n\n  Chocolate   \n\ncakeSwirl\n\n Swirl Cake Cone   \n\nflavCake-&gt;cakeSwirl\n\n  Swirl   \n\nwafVanilla\n\n Vanilla Waffle Cone   \n\nflavWaf-&gt;wafVanilla\n\n  Vanilla   \n\nwafChoc\n\n Chocolate Waffle Cone   \n\nflavWaf-&gt;wafChoc\n\n  Chocolate   \n\nwafSwirl\n\n Swirl Waffle Cone   \n\nflavWaf-&gt;wafSwirl\n\n  Swirl"
+    "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nThe \\(6 = 2 \\cdot 3\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.\n\n\n\n\n\n\n\nThe \\(6 = 3 \\cdot 2\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second."
+  },
+  {
+    "objectID": "w02/notes.html#grouping-vs.-ordering",
+    "href": "w02/notes.html#grouping-vs.-ordering",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Grouping vs. Ordering",
+    "text": "Grouping vs. Ordering\n\nIn standard statistics/combinatorics introductions you’ll learn different counting formulas for when order matters vs. when order doesn’t matter\nThis is not a mathematical distinction so much as a pragmatic distinction: what are you trying to accomplish by counting?\nProblems with extremely similar descriptions can differ in small detail, so that the units you need to distinguish between in one version differ from the units you need to distinguish between in the other."
+  },
+  {
+    "objectID": "w02/notes.html#does-order-matter",
+    "href": "w02/notes.html#does-order-matter",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Does Order Matter?",
+    "text": "Does Order Matter?\n\n\n\n\n\n\nExample: Student Government vs. Student Sports\n\n\n\n\nConsider a school where students can either try out for the swim team or run for a position in the student government\nThe swim team has 4 slots, but slots aren’t differentiated: you’re either on the team (one of the 4 chosen students) or not\nThe student government also has 4 slots, but there is a difference between the slots: first slot is President, second is Vice President, third is Secretary, and fourth is Treasurer.\n\n\n\n\nSimple case (for intuition): the school only has 4 students. In this case, how many ways are there to form the swim team? What about the student government?\n\nSwim team: \\(1\\) way. You have only one choice, to let all 4 students onto the team\nStudent government: \\(4 \\cdot 3 \\cdot 2 \\cdot 1 = 24\\) ways. You have to let all 4 students in, but you have a choice of who is President, Vice President, Secretary, and Treasurer\n\nHow did we get \\(4 \\cdot 3 \\cdot 2 \\cdot 1\\)? (Think about the ice cream example…)\n\nStart by choosing the President: 4 choices\nNow choose the Vice President: only 3 students left to choose from\nNow choose the Secretary: only 2 students left to choose from\nNow choose the Treasurer: only 1 student left to choose from"
+  },
+  {
+    "objectID": "w02/notes.html#permutations-vs.-combinations",
+    "href": "w02/notes.html#permutations-vs.-combinations",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Permutations vs. Combinations",
+    "text": "Permutations vs. Combinations\n\nPermutations: How many ways can I choose groups of size \\(k\\) out of \\(n\\) total objects, where order within groups matters: \\(P_{n,k}\\) (sometimes written \\(_nP_k\\)).\n\nIn this case, we want to count \\((a,b)\\) and \\((b,a)\\) as two separate groups\n\nCombinations: How many ways can I choose groups of size \\(k\\) out of \\(n\\) total objects, where order in the groups doesn’t matter: \\(C_{n,k}\\) (sometimes written \\(_nC_k,\\binom{n}{k}\\)).\n\nIn this case, we don’t want to count \\((a, b)\\) and \\((b, a)\\) as two separate groups…\n\n\n\\[\n\\begin{align*}\nP_{n,k} = \\frac{n!}{(n-k)!}, \\; C_{n,k} = \\frac{n!}{k!(n-k)!}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/notes.html#no-need-to-memorize",
+    "href": "w02/notes.html#no-need-to-memorize",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "No Need to Memorize!",
+    "text": "No Need to Memorize!\n\n\nKey point: you don’t have to remember these as two separate formulas!\nThe number of combinations is based on the number of permutations, but corrected for double counting: e.g., corrected for the fact that \\((a,b) \\neq (b,a)\\) when counting permutations but \\((a,b) = (b,a)\\) when counting combinations.\n\n\\[\nC_{n,k} = \\frac{P_{n,k}}{k!} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{Permutations}}{\\leftarrow \\text{Duplicate groups}}\n\\]\nWhere does \\(k!\\) come from? (How many different orderings can we make of the same group?)\n\n\\(k = 2\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 choices}},\\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 2\\)\n\\(k = 3\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{3 choices}},\\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 6\\)\n\\(k = 4\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{4 choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{3 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 24\\)"
+  },
+  {
+    "objectID": "w02/notes.html#with-or-without-replacement",
+    "href": "w02/notes.html#with-or-without-replacement",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "With or Without Replacement?",
+    "text": "With or Without Replacement?\n\nBoils down to: can the same object be included in my sample more than once?\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\nMost statistical problems: “Check off” objects as you collect data about them, so that each observation in your data is unique\nVery special (but very important!) set of statistical problems: allow objects to appear in your sample multiple times, to “squeeze” more information out of the sample (called Bootstrapping—much more on this later in the course!)"
+  },
+  {
+    "objectID": "w02/notes.html#how-many-possible-samples",
+    "href": "w02/notes.html#how-many-possible-samples",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "How Many Possible Samples?",
+    "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
+  },
+  {
+    "objectID": "w02/notes.html#probability-fundamentals",
+    "href": "w02/notes.html#probability-fundamentals",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Probability Fundamentals",
+    "text": "Probability Fundamentals\n\nProbability Fundamentals"
+  },
+  {
+    "objectID": "w02/notes.html#statistics",
+    "href": "w02/notes.html#statistics",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Statistics",
+    "text": "Statistics\n\nStatistics"
   },
   {
     "objectID": "w02/index.html#schedule",
@@ -256,7 +312,7 @@
     "href": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/index.html#but-what-happens-when",
@@ -336,13 +392,6 @@
     "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nThe \\(6 = 2 \\cdot 3\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.\n\n\n\n\n\n\n\nThe \\(6 = 3 \\cdot 2\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DSAN 5100, Section 03 (Thursdays)",
-    "section": "",
-    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nThursday, August 31, 2023\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "w02/index.html#grouping-vs.-ordering",
     "href": "w02/index.html#grouping-vs.-ordering",
     "title": "Week 2: Introduction to Probabilistic Modeling",
@@ -397,5 +446,12 @@
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Statistics",
     "text": "Statistics\n\nStatistics"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSAN 5100, Section 03 (Thursdays)",
+    "section": "",
+    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nFriday, September 1, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
