@@ -13,11 +13,15 @@ categories:
 execute:
   enabled: true
 format:
+  html:
+    #cache: true
+    #output-file: notes.html
+    html-math-method: mathjax
   revealjs:
     html-math-method: mathjax
     slide-number: true
     cache: true
-    #output-file: slides.html
+    output-file: slides.html
     simplemenu:
       flat: true
       barhtml:
@@ -27,10 +31,6 @@ format:
     revealjs-plugins:
       - simplemenu
     include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"}
-  html:
-    #cache: true
-    output-file: notes.html
-    html-math-method: mathjax
 ---
 
 ## Schedule {.smaller data-name="Schedule"}

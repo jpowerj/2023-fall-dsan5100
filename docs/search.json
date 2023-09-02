@@ -77,200 +77,200 @@
     "text": "Research (Labor Economics)\n\n“Monopsony in Online Labor Markets”\n\nMachine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”\n\nLinguistic (dependency) parses of CBAs → time series of worker vs. employer rights and responsibilities over time\n\n“Freedom as Non-Domination in the Labor Market”\n\nGame-theoretic models of Douglassian (republican) liberty1 for workers: monopsony vs. labor discipline\n\n\n\n\n\n\n\n\n\n\nFrederick Douglass: “It was slavery itself, not its mere incidents, that I hated.”"
   },
   {
-    "objectID": "w02/notes.html",
-    "href": "w02/notes.html",
+    "objectID": "w02/slides.html#schedule",
+    "href": "w02/slides.html#schedule",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "",
-    "text": "Start\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
   },
   {
-    "objectID": "w02/notes.html#schedule",
-    "href": "w02/notes.html#schedule",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "",
-    "text": "Start\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
-  },
-  {
-    "objectID": "w02/notes.html#prof.-jeff-introduction",
-    "href": "w02/notes.html#prof.-jeff-introduction",
+    "objectID": "w02/slides.html#prof.-jeff-introduction",
+    "href": "w02/slides.html#prof.-jeff-introduction",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Prof. Jeff Introduction!",
     "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
   },
   {
-    "objectID": "w02/notes.html#grad-school",
-    "href": "w02/notes.html#grad-school",
+    "objectID": "w02/slides.html#grad-school",
+    "href": "w02/slides.html#grad-school",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Grad School",
     "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia (NYC) for PhD[+Postdoc] in Political Science (2015-2023)"
   },
   {
-    "objectID": "w02/notes.html#dissertation-political-science-history",
-    "href": "w02/notes.html#dissertation-political-science-history",
+    "objectID": "w02/slides.html#dissertation-political-science-history",
+    "href": "w02/slides.html#dissertation-political-science-history",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Dissertation (Political Science + History)",
     "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
   },
   {
-    "objectID": "w02/notes.html#research-labor-economics",
-    "href": "w02/notes.html#research-labor-economics",
+    "objectID": "w02/slides.html#research-labor-economics",
+    "href": "w02/slides.html#research-labor-economics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Research (Labor Economics)",
     "text": "Research (Labor Economics)\n\n\n\n“Monopsony in Online Labor Markets”: Machine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n\n\n“Freedom as Non-Domination in the Labor Market”: Game-theoretic models of workers’ rights (monopsony vs. labor discipline)\n\n\n\n\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”: Linguistic (dependency) parses of contracts → time series of worker vs. employer rights and responsibilities over time"
   },
   {
-    "objectID": "w02/notes.html#deterministic-processes",
-    "href": "w02/notes.html#deterministic-processes",
+    "objectID": "w02/slides.html#deterministic-processes",
+    "href": "w02/slides.html#deterministic-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Deterministic Processes",
-    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\n\n\nImage credit: Tenor.com\n\n\n\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
+    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\nImage credit: Tenor.com\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
   },
   {
-    "objectID": "w02/notes.html#holy-grail-deterministic-model-newtonian-physics",
-    "href": "w02/notes.html#holy-grail-deterministic-model-newtonian-physics",
+    "objectID": "w02/slides.html#holy-grail-deterministic-model-newtonian-physics",
+    "href": "w02/slides.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
     "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
-    "objectID": "w02/notes.html#but-what-happens-when",
-    "href": "w02/notes.html#but-what-happens-when",
+    "objectID": "w02/slides.html#but-what-happens-when",
+    "href": "w02/slides.html#but-what-happens-when",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "But What Happens When…",
     "text": "But What Happens When…\n\\[\n\\text{Outcome}\\left(\\text{Dice Roll}\\right) = \\; ?\\frac{?_1?_2}{?^2}\n\\]\n\n\n\nPre-Enlightenment\n\n\n\n\nHans Sebald Beham, Fortuna (1541), CC BY 4.0, via Wikimedia Commons\n\n\n\n\nPost-Enlightenment\n\n\n\n\nBlaise Pascal, Traité du triangle arithmétique (1665). Public Domain, via Internet Archive"
   },
   {
-    "objectID": "w02/notes.html#random-processes",
-    "href": "w02/notes.html#random-processes",
+    "objectID": "w02/slides.html#random-processes",
+    "href": "w02/slides.html#random-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)\n\nWarning: Removed 1456 rows containing missing values (`geom_path()`)."
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely"
   },
   {
-    "objectID": "w02/notes.html#data-ground-truth-noise",
-    "href": "w02/notes.html#data-ground-truth-noise",
+    "objectID": "w02/slides.html#data-ground-truth-noise",
+    "href": "w02/slides.html#data-ground-truth-noise",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Data = Ground Truth + Noise",
     "text": "Data = Ground Truth + Noise\n\nDepressing but true origin of statistics (as opposed to probability): the Plague 😷\n\n\n\n\n\n\n\nGround Truth: The Great Plague (Lord Have Mercy on London, Unknown Artist, circa 1665, via Wikimedia Commons)\n\n\n\n\n\n\n\nNoisy Data (Recorded amidst chaos): London Bill of Mortality, 1665 (Public Domain, Wellcome Collection)"
   },
   {
-    "objectID": "w02/notes.html#random-variables",
-    "href": "w02/notes.html#random-variables",
+    "objectID": "w02/slides.html#random-variables",
+    "href": "w02/slides.html#random-variables",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Variables",
     "text": "Random Variables\n\nIn algebra, to solve problems we work with variables\nIn probability theory, to solve problems we work with random variables\nRecall the difference between random and deterministic: \\(A = \\pi r^2\\) tells us that, given a value of \\(r\\), we can solve for the unique value of \\(A\\)\nIn probability theory, however, there is no one “true” value of a random variable \\(X\\).\nLet \\(X = f(N)\\) mean that \\(X\\) is the result of a rolled die, where the die has \\(N\\) sides.\nPlugging in \\(N = 6\\) (standard 6-sided die) still doesn’t mean we know “the” value of \\(X\\). However, (if the die is fair) we do know\n\n\\[\n\\Pr(X = 1) = \\Pr(X = 2) = \\cdots = \\Pr(X = 6) = \\frac{1}{6}\n\\]"
   },
   {
-    "objectID": "w02/notes.html#discrete-vs.-continuous",
-    "href": "w02/notes.html#discrete-vs.-continuous",
+    "objectID": "w02/slides.html#discrete-vs.-continuous",
+    "href": "w02/slides.html#discrete-vs.-continuous",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Discrete vs. Continuous",
     "text": "Discrete vs. Continuous\n\nMany complicated definitions, often misleading or unintuitive!\nHow I want you to remember: How many possible values between two known values?\nDiscrete: e.g., number of siblings\n\nI have 2 siblings, you have 3 siblings… How many values (sibling counts) in between?\n\nContinuous: e.g., temperature\n\nIt is 27.0° C in my room, 28.0° C in your room… How many values (temperatures) in between?\n\nSo, if \\(X\\) is the result of a rolled die, is \\(X\\) discrete or continuous? How many values can be rolled between 3 and 4?"
   },
   {
-    "objectID": "w02/notes.html#thinking-about-independence",
-    "href": "w02/notes.html#thinking-about-independence",
+    "objectID": "w02/slides.html#thinking-about-independence",
+    "href": "w02/slides.html#thinking-about-independence",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Thinking About Independence",
-    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
+    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
   },
   {
-    "objectID": "w02/notes.html#naïve-definition-of-probability",
-    "href": "w02/notes.html#naïve-definition-of-probability",
+    "objectID": "w02/slides.html#naïve-definition-of-probability",
+    "href": "w02/slides.html#naïve-definition-of-probability",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Naïve Definition of Probability",
-    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
+    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
   },
   {
-    "objectID": "w02/notes.html#example-flipping-two-coins",
-    "href": "w02/notes.html#example-flipping-two-coins",
+    "objectID": "w02/slides.html#example-flipping-two-coins",
+    "href": "w02/slides.html#example-flipping-two-coins",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Example: Flipping Two Coins",
-    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
+    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
   },
   {
-    "objectID": "w02/notes.html#events-neq-outcomes",
-    "href": "w02/notes.html#events-neq-outcomes",
+    "objectID": "w02/slides.html#events-neq-outcomes",
+    "href": "w02/slides.html#events-neq-outcomes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Events \\(\\neq\\) Outcomes!",
     "text": "Events \\(\\neq\\) Outcomes!\n\nOutcomes are things, events are sets of things\nSubtle but extremely important distinction!\nIn the coin flip example:\n\nThe event \\(E_1 = \\{HT\\}\\) can be confused with the outcome \\(HT\\).\nSo, try to remember instead the event \\(E_2 = \\{TH, HT, HH\\}\\): it is more clear, in this case, how this event does not correspond to any individual outcome"
   },
   {
-    "objectID": "w02/notes.html#back-to-the-naïve-definition",
-    "href": "w02/notes.html#back-to-the-naïve-definition",
+    "objectID": "w02/slides.html#back-to-the-naïve-definition",
+    "href": "w02/slides.html#back-to-the-naïve-definition",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Back to the Naïve Definition",
-    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
+    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
   },
   {
-    "objectID": "w02/notes.html#combinatorics-ice-cream-possibilities",
-    "href": "w02/notes.html#combinatorics-ice-cream-possibilities",
+    "objectID": "w02/slides.html#combinatorics-ice-cream-possibilities",
+    "href": "w02/slides.html#combinatorics-ice-cream-possibilities",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Combinatorics: Ice Cream Possibilities",
     "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nThe \\(6 = 2 \\cdot 3\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.\n\n\n\n\n\n\n\nThe \\(6 = 3 \\cdot 2\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second."
   },
   {
-    "objectID": "w02/notes.html#grouping-vs.-ordering",
-    "href": "w02/notes.html#grouping-vs.-ordering",
+    "objectID": "w02/slides.html#grouping-vs.-ordering",
+    "href": "w02/slides.html#grouping-vs.-ordering",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Grouping vs. Ordering",
     "text": "Grouping vs. Ordering\n\nIn standard statistics/combinatorics introductions you’ll learn different counting formulas for when order matters vs. when order doesn’t matter\nThis is not a mathematical distinction so much as a pragmatic distinction: what are you trying to accomplish by counting?\nProblems with extremely similar descriptions can differ in small detail, so that the units you need to distinguish between in one version differ from the units you need to distinguish between in the other."
   },
   {
-    "objectID": "w02/notes.html#does-order-matter",
-    "href": "w02/notes.html#does-order-matter",
+    "objectID": "w02/slides.html#does-order-matter",
+    "href": "w02/slides.html#does-order-matter",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Does Order Matter?",
-    "text": "Does Order Matter?\n\n\n\n\n\n\nExample: Student Government vs. Student Sports\n\n\n\n\nConsider a school where students can either try out for the swim team or run for a position in the student government\nThe swim team has 4 slots, but slots aren’t differentiated: you’re either on the team (one of the 4 chosen students) or not\nThe student government also has 4 slots, but there is a difference between the slots: first slot is President, second is Vice President, third is Secretary, and fourth is Treasurer.\n\n\n\n\nSimple case (for intuition): the school only has 4 students. In this case, how many ways are there to form the swim team? What about the student government?\n\nSwim team: \\(1\\) way. You have only one choice, to let all 4 students onto the team\nStudent government: \\(4 \\cdot 3 \\cdot 2 \\cdot 1 = 24\\) ways. You have to let all 4 students in, but you have a choice of who is President, Vice President, Secretary, and Treasurer\n\nHow did we get \\(4 \\cdot 3 \\cdot 2 \\cdot 1\\)? (Think about the ice cream example…)\n\nStart by choosing the President: 4 choices\nNow choose the Vice President: only 3 students left to choose from\nNow choose the Secretary: only 2 students left to choose from\nNow choose the Treasurer: only 1 student left to choose from"
+    "text": "Does Order Matter?\n\n\n\n\n\n\nExample: Student Government vs. Student Sports\n\n\n\nConsider a school where students can either try out for the swim team or run for a position in the student government\nThe swim team has 4 slots, but slots aren’t differentiated: you’re either on the team (one of the 4 chosen students) or not\nThe student government also has 4 slots, but there is a difference between the slots: first slot is President, second is Vice President, third is Secretary, and fourth is Treasurer.\n\n\n\n\n\nSimple case (for intuition): the school only has 4 students. In this case, how many ways are there to form the swim team? What about the student government?\n\nSwim team: \\(1\\) way. You have only one choice, to let all 4 students onto the team\nStudent government: \\(4 \\cdot 3 \\cdot 2 \\cdot 1 = 24\\) ways. You have to let all 4 students in, but you have a choice of who is President, Vice President, Secretary, and Treasurer\n\nHow did we get \\(4 \\cdot 3 \\cdot 2 \\cdot 1\\)? (Think about the ice cream example…)\n\nStart by choosing the President: 4 choices\nNow choose the Vice President: only 3 students left to choose from\nNow choose the Secretary: only 2 students left to choose from\nNow choose the Treasurer: only 1 student left to choose from"
   },
   {
-    "objectID": "w02/notes.html#permutations-vs.-combinations",
-    "href": "w02/notes.html#permutations-vs.-combinations",
+    "objectID": "w02/slides.html#permutations-vs.-combinations",
+    "href": "w02/slides.html#permutations-vs.-combinations",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Permutations vs. Combinations",
     "text": "Permutations vs. Combinations\n\nPermutations: How many ways can I choose groups of size \\(k\\) out of \\(n\\) total objects, where order within groups matters: \\(P_{n,k}\\) (sometimes written \\(_nP_k\\)).\n\nIn this case, we want to count \\((a,b)\\) and \\((b,a)\\) as two separate groups\n\nCombinations: How many ways can I choose groups of size \\(k\\) out of \\(n\\) total objects, where order in the groups doesn’t matter: \\(C_{n,k}\\) (sometimes written \\(_nC_k,\\binom{n}{k}\\)).\n\nIn this case, we don’t want to count \\((a, b)\\) and \\((b, a)\\) as two separate groups…\n\n\n\\[\n\\begin{align*}\nP_{n,k} = \\frac{n!}{(n-k)!}, \\; C_{n,k} = \\frac{n!}{k!(n-k)!}\n\\end{align*}\n\\]"
   },
   {
-    "objectID": "w02/notes.html#no-need-to-memorize",
-    "href": "w02/notes.html#no-need-to-memorize",
+    "objectID": "w02/slides.html#no-need-to-memorize",
+    "href": "w02/slides.html#no-need-to-memorize",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "No Need to Memorize!",
     "text": "No Need to Memorize!\n\n\nKey point: you don’t have to remember these as two separate formulas!\nThe number of combinations is based on the number of permutations, but corrected for double counting: e.g., corrected for the fact that \\((a,b) \\neq (b,a)\\) when counting permutations but \\((a,b) = (b,a)\\) when counting combinations.\n\n\\[\nC_{n,k} = \\frac{P_{n,k}}{k!} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{Permutations}}{\\leftarrow \\text{Duplicate groups}}\n\\]\nWhere does \\(k!\\) come from? (How many different orderings can we make of the same group?)\n\n\\(k = 2\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 choices}},\\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 2\\)\n\\(k = 3\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{3 choices}},\\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 6\\)\n\\(k = 4\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{4 choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{3 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 24\\)"
   },
   {
-    "objectID": "w02/notes.html#with-or-without-replacement",
-    "href": "w02/notes.html#with-or-without-replacement",
+    "objectID": "w02/slides.html#with-or-without-replacement",
+    "href": "w02/slides.html#with-or-without-replacement",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "With or Without Replacement?",
     "text": "With or Without Replacement?\n\nBoils down to: can the same object be included in my sample more than once?\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\nMost statistical problems: “Check off” objects as you collect data about them, so that each observation in your data is unique\nVery special (but very important!) set of statistical problems: allow objects to appear in your sample multiple times, to “squeeze” more information out of the sample (called Bootstrapping—much more on this later in the course!)"
   },
   {
-    "objectID": "w02/notes.html#how-many-possible-samples",
-    "href": "w02/notes.html#how-many-possible-samples",
+    "objectID": "w02/slides.html#how-many-possible-samples",
+    "href": "w02/slides.html#how-many-possible-samples",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "How Many Possible Samples?",
-    "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
+    "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
   },
   {
-    "objectID": "w02/notes.html#probability-fundamentals",
-    "href": "w02/notes.html#probability-fundamentals",
+    "objectID": "w02/slides.html#probability-fundamentals",
+    "href": "w02/slides.html#probability-fundamentals",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Probability Fundamentals",
     "text": "Probability Fundamentals\n\nProbability Fundamentals"
   },
   {
-    "objectID": "w02/notes.html#statistics",
-    "href": "w02/notes.html#statistics",
+    "objectID": "w02/slides.html#statistics",
+    "href": "w02/slides.html#statistics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Statistics",
     "text": "Statistics\n\nStatistics"
   },
   {
+    "objectID": "w02/index.html",
+    "href": "w02/index.html",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "",
+    "text": "Start\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+  },
+  {
     "objectID": "w02/index.html#schedule",
     "href": "w02/index.html#schedule",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
+    "section": "",
+    "text": "Start\nEnd\nTopic\n\n\n\n\nLecture\n12:30pm\n12:35pm\nAbout Me →\n\n\n\n12:35pm\n12:50pm\nReview →\n\n\n\n12:50pm\n1:05pm\nSampling and Combinatorics →\n\n\n\n1:05pm\n1:20pm\nProbability Fundamentals →\n\n\n\n1:20pm\n1:35pm\nUnivariate Statistics →\n\n\n\n1:35pm\n1:50pm\nMultivariate Statistics →\n\n\nBreak!\n1:50pm\n2:00pm\n\n\n\nLab\n2:00pm\n2:50pm\nLab 1 Demonstrations \n\n\n\n2:50pm\n3:00pm\nLab Assignment Overview"
   },
   {
     "objectID": "w02/index.html#prof.-jeff-introduction",
@@ -305,7 +305,7 @@
     "href": "w02/index.html#deterministic-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Deterministic Processes",
-    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\nImage credit: Tenor.com\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
+    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\n\n\nImage credit: Tenor.com\n\n\n\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
   },
   {
     "objectID": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
@@ -326,7 +326,7 @@
     "href": "w02/index.html#random-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely"
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)\n\nWarning: Removed 1456 rows containing missing values (`geom_path()`)."
   },
   {
     "objectID": "w02/index.html#data-ground-truth-noise",
@@ -354,21 +354,21 @@
     "href": "w02/index.html#thinking-about-independence",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Thinking About Independence",
-    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
+    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
   },
   {
     "objectID": "w02/index.html#naïve-definition-of-probability",
     "href": "w02/index.html#naïve-definition-of-probability",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Naïve Definition of Probability",
-    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
+    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
   },
   {
     "objectID": "w02/index.html#example-flipping-two-coins",
     "href": "w02/index.html#example-flipping-two-coins",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Example: Flipping Two Coins",
-    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
+    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w02/index.html#events-neq-outcomes",
@@ -382,7 +382,7 @@
     "href": "w02/index.html#back-to-the-naïve-definition",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Back to the Naïve Definition",
-    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
+    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
   },
   {
     "objectID": "w02/index.html#combinatorics-ice-cream-possibilities",
@@ -403,7 +403,7 @@
     "href": "w02/index.html#does-order-matter",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Does Order Matter?",
-    "text": "Does Order Matter?\n\n\n\n\n\n\nExample: Student Government vs. Student Sports\n\n\n\nConsider a school where students can either try out for the swim team or run for a position in the student government\nThe swim team has 4 slots, but slots aren’t differentiated: you’re either on the team (one of the 4 chosen students) or not\nThe student government also has 4 slots, but there is a difference between the slots: first slot is President, second is Vice President, third is Secretary, and fourth is Treasurer.\n\n\n\n\n\nSimple case (for intuition): the school only has 4 students. In this case, how many ways are there to form the swim team? What about the student government?\n\nSwim team: \\(1\\) way. You have only one choice, to let all 4 students onto the team\nStudent government: \\(4 \\cdot 3 \\cdot 2 \\cdot 1 = 24\\) ways. You have to let all 4 students in, but you have a choice of who is President, Vice President, Secretary, and Treasurer\n\nHow did we get \\(4 \\cdot 3 \\cdot 2 \\cdot 1\\)? (Think about the ice cream example…)\n\nStart by choosing the President: 4 choices\nNow choose the Vice President: only 3 students left to choose from\nNow choose the Secretary: only 2 students left to choose from\nNow choose the Treasurer: only 1 student left to choose from"
+    "text": "Does Order Matter?\n\n\n\n\n\n\nExample: Student Government vs. Student Sports\n\n\n\n\nConsider a school where students can either try out for the swim team or run for a position in the student government\nThe swim team has 4 slots, but slots aren’t differentiated: you’re either on the team (one of the 4 chosen students) or not\nThe student government also has 4 slots, but there is a difference between the slots: first slot is President, second is Vice President, third is Secretary, and fourth is Treasurer.\n\n\n\n\nSimple case (for intuition): the school only has 4 students. In this case, how many ways are there to form the swim team? What about the student government?\n\nSwim team: \\(1\\) way. You have only one choice, to let all 4 students onto the team\nStudent government: \\(4 \\cdot 3 \\cdot 2 \\cdot 1 = 24\\) ways. You have to let all 4 students in, but you have a choice of who is President, Vice President, Secretary, and Treasurer\n\nHow did we get \\(4 \\cdot 3 \\cdot 2 \\cdot 1\\)? (Think about the ice cream example…)\n\nStart by choosing the President: 4 choices\nNow choose the Vice President: only 3 students left to choose from\nNow choose the Secretary: only 2 students left to choose from\nNow choose the Treasurer: only 1 student left to choose from"
   },
   {
     "objectID": "w02/index.html#permutations-vs.-combinations",
@@ -431,7 +431,7 @@
     "href": "w02/index.html#how-many-possible-samples",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "How Many Possible Samples?",
-    "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
+    "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
   },
   {
     "objectID": "w02/index.html#probability-fundamentals",
