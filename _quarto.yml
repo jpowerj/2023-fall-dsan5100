@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "w02/recording*.html"
 
 website:
   title: ""

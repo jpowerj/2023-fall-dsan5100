@@ -37,7 +37,7 @@ format:
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:35pm | [About Me &rarr;](#prof.-jeff-introduction) | <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1c8a83e8-ff0d-4baf-80bf-b071001d1025" target="_blank"><i class="bi bi-film"></i></a> |
+| **Lecture** | 12:30pm | 12:35pm | [About Me &rarr;](#prof.-jeff-introduction) | <a href="./recording-w02-1.html" target="_blank"><i class="bi bi-film"></i></a> |
 | | 12:35pm | 12:50pm | [Review &rarr;](#deterministic-processes) | <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2cfca6ca-568c-44ae-9b9a-b071015e5bee" target="_blank"><i class="bi bi-film"></i></a> |
 | | 12:50pm | 1:05pm | [Sampling and Combinatorics &rarr;](#sampling-and-combinatorics) | <a href="https://georgetown.zoom.us/rec/share/uXarx10aHMeIaBZ9bSpxtOo_9whOVIl1a7Z3tkdtNURjQFBEtNfyTu6QuFNnlHQ2.Ka3Gsrj-gaHHXbY5" target="_blank"><i class="bi bi-film"></i></a> |
 | | 1:05pm | 1:20pm | [Probability Fundamentals &rarr;](#probability-fundamentals) | |

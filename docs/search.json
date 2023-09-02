@@ -60,7 +60,7 @@
     "href": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/index.html#but-what-happens-when",
@@ -242,7 +242,7 @@
     "href": "w02/slides.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/slides.html#but-what-happens-when",
@@ -256,7 +256,7 @@
     "href": "w02/slides.html#random-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely"
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)\n\nWarning: Removed 1456 rows containing missing values (`geom_path()`)."
   },
   {
     "objectID": "w02/slides.html#data-ground-truth-noise",

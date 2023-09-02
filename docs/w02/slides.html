@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RFMTL6Q5J5"></script>
@@ -350,7 +415,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Saturday Sep 2, 2023, 18:26:23</p>
+  <p class="date">Saturday Sep 2, 2023, 18:44:20</p>
 </section>
 <section id="schedule" class="slide level2 smaller" data-name="Schedule">
 <h2>Schedule</h2>
@@ -377,7 +442,7 @@ Jeff Jacobs
 <td style="text-align: left;">12:30pm</td>
 <td style="text-align: left;">12:35pm</td>
 <td style="text-align: left;"><a href="#/prof.-jeff-introduction">About Me →</a></td>
-<td style="text-align: center;"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1c8a83e8-ff0d-4baf-80bf-b071001d1025" target="_blank"><i class="bi bi-film"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w02-1.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
@@ -541,15 +606,15 @@ figcaption {
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 369.38,-205 369.38,4 -4,4"></polygon> <g id="clust1" class="cluster">
-<title>
-cluster_01
-</title>
-<polygon fill="none" stroke="black" points="8,-8 8,-193 212.88,-193 212.88,-8 8,-8"></polygon> <text text-anchor="middle" x="110.44" y="-176.4" font-family="Times,serif" font-size="14.00">“Nature”</text> </g> <g id="clust4" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 369.38,-205 369.38,4 -4,4"></polygon> <g id="clust4" class="cluster">
 <title>
 cluster_02
 </title>
-<polygon fill="none" stroke="black" points="268.88,-62 268.88,-139 357.38,-139 357.38,-62 268.88,-62"></polygon> <text text-anchor="middle" x="313.13" y="-122.4" font-family="Times,serif" font-size="14.00">“Science”</text> </g> <!-- Obs --> <g id="node1" class="node">
+<polygon fill="none" stroke="black" points="268.88,-62 268.88,-139 357.38,-139 357.38,-62 268.88,-62"></polygon> <text text-anchor="middle" x="313.13" y="-122.4" font-family="Times,serif" font-size="14.00">“Science”</text> </g> <g id="clust1" class="cluster">
+<title>
+cluster_01
+</title>
+<polygon fill="none" stroke="black" points="8,-8 8,-193 212.88,-193 212.88,-8 8,-8"></polygon> <text text-anchor="middle" x="110.44" y="-176.4" font-family="Times,serif" font-size="14.00">“Nature”</text> </g> <!-- Obs --> <g id="node1" class="node">
 <title>
 Obs
 </title>
@@ -589,15 +654,15 @@ Model-&gt;Obs
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust2" class="cluster">
-<title>
-cluster_03
-</title>
-<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <g id="clust1" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust1" class="cluster">
 <title>
 cluster_04
 </title>
-<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <!-- Tree --> <g id="node1" class="node">
+<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <g id="clust2" class="cluster">
+<title>
+cluster_03
+</title>
+<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <!-- Tree --> <g id="node1" class="node">
 <title>
 Tree
 </title>
@@ -698,20 +763,28 @@ Newton-&gt;Tree
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell nobotmargin" data-layout-align="center" data-hash="index_cache/revealjs/random-circles-unif_209ece724e83a846e71a08663f812e1a">
+<div class="cell nobotmargin" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/random-circles-unif-1.png" width="960"></p>
+<p><img data-src="index_files/figure-html/random-circles-unif-1.png" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell nobotmargin" data-layout-align="center" data-hash="index_cache/revealjs/random-circles-exp_c475032aae4ed6c0eb4753f5c298202c">
+<div class="cell nobotmargin" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>radii <span class="ot">&lt;-</span> <span class="fu">rexp</span>(N, <span class="dv">4</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>title <span class="ot">&lt;-</span> <span class="fu">paste0</span>(N, <span class="st">" Exponentially-Distributed Radii"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">plot_circ_with_distr</span>(N, radii, title, <span class="at">alpha=</span><span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1456 rows containing missing values (`geom_path()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/random-circles-exp-1.png" width="960"></p>
+<p><img data-src="index_files/figure-html/random-circles-exp-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1313,44 +1386,6 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
