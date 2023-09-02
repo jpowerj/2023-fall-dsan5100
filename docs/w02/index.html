@@ -350,7 +350,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Thursday, August 31, 2023</p>
+  <p class="date">Friday Sep 1, 2023, 23:51:46</p>
 </section>
 <section id="schedule" class="slide level2 smaller" data-name="Schedule">
 <h2>Schedule</h2>
@@ -530,15 +530,15 @@ figcaption {
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 369.38,-205 369.38,4 -4,4"></polygon> <g id="clust1" class="cluster">
-<title>
-cluster_01
-</title>
-<polygon fill="none" stroke="black" points="8,-8 8,-193 212.88,-193 212.88,-8 8,-8"></polygon> <text text-anchor="middle" x="110.44" y="-176.4" font-family="Times,serif" font-size="14.00">“Nature”</text> </g> <g id="clust4" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 369.38,-205 369.38,4 -4,4"></polygon> <g id="clust4" class="cluster">
 <title>
 cluster_02
 </title>
-<polygon fill="none" stroke="black" points="268.88,-62 268.88,-139 357.38,-139 357.38,-62 268.88,-62"></polygon> <text text-anchor="middle" x="313.13" y="-122.4" font-family="Times,serif" font-size="14.00">“Science”</text> </g> <!-- Obs --> <g id="node1" class="node">
+<polygon fill="none" stroke="black" points="268.88,-62 268.88,-139 357.38,-139 357.38,-62 268.88,-62"></polygon> <text text-anchor="middle" x="313.13" y="-122.4" font-family="Times,serif" font-size="14.00">“Science”</text> </g> <g id="clust1" class="cluster">
+<title>
+cluster_01
+</title>
+<polygon fill="none" stroke="black" points="8,-8 8,-193 212.88,-193 212.88,-8 8,-8"></polygon> <text text-anchor="middle" x="110.44" y="-176.4" font-family="Times,serif" font-size="14.00">“Nature”</text> </g> <!-- Obs --> <g id="node1" class="node">
 <title>
 Obs
 </title>
@@ -578,15 +578,15 @@ Model-&gt;Obs
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust2" class="cluster">
-<title>
-cluster_03
-</title>
-<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <g id="clust1" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust1" class="cluster">
 <title>
 cluster_04
 </title>
-<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <!-- Tree --> <g id="node1" class="node">
+<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <g id="clust2" class="cluster">
+<title>
+cluster_03
+</title>
+<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <!-- Tree --> <g id="node1" class="node">
 <title>
 Tree
 </title>
@@ -946,6 +946,143 @@ Newton-&gt;Tree
 <li>Now choose the Secretary: only 2 students left to choose from</li>
 <li>Now choose the Treasurer: only 1 student left to choose from</li>
 </ul></li>
+</ul>
+</section>
+<section id="permutations-vs.-combinations" class="slide level2 smaller">
+<h2>Permutations vs.&nbsp;Combinations</h2>
+<ul>
+<li><strong>Permutations</strong>: How many ways can I choose groups of size <span class="math inline">\(k\)</span> out of <span class="math inline">\(n\)</span> total objects, where <strong>order within groups matters</strong>: <span class="math inline">\(P_{n,k}\)</span> (sometimes written <span class="math inline">\(_nP_k\)</span>).
+<ul>
+<li>In this case, we want to count <span class="math inline">\((a,b)\)</span> and <span class="math inline">\((b,a)\)</span> as two separate groups</li>
+</ul></li>
+<li><strong>Combinations</strong>: How many ways can I choose groups of size <span class="math inline">\(k\)</span> out of <span class="math inline">\(n\)</span> total objects, where <strong>order in the groups doesn’t matter</strong>: <span class="math inline">\(C_{n,k}\)</span> (sometimes written <span class="math inline">\(_nC_k,\binom{n}{k}\)</span>).
+<ul>
+<li>In this case, we <strong>don’t</strong> want to count <span class="math inline">\((a, b)\)</span> and <span class="math inline">\((b, a)\)</span> as two separate groups…</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+P_{n,k} = \frac{n!}{(n-k)!}, \; C_{n,k} = \frac{n!}{k!(n-k)!}
+\end{align*}
+\]</span></p>
+</section>
+<section id="no-need-to-memorize" class="slide level2 smaller crunch-title crunch-math">
+<h2>No Need to Memorize!</h2>
+<style>
+p {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+</style>
+<ul>
+<li>Key point: you don’t have to remember these as <strong>two separate formulas</strong>!</li>
+<li>The number of <strong>combinations</strong> is based on the number of <strong>permutations</strong>, but <strong>corrected</strong> for <strong>double counting</strong>: e.g., corrected for the fact that <span class="math inline">\((a,b) \neq (b,a)\)</span> when counting permutations but <span class="math inline">\((a,b) = (b,a)\)</span> when counting combinations.</li>
+</ul>
+<p><span class="math display">\[
+C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}{\leftarrow \text{Duplicate groups}}
+\]</span></p>
+<p>Where does <span class="math inline">\(k!\)</span> come from? <em>(How many different orderings can we make of the same group?)</em></p>
+<ul>
+<li><p><span class="math inline">\(k = 2\)</span>: <span class="math inline">\((\underbrace{\boxed{\phantom{a}}}_{\text{2 choices}},\underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 2\)</span></p></li>
+<li><p><span class="math inline">\(k = 3\)</span>: <span class="math inline">\((\underbrace{\boxed{\phantom{a}}}_{\text{3 choices}},\underbrace{\boxed{\phantom{a}}}_{\text{2 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 6\)</span></p></li>
+<li><p><span class="math inline">\(k = 4\)</span>: <span class="math inline">\((\underbrace{\boxed{\phantom{a}}}_{\text{4 choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{3 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{2 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 24\)</span></p></li>
+</ul>
+</section>
+<section id="with-or-without-replacement" class="slide level2 smaller">
+<h2>With or Without Replacement?</h2>
+<ul>
+<li>Boils down to: can the same object be included in my sample more than once?</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Without Replacement</th>
+<th>With Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Most statistical problems</strong>: “Check off” objects as you collect data about them, so that each observation in your data is <strong>unique</strong></td>
+<td>Very special (but very important!) set of statistical problems: allow objects to appear in your sample <strong>multiple times</strong>, to “squeeze” more information out of the sample (<em>called <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)" target="_blank">Bootstrapping</a>—much more on this later in the course!</em>)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-many-possible-samples" class="slide level2 smaller">
+<h2>How Many Possible Samples?</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example: How Many Possible Samples?</strong></p>
+</div>
+<div class="callout-content">
+<p>From a population of <span class="math inline">\(N = 3\)</span>, how many ways can we take samples of size <span class="math inline">\(k = 2\)</span>?</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Without Replacement</th>
+<th>With Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(3 \cdot 2 = 6\)</span> ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)</td>
+<td><span class="math inline">\(3\cdot 3 = 3^2 = 9\)</span> ways (3 objects to choose from for first element of sample, <em>still</em> 3 objects to choose from for second element of sample)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Result: How Many Possible Samples</strong></p>
+</div>
+<div class="callout-content">
+<p>From a population of size <span class="math inline">\(N\)</span>, how many ways can we take samples of size <span class="math inline">\(k\)</span>? (Try to extrapolate from above examples before looking at answer!)</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Without Replacement</th>
+<th style="text-align: center;">With Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\displaystyle \underbrace{N \cdot (N-1) \cdot \cdots \cdot (N - k + 1)}_{k\text{ times}} = \frac{N!}{(N - k )!}\)</span><br><br><em>(This formula should look somewhat familiar…)</em></td>
+<td style="text-align: center;"><span class="math inline">\(\displaystyle \underbrace{N \cdot N \cdot \cdots \cdot N}_{k\text{ times}} = N^k\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="probability-fundamentals" class="slide level2" data-name="Probability">
+<h2>Probability Fundamentals</h2>
+<ul>
+<li>Probability Fundamentals</li>
+</ul>
+</section>
+<section id="statistics" class="slide level2" data-name="Statistics">
+<h2>Statistics</h2>
+<ul>
+<li>Statistics</li>
 </ul>
 
 <div class="footer footer-default">

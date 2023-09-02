@@ -3,8 +3,10 @@ title: "Week 2: Introduction to Probabilistic Modeling"
 subtitle: "*DSAN 5000: Probabilistic Modeling and Statistical Computing*<br>Section 03"
 author: "Jeff Jacobs"
 institute: "<a href=\"mailto:jj1088@georgetown.edu\" target=\"_blank\">`jj1088@georgetown.edu`</a>"
-date: 2023-08-31
-date-format: full
+#date: 2023-08-31
+#date-format: full
+date: last-modified
+date-format: "dddd MMM D, YYYY, HH:mm:ss"
 lecnum: 2
 categories:
   - "Class Sessions"
@@ -505,3 +507,80 @@ $$
     * Now choose the Vice President: only 3 students left to choose from
     * Now choose the Secretary: only 2 students left to choose from
     * Now choose the Treasurer: only 1 student left to choose from
+
+## Permutations vs. Combinations {.smaller}
+
+* **Permutations**: How many ways can I choose groups of size $k$ out of $n$ total objects, where **order within groups matters**: $P_{n,k}$ (sometimes written $_nP_k$).
+    * In this case, we want to count $(a,b)$ and $(b,a)$ as two separate groups
+* **Combinations**: How many ways can I choose groups of size $k$ out of $n$ total objects, where **order in the groups doesn't matter**: $C_{n,k}$ (sometimes written $_nC_k,\binom{n}{k}$).
+    * In this case, we **don't** want to count $(a, b)$ and $(b, a)$ as two separate groups...
+
+$$
+\begin{align*}
+P_{n,k} = \frac{n!}{(n-k)!}, \; C_{n,k} = \frac{n!}{k!(n-k)!}
+\end{align*}
+$$
+
+## No Need to Memorize! {.smaller .crunch-title .crunch-math}
+
+```{=html}
+<style>
+p {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+</style>
+```
+
+* Key point: you don't have to remember these as **two separate formulas**!
+* The number of **combinations** is based on the number of **permutations**, but **corrected** for **double counting**: e.g., corrected for the fact that $(a,b) \neq (b,a)$ when counting permutations but $(a,b) = (b,a)$ when counting combinations.
+
+$$
+C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}{\leftarrow \text{Duplicate groups}}
+$$
+
+Where does $k!$ come from? *(How many different orderings can we make of the same group?)*
+
+* $k = 2$: $(\underbrace{\boxed{\phantom{a}}}_{\text{2 choices}},\underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 2$
+
+* $k = 3$: $(\underbrace{\boxed{\phantom{a}}}_{\text{3 choices}},\underbrace{\boxed{\phantom{a}}}_{\text{2 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 6$
+
+* $k = 4$: $(\underbrace{\boxed{\phantom{a}}}_{\text{4 choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{3 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{2 remaining choices}}, \underbrace{\boxed{\phantom{a}}}_{\text{1 remaining choice}}) \implies 24$
+
+## With or Without Replacement? {.smaller}
+
+* Boils down to: can the same object be included in my sample more than once?
+
+| Without Replacement | With Replacement |
+| - | - |
+| **Most statistical problems**: "Check off" objects as you collect data about them, so that each observation in your data is **unique** | Very special (but very important!) set of statistical problems: allow objects to appear in your sample **multiple times**, to "squeeze" more information out of the sample (*called [Bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)){target="_blank"}---much more on this later in the course!*) |
+
+## How Many Possible Samples? {.smaller}
+
+::: {.callout-tip title="Example: How Many Possible Samples?"}
+
+From a population of $N = 3$, how many ways can we take samples of size $k = 2$?
+
+| Without Replacement | With Replacement |
+| - | - |
+| $3 \cdot 2 = 6$ ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample) | $3\cdot 3 = 3^2 = 9$ ways (3 objects to choose from for first element of sample, *still* 3 objects to choose from for second element of sample) |
+
+:::
+
+::: {.callout-tip title="Result: How Many Possible Samples"}
+
+From a population of size $N$, how many ways can we take samples of size $k$? (Try to extrapolate from above examples before looking at answer!)
+
+| Without Replacement | With Replacement |
+|:-:|:-:|
+| $\displaystyle \underbrace{N \cdot (N-1) \cdot \cdots \cdot (N - k + 1)}_{k\text{ times}} = \frac{N!}{(N - k )!}$<br><br>*(This formula should look somewhat familiar...)* | $\displaystyle \underbrace{N \cdot N \cdot \cdots \cdot N}_{k\text{ times}} = N^k$ |
+
+:::
+
+## Probability Fundamentals {data-name="Probability"}
+
+* Probability Fundamentals
+
+## Statistics {data-name="Statistics"}
+
+* Statistics
