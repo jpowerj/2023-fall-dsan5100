@@ -578,15 +578,15 @@ Model-&gt;Obs
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust1" class="cluster">
-<title>
-cluster_04
-</title>
-<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <g id="clust2" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust2" class="cluster">
 <title>
 cluster_03
 </title>
-<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <!-- Tree --> <g id="node1" class="node">
+<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <g id="clust1" class="cluster">
+<title>
+cluster_04
+</title>
+<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <!-- Tree --> <g id="node1" class="node">
 <title>
 Tree
 </title>
@@ -687,7 +687,7 @@ Newton-&gt;Tree
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell nobotmargin" data-layout-align="center">
+<div class="cell nobotmargin" data-layout-align="center" data-hash="index_cache/revealjs/random-circles-unif_209ece724e83a846e71a08663f812e1a">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -696,7 +696,7 @@ Newton-&gt;Tree
 </div>
 </div>
 </div>
-<div class="cell nobotmargin" data-layout-align="center">
+<div class="cell nobotmargin" data-layout-align="center" data-hash="index_cache/revealjs/random-circles-exp_c475032aae4ed6c0eb4753f5c298202c">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -877,91 +877,76 @@ Newton-&gt;Tree
 <li>This is why we begin studying probability by studying <strong>combinatorics</strong>: the mathematics of <strong>counting</strong></li>
 </ul>
 </section>
-<section id="combinatorics-ice-cream-possibilities" class="slide level2">
+<section id="combinatorics-ice-cream-possibilities" class="slide level2 smaller">
 <h2>Combinatorics: Ice Cream Possibilities</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<svg width="960" height="480" viewbox="0.00 0.00 559.87 314.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 310)">
-<title>
-G
-</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-310 555.87,-310 555.87,4 -4,4"></polygon> <!-- cone --> <g id="node1" class="node">
-<title>
-cone
-</title>
-<ellipse fill="none" stroke="black" cx="53.68" cy="-139" rx="53.85" ry="18"></ellipse> <text text-anchor="middle" x="53.68" y="-134.8" font-family="Times,serif" font-size="14.00">Cone Type</text> </g> <!-- flavCake --> <g id="node2" class="node">
-<title>
-flavCake
-</title>
-<ellipse fill="none" stroke="black" cx="218.46" cy="-193" rx="36.5" ry="18"></ellipse> <text text-anchor="middle" x="218.46" y="-188.8" font-family="Times,serif" font-size="14.00">Flavor</text> </g> <!-- cone&#45;&gt;flavCake --> <g id="edge1" class="edge">
-<title>
-cone-&gt;flavCake
-</title>
-<path fill="none" stroke="black" d="M92.43,-151.52C118.17,-160.06 152.16,-171.34 178.21,-179.98"></path> <polygon fill="black" stroke="black" points="177.17,-183.32 187.77,-183.15 179.38,-176.68 177.17,-183.32"></polygon> <text text-anchor="middle" x="144.78" y="-177.2" font-family="Times,serif" font-size="14.00">Cake</text> </g> <!-- flavWaf --> <g id="node3" class="node">
-<title>
-flavWaf
-</title>
-<ellipse fill="none" stroke="black" cx="218.46" cy="-112" rx="36.5" ry="18"></ellipse> <text text-anchor="middle" x="218.46" y="-107.8" font-family="Times,serif" font-size="14.00">Flavor</text> </g> <!-- cone&#45;&gt;flavWaf --> <g id="edge2" class="edge">
-<title>
-cone-&gt;flavWaf
-</title>
-<path fill="none" stroke="black" d="M102.2,-131.12C124.8,-127.37 151.64,-122.92 173.74,-119.25"></path> <polygon fill="black" stroke="black" points="174.55,-122.67 183.84,-117.58 173.4,-115.76 174.55,-122.67"></polygon> <text text-anchor="middle" x="144.78" y="-127.2" font-family="Times,serif" font-size="14.00">Waffle</text> </g> <!-- cakeVanilla --> <g id="node4" class="node">
-<title>
-cakeVanilla
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-288" rx="84.53" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-283.8" font-family="Times,serif" font-size="14.00">Vanilla Cake Cone</text> </g> <!-- flavCake&#45;&gt;cakeVanilla --> <g id="edge3" class="edge">
-<title>
-flavCake-&gt;cakeVanilla
-</title>
-<path fill="none" stroke="black" d="M247.11,-204.46C285.2,-220.25 354.4,-248.93 400.95,-268.22"></path> <polygon fill="black" stroke="black" points="399.65,-271.47 410.23,-272.07 402.33,-265.01 399.65,-271.47"></polygon> <text text-anchor="middle" x="301.09" y="-259.2" font-family="Times,serif" font-size="14.00">Vanilla</text> </g> <!-- cakeChoc --> <g id="node5" class="node">
-<title>
-cakeChoc
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-234" rx="95.49" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-229.8" font-family="Times,serif" font-size="14.00">Chocolate Cake Cone</text> </g> <!-- flavCake&#45;&gt;cakeChoc --> <g id="edge4" class="edge">
-<title>
-flavCake-&gt;cakeChoc
-</title>
-<path fill="none" stroke="black" d="M252.79,-198.96C283.35,-204.43 329.8,-212.74 369.79,-219.89"></path> <polygon fill="black" stroke="black" points="369.35,-223.37 379.81,-221.68 370.58,-216.48 369.35,-223.37"></polygon> <text text-anchor="middle" x="301.09" y="-221.2" font-family="Times,serif" font-size="14.00">Chocolate</text> </g> <!-- cakeSwirl --> <g id="node6" class="node">
-<title>
-cakeSwirl
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-180" rx="77.04" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-175.8" font-family="Times,serif" font-size="14.00">Swirl Cake Cone</text> </g> <!-- flavCake&#45;&gt;cakeSwirl --> <g id="edge5" class="edge">
-<title>
-flavCake-&gt;cakeSwirl
-</title>
-<path fill="none" stroke="black" d="M254.77,-191C283.94,-189.34 326.54,-186.93 364.39,-184.78"></path> <polygon fill="black" stroke="black" points="364.62,-188.27 374.41,-184.21 364.22,-181.28 364.62,-188.27"></polygon> <text text-anchor="middle" x="301.09" y="-193.2" font-family="Times,serif" font-size="14.00">Swirl</text> </g> <!-- wafVanilla --> <g id="node7" class="node">
-<title>
-wafVanilla
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-126" rx="91.45" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-121.8" font-family="Times,serif" font-size="14.00">Vanilla Waffle Cone</text> </g> <!-- flavWaf&#45;&gt;wafVanilla --> <g id="edge6" class="edge">
-<title>
-flavWaf-&gt;wafVanilla
-</title>
-<path fill="none" stroke="black" d="M254.77,-114.16C280.72,-115.74 317.29,-117.98 351.7,-120.08"></path> <polygon fill="black" stroke="black" points="351.62,-123.58 361.81,-120.69 352.05,-116.59 351.62,-123.58"></polygon> <text text-anchor="middle" x="301.09" y="-122.2" font-family="Times,serif" font-size="14.00">Vanilla</text> </g> <!-- wafChoc --> <g id="node8" class="node">
-<title>
-wafChoc
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-72" rx="102.4" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-67.8" font-family="Times,serif" font-size="14.00">Chocolate Waffle Cone</text> </g> <!-- flavWaf&#45;&gt;wafChoc --> <g id="edge7" class="edge">
-<title>
-flavWaf-&gt;wafChoc
-</title>
-<path fill="none" stroke="black" d="M252.79,-106.18C282.42,-101.01 326.99,-93.23 366.14,-86.4"></path> <polygon fill="black" stroke="black" points="367.24,-89.76 376.48,-84.6 366.03,-82.87 367.24,-89.76"></polygon> <text text-anchor="middle" x="301.09" y="-98.2" font-family="Times,serif" font-size="14.00">Chocolate</text> </g> <!-- wafSwirl --> <g id="node9" class="node">
-<title>
-wafSwirl
-</title>
-<ellipse fill="none" stroke="black" cx="449.67" cy="-18" rx="83.96" ry="18"></ellipse> <text text-anchor="middle" x="449.67" y="-13.8" font-family="Times,serif" font-size="14.00">Swirl Waffle Cone</text> </g> <!-- flavWaf&#45;&gt;wafSwirl --> <g id="edge8" class="edge">
-<title>
-flavWaf-&gt;wafSwirl
-</title>
-<path fill="none" stroke="black" d="M247.11,-100.66C285.09,-85.08 354,-56.83 400.54,-37.74"></path> <polygon fill="black" stroke="black" points="401.9,-40.96 409.82,-33.93 399.24,-34.49 401.9,-40.96"></polygon> <text text-anchor="middle" x="301.09" y="-70.2" font-family="Times,serif" font-size="14.00">Swirl</text> </g> </g>
-</svg>
+<style>
+.quarto-layout-cell {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+</style>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ice_cream1.svg" width="406"></p>
+<figcaption>The <span class="math inline">\(6 = 2 \cdot 3\)</span> possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ice_cream2.svg"></p>
+<figcaption>The <span class="math inline">\(6 = 3 \cdot 2\)</span> possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.</figcaption>
+</figure>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="grouping-vs.-ordering" class="slide level2">
+<h2>Grouping vs.&nbsp;Ordering</h2>
+<ul>
+<li>In standard statistics/combinatorics introductions you’ll learn different counting formulas for when <strong>order matters</strong> vs.&nbsp;when order <strong>doesn’t matter</strong></li>
+<li>This is not a <strong>mathematical</strong> distinction so much as a <strong>pragmatic</strong> distinction: what are you trying to <strong>accomplish</strong> by counting?</li>
+<li>Problems with extremely similar descriptions can differ in small detail, so that the <strong>units you need to distinguish between</strong> in one version differ from the units you need to distinguish between in the other.</li>
+</ul>
+</section>
+<section id="does-order-matter" class="slide level2 smaller small-title crunch-lists">
+<h2>Does Order Matter?</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example: Student Government vs.&nbsp;Student Sports</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Consider a school where students can either <strong>try out for the swim team</strong> or <strong>run for a position in the student government</strong></li>
+<li>The swim team has <strong>4 slots</strong>, but slots aren’t differentiated: you’re either <strong>on</strong> the team (one of the 4 chosen students) or <strong>not</strong></li>
+<li>The student government also has <strong>4 slots</strong>, but there is a difference between the slots: first slot is <strong>President</strong>, second is <strong>Vice President</strong>, third is <strong>Secretary</strong>, and fourth is <strong>Treasurer</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Simple case (for intuition): the school only has <strong>4 students</strong>. In this case, how many ways are there to form the <strong>swim team</strong>? What about the <strong>student government</strong>?
+<ul>
+<li><strong>Swim team</strong>: <span class="math inline">\(1\)</span> <strong>way</strong>. You have only one choice, to let all 4 students onto the team</li>
+<li><strong>Student government</strong>: <span class="math inline">\(4 \cdot 3 \cdot 2 \cdot 1 = 24\)</span> <strong>ways</strong>. You have to let all 4 students in, <strong>but you have a choice</strong> of who is President, Vice President, Secretary, and Treasurer</li>
+</ul></li>
+<li>How did we get <span class="math inline">\(4 \cdot 3 \cdot 2 \cdot 1\)</span>? (Think about the ice cream example…)
+<ul>
+<li>Start by choosing the President: 4 choices</li>
+<li>Now choose the Vice President: only 3 students left to choose from</li>
+<li>Now choose the Secretary: only 2 students left to choose from</li>
+<li>Now choose the Treasurer: only 1 student left to choose from</li>
+</ul></li>
+</ul>
 
 <div class="footer footer-default">
 

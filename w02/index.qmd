@@ -14,7 +14,7 @@ format:
   revealjs:
     html-math-method: mathjax
     slide-number: true
-    #cache: true
+    cache: true
     #output-file: slides.html
     simplemenu:
       flat: true
@@ -462,28 +462,46 @@ $$
     * Count the number of ways the event $E$ can happen, count the total number of things that can happen, and divide!
 * This is why we begin studying probability by studying **combinatorics**: the mathematics of **counting**
 
-## Combinatorics: Ice Cream Possibilities
+## Combinatorics: Ice Cream Possibilities {.smaller}
 
-```{dot}
-digraph G {
-    rankdir=LR
-    splines=false
-    cone[label="Cone Type"]
-    flavCake[label="Flavor"]
-    flavWaf[label="Flavor"]
-    cone -> flavCake[label="Cake"];
-    cone -> flavWaf[label="Waffle"];
-    cakeVanilla[label="Vanilla Cake Cone"]
-    cakeChoc[label="Chocolate Cake Cone"]
-    cakeSwirl[label="Swirl Cake Cone"]
-    flavCake -> cakeVanilla[label="Vanilla"];
-    flavCake -> cakeChoc[label="Chocolate"];
-    flavCake -> cakeSwirl[label="Swirl"];
-    wafVanilla[label="Vanilla Waffle Cone"]
-    wafChoc[label="Chocolate Waffle Cone"]
-    wafSwirl[label="Swirl Waffle Cone"]
-    flavWaf -> wafVanilla[label="Vanilla"];
-    flavWaf -> wafChoc[label="Chocolate"];
-    flavWaf -> wafSwirl[label="Swirl"];
+```{=html}
+<style>
+.quarto-layout-cell {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
+</style>
 ```
+
+::: {layout-ncol=2}
+
+![The $6 = 2 \cdot 3$ possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.](images/ice_cream1.svg){width=406}
+
+![The $6 = 3 \cdot 2$ possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.](images/ice_cream2.svg)
+
+:::
+
+## Grouping vs. Ordering
+
+* In standard statistics/combinatorics introductions you'll learn different counting formulas for when **order matters** vs. when order **doesn't matter**
+* This is not a **mathematical** distinction so much as a **pragmatic** distinction: what are you trying to **accomplish** by counting?
+* Problems with extremely similar descriptions can differ in small detail, so that the **units you need to distinguish between** in one version differ from the units you need to distinguish between in the other.
+
+## Does Order Matter? {.smaller .small-title .crunch-lists}
+
+::: {.callout-tip title="Example: Student Government vs. Student Sports"}
+
+* Consider a school where students can either **try out for the swim team** or **run for a position in the student government**
+* The swim team has **4 slots**, but slots aren't differentiated: you're either **on** the team (one of the 4 chosen students) or **not**
+* The student government also has **4 slots**, but there is a difference between the slots: first slot is **President**, second is **Vice President**, third is **Secretary**, and fourth is **Treasurer**.
+
+:::
+
+* Simple case (for intuition): the school only has **4 students**. In this case, how many ways are there to form the **swim team**? What about the **student government**?
+    * **Swim team**: $1$ **way**. You have only one choice, to let all 4 students onto the team
+    * **Student government**: $4 \cdot 3 \cdot 2 \cdot 1 = 24$ **ways**. You have to let all 4 students in, **but you have a choice** of who is President, Vice President, Secretary, and Treasurer
+* How did we get $4 \cdot 3 \cdot 2 \cdot 1$? (Think about the ice cream example...)
+    * Start by choosing the President: 4 choices
+    * Now choose the Vice President: only 3 students left to choose from
+    * Now choose the Secretary: only 2 students left to choose from
+    * Now choose the Treasurer: only 1 student left to choose from
