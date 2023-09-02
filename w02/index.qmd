@@ -1,0 +1,489 @@
+---
+title: "Week 2: Introduction to Probabilistic Modeling"
+subtitle: "*DSAN 5000: Probabilistic Modeling and Statistical Computing*<br>Section 03"
+author: "Jeff Jacobs"
+institute: "<a href=\"mailto:jj1088@georgetown.edu\" target=\"_blank\">`jj1088@georgetown.edu`</a>"
+date: 2023-08-31
+date-format: full
+lecnum: 2
+categories:
+  - "Class Sessions"
+execute:
+  enabled: true
+format:
+  revealjs:
+    html-math-method: mathjax
+    slide-number: true
+    #cache: true
+    #output-file: slides.html
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><ul class='menu'></ul></div>"
+      scale: 0.5
+    theme: [default, "../_jjslides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"}
+  html:
+    #cache: true
+    output-file: notes.html
+    html-math-method: mathjax
+---
+
+## Schedule {.smaller data-name="Schedule"}
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 12:30pm | 12:35pm | [About Me &rarr;](#prof.-jeff-introduction) |
+| | 12:35pm | 12:50pm | [Review &rarr;](#deterministic-processes) |
+| | 12:50pm | 1:05pm | [Sampling and Combinatorics &rarr;](#sampling-and-combinatorics) |
+| | 1:05pm | 1:20pm | [Probability Fundamentals &rarr;](#probability-fundamentals) |
+| | 1:20pm | 1:35pm | [Univariate Statistics &rarr;](#univariate-statistics) |
+| | 1:35pm | 1:50pm | [Multivariate Statistics &rarr;](#multivariate-statistics) |
+| **Break!** | 1:50pm | 2:00pm | |
+| **Lab** | 2:00pm | 2:50pm | [Lab 1 Demonstrations <i class="bi bi-box-arrow-up-right" style="font-size: 1.25rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html){target="_blank"} |
+| | 2:50pm | 3:00pm | [Lab Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.25rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html){target="_blank"} |
+
+: {tbl-colwidths="[12,12,12,54,5,5]"} 
+
+## Prof. Jeff Introduction! {.crunch-title data-name="About Me"}
+
+* Born and raised in **NW DC** &rarr; high school in **Rockville, MD**
+* **University of Maryland**: Computer Science, Math, Economics *(2008-2012)*
+
+![](images/jj_dc_map.png){fig-align="center"}
+
+## Grad School {.crunch-title .crunch-cols .crunch-list}
+
+* Studied abroad in **Beijing** (Peking University/北大) &rarr; internship with Huawei in **Hong Kong** (HKUST)
+
+::: columns
+::: {.column width="55%"}
+* **Stanford** for MS in Computer Science *(2012-2014)*
+* Research Economist at **UC Berkeley** *(2014-2015)*
+
+:::
+::: {.column width="45%"}
+
+![](images/bay_area_crop.png)
+
+:::
+:::
+
+* **Columbia** (NYC) for PhD[+Postdoc] in Political Science *(2015-2023)*
+
+## Dissertation (Political Science + History) {.small-title}
+
+*"Our Word is Our Weapon": Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada*
+
+![](images/diss.png){fig-align="center"}
+
+
+## Research (Labor Economics) {.smaller .crunch-figures}
+
+::: columns
+::: {.column width="50%"}
+
+* <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20180150" target="_blank">"Monopsony in Online Labor Markets"</a>: Machine Learning to enhance causal estimates of the effect of **job description language** on **uptake rate**
+
+:::
+::: {.column width="50%"}
+
+* "Freedom as Non-Domination in the Labor Market": Game-theoretic models of workers' rights (**monopsony** vs. **labor discipline**)
+
+<!-- ## Most Recently...
+
+* Chapter on "Freedom as Non-Domination in the Labor Market and in the Workplace" in *Republican Liberty: Philosophical, Political, and Economic Perspectives* (Cambridge University Press, 2024)
+* Submitted papers:
+  * "Meaning, Understanding, and Digitization in the History of Ideas"
+  * "Quantifying Cultural Diplomacy: The Soviet Union and the Diffusion of Marxism in the Third World, 1945--1991" -->
+
+:::
+:::
+
+* <a href="https://ieeexplore.ieee.org/document/9346539" target="_blank">"Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements"</a>: Linguistic (dependency) parses of contracts &rarr; time series of **worker** vs. **employer** rights and responsibilities over time
+
+<center>
+<img style="margin-top: 0px !important; margin-bottom: 0px !important;" src="images/cbas.jpeg" height="320"></img>
+
+<!-- ){.notopmargin fig-align="center" height=325 style="margin-top: 0px !important;"} -->
+
+## Deterministic Processes {data-name="Review"}
+
+* Given a set of inputs, we can compute the outcome *exactly*
+* Example: Given the radius of a circle, we can compute its area *without any uncertainty*. $r \mapsto \pi r^2$
+* (The fact that we *can* compute the outcome doesn't mean that it's easy to do so! See, e.g., the <a href="https://en.wikipedia.org/wiki/Double_pendulum" target="_blank">double pendulum</a>)
+
+![Image credit: <a href="https://tenor.com/view/double-pendulum-pendulum-chaos-theory-gif-25511149" target="_blank">Tenor.com</a>](images/pendulum.gif){fig-align="center" .notopmargin}
+
+::: {.notes}
+The pendulum example points to the fact that the notion of a *chaotic* system, one which is "sensitive to initial conditions", is different from that of a *stochastic* system.
+:::
+
+## "Holy Grail" Deterministic Model: Newtonian Physics {.smaller .small-title}
+
+```{=html}
+<style>
+#fig-newton {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+figcaption {
+    margin-top: 0px !important;
+}
+</style>
+```
+
+::: columns
+
+::: {.column width="50%"}
+
+```{dot}
+//| fig-width: 5
+//| fig-height: 2.5
+digraph grid
+{
+    graph [
+        overlap=true,
+        scale=0.2,
+        newrank=true
+    ]
+    nodesep=1.0
+    ranksep=1.0
+    rankdir="LR"
+    nodedir="LR"
+    scale=0.2
+    node [
+        style="filled",
+        color=black,
+        fillcolor=lightblue
+    ]
+	
+	subgraph cluster_01 {
+	    label="\"Nature\"";
+	    Obs[label="Thing(s) we can see"];
+	    Und[label="Underlying processes",fillcolor=white]
+	    
+	}
+	{
+	Und -> Model[dir=back,style=dashed];
+	Model -> Obs[style=dashed];
+	}
+	{
+	    rank=source;
+	    Und -> Obs [constraint=false];
+	}
+	
+	subgraph cluster_02 {
+	    label="\"Science\""
+	    Model[style=dashed];
+	}
+}
+```
+:::
+
+::: {.column width="50%"}
+
+```{dot}
+//| fig-width: 5
+//| fig-height: 2.5
+digraph grid
+{
+    graph [
+        overlap=true,
+        scale=0.2,
+        newrank=true
+    ]
+    nodesep=1.0
+    ranksep=1.0
+    rankdir="LR"
+    nodedir="LR"
+    scale=0.2
+    node [
+        style="filled",
+        color=black,
+        fillcolor=lightblue
+    ]
+  subgraph cluster_04 {
+    label=<<U>Woolsthorpe Manor</U>>;
+    URL="https://en.wikipedia.org/wiki/Woolsthorpe_Manor"
+    target="_blank"
+    Tree[label=<<U>Falling Apple</U>>,URL="https://www.popularmechanics.com/science/a5259/4343234/",target="_blank"];
+    Physics[label=<<U>Particle Interactions</U>>,URL="https://en.wikipedia.org/wiki/Fundamental_interaction",target="_blank",fillcolor=white];
+  }
+  subgraph cluster_03 {
+    label="Isaac Newton"
+    Newton[label="Newton's Laws",style=dashed,fillcolor=white]
+  }
+  Newton -> Tree [style=dashed];
+  {
+	    rank=source;
+	    Physics -> Tree [constraint=false];
+	}
+  Physics -> Newton[dir=back,style=dashed]
+}
+```
+
+:::
+
+:::
+
+::: {#newton layout-ncol=4 style="}
+
+![](images/newton1.jpeg)
+
+![](images/newton2.jpeg)
+
+![](images/newton3.jpeg)
+
+::: {#fig-2}
+
+$$
+\leadsto F_g = G\frac{m_1m_2}{r^2}
+$$
+
+<a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation" target="_blank">Newton's Law of Universal Gravitation</a><br><br>&larr; *Dr. Zirkel follows Newton's famous steps*. Coloured wood engraving. <a href="https://wellcomecollection.org/works/ypzq2z9m" target="_blank">Wellcome Collection (Public Domain)</a>
+:::
+
+&nbsp;
+:::
+
+## But What Happens When... {.smaller .smaller-caption}
+
+$$
+\text{Outcome}\left(\text{Dice Roll}\right) = \; ?\frac{?_1?_2}{?^2}
+$$
+
+::: columns
+::: {.column width="50%"}
+
+<center>
+**Pre-Enlightenment**
+</center>
+
+![Hans Sebald Beham, <a href="https://commons.wikimedia.org/wiki/File:Fortuna_or_Fortune.jpg">*Fortuna* (1541)</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons](images/fortuna.jpg){height=400}
+
+:::
+::: {.column width="50%"}
+
+<center>
+**Post-Enlightenment**
+</center>
+
+![Blaise Pascal, <a href="https://archive.org/details/bub_gb_UqgUAAAAQAAJ/page/n67/mode/2up" target="_blank">*Traité du triangle arithmétique* (1665)</a>. Public Domain, via Internet Archive](images/pascal.jpg){height=400}
+
+:::
+:::
+
+## Random Processes
+
+::: columns
+::: {.column width="50%"}
+
+* Can't compute the outcome *exactly*, but **can still say something** about potential outcomes!
+* Example: randomly chosen radius $r \in [0,1]$, what can we say about $A = \pi r^2$?
+  * Unif: $[0,\pi]$ equally likely
+  * Exp: closer to $0$ more likely
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| label: random-circles-unif
+#| fig-align: center
+#| fig-height: 5.5
+#| classes: "nobotmargin"
+#| echo: false
+# Need to include this for caching
+source("../assets/_globals.r")
+plot_circ_with_distr <- function(N, radii, ptitle, alpha=0.1) {
+  theta <- seq(0, 360, 4)
+  #hist(radii)
+  circ_df <- expand.grid(x = theta, y = radii)
+  #circ_df
+  ggplot(circ_df, aes(x = x, y = y, group = y)) +
+      geom_path(alpha = alpha, color = cbPalette[1], linewidth=g_linesize) +
+      # Plot the full unit circle
+      geom_path(data = data.frame(x = theta, y = 1), aes(x = x), linewidth=g_linesize) +
+      geom_point(data = data.frame(x = 0, y = 0), aes(x = x), size = g_pointsize) +
+      coord_polar(theta = "x", start = -pi / 2, direction = -1) +
+      ylim(0, 1) +
+      # scale_x_continuous(limits=c(0,360), breaks=seq(0,360,by=45)) +
+      scale_x_continuous(limits = c(0, 360), breaks = NULL) +
+      dsan_theme("quarter") +
+      labs(
+          title = ptitle,
+          x = NULL,
+          y = NULL
+      ) +
+      # See https://stackoverflow.com/a/19821839
+      theme(
+          axis.line = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          panel.border = element_blank(),
+          panel.grid.major=element_blank(),
+          panel.grid.minor=element_blank(),
+          plot.margin = unit(c(0,0,0,0), "cm"),
+          title = element_text(size=18)
+      )
+}
+N <- 500
+radii <- runif(N, 0, 1)
+title <- paste0(N, " Uniformly-Distributed Radii")
+alpha <- 0.2
+plot_circ_with_distr(N, radii, title, alpha)
+```
+
+```{r}
+#| label: random-circles-exp
+#| fig-align: center
+#| fig-height: 5.5
+#| classes: "nobotmargin"
+library(ggplot2)
+N <- 1000
+radii <- rexp(N, 4)
+title <- paste0(N, " Exponentially-Distributed Radii")
+plot_circ_with_distr(N, radii, title, alpha=0.15)
+```
+
+:::
+:::
+
+## Data = Ground Truth + Noise {.smaller}
+
+* Depressing but true origin of **statistics** (as opposed to **probability**): the Plague 😷
+
+::: {layout-ncol=2}
+
+![Ground Truth: The Great Plague (*Lord Have Mercy on London*, Unknown Artist, circa 1665, via <a href="https://commons.wikimedia.org/wiki/File:Lord_haue_mercy_on_London.jpg" target="_blank">Wikimedia Commons</a>)](images/lord_have_mercy.jpg)
+
+![Noisy Data (Recorded amidst chaos): London Bill of Mortality, 1665 (Public Domain, <a href="https://wellcomecollection.org/works/bqxkq9yy" target="_blank">Wellcome Collection</a>)](images/bill.jpeg)
+
+:::
+
+## Random Variables {.smaller}
+
+* In **algebra**, to solve problems we work with **variables**
+* In **probability theory**, to solve problems we work with **random variables**
+* Recall the difference between **random** and **deterministic**: $A = \pi r^2$ tells us that, given a value of $r$, we can solve for **the** unique value of $A$
+* In probability theory, however, there is **no one "true" value** of a random variable $X$.
+* Let $X = f(N)$ mean that $X$ is the result of a rolled die, where the die has $N$ sides.
+* Plugging in $N = 6$ (standard 6-sided die) still doesn't mean we know "the" value of $X$. However, (if the die is fair) we **do** know
+
+$$
+\Pr(X = 1) = \Pr(X = 2) = \cdots = \Pr(X = 6) = \frac{1}{6}
+$$
+
+## Discrete vs. Continuous {.smaller}
+
+* Many complicated definitions, often misleading or unintuitive!
+* How I want you to remember: **How many possible values between** two known values?
+* **Discrete**: e.g., **number of siblings**
+    * I have 2 siblings, you have 3 siblings... How many values (sibling counts) in between?
+* **Continuous**: e.g., **temperature**
+    * It is 27.0&deg; C in my room, 28.0&deg; C in your room... How many values (temperatures) in between?
+* So, if $X$ is the result of a rolled die, is $X$ discrete or continuous? How many values can be rolled between 3 and 4?
+
+## Thinking About Independence
+
+* We'll define it formally later; for now, this is our working definition:
+
+::: {.callout-tip title="Working Definition: Independence"}
+
+Two random variables $X$ and $Y$ are **independent** if learning information about $X$ does **not** give you information about the value of $Y$, or vice-versa.
+
+:::
+
+## Naïve Definition of Probability {.smaller data-name="Combinatorics"}
+
+* **Sample Space**: The set of all possible **outcomes** of an experiment
+* **Event**: A **subset** of the sample space
+
+::: {.callout-tip title="Naïve Definition of Probability"}
+
+Given a sample space $S$, and an event $E \subset S$,
+
+$$
+\Pr(\underbrace{E}_{\text{event}}) = \frac{\text{\# Favorable Outcomes}}{\text{\# Possible Outcomes}} = \frac{|E|}{|S|}
+$$
+
+:::
+
+## Example: Flipping Two Coins {.smaller}
+
+::: {.callout-tip title="Naïve Definition of Probability"}
+
+Given a sample space $S$, and an event $E \subset S$,
+
+$$
+\Pr(\underbrace{E}_{\text{event}}) = \frac{\text{\# Favorable Outcomes}}{\text{\# Possible Outcomes}} = \frac{|E|}{|S|}
+$$
+
+:::
+
+* **Flipping two coins:**
+    * Sample space $S = \{TT, TH, HT, HH\}$
+    * Event $E_1$: Result of first flip is $H$, result of second flip is $T$ $\implies$ $E_1 = \{HT\}$.
+    * Event $E_2$: At least one $H$ $\implies$ $E_2 = \{TH, HT, HH\}$.
+
+$$
+\begin{align*}
+\Pr(E_1) &= \frac{|\{HT\}|}{|S|} = \frac{|\{HT\}|}{|\{TT, TH, HT, HH\}|} = \frac{1}{4} \\
+\Pr(E_2) &= \frac{|\{TH, HT, HH\}|}{|S|} = \frac{|\{TH, HT, HH\}|}{|\{TT, TH, HT, HH\}|} = \frac{3}{4}
+\end{align*}
+$$
+
+
+## Events $\neq$ Outcomes!
+
+* **Outcomes** are **things**, **events** are **sets** of things
+* Subtle but **extremely** important distinction!
+* In the coin flip example:
+    * The **event** $E_1 = \{HT\}$ can be confused with the **outcome** $HT$.
+    * So, try to remember instead the **event** $E_2 = \{TH, HT, HH\}$: it is more clear, in this case, how this **event** does not correspond to any individual **outcome**
+
+## Back to the Naïve Definition {.smaller}
+
+::: {.callout-tip title="Naïve Definition of Probability"}
+
+Given a sample space $S$, and an event $E \subset S$,
+
+$$
+\Pr(\underbrace{E}_{\text{event}}) = \frac{\text{\# Favorable Outcomes}}{\text{\# Possible Outcomes}} = \frac{|E|}{|S|}
+$$
+
+:::
+
+* The naïve definition tells us that **probabilities** are just **ratios of counts**:
+    * Count the number of ways the event $E$ can happen, count the total number of things that can happen, and divide!
+* This is why we begin studying probability by studying **combinatorics**: the mathematics of **counting**
+
+## Combinatorics: Ice Cream Possibilities
+
+```{dot}
+digraph G {
+    rankdir=LR
+    splines=false
+    cone[label="Cone Type"]
+    flavCake[label="Flavor"]
+    flavWaf[label="Flavor"]
+    cone -> flavCake[label="Cake"];
+    cone -> flavWaf[label="Waffle"];
+    cakeVanilla[label="Vanilla Cake Cone"]
+    cakeChoc[label="Chocolate Cake Cone"]
+    cakeSwirl[label="Swirl Cake Cone"]
+    flavCake -> cakeVanilla[label="Vanilla"];
+    flavCake -> cakeChoc[label="Chocolate"];
+    flavCake -> cakeSwirl[label="Swirl"];
+    wafVanilla[label="Vanilla Waffle Cone"]
+    wafChoc[label="Chocolate Waffle Cone"]
+    wafSwirl[label="Swirl Waffle Cone"]
+    flavWaf -> wafVanilla[label="Vanilla"];
+    flavWaf -> wafChoc[label="Chocolate"];
+    flavWaf -> wafSwirl[label="Swirl"];
+}
+```

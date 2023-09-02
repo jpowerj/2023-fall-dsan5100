@@ -687,9 +687,22 @@ Newton-&gt;Tree
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="random-circles-unif" class="cell nobotmargin" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-fig-height="5.5" data-execution_count="1">
-<div class="cell-output cell-output-error">
-<pre><code>ERROR: Error in file(filename, "r", encoding = encoding): cannot open the connection</code></pre>
+<div class="cell nobotmargin" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/random-circles-unif-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell nobotmargin" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/random-circles-exp-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -949,18 +962,6 @@ flavWaf-&gt;wafSwirl
 </div>
 </div>
 </div>
-</section>
-<section id="probability-fundamentals" class="slide level2" data-name="Prob Fundamentals">
-<h2>Probability Fundamentals</h2>
-<ul>
-<li>Probability Fundamentals</li>
-</ul>
-</section>
-<section id="statistics" class="slide level2" data-name="Statistics">
-<h2>Statistics</h2>
-<ul>
-<li>Statistics</li>
-</ul>
 
 <div class="footer footer-default">
 
@@ -1179,6 +1180,44 @@ flavWaf-&gt;wafSwirl
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

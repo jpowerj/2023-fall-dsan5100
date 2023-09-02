@@ -144,7 +144,7 @@
     "href": "w02/notes.html#random-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n# Need to include this for caching\nsource(\"../assets/code/globals.r\")\nsource(\"../assets/code/ggplot_globals.r\")\nplot_circ_with_distr &lt;- function(N, radii, ptitle, alpha=0.1) {\n  theta &lt;- seq(0, 360, 4)\n  #hist(radii)\n  circ_df &lt;- expand.grid(x = theta, y = radii)\n  #circ_df\n  ggplot(circ_df, aes(x = x, y = y, group = y)) +\n      geom_path(alpha = alpha, color = cbPalette[1], linewidth=g_linesize) +\n      # Plot the full unit circle\n      geom_path(data = data.frame(x = theta, y = 1), aes(x = x), linewidth=g_linesize) +\n      geom_point(data = data.frame(x = 0, y = 0), aes(x = x), size = g_pointsize) +\n      coord_polar(theta = \"x\", start = -pi / 2, direction = -1) +\n      ylim(0, 1) +\n      # scale_x_continuous(limits=c(0,360), breaks=seq(0,360,by=45)) +\n      scale_x_continuous(limits = c(0, 360), breaks = NULL) +\n      dsan_theme(\"quarter\") +\n      labs(\n          title = ptitle,\n          x = NULL,\n          y = NULL\n      ) +\n      # See https://stackoverflow.com/a/19821839\n      theme(\n          axis.line = element_blank(),\n          axis.text = element_blank(),\n          axis.ticks = element_blank(),\n          axis.title = element_blank(),\n          panel.border = element_blank(),\n          panel.grid.major=element_blank(),\n          panel.grid.minor=element_blank(),\n          plot.margin = unit(c(0,0,0,0), \"cm\"),\n          title = element_text(size=18)\n      )\n}\nN &lt;- 500\nradii &lt;- runif(N, 0, 1)\ntitle &lt;- paste0(N, \" Uniformly-Distributed Radii\")\nalpha &lt;- 0.2\nplot_circ_with_distr(N, radii, title, alpha)\n\nWarning message in file(filename, \"r\", encoding = encoding):\n\"cannot open file '../assets/code/globals.r': No such file or directory\"\n\n\nERROR: Error in file(filename, \"r\", encoding = encoding): cannot open the connection\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)"
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)\n\nWarning: Removed 1456 rows containing missing values (`geom_path()`)."
   },
   {
     "objectID": "w02/notes.html#data-ground-truth-noise",
@@ -210,20 +210,6 @@
     "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nG\n\n  \n\ncone\n\n Cone Type   \n\nflavCake\n\n Flavor   \n\ncone-&gt;flavCake\n\n  Cake   \n\nflavWaf\n\n Flavor   \n\ncone-&gt;flavWaf\n\n  Waffle   \n\ncakeVanilla\n\n Vanilla Cake Cone   \n\nflavCake-&gt;cakeVanilla\n\n  Vanilla   \n\ncakeChoc\n\n Chocolate Cake Cone   \n\nflavCake-&gt;cakeChoc\n\n  Chocolate   \n\ncakeSwirl\n\n Swirl Cake Cone   \n\nflavCake-&gt;cakeSwirl\n\n  Swirl   \n\nwafVanilla\n\n Vanilla Waffle Cone   \n\nflavWaf-&gt;wafVanilla\n\n  Vanilla   \n\nwafChoc\n\n Chocolate Waffle Cone   \n\nflavWaf-&gt;wafChoc\n\n  Chocolate   \n\nwafSwirl\n\n Swirl Waffle Cone   \n\nflavWaf-&gt;wafSwirl\n\n  Swirl"
   },
   {
-    "objectID": "w02/notes.html#probability-fundamentals",
-    "href": "w02/notes.html#probability-fundamentals",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Probability Fundamentals",
-    "text": "Probability Fundamentals\n\nProbability Fundamentals"
-  },
-  {
-    "objectID": "w02/notes.html#statistics",
-    "href": "w02/notes.html#statistics",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Statistics",
-    "text": "Statistics\n\nStatistics"
-  },
-  {
     "objectID": "w02/index.html#schedule",
     "href": "w02/index.html#schedule",
     "title": "Week 2: Introduction to Probabilistic Modeling",
@@ -284,7 +270,7 @@
     "href": "w02/index.html#random-processes",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\nERROR: Error in file(filename, \"r\", encoding = encoding): cannot open the connection"
+    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely"
   },
   {
     "objectID": "w02/index.html#data-ground-truth-noise",
@@ -348,20 +334,6 @@
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Combinatorics: Ice Cream Possibilities",
     "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nG\n\n  \n\ncone\n\n Cone Type   \n\nflavCake\n\n Flavor   \n\ncone-&gt;flavCake\n\n  Cake   \n\nflavWaf\n\n Flavor   \n\ncone-&gt;flavWaf\n\n  Waffle   \n\ncakeVanilla\n\n Vanilla Cake Cone   \n\nflavCake-&gt;cakeVanilla\n\n  Vanilla   \n\ncakeChoc\n\n Chocolate Cake Cone   \n\nflavCake-&gt;cakeChoc\n\n  Chocolate   \n\ncakeSwirl\n\n Swirl Cake Cone   \n\nflavCake-&gt;cakeSwirl\n\n  Swirl   \n\nwafVanilla\n\n Vanilla Waffle Cone   \n\nflavWaf-&gt;wafVanilla\n\n  Vanilla   \n\nwafChoc\n\n Chocolate Waffle Cone   \n\nflavWaf-&gt;wafChoc\n\n  Chocolate   \n\nwafSwirl\n\n Swirl Waffle Cone   \n\nflavWaf-&gt;wafSwirl\n\n  Swirl"
-  },
-  {
-    "objectID": "w02/index.html#probability-fundamentals",
-    "href": "w02/index.html#probability-fundamentals",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Probability Fundamentals",
-    "text": "Probability Fundamentals\n\nProbability Fundamentals"
-  },
-  {
-    "objectID": "w02/index.html#statistics",
-    "href": "w02/index.html#statistics",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Statistics",
-    "text": "Statistics\n\nStatistics"
   },
   {
     "objectID": "index.html",
