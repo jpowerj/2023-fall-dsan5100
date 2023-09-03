@@ -13,14 +13,14 @@ categories:
 execute:
   enabled: true
 format:
-  # html:
-  #   #cache: true
-  #   #output-file: notes.html
-  #   html-math-method: mathjax
+  html:
+    #cache: true
+    #output-file: notes.html
+    html-math-method: mathjax
   revealjs:
     html-math-method: mathjax
     slide-number: true
-    cache: true
+    #cache: true
     output-file: slides.html
     simplemenu:
       flat: true
