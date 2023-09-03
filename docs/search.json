@@ -175,11 +175,18 @@
     "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
   },
   {
-    "objectID": "w02/index.html#probability-fundamentals-1",
-    "href": "w02/index.html#probability-fundamentals-1",
+    "objectID": "w02/index.html#logic-sets-and-probability",
+    "href": "w02/index.html#logic-sets-and-probability",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Probability Fundamentals",
-    "text": "Probability Fundamentals\n\nProbability Fundamentals"
+    "section": "Logic, Sets, and Probability",
+    "text": "Logic, Sets, and Probability\n\nThere is a deep connection1 between the objects and operations of logic, set theory, and probability:\n\n\n\n\n\n\n\n\n\n\n\nLogic\nSet Theory\nProbability Theory\n\n\n\n\nObjects\nPredicates\\(p, q \\in \\{T, F\\}\\)\nSets\\(S = \\{a, b, \\ldots\\}\\)\nEvents\\(E = \\{TH, HT, HH\\}\\)\n\n\nConjunction\nAnd (\\(\\wedge\\))\\(p \\wedge q\\)\nIntersection (\\(\\cap\\))\\(A \\cap B\\)\nMultiplication (\\(\\times\\)):\\(\\Pr(E_1 \\cap E_2) = \\Pr(E_1)\\times \\Pr(E_2)\\)\n\n\nDisjunction\nOr (\\(\\vee\\))\\(p \\vee q\\)\nUnion (\\(\\cup\\))\\(A \\cup B\\)\nAddition (\\(+\\)): \\(\\Pr(E_1 \\cup E_2) =\\)\\(\\Pr(E_1) + \\Pr(E_2) - \\Pr(E_1 \\wedge E_2)\\)\n\n\nNegation\nNot (\\(\\neg\\))\\(\\neg p\\)\nComplement (\\(^c\\))\\(S^c\\)\nSubtract from 1\\(\\Pr(A^c) = 1 - \\Pr(A)\\)"
+  },
+  {
+    "objectID": "w02/index.html#example-rolling-dice",
+    "href": "w02/index.html#example-rolling-dice",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Example: Rolling Dice",
+    "text": "Example: Rolling Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\wedge q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know (until after the dice have been rolled) whether these are true or false!\n\nConverting into set theory…"
   },
   {
     "objectID": "w02/index.html#univariate-statistics",
@@ -194,6 +201,13 @@
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Multivariate Statistics",
     "text": "Multivariate Statistics\n\nMultivariate Statistics"
+  },
+  {
+    "objectID": "w02/index.html#footnotes",
+    "href": "w02/index.html#footnotes",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nFor math majors, you can think of it as an isomorphism between the objects and operations of the three subjects↩︎"
   },
   {
     "objectID": "w02/slides.html#prof.-jeff-introduction",
@@ -357,11 +371,18 @@
     "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
   },
   {
-    "objectID": "w02/slides.html#probability-fundamentals-1",
-    "href": "w02/slides.html#probability-fundamentals-1",
+    "objectID": "w02/slides.html#logic-sets-and-probability",
+    "href": "w02/slides.html#logic-sets-and-probability",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Probability Fundamentals",
-    "text": "Probability Fundamentals\n\nProbability Fundamentals"
+    "section": "Logic, Sets, and Probability",
+    "text": "Logic, Sets, and Probability\n\nThere is a deep connection1 between the objects and operations of logic, set theory, and probability:\n\n\n\n\n\n\n\n\n\n\n\nLogic\nSet Theory\nProbability Theory\n\n\n\n\nObjects\nPredicates\\(p, q \\in \\{T, F\\}\\)\nSets\\(S = \\{a, b, \\ldots\\}\\)\nEvents\\(E = \\{TH, HT, HH\\}\\)\n\n\nConjunction\nAnd (\\(\\wedge\\))\\(p \\wedge q\\)\nIntersection (\\(\\cap\\))\\(A \\cap B\\)\nMultiplication (\\(\\times\\)):\\(\\Pr(E_1 \\cap E_2) = \\Pr(E_1)\\times \\Pr(E_2)\\)\n\n\nDisjunction\nOr (\\(\\vee\\))\\(p \\vee q\\)\nUnion (\\(\\cup\\))\\(A \\cup B\\)\nAddition (\\(+\\)): \\(\\Pr(E_1 \\cup E_2) =\\)\\(\\Pr(E_1) + \\Pr(E_2) - \\Pr(E_1 \\wedge E_2)\\)\n\n\nNegation\nNot (\\(\\neg\\))\\(\\neg p\\)\nComplement (\\(^c\\))\\(S^c\\)\nSubtract from 1\\(\\Pr(A^c) = 1 - \\Pr(A)\\)\n\n\n\nFor math majors, you can think of it as an isomorphism between the objects and operations of the three subjects"
+  },
+  {
+    "objectID": "w02/slides.html#example-rolling-dice",
+    "href": "w02/slides.html#example-rolling-dice",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Example: Rolling Dice",
+    "text": "Example: Rolling Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\wedge q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know (until after the dice have been rolled) whether these are true or false!\n\nConverting into set theory…"
   },
   {
     "objectID": "w02/slides.html#univariate-statistics",

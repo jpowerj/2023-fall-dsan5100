@@ -350,7 +350,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Saturday Sep 2, 2023, 19:21:00</p>
+  <p class="date">Saturday Sep 2, 2023, 20:01:03</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -1098,11 +1098,71 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 <h1>Probability Fundamentals</h1>
 
 </section>
-<section id="probability-fundamentals-1" class="slide level2">
-<h2>Probability Fundamentals</h2>
+<section id="logic-sets-and-probability" class="slide level2 smaller">
+<h2>Logic, Sets, and Probability</h2>
 <ul>
-<li>Probability Fundamentals</li>
+<li>There is a <strong>deep connection</strong><sup>1</sup> between the <strong>objects</strong> and <strong>operations</strong> of logic, set theory, and probability:</li>
 </ul>
+<table>
+<colgroup>
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 32%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Logic</th>
+<th>Set Theory</th>
+<th>Probability Theory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Objects</strong></td>
+<td>Predicates<br><span class="math inline">\(p, q \in \{T, F\}\)</span></td>
+<td>Sets<br><span class="math inline">\(S = \{a, b, \ldots\}\)</span></td>
+<td>Events<br><span class="math inline">\(E = \{TH, HT, HH\}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Conjunction</strong></td>
+<td><strong>And</strong> (<span class="math inline">\(\wedge\)</span>)<br><span class="math inline">\(p \wedge q\)</span></td>
+<td><strong>Intersection</strong> (<span class="math inline">\(\cap\)</span>)<br><span class="math inline">\(A \cap B\)</span></td>
+<td><strong>Multiplication</strong> (<span class="math inline">\(\times\)</span>):<br><span class="math inline">\(\Pr(E_1 \cap E_2) = \Pr(E_1)\times \Pr(E_2)\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Disjunction</strong></td>
+<td><strong>Or</strong> (<span class="math inline">\(\vee\)</span>)<br><span class="math inline">\(p \vee q\)</span></td>
+<td><strong>Union</strong> (<span class="math inline">\(\cup\)</span>)<br><span class="math inline">\(A \cup B\)</span></td>
+<td><strong>Addition</strong> (<span class="math inline">\(+\)</span>): <span class="math inline">\(\Pr(E_1 \cup E_2) =\)</span><br><span class="math inline">\(\Pr(E_1) + \Pr(E_2) - \Pr(E_1 \wedge E_2)\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Negation</strong></td>
+<td><strong>Not</strong> (<span class="math inline">\(\neg\)</span>)<br><span class="math inline">\(\neg p\)</span></td>
+<td><strong>Complement</strong> (<span class="math inline">\(^c\)</span>)<br><span class="math inline">\(S^c\)</span></td>
+<td><strong>Subtract from 1</strong><br><span class="math inline">\(\Pr(A^c) = 1 - \Pr(A)\)</span></td>
+</tr>
+</tbody>
+</table>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>For math majors, you can think of it as an <strong>isomorphism</strong> between the objects and operations of the three subjects</p></li></ol></aside></section>
+<section id="example-rolling-dice" class="slide level2 smaller">
+<h2>Example: Rolling Dice</h2>
+<ul>
+<li><strong>Logic</strong>: We can define 4 predicates:
+<ul>
+<li><span class="math inline">\(p_1\)</span> = “First roll is <span class="math inline">\(H\)</span>”, <span class="math inline">\(q_1\)</span> = “First roll is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(p_2\)</span> = “Second roll is <span class="math inline">\(H\)</span>”, <span class="math inline">\(q_2\)</span> = “Second roll is <span class="math inline">\(T\)</span>”</li>
+</ul></li>
+<li><strong>Logical formulas</strong>:
+<ul>
+<li><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> and second roll is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(f_2 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> or second roll is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(f_3 = \neg p_1\)</span>: “First roll is not <span class="math inline">\(H\)</span>”</li>
+</ul></li>
+<li><strong>The issue?</strong>: We don’t <strong>know</strong> (until after the dice have been rolled) whether these are <strong>true</strong> or <strong>false</strong>!</li>
+</ul>
+<p><strong>Converting into set theory…</strong></p>
 </section></section>
 <section>
 <section id="statistics" class="title-slide slide level1 center" data-stack-name="Statistics">
@@ -1125,6 +1185,7 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 
 </div>
 </section></section>
+
     </div>
   </div>
 

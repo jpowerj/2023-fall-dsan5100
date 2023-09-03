@@ -592,9 +592,33 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
 
 # Probability Fundamentals {data-stack-name="Probability"}
 
-## Probability Fundamentals
+## Logic, Sets, and Probability {.smaller}
 
-* Probability Fundamentals
+* There is a **deep connection**[^iso] between the **objects** and **operations** of logic, set theory, and probability:
+
+| | Logic | Set Theory | Probability Theory |
+| - | - | - | - |
+| **Objects** | Predicates<br>$p, q \in \{T, F\}$ | Sets<br>$S = \{a, b, \ldots\}$ | Events<br>$E = \{TH, HT, HH\}$
+| **Conjunction** | **And** ($\wedge$)<br>$p \wedge q$ | **Intersection** ($\cap$)<br>$A \cap B$ | **Multiplication** ($\times$):<br>$\Pr(E_1 \cap E_2) = \Pr(E_1)\times \Pr(E_2)$
+| **Disjunction** | **Or** ($\vee$)<br>$p \vee q$ | **Union** ($\cup$)<br>$A \cup B$ | **Addition** ($+$): $\Pr(E_1 \cup E_2) =$<br>$\Pr(E_1) + \Pr(E_2) - \Pr(E_1 \wedge E_2)$ |
+| **Negation** | **Not** ($\neg$)<br>$\neg p$ | **Complement** ($^c$)<br>$S^c$ | **Subtract from 1**<br>$\Pr(A^c) = 1 - \Pr(A)$ |
+
+: {tbl-colwidths="[18,18,32,32]"}
+
+[^iso]: For math majors, you can think of it as an **isomorphism** between the objects and operations of the three subjects
+
+## Example: Rolling Dice {.smaller}
+
+* **Logic**: We can define 4 predicates:
+  * $p_1$ = "First roll is $H$", $q_1$ = "First roll is $T$"
+  * $p_2$ = "Second roll is $H$", $q_2$ = "Second roll is $T$"
+* **Logical formulas**:
+  * $f_1 = p_1 \wedge q_2$: "First roll is $H$ and second roll is $T$"
+  * $f_2 = p_1 \wedge q_2$: "First roll is $H$ or second roll is $T$"
+  * $f_3 = \neg p_1$: "First roll is not $H$"
+* **The issue?**: We don't **know** (until after the dice have been rolled) whether these are **true** or **false**!
+
+**Converting into set theory...**
 
 # Statistics {data-stack-name="Statistics"}
 
