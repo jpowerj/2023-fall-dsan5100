@@ -228,28 +228,91 @@
     "href": "w02/slides.html#random-variables-1",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Variables",
-    "text": "Random Variables\n\nRecall our discussion of random variables: used by analogy to algebra, since we can do math with them:\nJust as \\(2 \\cdot 3\\) is shorthand for \\(2 + 2 + 2\\), we can define a variable \\(X\\) as shorthand for outcome of a random process. \\[\n\\begin{align*}\nS = \\{ &\\text{result of dice roll was 1}, \\\\\n&\\text{result of dice roll was 2}, \\\\\n&\\text{result of dice roll was 3}, \\\\\n&\\text{result of dice roll was 4}, \\\\\n&\\text{result of dice roll was 5}, \\\\\n&\\text{result of dice roll was 6}\\} \\rightsquigarrow X \\in \\{1,\\ldots,6\\}\n\\end{align*}\n\\]"
+    "text": "Random Variables\n\nRecall our discussion of random variables: used by analogy to algebra, since we can do math with them:\nJust as \\(2 \\cdot 3\\) is shorthand for \\(2 + 2 + 2\\), we can define \\(X\\) as shorthand for the possible outcomes of a random process. \\[\n\\begin{align*}\nS = \\{ &\\text{result of dice roll is 1}, \\\\\n&\\text{result of dice roll is 2}, \\\\\n&\\text{result of dice roll is 3}, \\\\\n&\\text{result of dice roll is 4}, \\\\\n&\\text{result of dice roll is 5}, \\\\\n&\\text{result of dice roll is 6}\\} \\rightsquigarrow X \\in \\{1,\\ldots,6\\}\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w02/slides.html#random-variables-as-events",
     "href": "w02/slides.html#random-variables-as-events",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Random Variables as Events",
-    "text": "Random Variables as Events\n\nEach value \\(v\\) that a random variable \\(X\\) can take on gives rise to an event \\(X = v\\): the event that the random variable \\(X\\) takes on value \\(v\\).\nSince \\(X = v\\) is an event, we can compute its probability \\(\\Pr(X = v)\\)!"
+    "text": "Random Variables as Events\n\nEach value \\(v_X\\) that a random variable \\(X\\) can take on gives rise to an event \\(X = v_X\\): the event that the random variable \\(X\\) takes on value \\(v\\).\nSince \\(X = v_X\\) is an event, we can compute its probability \\(\\Pr(X = v_X)\\)!\n\n\n\n\nEvent in words\nEvent in terms of RV\n\n\n\n\nResult of dice roll is 1\n\\(X = 1\\)\n\n\nResult of dice roll is 2\n\\(X = 2\\)\n\n\nResult of dice roll is 3\n\\(X = 3\\)\n\n\nResult of dice roll is 4\n\\(X = 4\\)\n\n\nResult of dice roll is 5\n\\(X = 5\\)\n\n\nResult of dice roll is 6\n\\(X = 6\\)"
   },
   {
     "objectID": "w02/slides.html#doing-math-with-events",
     "href": "w02/slides.html#doing-math-with-events",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Doing Math with Events",
-    "text": "Doing Math with Events\n\nWe can also (think of our analogy with logic, but this time think of algebra) do math with the random variables! We can think of events related to values \\(X\\) can take on, and compute their probabilities \\[\n\\begin{align*}\n\\text{two rolls} \\mapsto P(\\text{rolls sum to 10}) &= P(X + Y = 10) \\\\\n&= P(Y = 10 - X)\n\\end{align*}\n\\]\n\\(P(\\text{first roll above mean}) = P\\left(X &gt; \\frac{X+Y}{2}\\right) = P(2X &gt; X+Y) = P(X &gt; Y)\\)\nJust remember that probability \\(P(\\cdot)\\) is always probability of an event—random variables are just shorthand for quantifiable events.\nNot all events can be simplified via random variables!\n\n\\(\\text{catch a fish} \\mapsto P(\\text{trout}), P(\\text{bass}), \\ldots\\)\n\nWhat types of events can be quantified like this?\n\n\nThe answer is, broadly, any situation where you’re modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we’re modeling dice, it makes sense to say e.g. “result is 6” + “result is 3” = “total is 9”. More on the next page!"
+    "text": "Doing Math with Events\n\nWe’ve seen how \\(\\Pr(\\cdot)\\) can “encode” logical expressions involving uncertain outcomes.\nEven more powerful when paired with the notion of random variables: lets us also “encode” mathematical expressions involving uncertain quantities!\nConsider an experiment where we roll two dice. Let \\(X\\) be the RV encoding the outcome of the first roll, and \\(Y\\) be the RV encoding the outcome of the second roll.\nWe can compute probabilities involving \\(X\\) and \\(Y\\) separately, e.g., \\(\\Pr(X = 1) = \\frac{1}{6}\\), but we can also reason probabilistically about mathematical expressions involving \\(X\\) and \\(Y\\)! For example, we can reason about their sum:\n\n\\[\n\\begin{align*}\n\\Pr(\\text{rolls sum to 10}) &= \\Pr(X + Y = 10) \\\\\n&= \\Pr(Y = 10 - X)\n\\end{align*}\n\\]\n\nOr about how the outcome of one roll will relate to the outcome of the other:\n\n\\[\n\\begin{align*}\n\\Pr(\\text{first roll above mean}) &= \\Pr\\left(X &gt; \\frac{X+Y}{2}\\right) \\\\\n&= \\Pr(2X &gt; X+Y) = \\Pr(X &gt; Y)\n\\end{align*}\n\\]"
   },
   {
-    "objectID": "w02/slides.html#multivariate-statistics",
-    "href": "w02/slides.html#multivariate-statistics",
+    "objectID": "w02/slides.html#are-random-variables-all-powerful",
+    "href": "w02/slides.html#are-random-variables-all-powerful",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Multivariate Statistics",
-    "text": "Multivariate Statistics\n\nMultivariate Statistics"
+    "section": "Are Random Variables All-Powerful??",
+    "text": "Are Random Variables All-Powerful??\n\nJust remember that probability \\(P(\\cdot)\\) is always probability of an event—random variables are just shorthand for quantifiable events.\nNot all events can be simplified via random variables!\n\n\\(\\text{catch a fish} \\mapsto P(\\text{trout}), P(\\text{bass}), \\ldots\\)\n\nWhat types of events can be quantified like this?\n\n(Hint: It has to do with a key topic in the early weeks of both DSAN 5000 and 5100…)\n\n\n\nThe answer is, broadly, any situation where you’re modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we’re modeling dice, it makes sense to say e.g. “result is 6” + “result is 3” = “total is 9”. More on the next page!"
+  },
+  {
+    "objectID": "w02/slides.html#recall-types-of-variables",
+    "href": "w02/slides.html#recall-types-of-variables",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Recall: Types of Variables",
+    "text": "Recall: Types of Variables\n\nCategorical\n\nNo meaningful way to order values: \\(\\{\\text{trout}, \\text{bass}, \\ldots \\}\\)\n\nOrdinal\n\nCan place in order (bigger, smaller), though gaps aren’t meaningful: \\(\\{{\\color{orange}\\text{great}},{\\color{orange}\\text{greater}},{\\color{orange}\\text{greatest}}\\}\\)\n\\({\\color{orange}\\text{greater}} \\overset{?}{=} 2\\cdot {\\color{orange}\\text{great}} - 1\\)\n\nCardinal\n\nCan place in order, and gaps are meaningful \\(\\implies\\) can do “standard” math with them! Example: \\(\\{{\\color{blue}1},{\\color{blue}2},\\ldots,{\\color{blue}10}\\}\\)\n\\({\\color{blue}7}\\overset{\\color{green}\\unicode{x2714}}{=} 2 \\cdot {\\color{blue}4} - 1\\)\nIf events have this structure (meaningful way to define multiplication, addition, subtraction), then we can analyze them as random variables"
+  },
+  {
+    "objectID": "w02/slides.html#visualizing-discrete-rvs",
+    "href": "w02/slides.html#visualizing-discrete-rvs",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Visualizing Discrete RVs",
+    "text": "Visualizing Discrete RVs\n\nUltimate Probability Pro-Tip: When you hear “discrete distribution”, think of a bar graph: \\(x\\)-axis = events, bar height = probability of events\nTwo coins example: \\(X\\) = RV representing number of heads obtained in two coin flips"
+  },
+  {
+    "objectID": "w02/slides.html#preview-visualizing-continuous-rvs",
+    "href": "w02/slides.html#preview-visualizing-continuous-rvs",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "(Preview:) Visualizing Continuous RVs",
+    "text": "(Preview:) Visualizing Continuous RVs\n\nThis works even for continuous distributions, if you focus on the area under the curve instead of the height:"
+  },
+  {
+    "objectID": "w02/slides.html#probability-theory-gives-us-distributions-for-rvs-not-numbers",
+    "href": "w02/slides.html#probability-theory-gives-us-distributions-for-rvs-not-numbers",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Probability Theory Gives Us Distributions for RVs, not Numbers!",
+    "text": "Probability Theory Gives Us Distributions for RVs, not Numbers!\n\nWe’re going beyond “base” probability theory if we want to summarize these distributions\nHowever, we can understand a lot about the full distribution by looking at some basic summary statistics. Most common way to summarize:\n\n\n\n\n\n\n\n\n\n\\(\\underbrace{\\text{point estimate}}_{\\text{mean/median}}\\)\n\\(\\pm\\)\n\\(\\underbrace{\\text{uncertainty}}_{\\text{variance/standard deviation}}\\)"
+  },
+  {
+    "objectID": "w02/slides.html#example-game-reviews",
+    "href": "w02/slides.html#example-game-reviews",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Example: Game Reviews",
+    "text": "Example: Game Reviews\n\n(Data from Metacritic)"
+  },
+  {
+    "objectID": "w02/slides.html#adding-a-single-line",
+    "href": "w02/slides.html#adding-a-single-line",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Adding a Single Line",
+    "text": "Adding a Single Line\n\n(Data from Metacritic)"
+  },
+  {
+    "objectID": "w02/slides.html#or-a-single-ribbon",
+    "href": "w02/slides.html#or-a-single-ribbon",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Or a Single Ribbon",
+    "text": "Or a Single Ribbon"
+  },
+  {
+    "objectID": "w02/slides.html#example-the-normal-distribution",
+    "href": "w02/slides.html#example-the-normal-distribution",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Example: The Normal Distribution",
+    "text": "Example: The Normal Distribution\n\n\n\n(The distribution you saw a few slides ago)\n\n\n\n\n\n\n\n\n“RV \\(X\\) is normally distributed with mean \\({\\color{purple}\\mu}\\) and standard deviation \\({\\color{purple}\\sigma}\\)”\n\nTranslates to \\(X \\sim \\mathcal{N}(\\color{purple}{\\mu},\\color{purple}{\\sigma})\\)1\n\\(\\color{purple}{\\mu}\\) and \\(\\color{purple}{\\sigma}\\) are parameters2: the “knobs” or “sliders” which change the location/shape of the distribution\n\n\n\n\n\nThe parameters in this case give natural summaries of the data:\n\n\\({\\color{\\purple}\\mu}\\) = center (mean), \\({\\color{purple}\\sigma}\\) = variance around center\n\nMean can usually be interpreted intuitively; for the standard deviation, however, we usually need to use the 68-95-99.7 rule… But first, let’s look at some real-world data\n\nThroughout the course, this “calligraphic” font \\(\\mathcal{N}\\), \\(\\mathcal{D}\\), etc., will be used to denote distributionsThroughout the course, remember, purrple is for purrameters"
+  },
+  {
+    "objectID": "w02/slides.html#real-data-and-the-68-95-99.7-rule",
+    "href": "w02/slides.html#real-data-and-the-68-95-99.7-rule",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Real Data and the 68-95-99.7 Rule",
+    "text": "Real Data and the 68-95-99.7 Rule\n\n\n\n\n\n\n\nFigure 2: Heights (cm) for 18K professional athletes\n\n\n\n\n\n\n\nFigure 3: The 68-95-99.7 Rule visualized (Wikimedia Commons)\n\n\n\n\n\nThe point estimate \\(\\mu = 186.48\\) is straightforward: the average height of the athletes is 186.48cm. But how do we interpret the standard deviation, \\(\\sigma = 9.7\\)?\nUsing the 68-95-99.7 Rule: About 68% of the heights fall between\n\n\n\n\n[186.48 - 9.7\nand\n186.48 + 9.7]\n\n\n[176.78\nand\n196.18]"
   },
   {
     "objectID": "index.html",

@@ -350,7 +350,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Sunday Sep 3, 2023, 00:26:11</p>
+  <p class="date">Sunday Sep 3, 2023, 04:16:20</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -362,6 +362,9 @@ Jeff Jacobs
 
 .crunch-figures figcaption {
     margin-top: 0 !important;
+}
+.crunch-layout-panel .quarto-layout-panel {
+  margin-bottom: 0px !important;
 }
 .crunch-lists li {
     margin-top: 4px !important;
@@ -381,6 +384,9 @@ Jeff Jacobs
 }
 .crunch-title h2 {
     margin-bottom: 1px !important;
+}
+.param {
+    color: purple !important;
 }
 .small-title h2 {
     // font-size: var(--r-heading2-size) !important;
@@ -1401,45 +1407,99 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 <h1>Statistics: Univariate and Multivariate</h1>
 
 </section>
-<section id="random-variables-1" class="slide level2">
+<section id="random-variables-1" class="slide level2 crunch-math">
 <h2>Random Variables</h2>
 <ul>
 <li>Recall our discussion of <strong>random variables</strong>: used by analogy to <strong>algebra</strong>, since we can do math with them:</li>
-<li>Just as <span class="math inline">\(2 \cdot 3\)</span> is shorthand for <span class="math inline">\(2 + 2 + 2\)</span>, we can define a <em>variable</em> <span class="math inline">\(X\)</span> as shorthand for outcome of a random process. <span class="math display">\[
+<li>Just as <span class="math inline">\(2 \cdot 3\)</span> is shorthand for <span class="math inline">\(2 + 2 + 2\)</span>, we can define <span class="math inline">\(X\)</span> as shorthand for the possible outcomes of a random process. <span class="math display">\[
 \begin{align*}
-S = \{ &amp;\text{result of dice roll was 1}, \\
-&amp;\text{result of dice roll was 2}, \\
-&amp;\text{result of dice roll was 3}, \\
-&amp;\text{result of dice roll was 4}, \\
-&amp;\text{result of dice roll was 5}, \\
-&amp;\text{result of dice roll was 6}\} \rightsquigarrow X \in \{1,\ldots,6\}
+S = \{ &amp;\text{result of dice roll is 1}, \\
+&amp;\text{result of dice roll is 2}, \\
+&amp;\text{result of dice roll is 3}, \\
+&amp;\text{result of dice roll is 4}, \\
+&amp;\text{result of dice roll is 5}, \\
+&amp;\text{result of dice roll is 6}\} \rightsquigarrow X \in \{1,\ldots,6\}
 \end{align*}
 \]</span></li>
 </ul>
 </section>
-<section id="random-variables-as-events" class="slide level2">
+<section id="random-variables-as-events" class="slide level2 smaller">
 <h2>Random Variables as Events</h2>
 <ul>
-<li>Each value <span class="math inline">\(v\)</span> that a random variable <span class="math inline">\(X\)</span> can take on gives rise to an <strong>event</strong> <span class="math inline">\(X = v\)</span>: the <strong>event</strong> that the random variable <span class="math inline">\(X\)</span> takes on value <span class="math inline">\(v\)</span>.</li>
-<li>Since <span class="math inline">\(X = v\)</span> is an <strong>event</strong>, we can compute its probability <span class="math inline">\(\Pr(X = v)\)</span>!</li>
+<li>Each value <span class="math inline">\(v_X\)</span> that a random variable <span class="math inline">\(X\)</span> can take on gives rise to an <strong>event</strong> <span class="math inline">\(X = v_X\)</span>: the <strong>event</strong> that the random variable <span class="math inline">\(X\)</span> takes on value <span class="math inline">\(v\)</span>.</li>
+<li>Since <span class="math inline">\(X = v_X\)</span> is an <strong>event</strong>, we can compute its probability <span class="math inline">\(\Pr(X = v_X)\)</span>!</li>
 </ul>
+<table>
+<thead>
+<tr class="header">
+<th>Event in words</th>
+<th style="text-align: center;">Event in terms of RV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Result of dice roll is 1</td>
+<td style="text-align: center;"><span class="math inline">\(X = 1\)</span></td>
+</tr>
+<tr class="even">
+<td>Result of dice roll is 2</td>
+<td style="text-align: center;"><span class="math inline">\(X = 2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Result of dice roll is 3</td>
+<td style="text-align: center;"><span class="math inline">\(X = 3\)</span></td>
+</tr>
+<tr class="even">
+<td>Result of dice roll is 4</td>
+<td style="text-align: center;"><span class="math inline">\(X = 4\)</span></td>
+</tr>
+<tr class="odd">
+<td>Result of dice roll is 5</td>
+<td style="text-align: center;"><span class="math inline">\(X = 5\)</span></td>
+</tr>
+<tr class="even">
+<td>Result of dice roll is 6</td>
+<td style="text-align: center;"><span class="math inline">\(X = 6\)</span></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="doing-math-with-events" class="slide level2 smaller">
+<section id="doing-math-with-events" class="slide level2 smaller crunch-title crunch-math">
 <h2>Doing Math with Events</h2>
 <ul>
-<li>We can also (think of our analogy with logic, but this time think of algebra) <strong>do math</strong> with the random variables! We can think of events related to values <span class="math inline">\(X\)</span> can take on, and compute their probabilities <span class="math display">\[
+<li>We’ve seen how <span class="math inline">\(\Pr(\cdot)\)</span> can “encode” logical expressions involving uncertain outcomes.</li>
+<li>Even more powerful when paired with the notion of <strong>random variables</strong>: lets us also “encode” <strong>mathematical</strong> expressions involving uncertain quantities!</li>
+<li>Consider an experiment where we <strong>roll two dice</strong>. Let <span class="math inline">\(X\)</span> be the RV encoding the outcome of the first roll, and <span class="math inline">\(Y\)</span> be the RV encoding the outcome of the second roll.</li>
+<li>We can compute probabilities involving <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> separately, e.g., <span class="math inline">\(\Pr(X = 1) = \frac{1}{6}\)</span>, but we can <strong>also</strong> reason probabilistically about <strong>mathematical expressions</strong> involving <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>! For example, we can reason about their <strong>sum</strong>:</li>
+</ul>
+<p><span class="math display">\[
 \begin{align*}
-\text{two rolls} \mapsto P(\text{rolls sum to 10}) &amp;= P(X + Y = 10) \\
-&amp;= P(Y = 10 - X)
+\Pr(\text{rolls sum to 10}) &amp;= \Pr(X + Y = 10) \\
+&amp;= \Pr(Y = 10 - X)
 \end{align*}
-\]</span></li>
-<li><span class="math inline">\(P(\text{first roll above mean}) = P\left(X &gt; \frac{X+Y}{2}\right) = P(2X &gt; X+Y) = P(X &gt; Y)\)</span></li>
-<li>Just remember that probability <span class="math inline">\(P(\cdot)\)</span> is always probability of an <em>event</em>—random variables are just shorthand for quantifiable events.</li>
+\]</span></p>
+<ul>
+<li>Or about how the outcome of one roll will relate to the outcome of the other:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(\text{first roll above mean}) &amp;= \Pr\left(X &gt; \frac{X+Y}{2}\right) \\
+&amp;= \Pr(2X &gt; X+Y) = \Pr(X &gt; Y)
+\end{align*}
+\]</span></p>
+</section>
+<section id="are-random-variables-all-powerful" class="slide level2">
+<h2>Are Random Variables All-Powerful??</h2>
+<ul>
+<li>Just remember that probability <span class="math inline">\(P(\cdot)\)</span> is always probability of an <strong>event</strong>—random variables are just shorthand for quantifiable events.</li>
 <li>Not all events can be simplified via random variables!
 <ul>
 <li><span class="math inline">\(\text{catch a fish} \mapsto P(\text{trout}), P(\text{bass}), \ldots\)</span></li>
 </ul></li>
-<li>What types of events <em>can</em> be quantified like this?</li>
+<li>What types of events <em>can</em> be quantified like this?
+<ul>
+<li><em>(Hint: It has to do with a key topic in the early weeks of both DSAN 5000 and 5100…)</em></li>
+</ul></li>
 </ul>
 <aside class="notes">
 <p>The answer is, broadly, any situation where you’re modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we’re modeling dice, it makes sense to say e.g.&nbsp;“result is 6” + “result is 3” = “total is 9”. More on the next page!</p>
@@ -1455,11 +1515,195 @@ S = \{ &amp;\text{result of dice roll was 1}, \\
           display:block!important;
       }</style></aside>
 </section>
-<section id="multivariate-statistics" class="slide level2">
-<h2>Multivariate Statistics</h2>
+<section id="recall-types-of-variables" class="slide level2 smaller">
+<h2>Recall: Types of Variables</h2>
 <ul>
-<li>Multivariate Statistics</li>
+<li><strong>Categorical</strong>
+<ul>
+<li>No meaningful way to order values: <span class="math inline">\(\{\text{trout}, \text{bass}, \ldots \}\)</span></li>
+</ul></li>
+<li><strong>Ordinal</strong>
+<ul>
+<li>Can place in order (bigger, smaller), though <em>gaps</em> aren’t meaningful: <span class="math inline">\(\{{\color{orange}\text{great}},{\color{orange}\text{greater}},{\color{orange}\text{greatest}}\}\)</span></li>
+<li><span class="math inline">\({\color{orange}\text{greater}} \overset{?}{=} 2\cdot {\color{orange}\text{great}} - 1\)</span></li>
+</ul></li>
+<li><strong>Cardinal</strong>
+<ul>
+<li>Can place in order, and gaps are meaningful <span class="math inline">\(\implies\)</span> can do “standard” math with them! Example: <span class="math inline">\(\{{\color{blue}1},{\color{blue}2},\ldots,{\color{blue}10}\}\)</span></li>
+<li><span class="math inline">\({\color{blue}7}\overset{\color{green}\unicode{x2714}}{=} 2 \cdot {\color{blue}4} - 1\)</span></li>
+<li>If events have <strong>this structure</strong> (meaningful way to define multiplication, addition, subtraction), then we can analyze them as <strong>random variables</strong></li>
+</ul></li>
 </ul>
+</section>
+<section id="visualizing-discrete-rvs" class="slide level2 smaller">
+<h2>Visualizing Discrete RVs</h2>
+<ul>
+<li><strong>Ultimate Probability Pro-Tip</strong>: When you hear “discrete distribution”, think of a bar graph: <span class="math inline">\(x\)</span>-axis = events, bar height = probability of events</li>
+<li><strong>Two coins example</strong>: <span class="math inline">\(X\)</span> = RV representing <strong>number of heads</strong> obtained in two coin flips</li>
+</ul>
+
+<img data-src="index_files/figure-revealjs/dicrete-bar-graph-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="preview-visualizing-continuous-rvs" class="slide level2">
+<h2>(Preview:) Visualizing Continuous RVs</h2>
+<ul>
+<li>This works even for <strong>continuous</strong> distributions, if you focus on the <strong>area under the curve</strong> instead of the height:</li>
+</ul>
+
+<img data-src="index_files/figure-revealjs/continuous-area-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="probability-theory-gives-us-distributions-for-rvs-not-numbers" class="slide level2">
+<h2>Probability Theory Gives Us <em>Distributions</em> for RVs, not Numbers!</h2>
+<ul>
+<li>We’re going beyond “base” probability theory if we want to <strong>summarize</strong> these distributions</li>
+<li>However, we can understand a lot about the full distribution by looking at some basic <strong>summary statistics</strong>. Most common way to summarize:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 45%">
+<col style="width: 10%">
+<col style="width: 45%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\underbrace{\text{point estimate}}_{\text{mean/median}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\pm\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\underbrace{\text{uncertainty}}_{\text{variance/standard deviation}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-game-reviews" class="slide level2">
+<h2>Example: Game Reviews</h2>
+
+<img data-src="index_files/figure-revealjs/game-reviews-plot-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">(Data from <a href="https://www.metacritic.com/game/switch/the-legend-of-zelda-tears-of-the-kingdom?ref=hp">Metacritic</a>)</p></section>
+<section id="adding-a-single-line" class="slide level2">
+<h2>Adding a Single Line</h2>
+
+<img data-src="index_files/figure-revealjs/game-reviews-mean-line-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">(Data from <a href="https://www.metacritic.com/game/switch/the-legend-of-zelda-tears-of-the-kingdom?ref=hp">Metacritic</a>)</p></section>
+<section id="or-a-single-ribbon" class="slide level2">
+<h2>Or a Single Ribbon</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" data-hash="index_cache/revealjs/noribbon-demo_a6213be4266bbcecc60c457c28b6c0da" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/noribbon-demo-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell quarto-layout-cell" data-hash="index_cache/revealjs/ribbon-demo_4661fb70fe16b4200df51788b4650b36" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/ribbon-demo-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" data-hash="index_cache/revealjs/noribbon-demo-lowvar_7416c88b9b447ac16a2c15ad8bc100ea" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/noribbon-demo-lowvar-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell quarto-layout-cell" data-hash="index_cache/revealjs/ribbon-demo-lowvar_7bc77ac8c6ef9f0d799e942ca9422d9a" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/ribbon-demo-lowvar-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-the-normal-distribution" class="slide level2 smaller">
+<h2>Example: The Normal Distribution</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<em>(The distribution you saw a few slides ago)</em>
+</center>
+<div class="cell" data-hash="index_cache/revealjs/standard-normal-demo_b9f97d7d5b060786103ecd37c6c0345a">
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/standard-normal-demo-1.png" width="960"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>“RV <span class="math inline">\(X\)</span> is normally distributed with <span class="param"><strong>mean</strong></span> <span class="math inline">\({\color{purple}\mu}\)</span> and <span class="param"><strong>standard deviation</strong></span> <span class="math inline">\({\color{purple}\sigma}\)</span>”
+<ul>
+<li>Translates to <span class="math inline">\(X \sim \mathcal{N}(\color{purple}{\mu},\color{purple}{\sigma})\)</span><sup>1</sup></li>
+<li><span class="math inline">\(\color{purple}{\mu}\)</span> and <span class="math inline">\(\color{purple}{\sigma}\)</span> are <span style="color: purple;"><strong>parameters</strong></span><sup>2</sup>: the “knobs” or “sliders” which change the location/shape of the distribution</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<ul>
+<li>The parameters in this case give <strong>natural summaries</strong> of the data:
+<ul>
+<li><span class="math inline">\({\color{\purple}\mu}\)</span> = center (mean), <span class="math inline">\({\color{purple}\sigma}\)</span> = variance around center</li>
+</ul></li>
+<li><strong>Mean</strong> can usually be interpreted intuitively; for the <strong>standard deviation</strong>, however, we usually need to use the <a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule" target="_blank"><strong>68-95-99.7 rule</strong></a>… But first, let’s look at some real-world data</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Throughout the course, this “calligraphic” font <span class="math inline">\(\mathcal{N}\)</span>, <span class="math inline">\(\mathcal{D}\)</span>, etc., will be used to denote <strong>distributions</strong></p></li><li id="fn3"><p>Throughout the course, remember, <span style="color:purple;"><strong>purrple</strong></span> is for <span style="color:purple;"><strong>purrameters</strong></span></p></li></ol></aside></section>
+<section id="real-data-and-the-68-95-99.7-rule" class="slide level2 smaller crunch-layout-panel crunch-title crunch-figures crunch-lists">
+<h2>Real Data and the 68-95-99.7 Rule</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" data-hash="index_cache/revealjs/fig-height-plot_1665ea1c1251bbd7f6440862dc1127e9" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display">
+<div id="fig-height-plot" class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/fig-height-plot-1.png" width="960"></p>
+<figcaption>Figure&nbsp;2: Heights (cm) for 18K professional athletes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="fig-empirical" class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
+<figure>
+<p><img src="images/empirical_rule.svg" height="345"></p>
+<figcaption>Figure&nbsp;3: The 68-95-99.7 Rule visualized (<a href="https://commons.wikimedia.org/wiki/File:Empirical_rule_histogram.svg" target="_blank">Wikimedia Commons</a>)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>The <strong>point estimate</strong> <span class="math inline">\(\mu = 186.48\)</span> is straightforward: <em>the average height of the athletes is 186.48cm</em>. But how do we interpret the <strong>standard deviation</strong>, <span class="math inline">\(\sigma = 9.7\)</span>?</li>
+<li>Using the <strong>68-95-99.7 Rule</strong>: <em>About 68% of the heights fall between</em></li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">[186.48 - 9.7</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: center;">186.48 + 9.7]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[176.78</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: center;">196.18]</td>
+</tr>
+</tbody>
+</table>
+<!---
+ ## 68-95-99.7 Rule
+
+
+::: {.cell hash='index_cache/revealjs/standard-normal-empirical_1ae359d3c4fe90d8de9f6c3c5458632d'}
+::: {.cell-output-display}
+![](index_files/figure-revealjs/standard-normal-empirical-1.png){width=960}
+:::
+:::
+
+--->
+<!---
+ 
+## Looking Ahead: Classification vs. Regression {.smaller}
+
+* What types of vars are we guessing for **classification** tasks?
+  * Answer: Discrete variables
+  * Binary classification $\leftrightarrow$ Dichotomous variables: $X \in \{T, F\}$. Example: $X \in \{\text{spam}, \text{not spam}\}$
+* **Regression** tasks?
+  * Answer: Continuous variables. $X \in \mathbb{R}$. Example: predicted temperature
+* And where does probability come in?
+  * Answer: Allows us to quantify $\Pr(\mathcal{H} \mid X)$!
+  * $\mathcal{H}_1 = \text{email is spam}$, $\mathcal{H}_0 = \text{email is not spam}$, $X = \text{email contents}$
+  * $\mathcal{H}_1 = \text{Tomorrow's temperature} > 20^\circ$, $\mathcal{H}_0 = \text{Tomorrow's temperature} \leq 20^\circ$,<br>$X = \text{Historical temperature data}$
+ 
+--->
 
 <div class="footer footer-default">
 
