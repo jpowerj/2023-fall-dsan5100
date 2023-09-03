@@ -13,10 +13,10 @@ categories:
 execute:
   enabled: true
 format:
-  html:
-    #cache: true
-    #output-file: notes.html
-    html-math-method: mathjax
+  # html:
+  #   #cache: true
+  #   #output-file: notes.html
+  #   html-math-method: mathjax
   revealjs:
     html-math-method: mathjax
     slide-number: true
@@ -607,7 +607,7 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
 
 [^iso]: For math majors, you can think of it as an **isomorphism** between the objects and operations of the three subjects
 
-## Example: Rolling Dice {.smaller}
+## Example: Rolling Two Dice {.smaller}
 
 * **Logic**: We can define 4 predicates:
   * $p_1$ = "First roll is $H$", $q_1$ = "First roll is $T$"
@@ -616,15 +616,133 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
   * $f_1 = p_1 \wedge q_2$: "First roll is $H$ and second roll is $T$"
   * $f_2 = p_1 \wedge q_2$: "First roll is $H$ or second roll is $T$"
   * $f_3 = \neg p_1$: "First roll is not $H$"
-* **The issue?**: We don't **know** (until after the dice have been rolled) whether these are **true** or **false**!
+* **The issue?**: We don't know, until **after** the dice have been rolled, whether these are **true** or **false**!
+* But, we should still be able to say something about their **likelihood**, for example, whether $f_1$ or $f_2$ is more likely to happen... **Enter probability theory!**
 
-**Converting into set theory...**
+## Logic $\rightarrow$ Probability
 
-# Statistics {data-stack-name="Statistics"}
+* Probability theory lets us reason about the **uncertainty** surrounding **logical** predicates like $p$ and $q$, by:
+  (a) encoding them as **sets of possibilities** $P$ and $Q$, and
+  (b) representing the uncertainty around any given possibility using a **probability measure** $\Pr: S \mapsto [0,1]$,
+* thus allowing us to reason about
+  (a) the likelihood of these set-encoded predicates on their own: $\Pr(P)$ and $\Pr(Q)$, but also
+  (b) their **logical connections**: $\Pr(p \wedge q) = \Pr(P \cap Q)$, $\Pr(\neg p) = \Pr(P^c)$, and so on.
 
-## Univariate Statistics
+## Rolling Two Dice: Logic $\rightarrow$ Probability {.smaller}
 
-* Statistics
+* Returning to the dice example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a **sample space** $S = \{TT, TH, HT, HH\}$ of all possible **outcomes** of our dice-rolling experiment, noting that $|S| = 4$, so there are 4 possible outcomes.
+* Then we can associate each **predicate** with an **event**, a **subset** of the sample space, and use our **naïve definition** to compute the probability of these events:
+
+| Predicate | Event | Probability |
+| - | - | - |
+| $p_1$ = "First roll is $H$" | $P_1 = \{HT, HH\}$ | $\Pr(P_1) = \frac{|P_1|}{|S|} = \frac{2}{4} = \frac{1}{2}$ |
+| $q_1$ = "First roll is $T$" | $Q_1 = \{TT, TH\}$ | $\Pr(Q_1) = \frac{|Q_1|}{|S|} = \frac{2}{4} = \frac{1}{2}$
+| $p_2$ = "Second roll is $H$" | $P_2 = \{TH, HH\}$ | $\Pr(P_2) = \frac{|P_2|}{|S|} = \frac{2}{4} = \frac{1}{2}$ |
+| $q_2$ = "Second roll is $T$" | $Q_2 = \{TT, HT\}$ | $\Pr(Q_2) = \frac{|Q_2|}{|S|} = \frac{2}{4} = \frac{1}{2}$
+
+## Moving from Predicates to Formulas {.smaller .crunch-table .crunch-math}
+
+* Notice that, in the four rows of the previous table, we were only computing the probabilities of "simple" events: events corresponding to a **single** predicate
+* But we promised that probability theory lets us compute probabilities for **logical formulas** as well! ...The magic of encoding events as **sets** becomes clear:
+
+| Formula | Event | Probability |
+| - |:- |:- |
+| $f_1 = p_1 \wedge q_2$ | $$ \begin{align*} F_1 &= P_1 \cap Q_2 \\ &= \{HT, HH\} \cap \{TT, HT\} \\ &= \{HT\} \end{align*} $$ | $$\begin{align*} \Pr(F_1) &= \Pr(\{HT\}) \\ &= \frac{|\{HT\}|}{|S|} = \frac{1}{4} \end{align*}$$ |
+| $f_2 = p_1 \vee q_2$ | $$\begin{align*} F_2 &= P_1 \cup Q_2 \\ &= \{HT, HH\} \cup \{TT, HT\} \\ &= \{TT, HT, HH\} \end{align*}$$ | $$\begin{align*} \Pr(F_2) &= \Pr(\{TT, HT, HH\}) \\ &= \frac{|\{TT, HT, HH\}|}{|S|} = \frac{3}{4} \end{align*}$$ |
+| $f_3 = \neg p_1$ | $$\begin{align*} F_3 &= P_1^c \\ &= \{HT, HH\}^c \\ &= \{TT, TH\}\end{align*}$$ | $$\begin{align*} \Pr(F_3) &= \Pr(\{TT, TH\}) \\ &= \frac{|\{TT, TH\}|}{|S|} = \frac{2}{4} = \frac{1}{2} \end{align*}$$ |
+
+## Using "Rules" of Probability {.smaller}
+
+* Hopefully, though, you found all this churning through set theory to be a bit tedious...
+* This is where **rules of probability** come from! They **simplify** set-theoretic computations into simple multiplications, additions, and subtractions:
+  * $\Pr(A \cap B) = \Pr(A) \times \Pr(B)$
+  * $\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)$
+  * $\Pr(A^c) = 1 - \Pr(A)$
+* Since we know probabilities of the "simple" events $P_1$, $Q_1$, $P_2$, $Q_2$, we don't need to "look inside them"! Just take the probabilities and multiply/add/subtract as needed:
+
+| Formula | Event | Probability |
+| - | - | - |
+| $f_1 = p_1 \wedge q_2$ | $F_1 = P_1 \cap Q_2$ | $\Pr(F_1) = \Pr(P_1) \times \Pr(Q_2) = \frac{1}{2}\times \frac{1}{2} = \frac{1}{4}$ |
+| $f_2 = p_1 \vee q_2$ | $F_2 = P_1 \cup Q_2$ | $$\textstyle{\begin{align*} \textstyle \Pr(F_2) &= \Pr(P_1) + \Pr(Q_2) - \Pr(P_1 \cap Q_2) \\ \textstyle &= \frac{1}{2} + \frac{1}{2} - \frac{1}{4} = \frac{3}{4} \end{align*}}$$ |
+| $f_3 = \neg p_1$ | $F_3 = P_1^c$ | $\Pr(F_3) = 1 - \Pr(P_1) = 1 - \frac{1}{2} = \frac{1}{2}$ |
+
+## "Importing" Results from Logic
+
+* This deep connection between the three fields means that, if we have some useful theorem or formula from one field, we can immediately put it to use in another!
+* For example: **DeMorgan's Laws** were developed in logic (DeMorgan was a 19th-century logician), and basically just tell us how to **distribute** logic operators:
+
+$$
+\begin{align*}
+\underbrace{\neg(p \wedge q)}_{\text{``}p\text{ and }q\text{'' is not true}} &\iff \underbrace{\neg p \vee \neg q}_{p\text{ is not true or }q\text{ is not true}} \\
+\underbrace{\neg(p \vee q)}_{\text{``}p\text{ or }q\text{'' is not true}} &\iff \underbrace{\neg p \wedge \neg q}_{p\text{ is not true and }q\text{ is not true}}
+\end{align*}
+$$
+
+## Converting to Probability Theory {.smaller}
+
+* So, using the same principles we used in our dice rolling examples, we can consider **events** $P$ and $Q$, and get the following "translation" of DeMorgan's Laws:
+
+| Logic | Set Theory | Probability Theory |
+| - | - | - |
+| $\neg(p \wedge q) = \neg p \vee \neg q$ | $(P \cap Q)^c = P^c \cup Q^c$ | $\Pr((P \cap Q)^c) = \Pr(P^c \cup Q^c)$ |
+| $\neg(p \vee q) = \neg p \wedge \neg q$ | $(P \cup Q)^c = P^c \cap Q^c$ | $\Pr((P \cup Q)^c) = \Pr(P^c \cap Q^c)$ |
+
+* Note that, since these are **isomorphic** to one another, we could have derived DeMorgan's Laws from **within** probability theory, rather than the other way around:
+
+$$
+\begin{align*}
+\Pr((P \cap Q)^c) &= 1 - \Pr(P \cap Q) = 1 - \Pr(P)\Pr(Q) \\
+&= 1 - (1-\Pr(P^c))(1 - \Pr(Q^c)) \\
+&= 1 - [1 - \Pr(P^c) - \Pr(Q^c) + \Pr(P^c)\Pr(Q^c)] \\
+&= \Pr(P^c) + \Pr(Q^c) - \Pr(P^c)\Pr(Q^c) \\
+&= \Pr(P^c) + \Pr(Q^c) - \Pr(P^c \cap Q^c) \\
+&= \Pr(P^c \cup Q^c) \; ✅
+\end{align*}
+$$
+
+# Statistics: Univariate and Multivariate {data-stack-name="Statistics"}
+
+## Random Variables
+
+* Recall our discussion of **random variables**: used by analogy to **algebra**, since we can do math with them:
+* Just as $2 \cdot 3$ is shorthand for $2 + 2 + 2$, we can define a *variable* $X$ as shorthand for outcome of a random process.
+$$
+\begin{align*}
+S = \{ &\text{result of dice roll was 1}, \\
+&\text{result of dice roll was 2}, \\
+&\text{result of dice roll was 3}, \\
+&\text{result of dice roll was 4}, \\
+&\text{result of dice roll was 5}, \\
+&\text{result of dice roll was 6}\} \rightsquigarrow X \in \{1,\ldots,6\}
+\end{align*}
+$$
+
+## Random Variables as Events
+
+
+* Each value $v$ that a random variable $X$ can take on gives rise to an **event** $X = v$: the **event** that the random variable $X$ takes on value $v$.
+* Since $X = v$ is an **event**, we can compute its probability $\Pr(X = v)$!
+
+## Doing Math with Events {.smaller}
+
+* We can also (think of our analogy with logic, but this time think of algebra) **do math** with the random variables! We can think of events related to values $X$ can take on, and compute their probabilities
+$$
+\begin{align*}
+\text{two rolls} \mapsto P(\text{rolls sum to 10}) &= P(X + Y = 10) \\
+&= P(Y = 10 - X)
+\end{align*}
+$$
+* $P(\text{first roll above mean}) = P\left(X > \frac{X+Y}{2}\right) = P(2X > X+Y) = P(X > Y)$
+* Just remember that probability $P(\cdot)$ is always probability of an *event*---random variables are just shorthand for quantifiable events.
+* Not all events can be simplified via random variables!
+  * $\text{catch a fish} \mapsto P(\text{trout}), P(\text{bass}), \ldots$
+* What types of events *can* be quantified like this?
+
+::: {.notes}
+
+The answer is, broadly, any situation where you're modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we're modeling dice, it makes sense to say e.g. "result is 6" + "result is 3" = "total is 9". More on the next page!
+
+:::
 
 ## Multivariate Statistics
 

@@ -350,7 +350,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Saturday Sep 2, 2023, 20:01:03</p>
+  <p class="date">Saturday Sep 2, 2023, 23:40:12</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -593,15 +593,15 @@ Model-&gt;Obs
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust2" class="cluster">
-<title>
-cluster_03
-</title>
-<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <g id="clust1" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust1" class="cluster">
 <title>
 cluster_04
 </title>
-<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <!-- Tree --> <g id="node1" class="node">
+<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <g id="clust2" class="cluster">
+<title>
+cluster_03
+</title>
+<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <!-- Tree --> <g id="node1" class="node">
 <title>
 Tree
 </title>
@@ -1146,8 +1146,8 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 </tbody>
 </table>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>For math majors, you can think of it as an <strong>isomorphism</strong> between the objects and operations of the three subjects</p></li></ol></aside></section>
-<section id="example-rolling-dice" class="slide level2 smaller">
-<h2>Example: Rolling Dice</h2>
+<section id="example-rolling-two-dice" class="slide level2 smaller">
+<h2>Example: Rolling Two Dice</h2>
 <ul>
 <li><strong>Logic</strong>: We can define 4 predicates:
 <ul>
@@ -1160,20 +1160,266 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 <li><span class="math inline">\(f_2 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> or second roll is <span class="math inline">\(T\)</span>”</li>
 <li><span class="math inline">\(f_3 = \neg p_1\)</span>: “First roll is not <span class="math inline">\(H\)</span>”</li>
 </ul></li>
-<li><strong>The issue?</strong>: We don’t <strong>know</strong> (until after the dice have been rolled) whether these are <strong>true</strong> or <strong>false</strong>!</li>
+<li><strong>The issue?</strong>: We don’t know, until <strong>after</strong> the dice have been rolled, whether these are <strong>true</strong> or <strong>false</strong>!</li>
+<li>But, we should still be able to say something about their <strong>likelihood</strong>, for example, whether <span class="math inline">\(f_1\)</span> or <span class="math inline">\(f_2\)</span> is more likely to happen… <strong>Enter probability theory!</strong></li>
 </ul>
-<p><strong>Converting into set theory…</strong></p>
+</section>
+<section id="logic-rightarrow-probability" class="slide level2">
+<h2>Logic <span class="math inline">\(\rightarrow\)</span> Probability</h2>
+<ul>
+<li>Probability theory lets us reason about the <strong>uncertainty</strong> surrounding <strong>logical</strong> predicates like <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, by:
+<ol type="a">
+<li>encoding them as <strong>sets of possibilities</strong> <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>, and</li>
+<li>representing the uncertainty around any given possibility using a <strong>probability measure</strong> <span class="math inline">\(\Pr: S \mapsto [0,1]\)</span>,</li>
+</ol></li>
+<li>thus allowing us to reason about
+<ol type="a">
+<li>the likelihood of these set-encoded predicates on their own: <span class="math inline">\(\Pr(P)\)</span> and <span class="math inline">\(\Pr(Q)\)</span>, but also</li>
+<li>their <strong>logical connections</strong>: <span class="math inline">\(\Pr(p \wedge q) = \Pr(P \cap Q)\)</span>, <span class="math inline">\(\Pr(\neg p) = \Pr(P^c)\)</span>, and so on.</li>
+</ol></li>
+</ul>
+</section>
+<section id="rolling-two-dice-logic-rightarrow-probability" class="slide level2 smaller">
+<h2>Rolling Two Dice: Logic <span class="math inline">\(\rightarrow\)</span> Probability</h2>
+<ul>
+<li>Returning to the dice example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a <strong>sample space</strong> <span class="math inline">\(S = \{TT, TH, HT, HH\}\)</span> of all possible <strong>outcomes</strong> of our dice-rolling experiment, noting that <span class="math inline">\(|S| = 4\)</span>, so there are 4 possible outcomes.</li>
+<li>Then we can associate each <strong>predicate</strong> with an <strong>event</strong>, a <strong>subset</strong> of the sample space, and use our <strong>naïve definition</strong> to compute the probability of these events:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predicate</th>
+<th>Event</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p_1\)</span> = “First roll is <span class="math inline">\(H\)</span>”</td>
+<td><span class="math inline">\(P_1 = \{HT, HH\}\)</span></td>
+<td><span class="math inline">\(\Pr(P_1) = \frac{|P_1|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_1\)</span> = “First roll is <span class="math inline">\(T\)</span>”</td>
+<td><span class="math inline">\(Q_1 = \{TT, TH\}\)</span></td>
+<td><span class="math inline">\(\Pr(Q_1) = \frac{|Q_1|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_2\)</span> = “Second roll is <span class="math inline">\(H\)</span>”</td>
+<td><span class="math inline">\(P_2 = \{TH, HH\}\)</span></td>
+<td><span class="math inline">\(\Pr(P_2) = \frac{|P_2|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(q_2\)</span> = “Second roll is <span class="math inline">\(T\)</span>”</td>
+<td><span class="math inline">\(Q_2 = \{TT, HT\}\)</span></td>
+<td><span class="math inline">\(\Pr(Q_2) = \frac{|Q_2|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="moving-from-predicates-to-formulas" class="slide level2 smaller crunch-table crunch-math">
+<h2>Moving from Predicates to Formulas</h2>
+<ul>
+<li>Notice that, in the four rows of the previous table, we were only computing the probabilities of “simple” events: events corresponding to a <strong>single</strong> predicate</li>
+<li>But we promised that probability theory lets us compute probabilities for <strong>logical formulas</strong> as well! …The magic of encoding events as <strong>sets</strong> becomes clear:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th style="text-align: left;">Event</th>
+<th style="text-align: left;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span></td>
+<td style="text-align: left;"><span class="math display">\[ \begin{align*} F_1 &amp;= P_1 \cap Q_2 \\ &amp;= \{HT, HH\} \cap \{TT, HT\} \\ &amp;= \{HT\} \end{align*} \]</span></td>
+<td style="text-align: left;"><span class="math display">\[\begin{align*} \Pr(F_1) &amp;= \Pr(\{HT\}) \\ &amp;= \frac{|\{HT\}|}{|S|} = \frac{1}{4} \end{align*}\]</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f_2 = p_1 \vee q_2\)</span></td>
+<td style="text-align: left;"><span class="math display">\[\begin{align*} F_2 &amp;= P_1 \cup Q_2 \\ &amp;= \{HT, HH\} \cup \{TT, HT\} \\ &amp;= \{TT, HT, HH\} \end{align*}\]</span></td>
+<td style="text-align: left;"><span class="math display">\[\begin{align*} \Pr(F_2) &amp;= \Pr(\{TT, HT, HH\}) \\ &amp;= \frac{|\{TT, HT, HH\}|}{|S|} = \frac{3}{4} \end{align*}\]</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(f_3 = \neg p_1\)</span></td>
+<td style="text-align: left;"><span class="math display">\[\begin{align*} F_3 &amp;= P_1^c \\ &amp;= \{HT, HH\}^c \\ &amp;= \{TT, TH\}\end{align*}\]</span></td>
+<td style="text-align: left;"><span class="math display">\[\begin{align*} \Pr(F_3) &amp;= \Pr(\{TT, TH\}) \\ &amp;= \frac{|\{TT, TH\}|}{|S|} = \frac{2}{4} = \frac{1}{2} \end{align*}\]</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="using-rules-of-probability" class="slide level2 smaller">
+<h2>Using “Rules” of Probability</h2>
+<ul>
+<li>Hopefully, though, you found all this churning through set theory to be a bit tedious…</li>
+<li>This is where <strong>rules of probability</strong> come from! They <strong>simplify</strong> set-theoretic computations into simple multiplications, additions, and subtractions:
+<ul>
+<li><span class="math inline">\(\Pr(A \cap B) = \Pr(A) \times \Pr(B)\)</span></li>
+<li><span class="math inline">\(\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)\)</span></li>
+<li><span class="math inline">\(\Pr(A^c) = 1 - \Pr(A)\)</span></li>
+</ul></li>
+<li>Since we know probabilities of the “simple” events <span class="math inline">\(P_1\)</span>, <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(P_2\)</span>, <span class="math inline">\(Q_2\)</span>, we don’t need to “look inside them”! Just take the probabilities and multiply/add/subtract as needed:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Formula</th>
+<th>Event</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span></td>
+<td><span class="math inline">\(F_1 = P_1 \cap Q_2\)</span></td>
+<td><span class="math inline">\(\Pr(F_1) = \Pr(P_1) \times \Pr(Q_2) = \frac{1}{2}\times \frac{1}{2} = \frac{1}{4}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f_2 = p_1 \vee q_2\)</span></td>
+<td><span class="math inline">\(F_2 = P_1 \cup Q_2\)</span></td>
+<td><span class="math display">\[\textstyle{\begin{align*} \textstyle \Pr(F_2) &amp;= \Pr(P_1) + \Pr(Q_2) - \Pr(P_1 \cap Q_2) \\ \textstyle &amp;= \frac{1}{2} + \frac{1}{2} - \frac{1}{4} = \frac{3}{4} \end{align*}}\]</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(f_3 = \neg p_1\)</span></td>
+<td><span class="math inline">\(F_3 = P_1^c\)</span></td>
+<td><span class="math inline">\(\Pr(F_3) = 1 - \Pr(P_1) = 1 - \frac{1}{2} = \frac{1}{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="importing-results-from-logic" class="slide level2">
+<h2>“Importing” Results from Logic</h2>
+<ul>
+<li>This deep connection between the three fields means that, if we have some useful theorem or formula from one field, we can immediately put it to use in another!</li>
+<li>For example: <strong>DeMorgan’s Laws</strong> were developed in logic (DeMorgan was a 19th-century logician), and basically just tell us how to <strong>distribute</strong> logic operators:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\underbrace{\neg(p \wedge q)}_{\text{``}p\text{ and }q\text{'' is not true}} &amp;\iff \underbrace{\neg p \vee \neg q}_{p\text{ is not true or }q\text{ is not true}} \\
+\underbrace{\neg(p \vee q)}_{\text{``}p\text{ or }q\text{'' is not true}} &amp;\iff \underbrace{\neg p \wedge \neg q}_{p\text{ is not true and }q\text{ is not true}}
+\end{align*}
+\]</span></p>
+</section>
+<section id="converting-to-probability-theory" class="slide level2 smaller">
+<h2>Converting to Probability Theory</h2>
+<ul>
+<li>So, using the same principles we used in our dice rolling examples, we can consider <strong>events</strong> <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>, and get the following “translation” of DeMorgan’s Laws:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Logic</th>
+<th>Set Theory</th>
+<th>Probability Theory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\neg(p \wedge q) = \neg p \vee \neg q\)</span></td>
+<td><span class="math inline">\((P \cap Q)^c = P^c \cup Q^c\)</span></td>
+<td><span class="math inline">\(\Pr((P \cap Q)^c) = \Pr(P^c \cup Q^c)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\neg(p \vee q) = \neg p \wedge \neg q\)</span></td>
+<td><span class="math inline">\((P \cup Q)^c = P^c \cap Q^c\)</span></td>
+<td><span class="math inline">\(\Pr((P \cup Q)^c) = \Pr(P^c \cap Q^c)\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Note that, since these are <strong>isomorphic</strong> to one another, we could have derived DeMorgan’s Laws from <strong>within</strong> probability theory, rather than the other way around:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\Pr((P \cap Q)^c) &amp;= 1 - \Pr(P \cap Q) = 1 - \Pr(P)\Pr(Q) \\
+&amp;= 1 - (1-\Pr(P^c))(1 - \Pr(Q^c)) \\
+&amp;= 1 - [1 - \Pr(P^c) - \Pr(Q^c) + \Pr(P^c)\Pr(Q^c)] \\
+&amp;= \Pr(P^c) + \Pr(Q^c) - \Pr(P^c)\Pr(Q^c) \\
+&amp;= \Pr(P^c) + \Pr(Q^c) - \Pr(P^c \cap Q^c) \\
+&amp;= \Pr(P^c \cup Q^c) \; ✅
+\end{align*}
+\]</span></p>
 </section></section>
 <section>
-<section id="statistics" class="title-slide slide level1 center" data-stack-name="Statistics">
-<h1>Statistics</h1>
+<section id="statistics-univariate-and-multivariate" class="title-slide slide level1 center" data-stack-name="Statistics">
+<h1>Statistics: Univariate and Multivariate</h1>
 
 </section>
-<section id="univariate-statistics" class="slide level2">
-<h2>Univariate Statistics</h2>
+<section id="random-variables-1" class="slide level2">
+<h2>Random Variables</h2>
 <ul>
-<li>Statistics</li>
+<li>Recall our discussion of <strong>random variables</strong>: used by analogy to <strong>algebra</strong>, since we can do math with them:</li>
+<li>Just as <span class="math inline">\(2 \cdot 3\)</span> is shorthand for <span class="math inline">\(2 + 2 + 2\)</span>, we can define a <em>variable</em> <span class="math inline">\(X\)</span> as shorthand for outcome of a random process. <span class="math display">\[
+\begin{align*}
+S = \{ &amp;\text{result of dice roll was 1}, \\
+&amp;\text{result of dice roll was 2}, \\
+&amp;\text{result of dice roll was 3}, \\
+&amp;\text{result of dice roll was 4}, \\
+&amp;\text{result of dice roll was 5}, \\
+&amp;\text{result of dice roll was 6}\} \rightsquigarrow X \in \{1,\ldots,6\}
+\end{align*}
+\]</span></li>
 </ul>
+</section>
+<section id="random-variables-as-events" class="slide level2">
+<h2>Random Variables as Events</h2>
+<ul>
+<li>Each value <span class="math inline">\(v\)</span> that a random variable <span class="math inline">\(X\)</span> can take on gives rise to an <strong>event</strong> <span class="math inline">\(X = v\)</span>: the <strong>event</strong> that the random variable <span class="math inline">\(X\)</span> takes on value <span class="math inline">\(v\)</span>.</li>
+<li>Since <span class="math inline">\(X = v\)</span> is an <strong>event</strong>, we can compute its probability <span class="math inline">\(\Pr(X = v)\)</span>!</li>
+</ul>
+</section>
+<section id="doing-math-with-events" class="slide level2 smaller">
+<h2>Doing Math with Events</h2>
+<ul>
+<li>We can also (think of our analogy with logic, but this time think of algebra) <strong>do math</strong> with the random variables! We can think of events related to values <span class="math inline">\(X\)</span> can take on, and compute their probabilities <span class="math display">\[
+\begin{align*}
+\text{two rolls} \mapsto P(\text{rolls sum to 10}) &amp;= P(X + Y = 10) \\
+&amp;= P(Y = 10 - X)
+\end{align*}
+\]</span></li>
+<li><span class="math inline">\(P(\text{first roll above mean}) = P\left(X &gt; \frac{X+Y}{2}\right) = P(2X &gt; X+Y) = P(X &gt; Y)\)</span></li>
+<li>Just remember that probability <span class="math inline">\(P(\cdot)\)</span> is always probability of an <em>event</em>—random variables are just shorthand for quantifiable events.</li>
+<li>Not all events can be simplified via random variables!
+<ul>
+<li><span class="math inline">\(\text{catch a fish} \mapsto P(\text{trout}), P(\text{bass}), \ldots\)</span></li>
+</ul></li>
+<li>What types of events <em>can</em> be quantified like this?</li>
+</ul>
+<aside class="notes">
+<p>The answer is, broadly, any situation where you’re modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we’re modeling dice, it makes sense to say e.g.&nbsp;“result is 6” + “result is 3” = “total is 9”. More on the next page!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="multivariate-statistics" class="slide level2">
 <h2>Multivariate Statistics</h2>

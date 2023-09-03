@@ -7,209 +7,6 @@
     "text": "(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)\n\n\n\n\n\n\nToday’s Links\n\n\n\n\nWeek 1 Lecture Notes\nWeek 1 Lecture Recording"
   },
   {
-    "objectID": "w02/index.html",
-    "href": "w02/index.html",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "",
-    "text": "Open slides in new window →"
-  },
-  {
-    "objectID": "w02/index.html#prof.-jeff-introduction",
-    "href": "w02/index.html#prof.-jeff-introduction",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Prof. Jeff Introduction!",
-    "text": "Prof. Jeff Introduction!\n\nBorn and raised in NW DC → high school in Rockville, MD\nUniversity of Maryland: Computer Science, Math, Economics (2008-2012)"
-  },
-  {
-    "objectID": "w02/index.html#grad-school",
-    "href": "w02/index.html#grad-school",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Grad School",
-    "text": "Grad School\n\nStudied abroad in Beijing (Peking University/北大) → internship with Huawei in Hong Kong (HKUST)\n\n\n\n\nStanford for MS in Computer Science (2012-2014)\nResearch Economist at UC Berkeley (2014-2015)\n\n\n\n\n\n\nColumbia (NYC) for PhD[+Postdoc] in Political Science (2015-2023)"
-  },
-  {
-    "objectID": "w02/index.html#dissertation-political-science-history",
-    "href": "w02/index.html#dissertation-political-science-history",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Dissertation (Political Science + History)",
-    "text": "Dissertation (Political Science + History)\n“Our Word is Our Weapon”: Text-Analyzing Wars of Ideas from the French Revolution to the First Intifada"
-  },
-  {
-    "objectID": "w02/index.html#research-labor-economics",
-    "href": "w02/index.html#research-labor-economics",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Research (Labor Economics)",
-    "text": "Research (Labor Economics)\n\n\n\n“Monopsony in Online Labor Markets”: Machine Learning to enhance causal estimates of the effect of job description language on uptake rate\n\n\n\n“Freedom as Non-Domination in the Labor Market”: Game-theoretic models of workers’ rights (monopsony vs. labor discipline)\n\n\n\n\n\n“Unsupervised Extraction of Workplace Rights and Duties from Collective Bargaining Agreements”: Linguistic (dependency) parses of contracts → time series of worker vs. employer rights and responsibilities over time"
-  },
-  {
-    "objectID": "w02/index.html#deterministic-processes",
-    "href": "w02/index.html#deterministic-processes",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Deterministic Processes",
-    "text": "Deterministic Processes\n\nGiven a set of inputs, we can compute the outcome exactly\nExample: Given the radius of a circle, we can compute its area without any uncertainty. \\(r \\mapsto \\pi r^2\\)\n(The fact that we can compute the outcome doesn’t mean that it’s easy to do so! See, e.g., the double pendulum)\n\n\n\n\nImage credit: Tenor.com\n\n\n\nThe pendulum example points to the fact that the notion of a chaotic system, one which is “sensitive to initial conditions”, is different from that of a stochastic system."
-  },
-  {
-    "objectID": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
-    "href": "w02/index.html#holy-grail-deterministic-model-newtonian-physics",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
-  },
-  {
-    "objectID": "w02/index.html#but-what-happens-when",
-    "href": "w02/index.html#but-what-happens-when",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "But What Happens When…",
-    "text": "But What Happens When…\n\\[\n\\text{Outcome}\\left(\\text{Dice Roll}\\right) = \\; ?\\frac{?_1?_2}{?^2}\n\\]\n\n\n\nPre-Enlightenment\n\n\n\n\nHans Sebald Beham, Fortuna (1541), CC BY 4.0, via Wikimedia Commons\n\n\n\n\nPost-Enlightenment\n\n\n\n\nBlaise Pascal, Traité du triangle arithmétique (1665). Public Domain, via Internet Archive"
-  },
-  {
-    "objectID": "w02/index.html#random-processes",
-    "href": "w02/index.html#random-processes",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Random Processes",
-    "text": "Random Processes\n\n\n\nCan’t compute the outcome exactly, but can still say something about potential outcomes!\nExample: randomly chosen radius \\(r \\in [0,1]\\), what can we say about \\(A = \\pi r^2\\)?\n\nUnif: \\([0,\\pi]\\) equally likely\nExp: closer to \\(0\\) more likely\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(ggplot2)\nN &lt;- 1000\nradii &lt;- rexp(N, 4)\ntitle &lt;- paste0(N, \" Exponentially-Distributed Radii\")\nplot_circ_with_distr(N, radii, title, alpha=0.15)\n\nWarning: Removed 1456 rows containing missing values (`geom_path()`)."
-  },
-  {
-    "objectID": "w02/index.html#data-ground-truth-noise",
-    "href": "w02/index.html#data-ground-truth-noise",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Data = Ground Truth + Noise",
-    "text": "Data = Ground Truth + Noise\n\nDepressing but true origin of statistics (as opposed to probability): the Plague 😷\n\n\n\n\n\n\n\nGround Truth: The Great Plague (Lord Have Mercy on London, Unknown Artist, circa 1665, via Wikimedia Commons)\n\n\n\n\n\n\n\nNoisy Data (Recorded amidst chaos): London Bill of Mortality, 1665 (Public Domain, Wellcome Collection)"
-  },
-  {
-    "objectID": "w02/index.html#random-variables",
-    "href": "w02/index.html#random-variables",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Random Variables",
-    "text": "Random Variables\n\nIn algebra, to solve problems we work with variables\nIn probability theory, to solve problems we work with random variables\nRecall the difference between random and deterministic: \\(A = \\pi r^2\\) tells us that, given a value of \\(r\\), we can solve for the unique value of \\(A\\)\nIn probability theory, however, there is no one “true” value of a random variable \\(X\\).\nLet \\(X = f(N)\\) mean that \\(X\\) is the result of a rolled die, where the die has \\(N\\) sides.\nPlugging in \\(N = 6\\) (standard 6-sided die) still doesn’t mean we know “the” value of \\(X\\). However, (if the die is fair) we do know\n\n\\[\n\\Pr(X = 1) = \\Pr(X = 2) = \\cdots = \\Pr(X = 6) = \\frac{1}{6}\n\\]"
-  },
-  {
-    "objectID": "w02/index.html#discrete-vs.-continuous",
-    "href": "w02/index.html#discrete-vs.-continuous",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Discrete vs. Continuous",
-    "text": "Discrete vs. Continuous\n\nMany complicated definitions, often misleading or unintuitive!\nHow I want you to remember: How many possible values between two known values?\nDiscrete: e.g., number of siblings\n\nI have 2 siblings, you have 3 siblings… How many values (sibling counts) in between?\n\nContinuous: e.g., temperature\n\nIt is 27.0° C in my room, 28.0° C in your room… How many values (temperatures) in between?\n\nSo, if \\(X\\) is the result of a rolled die, is \\(X\\) discrete or continuous? How many values can be rolled between 3 and 4?"
-  },
-  {
-    "objectID": "w02/index.html#thinking-about-independence",
-    "href": "w02/index.html#thinking-about-independence",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Thinking About Independence",
-    "text": "Thinking About Independence\n\nWe’ll define it formally later; for now, this is our working definition:\n\n\n\n\n\n\n\nWorking Definition: Independence\n\n\n\nTwo random variables \\(X\\) and \\(Y\\) are independent if learning information about \\(X\\) does not give you information about the value of \\(Y\\), or vice-versa."
-  },
-  {
-    "objectID": "w02/index.html#naïve-definition-of-probability",
-    "href": "w02/index.html#naïve-definition-of-probability",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Naïve Definition of Probability",
-    "text": "Naïve Definition of Probability\n\nSample Space: The set of all possible outcomes of an experiment\nEvent: A subset of the sample space\n\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]"
-  },
-  {
-    "objectID": "w02/index.html#example-flipping-two-coins",
-    "href": "w02/index.html#example-flipping-two-coins",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Example: Flipping Two Coins",
-    "text": "Example: Flipping Two Coins\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nFlipping two coins:\n\nSample space \\(S = \\{TT, TH, HT, HH\\}\\)\nEvent \\(E_1\\): Result of first flip is \\(H\\), result of second flip is \\(T\\) \\(\\implies\\) \\(E_1 = \\{HT\\}\\).\nEvent \\(E_2\\): At least one \\(H\\) \\(\\implies\\) \\(E_2 = \\{TH, HT, HH\\}\\).\n\n\n\\[\n\\begin{align*}\n\\Pr(E_1) &= \\frac{|\\{HT\\}|}{|S|} = \\frac{|\\{HT\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{1}{4} \\\\\n\\Pr(E_2) &= \\frac{|\\{TH, HT, HH\\}|}{|S|} = \\frac{|\\{TH, HT, HH\\}|}{|\\{TT, TH, HT, HH\\}|} = \\frac{3}{4}\n\\end{align*}\n\\]"
-  },
-  {
-    "objectID": "w02/index.html#events-neq-outcomes",
-    "href": "w02/index.html#events-neq-outcomes",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Events \\(\\neq\\) Outcomes!",
-    "text": "Events \\(\\neq\\) Outcomes!\n\nOutcomes are things, events are sets of things\nSubtle but extremely important distinction!\nIn the coin flip example:\n\nThe event \\(E_1 = \\{HT\\}\\) can be confused with the outcome \\(HT\\).\nSo, try to remember instead the event \\(E_2 = \\{TH, HT, HH\\}\\): it is more clear, in this case, how this event does not correspond to any individual outcome"
-  },
-  {
-    "objectID": "w02/index.html#back-to-the-naïve-definition",
-    "href": "w02/index.html#back-to-the-naïve-definition",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Back to the Naïve Definition",
-    "text": "Back to the Naïve Definition\n\n\n\n\n\n\nNaïve Definition of Probability\n\n\n\nGiven a sample space \\(S\\), and an event \\(E \\subset S\\),\n\\[\n\\Pr(\\underbrace{E}_{\\text{event}}) = \\frac{\\text{\\# Favorable Outcomes}}{\\text{\\# Possible Outcomes}} = \\frac{|E|}{|S|}\n\\]\n\n\n\nThe naïve definition tells us that probabilities are just ratios of counts:\n\nCount the number of ways the event \\(E\\) can happen, count the total number of things that can happen, and divide!\n\nThis is why we begin studying probability by studying combinatorics: the mathematics of counting"
-  },
-  {
-    "objectID": "w02/index.html#combinatorics-ice-cream-possibilities",
-    "href": "w02/index.html#combinatorics-ice-cream-possibilities",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Combinatorics: Ice Cream Possibilities",
-    "text": "Combinatorics: Ice Cream Possibilities\n\n\n\n\n\n\n\nThe \\(6 = 2 \\cdot 3\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second.\n\n\n\n\n\n\n\nThe \\(6 = 3 \\cdot 2\\) possible cone+flavor combinations which can result from choosing a flavor first and a cone type second."
-  },
-  {
-    "objectID": "w02/index.html#grouping-vs.-ordering",
-    "href": "w02/index.html#grouping-vs.-ordering",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Grouping vs. Ordering",
-    "text": "Grouping vs. Ordering\n\nIn standard statistics/combinatorics introductions you’ll learn different counting formulas for when order matters vs. when order doesn’t matter\nThis is not a mathematical distinction so much as a pragmatic distinction: what are you trying to accomplish by counting?\nProblems with extremely similar descriptions can differ in small detail, so that the units you need to distinguish between in one version differ from the units you need to distinguish between in the other."
-  },
-  {
-    "objectID": "w02/index.html#does-order-matter",
-    "href": "w02/index.html#does-order-matter",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Does Order Matter?",
-    "text": "Does Order Matter?\n\n\n\n\n\n\nExample: Student Government vs. Student Sports\n\n\n\n\nConsider a school where students can either try out for the swim team or run for a position in the student government\nThe swim team has 4 slots, but slots aren’t differentiated: you’re either on the team (one of the 4 chosen students) or not\nThe student government also has 4 slots, but there is a difference between the slots: first slot is President, second is Vice President, third is Secretary, and fourth is Treasurer.\n\n\n\n\nSimple case (for intuition): the school only has 4 students. In this case, how many ways are there to form the swim team? What about the student government?\n\nSwim team: \\(1\\) way. You have only one choice, to let all 4 students onto the team\nStudent government: \\(4 \\cdot 3 \\cdot 2 \\cdot 1 = 24\\) ways. You have to let all 4 students in, but you have a choice of who is President, Vice President, Secretary, and Treasurer\n\nHow did we get \\(4 \\cdot 3 \\cdot 2 \\cdot 1\\)? (Think about the ice cream example…)\n\nStart by choosing the President: 4 choices\nNow choose the Vice President: only 3 students left to choose from\nNow choose the Secretary: only 2 students left to choose from\nNow choose the Treasurer: only 1 student left to choose from"
-  },
-  {
-    "objectID": "w02/index.html#permutations-vs.-combinations",
-    "href": "w02/index.html#permutations-vs.-combinations",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Permutations vs. Combinations",
-    "text": "Permutations vs. Combinations\n\nPermutations: How many ways can I choose groups of size \\(k\\) out of \\(n\\) total objects, where order within groups matters: \\(P_{n,k}\\) (sometimes written \\(_nP_k\\)).\n\nIn this case, we want to count \\((a,b)\\) and \\((b,a)\\) as two separate groups\n\nCombinations: How many ways can I choose groups of size \\(k\\) out of \\(n\\) total objects, where order in the groups doesn’t matter: \\(C_{n,k}\\) (sometimes written \\(_nC_k,\\binom{n}{k}\\)).\n\nIn this case, we don’t want to count \\((a, b)\\) and \\((b, a)\\) as two separate groups…\n\n\n\\[\n\\begin{align*}\nP_{n,k} = \\frac{n!}{(n-k)!}, \\; C_{n,k} = \\frac{n!}{k!(n-k)!}\n\\end{align*}\n\\]"
-  },
-  {
-    "objectID": "w02/index.html#no-need-to-memorize",
-    "href": "w02/index.html#no-need-to-memorize",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "No Need to Memorize!",
-    "text": "No Need to Memorize!\n\n\nKey point: you don’t have to remember these as two separate formulas!\nThe number of combinations is based on the number of permutations, but corrected for double counting: e.g., corrected for the fact that \\((a,b) \\neq (b,a)\\) when counting permutations but \\((a,b) = (b,a)\\) when counting combinations.\n\n\\[\nC_{n,k} = \\frac{P_{n,k}}{k!} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{Permutations}}{\\leftarrow \\text{Duplicate groups}}\n\\]\nWhere does \\(k!\\) come from? (How many different orderings can we make of the same group?)\n\n\\(k = 2\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 choices}},\\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 2\\)\n\\(k = 3\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{3 choices}},\\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 6\\)\n\\(k = 4\\): \\((\\underbrace{\\boxed{\\phantom{a}}}_{\\text{4 choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{3 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{2 remaining choices}}, \\underbrace{\\boxed{\\phantom{a}}}_{\\text{1 remaining choice}}) \\implies 24\\)"
-  },
-  {
-    "objectID": "w02/index.html#with-or-without-replacement",
-    "href": "w02/index.html#with-or-without-replacement",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "With or Without Replacement?",
-    "text": "With or Without Replacement?\n\nBoils down to: can the same object be included in my sample more than once?\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\nMost statistical problems: “Check off” objects as you collect data about them, so that each observation in your data is unique\nVery special (but very important!) set of statistical problems: allow objects to appear in your sample multiple times, to “squeeze” more information out of the sample (called Bootstrapping—much more on this later in the course!)"
-  },
-  {
-    "objectID": "w02/index.html#how-many-possible-samples",
-    "href": "w02/index.html#how-many-possible-samples",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "How Many Possible Samples?",
-    "text": "How Many Possible Samples?\n\n\n\n\n\n\nExample: How Many Possible Samples?\n\n\n\nFrom a population of \\(N = 3\\), how many ways can we take samples of size \\(k = 2\\)?\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(3 \\cdot 2 = 6\\) ways (3 objects to choose from for first element of sample, 2 remaining objects to choose from for second element of sample)\n\\(3\\cdot 3 = 3^2 = 9\\) ways (3 objects to choose from for first element of sample, still 3 objects to choose from for second element of sample)\n\n\n\n\n\n\n\n\n\n\n\nResult: How Many Possible Samples\n\n\n\nFrom a population of size \\(N\\), how many ways can we take samples of size \\(k\\)? (Try to extrapolate from above examples before looking at answer!)\n\n\n\n\n\n\n\nWithout Replacement\nWith Replacement\n\n\n\n\n\\(\\displaystyle \\underbrace{N \\cdot (N-1) \\cdot \\cdots \\cdot (N - k + 1)}_{k\\text{ times}} = \\frac{N!}{(N - k )!}\\)(This formula should look somewhat familiar…)\n\\(\\displaystyle \\underbrace{N \\cdot N \\cdot \\cdots \\cdot N}_{k\\text{ times}} = N^k\\)"
-  },
-  {
-    "objectID": "w02/index.html#logic-sets-and-probability",
-    "href": "w02/index.html#logic-sets-and-probability",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Logic, Sets, and Probability",
-    "text": "Logic, Sets, and Probability\n\nThere is a deep connection1 between the objects and operations of logic, set theory, and probability:\n\n\n\n\n\n\n\n\n\n\n\nLogic\nSet Theory\nProbability Theory\n\n\n\n\nObjects\nPredicates\\(p, q \\in \\{T, F\\}\\)\nSets\\(S = \\{a, b, \\ldots\\}\\)\nEvents\\(E = \\{TH, HT, HH\\}\\)\n\n\nConjunction\nAnd (\\(\\wedge\\))\\(p \\wedge q\\)\nIntersection (\\(\\cap\\))\\(A \\cap B\\)\nMultiplication (\\(\\times\\)):\\(\\Pr(E_1 \\cap E_2) = \\Pr(E_1)\\times \\Pr(E_2)\\)\n\n\nDisjunction\nOr (\\(\\vee\\))\\(p \\vee q\\)\nUnion (\\(\\cup\\))\\(A \\cup B\\)\nAddition (\\(+\\)): \\(\\Pr(E_1 \\cup E_2) =\\)\\(\\Pr(E_1) + \\Pr(E_2) - \\Pr(E_1 \\wedge E_2)\\)\n\n\nNegation\nNot (\\(\\neg\\))\\(\\neg p\\)\nComplement (\\(^c\\))\\(S^c\\)\nSubtract from 1\\(\\Pr(A^c) = 1 - \\Pr(A)\\)"
-  },
-  {
-    "objectID": "w02/index.html#example-rolling-dice",
-    "href": "w02/index.html#example-rolling-dice",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Example: Rolling Dice",
-    "text": "Example: Rolling Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\wedge q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know (until after the dice have been rolled) whether these are true or false!\n\nConverting into set theory…"
-  },
-  {
-    "objectID": "w02/index.html#univariate-statistics",
-    "href": "w02/index.html#univariate-statistics",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Univariate Statistics",
-    "text": "Univariate Statistics\n\nStatistics"
-  },
-  {
-    "objectID": "w02/index.html#multivariate-statistics",
-    "href": "w02/index.html#multivariate-statistics",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Multivariate Statistics",
-    "text": "Multivariate Statistics\n\nMultivariate Statistics"
-  },
-  {
-    "objectID": "w02/index.html#footnotes",
-    "href": "w02/index.html#footnotes",
-    "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nFor math majors, you can think of it as an isomorphism between the objects and operations of the three subjects↩︎"
-  },
-  {
     "objectID": "w02/slides.html#prof.-jeff-introduction",
     "href": "w02/slides.html#prof.-jeff-introduction",
     "title": "Week 2: Introduction to Probabilistic Modeling",
@@ -249,7 +46,7 @@
     "href": "w02/slides.html#holy-grail-deterministic-model-newtonian-physics",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "“Holy Grail” Deterministic Model: Newtonian Physics",
-    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
+    "text": "“Holy Grail” Deterministic Model: Newtonian Physics\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_01\n\n “Nature”  \n\ncluster_02\n\n “Science”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\leadsto F_g = G\\frac{m_1m_2}{r^2}\n\\]\nFigure 1: Newton’s Law of Universal Gravitation← Dr. Zirkel follows Newton’s famous steps. Coloured wood engraving. Wellcome Collection (Public Domain)"
   },
   {
     "objectID": "w02/slides.html#but-what-happens-when",
@@ -378,18 +175,74 @@
     "text": "Logic, Sets, and Probability\n\nThere is a deep connection1 between the objects and operations of logic, set theory, and probability:\n\n\n\n\n\n\n\n\n\n\n\nLogic\nSet Theory\nProbability Theory\n\n\n\n\nObjects\nPredicates\\(p, q \\in \\{T, F\\}\\)\nSets\\(S = \\{a, b, \\ldots\\}\\)\nEvents\\(E = \\{TH, HT, HH\\}\\)\n\n\nConjunction\nAnd (\\(\\wedge\\))\\(p \\wedge q\\)\nIntersection (\\(\\cap\\))\\(A \\cap B\\)\nMultiplication (\\(\\times\\)):\\(\\Pr(E_1 \\cap E_2) = \\Pr(E_1)\\times \\Pr(E_2)\\)\n\n\nDisjunction\nOr (\\(\\vee\\))\\(p \\vee q\\)\nUnion (\\(\\cup\\))\\(A \\cup B\\)\nAddition (\\(+\\)): \\(\\Pr(E_1 \\cup E_2) =\\)\\(\\Pr(E_1) + \\Pr(E_2) - \\Pr(E_1 \\wedge E_2)\\)\n\n\nNegation\nNot (\\(\\neg\\))\\(\\neg p\\)\nComplement (\\(^c\\))\\(S^c\\)\nSubtract from 1\\(\\Pr(A^c) = 1 - \\Pr(A)\\)\n\n\n\nFor math majors, you can think of it as an isomorphism between the objects and operations of the three subjects"
   },
   {
-    "objectID": "w02/slides.html#example-rolling-dice",
-    "href": "w02/slides.html#example-rolling-dice",
+    "objectID": "w02/slides.html#example-rolling-two-dice",
+    "href": "w02/slides.html#example-rolling-two-dice",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Example: Rolling Dice",
-    "text": "Example: Rolling Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\wedge q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know (until after the dice have been rolled) whether these are true or false!\n\nConverting into set theory…"
+    "section": "Example: Rolling Two Dice",
+    "text": "Example: Rolling Two Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\wedge q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know, until after the dice have been rolled, whether these are true or false!\nBut, we should still be able to say something about their likelihood, for example, whether \\(f_1\\) or \\(f_2\\) is more likely to happen… Enter probability theory!"
   },
   {
-    "objectID": "w02/slides.html#univariate-statistics",
-    "href": "w02/slides.html#univariate-statistics",
+    "objectID": "w02/slides.html#logic-rightarrow-probability",
+    "href": "w02/slides.html#logic-rightarrow-probability",
     "title": "Week 2: Introduction to Probabilistic Modeling",
-    "section": "Univariate Statistics",
-    "text": "Univariate Statistics\n\nStatistics"
+    "section": "Logic \\(\\rightarrow\\) Probability",
+    "text": "Logic \\(\\rightarrow\\) Probability\n\nProbability theory lets us reason about the uncertainty surrounding logical predicates like \\(p\\) and \\(q\\), by:\n\nencoding them as sets of possibilities \\(P\\) and \\(Q\\), and\nrepresenting the uncertainty around any given possibility using a probability measure \\(\\Pr: S \\mapsto [0,1]\\),\n\nthus allowing us to reason about\n\nthe likelihood of these set-encoded predicates on their own: \\(\\Pr(P)\\) and \\(\\Pr(Q)\\), but also\ntheir logical connections: \\(\\Pr(p \\wedge q) = \\Pr(P \\cap Q)\\), \\(\\Pr(\\neg p) = \\Pr(P^c)\\), and so on."
+  },
+  {
+    "objectID": "w02/slides.html#rolling-two-dice-logic-rightarrow-probability",
+    "href": "w02/slides.html#rolling-two-dice-logic-rightarrow-probability",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Rolling Two Dice: Logic \\(\\rightarrow\\) Probability",
+    "text": "Rolling Two Dice: Logic \\(\\rightarrow\\) Probability\n\nReturning to the dice example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a sample space \\(S = \\{TT, TH, HT, HH\\}\\) of all possible outcomes of our dice-rolling experiment, noting that \\(|S| = 4\\), so there are 4 possible outcomes.\nThen we can associate each predicate with an event, a subset of the sample space, and use our naïve definition to compute the probability of these events:\n\n\n\n\n\n\n\n\n\nPredicate\nEvent\nProbability\n\n\n\n\n\\(p_1\\) = “First roll is \\(H\\)”\n\\(P_1 = \\{HT, HH\\}\\)\n\\(\\Pr(P_1) = \\frac{|P_1|}{|S|} = \\frac{2}{4} = \\frac{1}{2}\\)\n\n\n\\(q_1\\) = “First roll is \\(T\\)”\n\\(Q_1 = \\{TT, TH\\}\\)\n\\(\\Pr(Q_1) = \\frac{|Q_1|}{|S|} = \\frac{2}{4} = \\frac{1}{2}\\)\n\n\n\\(p_2\\) = “Second roll is \\(H\\)”\n\\(P_2 = \\{TH, HH\\}\\)\n\\(\\Pr(P_2) = \\frac{|P_2|}{|S|} = \\frac{2}{4} = \\frac{1}{2}\\)\n\n\n\\(q_2\\) = “Second roll is \\(T\\)”\n\\(Q_2 = \\{TT, HT\\}\\)\n\\(\\Pr(Q_2) = \\frac{|Q_2|}{|S|} = \\frac{2}{4} = \\frac{1}{2}\\)"
+  },
+  {
+    "objectID": "w02/slides.html#moving-from-predicates-to-formulas",
+    "href": "w02/slides.html#moving-from-predicates-to-formulas",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Moving from Predicates to Formulas",
+    "text": "Moving from Predicates to Formulas\n\nNotice that, in the four rows of the previous table, we were only computing the probabilities of “simple” events: events corresponding to a single predicate\nBut we promised that probability theory lets us compute probabilities for logical formulas as well! …The magic of encoding events as sets becomes clear:\n\n\n\n\n\n\n\n\n\nFormula\nEvent\nProbability\n\n\n\n\n\\(f_1 = p_1 \\wedge q_2\\)\n\\[ \\begin{align*} F_1 &= P_1 \\cap Q_2 \\\\ &= \\{HT, HH\\} \\cap \\{TT, HT\\} \\\\ &= \\{HT\\} \\end{align*} \\]\n\\[\\begin{align*} \\Pr(F_1) &= \\Pr(\\{HT\\}) \\\\ &= \\frac{|\\{HT\\}|}{|S|} = \\frac{1}{4} \\end{align*}\\]\n\n\n\\(f_2 = p_1 \\vee q_2\\)\n\\[\\begin{align*} F_2 &= P_1 \\cup Q_2 \\\\ &= \\{HT, HH\\} \\cup \\{TT, HT\\} \\\\ &= \\{TT, HT, HH\\} \\end{align*}\\]\n\\[\\begin{align*} \\Pr(F_2) &= \\Pr(\\{TT, HT, HH\\}) \\\\ &= \\frac{|\\{TT, HT, HH\\}|}{|S|} = \\frac{3}{4} \\end{align*}\\]\n\n\n\\(f_3 = \\neg p_1\\)\n\\[\\begin{align*} F_3 &= P_1^c \\\\ &= \\{HT, HH\\}^c \\\\ &= \\{TT, TH\\}\\end{align*}\\]\n\\[\\begin{align*} \\Pr(F_3) &= \\Pr(\\{TT, TH\\}) \\\\ &= \\frac{|\\{TT, TH\\}|}{|S|} = \\frac{2}{4} = \\frac{1}{2} \\end{align*}\\]"
+  },
+  {
+    "objectID": "w02/slides.html#using-rules-of-probability",
+    "href": "w02/slides.html#using-rules-of-probability",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Using “Rules” of Probability",
+    "text": "Using “Rules” of Probability\n\nHopefully, though, you found all this churning through set theory to be a bit tedious…\nThis is where rules of probability come from! They simplify set-theoretic computations into simple multiplications, additions, and subtractions:\n\n\\(\\Pr(A \\cap B) = \\Pr(A) \\times \\Pr(B)\\)\n\\(\\Pr(A \\cup B) = \\Pr(A) + \\Pr(B) - \\Pr(A \\cap B)\\)\n\\(\\Pr(A^c) = 1 - \\Pr(A)\\)\n\nSince we know probabilities of the “simple” events \\(P_1\\), \\(Q_1\\), \\(P_2\\), \\(Q_2\\), we don’t need to “look inside them”! Just take the probabilities and multiply/add/subtract as needed:\n\n\n\n\n\n\n\n\n\nFormula\nEvent\nProbability\n\n\n\n\n\\(f_1 = p_1 \\wedge q_2\\)\n\\(F_1 = P_1 \\cap Q_2\\)\n\\(\\Pr(F_1) = \\Pr(P_1) \\times \\Pr(Q_2) = \\frac{1}{2}\\times \\frac{1}{2} = \\frac{1}{4}\\)\n\n\n\\(f_2 = p_1 \\vee q_2\\)\n\\(F_2 = P_1 \\cup Q_2\\)\n\\[\\textstyle{\\begin{align*} \\textstyle \\Pr(F_2) &= \\Pr(P_1) + \\Pr(Q_2) - \\Pr(P_1 \\cap Q_2) \\\\ \\textstyle &= \\frac{1}{2} + \\frac{1}{2} - \\frac{1}{4} = \\frac{3}{4} \\end{align*}}\\]\n\n\n\\(f_3 = \\neg p_1\\)\n\\(F_3 = P_1^c\\)\n\\(\\Pr(F_3) = 1 - \\Pr(P_1) = 1 - \\frac{1}{2} = \\frac{1}{2}\\)"
+  },
+  {
+    "objectID": "w02/slides.html#importing-results-from-logic",
+    "href": "w02/slides.html#importing-results-from-logic",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "“Importing” Results from Logic",
+    "text": "“Importing” Results from Logic\n\nThis deep connection between the three fields means that, if we have some useful theorem or formula from one field, we can immediately put it to use in another!\nFor example: DeMorgan’s Laws were developed in logic (DeMorgan was a 19th-century logician), and basically just tell us how to distribute logic operators:\n\n\\[\n\\begin{align*}\n\\underbrace{\\neg(p \\wedge q)}_{\\text{``}p\\text{ and }q\\text{'' is not true}} &\\iff \\underbrace{\\neg p \\vee \\neg q}_{p\\text{ is not true or }q\\text{ is not true}} \\\\\n\\underbrace{\\neg(p \\vee q)}_{\\text{``}p\\text{ or }q\\text{'' is not true}} &\\iff \\underbrace{\\neg p \\wedge \\neg q}_{p\\text{ is not true and }q\\text{ is not true}}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/slides.html#converting-to-probability-theory",
+    "href": "w02/slides.html#converting-to-probability-theory",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Converting to Probability Theory",
+    "text": "Converting to Probability Theory\n\nSo, using the same principles we used in our dice rolling examples, we can consider events \\(P\\) and \\(Q\\), and get the following “translation” of DeMorgan’s Laws:\n\n\n\n\n\n\n\n\n\nLogic\nSet Theory\nProbability Theory\n\n\n\n\n\\(\\neg(p \\wedge q) = \\neg p \\vee \\neg q\\)\n\\((P \\cap Q)^c = P^c \\cup Q^c\\)\n\\(\\Pr((P \\cap Q)^c) = \\Pr(P^c \\cup Q^c)\\)\n\n\n\\(\\neg(p \\vee q) = \\neg p \\wedge \\neg q\\)\n\\((P \\cup Q)^c = P^c \\cap Q^c\\)\n\\(\\Pr((P \\cup Q)^c) = \\Pr(P^c \\cap Q^c)\\)\n\n\n\n\nNote that, since these are isomorphic to one another, we could have derived DeMorgan’s Laws from within probability theory, rather than the other way around:\n\n\\[\n\\begin{align*}\n\\Pr((P \\cap Q)^c) &= 1 - \\Pr(P \\cap Q) = 1 - \\Pr(P)\\Pr(Q) \\\\\n&= 1 - (1-\\Pr(P^c))(1 - \\Pr(Q^c)) \\\\\n&= 1 - [1 - \\Pr(P^c) - \\Pr(Q^c) + \\Pr(P^c)\\Pr(Q^c)] \\\\\n&= \\Pr(P^c) + \\Pr(Q^c) - \\Pr(P^c)\\Pr(Q^c) \\\\\n&= \\Pr(P^c) + \\Pr(Q^c) - \\Pr(P^c \\cap Q^c) \\\\\n&= \\Pr(P^c \\cup Q^c) \\; ✅\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/slides.html#random-variables-1",
+    "href": "w02/slides.html#random-variables-1",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Random Variables",
+    "text": "Random Variables\n\nRecall our discussion of random variables: used by analogy to algebra, since we can do math with them:\nJust as \\(2 \\cdot 3\\) is shorthand for \\(2 + 2 + 2\\), we can define a variable \\(X\\) as shorthand for outcome of a random process. \\[\n\\begin{align*}\nS = \\{ &\\text{result of dice roll was 1}, \\\\\n&\\text{result of dice roll was 2}, \\\\\n&\\text{result of dice roll was 3}, \\\\\n&\\text{result of dice roll was 4}, \\\\\n&\\text{result of dice roll was 5}, \\\\\n&\\text{result of dice roll was 6}\\} \\rightsquigarrow X \\in \\{1,\\ldots,6\\}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/slides.html#random-variables-as-events",
+    "href": "w02/slides.html#random-variables-as-events",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Random Variables as Events",
+    "text": "Random Variables as Events\n\nEach value \\(v\\) that a random variable \\(X\\) can take on gives rise to an event \\(X = v\\): the event that the random variable \\(X\\) takes on value \\(v\\).\nSince \\(X = v\\) is an event, we can compute its probability \\(\\Pr(X = v)\\)!"
+  },
+  {
+    "objectID": "w02/slides.html#doing-math-with-events",
+    "href": "w02/slides.html#doing-math-with-events",
+    "title": "Week 2: Introduction to Probabilistic Modeling",
+    "section": "Doing Math with Events",
+    "text": "Doing Math with Events\n\nWe can also (think of our analogy with logic, but this time think of algebra) do math with the random variables! We can think of events related to values \\(X\\) can take on, and compute their probabilities \\[\n\\begin{align*}\n\\text{two rolls} \\mapsto P(\\text{rolls sum to 10}) &= P(X + Y = 10) \\\\\n&= P(Y = 10 - X)\n\\end{align*}\n\\]\n\\(P(\\text{first roll above mean}) = P\\left(X &gt; \\frac{X+Y}{2}\\right) = P(2X &gt; X+Y) = P(X &gt; Y)\\)\nJust remember that probability \\(P(\\cdot)\\) is always probability of an event—random variables are just shorthand for quantifiable events.\nNot all events can be simplified via random variables!\n\n\\(\\text{catch a fish} \\mapsto P(\\text{trout}), P(\\text{bass}), \\ldots\\)\n\nWhat types of events can be quantified like this?\n\n\nThe answer is, broadly, any situation where you’re modeling things, like dice rolls, where mathematical operations like addition, multiplication, etc. make sense. So, if we’re modeling dice, it makes sense to say e.g. “result is 6” + “result is 3” = “total is 9”. More on the next page!"
   },
   {
     "objectID": "w02/slides.html#multivariate-statistics",
