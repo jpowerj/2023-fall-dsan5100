@@ -350,7 +350,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Sunday Sep 3, 2023, 00:20:12</p>
+  <p class="date">Sunday Sep 3, 2023, 00:26:11</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -1180,21 +1180,21 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 </tbody>
 </table>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>For math majors, you can think of it as an <strong>isomorphism</strong> between the objects and operations of the three subjects</p></li></ol></aside></section>
-<section id="example-rolling-two-dice" class="slide level2 smaller">
-<h2>Example: Rolling Two Dice</h2>
+<section id="example-flipping-two-coins-1" class="slide level2 smaller">
+<h2>Example: Flipping Two Coins</h2>
 <ul>
 <li><strong>Logic</strong>: We can define 4 predicates:
 <ul>
-<li><span class="math inline">\(p_1\)</span> = “First roll is <span class="math inline">\(H\)</span>”, <span class="math inline">\(q_1\)</span> = “First roll is <span class="math inline">\(T\)</span>”</li>
-<li><span class="math inline">\(p_2\)</span> = “Second roll is <span class="math inline">\(H\)</span>”, <span class="math inline">\(q_2\)</span> = “Second roll is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(p_1\)</span> = “First result is <span class="math inline">\(H\)</span>”, <span class="math inline">\(q_1\)</span> = “First result is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(p_2\)</span> = “Second result is <span class="math inline">\(H\)</span>”, <span class="math inline">\(q_2\)</span> = “Second result is <span class="math inline">\(T\)</span>”</li>
 </ul></li>
 <li><strong>Logical formulas</strong>:
 <ul>
-<li><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> <strong>and</strong> second roll is <span class="math inline">\(T\)</span>”</li>
-<li><span class="math inline">\(f_2 = p_1 \vee q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> <strong>or</strong> second roll is <span class="math inline">\(T\)</span>”</li>
-<li><span class="math inline">\(f_3 = \neg p_1\)</span>: “First roll is <strong>not</strong> <span class="math inline">\(H\)</span>”</li>
+<li><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span>: “First result is <span class="math inline">\(H\)</span> <strong>and</strong> second result is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(f_2 = p_1 \vee q_2\)</span>: “First result is <span class="math inline">\(H\)</span> <strong>or</strong> second result is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(f_3 = \neg p_1\)</span>: “First result is <strong>not</strong> <span class="math inline">\(H\)</span>”</li>
 </ul></li>
-<li><strong>The issue?</strong>: We don’t know, until <strong>after</strong> the dice have been rolled, whether these are <strong>true</strong> or <strong>false</strong>!</li>
+<li><strong>The issue?</strong>: We don’t know, until <strong>after</strong> the coins have been flipped, whether these are <strong>true</strong> or <strong>false</strong>!</li>
 <li>But, we should still be able to say something about their <strong>likelihood</strong>, for example, whether <span class="math inline">\(f_1\)</span> or <span class="math inline">\(f_2\)</span> is more likely to happen… <strong>Enter probability theory!</strong></li>
 </ul>
 </section>
@@ -1213,10 +1213,10 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 </ol></li>
 </ul>
 </section>
-<section id="rolling-two-dice-logic-rightarrow-probability" class="slide level2 smaller">
-<h2>Rolling Two Dice: Logic <span class="math inline">\(\rightarrow\)</span> Probability</h2>
+<section id="flipping-two-coins-logic-rightarrow-probability" class="slide level2 smaller">
+<h2>Flipping Two Coins: Logic <span class="math inline">\(\rightarrow\)</span> Probability</h2>
 <ul>
-<li>Returning to the dice example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a <strong>sample space</strong> <span class="math inline">\(S = \{TT, TH, HT, HH\}\)</span> of all possible <strong>outcomes</strong> of our dice-rolling experiment, noting that <span class="math inline">\(|S| = 4\)</span>, so there are 4 possible outcomes.</li>
+<li>Returning to the two coins example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a <strong>sample space</strong> <span class="math inline">\(S = \{TT, TH, HT, HH\}\)</span> of all possible <strong>outcomes</strong> of our coin-flipping experiment, noting that <span class="math inline">\(|S| = 4\)</span>, so there are 4 possible outcomes.</li>
 <li>Then we can associate each <strong>predicate</strong> with an <strong>event</strong>, a <strong>subset</strong> of the sample space, and use our <strong>naïve definition</strong> to compute the probability of these events:</li>
 </ul>
 <table>
@@ -1234,22 +1234,22 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(p_1\)</span> = “First roll is <span class="math inline">\(H\)</span>”</td>
+<td><span class="math inline">\(p_1\)</span> = “First result is <span class="math inline">\(H\)</span>”</td>
 <td><span class="math inline">\(P_1 = \{HT, HH\}\)</span></td>
 <td><span class="math inline">\(\Pr(P_1) = \frac{|P_1|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(q_1\)</span> = “First roll is <span class="math inline">\(T\)</span>”</td>
+<td><span class="math inline">\(q_1\)</span> = “First result is <span class="math inline">\(T\)</span>”</td>
 <td><span class="math inline">\(Q_1 = \{TT, TH\}\)</span></td>
 <td><span class="math inline">\(\Pr(Q_1) = \frac{|Q_1|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(p_2\)</span> = “Second roll is <span class="math inline">\(H\)</span>”</td>
+<td><span class="math inline">\(p_2\)</span> = “Second result is <span class="math inline">\(H\)</span>”</td>
 <td><span class="math inline">\(P_2 = \{TH, HH\}\)</span></td>
 <td><span class="math inline">\(\Pr(P_2) = \frac{|P_2|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(q_2\)</span> = “Second roll is <span class="math inline">\(T\)</span>”</td>
+<td><span class="math inline">\(q_2\)</span> = “Second result is <span class="math inline">\(T\)</span>”</td>
 <td><span class="math inline">\(Q_2 = \{TT, HT\}\)</span></td>
 <td><span class="math inline">\(\Pr(Q_2) = \frac{|Q_2|}{|S|} = \frac{2}{4} = \frac{1}{2}\)</span></td>
 </tr>
@@ -1354,7 +1354,7 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 <section id="converting-to-probability-theory" class="slide level2 smaller crunch-math">
 <h2>Converting to Probability Theory</h2>
 <ul>
-<li>So, using the same principles we used in our dice rolling examples, we can consider <strong>events</strong> <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>, and get the following “translation” of DeMorgan’s Laws:</li>
+<li>So, using the same principles we used in our coin flipping examples, we can consider <strong>events</strong> <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span>, and get the following “translation” of DeMorgan’s Laws:</li>
 </ul>
 <table>
 <colgroup>

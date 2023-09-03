@@ -646,16 +646,16 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
 
 [^iso]: For math majors, you can think of it as an **isomorphism** between the objects and operations of the three subjects
 
-## Example: Rolling Two Dice {.smaller}
+## Example: Flipping Two Coins {.smaller}
 
 * **Logic**: We can define 4 predicates:
-  * $p_1$ = "First roll is $H$", $q_1$ = "First roll is $T$"
-  * $p_2$ = "Second roll is $H$", $q_2$ = "Second roll is $T$"
+  * $p_1$ = "First result is $H$", $q_1$ = "First result is $T$"
+  * $p_2$ = "Second result is $H$", $q_2$ = "Second result is $T$"
 * **Logical formulas**:
-  * $f_1 = p_1 \wedge q_2$: "First roll is $H$ **and** second roll is $T$"
-  * $f_2 = p_1 \vee q_2$: "First roll is $H$ **or** second roll is $T$"
-  * $f_3 = \neg p_1$: "First roll is **not** $H$"
-* **The issue?**: We don't know, until **after** the dice have been rolled, whether these are **true** or **false**!
+  * $f_1 = p_1 \wedge q_2$: "First result is $H$ **and** second result is $T$"
+  * $f_2 = p_1 \vee q_2$: "First result is $H$ **or** second result is $T$"
+  * $f_3 = \neg p_1$: "First result is **not** $H$"
+* **The issue?**: We don't know, until **after** the coins have been flipped, whether these are **true** or **false**!
 * But, we should still be able to say something about their **likelihood**, for example, whether $f_1$ or $f_2$ is more likely to happen... **Enter probability theory!**
 
 ## Logic $\rightarrow$ Probability
@@ -667,17 +667,17 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
   (a) the likelihood of these set-encoded predicates on their own: $\Pr(P)$ and $\Pr(Q)$, but also
   (b) their **logical connections**: $\Pr(p \wedge q) = \Pr(P \cap Q)$, $\Pr(\neg p) = \Pr(P^c)$, and so on.
 
-## Rolling Two Dice: Logic $\rightarrow$ Probability {.smaller}
+## Flipping Two Coins: Logic $\rightarrow$ Probability {.smaller}
 
-* Returning to the dice example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a **sample space** $S = \{TT, TH, HT, HH\}$ of all possible **outcomes** of our dice-rolling experiment, noting that $|S| = 4$, so there are 4 possible outcomes.
+* Returning to the two coins example: we can look at the predicates and see that they exhaust all possibilities, so that we can define a **sample space** $S = \{TT, TH, HT, HH\}$ of all possible **outcomes** of our coin-flipping experiment, noting that $|S| = 4$, so there are 4 possible outcomes.
 * Then we can associate each **predicate** with an **event**, a **subset** of the sample space, and use our **naïve definition** to compute the probability of these events:
 
 | Predicate | Event | Probability |
 | - | - | - |
-| $p_1$ = "First roll is $H$" | $P_1 = \{HT, HH\}$ | $\Pr(P_1) = \frac{|P_1|}{|S|} = \frac{2}{4} = \frac{1}{2}$ |
-| $q_1$ = "First roll is $T$" | $Q_1 = \{TT, TH\}$ | $\Pr(Q_1) = \frac{|Q_1|}{|S|} = \frac{2}{4} = \frac{1}{2}$
-| $p_2$ = "Second roll is $H$" | $P_2 = \{TH, HH\}$ | $\Pr(P_2) = \frac{|P_2|}{|S|} = \frac{2}{4} = \frac{1}{2}$ |
-| $q_2$ = "Second roll is $T$" | $Q_2 = \{TT, HT\}$ | $\Pr(Q_2) = \frac{|Q_2|}{|S|} = \frac{2}{4} = \frac{1}{2}$
+| $p_1$ = "First result is $H$" | $P_1 = \{HT, HH\}$ | $\Pr(P_1) = \frac{|P_1|}{|S|} = \frac{2}{4} = \frac{1}{2}$ |
+| $q_1$ = "First result is $T$" | $Q_1 = \{TT, TH\}$ | $\Pr(Q_1) = \frac{|Q_1|}{|S|} = \frac{2}{4} = \frac{1}{2}$
+| $p_2$ = "Second result is $H$" | $P_2 = \{TH, HH\}$ | $\Pr(P_2) = \frac{|P_2|}{|S|} = \frac{2}{4} = \frac{1}{2}$ |
+| $q_2$ = "Second result is $T$" | $Q_2 = \{TT, HT\}$ | $\Pr(Q_2) = \frac{|Q_2|}{|S|} = \frac{2}{4} = \frac{1}{2}$
 
 ## Moving from Predicates to Formulas {.smaller .crunch-table .crunch-math}
 
@@ -719,7 +719,7 @@ $$
 
 ## Converting to Probability Theory {.smaller .crunch-math}
 
-* So, using the same principles we used in our dice rolling examples, we can consider **events** $P$ and $Q$, and get the following "translation" of DeMorgan's Laws:
+* So, using the same principles we used in our coin flipping examples, we can consider **events** $P$ and $Q$, and get the following "translation" of DeMorgan's Laws:
 
 | Logic | Set Theory | Probability Theory |
 | - | - | - |
