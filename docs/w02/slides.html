@@ -350,7 +350,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Saturday Sep 2, 2023, 23:58:41</p>
+  <p class="date">Sunday Sep 3, 2023, 00:20:12</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -1190,9 +1190,9 @@ C_{n,k} = \frac{P_{n,k}}{k!} \genfrac{}{}{0pt}{}{\leftarrow \text{Permutations}}
 </ul></li>
 <li><strong>Logical formulas</strong>:
 <ul>
-<li><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> and second roll is <span class="math inline">\(T\)</span>”</li>
-<li><span class="math inline">\(f_2 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> or second roll is <span class="math inline">\(T\)</span>”</li>
-<li><span class="math inline">\(f_3 = \neg p_1\)</span>: “First roll is not <span class="math inline">\(H\)</span>”</li>
+<li><span class="math inline">\(f_1 = p_1 \wedge q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> <strong>and</strong> second roll is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(f_2 = p_1 \vee q_2\)</span>: “First roll is <span class="math inline">\(H\)</span> <strong>or</strong> second roll is <span class="math inline">\(T\)</span>”</li>
+<li><span class="math inline">\(f_3 = \neg p_1\)</span>: “First roll is <strong>not</strong> <span class="math inline">\(H\)</span>”</li>
 </ul></li>
 <li><strong>The issue?</strong>: We don’t know, until <strong>after</strong> the dice have been rolled, whether these are <strong>true</strong> or <strong>false</strong>!</li>
 <li>But, we should still be able to say something about their <strong>likelihood</strong>, for example, whether <span class="math inline">\(f_1\)</span> or <span class="math inline">\(f_2\)</span> is more likely to happen… <strong>Enter probability theory!</strong></li>

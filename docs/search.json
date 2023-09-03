@@ -179,7 +179,7 @@
     "href": "w02/slides.html#example-rolling-two-dice",
     "title": "Week 2: Introduction to Probabilistic Modeling",
     "section": "Example: Rolling Two Dice",
-    "text": "Example: Rolling Two Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\wedge q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know, until after the dice have been rolled, whether these are true or false!\nBut, we should still be able to say something about their likelihood, for example, whether \\(f_1\\) or \\(f_2\\) is more likely to happen… Enter probability theory!"
+    "text": "Example: Rolling Two Dice\n\nLogic: We can define 4 predicates:\n\n\\(p_1\\) = “First roll is \\(H\\)”, \\(q_1\\) = “First roll is \\(T\\)”\n\\(p_2\\) = “Second roll is \\(H\\)”, \\(q_2\\) = “Second roll is \\(T\\)”\n\nLogical formulas:\n\n\\(f_1 = p_1 \\wedge q_2\\): “First roll is \\(H\\) and second roll is \\(T\\)”\n\\(f_2 = p_1 \\vee q_2\\): “First roll is \\(H\\) or second roll is \\(T\\)”\n\\(f_3 = \\neg p_1\\): “First roll is not \\(H\\)”\n\nThe issue?: We don’t know, until after the dice have been rolled, whether these are true or false!\nBut, we should still be able to say something about their likelihood, for example, whether \\(f_1\\) or \\(f_2\\) is more likely to happen… Enter probability theory!"
   },
   {
     "objectID": "w02/slides.html#logic-rightarrow-probability",
@@ -256,6 +256,6 @@
     "href": "index.html",
     "title": "DSAN 5100, Section 03 (Thursdays)",
     "section": "",
-    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nSaturday, September 2, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nSunday, September 3, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
