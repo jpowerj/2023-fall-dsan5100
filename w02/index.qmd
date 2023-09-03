@@ -43,6 +43,45 @@ format:
 
 # Schedule {.smaller .smaller-title data-name="Schedule"}
 
+::: {.hidden}
+
+```{=html}
+<style>
+  .crunch-figures .quarto-figure {
+    margin-bottom: 0 !important;
+}
+
+.crunch-figures figcaption {
+    margin-top: 0 !important;
+}
+.crunch-lists li {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+.crunch-math .MathJax_Display {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.crunch-math .math.display {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.crunch-math mjx-container {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+.crunch-title h2 {
+    margin-bottom: 1px !important;
+}
+.small-title h2 {
+    // font-size: var(--r-heading2-size) !important;
+    font-size: var(--r-heading3-size) !important;
+}
+</style>
+```
+
+:::
+
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
 | **Lecture** | 12:30pm | 12:40pm | [About Me &rarr;](#prof.-jeff-introduction) | <a href="./recording-w02-1.html" target="_blank"><i class="bi bi-film"></i></a> |
@@ -65,7 +104,7 @@ format:
 
 ![](images/jj_dc_map.png){fig-align="center"}
 
-## Grad School {.crunch-title .crunch-cols .crunch-list}
+## Grad School {.crunch-title}
 
 * Studied abroad in **Beijing** (Peking University/北大) &rarr; internship with Huawei in **Hong Kong** (HKUST)
 
@@ -651,7 +690,7 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
 | $f_2 = p_1 \vee q_2$ | $$\begin{align*} F_2 &= P_1 \cup Q_2 \\ &= \{HT, HH\} \cup \{TT, HT\} \\ &= \{TT, HT, HH\} \end{align*}$$ | $$\begin{align*} \Pr(F_2) &= \Pr(\{TT, HT, HH\}) \\ &= \frac{|\{TT, HT, HH\}|}{|S|} = \frac{3}{4} \end{align*}$$ |
 | $f_3 = \neg p_1$ | $$\begin{align*} F_3 &= P_1^c \\ &= \{HT, HH\}^c \\ &= \{TT, TH\}\end{align*}$$ | $$\begin{align*} \Pr(F_3) &= \Pr(\{TT, TH\}) \\ &= \frac{|\{TT, TH\}|}{|S|} = \frac{2}{4} = \frac{1}{2} \end{align*}$$ |
 
-## Using "Rules" of Probability {.smaller}
+## Using "Rules" of Probability {.smaller .crunch-math .crunch-title}
 
 * Hopefully, though, you found all this churning through set theory to be a bit tedious...
 * This is where **rules of probability** come from! They **simplify** set-theoretic computations into simple multiplications, additions, and subtractions:
@@ -666,7 +705,7 @@ From a population of size $N$, how many ways can we take samples of size $k$? (T
 | $f_2 = p_1 \vee q_2$ | $F_2 = P_1 \cup Q_2$ | $$\textstyle{\begin{align*} \textstyle \Pr(F_2) &= \Pr(P_1) + \Pr(Q_2) - \Pr(P_1 \cap Q_2) \\ \textstyle &= \frac{1}{2} + \frac{1}{2} - \frac{1}{4} = \frac{3}{4} \end{align*}}$$ |
 | $f_3 = \neg p_1$ | $F_3 = P_1^c$ | $\Pr(F_3) = 1 - \Pr(P_1) = 1 - \frac{1}{2} = \frac{1}{2}$ |
 
-## "Importing" Results from Logic
+## "Importing" Results from Logic {.crunch-math}
 
 * This deep connection between the three fields means that, if we have some useful theorem or formula from one field, we can immediately put it to use in another!
 * For example: **DeMorgan's Laws** were developed in logic (DeMorgan was a 19th-century logician), and basically just tell us how to **distribute** logic operators:
@@ -678,7 +717,7 @@ $$
 \end{align*}
 $$
 
-## Converting to Probability Theory {.smaller}
+## Converting to Probability Theory {.smaller .crunch-math}
 
 * So, using the same principles we used in our dice rolling examples, we can consider **events** $P$ and $Q$, and get the following "translation" of DeMorgan's Laws:
 
