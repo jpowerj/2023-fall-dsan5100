@@ -251,6 +251,12 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
   <li><a href="#or-a-single-ribbon" id="toc-or-a-single-ribbon" class="nav-link" data-scroll-target="#or-a-single-ribbon">Or a Single Ribbon</a></li>
   <li><a href="#example-the-normal-distribution" id="toc-example-the-normal-distribution" class="nav-link" data-scroll-target="#example-the-normal-distribution">Example: The Normal Distribution</a></li>
   <li><a href="#real-data-and-the-68-95-99.7-rule" id="toc-real-data-and-the-68-95-99.7-rule" class="nav-link" data-scroll-target="#real-data-and-the-68-95-99.7-rule">Real Data and the 68-95-99.7 Rule</a></li>
+  <li><a href="#boxplots-comparing-multiple-distributions" id="toc-boxplots-comparing-multiple-distributions" class="nav-link" data-scroll-target="#boxplots-comparing-multiple-distributions">Boxplots: Comparing Multiple Distributions</a></li>
+  <li><a href="#another-option-joyplots" id="toc-another-option-joyplots" class="nav-link" data-scroll-target="#another-option-joyplots">Another Option: Joyplots</a></li>
+  <li><a href="#multivariate-distributions-preview" id="toc-multivariate-distributions-preview" class="nav-link" data-scroll-target="#multivariate-distributions-preview">Multivariate Distributions: Preview</a></li>
+  <li><a href="#visualizing-3d-distributions-projection" id="toc-visualizing-3d-distributions-projection" class="nav-link" data-scroll-target="#visualizing-3d-distributions-projection">Visualizing 3D Distributions: Projection</a></li>
+  <li><a href="#visualizing-3d-distributions-contours" id="toc-visualizing-3d-distributions-contours" class="nav-link" data-scroll-target="#visualizing-3d-distributions-contours">Visualizing 3D Distributions: Contours</a></li>
+  <li><a href="#visualizing-3d-distributions-contours-1" id="toc-visualizing-3d-distributions-contours-1" class="nav-link" data-scroll-target="#visualizing-3d-distributions-contours-1">Visualizing 3D Distributions: Contours</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -288,7 +294,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Sunday Sep 3, 2023, 04:39:16</p>
+      <p class="date">Monday Sep 4, 2023, 00:12:25</p>
     </div>
   </div>
   
@@ -311,6 +317,10 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 .crunch-figures figcaption {
     margin-top: 0 !important;
+}
+.crunch-images img {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
 }
 .crunch-layout-panel .quarto-layout-panel {
   margin-bottom: 0px !important;
@@ -579,15 +589,15 @@ Model-&gt;Obs
 <title>
 grid
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust1" class="cluster">
-<title>
-cluster_04
-</title>
-<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <g id="clust2" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 425.94,-205 425.94,4 -4,4"></polygon> <g id="clust2" class="cluster">
 <title>
 cluster_03
 </title>
-<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <!-- Tree --> <g id="node1" class="node">
+<polygon fill="none" stroke="black" points="257.06,-62 257.06,-139 413.94,-139 413.94,-62 257.06,-62"></polygon> <text text-anchor="middle" x="335.5" y="-122.4" font-family="Times,serif" font-size="14.00">Isaac Newton</text> </g> <g id="clust1" class="cluster">
+<title>
+cluster_04
+</title>
+<g id="a_clust1"><a href="https://en.wikipedia.org/wiki/Woolsthorpe_Manor" title="<U>Woolsthorpe Manor</U>" target="_blank"> <polygon fill="none" stroke="black" points="8,-8 8,-193 201.06,-193 201.06,-8 8,-8"></polygon> <text text-anchor="start" x="47.96" y="-177.4" font-family="Times,serif" text-decoration="underline" font-size="14.00">Woolsthorpe Manor</text> </a> </g> </g> <!-- Tree --> <g id="node1" class="node">
 <title>
 Tree
 </title>
@@ -1754,23 +1764,32 @@ dbl (1): score
 </div>
 </div>
 </section>
-<section id="example-the-normal-distribution" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="example-the-normal-distribution">Example: The Normal Distribution</h2>
+<section id="example-the-normal-distribution" class="level2 smaller crunch-figures">
+<h2 class="smaller crunch-figures anchored" data-anchor-id="example-the-normal-distribution">Example: The Normal Distribution</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <center>
 <em>(The distribution you saw a few slides ago)</em>
 </center>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">linewidth =</span> g_linewidth) <span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"function"</span>, <span class="at">fun =</span> dnorm, <span class="at">fill =</span> cbPalette[<span class="dv">1</span>], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#geom_area(stat = "function", fun = dnorm, fill = "blue", xlim = c(0, 2))</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"v"</span>,</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Density f(v)"</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vlines_std_normal <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x, <span class="sc">~</span>xend, <span class="sc">~</span>y, <span class="sc">~</span>yend, <span class="sc">~</span>Params,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fu">dnorm</span>(<span class="dv">0</span>), <span class="st">"Mean"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="fu">dnorm</span>(<span class="sc">-</span><span class="dv">2</span>), <span class="st">"SD"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="fu">dnorm</span>(<span class="sc">-</span><span class="dv">1</span>), <span class="st">"SD"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="fu">dnorm</span>(<span class="dv">1</span>), <span class="st">"SD"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="fu">dnorm</span>(<span class="dv">2</span>), <span class="st">"SD"</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">linewidth =</span> g_linewidth) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">data=</span>vlines_std_normal, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">xend=</span>xend, <span class="at">y=</span>y, <span class="at">yend=</span>yend, <span class="at">linetype =</span> Params), <span class="at">linewidth =</span> g_linewidth, <span class="at">color=</span><span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"function"</span>, <span class="at">fun =</span> dnorm, <span class="at">fill =</span> cbPalette[<span class="dv">1</span>], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">#geom_area(stat = "function", fun = dnorm, fill = "blue", xlim = c(0, 2))</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"v"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Density f(v)"</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1792,13 +1811,13 @@ dbl (1): score
 <ul>
 <li>The parameters in this case give <strong>natural summaries</strong> of the data:
 <ul>
-<li><span class="math inline">\({\color{\purple}\mu}\)</span> = center (mean), <span class="math inline">\({\color{purple}\sigma}\)</span> = variance around center</li>
+<li><span class="math inline">\({\color{\purple}\mu}\)</span> = center (mean), <span class="math inline">\({\color{purple}\sigma}\)</span> = [square root of] variance around center</li>
 </ul></li>
-<li><strong>Mean</strong> can usually be interpreted intuitively; for the <strong>standard deviation</strong>, however, we usually need to use the <a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule" target="_blank"><strong>68-95-99.7 rule</strong></a>… But first, let’s look at some real-world data</li>
+<li><strong>Mean</strong> can usually be interpreted intuitively; for <strong>standard deviation</strong>, we usually use the <a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule" target="_blank"><strong>68-95-99.7 rule</strong></a>, which will make more sense relative to some <strong>real-world data</strong>…</li>
 </ul>
 </section>
-<section id="real-data-and-the-68-95-99.7-rule" class="level2 smaller crunch-layout-panel crunch-title crunch-figures crunch-lists">
-<h2 class="smaller crunch-layout-panel crunch-title crunch-figures crunch-lists anchored" data-anchor-id="real-data-and-the-68-95-99.7-rule">Real Data and the 68-95-99.7 Rule</h2>
+<section id="real-data-and-the-68-95-99.7-rule" class="level2 smaller crunch-layout-panel crunch-title crunch-figures crunch-lists crunch-images">
+<h2 class="smaller crunch-layout-panel crunch-title crunch-figures crunch-lists crunch-images anchored" data-anchor-id="real-data-and-the-68-95-99.7-rule">Real Data and the 68-95-99.7 Rule</h2>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -1813,32 +1832,180 @@ dbl (1): score
 </div>
 <div id="fig-empirical" class="quarto-figure quarto-figure-center anchored" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
-<p><img src="images/empirical_rule.svg" height="345" class="figure-img"></p>
+<p><img src="images/empirical_rule.svg" height="333" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;3: The 68-95-99.7 Rule visualized (<a href="https://commons.wikimedia.org/wiki/File:Empirical_rule_histogram.svg" target="_blank">Wikimedia Commons</a>)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<ul>
-<li>The <strong>point estimate</strong> <span class="math inline">\(\mu = 186.48\)</span> is straightforward: <em>the average height of the athletes is 186.48cm</em>. But how do we interpret the <strong>standard deviation</strong>, <span class="math inline">\(\sigma = 9.7\)</span>?</li>
-<li>Using the <strong>68-95-99.7 Rule</strong>: <em>About 68% of the heights fall between</em></li>
-</ul>
+<p>The <strong>point estimate</strong> <span class="math inline">\({\color{purple}\mu} = 186.48\)</span> is straightforward: <em>the average height of the athletes is 186.48cm</em>. Using the 68-95-99.7 Rule to interpret the <strong>SD</strong>, <span class="math inline">\({\color{purple}\sigma} = 9.7\)</span>, we get:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<em>About <strong>68% of the heights</strong> fall between</em>
+</center>
 <table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 10%">
+<col style="width: 45%">
+</colgroup>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">[186.48 - 9.7</td>
+<td style="text-align: left;">[<span class="math inline">\({\color{purple}\mu} - 1\cdot {\color{purple}\sigma}\)</span></td>
 <td style="text-align: center;">and</td>
-<td style="text-align: center;">186.48 + 9.7]</td>
+<td style="text-align: right;"><span class="math inline">\({\color{purple}\mu} + 1\cdot {\color{purple}\sigma}\)</span>]</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">[176.78</td>
+<td style="text-align: left;">[186.48 - 1 · 9.7</td>
 <td style="text-align: center;">and</td>
-<td style="text-align: center;">196.18]</td>
+<td style="text-align: right;">186.48 + 1 · 9.7]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[176.78</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: right;">196.18]</td>
 </tr>
 </tbody>
 </table>
+</div><div class="column" style="width:50%;">
+<center>
+<em>About <strong>95% of the heights</strong> fall between</em>
+</center>
+<table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 10%">
+<col style="width: 45%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[<span class="math inline">\({\color{purple}\mu} - 2 \cdot {\color{purple}\sigma}\)</span></td>
+<td style="text-align: center;">and</td>
+<td style="text-align: right;"><span class="math inline">\({\color{purple}\mu} + 2 \cdot {\color{purple}\sigma}\)</span>]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[186.48 - 2 · 9.7</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: right;">186.48 + 2 · 9.7]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[167.08</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: right;">205.88]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="boxplots-comparing-multiple-distributions" class="level2 smaller small-title">
+<h2 class="smaller small-title anchored" data-anchor-id="boxplots-comparing-multiple-distributions">Boxplots: Comparing Multiple Distributions</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/boxplot_vs_pdf.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://commons.wikimedia.org/wiki/File:Boxplot_vs_PDF.svg">Jhguch at en.wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/2.5">CC BY-SA 2.5</a>, via Wikimedia Commons</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/multiple_boxplots.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://commons.wikimedia.org/wiki/File:Boxplot_of_Average_Article_Feedback_ratings_by_project_rated_quality.svg">Protonk</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="another-option-joyplots" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="another-option-joyplots">Another Option: Joyplots</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-joy-division" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/joy_division.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;4: <a href="https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/joy-plots-in-arcgis-pro/" target="_blank">(Iconic album cover)</a></figcaption>
+</figure>
+</div>
+</div>
+<div id="fig-manifesto" class="quarto-figure quarto-figure-center anchored" style="flex-basis: 50.0%;justify-content: center;">
+<figure class="figure">
+<p><img src="images/manifesto_distances.png" height="550" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;5: <a href="https://cs.stanford.edu/~jjacobs3/Jacobs_Translations_Ideological_Interventions_2019_11_22.pdf" target="_blank"><em>(Tooting my own horn)</em></a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="multivariate-distributions-preview" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="multivariate-distributions-preview">Multivariate Distributions: Preview</h2>
+<ul>
+<li>The <strong>bivariate normal</strong> distribution represents the distribution of <strong>two</strong> normally-distributed RVs <span class="math inline">\(\mathbf{X} = [\begin{smallmatrix} X_1 &amp; X_2\end{smallmatrix}]\)</span>, which may or may not be correlated:</li>
+</ul>
+<div class="special-math" style="margin-bottom: 42px !important;">
+<p><span class="math display">\[
+\mathbf{X} = \begin{bmatrix}X_1 \\ X_2\end{bmatrix}, \; \boldsymbol{\mu} =
+%\begin{bmatrix}\mu_1 \\ \mu_2\end{bmatrix}
+\begin{bmatrix}\smash{\overbrace{\mu_1}^{\mathbb{E}[X_1]}} \\ \smash{\underbrace{\mu_2}_{\mathbb{E}[X_2]}}\end{bmatrix}
+, \; \mathbf{\Sigma} = \begin{bmatrix}\smash{\overbrace{\sigma_1^2}^{\text{Var}[X_1]}} &amp; \smash{\overbrace{\rho\sigma_1\sigma_2}^{\text{Cov}[X_1,X_2]}} \\ \smash{\underbrace{\rho\sigma_2\sigma_1}_{\text{Cov}[X_2,X_1]}} &amp; \smash{\underbrace{\sigma_2^2}_{\text{Var}[X_2]}}\end{bmatrix}
+% \begin{bmatrix}\sigma_1^2 &amp; \rho\sigma_1\sigma_2 \\ \rho\sigma_2\sigma_1 &amp; \sigma_2^2 \end{bmatrix}
+% = \begin{bmatrix}\text{Var}[X_1] &amp; \text{Cov}[X_1,X_2] \\ \text{Cov}[X_2,X_1] &amp; \text{Var}[X_2] \end{bmatrix}
+\]</span></p>
+</div>
+<ul>
+<li>By squishing all this information intro matrices, we can specify the parameters of <strong>multivariate-normally-distributed</strong> <em>vectors</em> of RVs similarly to how we specify single-dimensional normally-distributed RVs:</li>
+</ul>
+<div class="crunch-math">
+<p><span class="math display">\[
+\begin{align*}
+\overbrace{X}^{\mathclap{\text{scalar}}} &amp;\sim \mathcal{N}\phantom{_k}(\overbrace{\mu}^{\text{scalar}}, \overbrace{\sigma}^{\text{scalar}}) \tag{Univariate} \\
+\underbrace{\mathbf{X}}_{\text{vector}} &amp;\sim \boldsymbol{\mathcal{N}}_k(\smash{\underbrace{\boldsymbol{\mu}}_{\text{vector}}}, \underbrace{\mathbf{\Sigma}}_{\text{matrix}}) \tag{Multivariate}
+\end{align*}
+\]</span></p>
+</div>
+<div class="footnote crunch-math" style="font-size: 1.2rem !important; margin-top: 24px !important;">
+<p><em>Note: In the future I’ll use the notation <span class="math inline">\(\mathbf{X}_{[a \times b]}\)</span> to denote the dimensions of the vectors/matrices, like <span class="math inline">\(\mathbf{X}_{[k \times 1]} \sim \boldsymbol{\mathcal{N}}_k(\boldsymbol{\mu}_{[k \times 1]}, \mathbf{\Sigma}_{[k \times k]})\)</span></em></p>
+</div>
+</section>
+<section id="visualizing-3d-distributions-projection" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="visualizing-3d-distributions-projection">Visualizing 3D Distributions: Projection</h2>
+<ul>
+<li>Since most of our intuitions about plots come from <strong>2D</strong> plots, it is <strong>extremely useful</strong> to be able to take a 3D plot like this and imagine “projecting” it down into different 2D plots:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bivariate_normal_corrected.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">(Adapted via LaTeX from <a href="https://tex.stackexchange.com/questions/31708/draw-a-bivariate-normal-distribution-in-tikz">StackExchange discussion</a>)</figcaption>
+</figure>
+</div>
+</section>
+<section id="visualizing-3d-distributions-contours" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="visualizing-3d-distributions-contours">Visualizing 3D Distributions: Contours</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/contour_nocorr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">From <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#bi-variate-normal-uncorrelated" target="_blank">Prof.&nbsp;Hickman’s slides!</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="visualizing-3d-distributions-contours-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="visualizing-3d-distributions-contours-1">Visualizing 3D Distributions: Contours</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/contour_corr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Also from <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#bi-variate-correlated" target="_blank">Prof.&nbsp;Hickman’s slides!</a></figcaption>
+</figure>
+</div>
+<!-- ![From Selvan, Raghavendra (2015). <a href="https://raghavian.github.io/publication/2015-01-01-Bayesian-tracking-EM" target="_blank">*Bayesian tracking of multiple point targets using expectation maximization*</a>. MSc Thesis.](images/bivariate_normal.png) -->
 <!---
  ## 68-95-99.7 Rule
+
 
 
 ::: {.cell layout-align="center"}
@@ -1859,6 +2026,7 @@ ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
 ![](index_files/figure-html/standard-normal-empirical-1.png){fig-align='center' width=672}
 :::
 :::
+
 
 --->
 <!---

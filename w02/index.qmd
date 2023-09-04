@@ -13,14 +13,10 @@ categories:
 execute:
   enabled: true
 format:
-  html:
-    #cache: true
-    #output-file: notes.html
-    html-math-method: mathjax
   revealjs:
     html-math-method: mathjax
     slide-number: true
-    #cache: true
+    cache: true
     output-file: slides.html
     simplemenu:
       flat: true
@@ -31,6 +27,10 @@ format:
     revealjs-plugins:
       - simplemenu
     include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"}
+  html:
+    #cache: true
+    output-file: index.html
+    html-math-method: mathjax
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -53,6 +53,10 @@ format:
 
 .crunch-figures figcaption {
     margin-top: 0 !important;
+}
+.crunch-images img {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
 }
 .crunch-layout-panel .quarto-layout-panel {
   margin-bottom: 0px !important;
@@ -1051,7 +1055,7 @@ ggplot(mean_df, aes(x=x, y=mean)) +
 
 :::
 
-## Example: The Normal Distribution {.smaller}
+## Example: The Normal Distribution {.smaller .crunch-figures}
 
 ::: columns
 ::: {.column width="50%"}
@@ -1062,9 +1066,18 @@ ggplot(mean_df, aes(x=x, y=mean)) +
 
 ```{r}
 #| label: standard-normal-demo
-#| fig-height: 6
+#| fig-height: 5.5
+vlines_std_normal <- tibble::tribble(
+  ~x, ~xend, ~y, ~yend, ~Params,
+  0, 0, 0, dnorm(0), "Mean",
+  -2, -2, 0, dnorm(-2), "SD",
+  -1, -1, 0, dnorm(-1), "SD",
+  1, 1, 0, dnorm(1), "SD",
+  2, 2, 0, dnorm(2), "SD"
+)
 ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
     stat_function(fun = dnorm, linewidth = g_linewidth) +
+    geom_segment(data=vlines_std_normal, aes(x=x, xend=xend, y=y, yend=yend, linetype = Params), linewidth = g_linewidth, color="purple") +
     geom_area(stat = "function", fun = dnorm, fill = cbPalette[1], xlim = c(-3, 3), alpha=0.2) +
     #geom_area(stat = "function", fun = dnorm, fill = "blue", xlim = c(0, 2))
     dsan_theme("quarter") +
@@ -1084,13 +1097,13 @@ ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
 :::
 
 * The parameters in this case give **natural summaries** of the data:
-  * ${\color{\purple}\mu}$ = center (mean), ${\color{purple}\sigma}$ = variance around center
-* **Mean** can usually be interpreted intuitively; for the **standard deviation**, however, we usually need to use the [**68-95-99.7 rule**](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule){target="_blank"}... But first, let's look at some real-world data
+  * ${\color{\purple}\mu}$ = center (mean), ${\color{purple}\sigma}$ = [square root of] variance around center
+* **Mean** can usually be interpreted intuitively; for **standard deviation**, we usually use the [**68-95-99.7 rule**](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule){target="_blank"}, which will make more sense relative to some **real-world data**...
 
 [^purple]: Throughout the course, remember, <span style="color:purple;">**purrple**</span> is for <span style="color:purple;">**purrameters**</span>
 [^mathcal]: Throughout the course, this "calligraphic" font $\mathcal{N}$, $\mathcal{D}$, etc., will be used to denote **distributions**
 
-## Real Data and the 68-95-99.7 Rule {.smaller .crunch-layout-panel .crunch-title .crunch-figures .crunch-lists}
+## Real Data and the 68-95-99.7 Rule {.smaller .crunch-layout-panel .crunch-title .crunch-figures .crunch-lists .crunch-images}
 
 ::: {layout-ncol=2}
 
@@ -1101,16 +1114,29 @@ ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
 #| label: fig-height-plot
 #| fig-align: center
 #| fig-cap: "Heights (cm) for 18K professional athletes"
-#| fig-height: 6.5
+#| fig-height: 6.25
 library(readr)
 height_df <- read_csv("https://gist.githubusercontent.com/jpowerj/9a23807fb71a5f6b6c2f37c09eb92ab3/raw/89fc6b8f0c57e41ebf4ce5cdf2b3cad6b2dd798c/sports_heights.csv")
 mean_height <- mean(height_df$height_cm)
 sd_height <- sd(height_df$height_cm)
 height_density <- function(x) dnorm(x, mean_height, sd_height)
+m2_sd <- mean_height - 2 * sd_height
+m1_sd <- mean_height - 1 * sd_height
+p1_sd <- mean_height + 1 * sd_height
+p2_sd <- mean_height + 2 * sd_height
+vlines_data <- tibble::tribble(
+  ~x, ~xend, ~y, ~yend, ~Params,
+  mean_height, mean_height, 0, height_density(mean_height), "Mean",
+  m2_sd, m2_sd, 0, height_density(m2_sd), "SD",
+  m1_sd, m1_sd, 0, height_density(m1_sd), "SD",
+  p1_sd, p1_sd, 0, height_density(p1_sd), "SD",
+  p2_sd, p2_sd, 0, height_density(p2_sd), "SD"
+)
 ggplot(height_df, aes(x = height_cm)) +
     geom_histogram(aes(y = after_stat(density)), binwidth = 5.0) +
     #stat_function(fun = height_density, linewidth = g_linewidth) +
     geom_area(stat = "function", fun = height_density, color="black", linewidth = g_linewidth, fill = cbPalette[1], alpha=0.2) +
+    geom_segment(data=vlines_data, aes(x=x, xend=xend, y=y, yend=yend, linetype = Params), linewidth = g_linewidth, color=cbPalette[2]) +
     labs(
       title=paste0("Distribution of heights (cm), N=",nrow(height_df)," athletes\nMean=",round(mean_height,2),", SD=",round(sd_height,2)),
       x="Height (cm)",
@@ -1120,21 +1146,123 @@ ggplot(height_df, aes(x = height_cm)) +
 ```
 
 ::: {#fig-empirical}
-<img src="images/empirical_rule.svg" height="345">
+<img src="images/empirical_rule.svg" height="333">
 
 The 68-95-99.7 Rule visualized (<a href="https://commons.wikimedia.org/wiki/File:Empirical_rule_histogram.svg" target="_blank">Wikimedia Commons</a>)
 :::
 
 :::
 
-* The **point estimate** $\mu = 186.48$ is straightforward: *the average height of the athletes is 186.48cm*. But how do we interpret the **standard deviation**, $\sigma = 9.7$?
-* Using the **68-95-99.7 Rule**: *About 68% of the heights fall between*
+The **point estimate** ${\color{purple}\mu} = 186.48$ is straightforward: *the average height of the athletes is 186.48cm*. Using the 68-95-99.7 Rule to interpret the **SD**, ${\color{purple}\sigma} = 9.7$, we get:
+
+::: columns
+::: {.column width="50%"}
+
+<center>
+*About **68% of the heights** fall between*
+</center>
 
 | | | |
-|:-:|:-:|:-:|
-| [186.48 - 9.7 | and | 186.48 + 9.7] |
+|:-|:-:|-:|
+| [${\color{purple}\mu} - 1\cdot {\color{purple}\sigma}$ | and | ${\color{purple}\mu} + 1\cdot {\color{purple}\sigma}$] |
+| [186.48 - 1 &middot; 9.7 | and | 186.48 + 1 &middot; 9.7] |
 | [176.78 | and | 196.18] |
 
+: {tbl-colwidths="[45,10,45]"}
+
+:::
+::: {.column width="50%"}
+
+<center>
+*About **95% of the heights** fall between*
+</center>
+
+| | | |
+|:-|:-:|-:|
+| [${\color{purple}\mu} - 2 \cdot {\color{purple}\sigma}$ | and | ${\color{purple}\mu} + 2 \cdot {\color{purple}\sigma}$] |
+| [186.48 - 2 &middot; 9.7 | and | 186.48 + 2 &middot; 9.7] |
+| [167.08 | and | 205.88] |
+
+: {tbl-colwidths="[45,10,45]"}
+
+:::
+:::
+
+## Boxplots: Comparing Multiple Distributions {.smaller .small-title}
+
+::: {layout-ncol=2}
+
+![<a href="https://commons.wikimedia.org/wiki/File:Boxplot_vs_PDF.svg">Jhguch at en.wikipedia</a>, <a href="https://creativecommons.org/licenses/by-sa/2.5">CC BY-SA 2.5</a>, via Wikimedia Commons](images/boxplot_vs_pdf.svg)
+
+![<a href="https://commons.wikimedia.org/wiki/File:Boxplot_of_Average_Article_Feedback_ratings_by_project_rated_quality.svg">Protonk</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons](images/multiple_boxplots.svg)
+
+:::
+
+## Another Option: Joyplots {.smaller}
+
+::: {layout-ncol=2}
+
+![<a href="https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/joy-plots-in-arcgis-pro/" target="_blank">(Iconic album cover)</a>](images/joy_division.jpg){#fig-joy-division}
+
+::: {#fig-manifesto}
+
+<img src="images/manifesto_distances.png" height="550"></img>
+
+<a href="https://cs.stanford.edu/~jjacobs3/Jacobs_Translations_Ideological_Interventions_2019_11_22.pdf" target="_blank">*(Tooting my own horn)*</a>
+:::
+:::
+
+## Multivariate Distributions: Preview {.smaller}
+
+* The **bivariate normal** distribution represents the distribution of **two** normally-distributed RVs $\mathbf{X} = [\begin{smallmatrix} X_1 & X_2\end{smallmatrix}]$, which may or may not be correlated:
+
+::: {.special-math style="margin-bottom: 42px !important;"}
+$$
+\mathbf{X} = \begin{bmatrix}X_1 \\ X_2\end{bmatrix}, \; \boldsymbol{\mu} =
+%\begin{bmatrix}\mu_1 \\ \mu_2\end{bmatrix}
+\begin{bmatrix}\smash{\overbrace{\mu_1}^{\mathbb{E}[X_1]}} \\ \smash{\underbrace{\mu_2}_{\mathbb{E}[X_2]}}\end{bmatrix}
+, \; \mathbf{\Sigma} = \begin{bmatrix}\smash{\overbrace{\sigma_1^2}^{\text{Var}[X_1]}} & \smash{\overbrace{\rho\sigma_1\sigma_2}^{\text{Cov}[X_1,X_2]}} \\ \smash{\underbrace{\rho\sigma_2\sigma_1}_{\text{Cov}[X_2,X_1]}} & \smash{\underbrace{\sigma_2^2}_{\text{Var}[X_2]}}\end{bmatrix}
+% \begin{bmatrix}\sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_2\sigma_1 & \sigma_2^2 \end{bmatrix}
+% = \begin{bmatrix}\text{Var}[X_1] & \text{Cov}[X_1,X_2] \\ \text{Cov}[X_2,X_1] & \text{Var}[X_2] \end{bmatrix}
+$$
+
+:::
+
+* By squishing all this information intro matrices, we can specify the parameters of **multivariate-normally-distributed** *vectors* of RVs similarly to how we specify single-dimensional normally-distributed RVs:
+
+::: {.crunch-math}
+
+$$
+\begin{align*}
+\overbrace{X}^{\mathclap{\text{scalar}}} &\sim \mathcal{N}\phantom{_k}(\overbrace{\mu}^{\text{scalar}}, \overbrace{\sigma}^{\text{scalar}}) \tag{Univariate} \\
+\underbrace{\mathbf{X}}_{\text{vector}} &\sim \boldsymbol{\mathcal{N}}_k(\smash{\underbrace{\boldsymbol{\mu}}_{\text{vector}}}, \underbrace{\mathbf{\Sigma}}_{\text{matrix}}) \tag{Multivariate}
+\end{align*}
+$$
+
+:::
+
+
+::: {.footnote .crunch-math style="font-size: 1.2rem !important; margin-top: 24px !important;"}
+
+*Note: In the future I'll use the notation $\mathbf{X}_{[a \times b]}$ to denote the dimensions of the vectors/matrices, like $\mathbf{X}_{[k \times 1]} \sim \boldsymbol{\mathcal{N}}_k(\boldsymbol{\mu}_{[k \times 1]}, \mathbf{\Sigma}_{[k \times k]})$*
+
+:::
+
+## Visualizing 3D Distributions: Projection {.smaller}
+
+* Since most of our intuitions about plots come from **2D** plots, it is **extremely useful** to be able to take a 3D plot like this and imagine "projecting" it down into different 2D plots:
+
+![(Adapted via LaTeX from <a href="https://tex.stackexchange.com/questions/31708/draw-a-bivariate-normal-distribution-in-tikz">StackExchange discussion</a>)](images/bivariate_normal_corrected.svg)
+
+## Visualizing 3D Distributions: Contours {.smaller}
+
+![From <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#bi-variate-normal-uncorrelated" target="_blank">Prof. Hickman's slides!</a>](images/contour_nocorr.png){fig-align="center"}
+
+## Visualizing 3D Distributions: Contours {.smaller}
+
+![Also from <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#bi-variate-correlated" target="_blank">Prof. Hickman's slides!</a>](images/contour_corr.png){fig-align="center"}
+
+<!-- ![From Selvan, Raghavendra (2015). <a href="https://raghavian.github.io/publication/2015-01-01-Bayesian-tracking-EM" target="_blank">*Bayesian tracking of multiple point targets using expectation maximization*</a>. MSc Thesis.](images/bivariate_normal.png) -->
 
 <!---
  ## 68-95-99.7 Rule
