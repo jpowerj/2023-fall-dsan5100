@@ -1,5 +1,13 @@
 /*-- scss:rules --*/
 
+a.disabled {
+    /* Make the disabled links grayish*/
+    color: gray;
+    /* And disable the pointer events */
+    pointer-events: none;
+}
+
+
 .after-arrow ::after {
     content: "&rarr;" !important;
     display: inline-block !important;

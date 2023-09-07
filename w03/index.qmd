@@ -1,0 +1,159 @@
+---
+title: "Week 3: Conditional Probability"
+subtitle: "*DSAN 5100: Probabilistic Modeling and Statistical Computing*<br>Section 03"
+author: "Jeff Jacobs"
+institute: "<a href=\"mailto:jj1088@georgetown.edu\" target=\"_blank\">`jj1088@georgetown.edu`</a>"
+date: 2023-09-07
+date-format: full
+#date: last-modified
+#date-format: "dddd MMM D, YYYY, HH:mm:ss"
+lecnum: 3
+categories:
+  - "Class Sessions"
+execute:
+  enabled: true
+format:
+  revealjs:
+    html-math-method: mathjax
+    slide-number: true
+    cache: true
+    output-file: slides.html
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    theme: [default, "../_jjslides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\"><script src=\"https://d3js.org/d3.v4.min.js\"></script><script src=\"../assets/_venn.js\"></script>"}
+  html:
+    #cache: true
+    output-file: index.html
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .smaller-title data-name="Schedule"}
+
+| | Start | End | Topic | Recording |
+|:- |:- |:- |:- |:-:|
+| **Lecture** | 12:30pm | 12:40pm | [Recap &rarr;](#recap) | <a href="./recording-w03-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:20pm | [What is Conditional Probability? &rarr;](#what-is-conditional-probability) | <a href="./recording-w03-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| | 1:20pm | 2:00pm | [Bayes' Theorem and its Implications &rarr;](#bayes-theorem-and-its-implications) | <a href="./recording-w03-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| **Break!** | 2:00pm | 2:10pm | | |
+| **Lab** | 2:10pm | 2:50pm | [Lab 2 Demonstrations <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html){target="_blank"} | <a href="./recording-w03-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| | 2:50pm | 3:00pm | [Lab 2 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html){target="_blank"} | <a href="./recording-w03-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+
+: {tbl-colwidths="[12,12,12,54,5,5]"} 
+
+# Recap {data-stack-name="Recap"}
+
+## Recap {.smaller}
+
+* Logic $\rightarrow$ Set Theory $\rightarrow$ Probability Theory
+* Entirety of probability theory can be derived from **two axioms**:
+
+::: {.callout-tip icon=false title="The Entirety of Probability Theory Follows From..."}
+
+**Axiom 1** (*Unitarity*): $\Pr(\Omega) = 1$ (The probability that **something** happens is 1)
+
+**Axiom 2** (*$\sigma$-additivity*): For mutually-exclusive events $E_1, E_2, \ldots$,
+
+$$
+\underbrace{\Pr\left(\bigcup_{i=1}^{\infty}E_i\right)}_{\Pr(E_1\text{ occurs }\vee E_2\text{ occurs } \vee \cdots)} = \underbrace{\sum_{i=1}^{\infty}\Pr(E_i)}_{\Pr(E_1\text{ occurs}) + \Pr(E_2\text{ occurs}) + \cdots}
+$$
+  
+:::
+
+* But what does "mutually exclusive" mean...?
+
+## Venn Diagrams
+
+```{=html}
+<center>
+<div id="venn"></div>
+</center>
+
+<script>
+var sets = [ {sets: ['A'], size: 12}, 
+             {sets: ['B'], size: 12},
+             {sets: ['A','B'], size: 2}];
+
+//var chart = venn.VennDiagram()
+//d3.select("#venn").datum(sets).call(chart);
+</script>
+<script>
+var chart = venn.VennDiagram()
+                .width(500)
+                .height(500);
+// draw venn diagram
+var div = d3.select("#venn")
+div.datum(sets).call(chart);
+
+// add a tooltip
+var tooltip = d3.select("body").append("div")
+    .attr("class", "venntooltip");
+
+div.selectAll("path")
+    .style("stroke-opacity", 0)
+    .style("stroke", "#fff")
+    .style("stroke-width", 3);
+
+// add listeners to all the groups to display tooltip on mouseover
+div.selectAll("g")
+    .on("mouseover", function(d, i) {
+        // sort all the areas relative to the current item
+        venn.sortAreas(div, d);
+
+        // Display a tooltip with the current size
+        tooltip.transition().duration(400).style("opacity", .9);
+        console.log(d.size + " users");
+        tooltip.text(d.size + " users");
+        
+        // highlight the current path
+        var selection = d3.select(this).transition("tooltip").duration(400);
+        selection.select("path")
+            .style("stroke-width", 3)
+            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
+            .style("stroke-opacity", 1);
+    })
+
+    .on("mousemove", function() {
+        tooltip.style("left", (d3.event.pageX) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+    })
+    
+    .on("mouseout", function(d, i) {
+        tooltip.transition().duration(400).style("opacity", 0);
+        var selection = d3.select(this).transition("tooltip").duration(400);
+        selection.select("path")
+            .style("stroke-width", 0)
+            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
+            .style("stroke-opacity", 0);
+    });
+</script>
+```
+
+# What is Conditional Probability? {data-stack-name="Conditional Prob"}
+
+## Conditional Probability
+
+# Bayes' Theorem and its Implications
+
+## Bayes' Theorem
+
+# Lab 2 Demonstration {data-stack-name="Lab Demos"}
+
+## Lab 2 Demo 1
+
+# Lab 2 Assignment Overview {data-stack-name="Lab Assignment"}
+
+## Lab 2 Assignment

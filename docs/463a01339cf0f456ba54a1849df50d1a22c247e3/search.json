@@ -721,10 +721,101 @@
     "text": "Footnotes\n\n\nFor math majors, you can think of it as an isomorphism between the objects and operations of the three subjects↩︎\nThroughout the course, this “calligraphic” font \\(\\mathcal{N}\\), \\(\\mathcal{D}\\), etc., will be used to denote distributions↩︎\nThroughout the course, remember, purrple is for purrameters↩︎"
   },
   {
+    "objectID": "w03/index.html",
+    "href": "w03/index.html",
+    "title": "Week 3: Conditional Probability",
+    "section": "",
+    "text": "Open slides in new window →"
+  },
+  {
+    "objectID": "w03/index.html#recap-1",
+    "href": "w03/index.html#recap-1",
+    "title": "Week 3: Conditional Probability",
+    "section": "Recap",
+    "text": "Recap\n\nLogic \\(\\rightarrow\\) Set Theory \\(\\rightarrow\\) Probability Theory\nEntirety of probability theory can be derived from two axioms:\n\n\n\n\n\n\n\nThe Entirety of Probability Theory Follows From…\n\n\n\nAxiom 1 (Unitarity): \\(\\Pr(\\Omega) = 1\\) (The probability that something happens is 1)\nAxiom 2 (\\(\\sigma\\)-additivity): For mutually-exclusive events \\(E_1, E_2, \\ldots\\),\n\\[\n\\underbrace{\\Pr\\left(\\bigcup_{i=1}^{\\infty}E_i\\right)}_{\\Pr(E_1\\text{ occurs }\\vee E_2\\text{ occurs } \\vee \\cdots)} = \\underbrace{\\sum_{i=1}^{\\infty}\\Pr(E_i)}_{\\Pr(E_1\\text{ occurs}) + \\Pr(E_2\\text{ occurs}) + \\cdots}\n\\]\n\n\n\nBut what does “mutually exclusive” mean…?"
+  },
+  {
+    "objectID": "w03/index.html#venn-diagrams",
+    "href": "w03/index.html#venn-diagrams",
+    "title": "Week 3: Conditional Probability",
+    "section": "Venn Diagrams",
+    "text": "Venn Diagrams"
+  },
+  {
+    "objectID": "w03/index.html#conditional-probability",
+    "href": "w03/index.html#conditional-probability",
+    "title": "Week 3: Conditional Probability",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability"
+  },
+  {
+    "objectID": "w03/index.html#bayes-theorem",
+    "href": "w03/index.html#bayes-theorem",
+    "title": "Week 3: Conditional Probability",
+    "section": "Bayes’ Theorem",
+    "text": "Bayes’ Theorem"
+  },
+  {
+    "objectID": "w03/index.html#lab-2-demo-1",
+    "href": "w03/index.html#lab-2-demo-1",
+    "title": "Week 3: Conditional Probability",
+    "section": "Lab 2 Demo 1",
+    "text": "Lab 2 Demo 1"
+  },
+  {
+    "objectID": "w03/index.html#lab-2-assignment",
+    "href": "w03/index.html#lab-2-assignment",
+    "title": "Week 3: Conditional Probability",
+    "section": "Lab 2 Assignment",
+    "text": "Lab 2 Assignment"
+  },
+  {
+    "objectID": "w03/slides.html#recap-1",
+    "href": "w03/slides.html#recap-1",
+    "title": "Week 3: Conditional Probability",
+    "section": "Recap",
+    "text": "Recap\n\nLogic \\(\\rightarrow\\) Set Theory \\(\\rightarrow\\) Probability Theory\nEntirety of probability theory can be derived from two axioms:\n\n\n\n\nThe Entirety of Probability Theory Follows From…\n\n\nAxiom 1 (Unitarity): \\(\\Pr(\\Omega) = 1\\) (The probability that something happens is 1)\nAxiom 2 (\\(\\sigma\\)-additivity): For mutually-exclusive events \\(E_1, E_2, \\ldots\\),\n\\[\n\\underbrace{\\Pr\\left(\\bigcup_{i=1}^{\\infty}E_i\\right)}_{\\Pr(E_1\\text{ occurs }\\vee E_2\\text{ occurs } \\vee \\cdots)} = \\underbrace{\\sum_{i=1}^{\\infty}\\Pr(E_i)}_{\\Pr(E_1\\text{ occurs}) + \\Pr(E_2\\text{ occurs}) + \\cdots}\n\\]\n\n\n\n\nBut what does “mutually exclusive” mean…?"
+  },
+  {
+    "objectID": "w03/slides.html#venn-diagrams",
+    "href": "w03/slides.html#venn-diagrams",
+    "title": "Week 3: Conditional Probability",
+    "section": "Venn Diagrams",
+    "text": "Venn Diagrams"
+  },
+  {
+    "objectID": "w03/slides.html#conditional-probability",
+    "href": "w03/slides.html#conditional-probability",
+    "title": "Week 3: Conditional Probability",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability"
+  },
+  {
+    "objectID": "w03/slides.html#bayes-theorem",
+    "href": "w03/slides.html#bayes-theorem",
+    "title": "Week 3: Conditional Probability",
+    "section": "Bayes’ Theorem",
+    "text": "Bayes’ Theorem"
+  },
+  {
+    "objectID": "w03/slides.html#lab-2-demo-1",
+    "href": "w03/slides.html#lab-2-demo-1",
+    "title": "Week 3: Conditional Probability",
+    "section": "Lab 2 Demo 1",
+    "text": "Lab 2 Demo 1"
+  },
+  {
+    "objectID": "w03/slides.html#lab-2-assignment",
+    "href": "w03/slides.html#lab-2-assignment",
+    "title": "Week 3: Conditional Probability",
+    "section": "Lab 2 Assignment",
+    "text": "Lab 2 Assignment"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "DSAN 5100, Section 03 (Thursdays)",
     "section": "",
-    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nMonday, September 4, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nWednesday, September 6, 2023\n\n\n\n\nWeek 3: Conditional Probability\n\n\nThursday, September 7, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]

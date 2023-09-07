@@ -267,7 +267,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Week 2: Introduction to Probabilistic Modeling</h1>
-<p class="subtitle lead"><em>DSAN 5000: Probabilistic Modeling and Statistical Computing</em><br>Section 03</p>
+<p class="subtitle lead"><em>DSAN 5100: Probabilistic Modeling and Statistical Computing</em><br>Section 03</p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
   </div>
@@ -294,7 +294,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Monday Sep 4, 2023, 00:12:25</p>
+      <p class="date">Wednesday Sep 6, 2023, 22:59:54</p>
     </div>
   </div>
   
@@ -698,7 +698,7 @@ Newton-&gt;Tree
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell nobotmargin" data-layout-align="center">
+<div class="cell nobotmargin" data-layout-align="center" data-hash="index_cache/html/random-circles-unif_c02503ca753de5669a78c28f88aae876">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -707,7 +707,7 @@ Newton-&gt;Tree
 </div>
 </div>
 </div>
-<div class="cell nobotmargin" data-layout-align="center">
+<div class="cell nobotmargin" data-layout-align="center" data-hash="index_cache/html/random-circles-exp_8b3df454150aa6f2c8f4a3fe5d7428d7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>radii <span class="ot">&lt;-</span> <span class="fu">rexp</span>(N, <span class="dv">4</span>)</span>
@@ -1489,7 +1489,7 @@ S = \{ &amp;\text{result of dice roll is 1}, \\
 <li><strong>Ultimate Probability Pro-Tip</strong>: When you hear “discrete distribution”, think of a bar graph: <span class="math inline">\(x\)</span>-axis = events, bar height = probability of events</li>
 <li><strong>Two coins example</strong>: <span class="math inline">\(X\)</span> = RV representing <strong>number of heads</strong> obtained in two coin flips</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/dicrete-bar-graph_b946c1eaafafd713f59ae54d4d340c94">
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.2     ✔ readr     2.1.4
@@ -1515,7 +1515,7 @@ S = \{ &amp;\text{result of dice roll is 1}, \\
 <ul>
 <li>This works even for <strong>continuous</strong> distributions, if you focus on the <strong>area under the curve</strong> instead of the height:</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/continuous-area_b5827a772754440812d15941d9a6d99e">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>funcShaded <span class="ot">&lt;-</span> <span class="cf">function</span>(x, lower_bound, upper_bound) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    y[x <span class="sc">&lt;</span> lower_bound <span class="sc">|</span> x <span class="sc">&gt;</span> upper_bound] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
@@ -1579,7 +1579,7 @@ S = \{ &amp;\text{result of dice roll is 1}, \\
 </section>
 <section id="example-game-reviews" class="level2">
 <h2 class="anchored" data-anchor-id="example-game-reviews">Example: Game Reviews</h2>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/game-reviews-plot_2f70cf9603af12d53fa2244d74ef5bd1">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig_title <span class="ot">&lt;-</span> <span class="st">"Review for a Popular Nintendo Switch Game"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fig_subtitle <span class="ot">&lt;-</span> <span class="st">"(That I definitely didn't play for &gt;400 hours this summer...)"</span></span>
@@ -1621,7 +1621,7 @@ dbl (1): score
 </section>
 <section id="adding-a-single-line" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-single-line">Adding a Single Line</h2>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/game-reviews-mean-line_49ef63988c07d4af2cd69bbd2dd00eb8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mean_score <span class="ot">&lt;-</span> <span class="fu">mean</span>(score_df<span class="sc">$</span>score)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mean_score_label <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%0.2f"</span>, mean_score)</span>
@@ -1669,7 +1669,7 @@ dbl (1): score
 <h2 class="anchored" data-anchor-id="or-a-single-ribbon">Or a Single Ribbon</h2>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="index_cache/html/noribbon-demo_6ae031c1786e287265f8cb4c55b8aac6" style="flex-basis: 50.0%;justify-content: center;">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Each x value gets 10 y values</span></span>
@@ -1691,7 +1691,7 @@ dbl (1): score
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="index_cache/html/ribbon-demo_347736e6dfde6b04cf8d4dfd5fab69a6" style="flex-basis: 50.0%;justify-content: center;">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time, just the means</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>mean_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(x) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mean=</span><span class="fu">mean</span>(y), <span class="at">min=</span><span class="fu">min</span>(y), <span class="at">max=</span><span class="fu">max</span>(y))</span>
@@ -1716,7 +1716,7 @@ dbl (1): score
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="index_cache/html/noribbon-demo-lowvar_b9d22bc50272106ad4f4c53033b0053b" style="flex-basis: 50.0%;justify-content: center;">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Each x value gets 10 y values</span></span>
@@ -1738,7 +1738,7 @@ dbl (1): score
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="index_cache/html/ribbon-demo-lowvar_79799894744f6401c134e5e15a569a2c" style="flex-basis: 50.0%;justify-content: center;">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time, just the means</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mean_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(x) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mean=</span><span class="fu">mean</span>(y), <span class="at">min=</span><span class="fu">min</span>(y), <span class="at">max=</span><span class="fu">max</span>(y))</span>
@@ -1771,7 +1771,7 @@ dbl (1): score
 <center>
 <em>(The distribution you saw a few slides ago)</em>
 </center>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/standard-normal-demo_d14ea9768cac1fe75dee078ed0578574">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vlines_std_normal <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x, <span class="sc">~</span>xend, <span class="sc">~</span>y, <span class="sc">~</span>yend, <span class="sc">~</span>Params,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fu">dnorm</span>(<span class="dv">0</span>), <span class="st">"Mean"</span>,</span>
@@ -1820,7 +1820,7 @@ dbl (1): score
 <h2 class="smaller crunch-layout-panel crunch-title crunch-figures crunch-lists crunch-images anchored" data-anchor-id="real-data-and-the-68-95-99.7-rule">Real Data and the 68-95-99.7 Rule</h2>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-hash="index_cache/html/fig-height-plot_627db0975ca5a5d3184ff222c5d1c27d" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div id="fig-height-plot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -2008,7 +2008,7 @@ dbl (1): score
 
 
 
-::: {.cell layout-align="center"}
+::: {.cell layout-align="center" hash='index_cache/html/standard-normal-empirical_6a31f847a7d2615e282a7d02e63bc169'}
 
 ```{.r .cell-code}
 ggplot(data.frame(x = c(-3, 3)), aes(x = x)) +
