@@ -1,7 +1,9 @@
 project:
   type: website
   resources:
+    - "assets/*"
     - "w02/recording*.html"
+    - "w03/recording*.html"
   output-dir: docs/463a01339cf0f456ba54a1849df50d1a22c247e3
   preview:
     port: 4321
