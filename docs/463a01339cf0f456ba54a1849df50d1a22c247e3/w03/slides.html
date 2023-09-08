@@ -459,21 +459,21 @@ Jeff Jacobs
 <td style="text-align: left;">12:30pm</td>
 <td style="text-align: left;">12:40pm</td>
 <td style="text-align: left;"><a href="#/recap">Recap →</a></td>
-<td style="text-align: center;"><a href="./recording-w03-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-1.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">12:40pm</td>
 <td style="text-align: left;">1:20pm</td>
 <td style="text-align: left;"><a href="#/what-is-conditional-probability">What is Conditional Probability? →</a></td>
-<td style="text-align: center;"><a href="./recording-w03-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-2.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">1:20pm</td>
 <td style="text-align: left;">2:00pm</td>
 <td style="text-align: left;"><a href="#/bayes-theorem-and-its-implications">Bayes’ Theorem and its Implications →</a></td>
-<td style="text-align: center;"><a href="./recording-w03-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-3.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
@@ -487,14 +487,14 @@ Jeff Jacobs
 <td style="text-align: left;">2:10pm</td>
 <td style="text-align: left;">2:50pm</td>
 <td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html" target="_blank">Lab 2 Demonstrations <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
-<td style="text-align: center;"><a href="./recording-w03-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-4.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">2:50pm</td>
 <td style="text-align: left;">3:00pm</td>
 <td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html" target="_blank">Lab 2 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
-<td style="text-align: center;"><a href="./recording-w03-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-5.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -1112,7 +1112,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 &amp;= \frac{(0.99)\left(\frac{1}{10000}\right)}{(0.99)\left( \frac{1}{10000} \right) + (0.01)\left( \frac{9999}{10000} \right)}
 \end{align*}
 \]</span></p>
-<div class="cell" data-hash="index_cache/revealjs/prob-sick-bayes_04ea9db2fe2927e38f97fc249c11d8ee">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>p_healthy <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_sick</span>
 <span id="cb1-3"><a href="#cb1-3"></a>p_pos_given_sick <span class="ot">&lt;-</span> <span class="fl">0.99</span></span>
@@ -1134,7 +1134,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 </section>
 <section id="proof-in-the-pudding" class="slide level2 smaller">
 <h2>Proof in the Pudding</h2>
-<div class="cell" data-hash="index_cache/revealjs/bayes-sick-mc_6809431561e8a6a8f137bf7395b28133">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Disease rarity</span></span>
@@ -1153,7 +1153,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <script type="application/json" data-for="htmlwidget-53930254200691416d1a">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3"],[1,2,3],[0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/compute-disease-rate_6a2764d2d226f0678ec0ef9fbe721e95">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">sum</span>(ppl_df<span class="sc">$</span>has_disease) <span class="sc">/</span> num_people</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1178,7 +1178,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 </section>
 <section id="section-5" class="slide level2 unnumbered">
 <h2></h2>
-<div class="cell" data-hash="index_cache/revealjs/count-positive-tests_928b011d76268e86d95af44b457404dd">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>14 positive tests / 1000 total = 0.014</code></pre>
 </div>
@@ -1191,11 +1191,11 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/filter-positives-only_ad8cf0e5582a62e926f119e6e7f9615b">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-59d468b14e1488828a1e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-59d468b14e1488828a1e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],[146,246,271,272,306,345,425,466,492,503,699,852,911,998],[0,0,0,0,0,0,0,0,0,0,0,0,0,0],[1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"paging":true,"dom":"tp","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-168124c3c8435b3b4790" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-168124c3c8435b3b4790">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],[146,246,271,272,306,345,425,466,492,503,699,852,911,998],[0,0,0,0,0,0,0,0,0,0,0,0,0,0],[1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"paging":true,"dom":"tp","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1267,7 +1267,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <li>Analytic solution is fun, but requires some thought… Monte Carlo it!</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/monty-hall-mc_57d21f2dd9cb357209a69b64e2b4d2a8">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>gen_bday_room <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">room_num=</span><span class="cn">NULL</span>) {</span>
@@ -1286,8 +1286,8 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 </details>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d19477f426ad7346c1af" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d19477f426ad7346c1af">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6"],[1,1,1,1,1,1],[1,2,3,4,5,6],[90,105,79,21,131,139]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>room_num<\/th>\n      <th>id<\/th>\n      <th>birthday<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-31354406356a388f048a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-31354406356a388f048a">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6"],[1,1,1,1,1,1],[1,2,3,4,5,6],[90,105,79,21,131,139]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>room_num<\/th>\n      <th>id<\/th>\n      <th>birthday<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -1295,7 +1295,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 </section>
 <section id="section-7" class="slide level2 unnumbered">
 <h2></h2>
-<div class="cell" data-hash="index_cache/revealjs/shared-bdays-fn_08dd8159077450877e93c31b7e1c4457">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 0 × 0</code></pre>
 </div>
@@ -1306,7 +1306,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <p>Let’s try more rooms…</p>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="cell" data-hash="index_cache/revealjs/bday-mc-multiple-rooms_0c3cd218ff29b7cfee25e19beba8f3b6">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Get tibbles for each room</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb9-3"><a href="#cb9-3"></a>gen_bday_rooms <span class="ot">&lt;-</span> <span class="cf">function</span>(num_rooms) {</span>
@@ -1383,7 +1383,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 </div>
 </div><div class="column" style="width:48%;">
 <p>Number of shared birthdays per room:</p>
-<div class="cell" data-hash="index_cache/revealjs/get-shared-bdays_1bf0c73c6aa6705abb9817653c8bebf9">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Now just get the # shared bdays</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>shared_per_room <span class="ot">&lt;-</span> rooms_df <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>    <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span></span>
@@ -1397,7 +1397,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared})\)</span></li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/shared-bday-rooms-pct_36a4dd9dda7d700da74543ebeb0b3e35">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8</code></pre>
 </div>
@@ -1410,7 +1410,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <ul>
 <li>How about <strong>A THOUSAND ROOMS</strong>?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms_8901b25388ab7f737b2535b611c4da15">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] 1 0 0 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 1 1
  [38] 1 0 1 0 1 1 1 0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 0 1 1 0 1 1 1 1 1 1 1
@@ -1420,7 +1420,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared bday})\)</span>?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms-prob_2a1844d7799e057e1766dbd0bbf284f8">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.72</code></pre>
 </div>
@@ -1430,7 +1430,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <li>In our case: <span class="math inline">\(1 - \frac{366!}{366^{30}(366-30)!} = 1 - \frac{366!}{366^{30}336!} = 1 - \frac{\prod_{i=337}^{366}i}{366^{30}}\)</span></li>
 <li><code>R</code> can juust barely handle these numbers:</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-exact-soln_3cac3dd692f327afddc4a41fcaf08fd9">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7053034</code></pre>
 </div>
@@ -1439,7 +1439,7 @@ P(H = \textsf{sick} \mid T = \textsf{T}^+) &amp;= \frac{P(T = \textsf{T}^+ \mid 
 <section id="wrapping-up" class="slide level2 smaller">
 <h2>Wrapping Up</h2>
 
-<img data-src="index_files/figure-revealjs/bday-solns-plot-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/bday-solns-plot-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="final-note-functions-of-random-variables" class="slide level2">
 <h2>Final Note: Functions of Random Variables</h2>
 <ul>

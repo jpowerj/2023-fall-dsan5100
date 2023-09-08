@@ -872,7 +872,7 @@
     "href": "w03/index.html#section-5",
     "title": "Week 3: Conditional Probability",
     "section": "",
-    "text": "library(dplyr)\ntake_test &lt;- function(is_sick) {\n  if (is_sick) {\n    return(rbinom(1,2,p_neg_given_sick))\n  } else {\n    return(rbinom(1,2,p_pos_given_healthy))\n  }\n}\nppl_df['test_result'] &lt;- unlist(lapply(ppl_df$has_disease, take_test))\n#ppl_df %&gt;% head(5)\nnum_positive &lt;- sum(ppl_df$test_result)\np_positive &lt;- num_positive / num_people\nwriteLines(paste0(num_positive,\" positive tests / \",num_people,\" total = \",p_positive))\n\n14 positive tests / 1000 total = 0.014\n\n\n\nBo is one of those 14 people!"
+    "text": "library(dplyr)\n# Data Generating Process\ntake_test &lt;- function(is_sick) {\n  if (is_sick) {\n    return(rbinom(1,2,p_neg_given_sick))\n  } else {\n    return(rbinom(1,2,p_pos_given_healthy))\n  }\n}\nppl_df['test_result'] &lt;- unlist(lapply(ppl_df$has_disease, take_test))\n#ppl_df %&gt;% head(5)\nnum_positive &lt;- sum(ppl_df$test_result)\np_positive &lt;- num_positive / num_people\nwriteLines(paste0(num_positive,\" positive tests / \",num_people,\" total = \",p_positive))\n\n14 positive tests / 1000 total = 0.014\n\n\n\nBo is one of those 14 people!"
   },
   {
     "objectID": "w03/index.html#section-6",
@@ -907,7 +907,7 @@
     "href": "w03/index.html#section-7",
     "title": "Week 3: Conditional Probability",
     "section": "",
-    "text": "# Inefficient version (return_num=FALSE) is for: if you want tibbles of *all* shared bdays for each room\nget_shared_bdays &lt;- function(df, is_grouped=NULL, return_num=FALSE, return_bool=FALSE) {\n  bday_pairs &lt;- tibble()\n  for (i in 1:(nrow(df)-1)) {\n    i_data &lt;- df[i,]\n    i_bday &lt;- i_data$birthday\n    for (j in (i+1):nrow(df)) {\n      j_data &lt;- df[j,]\n      j_bday &lt;- j_data$birthday\n      # Check if they're the same\n      same_bday &lt;- i_bday == j_bday\n      if (same_bday) {\n        if (return_bool) {\n          return(1)\n        }\n        pair_data &lt;- tibble(i=i,j=j,bday=i_bday)\n        if (!is.null(is_grouped)) {\n          i_room &lt;- i_data$room_num\n          pair_data['room'] &lt;- i_room\n        }\n        bday_pairs &lt;- bind_rows(bday_pairs, pair_data)\n      }\n    }\n  }\n  if (return_bool) {\n    return(0)\n  }\n  if (return_num) {\n    return(nrow(bday_pairs))\n  }\n  return(bday_pairs)\n}\nget_shared_bdays(ppl_df)\n\n# A tibble: 0 × 0"
+    "text": "# Inefficient version (return_num=FALSE) is for: if you want tibbles of *all* shared bdays for each room\nget_shared_bdays &lt;- function(df, is_grouped=NULL, return_num=FALSE, return_bool=FALSE) {\n  bday_pairs &lt;- tibble()\n  for (i in 1:(nrow(df)-1)) {\n    i_data &lt;- df[i,]\n    i_bday &lt;- i_data$birthday\n    for (j in (i+1):nrow(df)) {\n      j_data &lt;- df[j,]\n      j_bday &lt;- j_data$birthday\n      # Check if they're the same\n      same_bday &lt;- i_bday == j_bday\n      if (same_bday) {\n        if (return_bool) {\n          return(1)\n        }\n        pair_data &lt;- tibble(i=i,j=j,bday=i_bday)\n        if (!is.null(is_grouped)) {\n          i_room &lt;- i_data$room_num\n          pair_data['room'] &lt;- i_room\n        }\n        bday_pairs &lt;- bind_rows(bday_pairs, pair_data)\n      }\n    }\n  }\n  if (return_bool) {\n    return(0)\n  }\n  if (return_num) {\n    return(nrow(bday_pairs))\n  }\n  return(bday_pairs)\n}\n#get_shared_bdays(ppl_df)\nget_shared_bdays(ppl_df)\n\n# A tibble: 0 × 0"
   },
   {
     "objectID": "w03/index.html#section-8",
