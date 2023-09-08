@@ -25,8 +25,8 @@ website:
         text: "Week 1: Aug 24"
       - href: w02/index.qmd
         text: "Week 2: Aug 31"
-      # - href: 2023-09-05.qmd
-      #   text: "Week 3: Sep 6"
+      - href: w03/index.qmd
+        text: "Week 3: Sep 7"
       - "---"
       - href: "https://forms.gle/QBT621Vmcez4Y99r5"
         text: "Suggestion Box <i class=\"bi bi-box-arrow-up-right ps-1\"></i>"

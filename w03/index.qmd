@@ -721,7 +721,7 @@ disp(pos_ppl, obs_per_page = 10)
 :::
 ::: {.column width="50%"}
 
-* Bo doesn't have it, and neither does anyone else who tested positive!
+* Bo doesn't have it, and neither do 110 of the 111 total people who tested positive!
 * But, in the real world, we only observe $T$
 
 ![](images/pgm_sick.svg){fig-align="center" width="100%"}

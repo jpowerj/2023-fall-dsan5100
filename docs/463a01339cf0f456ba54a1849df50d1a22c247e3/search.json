@@ -893,7 +893,7 @@
     "href": "w03/index.html#zooming-in-on-positive-tests",
     "title": "Week 3: Conditional Probability",
     "section": "Zooming In On Positive Tests",
-    "text": "Zooming In On Positive Tests\n\n\n\npos_ppl &lt;- ppl_df %&gt;% filter(test_result == 1)\ndisp(pos_ppl, obs_per_page = 10)\n\n\n\n\n\n\n\n\nBo doesn’t have it, and neither does anyone else who tested positive!\nBut, in the real world, we only observe \\(T\\)"
+    "text": "Zooming In On Positive Tests\n\n\n\npos_ppl &lt;- ppl_df %&gt;% filter(test_result == 1)\ndisp(pos_ppl, obs_per_page = 10)\n\n\n\n\n\n\n\n\nBo doesn’t have it, and neither do 110 of the 111 total people who tested positive!\nBut, in the real world, we only observe \\(T\\)"
   },
   {
     "objectID": "w03/index.html#zooming-in-on-disease-havers",
@@ -1145,7 +1145,7 @@
     "href": "w03/slides.html#zooming-in-on-positive-tests",
     "title": "Week 3: Conditional Probability",
     "section": "Zooming In On Positive Tests",
-    "text": "Zooming In On Positive Tests\n\n\n\n\n\n\n\n\n\n\n\nBo doesn’t have it, and neither does anyone else who tested positive!\nBut, in the real world, we only observe \\(T\\)"
+    "text": "Zooming In On Positive Tests\n\n\n\n\n\n\n\n\n\n\n\nBo doesn’t have it, and neither do 110 of the 111 total people who tested positive!\nBut, in the real world, we only observe \\(T\\)"
   },
   {
     "objectID": "w03/slides.html#zooming-in-on-disease-havers",
