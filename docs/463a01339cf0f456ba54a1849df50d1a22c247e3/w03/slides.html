@@ -1112,7 +1112,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 &amp;= \frac{(0.99)\left(\frac{1}{10000}\right)}{(0.99)\left( \frac{1}{10000} \right) + (0.01)\left( \frac{9999}{10000} \right)}
 \end{align*}
 \]</span></p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/prob-sick-bayes_04ea9db2fe2927e38f97fc249c11d8ee">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>p_healthy <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_sick</span>
 <span id="cb1-3"><a href="#cb1-3"></a>p_pos_given_sick <span class="ot">&lt;-</span> <span class="fl">0.99</span></span>
@@ -1137,7 +1137,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>Let’s generate a dataset of <strong>5,000</strong> people, using <span class="math inline">\(\Pr(\textsf{Disease}) = \frac{1}{10000}\)</span></li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/bayes-sick-mc_b068d4fc35724b7268c7e91745d7d4f8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tibble)</span>
@@ -1172,7 +1172,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </ul>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/fake-binary-data_55ce646daee0bb4b2062d040b5a96c6f">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>binary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
@@ -1189,7 +1189,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </div>
 </div><div class="column" style="width:60%;">
 <p>Taking the <strong>sum</strong> tells us: <strong>one</strong> row where <code>x == 1</code>:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/binary-df-sum_7de2bfd8fb2f7106fd2aa18df0a31abf">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">sum</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1199,7 +1199,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </div>
 </div>
 <p>Taking the <strong>mean</strong> tells us: <strong>1/3</strong> of rows have <code>x == 1</code>:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/binary-df-mean_52e8f0c6d35c3a92d9c66ee6f497a696">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">mean</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1216,7 +1216,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>If we want the <strong>number</strong> of people who have the disease:</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/compute-disease-count_2e7869f951363ba988037cbc913e7a32">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Compute the *number* of people who have the disease</span></span>
@@ -1229,7 +1229,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>If we want the <strong>proportion</strong> of people who have the disease:</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/compute-disease-rate_642cbb2a15e5414e8d5f3f8d709e6735">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Compute the *proportion* of people who have the disease</span></span>
@@ -1242,7 +1242,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>(And if you dislike scientific notation like I do…)</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/compute-disease-rate-decimal_8dcd1de3114d791266436300557dd0a9">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">format</span>(<span class="fu">mean</span>(ppl_df<span class="sc">$</span>has_disease), <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1267,7 +1267,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </section>
 <section id="data-generating-process-test-results" class="slide level2 smaller">
 <h2>Data-Generating Process: Test Results</h2>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/count-positive-tests_f6c582c6b7dd7f144e94c8992515753d">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -1288,7 +1288,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <pre><code>111 positive tests / 10000 total = 0.0111</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/df-test-result-var_b7abeb44437beec1549cc7c33158dd7e">
 <div class="cell-output-display">
 
 <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ac8a1a01dc334156866e" style="width:100%;height:auto;"></div>
@@ -1300,11 +1300,11 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <h2>Zooming In On Positive Tests</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/filter-positives-only_ad8cf0e5582a62e926f119e6e7f9615b">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-094a98026a6ae63608b9" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-094a98026a6ae63608b9">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111"],[40,66,71,162,358,573,681,1127,1173,1218,1433,1538,1557,1599,1606,1830,1985,2023,2120,2139,2392,2396,2438,2466,2732,2757,2870,2874,3004,3029,3204,3394,3778,3879,3914,4017,4069,4155,4233,4304,4330,4361,4527,4550,4619,4630,4741,4824,4857,4916,4997,5003,5033,5132,5177,5261,5293,5338,5354,5413,5536,5561,5564,5793,5898,6035,6218,6416,6441,6501,6543,6585,6620,6827,7147,7160,7188,7237,7242,7270,7559,7638,7650,7661,7754,7807,7853,8100,8104,8270,8310,8352,8639,8839,8846,8900,8901,8904,8921,8929,8939,9010,9227,9255,9331,9368,9498,9516,9559,9719,9821],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"paging":true,"dom":"tp","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-59d468b14e1488828a1e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-59d468b14e1488828a1e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],[146,246,271,272,306,345,425,466,492,503,699,852,911,998],[0,0,0,0,0,0,0,0,0,0,0,0,0,0],[1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"paging":true,"dom":"tp","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1325,43 +1325,43 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>What if we look at only those who actually have the disease? Maybe the cost of 111 people panicking is worth it if we correctly catch those who do have it?</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/disease-only_f55f53ec924e6b63b9311beebff5fe43">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">disp</span>(ppl_df[ppl_df<span class="sc">$</span>has_disease <span class="sc">==</span> <span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ff1b9477f2fb77e894f1" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ff1b9477f2fb77e894f1">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1"],[8900],[1],[1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-094a98026a6ae63608b9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-094a98026a6ae63608b9">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1"],[8900],[1],[1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Is this always going to be the case?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/repeating-disease-simulation_cec02c21ed26510dd018f03d709e8aed">
 <div class="cell-output cell-output-stdout">
-<pre><code>Num with disease: 1
-Proportion with disease: 0.0002
-Number of positive tests: 53</code></pre>
+<pre><code>Num with disease: 0
+Proportion with disease: 0
+Number of positive tests: 45</code></pre>
+</div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ff1b9477f2fb77e894f1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ff1b9477f2fb77e894f1">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[[],[],[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="index_cache/revealjs/sim-disease-again_0651794b66165dad70d6b64552745161">
+<div class="cell-output cell-output-stdout">
+<pre><code>Num with disease: 0
+Proportion with disease: 0
+Number of positive tests: 62</code></pre>
 </div>
 <div class="cell-output-display">
 
 <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-238bef6dfa411c50650e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-238bef6dfa411c50650e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1"],[579],[1],[1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code>Num with disease: 3
-Proportion with disease: 0.0006
-Number of positive tests: 63</code></pre>
-</div>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f9760b42e5a5c7a1ddd4" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f9760b42e5a5c7a1ddd4">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3"],[1449,1993,3009],[1,1,1],[1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-238bef6dfa411c50650e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[[],[],[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -1371,35 +1371,30 @@ Number of positive tests: 63</code></pre>
 <h2>Worst-Case Worlds</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_1d53f9fac1e569949c5ac5d6f8554978">
 <div class="cell-output cell-output-stdout">
-<pre><code>World #413 / 1000 (5000 people):
+<pre><code>World #415 / 1000 (5000 people):
 # A tibble: 2 × 3
      id has_disease test_result
   &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1  2617           1           1
-2  4192           1           0
+1   617           1           1
+2  2192           1           0
 
 
-World #501 / 1000 (5000 people):
+World #503 / 1000 (5000 people):
 # A tibble: 1 × 3
      id has_disease test_result
   &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1  3669           1           0
+1  1669           1           0
 
 
-World #670 / 1000 (5000 people):
-# A tibble: 1 × 3
+World #729 / 1000 (5000 people):
+# A tibble: 3 × 3
      id has_disease test_result
   &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1  1979           1           0
-
-
-World #698 / 1000 (5000 people):
-# A tibble: 1 × 3
-     id has_disease test_result
-  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1  1272           1           0</code></pre>
+1  1378           1           1
+2  1427           1           1
+3  4062           1           0</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "0.0000008"</code></pre>
@@ -1409,16 +1404,13 @@ World #698 / 1000 (5000 people):
 <p>How unlikely is this? Math:</p>
 <p><span class="math display">\[
 \begin{align*}
-\Pr(\textsf{T}^- \cap \textsf{Sick}) &amp;= \Pr(\textsf{T}^-)\Pr(\textsf{Sick}) \\
-&amp;= \Pr(\textsf{T}^-)\frac{1}{10000}, \\
-\Pr(\textsf{T}^-) &amp;= (0.01)\left(\frac{1}{10000}\right) \\
-&amp;+ (0.99)\left(\frac{9999}{10000}\right) \\
-&amp;= 0.989902 \\
-\implies \Pr(\textsf{T}^- \cap \textsf{Sick}) &amp;\approx 0.0001
+\Pr(\textsf{T}^- \cap \textsf{Sick}) &amp;= \Pr(\textsf{T}^- \mid \textsf{Sick})\Pr(\textsf{Sick}) \\
+&amp;= (0.01)\frac{1}{10000} \\
+&amp;= \frac{1}{1000000}
 \end{align*}
 \]</span></p>
 <p>Computers:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_8eab155687d8d131c0af77987d4b07ba">
 <div class="cell-output cell-output-stdout">
 <pre><code>False Negatives: 1, Total Cases: 1000000</code></pre>
 </div>
@@ -1426,6 +1418,7 @@ World #698 / 1000 (5000 people):
 <pre><code>False Negative Rate: 0.000001</code></pre>
 </div>
 </div>
+<p>(Perfect match!)</p>
 </div>
 </div>
 </section>
@@ -1485,7 +1478,7 @@ World #698 / 1000 (5000 people):
 <li>Analytic solution is fun, but requires some thought… Monte Carlo it!</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/monty-hall-mc_57d21f2dd9cb357209a69b64e2b4d2a8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>gen_bday_room <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">room_num=</span><span class="cn">NULL</span>) {</span>
@@ -1504,8 +1497,8 @@ World #698 / 1000 (5000 people):
 </details>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-79d3b7d2ccf4db1824ad" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-79d3b7d2ccf4db1824ad">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6"],[1,1,1,1,1,1],[1,2,3,4,5,6],[253,342,101,169,28,114]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>room_num<\/th>\n      <th>id<\/th>\n      <th>birthday<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d19477f426ad7346c1af" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d19477f426ad7346c1af">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6"],[1,1,1,1,1,1],[1,2,3,4,5,6],[90,105,79,21,131,139]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>room_num<\/th>\n      <th>id<\/th>\n      <th>birthday<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -1513,13 +1506,9 @@ World #698 / 1000 (5000 people):
 </section>
 <section id="section-5" class="slide level2 unnumbered">
 <h2></h2>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/shared-bdays-fn_02c23f1f02745030e7ca4143f0cbd5f5">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     6    27   114
-2     8    28   337</code></pre>
+<pre><code># A tibble: 0 × 0</code></pre>
 </div>
 </div>
 </section>
@@ -1528,7 +1517,7 @@ World #698 / 1000 (5000 people):
 <p>Let’s try more rooms…</p>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/bday-mc-multiple-rooms_0c3cd218ff29b7cfee25e19beba8f3b6">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Get tibbles for each room</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb26-3"><a href="#cb26-3"></a>gen_bday_rooms <span class="ot">&lt;-</span> <span class="cf">function</span>(num_rooms) {</span>
@@ -1544,73 +1533,68 @@ World #698 / 1000 (5000 people):
 <span id="cb26-13"><a href="#cb26-13"></a>rooms_df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span> <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">get_shared_bdays</span>(.x, <span class="at">is_grouped=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-# A tibble: 0 × 0
+# A tibble: 3 × 3
+      i     j  bday
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     3     6   116
+2     7    12   287
+3    19    30   267
 
 [[2]]
+# A tibble: 0 × 0
+
+[[3]]
 # A tibble: 1 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     7    19   242
-
-[[3]]
-# A tibble: 2 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     2    30    45
-2     5    18    59
+1     7    23   138
 
 [[4]]
 # A tibble: 1 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     7    14   300
+1     6    18    72
 
 [[5]]
-# A tibble: 1 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     9    20   195
-
-[[6]]
-# A tibble: 4 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     1    12   118
-2     1    28   118
-3     5    27   287
-4    12    28   118
-
-[[7]]
 # A tibble: 2 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     9    18     6
-2    15    28    78
+1     8    10   255
+2    16    30    66
+
+[[6]]
+# A tibble: 0 × 0
+
+[[7]]
+# A tibble: 1 × 3
+      i     j  bday
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1    11    23   333
 
 [[8]]
 # A tibble: 1 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     1    20    29
+1     2    17   328
 
 [[9]]
 # A tibble: 2 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     8     9    62
-2    10    24   321
+1     2     4   283
+2    13    21    28
 
 [[10]]
 # A tibble: 2 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1    16    20    86
-2    19    22   163</code></pre>
+1     8    23   135
+2    11    12   204</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:48%;">
 <p>Number of shared birthdays per room:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/get-shared-bdays_1bf0c73c6aa6705abb9817653c8bebf9">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Now just get the # shared bdays</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>shared_per_room <span class="ot">&lt;-</span> rooms_df <span class="sc">%&gt;%</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a>    <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span></span>
@@ -1618,15 +1602,15 @@ World #698 / 1000 (5000 people):
 <span id="cb28-5"><a href="#cb28-5"></a>shared_per_room <span class="ot">&lt;-</span> <span class="fu">unlist</span>(shared_per_room)</span>
 <span id="cb28-6"><a href="#cb28-6"></a>shared_per_room</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 1 2 1 1 4 2 1 2 2</code></pre>
+<pre><code> [1] 3 0 1 1 2 0 1 1 2 2</code></pre>
 </div>
 </div>
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared})\)</span></li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/shared-bday-rooms-pct_36a4dd9dda7d700da74543ebeb0b3e35">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9</code></pre>
+<pre><code>[1] 0.8</code></pre>
 </div>
 </div>
 </div>
@@ -1637,19 +1621,19 @@ World #698 / 1000 (5000 people):
 <ul>
 <li>How about <strong>A THOUSAND ROOMS</strong>?</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms_8901b25388ab7f737b2535b611c4da15">
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 0 1 0 1 0 1 0 0 0 1 1 1 1 0 1 1 0 0 1 1 1 1 1 1 0 1 1 0 1 0 1 1 1 1 1 0
- [38] 1 0 1 1 1 1 0 0 1 0 1 1 0 0 1 0 1 1 1 1 1 1 0 1 1 0 1 0 1 0 1 1 0 0 1 1 0
- [75] 0 1 1 1 1 0 0 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 0 0</code></pre>
+<pre><code>  [1] 1 0 0 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 1 1
+ [38] 1 0 1 0 1 1 1 0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 0 1 1 0 1 1 1 1 1 1 1
+ [75] 1 0 1 0 1 0 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 0 1 0 1</code></pre>
 </div>
 </div>
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared bday})\)</span>?</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms-prob_2a1844d7799e057e1766dbd0bbf284f8">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.66</code></pre>
+<pre><code>[1] 0.72</code></pre>
 </div>
 </div>
 <ul>
@@ -1657,7 +1641,7 @@ World #698 / 1000 (5000 people):
 <li>In our case: <span class="math inline">\(1 - \frac{366!}{366^{30}(366-30)!} = 1 - \frac{366!}{366^{30}336!} = 1 - \frac{\prod_{i=337}^{366}i}{366^{30}}\)</span></li>
 <li><code>R</code> can juust barely handle these numbers:</li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-hash="index_cache/revealjs/bday-exact-soln_3cac3dd692f327afddc4a41fcaf08fd9">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7053034</code></pre>
 </div>
@@ -1666,7 +1650,7 @@ World #698 / 1000 (5000 people):
 <section id="wrapping-up" class="slide level2 smaller">
 <h2>Wrapping Up</h2>
 
-<img data-src="index_files/figure-revealjs/bday-solns-plot-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="index_files/figure-revealjs/bday-solns-plot-1.png" width="960" class="r-stretch"></section>
 <section id="final-note-functions-of-random-variables" class="slide level2">
 <h2>Final Note: Functions of Random Variables</h2>
 <ul>
