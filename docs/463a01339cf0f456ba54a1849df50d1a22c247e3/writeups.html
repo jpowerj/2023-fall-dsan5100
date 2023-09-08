@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-08-24">
 
-<title>Week 1: Welcome to DSAN 5100!</title>
+<title>Additional Writeups</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -60,6 +61,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RFMTL6Q5J5"></script>
 
 <script type="text/javascript">
@@ -70,8 +100,10 @@ gtag('js', new Date());
 gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -83,7 +115,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w01/index.html">Week 1: Aug 24</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./writeups.html">Extra Writeups</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -98,7 +130,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">DSAN 5100 Section 03 (Thursdays, 12:30-3pm)<br><span class="subtitle">Car Barn 201</span><br><span class="subtitle">Fall 2023, Georgetown</span><br><span class="subtitle">Prof.&nbsp;Jeff <a href="mailto:jj1088@georgetown.edu" target="_blank"><i class="bi bi-envelope-at ps-1 pe-1"></i></a><a href="https://github.com/jpowerj" target="_blank"><i class="bi bi-github ps-1"></i></a></span></a> 
+      <a href="./">DSAN 5100 Section 03 (Thursdays, 12:30-3pm)<br><span class="subtitle">Car Barn 201</span><br><span class="subtitle">Fall 2023, Georgetown</span><br><span class="subtitle">Prof.&nbsp;Jeff <a href="mailto:jj1088@georgetown.edu" target="_blank"><i class="bi bi-envelope-at ps-1 pe-1"></i></a><a href="https://github.com/jpowerj" target="_blank"><i class="bi bi-github ps-1"></i></a></span></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,31 +149,31 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Section 03 Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../w01/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./w01/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1: Aug 24</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./w02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2: Aug 31</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./w03/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3: Sep 7</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../writeups.html" class="sidebar-item-text sidebar-link">
+  <a href="./writeups.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Extra Writeups</span></a>
   </div>
 </li>
@@ -171,23 +203,14 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1: Welcome to DSAN 5100!</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Class Sessions</div>
-  </div>
-  </div>
+<h1 class="title">Additional Writeups</h1>
+</div>
 
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 24, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -195,27 +218,40 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 </header>
 
-<p><em>(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)</em></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Today’s Links
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><a class="icon-link" href="https://jfh.georgetown.domains/dsan5100/slides/W01/notes.html" target="_blank"><i class="bi bi-journals pe-1"></i>Week 1 Lecture Notes</a></li>
-<li><a class="icon-link" href="https://georgetown.zoom.us/rec/play/zZvBLK3H175wk69lR6skKCFKGb_S6FmESIRxTu2SE7q7c8M0MnxbxYX46MO09-o2mg0biGBUiR1ZscXQ.1ARqgeDY-rdi5HfI?canPlayFromShare=true&amp;from=share_recording_detail&amp;continueMode=true&amp;componentName=rec-play&amp;originRequestUrl=https%3A%2F%2Fgeorgetown.zoom.us%2Frec%2Fshare%2FRgeOsCy5-XgXjeAkX94sZV8jD4vpXHGsTfG6mT02fRbHt3RLdsnQANR3izjsqDZ_.aollBOTov27FcoQX" target="_blank"><i class="bi bi-film pe-1"></i>Week 1 Lecture Recording</a></li>
-</ul>
-</div>
-</div>
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+<th>
+Title
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="Writeups" data-listing-date-sort="1694204576000" data-listing-file-modified-sort="1694204576852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Bayes' Theorem: Disease Probabilities" data-listing-filename-sort="bayes-disease-tests.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./writeups/bayes-disease-tests.html" class="title listing-title">Bayes’ Theorem: Disease Probabilities</a>
+</td>
+<td>
+<span class="listing-date">Friday, September 8, 2023</span>
+</td>
+</tr>
+</tbody>
+
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,5 +1,11 @@
 [
   {
+    "listing": "/writeups.html",
+    "items": [
+      "/writeups/bayes-disease-tests.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/w01/index.html",

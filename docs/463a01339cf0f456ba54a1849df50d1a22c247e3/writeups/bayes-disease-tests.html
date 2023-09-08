@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-08-24">
+<meta name="dcterms.date" content="2023-09-08">
 
-<title>Week 1: Welcome to DSAN 5100!</title>
+<title>Bayes’ Theorem: Disease Probabilities</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,8 @@ gtag('js', new Date());
 gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -83,7 +85,9 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w01/index.html">Week 1: Aug 24</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      DSAN 5100 Section 03 (Thursdays, 12:30-3pm)&lt;br&gt;&lt;span class="subtitle"&gt;Car Barn 201&lt;/span&gt;&lt;br&gt;&lt;span class="subtitle"&gt;Fall 2023, Georgetown&lt;/span&gt;&lt;br&gt;&lt;span class="subtitle"&gt;Prof. Jeff &lt;a href="mailto:jj1088@georgetown.edu" target="_blank"&gt;&lt;i class="bi bi-envelope-at ps-1 pe-1"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href="https://github.com/jpowerj" target="_blank"&gt;&lt;i class="bi bi-github ps-1"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/span&gt;
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -123,7 +127,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../w01/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1: Aug 24</span></a>
   </div>
 </li>
@@ -164,16 +168,32 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-were-given" id="toc-what-were-given" class="nav-link active" data-scroll-target="#what-were-given">What We’re Given</a></li>
+  <li><a href="#basic-bayes-probability-of-disease-given-positive-test" id="toc-basic-bayes-probability-of-disease-given-positive-test" class="nav-link" data-scroll-target="#basic-bayes-probability-of-disease-given-positive-test">Basic Bayes: Probability of Disease Given Positive Test</a></li>
+  <li><a href="#deeper-dive" id="toc-deeper-dive" class="nav-link" data-scroll-target="#deeper-dive">Deeper Dive</a>
+  <ul class="collapse">
+  <li><a href="#the-catastrophic-case" id="toc-the-catastrophic-case" class="nav-link" data-scroll-target="#the-catastrophic-case">The Catastrophic Case</a></li>
+  <li><a href="#the-bad-but-not-catastrophic-case" id="toc-the-bad-but-not-catastrophic-case" class="nav-link" data-scroll-target="#the-bad-but-not-catastrophic-case">The Bad (But Not Catastrophic) Case</a></li>
+  </ul></li>
+  <li><a href="#putting-it-together" id="toc-putting-it-together" class="nav-link" data-scroll-target="#putting-it-together">Putting It Together:</a>
+  <ul class="collapse">
+  <li><a href="#compuation-of-the-remaining-two-cells" id="toc-compuation-of-the-remaining-two-cells" class="nav-link" data-scroll-target="#compuation-of-the-remaining-two-cells">(Compuation of the remaining two cells:)</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1: Welcome to DSAN 5100!</h1>
+<h1 class="title">Bayes’ Theorem: Disease Probabilities</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Class Sessions</div>
+    <div class="quarto-category">Writeups</div>
   </div>
   </div>
 
@@ -185,7 +205,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 24, 2023</p>
+      <p class="date">September 8, 2023</p>
     </div>
   </div>
   
@@ -195,25 +215,156 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 </header>
 
-<p><em>(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)</em></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Today’s Links
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="what-were-given" class="level2">
+<h2 class="anchored" data-anchor-id="what-were-given">What We’re Given</h2>
 <ul>
-<li><a class="icon-link" href="https://jfh.georgetown.domains/dsan5100/slides/W01/notes.html" target="_blank"><i class="bi bi-journals pe-1"></i>Week 1 Lecture Notes</a></li>
-<li><a class="icon-link" href="https://georgetown.zoom.us/rec/play/zZvBLK3H175wk69lR6skKCFKGb_S6FmESIRxTu2SE7q7c8M0MnxbxYX46MO09-o2mg0biGBUiR1ZscXQ.1ARqgeDY-rdi5HfI?canPlayFromShare=true&amp;from=share_recording_detail&amp;continueMode=true&amp;componentName=rec-play&amp;originRequestUrl=https%3A%2F%2Fgeorgetown.zoom.us%2Frec%2Fshare%2FRgeOsCy5-XgXjeAkX94sZV8jD4vpXHGsTfG6mT02fRbHt3RLdsnQANR3izjsqDZ_.aollBOTov27FcoQX" target="_blank"><i class="bi bi-film pe-1"></i>Week 1 Lecture Recording</a></li>
+<li><span class="math inline">\(D \in \{0, 1\}\)</span> = has disease</li>
+<li><span class="math inline">\(T \in \{0, 1\}\)</span> = test result</li>
+<li>(In the real world, however, we cannot observe <span class="math inline">\(D\)</span>, only <span class="math inline">\(T\)</span>)</li>
+<li>99% accuracy:
+<ul>
+<li><span class="math inline">\(\Pr(T = 1 \mid D = 1) = 0.99\)</span></li>
+<li><span class="math inline">\(\Pr(T = 0 \mid D = 0) = 0.99\)</span></li>
+</ul></li>
+<li>Rare disease: 1 in 10000 people has it
+<ul>
+<li><span class="math inline">\(\Pr(D = 1) = \frac{1}{10000}\)</span></li>
+</ul></li>
 </ul>
-</div>
-</div>
+</section>
+<section id="basic-bayes-probability-of-disease-given-positive-test" class="level2">
+<h2 class="anchored" data-anchor-id="basic-bayes-probability-of-disease-given-positive-test">Basic Bayes: Probability of Disease Given Positive Test</h2>
+<p>We want</p>
+<p><span class="math display">\[
+\Pr(D = 1 \mid T = 1)
+\]</span></p>
+<p>Which we can compute, using the given information, via Bayes’ rule (where the second line is how I like to write it out, a bit more cluttered but makes it clear how to compute the denominator)</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(D = 1 \mid T = 1) &amp;= \frac{\Pr(T = 1 \mid D = 1)\Pr(D = 1)}{\Pr(T = 1)} \\
+&amp;= \frac{\Pr(T = 1 \mid D = 1)\Pr(D = 1)}{\Pr(T = 1 \mid D = 1)\Pr(D = 1) + \Pr(T = 1 \mid D = 0)\Pr(D = 0)}
+\end{align*}
+\]</span></p>
+<p>Numerically:</p>
+<p><span class="math display">\[
+\Pr(D = 1 \mid T = 1) = \frac{(0.99)(1/10000)}{(0.99)(1/10000) + (0.01)(9999/10000)} \approx 0.0098
+\]</span></p>
+<p>(Less than 1%)</p>
+</section>
+<section id="deeper-dive" class="level2">
+<h2 class="anchored" data-anchor-id="deeper-dive">Deeper Dive</h2>
+<p>But now let’s think about what’s behind this… It’s a dangerous, <strong>highly contagious</strong> disease, meaning that (societally) false <strong>negatives</strong> are much, much worse than false <strong>positives</strong>:</p>
+<ul>
+<li>A false <strong>negative</strong>, in this case, means that someone is walking around thinking they <strong>don’t</strong> have the disease (because they tested negative), when they actually <strong>do</strong>. This means that they are not quarantining, they are going out to parties and events and etc., spreading the disease.</li>
+<li>A false <strong>positive</strong>, on the other hand, means someone who panics unnecessarily: maybe it means, they go to the hospital, the hospital performs additional tests, and successfully discovers that the person, despite their positive test result, doesn’t have the disease.</li>
+<li>So, <strong>consequence-wise</strong>, a <strong>false negative</strong> potentially means a new outbreak of the disease in the society, while a <strong>false positive</strong> means a quick (scary, but hopefully quick) trip to the hospital</li>
+</ul>
+<section id="the-catastrophic-case" class="level3">
+<h3 class="anchored" data-anchor-id="the-catastrophic-case">The Catastrophic Case</h3>
+<p>So, let’s focus on the disastrous first case: what’s the probability of a <strong>false negative</strong>? First, we can compute the <strong>conditional</strong> probability of a negative test, conditional on someone having the disease? Here we just use our <strong>complement rule</strong> of probability: that <span class="math inline">\(\Pr(E^c) = 1 - \Pr(E)\)</span> for any event <span class="math inline">\(E\)</span>:</p>
+<p><span class="math display">\[
+\Pr(T = 0 \mid D = 1) = 1 - \Pr(T = 1 \mid D = 1) = 0.01
+\]</span></p>
+<p>Now that we know this, let’s incorporate the <strong>base rate</strong> information—that is, the information we have about the likelihood of having the disease (the thing we conditioned on above):</p>
+<p><span class="math display">\[
+\Pr(D = 1) = \frac{1}{10000}
+\]</span></p>
+<p>So, given these two pieces of information, we can compute the probability of a person in the population being a <strong>false negative case</strong>: having the disease, but not being detected by the test.</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(T = 0 \cap D = 1) &amp;= \Pr(T = 0 \mid D = 1)\Pr(D = 1) \\
+&amp;= (0.01)(1/10000) = \frac{1}{1000000},
+\end{align*}
+\]</span></p>
+<p>i.e., <strong>one in a million</strong>.</p>
+</section>
+<section id="the-bad-but-not-catastrophic-case" class="level3">
+<h3 class="anchored" data-anchor-id="the-bad-but-not-catastrophic-case">The Bad (But Not Catastrophic) Case</h3>
+<p>Now let’s turn to the second, bad but not catastrophic, case: the probability of a <strong>false positive</strong>. As before, we start by computing the <strong>conditional probability</strong> of a positive test result for someone who in fact does <strong>not</strong> have the disease:</p>
+<p><span class="math display">\[
+\Pr(T = 1 \mid D = 0) = 1 - \Pr(T = 0 \mid D = 0) = 0.01
+\]</span></p>
+<p>This time, however, we’ll see that the base rate will make a big difference. The base rate in this case—the probability of someone <strong>not</strong> having the disease—is:</p>
+<p><span class="math display">\[
+\Pr(D = 0) = 1 - \Pr(D = 1) = \frac{9999}{10000}
+\]</span></p>
+<p>So, incorporating these two pieces of information, we can compute the likelihood of a <strong>false positive case</strong>: someone in the population who <strong>doesn’t</strong> have the disease but <strong>does</strong> test positive:</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(T = 1 \cap D = 0) &amp;= \Pr(T = 1 \mid D = 0)\Pr(D = 0) \\
+&amp;= (0.01)(9999/10000) = \frac{9999}{1000000}
+\end{align*}
+\]</span></p>
+<p>In words: for every million people in the population, 9999 of them will have a <strong>false positive</strong> panic: they won’t have the disease, but they will <strong>think</strong> they have the disease because of their positive test.</p>
+</section>
+</section>
+<section id="putting-it-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-together">Putting It Together:</h2>
+<p>At first, this example is depressing: “Oh no, that’s terrible! We’re forcing thousands of people to panic, thinking that they have the disease, when they really don’t!”</p>
+<p>But, walking through it with this false negative / false positive paradigm, we see the real takeaway: that there is always a <strong>tradeoff</strong> between false positives and false negatives. In this case, from a public health perspective for example, it’s actually somewhat of a <strong>good</strong> situation: at the “cost” of having several thousand people panic unnecessarily, we <strong>achieve</strong> the benefit of making it very, very unlikely (one in a million, literally) that someone goes undetected in the population with this dangerous, contagious disease.</p>
+<table data-quarto-postprocess="true" class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header" style="border-top: 0px solid black;">
+<th colspan="2" rowspan="2" data-quarto-table-cell-role="th" style="text-align: right; border-top: 0px solid black; border-left: 0px solid black;"><span class="math inline">\(N = 1000000\)</span></th>
+<th colspan="2" style="text-align: center;" data-quarto-table-cell-role="th">True State of the World</th>
+</tr>
+<tr class="odd">
+<th style="text-align: center;" data-quarto-table-cell-role="th"><span class="math inline">\(D = 0\)</span><br>
+<span style="font-weight: 500; font-size: 0.85rem;">(Doesn't have disease)</span></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th"><span class="math inline">\(D = 1\)</span><br>
+<span style="font-weight: 500; font-size: 0.85rem;">(Has disease)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: right; vertical-align: middle;"><strong>Prediction</strong></td>
+<td style="text-align: center;"><span class="math inline">\(T = 0\)</span><br>
+(Tested negative)</td>
+<td style="text-align: center;"><strong>True Negative</strong><br>
+<span class="subtitle">Successfully detected no disease 👍</span><br>
+<strong>989,901 People</strong></td>
+<td style="text-align: center;"><strong>False Negative</strong><br>
+<span class="subtitle">Failed to detect disease 🚨😵🚨</span><br>
+<strong>1 Person</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(T = 1\)</span><br>
+(Tested positive)</td>
+<td style="text-align: center;"><strong>False Positive</strong><br>
+<span class="subtitle">False alarm 😬 sorry!</span><br>
+<strong>9999 People</strong></td>
+<td style="text-align: center;"><strong>True Positive</strong><br>
+<span class="subtitle">Successfully detected disease 😮‍💨</span><br>
+<strong>99 People</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="compuation-of-the-remaining-two-cells" class="level3">
+<h3 class="anchored" data-anchor-id="compuation-of-the-remaining-two-cells">(Compuation of the remaining two cells:)</h3>
+<p><strong>True Positive</strong>:</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(T = 1 \cap D = 1) &amp;= \Pr(T = 1 \mid D = 1)\Pr(D = 1) \\
+&amp;= (0.99)\frac{1}{10000} = \frac{99}{1000000}
+\end{align*}
+\]</span></p>
+<p><strong>True Negative</strong>:</p>
+<p><span class="math display">\[
+\begin{align*}
+\Pr(T = 0 \cap D = 0) &amp;= \Pr(T = 0 \mid D = 0)\Pr(D = 0) \\
+&amp;= (0.99)\frac{9999}{10000} = \frac{989901}{1000000}
+\end{align*}
+\]</span></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
