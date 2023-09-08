@@ -433,12 +433,12 @@ $$
     (b) Can we **infer** information about $A$ from knowing $B$? **Also Yes, thanks to Bayes!**
   3. Therefore, we can **use $B$ to infer information about $A$**, i.e., calculate $\Pr(A \mid B)$...
 
-## Why Is This Helpful for *Data Science*?
+## Why Is This Helpful for *Data Science*? {.smaller}
 
 * It merges **probability theory** and **hypothesis testing** into a single framework:
 
 $$
-P(\text{hypothesis} \mid \text{data}) = \frac{P(\text{data} \mid \text{hypothesis})}{P(\text{data})}
+\Pr(\text{hypothesis} \mid \text{data}) = \frac{\Pr(\text{data} \mid \text{hypothesis})\Pr(\text{hypothesis})}{\Pr(\text{data})}
 $$
 
 
@@ -525,8 +525,6 @@ $$
 
 * Given that we see Ana at the party, we should **update our beliefs**, so that $P(W = \textsf{Sun}) = \frac{3}{4}, P(W = \textsf{Rain}) = \frac{1}{4}$.
 
-
-
 ## A Scarier Example {.smaller}
 
 * Bo worries he has a **rare disease**. He takes a test with **99% accuracy** and tests **positive**. What's the probability Bo has the disease? (Intuition: 99%? ...Let's do the math!)
@@ -535,15 +533,15 @@ $$
 ::: {.column width="50%"}
 
 * $H \in \{\textsf{sick}, \textsf{healthy}\}, T \in \{\textsf{T}^+, \textsf{T}^-\}$
-* **The test**: 99% accurate. $P(T = \textsf{T}^+ \mid H = \textsf{sick}) = 0.99$, $P(T = \textsf{T}^- \mid H = \textsf{healthy}) = 0.99$.
-* **The disease**: 1 in 10K. $P(H = \textsf{sick}) = \frac{1}{10000}$
-* **What do we want to know?** $P(H = \textsf{sick} \mid T = \textsf{T}^+)$
+* **The test**: 99% accurate. $\Pr(T = \textsf{T}^+ \mid H = \textsf{sick}) = 0.99$, $\Pr(T = \textsf{T}^- \mid H = \textsf{healthy}) = 0.99$.
+* **The disease**: 1 in 10K. $\Pr(H = \textsf{sick}) = \frac{1}{10000}$
+* **What do we want to know?** $\Pr(H = \textsf{sick} \mid T = \textsf{T}^+)$
 * **How do we get there?**
 
 :::
 ::: {.column width="50%"}
 
-![This photo, originally thought to be of Thomas Bayes, turns out to be [probably someone else](https://www.york.ac.uk/depts/maths/histstat/bayespic.htm)... $P(\textsf{Bayes})$?](images/bayes.jpg){fig-align="center" width="65%"}
+![This photo, originally thought to be of Thomas Bayes, turns out to be [probably someone else](https://www.york.ac.uk/depts/maths/histstat/bayespic.htm)... $\Pr(\textsf{Bayes})$?](images/bayes.jpg){fig-align="center" width="65%"}
 
 :::
 :::
@@ -558,7 +556,7 @@ Photo credit: https://thedatascientist.com/wp-content/uploads/2019/04/reverend-t
 
 $$
 \begin{align*}
-P(H = \textsf{sick} \mid T = \textsf{T}^+) &= \frac{P(T = \textsf{T}^+ \mid H = \textsf{sick})P(H = \textsf{sick})}{P(T = \textsf{T}^+)} \\
+\Pr(H = \textsf{sick} \mid T = \textsf{T}^+) &= \frac{\Pr(T = \textsf{T}^+ \mid H = \textsf{sick})\Pr(H = \textsf{sick})}{\Pr(T = \textsf{T}^+)} \\
 &= \frac{(0.99)\left(\frac{1}{10000}\right)}{(0.99)\left( \frac{1}{10000} \right) + (0.01)\left( \frac{9999}{10000} \right)}
 \end{align*}
 $$
@@ -583,56 +581,133 @@ final_prob
 
 ## Proof in the Pudding {.smaller}
 
+* Let's generate a dataset of **5,000** people, using $\Pr(\textsf{Disease}) = \frac{1}{10000}$
+
 ```{r}
 #| label: bayes-sick-mc
 #| echo: true
+#| code-fold: true
 library(tibble)
 library(dplyr)
 # Disease rarity
 p_disease <- 1 / 10000
 # 1K people
-num_people <- 1000
+num_people <- 10000
 # Give them ids
 ppl_df <- tibble(id=seq(1,num_people))
 # Whether they have the disease or not
-has_disease <- rbinom(num_people, 2, p_disease)
+has_disease <- rbinom(num_people, 1, p_disease)
 ppl_df <- ppl_df %>% mutate(has_disease=has_disease)
-disp(ppl_df %>% head(3))
+disp(ppl_df %>% head())
 ```
 
-```{r, echo=TRUE}
+## Binary Variable Trick {.smaller .crunch-code}
+
+* Since `has_disease` $\in \{0, 1\}$, we can use
+  * `sum(has_disease)` to obtain the **count** of people with the disease, or
+  * `mean(has_disease)` to obtain the **proportion** of people who have the disease
+* To see this (or, if you forget in the future), just make a fake dataset with a binary variable and 3 rows, and think about **sums** vs. **means** of that variable:
+
+::: columns
+::: {.column width="40%"}
+
+```{r}
+#| label: fake-binary-data
+#| echo: true
+#| code-fold: show
+binary_df <- tibble(
+  id=c(1,2,3),
+  x=c(0,1,0)
+)
+disp(binary_df)
+```
+
+:::
+::: {.column width="60%"}
+
+Taking the **sum** tells us: **one** row where `x == 1`:
+
+```{r}
+#| label: binary-df-sum
+#| echo: true
+#| code-fold: show
+sum(binary_df$x)
+```
+
+Taking the **mean** tells us: **1/3** of rows have `x == 1`:
+
+```{r}
+#| label: binary-df-mean
+#| echo: true
+#| code-fold: show
+mean(binary_df$x)
+```
+
+:::
+:::
+
+## Applying This to the Disease Data {.smaller}
+
+* If we want the **number** of people who have the disease:
+
+```{r}
+#| echo: true
+#| code-fold: show
+#| label: compute-disease-count
+# Compute the *number* of people who have the disease
+sum(ppl_df$has_disease)
+```
+
+* If we want the **proportion** of people who have the disease:
+
+```{r}
+#| echo: true
 #| code-fold: show
 #| label: compute-disease-rate
-sum(ppl_df$has_disease) / num_people
+# Compute the *proportion* of people who have the disease
+mean(ppl_df$has_disease)
+```
+
+* (And if you dislike scientific notation like I do...)
+
+```{r}
+#| label: compute-disease-rate-decimal
+#| echo: true
+#| code-fold: show
+format(mean(ppl_df$has_disease), scientific = FALSE)
 ```
 
 ::: {.notes}
 (Foreshadowing Monte Carlo methods)
 :::
 
-## {.unnumbered}
+## Data-Generating Process: Test Results {.smaller}
 
 ```{r}
 #| label: count-positive-tests
+#| echo: true
+#| code-fold: show
 library(dplyr)
 # Data Generating Process
 take_test <- function(is_sick) {
   if (is_sick) {
-    return(rbinom(1,2,p_neg_given_sick))
+    return(rbinom(1,1,p_pos_given_sick))
   } else {
-    return(rbinom(1,2,p_pos_given_healthy))
+    return(rbinom(1,1,p_pos_given_healthy))
   }
 }
 ppl_df['test_result'] <- unlist(lapply(ppl_df$has_disease, take_test))
-#ppl_df %>% head(5)
 num_positive <- sum(ppl_df$test_result)
-p_positive <- num_positive / num_people
+p_positive <- mean(ppl_df$test_result)
 writeLines(paste0(num_positive," positive tests / ",num_people," total = ",p_positive))
 ```
 
-* Bo is one of those 14 people!
+```{r}
+#| label: df-test-result-var
+disp(ppl_df %>% head(50), obs_per_page = 3)
+```
 
-## {.unnumbered .smaller}
+## Zooming In On Positive Tests {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
@@ -654,6 +729,140 @@ disp(pos_ppl, obs_per_page = 10)
 :::
 :::
 
+## Zooming In On Disease-Havers {.smaller}
+
+* What if we look at only those who actually have the disease? Maybe the cost of 111 people panicking is worth it if we correctly catch those who do have it?
+
+```{r}
+#| label: disease-only
+#| echo: true
+#| code-fold: show
+disp(ppl_df[ppl_df$has_disease == 1,])
+```
+
+Is this always going to be the case?
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| label: repeating-disease-simulation
+#| echo: false
+#| code-fold: true
+simulate_disease <- function(num_people, p_disease, verbose = TRUE, return_df = TRUE, return_full_df = FALSE, return_all_detected = FALSE, return_info = FALSE) {
+  # Give them ids
+  sim_df <- tibble(id=seq(1,num_people))
+  # Whether they have the disease or not
+  has_disease <- rbinom(num_people, 1, p_disease)
+  sim_df['has_disease'] <- has_disease
+  # Find the number / proportion with the disease
+  num_with_disease <- sum(sim_df$has_disease)
+  prop_with_disease <- mean(sim_df$has_disease)
+  prop_with_disease_decimal <- format(prop_with_disease, scientific = FALSE)
+  if (verbose) {
+    writeLines(paste0("Num with disease: ",num_with_disease))
+    writeLines(paste0("Proportion with disease: ",prop_with_disease_decimal))
+  }
+  # Simulate giving everyone the test
+  sim_df['test_result'] <- unlist(lapply(sim_df$has_disease, take_test))
+  if (return_full_df) {
+    return(sim_df)
+  }
+  # Find the number with positive tests
+  num_pos_tests <- sum(sim_df$test_result)
+  if (verbose) {
+    writeLines(paste0("Number of positive tests: ",num_pos_tests))
+  }
+  # Extract just the people *with* the disease
+  disease_df <- sim_df %>% filter(has_disease == 1)
+  # And print the proportion of these who got correct result
+  if (nrow(disease_df) == 0) {
+    # (We define P(correct) as 1 in this case.)
+    # (Intuition: we correctly detected "all" 0 people with the disease)
+    prop_correct <- 1
+  } else {
+    prop_correct <- mean(disease_df$test_result)
+  }
+  #if (verbose) {
+  #  writeLines(paste0("Proportion of disease-havers with correct test: ",prop_correct))
+  #  print(disease_df)
+  #}
+  if (return_all_detected) {
+    return(prop_correct == 1)
+  }
+  if (return_df) {
+    return(disease_df)
+  }
+  if (return_info) {
+    return(list(
+      num_people=num_people,
+      df=disease_df,
+      prop_correct=prop_correct,
+      all_detected=(prop_correct == 1)
+    ))
+  }
+}
+disp(simulate_disease(5000, 1/10000))
+```
+
+:::
+::: {.column width="50%"}
+
+```{r}
+#| label: sim-disease-again
+disp(simulate_disease(5000, 1/10000))
+```
+
+:::
+:::
+
+## Worst-Case Worlds {.smaller}
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+for (i in seq(1,1000)) {
+  sim_result <- simulate_disease(5000, 1/10000, verbose = FALSE, return_all_detected = FALSE, return_df = FALSE, return_info = TRUE)
+  if (!sim_result$all_detected) {
+    writeLines(paste0("World #",i," / 1000 (",sim_result$num_people," people):"))
+    print(sim_result$df)
+    writeLines('\n')
+  }
+}
+format(4 / 5000000, scientific = FALSE)
+```
+
+:::
+::: {.column width="50%"}
+
+How unlikely is this? Math:
+
+$$
+\begin{align*}
+\Pr(\textsf{T}^- \cap \textsf{Sick}) &= \Pr(\textsf{T}^-)\Pr(\textsf{Sick}) \\
+&= \Pr(\textsf{T}^-)\frac{1}{10000}, \\
+\Pr(\textsf{T}^-) &= (0.01)\left(\frac{1}{10000}\right) \\
+&+ (0.99)\left(\frac{9999}{10000}\right) \\
+&= 0.989902 \\
+\implies \Pr(\textsf{T}^- \cap \textsf{Sick}) &\approx 0.0001
+\end{align*}
+$$
+
+Computers:
+
+```{r}
+result_df <- simulate_disease(1000000, 1/10000, verbose = FALSE, return_full_df = TRUE)
+false_negatives <- result_df[result_df$has_disease == 1 & result_df$test_result == 0,]
+num_false_negatives <- nrow(false_negatives)
+writeLines(paste0("False Negatives: ",num_false_negatives,", Total Cases: ", nrow(result_df)))
+false_negative_rate <- num_false_negatives / nrow(result_df)
+false_negative_rate_decimal <- format(false_negative_rate, scientific = FALSE)
+writeLines(paste0("False Negative Rate: ", false_negative_rate_decimal))
+```
+
+:::
+:::
 
 ## Bayes: Takeaway
 
