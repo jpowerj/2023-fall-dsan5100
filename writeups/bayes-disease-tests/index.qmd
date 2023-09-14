@@ -2,7 +2,7 @@
 title: "Bayes' Theorem: Disease Probabilities"
 date: last-modified
 categories:
-  - Writeups
+  - "Extra Writeups"
 ---
 
 ## What We're Given

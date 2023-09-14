@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jeff Jacobs">
 
-<title>DSAN 5100, Section 03 (Thursdays)</title>
+<title>Week 4: Discrete Probability Distributions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +21,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -61,35 +94,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RFMTL6Q5J5"></script>
 
 <script type="text/javascript">
@@ -100,10 +104,8 @@ gtag('js', new Date());
 gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -115,7 +117,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Section 03 Home</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w04/index.html">Week 4: Sep 14</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -130,7 +132,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSAN 5100 Section 03 (Thursdays, 12:30-3pm)<br><span class="subtitle">Car Barn 201</span><br><span class="subtitle">Fall 2023, Georgetown</span><br><span class="subtitle">Prof.&nbsp;Jeff <a href="mailto:jj1088@georgetown.edu" target="_blank"><i class="bi bi-envelope-at ps-1 pe-1"></i></a><a href="https://github.com/jpowerj" target="_blank"><i class="bi bi-github ps-1"></i></a></span></a> 
+      <a href="../">DSAN 5100 Section 03 (Thursdays, 12:30-3pm)<br><span class="subtitle">Car Barn 201</span><br><span class="subtitle">Fall 2023, Georgetown</span><br><span class="subtitle">Prof.&nbsp;Jeff <a href="mailto:jj1088@georgetown.edu" target="_blank"><i class="bi bi-envelope-at ps-1 pe-1"></i></a><a href="https://github.com/jpowerj" target="_blank"><i class="bi bi-github ps-1"></i></a></span></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -149,38 +151,38 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Section 03 Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w01/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1: Aug 24</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w02/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2: Aug 31</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w03/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3: Sep 7</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w04/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w04/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 4: Sep 14</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./writeups/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra Writeups</span></a>
   </div>
 </li>
@@ -209,21 +211,64 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#probability-distributions-in-general" id="toc-probability-distributions-in-general" class="nav-link" data-scroll-target="#probability-distributions-in-general">Probability Distributions in General</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-distribution" id="toc-what-is-a-distribution" class="nav-link" data-scroll-target="#what-is-a-distribution">What <em>Is</em> A Distribution?</a></li>
+  <li><a href="#what-things-have-a-distribution" id="toc-what-things-have-a-distribution" class="nav-link" data-scroll-target="#what-things-have-a-distribution">What Things <em>Have</em> A Distribution?</a></li>
+  </ul></li>
+  <li><a href="#common-discrete-distributions" id="toc-common-discrete-distributions" class="nav-link" data-scroll-target="#common-discrete-distributions">Common Discrete Distributions</a>
+  <ul class="collapse">
+  <li><a href="#discrete-uniform-distribution" id="toc-discrete-uniform-distribution" class="nav-link" data-scroll-target="#discrete-uniform-distribution">Discrete Uniform Distribution</a></li>
+  </ul></li>
+  <li><a href="#lab-3" id="toc-lab-3" class="nav-link" data-scroll-target="#lab-3">Lab 3</a>
+  <ul class="collapse">
+  <li><a href="#lab-3-demonstration" id="toc-lab-3-demonstration" class="nav-link" data-scroll-target="#lab-3-demonstration">Lab 3 Demonstration</a></li>
+  <li><a href="#lab-3-assignment-overview" id="toc-lab-3-assignment-overview" class="nav-link" data-scroll-target="#lab-3-assignment-overview">Lab 3 Assignment Overview</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DSAN 5100, Section 03 (Thursdays)</h1>
-</div>
+<h1 class="title">Week 4: Discrete Probability Distributions</h1>
+<p class="subtitle lead"><em>DSAN 5100: Probabilistic Modeling and Statistical Computing</em><br>Section 03</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Class Sessions</div>
+  </div>
+  </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Thursday, September 14, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -231,70 +276,109 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 </header>
 
-<p>This is a “hub” collecting relevant links for each week, for students in Prof.&nbsp;Jeff’s <strong>Thursday section (Section 03)</strong> of <em>DSAN 5100: Probabilistic Modeling and Statistical Computing</em>, Fall 2023 at Georgetown University. Sections take place in <strong>Car Barn room 201</strong> on <strong>Thursdays</strong> from <strong>12:30pm to 3:30pm</strong>.</p>
-<p>This page is <em>not</em> a replacement for the <strong><a href="https://jfh.georgetown.domains/dsan5100/" target="_blank">Main Course Page</a></strong> or the course’s <strong><a href="https://georgetown.instructure.com/courses/173333" target="_blank">Canvas Page</a></strong>, which are shared across all sections!</p>
-<p>Use the menu on the left, or the table below, to view the resources for a specific week.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-
-<table class="quarto-listing-table table table-hover">
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
+</center>
+<section id="schedule" class="level1 smaller smaller-title" data-name="Schedule">
+<h1 class="smaller smaller-title" data-name="Schedule">Schedule</h1>
+<div class="hidden">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_6daba9af1e3d476ed7b49f3b1685dd79">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 54%">
+<col style="width: 5%">
+</colgroup>
 <thead>
-<tr>
-<th>
-Title
-</th>
-<th>
-Date
-</th>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: center;">Recording</th>
 </tr>
 </thead>
-<tbody class="list">
-<tr data-index="0" data-categories="Class Sessions" data-listing-date-sort="1692849600000" data-listing-file-modified-sort="1693536401577" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Week 1: Welcome to DSAN 5100!" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./w01/index.html" class="title listing-title">Week 1: Welcome to DSAN 5100!</a>
-</td>
-<td>
-<span class="listing-date">Thursday, August 24, 2023</span>
-</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">12:30pm</td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;"><a href="#recap">Recap and Quizzes →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-1.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
-<tr data-index="1" data-categories="Class Sessions" data-listing-date-sort="1694055594000" data-listing-file-modified-sort="1694055594384" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-title-sort="Week 2: Introduction to Probabilistic Modeling" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./w02/index.html" class="title listing-title">Week 2: Introduction to Probabilistic Modeling</a>
-</td>
-<td>
-<span class="listing-date">Wednesday, September 6, 2023</span>
-</td>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;">1:20pm</td>
+<td style="text-align: left;"><a href="#what-is-conditional-probability">Probability Distributions in General →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-2.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
-<tr data-index="2" data-categories="Class Sessions" data-listing-date-sort="1694059200000" data-listing-file-modified-sort="1694189277379" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-title-sort="Week 3: Conditional Probability" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./w03/index.html" class="title listing-title">Week 3: Conditional Probability</a>
-</td>
-<td>
-<span class="listing-date">Thursday, September 7, 2023</span>
-</td>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1:20pm</td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;"><a href="#bayes-theorem-and-its-implications">Common Discrete Distributions →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-3.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
-<tr data-index="3" data-categories="Class Sessions" data-listing-date-sort="1694664000000" data-listing-file-modified-sort="1694650864669" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Week 4: Discrete Probability Distributions" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./w04/index.html" class="title listing-title">Week 4: Discrete Probability Distributions</a>
-</td>
-<td>
-<span class="listing-date">Thursday, September 14, 2023</span>
-</td>
+<tr class="even">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lab</strong></td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;">2:50pm</td>
+<td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html" target="_blank">Lab 3 Demonstration <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-4.html" target="_blank"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:50pm</td>
+<td style="text-align: left;">3:00pm</td>
+<td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html" target="_blank">Lab 3 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-5.html" target="_blank"><i class="bi bi-film"></i></a></td>
 </tr>
 </tbody>
-
 </table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+<section id="probability-distributions-in-general" class="level1" data-stack-name="Probability Distributions">
+<h1 data-stack-name="Probability Distributions">Probability Distributions in General</h1>
+<section id="what-is-a-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-distribution">What <em>Is</em> A Distribution?</h2>
+</section>
+<section id="what-things-have-a-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="what-things-have-a-distribution">What Things <em>Have</em> A Distribution?</h2>
+</section>
+</section>
+<section id="common-discrete-distributions" class="level1" data-stack-name="Discrete Distributions">
+<h1 data-stack-name="Discrete Distributions">Common Discrete Distributions</h1>
+<section id="discrete-uniform-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="discrete-uniform-distribution">Discrete Uniform Distribution</h2>
+</section>
+</section>
+<section id="lab-3" class="level1" data-stack-name="Lab 3">
+<h1 data-stack-name="Lab 3">Lab 3</h1>
+<section id="lab-3-demonstration" class="level2">
+<h2 class="anchored" data-anchor-id="lab-3-demonstration">Lab 3 Demonstration</h2>
+<p><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-3/lab-3-demo.html" target="_blank">Lab 3 Demo Link <i class="bi bi-box-arrow-up-right ps-1"></i></a></p>
+</section>
+<section id="lab-3-assignment-overview" class="level2">
+<h2 class="anchored" data-anchor-id="lab-3-assignment-overview">Lab 3 Assignment Overview</h2>
+<p><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-3/lab-3-assignment.html" target="_blank">Lab 3 Assignment <i class="bi bi-box-arrow-up-right ps-1"></i></a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

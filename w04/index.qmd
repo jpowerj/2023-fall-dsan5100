@@ -1,0 +1,82 @@
+---
+title: "Week 4: Discrete Probability Distributions"
+subtitle: "*DSAN 5100: Probabilistic Modeling and Statistical Computing*<br>Section 03"
+author: "Jeff Jacobs"
+institute: "<a href=\"mailto:jj1088@georgetown.edu\" target=\"_blank\">`jj1088@georgetown.edu`</a>"
+date: 2023-09-14
+date-format: full
+#date: last-modified
+#date-format: "dddd MMM D, YYYY, HH:mm:ss"
+lecnum: 3
+categories:
+  - "Class Sessions"
+execute:
+  enabled: true
+format:
+  revealjs:
+    html-math-method: mathjax
+    slide-number: true
+    cache: true
+    output-file: slides.html
+    simplemenu:
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    theme: [default, "../_jjslides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\"><script src=\"https://d3js.org/d3.v4.min.js\"></script><script src=\"../assets/_venn.js\"></script>"}
+  html:
+    cache: true
+    output-file: index.html
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .smaller-title data-name="Schedule"}
+
+::: {.hidden}
+
+```{r}
+source("../_globals.r")
+```
+
+:::
+
+| | Start | End | Topic | Recording |
+|:- |:- |:- |:- |:-:|
+| **Lecture** | 12:30pm | 12:40pm | [Recap and Quizzes &rarr;](#recap) | <a href="./recording-w03-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:20pm | [Probability Distributions in General &rarr;](#what-is-conditional-probability) | <a href="./recording-w03-2.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:20pm | 2:00pm | [Common Discrete Distributions &rarr;](#bayes-theorem-and-its-implications) | <a href="./recording-w03-3.html" target="_blank"><i class="bi bi-film"></i></a> |
+| **Break!** | 2:00pm | 2:10pm | | |
+| **Lab** | 2:10pm | 2:50pm | [Lab 3 Demonstration <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html){target="_blank"} | <a href="./recording-w03-4.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 2:50pm | 3:00pm | [Lab 3 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html){target="_blank"} | <a href="./recording-w03-5.html" target="_blank"><i class="bi bi-film"></i></a> |
+
+: {tbl-colwidths="[12,12,12,54,5,5]"} 
+
+# Probability Distributions in General {data-stack-name="Probability Distributions"}
+
+## What *Is* A Distribution?
+
+## What Things *Have* A Distribution?
+
+# Common Discrete Distributions {data-stack-name="Discrete Distributions"}
+
+## Discrete Uniform Distribution
+
+# Lab 3 {data-stack-name="Lab 3"}
+
+## Lab 3 Demonstration
+
+[Lab 3 Demo Link <i class="bi bi-box-arrow-up-right ps-1"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-3/lab-3-demo.html){target="_blank"}
+
+## Lab 3 Assignment Overview
+
+[Lab 3 Assignment <i class="bi bi-box-arrow-up-right ps-1"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-3/lab-3-assignment.html){target="_blank"}
