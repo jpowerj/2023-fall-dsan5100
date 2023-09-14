@@ -1,46 +1,49 @@
 set.seed(1948)
 knitr::opts_template$set(
-    tikz_settings = list(
-        fig.ext = "svg",
-        fig.align = "center",
-        engine.opts = list(dvisvgm.opts = "--font-format=woff")
-    ),
-    tikz_settings_fancy = list(
-        fig.ext = "svg",
-        fig.align = "center",
-        engine.opts = list(
-            dvisvgm.opts = "--font-format=woff",
-            template = "../assets/code/tikz2pdf.tex"
-        )
+  tikz_settings = list(
+    fig.ext = "svg",
+    fig.align = "center",
+    engine.opts = list(
+      dvisvgm.opts = "--font-format=woff"
     )
+  ),
+  tikz_settings_fancy = list(
+    fig.ext = "svg",
+    fig.align = "center",
+    engine.opts = list(
+      dvisvgm.opts = "--font-format=woff",
+      template = "../assets/code/tikz2pdf.tex"
+    )
+  )
 )
 disp <- function(df, obs_per_page = 6, custom_callback = NULL, ...) {
-    # If length of df is less than obs_per_page, disable pagination
-    dom_str <- "tp"
-    if (nrow(df) <= obs_per_page) {
-        dom_str <- "t"
-    }
-    return(DT::datatable(
-        df,
-        extensions = c("FixedColumns", "FixedHeader"),
-        options = list(
-            pageLength = obs_per_page,
-            scrollX = TRUE,
-            paging = TRUE,
-            dom = dom_str,
-            fixedHeader = TRUE,
-            filter = FALSE,
-            ordering = FALSE,
-            language = list(
-                "paginate" = list(
-                    "previous" = "<i class='bi bi-chevron-left'></i>",
-                    "next" = "<i class='bi bi-chevron-right'></i>"
-                )
-            ),
-            callback = custom_callback
+  # If length of df is less than obs_per_page, disable pagination
+  dom_str <- "tp"
+  if (nrow(df) <= obs_per_page) {
+    dom_str <- "t"
+  }
+  return(
+    DT::datatable(
+      df,
+      extensions = c("FixedColumns", "FixedHeader"),
+      options = list(
+        pageLength = obs_per_page,
+        scrollX = TRUE,
+        paging = TRUE,
+        dom = dom_str,
+        fixedHeader = TRUE,
+        filter = FALSE,
+        ordering = FALSE,
+        language = list(
+          "paginate" = list(
+            "previous" = "<i class='bi bi-chevron-left'></i>",
+            "next" = "<i class='bi bi-chevron-right'></i>"
+          )
         )
-        )
+      ),
+      callback = custom_callback
     )
+  )
 }
 
 #library(knitr)
@@ -54,7 +57,11 @@ disp <- function(df, obs_per_page = 6, custom_callback = NULL, ...) {
 
 # For slides
 library(ggplot2)
-cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+cbPalette <- c(
+    "#E69F00", "#56B4E9", "#009E73",
+    "#F0E442", "#0072B2", "#D55E00",
+    "#CC79A7"
+)
 options(ggplot2.discrete.colour = cbPalette)
 # Theme generator, for given sizes
 dsan_theme <- function(plot_type = "full", base_size = 16) {
@@ -86,8 +93,18 @@ g_linewidth <- 1
 g_textsize <- 14
 
 remove_legend_title <- function() {
-    return(theme(
-        legend.title = element_blank(),
-        legend.spacing.y = unit(0, "mm")
-    ))
+  return(
+    theme(
+      legend.title = element_blank(),
+      legend.spacing.y = unit(0, "mm")
+    )
+  )
+}
+
+remove_legend <- function() {
+  return(
+    theme(
+      legend.position = "none"
+    )
+  )
 }

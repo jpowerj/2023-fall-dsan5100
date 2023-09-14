@@ -30,8 +30,12 @@ website:
       - href: w04/index.qmd
         text: "Week 4: Sep 14"
       - "---"
+      - href: recordings/index.qmd
+        text: "Recordings"
       - href: writeups/index.qmd
         text: "Extra Writeups"
+      - href: cheatsheet-math.qmd
+        text: "Math Cheatsheet"
       - "---"
       - href: "https://georgetown.instructure.com/courses/173333"
         text: "Course Canvas Page <i class=\"bi bi-box-arrow-up-right ps-1\"></i>"

@@ -82,6 +82,12 @@ aside {
     margin-top: 0px !important;
 }
 
+.crunch-cell-output div.cell-output-display p {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    // border: 5px solid green !important;
+}
+
 .crunch-code details {
     margin-bottom: 4px !important;
 }
@@ -94,14 +100,34 @@ aside {
     margin-top: 0 !important;
 }
 
+.crunch-images img {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
 .crunch-lists li {
     margin-top: 4px !important;
     margin-bottom: 4px !important;
 }
 
+.crunch-math .MathJax {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
 .crunch-math .MathJax_Display {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
+}
+
+.crunch-math-less .MathJax {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+.crunch-math-less .MathJax_Display {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
 }
 
 .crunch-output pre {
@@ -110,6 +136,10 @@ aside {
 
 .crunch-title h2 {
     margin-bottom: 1px !important;
+}
+
+.crunch-ul ul {
+    margin-bottom: 0px !important;
 }
 
 .dataTables_paginate {

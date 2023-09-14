@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RFMTL6Q5J5"></script>
@@ -426,19 +491,251 @@ Jeff Jacobs
 <h1>Probability Distributions in General</h1>
 
 </section>
-<section id="what-is-a-distribution" class="slide level2">
-<h2>What <em>Is</em> A Distribution?</h2>
+<section id="discrete-vs.-continuous" class="slide level2 smaller small-math crunch-ul crunch-images crunch-title crunch-math crunch-cell-output">
+<h2>Discrete vs.&nbsp;Continuous</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Discrete</strong> = “Easy mode”: Based (intuitively) on <strong>sets</strong></li>
+<li><span class="math inline">\(\Pr(A)\)</span>: Four marbles <span class="math inline">\(\{A, B, C, D\}\)</span> in box, all equally likely, what is the probability I pull out <span class="math inline">\(A\)</span>?</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/discrete-prob-plot-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\Pr(A) = \underbrace{\frac{|\{A\}|}{|\Omega|}}_{\mathclap{\small \text{Probability }\textbf{mass}}} = \frac{1}{|\{A,B,C,D\}|} = \frac{1}{4}
+\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>Continuous</strong> = “Hard mode”: Based (intuitively) on <strong>areas</strong></li>
+<li><span class="math inline">\(\Pr(A)\)</span>: If I throw a dart at this square, what is the probability that I hit region <span class="math inline">\(A\)</span>?</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/continuous-prob-plot-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\Pr(A) = \underbrace{\frac{\text{Area}(\{A\})}{\text{Area}(\Omega)}}_{\mathclap{\small \text{Probability }\textbf{density}}} = \frac{\pi r^2}{s^2} = \frac{\pi \left(\frac{1}{4}\right)^2}{4} = \frac{\pi}{64}
+\]</span></p>
+</div>
+</div>
 </section>
-<section id="what-things-have-a-distribution" class="slide level2">
-<h2>What Things <em>Have</em> A Distribution?</h2>
-</section></section>
+<section id="the-technical-difference-tldr" class="slide level2 smaller smallish-math crunch-title crunch-math-less">
+<h2>The Technical Difference tl;dr</h2>
+<ul>
+<li><strong>Countable</strong> Sets: Can be put into 1-to-1 correspondence with the <strong>natural numbers</strong> <span class="math inline">\(\mathbb{N}\)</span>
+<ul>
+<li>What are you doing when you’re counting? Saying “first”, “second”, “third”, …</li>
+<li>You’re pairing each object with a natural number! <span class="math inline">\(\{(\texttt{a},1),(\texttt{b},2),\ldots,(\texttt{z},26)\}\)</span> <!-- f(\texttt{a}) = 1, f^{-1}(1) = \texttt{a}$, $f(\texttt{b}) = 2, f^{-1}(2) = \texttt{b}$, ... --></li>
+</ul></li>
+<li><strong>Uncountable</strong> Sets: Cannot be put into 1-to-1 correspondence with the natural numbers.
+<ul>
+<li><strong><span class="math inline">\(\mathbb{R}\)</span> is uncountable</strong>. <em>Intuition</em>: Try counting the real numbers. <em>Proof</em><sup>1</sup> <span class="math display">\[
+\text{Assume }\exists (f: \mathbb{R} \leftrightarrow \mathbb{N}) =
+\begin{array}{|c|c|c|c|c|c|c|}\hline
+\mathbb{R} &amp; &amp; &amp; &amp; &amp; &amp; \Leftrightarrow \mathbb{N} \\ \hline
+\color{orange}{3} &amp; . &amp; 1 &amp; 4 &amp; 1 &amp; \cdots &amp; \Leftrightarrow 1 \\\hline
+4 &amp; . &amp; \color{orange}{9} &amp; 9 &amp; 9 &amp; \cdots &amp; \Leftrightarrow 2 \\\hline
+0 &amp; . &amp; 1 &amp; \color{orange}{2} &amp; 3 &amp; \cdots &amp;\Leftrightarrow 3 \\\hline
+1 &amp; . &amp; 2 &amp; 3 &amp; \color{orange}{4} &amp; \cdots &amp; \Leftrightarrow 4 \\\hline
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\hline
+\end{array} \overset{\color{blue}{y_{[i]}} = \color{orange}{x_{[i]}} \overset{\mathbb{Z}_{10}}{+} 1}{\longrightarrow} \color{blue}{y = 4.035 \ldots} \Leftrightarrow \; ?
+\]</span></li>
+</ul></li>
+</ul>
+
+<aside><div>
+<p><strong>Fun math challenge</strong>: Is <span class="math inline">\(\mathbb{Q}\)</span> countable? See <a href="#/appendix-countability-of-mathbbq">this appendix slide</a> for why the answer is yes, despite the fact that <span class="math inline">\(\forall x, y \in \mathbb{Q} \left[ \frac{x+y}{2} \in \mathbb{Q} \right]\)</span></p>
+</div><ol class="aside-footnotes"><li id="fn1"><p>The method used in this proof, if you haven’t seen it before, is called <a href="https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument" target="_blank"><strong>Cantor diagonalization</strong></a>, and it is extremely fun and applicable to a wide variety of levels-of-infinity proofs</p></li></ol></aside></section>
+<section id="the-practical-difference" class="slide level2 smaller">
+<h2>The Practical Difference</h2>
+<ul>
+<li>This part of the course (<strong>discrete</strong> probability): <span class="math inline">\(\Pr(X = v), v \in \mathcal{R}_X \subseteq \mathbb{N}\)</span>
+<ul>
+<li>Example: <span class="math inline">\(\Pr(\)</span><span><i class="bi bi-dice-3"></i></span><span class="math inline">\() = \Pr(X = 3), 3 \in \{1,2,3,4,5,6\} \subseteq \mathbb{N}\)</span></li>
+</ul></li>
+<li>Next part of the course (<strong>continuous</strong> probability): <span class="math inline">\(\Pr(X \in V), v \subseteq \mathbb{R}\)</span>
+<ul>
+<li>Example: <span class="math inline">\(\Pr(X \geq 2\pi) = \Pr(X \in [\pi,\infty)), [\pi,\infty) \subseteq \mathbb{R}\)</span></li>
+</ul></li>
+<li>Why do they have to be in separate parts?</li>
+</ul>
+<p><span class="math display">\[
+\Pr(X = 2\pi) = \frac{\text{Area}(\overbrace{2\pi}^{\mathclap{\small \text{Single point}}})}{\text{Area}(\underbrace{\mathbb{R}}_{\mathclap{\small \text{(Uncountably) Infinite set of points}}})} = 0
+\]</span></p>
+</section>
+<section id="probability-mass-vs.-probability-density" class="slide level2 smaller small-title">
+<h2>Probability Mass vs.&nbsp;Probability Density</h2>
+<ul>
+<li><strong>Cumulative Distribution Function</strong> (<strong>CDF</strong>): <span class="math inline">\(F_X(v) = \Pr(X \leq v)\)</span></li>
+<li>For <strong>discrete</strong> RV <span class="math inline">\(X\)</span>, <strong>Probability Mass Function</strong> (<strong>pmf</strong>) <span class="math inline">\(p_X(v)\)</span>: <span class="math display">\[
+\begin{align*}
+p_X(v) &amp;= \Pr(X = v) = F_X(v) - F_X(v-1) \\
+\implies F_X(v) &amp;= \sum_{\{w \in \mathcal{R}_X: \; w \leq v\}}p_X(w)
+\end{align*}
+\]</span></li>
+<li>For <strong>continuous</strong> RV <span class="math inline">\(X\)</span> (<span class="math inline">\(\mathcal{R}_X \subseteq \mathbb{R}\)</span>), <strong>Probability Density Function</strong> (<strong>pdf</strong>) <span class="math inline">\(f_X(v)\)</span>: <span class="math display">\[
+\begin{align*}
+f_X(v) &amp;= \frac{d}{dx}F_X(v) \\
+\implies F_X(v) &amp;= \int_{-\infty}^v f_X(w)dw
+\end{align*}
+\]</span></li>
+</ul>
+
+<aside><div>
+<p>Frustratingly, the CDF/pmf/pdf is usually written using <span class="math inline">\(X\)</span> and <span class="math inline">\(x\)</span>, like <span class="math inline">\(F_X(x) = \Pr(X \leq x)\)</span>. To me this is extremely confusing, since the capitalized <span class="math inline">\(X\)</span> is a random variable (not a number) while the lowercase <span class="math inline">\(x\)</span> is some particular value, like <span class="math inline">\(3\)</span>. So, to emphasize this difference, I use <span class="math inline">\(X\)</span> for the RV and <span class="math inline">\(v\)</span> for the <strong>value</strong> at which we’re checking the CDF/pmf/pdf.</p>
+<p>Also note the capitalized CDF but lowercase pmf/pdf, matching the mathematical notation where <span class="math inline">\(f_X(v)\)</span> is the derivative of <span class="math inline">\(F_X(v)\)</span>.</p>
+</div></aside></section>
+<section id="probability-density-neq-probability" class="slide level2 smaller">
+<h2>Probability Density <span class="math inline">\(\neq\)</span> Probability</h2>
+<ul>
+<li><strong>BEWARE</strong>: <span class="math inline">\(f_X(v) \neq \Pr(X = v)\)</span>!</li>
+<li>Long story short, for continuous variables, <span class="math inline">\(\Pr(X = v) = 0\)</span><sup>1</sup></li>
+<li>Hence, we instead construct a PDF <span class="math inline">\(f_X(v)\)</span> that enables us to calculate <span class="math inline">\(\Pr(X \in [a,b])\)</span> by integrating: <span class="math inline">\(f_X(v)\)</span> is whatever function satisfies <span class="math inline">\(\Pr(X \in [a,b]) = \int_{a}^bf_X(v)dv\)</span>.</li>
+<li>i.e., instead of <span class="math inline">\(p_X(v) = \Pr(X = v)\)</span> from discrete world, the relevant function here is <span class="math inline">\(f_X(v)\)</span>, the probability <strong>density</strong> of <span class="math inline">\(X\)</span> at <span class="math inline">\(v\)</span>.</li>
+<li>If we <strong>really</strong> want to get something like the “probability of a value” in a continuous space 😪, we can get something kind of like this by using fancy limits <span class="math display">\[
+f_X(v) = \lim_{\varepsilon \to 0}\frac{P(X \in [v-\varepsilon, v + \varepsilon])}{2\varepsilon} = \lim_{\varepsilon \to 0}\frac{F(v + \varepsilon) - F(v - \varepsilon)}{2\varepsilon} = \frac{d}{dx}F_X(v)
+\]</span></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>For intuition: <span class="math inline">\(X \sim U[0,10] \implies \Pr(X = \pi) = \frac{|\{v \in \mathbb{R}:\; v = \pi\}|}{|\mathbb{R}|} = \frac{1}{2^{\aleph_0}} \approx 0\)</span>. That is, finding the <span class="math inline">\(\pi\)</span> needle in the <span class="math inline">\(\mathbb{R}\)</span> haystack is a one-in-<span class="math inline">\(\left(\infty^\infty\right)\)</span> event. A similar issue occurs if <span class="math inline">\(S\)</span> is countably-infinite, like <span class="math inline">\(S = \mathbb{N}\)</span>: <span class="math inline">\(\Pr(X = 3) = \frac{|\{x \in \mathbb{N} : \; x = 3\}|}{|\mathbb{N}|} = \frac{1}{\aleph_0}\)</span>.</p></li></ol></aside></section></section>
 <section>
 <section id="common-discrete-distributions" class="title-slide slide level1 center" data-stack-name="Discrete Distributions">
 <h1>Common Discrete Distributions</h1>
-
+<ul>
+<li>Bernoulli</li>
+<li>Binomial</li>
+<li>Geometric</li>
+</ul>
 </section>
-<section id="discrete-uniform-distribution" class="slide level2">
-<h2>Discrete Uniform Distribution</h2>
+<section id="bernoulli-distribution" class="slide level2">
+<h2>Bernoulli Distribution</h2>
+<ul>
+<li>Single trial with two outcomes, <strong>“success”</strong> (<strong>1</strong>) or <strong>“failure”</strong> (<strong>0</strong>): basic model of a <strong>coin flip</strong> (heads = 1, tails = 0)</li>
+<li><span class="math inline">\(X \sim \text{Bern}({\color{purple} p}) \implies \mathcal{R}_X = \{0,1\}, \; \Pr(X = 1) = {\color{purple}p}\)</span>.</li>
+</ul>
+
+<img data-src="index_files/figure-revealjs/bernoulli-demo-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="binomial-distribution" class="slide level2">
+<h2>Binomial Distribution</h2>
+<ul>
+<li><strong>Number of successes</strong> in <span class="math inline">\({\color{purple}N}\)</span> Bernoulli trials. <span class="math inline">\(X \sim \text{Binom}({\color{purple}N},{\color{purple}k},{\color{purple}p}) \implies \mathcal{R}_X = \{0, 1, \ldots, N\}\)</span>
+<ul>
+<li><span class="math inline">\(P(X = k) = \binom{N}{k}p^k(1-p)^{N-k}\)</span>: probability of <span class="math inline">\(k\)</span> successes out of <span class="math inline">\(N\)</span> trials.</li>
+<li><span class="math inline">\(\binom{N}{k} = \frac{N!}{k!(N-k)!}\)</span>: “Binomial coefficient”. How many groups of size <span class="math inline">\(k\)</span> can be formed?<sup>1</sup></li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>A fun way to never have to memorize or compute these: imagine a pyramid like <span class="math inline">\(\genfrac{}{}{0pt}{}{}{\boxed{\phantom{1}}}\genfrac{}{}{0pt}{}{\boxed{\phantom{1}}}{}\genfrac{}{}{0pt}{}{}{\boxed{\phantom{1}}}\)</span>, where the boxes are slots for numbers, and put a <span class="math inline">\(1\)</span> in the box at the top. In the bottom row, fill each slot with the sum of the two numbers above-left and above-right of it. Since <span class="math inline">\(1 + \text{(nothing)} = 1\)</span>, this looks like: <span class="math inline">\(\genfrac{}{}{0pt}{}{}{1}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{1}\)</span>. Continue filling in the pyramid this way, so the next row looks like <span class="math inline">\(\genfrac{}{}{0pt}{}{}{1}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{2}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{1}\)</span>, then <span class="math inline">\(\genfrac{}{}{0pt}{}{}{1}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{3}\genfrac{}{}{0pt}{}{2}{}\genfrac{}{}{0pt}{}{}{3}\genfrac{}{}{0pt}{}{1}{}\genfrac{}{}{0pt}{}{}{1}\)</span>, and so on. The <span class="math inline">\(k\)</span>th number in the <span class="math inline">\(N\)</span>th row (counting from <span class="math inline">\(0\)</span>) is <span class="math inline">\(\binom{N}{k}\)</span>. For the triangle written out to the 7th row, see Appendix I at end of slideshow.</p></li></ol></aside></section>
+<section id="visualizing-the-binomial" class="slide level2 smaller">
+<h2>Visualizing the Binomial</h2>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>k <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>prob <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(k, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>bar_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(k, prob)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(bar_data, <span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>prob)) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="at">title=</span><span class="st">"Binomial Distribution, N = 10, p = 0.5"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="at">y=</span><span class="st">"Probability Mass"</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">dsan_theme</span>(<span class="st">"half"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/binomial-demo-1.png" width="960" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>So who can tell me, from this plot, the approximate probability of getting 4 heads when flipping a coin 10 times?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="multiple-classes-multinomial-distribution" class="slide level2 smaller">
+<h2>Multiple Classes: Multinomial Distribution</h2>
+<ul>
+<li>Bernoulli only allows two outcomes: success or failure.</li>
+<li>What if we’re predicting soccer match outcomes?
+<ul>
+<li><span class="math inline">\(X_i \in \{\text{Win}, \text{Loss}, \text{Draw}\}\)</span></li>
+</ul></li>
+<li><strong>Categorical Distribution</strong>: Generalization of Bernoulli to <span class="math inline">\(k\)</span> outcomes. <span class="math inline">\(X \sim \text{Categorical}(\mathbf{p} = \{p_1, p_2, \ldots, p_k\}), \sum_{i=1}^kp_i = 1\)</span>.
+<ul>
+<li><span class="math inline">\(P(X = k) = p_k\)</span></li>
+</ul></li>
+<li><strong>Multinomial Distribution</strong>: Generalization of Binomial to <span class="math inline">\(k\)</span> outcomes.</li>
+<li><span class="math inline">\(\mathbf{X} \sim \text{Multinom}(N,k,\mathbf{p}=\{p_1,p_2,\ldots,p_k\}), \sum_{i=1}^kp_i=1\)</span>
+<ul>
+<li><span class="math inline">\(P(\mathbf{X} = \{x_1,x_2\ldots,x_k\}) = \frac{N!}{x_1!x_2!\cdots x_k!}p_1^{x_1}p_2^{x_2}\cdots p_k^{x_k}\)</span></li>
+<li><span class="math inline">\(P(\text{30 wins}, \text{4 losses}, \text{4 draws}) = \frac{38!}{30!4!4!}p_{\text{win}}^{30}p_{\text{lose}}^4p_{\text{draw}}^4\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="geometric-distribution" class="slide level2">
+<h2>Geometric Distribution</h2>
+<ul>
+<li><strong>Geometric</strong>: Likelihood that we need <span class="math inline">\({\color{purple}k}\)</span> trials to get our first success. <span class="math inline">\(X \sim \text{Geom}({\color{purple}k},{\color{purple}p}) \implies \mathcal{R}_X = \{0, 1, \ldots\}\)</span>
+<ul>
+<li><span class="math inline">\(P(X = k) = \underbrace{(1-p)^{k-1}}_{\small k - 1\text{ failures}}\cdot \underbrace{p}_{\mathclap{\small \text{success}}}\)</span></li>
+<li>Probability of <span class="math inline">\(k-1\)</span> failures followed by a success</li>
+</ul></li>
+</ul>
+
+<img data-src="index_files/figure-revealjs/geometric-demo-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="less-common-but-important-distributions" class="slide level2 smaller">
+<h2>Less Common (But Important) Distributions</h2>
+<ul>
+<li><strong>Discrete Uniform</strong>: <span class="math inline">\(N\)</span> equally-likely outcomes
+<ul>
+<li><span class="math inline">\(X \sim U\{{\color{purple}a},{\color{purple}b}\} \implies \mathcal{R}_X = \{a, a+1, \ldots, b\}, P(X = k) = \frac{1}{{\color{purple}b} - {\color{purple}a} + 1}\)</span></li>
+</ul></li>
+<li><strong>Beta</strong>: <span class="math inline">\(X \sim \text{Beta}({\color{purple}\alpha}, {\color{purple}\beta})\)</span>: <em>conjugate prior</em> for Bernoulli, Binomial, and Geometric dists.
+<ul>
+<li>Intuition: If we use Beta to encode our prior hypothesis, then observe data drawn from Binomial, distribution of our <em>updated</em> hypothesis is still Beta.</li>
+<li><span class="math inline">\(\underbrace{\Pr(\text{biased}) = \Pr(\text{unbiased})}_{\text{Prior: }\text{Beta}({\color{purple}\alpha}, {\color{purple}\beta})} \rightarrow\)</span> Observe <span class="math inline">\(\underbrace{\frac{8}{10}\text{ heads}}_{\text{Data}} \rightarrow \underbrace{\Pr(\text{biased}) = 0.65}_{\text{Posterior: }\text{Beta}({\color{purple}\alpha + 8}, {\color{purple}\beta + 2})}\)</span></li>
+</ul></li>
+<li><strong>Dirichlet</strong>: <span class="math inline">\(\mathbf{X} = (X_1, X_2, \ldots, X_K) \sim \text{Dir}({\color{purple} \boldsymbol\alpha})\)</span>
+<ul>
+<li><span class="math inline">\(K\)</span>-dimensional extension of Beta (thus, conjugate prior for Multinomial)</li>
+</ul></li>
+</ul>
+<!-- TODO: see why \param doesn't work for the bolded \alpha -->
+<aside class="notes">
+<p>We can now use <span class="math inline">\(\text{Beta}(\alpha + 8, \beta + 2)\)</span> as a prior for our next set of trials (encoding our knowledge up to that point), and update further once we know the results (to yet another Beta distribution).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="interactive-visualizations" class="slide level2 smaller">
+<h2>Interactive Visualizations</h2>
+<iframe src="https://seeing-theory.brown.edu/probability-distributions/index.html" width="100%" height="70%"></iframe>
+<p><a href="https://seeing-theory.brown.edu/probability-distributions/index.html" target="_blank">Seeing Theory →</a></p>
 </section></section>
 <section>
 <section id="lab-3" class="title-slide slide level1 center" data-stack-name="Lab 3">
@@ -452,11 +749,44 @@ Jeff Jacobs
 <section id="lab-3-assignment-overview" class="slide level2">
 <h2>Lab 3 Assignment Overview</h2>
 <p><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-3/lab-3-assignment.html" target="_blank">Lab 3 Assignment <i class="bi bi-box-arrow-up-right ps-1"></i></a></p>
+<!-- APPENDIX SLIDES -->
+</section>
+<section id="appendix-countability-of-mathbbq" class="slide level2 smaller small-math">
+<h2>Appendix: Countability of <span class="math inline">\(\mathbb{Q}\)</span></h2>
+<ul>
+<li><strong>Bad</strong> definition: “<span class="math inline">\(\mathbb{N}\)</span> is countable because no <span class="math inline">\(x \in \mathbb{N}\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. <span class="math inline">\(\mathbb{R}\)</span> is uncountable because infinitely-many <span class="math inline">\(x \in \mathbb{R}\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.” (<span class="math inline">\(\implies \mathbb{Q}\)</span> uncountable)</li>
+<li>And yet, <span class="math inline">\(\mathbb{Q}\)</span> <strong>is</strong> countable…</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rationals_countable.png"></p>
+</figure>
+</div>
+</div><div class="column" style="width:55%;">
+<p><span class="math display">\[
+\begin{align*}
+\begin{array}{ll}
+s: \mathbb{N} \leftrightarrow \mathbb{Z} &amp; s(n) = (-1)^n \left\lfloor \frac{n+1}{2} \right\rfloor \\
+h_+: \mathbb{Z}^+ \leftrightarrow \mathbb{Q}^+ &amp; p_1^{a_1}p_2^{a_2}\cdots \mapsto p_1^{s(a_1)}p_2^{s(a_2)}\cdots \\
+h: \mathbb{Z} \leftrightarrow \mathbb{Q} &amp; h(n) = \begin{cases}h_+(n) &amp;n &gt; 0 \\ 0 &amp; n = 0 \\
+-h_+(-n) &amp; n &lt; 0\end{cases} \\
+(h \circ s): \mathbb{N} \leftrightarrow \mathbb{Q} &amp; ✅🤯
+\end{array}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+
 
 <div class="footer footer-default">
 
 </div>
-</section></section>
+<aside><div>
+<p>Image credit: <a href="https://math.stackexchange.com/a/659373" target="_blank">Rebecca J. Stones, Math StackExchange</a>. Math credit: <a href="https://math.stackexchange.com/a/1067928" target="_blank">Thomas Andrews, Math StackExchange</a></p>
+</div></aside></section></section>
+
     </div>
   </div>
 
