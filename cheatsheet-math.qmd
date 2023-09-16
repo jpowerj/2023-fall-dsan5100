@@ -91,7 +91,7 @@ date: last-modified
 * **Probability Density Function** (**PDF**): Given a **continuous** random variable $X$, $f_X(v)$ is the unique function which allows us to determine, using integration, the probability that $X$ is in some range $[a,b]$. That is, it is the unique function satisfying $P(X \in [a,b]) = \int_a^b f_X(x)dx$.
   * **Remember**: unlike in the discrete case where $p_X(v) = P(X = v)$, $f_X(v)$ **is not** the probability that $X$ is realized as the value $v$. $f_X(v) \neq P(X = v)$.
 
-## Lecture 6: Expectation, Variance, Moments
+## Week 06: Expectation, Variance, Moments
 
 * $M_1(V)$: The ("regular") **arithmetic mean** of a set of values $V = \{v_1, v_2, \ldots, v_n\}$: $M_1(V) = (v_1 + v_2 + \cdots + v_n)\frac{1}{n} = \left( \sum_{i=1}^n v_i \right)\frac{1}{n}$.
 * $M_0(V)$: The **geometric mean** of a set of values $V = \{v_1, v_2, \ldots, v_n\}$: $M_0(V) = (v_1\cdot v_2 \cdot \cdots \cdot v_n)^{\frac{1}{n}} = \left( \prod_{i=1}^n v_i \right)^{\frac{1}{n}}$

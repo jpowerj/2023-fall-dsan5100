@@ -11,6 +11,7 @@
   {
     "listing": "/writeups/index.html",
     "items": [
+      "/writeups/computing-probabilities/index.html",
       "/writeups/quiz-1-clarifications/index.html",
       "/writeups/bayes-disease-tests/index.html"
     ]

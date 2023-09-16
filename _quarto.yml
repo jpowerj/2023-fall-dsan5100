@@ -30,7 +30,7 @@ website:
       - href: w04/index.qmd
         text: "Week 4: Sep 14"
       - "---"
-      - href: recordings/index.qmd
+      - href: lecture-recordings/index.qmd
         text: "Recordings"
       - href: writeups/index.qmd
         text: "Extra Writeups"
@@ -40,7 +40,7 @@ website:
       - href: "https://georgetown.instructure.com/courses/173333"
         text: "Course Canvas Page <i class=\"bi bi-box-arrow-up-right ps-1\"></i>"
       - href: "https://calendar.app.google/yMnESMtMNPdKEaPz5"
-        text: "Book Office Hours"
+        text: "Book Office Hours <i class='bi bi-box-arrow-up-right ps-1'></i>"
       - href: "https://forms.gle/QBT621Vmcez4Y99r5"
         text: "Suggestion Box <i class=\"bi bi-box-arrow-up-right ps-1\"></i>"
 

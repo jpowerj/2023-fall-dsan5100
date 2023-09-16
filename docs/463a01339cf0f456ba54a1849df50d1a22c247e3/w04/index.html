@@ -184,7 +184,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../recordings/index.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../lecture-recordings/index.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recordings</span></a>
   </div>
 </li>
@@ -210,7 +210,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://calendar.app.google/yMnESMtMNPdKEaPz5" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Book Office Hours</span></a>
+ <span class="menu-text">Book Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -383,7 +383,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <li><strong>Discrete</strong> = “Easy mode”: Based (intuitively) on <strong>sets</strong></li>
 <li><span class="math inline">\(\Pr(A)\)</span>: Four marbles <span class="math inline">\(\{A, B, C, D\}\)</span> in box, all equally likely, what is the probability I pull out <span class="math inline">\(A\)</span>?</li>
 </ul>
-<div class="cell" data-layout-align="center" data-hash="index_cache/html/discrete-prob-plot_97c38b449a362e74e28b81898d674d8a">
+<div class="cell" data-hash="index_cache/html/discrete-prob-plot_e25e7174014aff9548306075167e7894">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>disc_df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -407,11 +407,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">title=</span><span class="st">"Discrete Probability Space in N"</span></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/discrete-prob-plot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/discrete-prob-plot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><span class="math display">\[
@@ -422,7 +418,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <li><strong>Continuous</strong> = “Hard mode”: Based (intuitively) on <strong>areas</strong></li>
 <li><span class="math inline">\(\Pr(A)\)</span>: If I throw a dart at this square, what is the probability that I hit region <span class="math inline">\(A\)</span>?</li>
 </ul>
-<div class="cell" data-layout-align="center" data-hash="index_cache/html/continuous-prob-plot_9b5e49c94dbaf2fd669b47f5e93a7ba8">
+<div class="cell" data-hash="index_cache/html/continuous-prob-plot_8c86703b84507aa4c8ed6f98f40eef94">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(disc_df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">label=</span>label)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>) <span class="sc">+</span></span>
@@ -445,11 +441,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">title=</span><span class="fu">expression</span>(<span class="st">"Continuous Probability Space in "</span><span class="sc">*</span>R<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/continuous-prob-plot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/continuous-prob-plot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><span class="math display">\[
