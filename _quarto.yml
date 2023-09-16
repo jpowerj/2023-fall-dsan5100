@@ -20,7 +20,7 @@ website:
         text: "<i class=\"bi bi-arrow-left\" style=\"margin-right: 4px\"></i>Main Course Page"
       - "---"
       - href: index.qmd
-        text: "Section 03 Home"
+        text: "<i class='bi bi-house pe-1'></i> Section 03 Home"
       - href: w01/index.qmd
         text: "Week 1: Aug 24"
       - href: w02/index.qmd
@@ -29,9 +29,11 @@ website:
         text: "Week 3: Sep 7"
       - href: w04/index.qmd
         text: "Week 4: Sep 14"
+      - href: recordings/index.qmd
+        text: "Lecture Recordings"
       - "---"
-      - href: lecture-recordings/index.qmd
-        text: "Recordings"
+      - href: extra-videos/index.qmd
+        text: "Extra Videos"
       - href: writeups/index.qmd
         text: "Extra Writeups"
       - href: cheatsheet-math.qmd

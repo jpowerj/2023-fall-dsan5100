@@ -1,12 +1,11 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/w01/index.html",
-      "/w02/index.html",
-      "/w03/index.html",
-      "/w04/index.html"
-    ]
+    "listing": "/extra-videos/index.html",
+    "items": []
+  },
+  {
+    "listing": "/recordings/index.html",
+    "items": []
   },
   {
     "listing": "/writeups/index.html",
@@ -14,6 +13,15 @@
       "/writeups/computing-probabilities/index.html",
       "/writeups/quiz-1-clarifications/index.html",
       "/writeups/bayes-disease-tests/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/w01/index.html",
+      "/w02/index.html",
+      "/w03/index.html",
+      "/w04/index.html"
     ]
   }
 ]
