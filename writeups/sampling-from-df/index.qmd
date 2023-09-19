@@ -8,6 +8,7 @@ categories:
 format:
   html:
     cache: false
+    df-print: kable
 execute: 
   echo: true
   code-fold: show

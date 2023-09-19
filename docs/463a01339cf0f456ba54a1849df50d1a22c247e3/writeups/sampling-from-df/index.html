@@ -302,19 +302,48 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deck_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Rank"</span>, <span class="st">"Suit"</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(deck_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Rank   Suit
-1   Ace Hearts
-2   Two Hearts
-3 Three Hearts
-4  Four Hearts
-5  Five Hearts
-6   Six Hearts</code></pre>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Suit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>And we can check the dimensions of <code>deck_df</code> just to make sure it created the right number of cards:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(deck_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(deck_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 52  2</code></pre>
 </div>
@@ -331,46 +360,140 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the "fancier" pipe operator (%&gt;%)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>deck_sample_df <span class="ot">&lt;-</span> deck_df <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>deck_sample_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the "fancier" pipe operator (%&gt;%)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>deck_sample_df <span class="ot">&lt;-</span> deck_df <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>deck_sample_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Rank   Suit
-1    Ace Spades
-2   Five Hearts
-3   Four Spades
-4   Jack Spades
-5   Nine  Clubs
-6  Seven  Clubs
-7    Ten  Clubs
-8  Queen  Clubs
-9   King Spades
-10   Two Spades
-11 Three Spades
-12  Jack Spades</code></pre>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Suit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>Here we can confirm that it sampled <strong>with</strong> replacement since we see that it selected the Jack of Spades twice (once in slot 4 and once in slot 12).</p>
 <p>Note that, although using the pipe operator <code>%&gt;%</code> is the “standard” way to use <code>tidyverse</code> functions, you can still use the functions without using the pipe operator (long story short, the pipe operator just takes whatever comes before the <code>%&gt;%</code> and “plugs it in” as the first argument to the function that comes after the <code>%&gt;%</code>), by specifying the first argument to the <code>slice_sample()</code> function explicitly:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>deck_sample_df <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(deck_df, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>deck_sample_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Rank     Suit
-1   Four   Hearts
-2   Five    Clubs
-3   Four    Clubs
-4   Five Diamonds
-5   King   Spades
-6   King Diamonds
-7   Five   Spades
-8    Two    Clubs
-9  Queen   Hearts
-10 Eight    Clubs
-11  Jack   Spades
-12 Eight    Clubs</code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>deck_sample_df <span class="ot">&lt;-</span> <span class="fu">slice_sample</span>(deck_df, <span class="at">n =</span> <span class="dv">12</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>deck_sample_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Suit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>To me, one nice aspect of <code>slice_sample()</code> over other base-R functions is (among other things) it ensures that the <strong>column names</strong> are maintained when you sample, which is not always true for the base-R functions. It’s also possible to do in base-R (without using tidyverse libraries/functions), though, just less straightforwardly.</p>
@@ -379,89 +502,487 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="using-base-r-to-sample-with-replacement">Using Base-R to Sample WITH Replacement</h2>
 <p>First off, note that just applying <code>sample()</code> to the deck will not produce the outcome we expect, or want, which probably unfortunately goes against our intuitions for how this function should work:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(deck_df, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       Suit  Rank   Suit.1 Rank.1 Rank.2
-1    Hearts   Ace   Hearts    Ace    Ace
-2    Hearts   Two   Hearts    Two    Two
-3    Hearts Three   Hearts  Three  Three
-4    Hearts  Four   Hearts   Four   Four
-5    Hearts  Five   Hearts   Five   Five
-6    Hearts   Six   Hearts    Six    Six
-7    Hearts Seven   Hearts  Seven  Seven
-8    Hearts Eight   Hearts  Eight  Eight
-9    Hearts  Nine   Hearts   Nine   Nine
-10   Hearts   Ten   Hearts    Ten    Ten
-11   Hearts  Jack   Hearts   Jack   Jack
-12   Hearts Queen   Hearts  Queen  Queen
-13   Hearts  King   Hearts   King   King
-14 Diamonds   Ace Diamonds    Ace    Ace
-15 Diamonds   Two Diamonds    Two    Two
-16 Diamonds Three Diamonds  Three  Three
-17 Diamonds  Four Diamonds   Four   Four
-18 Diamonds  Five Diamonds   Five   Five
-19 Diamonds   Six Diamonds    Six    Six
-20 Diamonds Seven Diamonds  Seven  Seven
-21 Diamonds Eight Diamonds  Eight  Eight
-22 Diamonds  Nine Diamonds   Nine   Nine
-23 Diamonds   Ten Diamonds    Ten    Ten
-24 Diamonds  Jack Diamonds   Jack   Jack
-25 Diamonds Queen Diamonds  Queen  Queen
-26 Diamonds  King Diamonds   King   King
-27    Clubs   Ace    Clubs    Ace    Ace
-28    Clubs   Two    Clubs    Two    Two
-29    Clubs Three    Clubs  Three  Three
-30    Clubs  Four    Clubs   Four   Four
-31    Clubs  Five    Clubs   Five   Five
-32    Clubs   Six    Clubs    Six    Six
-33    Clubs Seven    Clubs  Seven  Seven
-34    Clubs Eight    Clubs  Eight  Eight
-35    Clubs  Nine    Clubs   Nine   Nine
-36    Clubs   Ten    Clubs    Ten    Ten
-37    Clubs  Jack    Clubs   Jack   Jack
-38    Clubs Queen    Clubs  Queen  Queen
-39    Clubs  King    Clubs   King   King
-40   Spades   Ace   Spades    Ace    Ace
-41   Spades   Two   Spades    Two    Two
-42   Spades Three   Spades  Three  Three
-43   Spades  Four   Spades   Four   Four
-44   Spades  Five   Spades   Five   Five
-45   Spades   Six   Spades    Six    Six
-46   Spades Seven   Spades  Seven  Seven
-47   Spades Eight   Spades  Eight  Eight
-48   Spades  Nine   Spades   Nine   Nine
-49   Spades   Ten   Spades    Ten    Ten
-50   Spades  Jack   Spades   Jack   Jack
-51   Spades Queen   Spades  Queen  Queen
-52   Spades  King   Spades   King   King</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(deck_df, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Suit</th>
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Suit.1</th>
+<th style="text-align: left;">Rank.1</th>
+<th style="text-align: left;">Rank.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Ace</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Two</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Three</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Four</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Six</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Seven</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Eight</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Nine</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Ten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Jack</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Queen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Hearts</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">King</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Ace</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Two</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Three</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Four</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Five</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Six</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Seven</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Eight</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Nine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Ten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Jack</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Queen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Diamonds</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">King</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Ace</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Two</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Three</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Four</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Six</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Seven</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Eight</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Nine</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Ten</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Jack</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Queen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Clubs</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">King</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Ace</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Two</td>
+<td style="text-align: left;">Two</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Three</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Four</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Five</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Six</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Seven</td>
+<td style="text-align: left;">Seven</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Eight</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Nine</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Ten</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Jack</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Queen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Spades</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">King</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>A way to avoid this is to make sure that you are using the <code>sample()</code> function <strong>NOT</strong> on the entire <code>data.frame</code> object, but just to select a subset of the <strong>rows</strong> of the <code>data.frame</code>, like the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>deck_df[<span class="fu">sample</span>(<span class="fu">nrow</span>(deck_df), <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Rank     Suit
-24    Jack Diamonds
-19     Six Diamonds
-25   Queen Diamonds
-19.1   Six Diamonds
-3    Three   Hearts
-10     Ten   Hearts
-31    Five    Clubs
-11    Jack   Hearts
-47   Eight   Spades
-39    King    Clubs
-39.1  King    Clubs
-43    Four   Spades
-22    Nine Diamonds
-9     Nine   Hearts
-27     Ace    Clubs</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>deck_df[<span class="fu">sample</span>(<span class="fu">nrow</span>(deck_df), <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Rank</th>
+<th style="text-align: left;">Suit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">Queen</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">19.1</td>
+<td style="text-align: left;">Six</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Three</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Ten</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">Five</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">Jack</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">Eight</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">39.1</td>
+<td style="text-align: left;">King</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">Four</td>
+<td style="text-align: left;">Spades</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Diamonds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">Nine</td>
+<td style="text-align: left;">Hearts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">Ace</td>
+<td style="text-align: left;">Clubs</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <p>First off, notice how here we can again confirm that it sampled with replacement since it had to create additional ids like <code>34.1</code> and <code>34.2</code> to represent the fact that card #34 (the Eight of Clubs) ended up in our sample 3 times.</p>
 <p>Also note how, rather than sampling <strong>from the <code>data.frame</code></strong>, which may be intuitively/linguistically how we would describe what we want, we are actually sampling from the <strong>set of indices of the <code>data.frame</code></strong>, then asking R to give us the rows corresponding to those sampled indices. Concretely, to see what’s going on, let’s just look at the row filter we’ve provided (the portion of the full code that is within the square brackets <code>[]</code>, before the comma):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">nrow</span>(deck_df), <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">nrow</span>(deck_df), <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 30 32 30 46  7 30 46 27 21 42 25 26 17 35  4</code></pre>
 </div>
