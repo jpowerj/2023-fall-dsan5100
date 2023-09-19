@@ -1579,7 +1579,7 @@
     "href": "writeups/sampling-from-df/index.html",
     "title": "Two Ways of Sampling from a Data Frame",
     "section": "",
-    "text": "A few students have run into issues when trying to use the sample() function, from base-R, to sample from a full data.frame or tibble. In this writeup I’ll argue that this is a case where using a function from the tidyverse will make your life much easier, but I will also show how to do this sampling using only base-R functions.\nBefore we start, we make sure to use set.seed(5000) at the beginning, so that your grader gets the same results as you do even when working with random processes!\nset.seed(5000)"
+    "text": "A few students have run into issues when trying to use the sample() function, from base-R, to sample from a full data.frame or tibble. In this writeup I’ll argue that this is a case where using a function from the tidyverse called slice_sample() will make your life much easier, but I will also show how to do this sampling using only base-R functions.\nBefore we start, we make sure to use set.seed(5000) at the beginning, so that your grader gets the same results as you do even when working with random processes!\nset.seed(5000)"
   },
   {
     "objectID": "writeups/sampling-from-df/index.html#creating-a-deck-of-cards-using-expand.grid",

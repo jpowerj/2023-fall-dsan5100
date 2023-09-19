@@ -13,7 +13,7 @@ execute:
   code-fold: show
 ---
 
-A few students have run into issues when trying to use the `sample()` function, from base-R, to sample from a full `data.frame` or `tibble`. In this writeup I'll argue that this is a case where using a function from the `tidyverse` will make your life much easier, but I will also show how to do this sampling using only base-R functions.
+A few students have run into issues when trying to use the `sample()` function, from base-R, to sample from a full `data.frame` or `tibble`. In this writeup I'll argue that this is a case where using a function from the `tidyverse` called [slice_sample()](https://dplyr.tidyverse.org/reference/slice.html){target="_blank"} will make your life much easier, but I will also show how to do this sampling using only base-R functions.
 
 Before we start, we make sure to use `set.seed(5000)` at the beginning, so that your grader gets the same results as you do even when working with random processes!
 

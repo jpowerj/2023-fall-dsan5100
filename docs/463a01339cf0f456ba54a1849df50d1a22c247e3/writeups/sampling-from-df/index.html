@@ -284,7 +284,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 </header>
 
-<p>A few students have run into issues when trying to use the <code>sample()</code> function, from base-R, to sample from a full <code>data.frame</code> or <code>tibble</code>. In this writeup I’ll argue that this is a case where using a function from the <code>tidyverse</code> will make your life much easier, but I will also show how to do this sampling using only base-R functions.</p>
+<p>A few students have run into issues when trying to use the <code>sample()</code> function, from base-R, to sample from a full <code>data.frame</code> or <code>tibble</code>. In this writeup I’ll argue that this is a case where using a function from the <code>tidyverse</code> called <a href="https://dplyr.tidyverse.org/reference/slice.html" target="_blank">slice_sample()</a> will make your life much easier, but I will also show how to do this sampling using only base-R functions.</p>
 <p>Before we start, we make sure to use <code>set.seed(5000)</code> at the beginning, so that your grader gets the same results as you do even when working with random processes!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
