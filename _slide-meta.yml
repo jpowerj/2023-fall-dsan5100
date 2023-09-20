@@ -1,0 +1,24 @@
+format:
+  revealjs:
+    html-math-method: mathjax
+    section-divs: false
+    #center: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    slide-number: true
+    number-sections: false
+    number-depth: 2
+    bibliography: "../_Georgetown_Refs.bib"
+    #smaller: true
+    code-fold: true
+    footnotes-hover: true
+    scrollable: true
+    theme: [default, "../_jjslides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    include-in-header:
+      text: "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\"><script src=\"https://d3js.org/d3.v4.min.js\"></script><script src=\"../assets/_venn.js\"></script>"
+        

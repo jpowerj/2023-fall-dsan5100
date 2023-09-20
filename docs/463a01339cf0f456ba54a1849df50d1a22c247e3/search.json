@@ -1544,7 +1544,133 @@
     "href": "w05/index.html",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "",
-    "text": "(Soon to come!)"
+    "text": "source(\"../_globals.r\")\n\n\nToday’s Planned Schedule (Section 03)\n\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\nRecording\n\n\n\n\nLecture\n12:30pm\n12:40pm\nRecap →\n\n\n\n\n12:40pm\n1:20pm\nContinuous Distributions (Biting the Bullet) →\n\n\n\n\n1:20pm\n2:00pm\nCommon Continuous Distributions →\n\n\n\nBreak!\n2:00pm\n2:10pm\n\n\n\n\nLab\n2:10pm\n2:50pm\nLab 4 Demonstration \n\n\n\n\n2:50pm\n3:00pm\nLab 4 Assignment Overview \n\n\n\n\n2:40pm\n3:00pm\nStudent Presentation"
+  },
+  {
+    "objectID": "w05/index.html#what-things-have-distributions",
+    "href": "w05/index.html#what-things-have-distributions",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "What Things Have Distributions?",
+    "text": "What Things Have Distributions?\n\nAnswer: Random Variables"
+  },
+  {
+    "objectID": "w05/index.html#cdfspdfspmfs-what-are-they",
+    "href": "w05/index.html#cdfspdfspmfs-what-are-they",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "CDFs/pdfs/pmfs: What Are They?",
+    "text": "CDFs/pdfs/pmfs: What Are They?\n\nFunctions which answer questions about a Random Variable (\\(X\\) in this case)\nCDF: What is probability of value less than or equal to \\(X\\)?\n\n\\[\nF_X(v_X) \\overset{\\text{defn}}{=} \\Pr(X \\leq v_X)\n\\]\n\npmf: What is the probability of this exact value? (Discrete only)\n\n\\[\np_X(v_X) = \\Pr(X = v_X)\n\\]\n\npdf: …It’s the thing you integrate to get the CDF\n\n\\[\nf_X(v_X) = \\frac{d}{dv_X}F_X(v_X) \\iff \\int f_X(v_X)dv_X = F_X(v_X)\n\\]"
+  },
+  {
+    "objectID": "w05/index.html#cdfspdfspmfs-why-do-we-use-them",
+    "href": "w05/index.html#cdfspdfspmfs-why-do-we-use-them",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "CDFs/pdfs/pmfs: Why Do We Use Them?",
+    "text": "CDFs/pdfs/pmfs: Why Do We Use Them?\n\nCDF is like the “API” that allows you to access all of the information about the distribution (pdf/pmf is derived from the CDF)\nExample: we know there’s some “thing” called the Exponential Distribution…\nHow do we use this distribution to understand a random variable \\(X \\sim \\text{Exp}\\)?\n\nAnswer: the CDF of \\(X\\)!\nSince all exponentially-distributed RVs have the same PDF, we can call this PDF “the” exponential distribution\n\nSay we want to find the median of \\(X\\): The median is the number \\(m\\) satisfying\n\n\\[\n\\Pr(X \\leq m) = \\frac{1}{2}, \\; \\Pr(X \\geq m) = \\frac{1}{2}\n\\]"
+  },
+  {
+    "objectID": "w05/index.html#finding-a-median-via-the-cdf",
+    "href": "w05/index.html#finding-a-median-via-the-cdf",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Finding a Median via the CDF",
+    "text": "Finding a Median via the CDF\n\n\n\n\n\n\nMedian of a Random Variable \\(X\\)\n\n\n\nThe median of a random variable \\(X\\) with some CDF \\(F_X(v_X)\\) is the [set of] numbers \\(m\\) for which the probability that \\(X\\) is lower than \\(m\\) is the same as the probability that \\(X\\) is greater than \\(m\\):\n\\[\n\\begin{align*}\n\\text{Median}(X) &= \\left\\{m \\mid F_X(m) = 1 - F_X(m) \\right\\} \\\\\n&= \\left\\{m \\mid \\int_{-\\infty}^{m}f_X(v_X)dv_X = \\int_{m}^{\\infty}f_X(v_X)dv_X \\right\\}\n\\end{align*}\n\\]\n\n\nExample:"
+  },
+  {
+    "objectID": "w05/index.html#what-is-a-pdf",
+    "href": "w05/index.html#what-is-a-pdf",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "What is a pdf?",
+    "text": "What is a pdf?\n\nAnswer: Has no meaning outside of its context: a random variable with a CDF giving the distribution of its possible values"
+  },
+  {
+    "objectID": "w05/index.html#normal-distribution",
+    "href": "w05/index.html#normal-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Normal Distribution",
+    "text": "Normal Distribution"
+  },
+  {
+    "objectID": "w05/index.html#uniform-distribution",
+    "href": "w05/index.html#uniform-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Uniform Distribution",
+    "text": "Uniform Distribution"
+  },
+  {
+    "objectID": "w05/index.html#exponential-distribution",
+    "href": "w05/index.html#exponential-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Exponential Distribution",
+    "text": "Exponential Distribution"
+  },
+  {
+    "objectID": "w05/index.html#cauchy-distribution",
+    "href": "w05/index.html#cauchy-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Cauchy Distribution",
+    "text": "Cauchy Distribution"
+  },
+  {
+    "objectID": "w05/slides.html#what-things-have-distributions",
+    "href": "w05/slides.html#what-things-have-distributions",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "What Things Have Distributions?",
+    "text": "What Things Have Distributions?\n\nAnswer: Random Variables"
+  },
+  {
+    "objectID": "w05/slides.html#cdfspdfspmfs-what-are-they",
+    "href": "w05/slides.html#cdfspdfspmfs-what-are-they",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "CDFs/pdfs/pmfs: What Are They?",
+    "text": "CDFs/pdfs/pmfs: What Are They?\n\nFunctions which answer questions about a Random Variable (\\(X\\) in this case)\nCDF: What is probability of value less than or equal to \\(X\\)?\n\n\\[\nF_X(v_X) \\overset{\\text{defn}}{=} \\Pr(X \\leq v_X)\n\\]\n\npmf: What is the probability of this exact value? (Discrete only)\n\n\\[\np_X(v_X) = \\Pr(X = v_X)\n\\]\n\npdf: …It’s the thing you integrate to get the CDF\n\n\\[\nf_X(v_X) = \\frac{d}{dv_X}F_X(v_X) \\iff \\int f_X(v_X)dv_X = F_X(v_X)\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#cdfspdfspmfs-why-do-we-use-them",
+    "href": "w05/slides.html#cdfspdfspmfs-why-do-we-use-them",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "CDFs/pdfs/pmfs: Why Do We Use Them?",
+    "text": "CDFs/pdfs/pmfs: Why Do We Use Them?\n\nCDF is like the “API” that allows you to access all of the information about the distribution (pdf/pmf is derived from the CDF)\nExample: we know there’s some “thing” called the Exponential Distribution…\nHow do we use this distribution to understand a random variable \\(X \\sim \\text{Exp}\\)?\n\nAnswer: the CDF of \\(X\\)!\nSince all exponentially-distributed RVs have the same PDF, we can call this PDF “the” exponential distribution\n\nSay we want to find the median of \\(X\\): The median is the number \\(m\\) satisfying\n\n\\[\n\\Pr(X \\leq m) = \\frac{1}{2}, \\; \\Pr(X \\geq m) = \\frac{1}{2}\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#finding-a-median-via-the-cdf",
+    "href": "w05/slides.html#finding-a-median-via-the-cdf",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Finding a Median via the CDF",
+    "text": "Finding a Median via the CDF\n\n\n\n\n\n\nMedian of a Random Variable \\(X\\)\n\n\nThe median of a random variable \\(X\\) with some CDF \\(F_X(v_X)\\) is the [set of] numbers \\(m\\) for which the probability that \\(X\\) is lower than \\(m\\) is the same as the probability that \\(X\\) is greater than \\(m\\):\n\\[\n\\begin{align*}\n\\text{Median}(X) &= \\left\\{m \\mid F_X(m) = 1 - F_X(m) \\right\\} \\\\\n&= \\left\\{m \\mid \\int_{-\\infty}^{m}f_X(v_X)dv_X = \\int_{m}^{\\infty}f_X(v_X)dv_X \\right\\}\n\\end{align*}\n\\]\n\n\n\nExample:"
+  },
+  {
+    "objectID": "w05/slides.html#what-is-a-pdf",
+    "href": "w05/slides.html#what-is-a-pdf",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "What is a pdf?",
+    "text": "What is a pdf?\n\nAnswer: Has no meaning outside of its context: a random variable with a CDF giving the distribution of its possible values"
+  },
+  {
+    "objectID": "w05/slides.html#normal-distribution",
+    "href": "w05/slides.html#normal-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Normal Distribution",
+    "text": "Normal Distribution"
+  },
+  {
+    "objectID": "w05/slides.html#uniform-distribution",
+    "href": "w05/slides.html#uniform-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Uniform Distribution",
+    "text": "Uniform Distribution"
+  },
+  {
+    "objectID": "w05/slides.html#exponential-distribution",
+    "href": "w05/slides.html#exponential-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Exponential Distribution",
+    "text": "Exponential Distribution"
+  },
+  {
+    "objectID": "w05/slides.html#cauchy-distribution",
+    "href": "w05/slides.html#cauchy-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Cauchy Distribution",
+    "text": "Cauchy Distribution"
   },
   {
     "objectID": "recordings/index.html",
@@ -1614,7 +1740,7 @@
     "href": "index.html",
     "title": "DSAN 5100, Section 03 (Thursdays)",
     "section": "",
-    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nWednesday, September 6, 2023\n\n\n\n\nWeek 3: Conditional Probability\n\n\nThursday, September 7, 2023\n\n\n\n\nWeek 4: Discrete Probability Distributions\n\n\nThursday, September 14, 2023\n\n\n\n\nWeek 5: Continuous Probability Distributions\n\n\nThursday, September 14, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nWednesday, September 6, 2023\n\n\n\n\nWeek 3: Conditional Probability\n\n\nThursday, September 7, 2023\n\n\n\n\nWeek 4: Discrete Probability Distributions\n\n\nThursday, September 14, 2023\n\n\n\n\nWeek 5: Continuous Probability Distributions\n\n\nThursday, September 21, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "w01/index.html",

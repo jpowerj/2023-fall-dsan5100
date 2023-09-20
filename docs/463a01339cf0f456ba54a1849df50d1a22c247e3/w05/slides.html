@@ -254,6 +254,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -351,11 +352,190 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Thursday, September 14, 2023</p>
+  <p class="date">Thursday, September 21, 2023</p>
 </section>
-<section class="slide level2">
+<section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
+<h1>Schedule</h1>
+<div class="hidden">
 
-<p>(Soon to come!)</p>
+</div>
+<p>Today’s Planned Schedule (Section 03)</p>
+<table style="width:95%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 54%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: center;">Recording</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">12:30pm</td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;"><a href="#/recap">Recap →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;">1:20pm</td>
+<td style="text-align: left;"><a href="#/continuous-distributions-biting-the-bullet">Continuous Distributions (Biting the Bullet) →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1:20pm</td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;"><a href="#/common-continuous-distributions">Common Continuous Distributions →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lab</strong></td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;">2:50pm</td>
+<td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html" target="_blank">Lab 4 Demonstration <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:50pm</td>
+<td style="text-align: left;">3:00pm</td>
+<td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html" target="_blank">Lab 4 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:40pm</td>
+<td style="text-align: left;">3:00pm</td>
+<td style="text-align: left;">Student Presentation</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<section id="recap" class="title-slide slide level1 center" data-stack-name="Recap">
+<h1>Recap</h1>
+<ul>
+<li>What things have distributions?</li>
+<li>PDFs, CDFs</li>
+</ul>
+</section>
+<section id="what-things-have-distributions" class="slide level2">
+<h2>What Things Have Distributions?</h2>
+<ul>
+<li>Answer: <strong>Random Variables</strong></li>
+</ul>
+</section>
+<section id="cdfspdfspmfs-what-are-they" class="slide level2 smaller">
+<h2>CDFs/pdfs/pmfs: <em>What</em> Are They?</h2>
+<ul>
+<li>Functions which <strong>answer questions</strong> about a <strong>Random Variable</strong> (<span class="math inline">\(X\)</span> in this case)</li>
+<li><strong>CDF</strong>: What is probability of value <strong>less than or equal to <span class="math inline">\(X\)</span></strong>?</li>
+</ul>
+<p><span class="math display">\[
+F_X(v_X) \overset{\text{defn}}{=} \Pr(X \leq v_X)
+\]</span></p>
+<ul>
+<li><strong>pmf</strong>: What is the probability of <strong>this exact value</strong>? (Discrete only)</li>
+</ul>
+<p><span class="math display">\[
+p_X(v_X) = \Pr(X = v_X)
+\]</span></p>
+<ul>
+<li><strong>pdf</strong>: …It’s the thing you integrate to get the CDF</li>
+</ul>
+<p><span class="math display">\[
+f_X(v_X) = \frac{d}{dv_X}F_X(v_X) \iff \int f_X(v_X)dv_X = F_X(v_X)
+\]</span></p>
+</section>
+<section id="cdfspdfspmfs-why-do-we-use-them" class="slide level2 smaller">
+<h2>CDFs/pdfs/pmfs: <em>Why</em> Do We Use Them?</h2>
+<ul>
+<li>CDF is like the “API” that allows you to access <strong>all of the information about the distribution</strong> (pdf/pmf is derived from the CDF)</li>
+<li>Example: we know there’s some “thing” called the <em>Exponential Distribution</em>…</li>
+<li>How do we <strong>use</strong> this distribution to understand a random variable <span class="math inline">\(X \sim \text{Exp}\)</span>?
+<ul>
+<li>Answer: the <strong>CDF</strong> of <span class="math inline">\(X\)</span>!</li>
+<li>Since <strong>all exponentially-distributed RVs have the same PDF</strong>, we can call this PDF <strong>“the” exponential distribution</strong></li>
+</ul></li>
+<li>Say we want to find the <strong>median</strong> of <span class="math inline">\(X\)</span>: The median is the number <span class="math inline">\(m\)</span> satisfying</li>
+</ul>
+<p><span class="math display">\[
+\Pr(X \leq m) = \frac{1}{2}, \; \Pr(X \geq m) = \frac{1}{2}
+\]</span></p>
+</section>
+<section id="finding-a-median-via-the-cdf" class="slide level2">
+<h2>Finding a Median via the CDF</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Median of a Random Variable <span class="math inline">\(X\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>The <strong>median</strong> of a random variable <span class="math inline">\(X\)</span> with some CDF <span class="math inline">\(F_X(v_X)\)</span> is the [set of] numbers <span class="math inline">\(m\)</span> for which the probability that <span class="math inline">\(X\)</span> is <strong>lower than</strong> <span class="math inline">\(m\)</span> is the same as the probability that <span class="math inline">\(X\)</span> is <strong>greater than</strong> <span class="math inline">\(m\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+\text{Median}(X) &amp;= \left\{m \mid F_X(m) = 1 - F_X(m) \right\} \\
+&amp;= \left\{m \mid \int_{-\infty}^{m}f_X(v_X)dv_X = \int_{m}^{\infty}f_X(v_X)dv_X \right\}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<p><strong>Example</strong>:</p>
+</section></section>
+<section>
+<section id="continuous-distributions-biting-the-bullet" class="title-slide slide level1 center" data-stack-name="Continuous Dists">
+<h1>Continuous Distributions (Biting the Bullet)</h1>
+
+</section>
+<section id="what-is-a-pdf" class="slide level2">
+<h2>What is a pdf?</h2>
+<ul>
+<li>Answer: Has no meaning outside of its <strong>context</strong>: a <strong>random variable</strong> with a <strong>CDF</strong> giving the distribution of its possible values</li>
+</ul>
+</section></section>
+<section>
+<section id="common-continuous-distributions" class="title-slide slide level1 center" data-stack-name="Normal Dist">
+<h1>Common Continuous Distributions</h1>
+
+</section>
+<section id="normal-distribution" class="slide level2" data-name="Normal">
+<h2>Normal Distribution</h2>
+</section>
+<section id="uniform-distribution" class="slide level2" data-name="Uniform">
+<h2>Uniform Distribution</h2>
+</section>
+<section id="exponential-distribution" class="slide level2" data-name="Exponential">
+<h2>Exponential Distribution</h2>
+</section>
+<section id="cauchy-distribution" class="slide level2" data-name="Cauchy">
+<h2>Cauchy Distribution</h2>
+</section></section>
+<section id="lab" class="title-slide slide level1 center" data-name="Lab">
+<h1>Lab</h1>
 
 <div class="footer footer-default">
 
@@ -394,7 +574,7 @@ Jeff Jacobs
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":false,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
+'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":true,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -574,6 +754,44 @@ Jeff Jacobs
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

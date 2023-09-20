@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -71,6 +105,8 @@ gtag('js', new Date());
 gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -84,9 +120,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      DSAN 5100 Section 03 (Thursdays, 12:30-3pm)&lt;br&gt;&lt;span class="subtitle"&gt;Car Barn 201&lt;/span&gt;&lt;br&gt;&lt;span class="subtitle"&gt;Fall 2023, Georgetown&lt;/span&gt;&lt;br&gt;&lt;span class="subtitle"&gt;Prof. Jeff &lt;a href="mailto:jj1088@georgetown.edu" target="_blank"&gt;&lt;i class="bi bi-envelope-at ps-1 pe-1"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href="https://github.com/jpowerj" target="_blank"&gt;&lt;i class="bi bi-github ps-1"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/span&gt;
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w05/index.html">Week 5: Sep 20</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -150,6 +184,12 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../w05/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 5: Sep 20</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../recordings/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture Recordings</span></a>
   </div>
@@ -198,8 +238,33 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a>
+  <ul class="collapse">
+  <li><a href="#what-things-have-distributions" id="toc-what-things-have-distributions" class="nav-link" data-scroll-target="#what-things-have-distributions">What Things Have Distributions?</a></li>
+  <li><a href="#cdfspdfspmfs-what-are-they" id="toc-cdfspdfspmfs-what-are-they" class="nav-link" data-scroll-target="#cdfspdfspmfs-what-are-they">CDFs/pdfs/pmfs: <em>What</em> Are They?</a></li>
+  <li><a href="#cdfspdfspmfs-why-do-we-use-them" id="toc-cdfspdfspmfs-why-do-we-use-them" class="nav-link" data-scroll-target="#cdfspdfspmfs-why-do-we-use-them">CDFs/pdfs/pmfs: <em>Why</em> Do We Use Them?</a></li>
+  <li><a href="#finding-a-median-via-the-cdf" id="toc-finding-a-median-via-the-cdf" class="nav-link" data-scroll-target="#finding-a-median-via-the-cdf">Finding a Median via the CDF</a></li>
+  </ul></li>
+  <li><a href="#continuous-distributions-biting-the-bullet" id="toc-continuous-distributions-biting-the-bullet" class="nav-link" data-scroll-target="#continuous-distributions-biting-the-bullet">Continuous Distributions (Biting the Bullet)</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-pdf" id="toc-what-is-a-pdf" class="nav-link" data-scroll-target="#what-is-a-pdf">What is a pdf?</a></li>
+  </ul></li>
+  <li><a href="#common-continuous-distributions" id="toc-common-continuous-distributions" class="nav-link" data-scroll-target="#common-continuous-distributions">Common Continuous Distributions</a>
+  <ul class="collapse">
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal Distribution</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution">Uniform Distribution</a></li>
+  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution">Exponential Distribution</a></li>
+  <li><a href="#cauchy-distribution" id="toc-cauchy-distribution" class="nav-link" data-scroll-target="#cauchy-distribution">Cauchy Distribution</a></li>
+  </ul></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -233,7 +298,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Thursday, September 14, 2023</p>
+      <p class="date">Thursday, September 21, 2023</p>
     </div>
   </div>
   
@@ -243,9 +308,187 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 </header>
 
-<p>(Soon to come!)</p>
+<section id="schedule" class="level1 smaller smaller-title" data-name="Schedule">
+<h1 class="smaller smaller-title" data-name="Schedule">Schedule</h1>
+<div class="hidden">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_6daba9af1e3d476ed7b49f3b1685dd79">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>Today’s Planned Schedule (Section 03)</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 54%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: center;">Recording</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">12:30pm</td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;"><a href="#recap">Recap →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;">1:20pm</td>
+<td style="text-align: left;"><a href="#continuous-distributions-biting-the-bullet">Continuous Distributions (Biting the Bullet) →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1:20pm</td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;"><a href="#common-continuous-distributions">Common Continuous Distributions →</a></td>
+<td style="text-align: center;"><a href="./recording-w03-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lab</strong></td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;">2:50pm</td>
+<td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html" target="_blank">Lab 4 Demonstration <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:50pm</td>
+<td style="text-align: left;">3:00pm</td>
+<td style="text-align: left;"><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html" target="_blank">Lab 4 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i></a></td>
+<td style="text-align: center;"><a href="./recording-w03-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:40pm</td>
+<td style="text-align: left;">3:00pm</td>
+<td style="text-align: left;">Student Presentation</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="recap" class="level1" data-stack-name="Recap">
+<h1 data-stack-name="Recap">Recap</h1>
+<ul>
+<li>What things have distributions?</li>
+<li>PDFs, CDFs</li>
+</ul>
+<section id="what-things-have-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="what-things-have-distributions">What Things Have Distributions?</h2>
+<ul>
+<li>Answer: <strong>Random Variables</strong></li>
+</ul>
+</section>
+<section id="cdfspdfspmfs-what-are-they" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="cdfspdfspmfs-what-are-they">CDFs/pdfs/pmfs: <em>What</em> Are They?</h2>
+<ul>
+<li>Functions which <strong>answer questions</strong> about a <strong>Random Variable</strong> (<span class="math inline">\(X\)</span> in this case)</li>
+<li><strong>CDF</strong>: What is probability of value <strong>less than or equal to <span class="math inline">\(X\)</span></strong>?</li>
+</ul>
+<p><span class="math display">\[
+F_X(v_X) \overset{\text{defn}}{=} \Pr(X \leq v_X)
+\]</span></p>
+<ul>
+<li><strong>pmf</strong>: What is the probability of <strong>this exact value</strong>? (Discrete only)</li>
+</ul>
+<p><span class="math display">\[
+p_X(v_X) = \Pr(X = v_X)
+\]</span></p>
+<ul>
+<li><strong>pdf</strong>: …It’s the thing you integrate to get the CDF</li>
+</ul>
+<p><span class="math display">\[
+f_X(v_X) = \frac{d}{dv_X}F_X(v_X) \iff \int f_X(v_X)dv_X = F_X(v_X)
+\]</span></p>
+</section>
+<section id="cdfspdfspmfs-why-do-we-use-them" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="cdfspdfspmfs-why-do-we-use-them">CDFs/pdfs/pmfs: <em>Why</em> Do We Use Them?</h2>
+<ul>
+<li>CDF is like the “API” that allows you to access <strong>all of the information about the distribution</strong> (pdf/pmf is derived from the CDF)</li>
+<li>Example: we know there’s some “thing” called the <em>Exponential Distribution</em>…</li>
+<li>How do we <strong>use</strong> this distribution to understand a random variable <span class="math inline">\(X \sim \text{Exp}\)</span>?
+<ul>
+<li>Answer: the <strong>CDF</strong> of <span class="math inline">\(X\)</span>!</li>
+<li>Since <strong>all exponentially-distributed RVs have the same PDF</strong>, we can call this PDF <strong>“the” exponential distribution</strong></li>
+</ul></li>
+<li>Say we want to find the <strong>median</strong> of <span class="math inline">\(X\)</span>: The median is the number <span class="math inline">\(m\)</span> satisfying</li>
+</ul>
+<p><span class="math display">\[
+\Pr(X \leq m) = \frac{1}{2}, \; \Pr(X \geq m) = \frac{1}{2}
+\]</span></p>
+</section>
+<section id="finding-a-median-via-the-cdf" class="level2">
+<h2 class="anchored" data-anchor-id="finding-a-median-via-the-cdf">Finding a Median via the CDF</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Median of a Random Variable $X$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Median of a Random Variable <span class="math inline">\(X\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>median</strong> of a random variable <span class="math inline">\(X\)</span> with some CDF <span class="math inline">\(F_X(v_X)\)</span> is the [set of] numbers <span class="math inline">\(m\)</span> for which the probability that <span class="math inline">\(X\)</span> is <strong>lower than</strong> <span class="math inline">\(m\)</span> is the same as the probability that <span class="math inline">\(X\)</span> is <strong>greater than</strong> <span class="math inline">\(m\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+\text{Median}(X) &amp;= \left\{m \mid F_X(m) = 1 - F_X(m) \right\} \\
+&amp;= \left\{m \mid \int_{-\infty}^{m}f_X(v_X)dv_X = \int_{m}^{\infty}f_X(v_X)dv_X \right\}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<p><strong>Example</strong>:</p>
+</section>
+</section>
+<section id="continuous-distributions-biting-the-bullet" class="level1" data-stack-name="Continuous Dists">
+<h1 data-stack-name="Continuous Dists">Continuous Distributions (Biting the Bullet)</h1>
+<section id="what-is-a-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-pdf">What is a pdf?</h2>
+<ul>
+<li>Answer: Has no meaning outside of its <strong>context</strong>: a <strong>random variable</strong> with a <strong>CDF</strong> giving the distribution of its possible values</li>
+</ul>
+</section>
+</section>
+<section id="common-continuous-distributions" class="level1" data-stack-name="Normal Dist">
+<h1 data-stack-name="Normal Dist">Common Continuous Distributions</h1>
+<section id="normal-distribution" class="level2" data-name="Normal">
+<h2 data-name="Normal" class="anchored" data-anchor-id="normal-distribution">Normal Distribution</h2>
+</section>
+<section id="uniform-distribution" class="level2" data-name="Uniform">
+<h2 data-name="Uniform" class="anchored" data-anchor-id="uniform-distribution">Uniform Distribution</h2>
+</section>
+<section id="exponential-distribution" class="level2" data-name="Exponential">
+<h2 data-name="Exponential" class="anchored" data-anchor-id="exponential-distribution">Exponential Distribution</h2>
+</section>
+<section id="cauchy-distribution" class="level2" data-name="Cauchy">
+<h2 data-name="Cauchy" class="anchored" data-anchor-id="cauchy-distribution">Cauchy Distribution</h2>
+</section>
+</section>
+<section id="lab" class="level1" data-name="Lab">
+<h1 data-name="Lab">Lab</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
