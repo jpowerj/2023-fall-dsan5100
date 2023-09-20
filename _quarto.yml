@@ -11,6 +11,7 @@ project:
     - _pw_protect.py
 
 website:
+  favicon: "favicon.png"
   title: ""
   google-analytics: "G-RFMTL6Q5J5"
   sidebar:

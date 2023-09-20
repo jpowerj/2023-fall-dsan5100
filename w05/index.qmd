@@ -1,0 +1,35 @@
+---
+title: "Week 5: Continuous Probability Distributions"
+subtitle: "*DSAN 5100: Probabilistic Modeling and Statistical Computing*<br>Section 03"
+author: "Jeff Jacobs"
+institute: "<a href=\"mailto:jj1088@georgetown.edu\" target=\"_blank\">`jj1088@georgetown.edu`</a>"
+date: 2023-09-14
+date-format: full
+#date: last-modified
+#date-format: "dddd MMM D, YYYY, HH:mm:ss"
+lecnum: 3
+categories:
+  - "Class Sessions"
+execute:
+  enabled: true
+format:
+  revealjs:
+    html-math-method: mathjax
+    slide-number: true
+    #cache: true
+    output-file: slides.html
+    simplemenu:
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    theme: [default, "../_jjslides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\"><script src=\"https://d3js.org/d3.v4.min.js\"></script><script src=\"../assets/_venn.js\"></script>"}
+  html:
+    cache: true
+    output-file: index.html
+    html-math-method: mathjax
+---
+
+(Soon to come!)
