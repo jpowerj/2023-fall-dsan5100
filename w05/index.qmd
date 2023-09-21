@@ -218,6 +218,7 @@ $$
 
 ```{r}
 #| label: random-walk-16
+#| code-fold: true
 library(tibble)
 library(ggplot2)
 library(ggExtra)
@@ -299,6 +300,7 @@ ggMarginal(wp1, margins = "y", type = "histogram", yparams = list(binwidth = 1))
 
 ```{r}
 #| label: random-walk-64
+#| code-fold: true
 library(ggExtra)
 wp2 <- gen_walkplot(5000,64,0.008) +
   ylim(-30,30)
