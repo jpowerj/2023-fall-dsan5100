@@ -1544,7 +1544,14 @@
     "href": "w05/index.html",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "",
-    "text": "source(\"../_globals.r\")\n\n\nToday’s Planned Schedule (Section 03)\n\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\nRecording\n\n\n\n\nLecture\n12:30pm\n12:40pm\nRecap →\n\n\n\n\n12:40pm\n1:20pm\nContinuous Distributions (Biting the Bullet) →\n\n\n\n\n1:20pm\n2:00pm\nCommon Continuous Distributions →\n\n\n\nBreak!\n2:00pm\n2:10pm\n\n\n\n\nLab\n2:10pm\n2:50pm\nLab 4 Demonstration \n\n\n\n\n2:50pm\n3:00pm\nLab 4 Assignment Overview \n\n\n\n\n2:40pm\n3:00pm\nStudent Presentation"
+    "text": "\\[\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\newcommand{\\bigexp}[1]{\\exp\\mkern-4mu\\left[ #1 \\right]}\n\\newcommand{\\bigexpect}[1]{\\mathbb{E}\\mkern-4mu \\left[ #1 \\right]}\n\\newcommand{\\definedas}{\\overset{\\small\\text{def}}{=}}\n\\newcommand{\\definedalign}{\\overset{\\phantom{\\text{def}}}{=}}\n\\newcommand{\\eqeventual}{\\overset{\\text{eventually}}{=}}\n\\newcommand{\\expect}[1]{\\mathbb{E}[#1]}\n\\newcommand{\\expectsq}[1]{\\mathbb{E}^2[#1]}\n\\newcommand{\\fw}[1]{\\texttt{#1}}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\green}[1]{\\color{green}{#1}}\n\\newcommand{\\heads}{\\outcome{heads}}\n\\newcommand{\\lik}{\\mathcal{L}}\n\\newcommand{\\mle}{\\textsf{ML}}\n\\newcommand{\\orange}[1]{\\color{orange}{#1}}\n\\newcommand{\\outcome}[1]{\\textsf{#1}}\n\\newcommand{\\param}[1]{{\\color{purple} #1}}\n\\newcommand{\\pgsamplespace}{\\{\\green{1},\\green{2},\\green{3},\\purp{4},\\purp{5},\\purp{6}\\}}\n\\newcommand{\\prob}[1]{P\\left( #1 \\right)}\n\\newcommand{\\purp}[1]{\\color{purple}{#1}}\n\\newcommand{\\spacecap}{\\; \\cap \\;}\n\\newcommand{\\spacewedge}{\\; \\wedge \\;}\n\\newcommand{\\tails}{\\outcome{tails}}\n\\newcommand{\\Var}[1]{\\text{Var}[#1]}\n\\newcommand{\\bigVar}[1]{\\text{Var}\\mkern-4mu \\left[ #1 \\right]}\n\\]\n\n\nToday’s Planned Schedule (Section 03)\n\n\n\n\n\n\n\n\n\n\n\nStart\nEnd\nTopic\nRecording\n\n\n\n\nLecture\n12:30pm\n12:40pm\nRecap →\n\n\n\n\n12:40pm\n1:20pm\nContinuous Probability (Biting the Bullet) →\n\n\n\n\n1:20pm\n2:00pm\nCommon Continuous Distributions →\n\n\n\nBreak!\n2:00pm\n2:10pm\n\n\n\n\nLab\n2:10pm\n2:50pm\nLab 4 Demonstration \n\n\n\n\n2:50pm\n3:00pm\nLab 4 Assignment Overview \n\n\n\n\n2:40pm\n3:00pm\nStudent Presentation"
+  },
+  {
+    "objectID": "w05/index.html#from-last-week",
+    "href": "w05/index.html#from-last-week",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "From Last Week",
+    "text": "From Last Week\n\n\n\n\n\nlibrary(tibble)\nlibrary(ggplot2)\ndisc_df &lt;- tribble(\n  ~x, ~y, ~label,\n  0, 0, \"A\",\n  0, 1, \"B\",\n  1, 0, \"C\",\n  1, 1, \"D\"\n)\nggplot(disc_df, aes(x=x, y=y, label=label)) +\n    geom_point(size=g_pointsize) +\n    geom_text(\n      size=g_textsize,\n      hjust=1.5,\n      vjust=-0.5\n    ) +\n    xlim(-0.5,1.5) + ylim(-0.5,1.5) +\n    coord_fixed() +\n    dsan_theme(\"quarter\") +\n    labs(\n      title=\"Discrete Probability Space in N\"\n    )\n\n\n\n\n\n\n\n\n\\[\n\\Pr(A) = \\underbrace{\\frac{|\\{A\\}|}{|\\Omega|}}_{\\mathclap{\\small \\text{Probability }\\textbf{mass}}} = \\frac{1}{|\\{A,B,C,D\\}|} = \\frac{1}{4}\n\\]\nFigure 1: Visual and mathematical intuition for events in a discrete probability space\n\n\n\n\n\nlibrary(ggforce)\nggplot(disc_df, aes(x=x, y=y, label=label)) +\n    xlim(-0.5,1.5) + ylim(-0.5,1.5) +\n    geom_rect(aes(xmin = -0.5, xmax = 1.5, ymin = -0.5, ymax = 1.5), fill=cbPalette[1], color=\"black\", alpha=0.3) +\n    geom_circle(aes(x0=x, y0=y, r=0.25), fill=cbPalette[2]) +\n    coord_fixed() +\n    dsan_theme(\"quarter\") +\n    geom_text(\n      size=g_textsize,\n      #hjust=1.75,\n      #vjust=-0.75\n    ) +\n    geom_text(\n      data=data.frame(label=\"Ω\"),\n      aes(x=-0.4,y=1.39),\n      parse=TRUE,\n      size=g_textsize\n    ) +\n    labs(\n      title=expression(\"Continuous Probability Space in \"*R^2)\n    )\n\n\n\n\n\n\n\n\n\\[\n\\Pr(A) = \\underbrace{\\frac{\\text{Area}(\\{A\\})}{\\text{Area}(\\Omega)}}_{\\mathclap{\\small \\text{Probability }\\textbf{density}}} = \\frac{\\pi r^2}{s^2} = \\frac{\\pi \\left(\\frac{1}{4}\\right)^2}{4} = \\frac{\\pi}{64}\n\\]\nFigure 2: Visual and mathematical intuition for events a continuous probability space"
   },
   {
     "objectID": "w05/index.html#what-things-have-distributions",
@@ -1558,21 +1565,35 @@
     "href": "w05/index.html#cdfspdfspmfs-what-are-they",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "CDFs/pdfs/pmfs: What Are They?",
-    "text": "CDFs/pdfs/pmfs: What Are They?\n\nFunctions which answer questions about a Random Variable (\\(X\\) in this case)\nCDF: What is probability of value less than or equal to \\(X\\)?\n\n\\[\nF_X(v_X) \\overset{\\text{defn}}{=} \\Pr(X \\leq v_X)\n\\]\n\npmf: What is the probability of this exact value? (Discrete only)\n\n\\[\np_X(v_X) = \\Pr(X = v_X)\n\\]\n\npdf: …It’s the thing you integrate to get the CDF\n\n\\[\nf_X(v_X) = \\frac{d}{dv_X}F_X(v_X) \\iff \\int f_X(v_X)dv_X = F_X(v_X)\n\\]"
+    "text": "CDFs/pdfs/pmfs: What Are They?\n\nFunctions which answer questions about a Random Variable (\\(X\\) in this case) with respect to a non-random value (\\(v\\) in this case, for “value”)\nCDF: What is probability that \\(X\\) takes on a value less than or equal to \\(v\\)?\n\n\\[\nF_X(v) \\definedas \\Pr(X \\leq v)\n\\]\n\npmf: What is the probability of this exact value? (Discrete only)\n\n\\[\np_X(v) \\definedas \\Pr(X = v)\n\\]\n\npdf: 🙈 …It’s the thing you integrate to get the CDF\n\n\\[\nf_X(v) \\definedas \\frac{d}{dv}F_X(v) \\iff \\int_{-\\infty}^{v} f_X(v)dv = F_X(v)\n\\]"
   },
   {
     "objectID": "w05/index.html#cdfspdfspmfs-why-do-we-use-them",
     "href": "w05/index.html#cdfspdfspmfs-why-do-we-use-them",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "CDFs/pdfs/pmfs: Why Do We Use Them?",
-    "text": "CDFs/pdfs/pmfs: Why Do We Use Them?\n\nCDF is like the “API” that allows you to access all of the information about the distribution (pdf/pmf is derived from the CDF)\nExample: we know there’s some “thing” called the Exponential Distribution…\nHow do we use this distribution to understand a random variable \\(X \\sim \\text{Exp}\\)?\n\nAnswer: the CDF of \\(X\\)!\nSince all exponentially-distributed RVs have the same PDF, we can call this PDF “the” exponential distribution\n\nSay we want to find the median of \\(X\\): The median is the number \\(m\\) satisfying\n\n\\[\n\\Pr(X \\leq m) = \\frac{1}{2}, \\; \\Pr(X \\geq m) = \\frac{1}{2}\n\\]"
+    "text": "CDFs/pdfs/pmfs: Why Do We Use Them?\n\nCDF is like the “API” that allows you to access all of the information about the distribution (pdf/pmf is derived from the CDF)\nExample: we know there’s some “thing” called the Exponential Distribution…\nHow do we use this distribution to understand a random variable \\(X \\sim \\text{Exp}\\)?\n\nAnswer: the CDF of \\(X\\)!\nSince all exponentially-distributed RVs have the same PDF, we can call this PDF “the” exponential distribution\n\nSay we want to find the median of \\(X\\): The median is the number(s) \\(m\\) satisfying\n\n\\[\n\\Pr(X \\leq m) = \\frac{1}{2}\n\\]"
   },
   {
     "objectID": "w05/index.html#finding-a-median-via-the-cdf",
     "href": "w05/index.html#finding-a-median-via-the-cdf",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "Finding a Median via the CDF",
-    "text": "Finding a Median via the CDF\n\n\n\n\n\n\nMedian of a Random Variable \\(X\\)\n\n\n\nThe median of a random variable \\(X\\) with some CDF \\(F_X(v_X)\\) is the [set of] numbers \\(m\\) for which the probability that \\(X\\) is lower than \\(m\\) is the same as the probability that \\(X\\) is greater than \\(m\\):\n\\[\n\\begin{align*}\n\\text{Median}(X) &= \\left\\{m \\mid F_X(m) = 1 - F_X(m) \\right\\} \\\\\n&= \\left\\{m \\mid \\int_{-\\infty}^{m}f_X(v_X)dv_X = \\int_{m}^{\\infty}f_X(v_X)dv_X \\right\\}\n\\end{align*}\n\\]\n\n\nExample:"
+    "text": "Finding a Median via the CDF\n\n\n\n\n\n\nMedian of a Random Variable \\(X\\)\n\n\n\nThe median of a random variable \\(X\\) with some CDF \\(F_X(v_X)\\) is the [set of] numbers \\(m\\) for which the probability that \\(X\\) is lower than \\(m\\) is \\(\\frac{1}{2}\\):\n\\[\n\\begin{align*}\n\\text{Median}(X) &= \\left\\{m \\left| F_X(m) = \\frac{1}{2} \\right. \\right\\} \\\\\n&= \\left\\{m \\left| \\int_{-\\infty}^{m}f_X(v_X)dv_X = \\frac{1}{2} \\right. \\right\\}\n\\end{align*}\n\\]\n\n\n\n\n(In case you’re wondering why we start with the median rather than the more commonly-used mean: it’s specifically because I want you to get used to calculating general functions \\(f(X)\\) of a random variable \\(X\\). It’s easy to just e.g. learn how to compute the mean \\(\\expect{X}\\) and forget that this is only one of many possible choices for \\(f(X)\\).)"
+  },
+  {
+    "objectID": "w05/index.html#median-via-cdf-example",
+    "href": "w05/index.html#median-via-cdf-example",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Median via CDF Example",
+    "text": "Median via CDF Example\nExample: If \\(X \\sim \\text{Exp}(\\param{\\lambda})\\),\n\\[\nF_X(v) = 1 - e^{-\\lambda v}\n\\]\nSo we want to solve for \\(m\\) in\n\\[\nF_X(m) = \\frac{1}{2} \\iff 1 - e^{-\\lambda m} = \\frac{1}{2}\n\\]"
+  },
+  {
+    "objectID": "w05/index.html#step-by-step",
+    "href": "w05/index.html#step-by-step",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Step-by-Step",
+    "text": "Step-by-Step\n\\[\n\\begin{align*}\n1 - e^{-\\lambda m} &= \\frac{1}{2} \\\\\n\\iff e^{-\\lambda m} &= \\frac{1}{2} \\\\\n\\iff \\ln\\left[e^{-\\lambda m}\\right] &= \\ln\\left[\\frac{1}{2}\\right] \\\\\n\\iff -\\lambda m &= -\\ln(2) \\\\\n\\iff m &= \\frac{\\ln(2)}{\\lambda}\n%3x = 19-2y\n\\; \\llap{\\mathrel{\\boxed{\\phantom{m = \\frac{\\ln(2)}{\\lambda}}}}}.\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w05/index.html#what-is-a-pdf",
@@ -1582,32 +1603,165 @@
     "text": "What is a pdf?\n\nAnswer: Has no meaning outside of its context: a random variable with a CDF giving the distribution of its possible values"
   },
   {
+    "objectID": "w05/index.html#top-secret-fun-fact",
+    "href": "w05/index.html#top-secret-fun-fact",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Top Secret Fun Fact",
+    "text": "Top Secret Fun Fact\n\nEvery Discrete Distribution is [technically, in a weird way] a Continuous Distribution!\n\n\nSame intuition as why every natural number is a real number, but converse is not true\nMarble example: Let \\(X\\) be an RV defined on this space, so that \\(X(A) = 1\\), \\(X(B) = 2\\), \\(X(C) = 3\\), \\(X(D) = 4\\). Then the pmf for \\(X\\) is \\(p_X(i) = \\frac{1}{4}\\) for \\(i \\in \\{1, 2, 3, 4\\}\\).\nWe can then use the Dirac delta function \\(\\delta(v)\\) to define a continuous pdf\n\\[\n  f_X(v) = \\sum_{i \\in \\mathcal{R}_X}p_X(i)\\delta(v - i) = \\sum_{i=1}^4p_X(i)\\delta(v-i) = \\frac{1}{4}\\sum_{i=1}^4 \\delta(v - i)\n  \\]\nand use either the (discrete) pmf \\(p_X(v)\\) or (continuous) pdf \\(f_X(v)\\) to describe \\(X\\):\n\n\\[\n\\begin{align*}\n\\overbrace{\\Pr(X \\leq 3)}^{\\text{CDF}} &= \\sum_{i=1}^3\\overbrace{p_X(i)}^{\\text{pmf}} = \\frac{1}{4} + \\frac{1}{4} + \\frac{1}{4} = \\frac{3}{4} \\\\\n\\underbrace{\\Pr(X \\leq 3)}_{\\text{CDF}} &= \\int_{-\\infty}^{3} \\underbrace{f_X(v)}_{\\text{pdf}} = \\frac{1}{4}\\int_{-\\infty}^{3} \\sum_{i = 1}^{4}\\overbrace{\\delta(v-i)}^{\\small 0\\text{ unless }v = i}dv = \\frac{3}{4}\n\\end{align*}\n\\]"
+  },
+  {
     "objectID": "w05/index.html#normal-distribution",
     "href": "w05/index.html#normal-distribution",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "Normal Distribution",
-    "text": "Normal Distribution"
+    "text": "Normal Distribution\n\nRecall from last week: the Binomial pdf\n\n\n\nCode\nk &lt;- seq(0, 10)\nprob &lt;- dbinom(k, 10, 0.5)\nbar_data &lt;- tibble(k, prob)\nggplot(bar_data, aes(x=k, y=prob)) +\n  geom_bar(stat=\"identity\", fill=cbPalette[1]) +\n  labs(\n    title=\"Binomial Distribution, N = 10, p = 0.5\",\n    y=\"Probability Mass\"\n  ) +\n  scale_x_continuous(breaks=seq(0,10)) +\n  dsan_theme(\"half\")"
   },
   {
-    "objectID": "w05/index.html#uniform-distribution",
-    "href": "w05/index.html#uniform-distribution",
+    "objectID": "w05/index.html#the-emergence-of-order",
+    "href": "w05/index.html#the-emergence-of-order",
     "title": "Week 5: Continuous Probability Distributions",
-    "section": "Uniform Distribution",
-    "text": "Uniform Distribution"
+    "section": "The Emergence of Order",
+    "text": "The Emergence of Order\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
+  },
+  {
+    "objectID": "w05/index.html#the-result-16-steps",
+    "href": "w05/index.html#the-result-16-steps",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Result: 16 Steps",
+    "text": "The Result: 16 Steps\n\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(ggExtra)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(tidyr)\n# From McElreath!\ngen_histo &lt;- function(reps, num_steps) {\n  support &lt;- c(-1,1)\n  pos &lt;-replicate(reps, sum(sample(support,num_steps,replace=TRUE,prob=c(0.5,0.5))))\n  #print(mean(pos))\n  #print(var(pos))\n  pos_df &lt;- tibble(x=pos)\n  clt_distr &lt;- function(x) dnorm(x, 0, sqrt(num_steps))\n  plot &lt;- ggplot(pos_df, aes(x=x)) +\n    geom_histogram(aes(y = after_stat(density)), fill=cbPalette[1], binwidth = 2) +\n    stat_function(fun = clt_distr) +\n    dsan_theme(\"quarter\") +\n    theme(title=element_text(size=16)) +\n    labs(\n      title=paste0(reps,\" Random Walks, \",num_steps,\" Steps\")\n    )\n  return(plot)\n}\ngen_walkplot &lt;- function(num_people, num_steps, opacity=0.15) {\n  support &lt;- c(-1, 1)\n  # Unique id for each person\n  pid &lt;- seq(1, num_people)\n  pid_tib &lt;- tibble(pid)\n  pos_df &lt;- tibble()\n  end_df &lt;- tibble()\n  all_steps &lt;- t(replicate(num_people, sample(support, num_steps, replace = TRUE, prob = c(0.5, 0.5))))\n  csums &lt;- t(apply(all_steps, 1, cumsum))\n  csums &lt;- cbind(0, csums)\n  # Last col is the ending positions\n  ending_pos &lt;- csums[, dim(csums)[2]]\n  end_tib &lt;- tibble(pid = seq(1, num_people), endpos = ending_pos, x = num_steps)\n  # Now convert to tibble\n  ctib &lt;- as_tibble(csums, name_repair = \"none\")\n  merged_tib &lt;- bind_cols(pid_tib, ctib)\n  long_tib &lt;- merged_tib %&gt;% pivot_longer(!pid)\n  # Convert name -&gt; step_num\n  long_tib &lt;- long_tib %&gt;% mutate(step_num = strtoi(gsub(\"V\", \"\", name)) - 1)\n  # print(end_df)\n  grid_color &lt;- rgb(0, 0, 0, 0.1)\n\n  # And plot!\n  walkplot &lt;- ggplot(\n      long_tib,\n      aes(\n          x = step_num,\n          y = value,\n          group = pid,\n          # color=factor(label)\n      )\n  ) +\n      geom_line(linewidth = g_linesize, alpha = opacity, color = cbPalette[1]) +\n      geom_point(data = end_tib, aes(x = x, y = endpos), alpha = 0) +\n      scale_x_continuous(breaks = seq(0, num_steps, num_steps / 4)) +\n      scale_y_continuous(breaks = seq(-20, 20, 10)) +\n      dsan_theme(\"quarter\") +\n      theme(\n          legend.position = \"none\",\n          title = element_text(size = 16)\n      ) +\n      theme(\n          panel.grid.major.y = element_line(color = grid_color, linewidth = 1, linetype = 1)\n      ) +\n      labs(\n          title = paste0(num_people, \" Random Walks, \", num_steps, \" Steps\"),\n          x = \"Number of Steps\",\n          y = \"Position\"\n      )\n}\nwp1 &lt;- gen_walkplot(500, 16, 0.05)\n\nWarning: The `x` argument of `as_tibble.matrix()` must have unique column names if\n`.name_repair` is omitted as of tibble 2.0.0.\nℹ Using compatibility `.name_repair`.\n\nggMarginal(wp1, margins = \"y\", type = \"histogram\", yparams = list(binwidth = 1))"
+  },
+  {
+    "objectID": "w05/index.html#the-result-64-steps",
+    "href": "w05/index.html#the-result-64-steps",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Result: 64 Steps",
+    "text": "The Result: 64 Steps\n\nlibrary(ggExtra)\nwp2 &lt;- gen_walkplot(5000,64,0.008) +\n  ylim(-30,30)\n\nScale for y is already present.\nAdding another scale for y, which will replace the existing scale.\n\nggMarginal(wp2, margins = \"y\", type = \"histogram\", yparams = list(binwidth = 1))\n\n\n\n\n\n\n\n\n\n\n\np2 &lt;- gen_histo(1000, 16)\np2\n\n\n\n\n\n\n\n\n\np3 &lt;- gen_histo(10000, 32)\np3"
+  },
+  {
+    "objectID": "w05/index.html#whats-going-on-here",
+    "href": "w05/index.html#whats-going-on-here",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "What’s Going On Here?",
+    "text": "What’s Going On Here?\n\n\n\n\n\n(Stay tuned for Markov processes \\(\\overset{t \\rightarrow \\infty}{\\leadsto}\\) Stationary distributions!)"
+  },
+  {
+    "objectID": "w05/index.html#properties-of-the-normal-distribution",
+    "href": "w05/index.html#properties-of-the-normal-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Properties of the Normal Distribution",
+    "text": "Properties of the Normal Distribution\n\nIf \\(X \\sim \\mathcal{N}(\\param{\\mu}, \\param{\\theta})\\), then \\(X\\) has pdf \\(f_X(v)\\) defined by\n\n\\[\nf_X(v) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\bigexp{-\\frac{1}{2}\\left(\\frac{v - \\mu}{\\sigma}\\right)^2}\n\\]\n\nI hate memorizing as much as you do, I promise 🥴\nThe important part (imo): this is the most conservative out of all possible (symmetric) prior distributions defined on \\(\\mathbb{R}\\) (defined from \\(-\\infty\\) to \\(\\infty\\))"
+  },
+  {
+    "objectID": "w05/index.html#most-conservative-how",
+    "href": "w05/index.html#most-conservative-how",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "“Most Conservative” How?",
+    "text": "“Most Conservative” How?\n\nOf all possible distributions with mean \\(\\mu\\), variance \\(\\sigma^2\\), \\(\\mathcal{N}(\\mu, \\sigma^2)\\) is the entropy-maximizing distribution\nRoughly: using any other distribution (implicitly/secretly) imports additional information beyond the fact that mean is \\(\\mu\\) and variance is \\(\\sigma^2\\)\nExample: let \\(X\\) be an RV. If we know mean is \\(\\mu\\), variance is \\(\\sigma^2\\), but then we learn that \\(X \\neq 3\\), or \\(X\\) is even, or the 15th digit of \\(X\\) is 7, can update to derive a “better” distribution (incorporating this info)"
+  },
+  {
+    "objectID": "w05/index.html#the-takeaway",
+    "href": "w05/index.html#the-takeaway",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Takeaway",
+    "text": "The Takeaway\n\nGiven info we know, we can find a distribution that “encodes” only this info\nMore straightforward example: if we only know that the value is something in the range \\([a,b]\\), entropy-maximizing distribution is the Uniform Distribution\n\n\n\n\n\n\n\n\n\nIf We Know\nAnd We Know\n(Max-Entropy) Distribution Is…\n\n\n\n\n\\(\\text{Mean}[X] = \\mu\\)\n\\(\\text{Var}[X] = \\sigma^2\\)\n\\(X \\sim \\mathcal{N}(\\mu, \\sigma^2)\\)\n\n\n\\(\\text{Mean}[X] = \\lambda\\)\n\\(X \\geq 0\\)\n\\(X \\sim \\text{Exp}\\left(\\frac{1}{\\lambda}\\right)\\)\n\n\n\\(X \\geq a\\)\n\\(X \\leq b\\)\n\\(X \\sim \\mathcal{U}[a,b]\\)"
+  },
+  {
+    "objectID": "w05/index.html#recall-discrete-uniform-distribution",
+    "href": "w05/index.html#recall-discrete-uniform-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "[Recall] Discrete Uniform Distribution",
+    "text": "[Recall] Discrete Uniform Distribution\n\n\nCode\nlibrary(tibble)\nbar_data &lt;- tribble(\n  ~x, ~prob,\n  1, 1/6,\n  2, 1/6,\n  3, 1/6,\n  4, 1/6,\n  5, 1/6,\n  6, 1/6\n)\nggplot(bar_data, aes(x=x, y=prob)) +\n  geom_bar(stat=\"identity\", fill=cbPalette[1]) +\n  labs(\n    title=\"Discrete Uniform pmf: a = 1, b = 6\",\n    y=\"Probability Mass\",\n    x=\"Value\"\n  ) +\n  scale_x_continuous(breaks=seq(1,6)) +\n  dsan_theme(\"half\")"
+  },
+  {
+    "objectID": "w05/index.html#continuous-uniform-distribution",
+    "href": "w05/index.html#continuous-uniform-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Continuous Uniform Distribution",
+    "text": "Continuous Uniform Distribution\n\nIf \\(X \\sim \\mathcal{U}[a,b]\\), then intuitively \\(X\\) is a value randomly selected from within \\([a,b]\\), with all values equally likely.\nDiscrete case: what we’ve been using all along (e.g., dice): if \\(X \\sim \\mathcal{U}\\{1,6\\}\\), then\n\n\\[\n\\Pr(X = 1) = \\Pr(X = 2) = \\cdots = \\Pr(X = 6) = \\frac{1}{6}\n\\]\n\nFor continuous case… what do we put in the denominator? \\(X \\sim \\mathcal{U}[1,6] \\implies \\Pr(X = \\pi) = \\frac{1}{?}\\)…\n\nAnswer: \\(\\Pr(X = \\pi) = \\frac{1}{|[1,6]|} = \\frac{1}{\\aleph_0} = 0\\)"
+  },
+  {
+    "objectID": "w05/index.html#constructing-the-uniform-cdf",
+    "href": "w05/index.html#constructing-the-uniform-cdf",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Constructing the Uniform CDF",
+    "text": "Constructing the Uniform CDF\n\nWe were ready for this! We already knew \\(\\Pr(X = v) = 0\\) for continuous distributions.\nSo, we forget about \\(\\Pr(X = v)\\), and focus on \\(\\Pr(X \\in [v_0, v_1])\\).\nIn 2D (dartboard) we had \\(\\Pr(X \\in \\circ) = \\frac{\\text{Area}(\\circ)}{\\text{Area}(\\Omega)}\\), so here we should have\n\n\\[\nP(X \\in [v_0,v_1]) = \\frac{\\text{Length}([v_0,v_1])}{\\text{Length}([1,6])}\n\\]\n\nAnd indeed, the CDF of \\(X\\) is \\(\\boxed{F_X(v) = \\Pr(X \\leq v) = \\frac{v-a}{b-a}}\\), so that\n\n\\[\n\\Pr(X \\in [v_0,v_1]) = F_X(v_1) - F_X(v_0) = \\frac{v_1-a}{b-a} - \\frac{v_0-a}{b-a} = \\frac{v_1 - v_0}{b-a}\n\\]\n\nSince \\(a = 1\\), \\(b = 6\\) in our example, \\(\\Pr(X \\in [v_0,v_1]) = \\frac{v_1-v_0}{6-1} = \\frac{\\text{Length}([v_0,v_1])}{\\text{Length}([1,6])} \\; ✅\\)"
   },
   {
     "objectID": "w05/index.html#exponential-distribution",
     "href": "w05/index.html#exponential-distribution",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "Exponential Distribution",
-    "text": "Exponential Distribution"
+    "text": "Exponential Distribution\n\nRecall the (discrete) Geometric Distribution:\n\n\n\nCode\nlibrary(ggplot2)\nk &lt;- seq(0, 8)\nprob &lt;- dgeom(k, 0.5)\nbar_data &lt;- tibble(k, prob)\nggplot(bar_data, aes(x = k, y = prob)) +\n    geom_bar(stat = \"identity\", fill = cbPalette[1]) +\n    labs(\n        title = \"Geometric Distribution pmf: p = 0.5\",\n        y = \"Probability Mass\"\n    ) +\n    scale_x_continuous(breaks = seq(0, 8)) +\n    dsan_theme(\"half\")"
   },
   {
-    "objectID": "w05/index.html#cauchy-distribution",
-    "href": "w05/index.html#cauchy-distribution",
+    "objectID": "w05/index.html#now-in-continuous-form",
+    "href": "w05/index.html#now-in-continuous-form",
     "title": "Week 5: Continuous Probability Distributions",
-    "section": "Cauchy Distribution",
-    "text": "Cauchy Distribution"
+    "section": "Now In Continuous Form!",
+    "text": "Now In Continuous Form!\n\n\nCode\nmy_dexp &lt;- function(x) dexp(x, rate = 1/2)\nggplot(data.frame(x=c(0,8)), aes(x=x)) +\n  stat_function(fun=my_dexp, size=g_linesize, fill=cbPalette[1], alpha=0.8) +\n  stat_function(fun=my_dexp, geom='area', fill=cbPalette[1], alpha=0.75) +\n  dsan_theme(\"half\") +\n  labs(\n    title=\"Exponential Distribution pdf: λ (rate) = 0.5\",\n    x = \"v\",\n    y = \"f_X(v)\"\n  )\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning in stat_function(fun = my_dexp, size = g_linesize, fill = cbPalette[1],\n: Ignoring unknown parameters: `fill`"
+  },
+  {
+    "objectID": "w05/index.html#the-dreaded-cauchy-distribution",
+    "href": "w05/index.html#the-dreaded-cauchy-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Dreaded Cauchy Distribution",
+    "text": "The Dreaded Cauchy Distribution\n\nPaxton is a Denver Nuggets fan, while Jeff is a Washington Wizards fan. Paxton creates an RV \\(D\\) modeling how many games above .500 the Nuggets will be in a given season, while Jeff creates an RV \\(W\\) modeling how many games above .500 the Wizards will be.\nThey decide to combine their RVs to create a new RV, \\(R = \\frac{D}{W}\\), which now models how much better the Nuggets will be in a season (\\(R\\) for “Ratio”)\nFor example, if the Nuggets are \\(10\\) games above .500, while the Wizards are only \\(5\\) above .500, \\(R = \\frac{10}{5} = 2\\). If they’re both 3 games above .500, \\(R = \\frac{3}{3} = 1\\).\n\n\n\nCode\nggplot(data.frame(x=c(-4,4)), aes(x=x)) +\n  stat_function(fun=dcauchy, size=g_linesize, fill=cbPalette[1], alpha=0.75) +\n  stat_function(fun=dcauchy, geom='area', fill=cbPalette[1], alpha=0.75) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=\"PDF of R\",\n    x = \"r\",\n    y = \"f(r)\"\n  )\n\n\nWarning in stat_function(fun = dcauchy, size = g_linesize, fill = cbPalette[1],\n: Ignoring unknown parameters: `fill`"
+  },
+  {
+    "objectID": "w05/index.html#so-whats-the-issue",
+    "href": "w05/index.html#so-whats-the-issue",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "So What’s the Issue?",
+    "text": "So What’s the Issue?\n\nSo far so good. It turns out (though Paxton and Jeff don’t know this) that the teams are actually both mediocre, so that \\(D \\sim N(0,10)\\) and \\(W \\sim N(0,10)\\)… What is the distribution of \\(R\\) in this case?\n\n\n\n\n\\[\n\\begin{gather*}\nR \\sim \\text{Cauchy}\\left( 0, 1 \\right)\n\\end{gather*}\n\\]\n\\[\n\\begin{align*}\n\\expect{R} &= ☠️ \\\\\n\\Var{R} &= ☠️ \\\\\nM_R(t) &= ☠️\n\\end{align*}\n\\]\n\n\n\n\n\nFrom Agnesi (1801) [Internet Archive]\n\n\n\n\n\n\n\nEven worse, this is true regardless of variances: \\(D \\sim N(0,d), W \\sim N(0,w) \\implies R \\sim \\text{Cauchy}\\left( 0,\\frac{d}{w} \\right)\\)…"
+  },
+  {
+    "objectID": "w05/index.html#lab-4-demo",
+    "href": "w05/index.html#lab-4-demo",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Lab 4 Demo",
+    "text": "Lab 4 Demo\n\nLab 4 Demo Link \nChoose your own adventure:\n\nOfficial lab demo\nMath puzzle lab demo\nMove on to Expectation, Variance, Moments"
+  },
+  {
+    "objectID": "w05/index.html#lab-4-assignment-prep",
+    "href": "w05/index.html#lab-4-assignment-prep",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Lab 4 Assignment Prep",
+    "text": "Lab 4 Assignment Prep\n\nOne of my favorite math puzzles ever:\n\n\n\n\n\n\n\nThe Problem of the Broken Stick (Gardner 2001, 273–85)\n\n\n\nIf a stick is broken at random into three pieces, what is the probability that the pieces can be put back together into a triangle?\nThis cannot be answered without additional information about the exact method of breaking\n\nOne method is to select, independently and at random, two points from the points that range uniformly along the stick, then break the stick at these two points\nSuppose, however, that we interpret in a different way the statement “break a stick at random into three pieces”. We break the stick at random, we select randomly one of the two pieces, and we break that piece at random.\n\n\n\n\nWill these two interpretations result in the same probabilities?\nIf yes, what is that probability?\nIf no, what are the probabilities in each case?"
+  },
+  {
+    "objectID": "w05/index.html#lab-4-assignment",
+    "href": "w05/index.html#lab-4-assignment",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Lab 4 Assignment",
+    "text": "Lab 4 Assignment\n\nLab 4 Assignment Link"
+  },
+  {
+    "objectID": "w05/index.html#references",
+    "href": "w05/index.html#references",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "References",
+    "text": "References\n\n\nAgnesi, Maria Gaetana. 1801. Analytical Institutions in Four Books: Originally Written in Italian. Taylor and Wilks.\n\n\nGardner, Martin. 2001. Colossal Book of Mathematics: Classic Puzzles Paradoxes And Problems. W. W. Norton & Company."
+  },
+  {
+    "objectID": "w05/index.html#appendix-dirac-delta-function",
+    "href": "w05/index.html#appendix-dirac-delta-function",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Appendix: Dirac Delta Function",
+    "text": "Appendix: Dirac Delta Function\n\n\\(\\delta(v)\\) as used in the “Top Secret Fun Fact” slide is called the Dirac Delta function.\nIt enables conversion of discrete distributions into continuous distributions as it represents an “infinite point mass” at \\(0\\) that can be integrated1:\n\n\\[\n\\delta(v) = \\begin{cases}\\infty & v = 0 \\\\ 0 & v \\neq 0\\end{cases}\n\\]\n\nIts integral also has a name: integrating over \\(v \\in (-\\infty, \\infty)\\) produces the Heaviside step function \\(\\theta(v)\\):\n\n\\[\n\\int_{-\\infty}^{\\infty}\\delta(v)dv = \\theta(v) = \\begin{cases} 1 & v = 0 \\\\ 0 & v \\neq 0\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "w05/index.html#footnotes",
+    "href": "w05/index.html#footnotes",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis is leaving out some of the complexities of defining this function so it “works” in this way: for example, we need to use the Lebesgue integral rather than the (standard) Riemann integral for it to be defined at all, and even then it technically fails the conditions necessary for a fully-well-defined Lebesgue integral. For full details see this section from the Wiki article on PDFs, and follow the links therein.↩︎"
+  },
+  {
+    "objectID": "w05/slides.html#from-last-week",
+    "href": "w05/slides.html#from-last-week",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "From Last Week",
+    "text": "From Last Week\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\Pr(A) = \\underbrace{\\frac{|\\{A\\}|}{|\\Omega|}}_{\\mathclap{\\small \\text{Probability }\\textbf{mass}}} = \\frac{1}{|\\{A,B,C,D\\}|} = \\frac{1}{4}\n\\]\nFigure 1: Visual and mathematical intuition for events in a discrete probability space\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\Pr(A) = \\underbrace{\\frac{\\text{Area}(\\{A\\})}{\\text{Area}(\\Omega)}}_{\\mathclap{\\small \\text{Probability }\\textbf{density}}} = \\frac{\\pi r^2}{s^2} = \\frac{\\pi \\left(\\frac{1}{4}\\right)^2}{4} = \\frac{\\pi}{64}\n\\]\nFigure 2: Visual and mathematical intuition for events a continuous probability space"
   },
   {
     "objectID": "w05/slides.html#what-things-have-distributions",
@@ -1621,21 +1775,35 @@
     "href": "w05/slides.html#cdfspdfspmfs-what-are-they",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "CDFs/pdfs/pmfs: What Are They?",
-    "text": "CDFs/pdfs/pmfs: What Are They?\n\nFunctions which answer questions about a Random Variable (\\(X\\) in this case)\nCDF: What is probability of value less than or equal to \\(X\\)?\n\n\\[\nF_X(v_X) \\overset{\\text{defn}}{=} \\Pr(X \\leq v_X)\n\\]\n\npmf: What is the probability of this exact value? (Discrete only)\n\n\\[\np_X(v_X) = \\Pr(X = v_X)\n\\]\n\npdf: …It’s the thing you integrate to get the CDF\n\n\\[\nf_X(v_X) = \\frac{d}{dv_X}F_X(v_X) \\iff \\int f_X(v_X)dv_X = F_X(v_X)\n\\]"
+    "text": "CDFs/pdfs/pmfs: What Are They?\n\nFunctions which answer questions about a Random Variable (\\(X\\) in this case) with respect to a non-random value (\\(v\\) in this case, for “value”)\nCDF: What is probability that \\(X\\) takes on a value less than or equal to \\(v\\)?\n\n\\[\nF_X(v) \\definedas \\Pr(X \\leq v)\n\\]\n\npmf: What is the probability of this exact value? (Discrete only)\n\n\\[\np_X(v) \\definedas \\Pr(X = v)\n\\]\n\npdf: 🙈 …It’s the thing you integrate to get the CDF\n\n\\[\nf_X(v) \\definedas \\frac{d}{dv}F_X(v) \\iff \\int_{-\\infty}^{v} f_X(v)dv = F_X(v)\n\\]"
   },
   {
     "objectID": "w05/slides.html#cdfspdfspmfs-why-do-we-use-them",
     "href": "w05/slides.html#cdfspdfspmfs-why-do-we-use-them",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "CDFs/pdfs/pmfs: Why Do We Use Them?",
-    "text": "CDFs/pdfs/pmfs: Why Do We Use Them?\n\nCDF is like the “API” that allows you to access all of the information about the distribution (pdf/pmf is derived from the CDF)\nExample: we know there’s some “thing” called the Exponential Distribution…\nHow do we use this distribution to understand a random variable \\(X \\sim \\text{Exp}\\)?\n\nAnswer: the CDF of \\(X\\)!\nSince all exponentially-distributed RVs have the same PDF, we can call this PDF “the” exponential distribution\n\nSay we want to find the median of \\(X\\): The median is the number \\(m\\) satisfying\n\n\\[\n\\Pr(X \\leq m) = \\frac{1}{2}, \\; \\Pr(X \\geq m) = \\frac{1}{2}\n\\]"
+    "text": "CDFs/pdfs/pmfs: Why Do We Use Them?\n\nCDF is like the “API” that allows you to access all of the information about the distribution (pdf/pmf is derived from the CDF)\nExample: we know there’s some “thing” called the Exponential Distribution…\nHow do we use this distribution to understand a random variable \\(X \\sim \\text{Exp}\\)?\n\nAnswer: the CDF of \\(X\\)!\nSince all exponentially-distributed RVs have the same PDF, we can call this PDF “the” exponential distribution\n\nSay we want to find the median of \\(X\\): The median is the number(s) \\(m\\) satisfying\n\n\\[\n\\Pr(X \\leq m) = \\frac{1}{2}\n\\]"
   },
   {
     "objectID": "w05/slides.html#finding-a-median-via-the-cdf",
     "href": "w05/slides.html#finding-a-median-via-the-cdf",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "Finding a Median via the CDF",
-    "text": "Finding a Median via the CDF\n\n\n\n\n\n\nMedian of a Random Variable \\(X\\)\n\n\nThe median of a random variable \\(X\\) with some CDF \\(F_X(v_X)\\) is the [set of] numbers \\(m\\) for which the probability that \\(X\\) is lower than \\(m\\) is the same as the probability that \\(X\\) is greater than \\(m\\):\n\\[\n\\begin{align*}\n\\text{Median}(X) &= \\left\\{m \\mid F_X(m) = 1 - F_X(m) \\right\\} \\\\\n&= \\left\\{m \\mid \\int_{-\\infty}^{m}f_X(v_X)dv_X = \\int_{m}^{\\infty}f_X(v_X)dv_X \\right\\}\n\\end{align*}\n\\]\n\n\n\nExample:"
+    "text": "Finding a Median via the CDF\n\n\n\n\n\n\nMedian of a Random Variable \\(X\\)\n\n\nThe median of a random variable \\(X\\) with some CDF \\(F_X(v_X)\\) is the [set of] numbers \\(m\\) for which the probability that \\(X\\) is lower than \\(m\\) is \\(\\frac{1}{2}\\):\n\\[\n\\begin{align*}\n\\text{Median}(X) &= \\left\\{m \\left| F_X(m) = \\frac{1}{2} \\right. \\right\\} \\\\\n&= \\left\\{m \\left| \\int_{-\\infty}^{m}f_X(v_X)dv_X = \\frac{1}{2} \\right. \\right\\}\n\\end{align*}\n\\]\n\n\n\n\n\n(In case you’re wondering why we start with the median rather than the more commonly-used mean: it’s specifically because I want you to get used to calculating general functions \\(f(X)\\) of a random variable \\(X\\). It’s easy to just e.g. learn how to compute the mean \\(\\expect{X}\\) and forget that this is only one of many possible choices for \\(f(X)\\).)"
+  },
+  {
+    "objectID": "w05/slides.html#median-via-cdf-example",
+    "href": "w05/slides.html#median-via-cdf-example",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Median via CDF Example",
+    "text": "Median via CDF Example\nExample: If \\(X \\sim \\text{Exp}(\\param{\\lambda})\\),\n\\[\nF_X(v) = 1 - e^{-\\lambda v}\n\\]\nSo we want to solve for \\(m\\) in\n\\[\nF_X(m) = \\frac{1}{2} \\iff 1 - e^{-\\lambda m} = \\frac{1}{2}\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#step-by-step",
+    "href": "w05/slides.html#step-by-step",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Step-by-Step",
+    "text": "Step-by-Step\n\\[\n\\begin{align*}\n1 - e^{-\\lambda m} &= \\frac{1}{2} \\\\\n\\iff e^{-\\lambda m} &= \\frac{1}{2} \\\\\n\\iff \\ln\\left[e^{-\\lambda m}\\right] &= \\ln\\left[\\frac{1}{2}\\right] \\\\\n\\iff -\\lambda m &= -\\ln(2) \\\\\n\\iff m &= \\frac{\\ln(2)}{\\lambda}\n%3x = 19-2y\n\\; \\llap{\\mathrel{\\boxed{\\phantom{m = \\frac{\\ln(2)}{\\lambda}}}}}.\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w05/slides.html#what-is-a-pdf",
@@ -1645,32 +1813,151 @@
     "text": "What is a pdf?\n\nAnswer: Has no meaning outside of its context: a random variable with a CDF giving the distribution of its possible values"
   },
   {
+    "objectID": "w05/slides.html#top-secret-fun-fact",
+    "href": "w05/slides.html#top-secret-fun-fact",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Top Secret Fun Fact",
+    "text": "Top Secret Fun Fact\n\nEvery Discrete Distribution is [technically, in a weird way] a Continuous Distribution!\n\n\nSame intuition as why every natural number is a real number, but converse is not true\nMarble example: Let \\(X\\) be an RV defined on this space, so that \\(X(A) = 1\\), \\(X(B) = 2\\), \\(X(C) = 3\\), \\(X(D) = 4\\). Then the pmf for \\(X\\) is \\(p_X(i) = \\frac{1}{4}\\) for \\(i \\in \\{1, 2, 3, 4\\}\\).\nWe can then use the Dirac delta function \\(\\delta(v)\\) to define a continuous pdf\n\\[\n  f_X(v) = \\sum_{i \\in \\mathcal{R}_X}p_X(i)\\delta(v - i) = \\sum_{i=1}^4p_X(i)\\delta(v-i) = \\frac{1}{4}\\sum_{i=1}^4 \\delta(v - i)\n  \\]\nand use either the (discrete) pmf \\(p_X(v)\\) or (continuous) pdf \\(f_X(v)\\) to describe \\(X\\):\n\n\\[\n\\begin{align*}\n\\overbrace{\\Pr(X \\leq 3)}^{\\text{CDF}} &= \\sum_{i=1}^3\\overbrace{p_X(i)}^{\\text{pmf}} = \\frac{1}{4} + \\frac{1}{4} + \\frac{1}{4} = \\frac{3}{4} \\\\\n\\underbrace{\\Pr(X \\leq 3)}_{\\text{CDF}} &= \\int_{-\\infty}^{3} \\underbrace{f_X(v)}_{\\text{pdf}} = \\frac{1}{4}\\int_{-\\infty}^{3} \\sum_{i = 1}^{4}\\overbrace{\\delta(v-i)}^{\\small 0\\text{ unless }v = i}dv = \\frac{3}{4}\n\\end{align*}\n\\]"
+  },
+  {
     "objectID": "w05/slides.html#normal-distribution",
     "href": "w05/slides.html#normal-distribution",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "Normal Distribution",
-    "text": "Normal Distribution"
+    "text": "Normal Distribution\n\nRecall from last week: the Binomial pdf\n\n\n\nCode\nk &lt;- seq(0, 10)\nprob &lt;- dbinom(k, 10, 0.5)\nbar_data &lt;- tibble(k, prob)\nggplot(bar_data, aes(x=k, y=prob)) +\n  geom_bar(stat=\"identity\", fill=cbPalette[1]) +\n  labs(\n    title=\"Binomial Distribution, N = 10, p = 0.5\",\n    y=\"Probability Mass\"\n  ) +\n  scale_x_continuous(breaks=seq(0,10)) +\n  dsan_theme(\"half\")"
   },
   {
-    "objectID": "w05/slides.html#uniform-distribution",
-    "href": "w05/slides.html#uniform-distribution",
+    "objectID": "w05/slides.html#the-emergence-of-order",
+    "href": "w05/slides.html#the-emergence-of-order",
     "title": "Week 5: Continuous Probability Distributions",
-    "section": "Uniform Distribution",
-    "text": "Uniform Distribution"
+    "section": "The Emergence of Order",
+    "text": "The Emergence of Order\n\n\n\n\nWho can guess the state of this process after 10 steps, with 1 person?\n10 people? 50? 100? (If they find themselves on the same spot, they stand on each other’s heads)\n100 steps? 1000?"
+  },
+  {
+    "objectID": "w05/slides.html#the-result-16-steps",
+    "href": "w05/slides.html#the-result-16-steps",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Result: 16 Steps",
+    "text": "The Result: 16 Steps"
+  },
+  {
+    "objectID": "w05/slides.html#the-result-64-steps",
+    "href": "w05/slides.html#the-result-64-steps",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Result: 64 Steps",
+    "text": "The Result: 64 Steps"
+  },
+  {
+    "objectID": "w05/slides.html#whats-going-on-here",
+    "href": "w05/slides.html#whats-going-on-here",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "What’s Going On Here?",
+    "text": "What’s Going On Here?\n\n(Stay tuned for Markov processes \\(\\overset{t \\rightarrow \\infty}{\\leadsto}\\) Stationary distributions!)"
+  },
+  {
+    "objectID": "w05/slides.html#properties-of-the-normal-distribution",
+    "href": "w05/slides.html#properties-of-the-normal-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Properties of the Normal Distribution",
+    "text": "Properties of the Normal Distribution\n\nIf \\(X \\sim \\mathcal{N}(\\param{\\mu}, \\param{\\theta})\\), then \\(X\\) has pdf \\(f_X(v)\\) defined by\n\n\\[\nf_X(v) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\bigexp{-\\frac{1}{2}\\left(\\frac{v - \\mu}{\\sigma}\\right)^2}\n\\]\n\nI hate memorizing as much as you do, I promise 🥴\nThe important part (imo): this is the most conservative out of all possible (symmetric) prior distributions defined on \\(\\mathbb{R}\\) (defined from \\(-\\infty\\) to \\(\\infty\\))"
+  },
+  {
+    "objectID": "w05/slides.html#most-conservative-how",
+    "href": "w05/slides.html#most-conservative-how",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "“Most Conservative” How?",
+    "text": "“Most Conservative” How?\n\nOf all possible distributions with mean \\(\\mu\\), variance \\(\\sigma^2\\), \\(\\mathcal{N}(\\mu, \\sigma^2)\\) is the entropy-maximizing distribution\nRoughly: using any other distribution (implicitly/secretly) imports additional information beyond the fact that mean is \\(\\mu\\) and variance is \\(\\sigma^2\\)\nExample: let \\(X\\) be an RV. If we know mean is \\(\\mu\\), variance is \\(\\sigma^2\\), but then we learn that \\(X \\neq 3\\), or \\(X\\) is even, or the 15th digit of \\(X\\) is 7, can update to derive a “better” distribution (incorporating this info)"
+  },
+  {
+    "objectID": "w05/slides.html#the-takeaway",
+    "href": "w05/slides.html#the-takeaway",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Takeaway",
+    "text": "The Takeaway\n\nGiven info we know, we can find a distribution that “encodes” only this info\nMore straightforward example: if we only know that the value is something in the range \\([a,b]\\), entropy-maximizing distribution is the Uniform Distribution\n\n\n\n\n\n\n\n\n\nIf We Know\nAnd We Know\n(Max-Entropy) Distribution Is…\n\n\n\n\n\\(\\text{Mean}[X] = \\mu\\)\n\\(\\text{Var}[X] = \\sigma^2\\)\n\\(X \\sim \\mathcal{N}(\\mu, \\sigma^2)\\)\n\n\n\\(\\text{Mean}[X] = \\lambda\\)\n\\(X \\geq 0\\)\n\\(X \\sim \\text{Exp}\\left(\\frac{1}{\\lambda}\\right)\\)\n\n\n\\(X \\geq a\\)\n\\(X \\leq b\\)\n\\(X \\sim \\mathcal{U}[a,b]\\)"
+  },
+  {
+    "objectID": "w05/slides.html#recall-discrete-uniform-distribution",
+    "href": "w05/slides.html#recall-discrete-uniform-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "[Recall] Discrete Uniform Distribution",
+    "text": "[Recall] Discrete Uniform Distribution\n\n\nCode\nlibrary(tibble)\nbar_data &lt;- tribble(\n  ~x, ~prob,\n  1, 1/6,\n  2, 1/6,\n  3, 1/6,\n  4, 1/6,\n  5, 1/6,\n  6, 1/6\n)\nggplot(bar_data, aes(x=x, y=prob)) +\n  geom_bar(stat=\"identity\", fill=cbPalette[1]) +\n  labs(\n    title=\"Discrete Uniform pmf: a = 1, b = 6\",\n    y=\"Probability Mass\",\n    x=\"Value\"\n  ) +\n  scale_x_continuous(breaks=seq(1,6)) +\n  dsan_theme(\"half\")"
+  },
+  {
+    "objectID": "w05/slides.html#continuous-uniform-distribution",
+    "href": "w05/slides.html#continuous-uniform-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Continuous Uniform Distribution",
+    "text": "Continuous Uniform Distribution\n\nIf \\(X \\sim \\mathcal{U}[a,b]\\), then intuitively \\(X\\) is a value randomly selected from within \\([a,b]\\), with all values equally likely.\nDiscrete case: what we’ve been using all along (e.g., dice): if \\(X \\sim \\mathcal{U}\\{1,6\\}\\), then\n\n\\[\n\\Pr(X = 1) = \\Pr(X = 2) = \\cdots = \\Pr(X = 6) = \\frac{1}{6}\n\\]\n\nFor continuous case… what do we put in the denominator? \\(X \\sim \\mathcal{U}[1,6] \\implies \\Pr(X = \\pi) = \\frac{1}{?}\\)…\n\nAnswer: \\(\\Pr(X = \\pi) = \\frac{1}{|[1,6]|} = \\frac{1}{\\aleph_0} = 0\\)"
+  },
+  {
+    "objectID": "w05/slides.html#constructing-the-uniform-cdf",
+    "href": "w05/slides.html#constructing-the-uniform-cdf",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Constructing the Uniform CDF",
+    "text": "Constructing the Uniform CDF\n\nWe were ready for this! We already knew \\(\\Pr(X = v) = 0\\) for continuous distributions.\nSo, we forget about \\(\\Pr(X = v)\\), and focus on \\(\\Pr(X \\in [v_0, v_1])\\).\nIn 2D (dartboard) we had \\(\\Pr(X \\in \\circ) = \\frac{\\text{Area}(\\circ)}{\\text{Area}(\\Omega)}\\), so here we should have\n\n\\[\nP(X \\in [v_0,v_1]) = \\frac{\\text{Length}([v_0,v_1])}{\\text{Length}([1,6])}\n\\]\n\nAnd indeed, the CDF of \\(X\\) is \\(\\boxed{F_X(v) = \\Pr(X \\leq v) = \\frac{v-a}{b-a}}\\), so that\n\n\\[\n\\Pr(X \\in [v_0,v_1]) = F_X(v_1) - F_X(v_0) = \\frac{v_1-a}{b-a} - \\frac{v_0-a}{b-a} = \\frac{v_1 - v_0}{b-a}\n\\]\n\nSince \\(a = 1\\), \\(b = 6\\) in our example, \\(\\Pr(X \\in [v_0,v_1]) = \\frac{v_1-v_0}{6-1} = \\frac{\\text{Length}([v_0,v_1])}{\\text{Length}([1,6])} \\; ✅\\)"
   },
   {
     "objectID": "w05/slides.html#exponential-distribution",
     "href": "w05/slides.html#exponential-distribution",
     "title": "Week 5: Continuous Probability Distributions",
     "section": "Exponential Distribution",
-    "text": "Exponential Distribution"
+    "text": "Exponential Distribution\n\nRecall the (discrete) Geometric Distribution:\n\n\n\nCode\nlibrary(ggplot2)\nk &lt;- seq(0, 8)\nprob &lt;- dgeom(k, 0.5)\nbar_data &lt;- tibble(k, prob)\nggplot(bar_data, aes(x = k, y = prob)) +\n    geom_bar(stat = \"identity\", fill = cbPalette[1]) +\n    labs(\n        title = \"Geometric Distribution pmf: p = 0.5\",\n        y = \"Probability Mass\"\n    ) +\n    scale_x_continuous(breaks = seq(0, 8)) +\n    dsan_theme(\"half\")"
   },
   {
-    "objectID": "w05/slides.html#cauchy-distribution",
-    "href": "w05/slides.html#cauchy-distribution",
+    "objectID": "w05/slides.html#now-in-continuous-form",
+    "href": "w05/slides.html#now-in-continuous-form",
     "title": "Week 5: Continuous Probability Distributions",
-    "section": "Cauchy Distribution",
-    "text": "Cauchy Distribution"
+    "section": "Now In Continuous Form!",
+    "text": "Now In Continuous Form!\n\n\nCode\nmy_dexp &lt;- function(x) dexp(x, rate = 1/2)\nggplot(data.frame(x=c(0,8)), aes(x=x)) +\n  stat_function(fun=my_dexp, size=g_linesize, fill=cbPalette[1], alpha=0.8) +\n  stat_function(fun=my_dexp, geom='area', fill=cbPalette[1], alpha=0.75) +\n  dsan_theme(\"half\") +\n  labs(\n    title=\"Exponential Distribution pdf: λ (rate) = 0.5\",\n    x = \"v\",\n    y = \"f_X(v)\"\n  )"
+  },
+  {
+    "objectID": "w05/slides.html#the-dreaded-cauchy-distribution",
+    "href": "w05/slides.html#the-dreaded-cauchy-distribution",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "The Dreaded Cauchy Distribution",
+    "text": "The Dreaded Cauchy Distribution\n\nPaxton is a Denver Nuggets fan, while Jeff is a Washington Wizards fan. Paxton creates an RV \\(D\\) modeling how many games above .500 the Nuggets will be in a given season, while Jeff creates an RV \\(W\\) modeling how many games above .500 the Wizards will be.\nThey decide to combine their RVs to create a new RV, \\(R = \\frac{D}{W}\\), which now models how much better the Nuggets will be in a season (\\(R\\) for “Ratio”)\nFor example, if the Nuggets are \\(10\\) games above .500, while the Wizards are only \\(5\\) above .500, \\(R = \\frac{10}{5} = 2\\). If they’re both 3 games above .500, \\(R = \\frac{3}{3} = 1\\).\n\n\n\nCode\nggplot(data.frame(x=c(-4,4)), aes(x=x)) +\n  stat_function(fun=dcauchy, size=g_linesize, fill=cbPalette[1], alpha=0.75) +\n  stat_function(fun=dcauchy, geom='area', fill=cbPalette[1], alpha=0.75) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=\"PDF of R\",\n    x = \"r\",\n    y = \"f(r)\"\n  )"
+  },
+  {
+    "objectID": "w05/slides.html#so-whats-the-issue",
+    "href": "w05/slides.html#so-whats-the-issue",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "So What’s the Issue?",
+    "text": "So What’s the Issue?\n\nSo far so good. It turns out (though Paxton and Jeff don’t know this) that the teams are actually both mediocre, so that \\(D \\sim N(0,10)\\) and \\(W \\sim N(0,10)\\)… What is the distribution of \\(R\\) in this case?\n\n\n\n\n\\[\n\\begin{gather*}\nR \\sim \\text{Cauchy}\\left( 0, 1 \\right)\n\\end{gather*}\n\\]\n\\[\n\\begin{align*}\n\\expect{R} &= ☠️ \\\\\n\\Var{R} &= ☠️ \\\\\nM_R(t) &= ☠️\n\\end{align*}\n\\]\n\n\n\n\n\nFrom Agnesi (1801) [Internet Archive]\n\n\n\n\n\n\n\nEven worse, this is true regardless of variances: \\(D \\sim N(0,d), W \\sim N(0,w) \\implies R \\sim \\text{Cauchy}\\left( 0,\\frac{d}{w} \\right)\\)…"
+  },
+  {
+    "objectID": "w05/slides.html#lab-4-demo",
+    "href": "w05/slides.html#lab-4-demo",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Lab 4 Demo",
+    "text": "Lab 4 Demo\n\nLab 4 Demo Link \nChoose your own adventure:\n\nOfficial lab demo\nMath puzzle lab demo\nMove on to Expectation, Variance, Moments"
+  },
+  {
+    "objectID": "w05/slides.html#lab-4-assignment-prep",
+    "href": "w05/slides.html#lab-4-assignment-prep",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Lab 4 Assignment Prep",
+    "text": "Lab 4 Assignment Prep\n\nOne of my favorite math puzzles ever:\n\n\n\n\nThe Problem of the Broken Stick (Gardner 2001, 273–85)\n\n\nIf a stick is broken at random into three pieces, what is the probability that the pieces can be put back together into a triangle?\nThis cannot be answered without additional information about the exact method of breaking\n\nOne method is to select, independently and at random, two points from the points that range uniformly along the stick, then break the stick at these two points\nSuppose, however, that we interpret in a different way the statement “break a stick at random into three pieces”. We break the stick at random, we select randomly one of the two pieces, and we break that piece at random.\n\n\n\n\n\nWill these two interpretations result in the same probabilities?\nIf yes, what is that probability?\nIf no, what are the probabilities in each case?"
+  },
+  {
+    "objectID": "w05/slides.html#lab-4-assignment",
+    "href": "w05/slides.html#lab-4-assignment",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Lab 4 Assignment",
+    "text": "Lab 4 Assignment\n\nLab 4 Assignment Link"
+  },
+  {
+    "objectID": "w05/slides.html#references",
+    "href": "w05/slides.html#references",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "References",
+    "text": "References\n\n\nAgnesi, Maria Gaetana. 1801. Analytical Institutions in Four Books: Originally Written in Italian. Taylor and Wilks.\n\n\nGardner, Martin. 2001. Colossal Book of Mathematics: Classic Puzzles Paradoxes And Problems. W. W. Norton & Company."
+  },
+  {
+    "objectID": "w05/slides.html#appendix-dirac-delta-function",
+    "href": "w05/slides.html#appendix-dirac-delta-function",
+    "title": "Week 5: Continuous Probability Distributions",
+    "section": "Appendix: Dirac Delta Function",
+    "text": "Appendix: Dirac Delta Function\n\n\\(\\delta(v)\\) as used in the “Top Secret Fun Fact” slide is called the Dirac Delta function.\nIt enables conversion of discrete distributions into continuous distributions as it represents an “infinite point mass” at \\(0\\) that can be integrated1:\n\n\\[\n\\delta(v) = \\begin{cases}\\infty & v = 0 \\\\ 0 & v \\neq 0\\end{cases}\n\\]\n\nIts integral also has a name: integrating over \\(v \\in (-\\infty, \\infty)\\) produces the Heaviside step function \\(\\theta(v)\\):\n\n\\[\n\\int_{-\\infty}^{\\infty}\\delta(v)dv = \\theta(v) = \\begin{cases} 1 & v = 0 \\\\ 0 & v \\neq 0\\end{cases}\n\\]\n\n\n\n\nThis is leaving out some of the complexities of defining this function so it “works” in this way: for example, we need to use the Lebesgue integral rather than the (standard) Riemann integral for it to be defined at all, and even then it technically fails the conditions necessary for a fully-well-defined Lebesgue integral. For full details see this section from the Wiki article on PDFs, and follow the links therein."
   },
   {
     "objectID": "recordings/index.html",

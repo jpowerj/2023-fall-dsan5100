@@ -214,12 +214,27 @@ figcaption {
     color: purple !important;
 }
 
+.px-4 {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+
 .red {
     color: red !important;
 }
 
 .red-bg {
     background-color: rgba(255,0,0,0.1);
+}
+
+.shift-footnotes aside {
+    transform: translateY(45px) !important;
+}
+.shift-footnotes-less aside {
+    transform: translateY(30px) !important;
+}
+.shift-footnotes-more aside {
+transform: translateY(60px) !important;
 }
 
 .small-aside {

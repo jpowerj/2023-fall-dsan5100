@@ -11,7 +11,6 @@ format:
     slide-number: true
     number-sections: false
     number-depth: 2
-    bibliography: "../_Georgetown_Refs.bib"
     #smaller: true
     code-fold: true
     footnotes-hover: true
@@ -21,4 +20,6 @@ format:
       - simplemenu
     include-in-header:
       text: "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\"><script src=\"https://d3js.org/d3.v4.min.js\"></script><script src=\"../assets/_venn.js\"></script>"
+bibliography: "../_DSAN5100.bib"
+
         

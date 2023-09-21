@@ -1,0 +1,16 @@
+flowchart LR
+    A["Start at x=0"] -->|Heads| C["Move Left 1"]
+    A -->|Tails| D["Move Right 1"]
+    C -->|Tails| E["Move Left 1"]
+    C -->|Heads| F["Move Right 1"]
+    D -->|Tails| G["Move Left 1"]
+    D -->|Heads| H["Move Right 1"]
+    E -.->|Tails| I["..."]:::emptyNode
+    E -.->|Heads| J["..."]:::emptyNode
+    F -.->|Tails| K["..."]:::emptyNode
+    F -.->|Heads| L["..."]:::emptyNode
+    G -.->|Tails| M["..."]:::emptyNode
+    G -.->|Heads| N["..."]:::emptyNode
+    H -.->|Tails| O["..."]:::emptyNode
+    H -.->|Heads| P["..."]:::emptyNode
+    classDef emptyNode fill:#ffffff,stroke:#ffffff

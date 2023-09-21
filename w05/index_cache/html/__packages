@@ -1,8 +1,6 @@
-base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 ggplot2
+tibble
+ggforce
+ggExtra
+dplyr
+tidyr
