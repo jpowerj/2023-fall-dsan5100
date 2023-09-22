@@ -252,6 +252,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
   <li><a href="#moving-from-individual-to-aggregated-simulation" id="toc-moving-from-individual-to-aggregated-simulation" class="nav-link" data-scroll-target="#moving-from-individual-to-aggregated-simulation">Moving From Individual to Aggregated Simulation</a></li>
   <li><a href="#simulating-n-normally-distributed-random-variables" id="toc-simulating-n-normally-distributed-random-variables" class="nav-link" data-scroll-target="#simulating-n-normally-distributed-random-variables">Simulating <code>N</code> Normally-Distributed Random Variables</a></li>
   <li><a href="#applying-transformations-to-x_t" id="toc-applying-transformations-to-x_t" class="nav-link" data-scroll-target="#applying-transformations-to-x_t">Applying Transformations to <code>x_T</code></a></li>
+  <li><a href="#transformation-2-squared-distance-from-0" id="toc-transformation-2-squared-distance-from-0" class="nav-link" data-scroll-target="#transformation-2-squared-distance-from-0">Transformation 2: Squared Distance from 0</a></li>
   </ul>
 </nav>
     </div>
@@ -308,7 +309,7 @@ Colab Link
 </div>
 <div class="callout-body-container callout-body">
 <center>
-<p><a href="https://colab.research.google.com/github/jpowerj/dsan5100-03/blob/main/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.ipynb?authuser=1" target="_blank">Click here to <strong>open in Colab</strong></a></p>
+<p><a href="https://colab.research.google.com/github/jpowerj/dsan5100-03/blob/main/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.ipynb?authuser=1" target="_blank"><img src="images/colab-badge.svg" class="img-fluid"><br>Click here to <strong>open in Colab</strong></a></p>
 </center>
 <p>If you are trying to <strong>edit</strong> this notebook in <strong>Colab</strong>, you’ll also want to make sure to run the following code cell, which will install some global functions that we use in the course: mainly the <code>dsan_theme()</code> function, which just ensures that the plots you create have a standardized theme, (making it easier for us and the TAs to quickly understand what’s going on in your plots)</p>
 <p>If the <code>dsan_theme()</code> function still gives you trouble after running this, no worries. You can just comment out <code>dsan_theme()</code> anywhere you see it, and use the default <code>ggplot2</code> theme instead.</p>
@@ -1078,6 +1079,81 @@ The following objects are masked from 'package:base':
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="DSAN5100_Lab_4_Prep_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The kernel density plot’s <strong>bandwidth</strong> parameter can be tweaked to make the plot look different, just like the <strong>binwidth</strong> parameter of <code>geom_histogram()</code> can be tweaked to make the histogram look different, but in my experience <code>geom_density()</code> tends to require less tweaking: it usually produces the distribution that I’m expecting to see (if I already know what the distribution should look like), so that I trust it a bit more to give a reasonably accurate “picture” of the distribution of data that I haven’t seen before.</p>
+<p>This distribution, just like the <strong>Normal</strong> and <strong>Rademacher</strong> distributions we’ve seen so far, has a name! It is called the <a href="https://en.wikipedia.org/wiki/Folded_normal_distribution" target="_blank"><strong>Folded Normal Distribution</strong></a>, if you’d like to learn how that works.</p>
+</section>
+<section id="transformation-2-squared-distance-from-0" class="level2">
+<h2 class="anchored" data-anchor-id="transformation-2-squared-distance-from-0">Transformation 2: Squared Distance from 0</h2>
+<p>As I described in class today, though, it is more common in data science to use the <strong>squared distance</strong> to assess how far the data is from some target value (like its mean, or median, or mode, etc.). This is because the <strong>squared distance function <span class="math inline">\(f(x) = x^2\)</span> is differentiable everywhere</strong>, unlike the <strong>absolute value function <span class="math inline">\(f(x) = |x|\)</span></strong>:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Y[obs] - Y[pred]"</span>,</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Prediction Badness (Loss)"</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>()</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>my_fn <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span>) }</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>my_deriv2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(<span class="dv">4</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">4</span>) }</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>my_derivN4 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(<span class="sc">-</span><span class="dv">8</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">16</span>) }</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>base <span class="sc">+</span> <span class="fu">geom_function</span>(</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> my_fn, <span class="at">color=</span>cbPalette[<span class="dv">1</span>], <span class="at">linewidth=</span><span class="dv">1</span></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">x=</span><span class="dv">2</span>,<span class="at">y=</span><span class="dv">4</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y), <span class="at">color=</span>cbPalette[<span class="dv">2</span>], <span class="at">size=</span>g_pointsize<span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> my_deriv2, <span class="at">color=</span>cbPalette[<span class="dv">2</span>], <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">x=</span><span class="sc">-</span><span class="dv">4</span>,<span class="at">y=</span><span class="dv">16</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y), <span class="at">color=</span>cbPalette[<span class="dv">3</span>], <span class="at">size=</span>g_pointsize<span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> my_derivN4, <span class="at">color=</span>cbPalette[<span class="dv">3</span>], <span class="at">linewidth=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning message:
+"Removed 60 rows containing missing values (`geom_function()`)."
+Warning message:
+"Removed 70 rows containing missing values (`geom_function()`)."</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="DSAN5100_Lab_4_Prep_files/figure-html/x-squared-plot-output-2.png" id="x-squared-plot" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>my_fake_deriv <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(<span class="sc">-</span>x) }</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>my_fake_deriv2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>x <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) }</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>my_fake_deriv3 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">return</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">*</span>x <span class="sc">+</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>) }</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>d<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Y[obs] - Y[pred]"</span>,</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Prediction Badness (Loss)"</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">data=</span>d, <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>()</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co">#geom_step(data=d, mapping=aes(x=x, y=y), direction="vh", linetype=3) +</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="co">#geom_point(data=d, mapping=aes(x=x, y=y), color="red")</span></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>base <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">x=</span><span class="dv">2</span>,<span class="at">y=</span><span class="dv">4</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y), <span class="at">color=</span>cbPalette[<span class="dv">2</span>], <span class="at">size=</span>g_pointsize<span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> my_fake_deriv, <span class="at">color=</span>cbPalette[<span class="dv">2</span>], <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> my_fake_deriv2, <span class="at">color=</span>cbPalette[<span class="dv">3</span>], <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> my_fake_deriv3, <span class="at">color=</span>cbPalette[<span class="dv">4</span>], <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span><span class="fu">as.data.frame</span>(<span class="fu">list</span>(<span class="at">x=</span><span class="sc">-</span><span class="dv">1</span>,<span class="at">y=</span><span class="dv">1</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y), <span class="at">color=</span>cbPalette[<span class="dv">2</span>], <span class="at">size=</span>g_pointsize<span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.7</span>, <span class="at">y =</span> <span class="fl">1.1</span>, <span class="at">label =</span> <span class="st">"?"</span>, <span class="at">size=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning message:
+"Removed 1 rows containing missing values (`geom_point()`)."
+Warning message:
+"Removed 80 rows containing missing values (`geom_function()`)."
+Warning message:
+"Removed 60 rows containing missing values (`geom_function()`)."
+Warning message:
+"Removed 20 rows containing missing values (`geom_function()`)."</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="DSAN5100_Lab_4_Prep_files/figure-html/abs-plot-output-2.png" id="abs-plot" class="img-fluid"></p>
 </div>
 </div>
 
