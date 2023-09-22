@@ -248,7 +248,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-drunkards-walkdrunkard" id="toc-the-drunkards-walkdrunkard" class="nav-link active" data-scroll-target="#the-drunkards-walkdrunkard">The Drunkard’s Walk[^drunkard]</a></li>
+  <li><a href="#the-drunkards-walk" id="toc-the-drunkards-walk" class="nav-link active" data-scroll-target="#the-drunkards-walk">The Drunkard’s Walk</a></li>
   <li><a href="#moving-from-individual-to-aggregated-simulation" id="toc-moving-from-individual-to-aggregated-simulation" class="nav-link" data-scroll-target="#moving-from-individual-to-aggregated-simulation">Moving From Individual to Aggregated Simulation</a></li>
   <li><a href="#simulating-n-normally-distributed-random-variables" id="toc-simulating-n-normally-distributed-random-variables" class="nav-link" data-scroll-target="#simulating-n-normally-distributed-random-variables">Simulating <code>N</code> Normally-Distributed Random Variables</a></li>
   <li><a href="#applying-transformations-to-x_t" id="toc-applying-transformations-to-x_t" class="nav-link" data-scroll-target="#applying-transformations-to-x_t">Applying Transformations to <code>x_T</code></a></li>
@@ -318,9 +318,9 @@ Colab Link
 <li>allow us to “encode” the information we have about the world as a distribution in some principled way.</li>
 </ol>
 <p>In the latter case, I say “principled” in the sense that: we can “encode” information we have at some point in time as a particularly-suitable distribution and then, when we learn new information, we can <strong>update</strong> this distribution to reflect the new information, using <strong>Bayes’ rule</strong> 🧐‼️🧐.</p>
-<section id="the-drunkards-walkdrunkard" class="level2">
-<h2 class="anchored" data-anchor-id="the-drunkards-walkdrunkard">The Drunkard’s Walk[^drunkard]</h2>
-<p>In class today I described one of the many <strong>Data Generating Processes</strong> that could give rise to <strong>normally-distributed</strong> data. It involved a simple <strong>random walk</strong>, where you imagine a person on a numberline at the point <span class="math inline">\(x = 0\)</span>, and then imagine them flipping a coin repeatedly: when the coin comes up <strong>Tails</strong>, they move 1 unit to the <strong>left</strong>, and when the coin comes up <strong>Heads</strong> they move 1 unit to the <strong>right</strong>. This stochastic process can be visualized via the following diagram:</p>
+<section id="the-drunkards-walk" class="level2">
+<h2 class="anchored" data-anchor-id="the-drunkards-walk">The Drunkard’s Walk</h2>
+<p>In class today I described one of the many <strong>Data Generating Processes</strong> that could give rise to <strong>normally-distributed</strong> data. It involved a simple <strong>random walk</strong>, where you imagine a person on a numberline at the point <span class="math inline">\(x = 0\)</span>, and then imagine them flipping a coin repeatedly: when the coin comes up <strong>Tails</strong>, they move 1 unit to the <strong>left</strong>, and when the coin comes up <strong>Heads</strong> they move 1 unit to the <strong>right</strong>. This stochastic process can be visualized via the following diagram[^drunkard]:</p>
 <p><img src="images/random_walk.svg" class="img-fluid"></p>
 <p>Here we can think of the “layers” (the vertical columns) in the diagram as representing the branching possibilities in each step: at time <span class="math inline">\(t = 0\)</span>, before any coin flips have been carried out, there is only one possible <strong>state</strong> of the system: the person is at the point <span class="math inline">\(x = 0\)</span>.</p>
 <p>After a single time step, at time <span class="math inline">\(t = 1\)</span>, there are now <strong>two possible states</strong> of the system: if the (single) coin flip came up <strong>Tails</strong> the person is at <span class="math inline">\(x = -1\)</span>, and if it came up <strong>Heads</strong> the person is at <span class="math inline">\(x = 1\)</span>.</p>
