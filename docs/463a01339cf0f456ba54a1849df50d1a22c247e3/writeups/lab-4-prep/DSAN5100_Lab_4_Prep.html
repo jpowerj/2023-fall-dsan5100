@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeff Jacobs">
+<meta name="dcterms.date" content="2023-09-21">
+
+<title>Lab 4 Prep</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RFMTL6Q5J5"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      DSAN 5100 Section 03 (Thursdays, 12:30-3pm)&lt;br&gt;&lt;span class="subtitle"&gt;Car Barn 201&lt;/span&gt;&lt;br&gt;&lt;span class="subtitle"&gt;Fall 2023, Georgetown&lt;/span&gt;&lt;br&gt;&lt;span class="subtitle"&gt;Prof. Jeff &lt;a href="mailto:jj1088@georgetown.edu" target="_blank"&gt;&lt;i class="bi bi-envelope-at ps-1 pe-1"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href="https://github.com/jpowerj" target="_blank"&gt;&lt;i class="bi bi-github ps-1"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/span&gt;
+      </li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">DSAN 5100 Section 03 (Thursdays, 12:30-3pm)<br><span class="subtitle">Car Barn 201</span><br><span class="subtitle">Fall 2023, Georgetown</span><br><span class="subtitle">Prof.&nbsp;Jeff <a href="mailto:jj1088@georgetown.edu" target="_blank"><i class="bi bi-envelope-at ps-1 pe-1"></i></a><a href="https://github.com/jpowerj" target="_blank"><i class="bi bi-github ps-1"></i></a></span></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jfh.georgetown.domains/dsan5100/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-arrow-left" style="margin-right: 4px"></i>Main Course Page</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Section 03 Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Aug 24</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Aug 31</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Sep 7</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Sep 14</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../w05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Sep 20</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../recordings/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Recordings</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../extra-videos/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra Videos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../writeups/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra Writeups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheet-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Math Cheatsheet</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.instructure.com/courses/173333" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Canvas Page <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://calendar.app.google/yMnESMtMNPdKEaPz5" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Book Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/QBT621Vmcez4Y99r5" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Suggestion Box <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-drunkards-walkdrunkard" id="toc-the-drunkards-walkdrunkard" class="nav-link active" data-scroll-target="#the-drunkards-walkdrunkard">The Drunkard’s Walk[^drunkard]</a></li>
+  <li><a href="#moving-from-individual-to-aggregated-simulation" id="toc-moving-from-individual-to-aggregated-simulation" class="nav-link" data-scroll-target="#moving-from-individual-to-aggregated-simulation">Moving From Individual to Aggregated Simulation</a></li>
+  <li><a href="#simulating-n-normally-distributed-random-variables" id="toc-simulating-n-normally-distributed-random-variables" class="nav-link" data-scroll-target="#simulating-n-normally-distributed-random-variables">Simulating <code>N</code> Normally-Distributed Random Variables</a></li>
+  <li><a href="#applying-transformations-to-x_t" id="toc-applying-transformations-to-x_t" class="nav-link" data-scroll-target="#applying-transformations-to-x_t">Applying Transformations to <code>x_T</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 4 Prep</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank">jj1088@georgetown.edu</a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 21, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Here, to prepare you for Lab 4, I’m going to walk you through generating data from a <strong>distribution</strong> via <strong>simulation</strong>, and then analyzing <strong>properties</strong> of this data (and therefore, if the data is sufficiently representative, properties of the distribution) by computing new pieces of information on the basis of the original data. Hopefully this helps drive the point home that <strong>probability distributions</strong> like the <strong>Normal distribution</strong> that we’ll look at in this case are not arbitrarily, pulled out of thin air or out of the brain of some imaginative mathematician. Rather, they</p>
+<ol type="1">
+<li>arise naturally out of patterns that we see in nature, and/or</li>
+<li>allow us to “encode” the information we have about the world as a distribution in some principled way.</li>
+</ol>
+<p>In the latter case, I say “principled” in the sense that: we can “encode” information we have at some point in time as a particularly-suitable distribution and then, when we learn new information, we can <strong>update</strong> this distribution to reflect the new information, using <strong>Bayes’ rule</strong> 🧐‼️🧐.</p>
+<section id="the-drunkards-walkdrunkard" class="level2">
+<h2 class="anchored" data-anchor-id="the-drunkards-walkdrunkard">The Drunkard’s Walk[^drunkard]</h2>
+<p>In class today I described one of the many <strong>Data Generating Processes</strong> that could give rise to <strong>normally-distributed</strong> data. It involved a simple <strong>random walk</strong>, where you imagine a person on a numberline at the point <span class="math inline">\(x = 0\)</span>, and then imagine them flipping a coin repeatedly: when the coin comes up <strong>Tails</strong>, they move 1 unit to the <strong>left</strong>, and when the coin comes up <strong>Heads</strong> they move 1 unit to the <strong>right</strong>. This stochastic process can be visualized via the following diagram:</p>
+<p><img src="images/random_walk.svg" class="img-fluid"></p>
+<p>Here we can think of the “layers” (the vertical columns) in the diagram as representing the branching possibilities in each step: at time <span class="math inline">\(t = 0\)</span>, before any coin flips have been carried out, there is only one possible <strong>state</strong> of the system: the person is at the point <span class="math inline">\(x = 0\)</span>.</p>
+<p>After a single time step, at time <span class="math inline">\(t = 1\)</span>, there are now <strong>two possible states</strong> of the system: if the (single) coin flip came up <strong>Tails</strong> the person is at <span class="math inline">\(x = -1\)</span>, and if it came up <strong>Heads</strong> the person is at <span class="math inline">\(x = 1\)</span>.</p>
+<p>Hopefully some general aspects and mathematical properties of this stochastic process immediately stand out:</p>
+<ul>
+<li>There are <strong>two ways</strong> we could describe a given <strong>state</strong> of this system at a time <span class="math inline">\(t\)</span>:
+<ul>
+<li>First, we could describe the <strong>history</strong> of all choices that led to the current state: the node at the top of the <span class="math inline">\(t = 2\)</span> column, for example, could be represented as a vector <span class="math inline">\((L, L)\)</span>, corresponding to the fact that the person ended up at this state by moving left, then moving left again.</li>
+<li><strong>Alternatively</strong>, we could choose to only keep track of the person’s <strong>position</strong> on the number line, dropping the information about their history (how they got there). If we choose this option, the state can be described by a <strong>single number</strong>: the <span class="math inline">\(x\)</span> coordinate of where the person is located at that time.</li>
+<li>Notice how this second option “collapses” some of the nodes in the diagram down into a single state: for example, the three history vectors <span class="math inline">\(()\)</span> (the vector corresponding to the start node, where no moves have been made yet), <span class="math inline">\((L,R)\)</span> and <span class="math inline">\((R,L)\)</span>, which are three different states under the first option, both represent the single state <span class="math inline">\(x = 0\)</span> if we use this option.</li>
+</ul></li>
+<li>The number of <strong>possible</strong> states (nodes) at each time step <span class="math inline">\(t\)</span> is just <span class="math inline">\(2^t\)</span>. This comes from our <strong>multiplication rule</strong> from earlier in the semester: if we’re making <span class="math inline">\(n\)</span> choices, where each choice involves choosing between <span class="math inline">\(k\)</span> alternatives, the total number of choice vectors (decisions for all <span class="math inline">\(n\)</span> choices) is <span class="math inline">\(k^n\)</span>. Here we’re making <span class="math inline">\(t\)</span> choices (one at each time step), choosing between <span class="math inline">\(2\)</span> alternatives each time (going left vs.&nbsp;going right), giving <span class="math inline">\(2^t\)</span> total choice vectors.</li>
+</ul>
+<p>Now that we have an idea of some of the mathematical properties of this system, let’s focus in on converting this into code!</p>
+<p>First things first, we make sure to use R’s <code>set.seed()</code> function to ensure <strong>reproducibility</strong> of our results across different runs of the notebook:</p>
+<p>set.seed(5100)</p>
+<p>Your first intuition might be to create a variable <code>x</code> to keep track of the state, then create a loop that will run <code>N</code> times, updating the state each time through the loop. In data science world, it turns out that this approach is <strong>very</strong> inefficient (in terms of memory usage but also, more importantly, in terms of the time it will take to run the simulation). But, let’s start with that and work our way towards the more efficient solution.</p>
+<p>For concreteness, let’s try to simulate a person following this procedure for <code>N</code> = 10 steps, where each coin flip is with a fair coin, with <span class="math inline">\(\Pr(H) = 0.5\)</span>. I am forever infinitely mad about the fact that R does not come with built-in support for the Bernoulli distribution (literally the distribution that every single other possible discrete distribution is built on top of…), so instead of using <code>dbinom()</code> incorrectly like I did in class, I am instead going to import the <code>Rlab</code> library, which <a href="https://www.rdocumentation.org/packages/Rlab/versions/4.0/topics/Bernoulli" target="_blank"><strong>adds in</strong> functions</a> like <code>dbern()</code>, <code>rbern()</code>, etc., that are bafflingly absent from base-R:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rlab)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Starting state (t = "</span>,t,<span class="st">"): x = "</span>,x))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)) {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"=====[ Step "</span>,i,<span class="st">" ]====="</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Flip coin</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    flip_outcome <span class="ot">&lt;-</span> <span class="fu">rbern</span>(<span class="dv">1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Coin flip outcome: "</span>,flip_outcome))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Choose direction based on result</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    direction <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (flip_outcome <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Outcome = Tails</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        direction <span class="ot">&lt;-</span> <span class="st">"Left"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Outcome = Heads</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        direction <span class="ot">&lt;-</span> <span class="st">"Right"</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># And increment the time counter</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">&lt;-</span> t <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Moved "</span>,direction))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"New state (t = "</span>,t,<span class="st">"): x = "</span>,x))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># # Unique id for each person</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># pid &lt;- seq(1, num_people)</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># pid_tib &lt;- tibble(pid)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># pos_df &lt;- tibble()</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># end_df &lt;- tibble()</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">#   all_steps &lt;- t(replicate(num_people, sample(support, num_steps, replace = TRUE, prob = c(0.5, 0.5))))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rlab 4.0 attached.
+
+
+
+Attaching package: 'Rlab'
+
+
+The following objects are masked from 'package:stats':
+
+    dexp, dgamma, dweibull, pexp, pgamma, pweibull, qexp, qgamma,
+    qweibull, rexp, rgamma, rweibull
+
+
+The following object is masked from 'package:datasets':
+
+    precip
+
+</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Starting state (t = 0): x = 0
+=====[ Step 1 ]=====
+Coin flip outcome: 1
+Moved Right
+New state (t = 1): x = 1
+=====[ Step 2 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 2): x = 0
+=====[ Step 3 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 3): x = -1
+=====[ Step 4 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 4): x = -2
+=====[ Step 5 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 5): x = -3
+=====[ Step 6 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 6): x = -4
+=====[ Step 7 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 7): x = -5
+=====[ Step 8 ]=====
+Coin flip outcome: 0
+Moved Left
+New state (t = 8): x = -6
+=====[ Step 9 ]=====
+Coin flip outcome: 1
+Moved Right
+New state (t = 9): x = -5
+=====[ Step 10 ]=====
+Coin flip outcome: 1
+Moved Right
+New state (t = 10): x = -4</code></pre>
+</div>
+</div>
+<p>Technically, this code is sufficient to carry out our whole simulation, if we didn’t care about memory/time considerations. For example, we could use it to write a <code>slow_simulation</code> function, that takes in <code>num_steps</code> as its argument, simulates this many steps of the process, and returns the resulting state. To avoid the function printing out all of the above information 100 times, which will make things run even more slowly, I will also add a <code>verbose</code> argument that is set to <code>FALSE</code> by default. This is good practice in some cases, software-engineering-wise, since if something goes wrong during a call to the function we can re-run the function with <code>verbose</code> set to be <code>TRUE</code> and see the same type of info we printed out above.</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>slow_simulation <span class="ot">&lt;-</span> <span class="cf">function</span>(num_steps, <span class="at">verbose =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (verbose) {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Starting state (t = "</span>,t,<span class="st">"): x = "</span>,x))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_steps) {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (verbose) {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"=====[ Step "</span>,i,<span class="st">" ]====="</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Flip coin</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        flip_outcome <span class="ot">&lt;-</span> <span class="fu">rbern</span>(<span class="dv">1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (verbose) {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Coin flip outcome: "</span>,flip_outcome))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Choose direction based on result</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        direction <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (flip_outcome <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Outcome = Tails</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            direction <span class="ot">&lt;-</span> <span class="st">"Left"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            x <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Outcome = Heads</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            direction <span class="ot">&lt;-</span> <span class="st">"Right"</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># And increment the time counter</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        t <span class="ot">&lt;-</span> t <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (verbose) {</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Moved "</span>,direction))</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"New state: x = "</span>,x))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is usually good practice, once you’ve written a function like this, to test that it works for the simplest “corner cases” or “base cases”: in this case, for example, we should quickly verify that it always produces the expected output <span class="math inline">\(x = 0\)</span> when we ask it for the result of the process after <strong>zero steps</strong>:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">slow_simulation</span>(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>0</li><li>-2</li><li>0</li><li>0</li><li>0</li><li>-2</li><li>2</li><li>0</li><li>0</li><li>0</li></ol>
+</div>
+</div>
+<p>And alas, we have already found a <strong>bug</strong> in our implementation! It turns out that, unlike in Python or most other programming languages, using just the colon operator (<code>:</code>) can lead to some terrifying bugs,since if the number <strong>after</strong> the <code>:</code> is <strong>less than</strong> the number <strong>before</strong> the <code>:</code>, R will just start iterating <strong>backwards</strong> from the first number down to the second number:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">:-</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>5</li><li>4</li><li>3</li><li>2</li><li>1</li><li>0</li><li>-1</li><li>-2</li><li>-3</li></ol>
+</div>
+</div>
+<p>This may seem inocuous, until you try to write a function like this which loops a specific number of times, and you try to support the case of running <strong>zero</strong> times. For example, if you use <code>1:n</code>, and you accept <code>n</code> as an argument to your function, you’ll get a case like the following:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>0</li></ol>
+</div>
+</div>
+<p>The takeaway is: if we want to be <strong>fully careful</strong>, and we want to make sure our function also produces the correct answer for <strong>zero</strong> steps, then we need to use R’s <code>seq_len()</code> function! <code>seq_len(N)</code> can be used in a loop to ensure that R loops over a <strong>sequence</strong> from 1 to <code>N</code>, and always counts <strong>up</strong>, so we avoid this case:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>slow_simulation <span class="ot">&lt;-</span> <span class="cf">function</span>(num_steps, <span class="at">verbose =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (verbose) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Starting state (t = "</span>,t,<span class="st">"): x = "</span>,x))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(num_steps)) {</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (verbose) {</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"=====[ Step "</span>,i,<span class="st">" ]====="</span>))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Flip coin</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        flip_outcome <span class="ot">&lt;-</span> <span class="fu">rbern</span>(<span class="dv">1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (verbose) {</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Coin flip outcome: "</span>,flip_outcome))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Choose direction based on result</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        direction <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (flip_outcome <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Outcome = Tails</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            direction <span class="ot">&lt;-</span> <span class="st">"Left"</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>            x <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Outcome = Heads</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            direction <span class="ot">&lt;-</span> <span class="st">"Right"</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># And increment the time counter</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        t <span class="ot">&lt;-</span> t <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (verbose) {</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"Moved "</span>,direction))</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"New state: x = "</span>,x))</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Re-running our tests, to make sure it works as expected now even in the <code>N</code> = 0 case, we get:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">slow_simulation</span>(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li></ol>
+</div>
+</div>
+<p>There may still be issues, but now let’s use this function to find the state of the system after <code>N</code> = 100 steps (we’ll run it 3 times here, just to show how it can produces different outcomes each time it is re-run)</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+-20
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+2
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+-2
+</div>
+</div>
+<p>And we see that, repeating the process 4 times, the random-walker ended up at <span class="math inline">\(x = -20\)</span>, <span class="math inline">\(x = 2\)</span>, and <span class="math inline">\(x = -2\)</span> after 100 steps. From this (or from intuition from the diagram, or from thinking about the process in general), we could infer another fact: that the random-walker will end up at an <strong>even-numbered coordinate</strong> if they take an <strong>even number of steps</strong> (including 0 steps). By similar reasoning, if we run the process for an <strong>odd</strong> number of steps, the random-walker will end up on an <strong>odd-numbered coordinate</strong> (here we run for a few even and odd values, so you can start to see this general pattern):</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+3
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+4
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+5
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+1
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(<span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+-1
+</div>
+</div>
+<p>Here we have to pause, because we have to take into account the fact that we really want to simulate this process for a <strong>large number of people</strong>, and a <strong>large number of steps</strong>, so that this loop-based approach is going to become super slow and unwieldy as we increase the number of people/steps.</p>
+<p>So, let’s think about how we could speed it up. Honestly, this can often be more of an art than a science, but it is genuinely so important, as it can mean the difference between your code finishing in a few seconds and finishing in a few hours.</p>
+<p>For this problem, there are a number of ways you could arrive at a faster, more efficient approach, but for the sake of brevity I will cut to the chase and just mention that a <strong>key property</strong> we can use here is the fact that the <strong>outcome after <code>N</code> steps</strong>, regardless of how big <code>N</code> is, is really just a <strong>sum of independently-generated 0/1 variables</strong>!</p>
+<p>We could derive this insight, for example, by recalling the above discussion about the two different ways to store the state of the system (storing just the value of <span class="math inline">\(x\)</span> vs.&nbsp;storing the entire history), and thinking about the <strong>relationship between these two representations</strong>:</p>
+<ul>
+<li>If we know the entire history of a random-walker, we could use that information to <strong>figure out their position</strong>, by just starting from <span class="math inline">\(x = 0\)</span> and following each of the steps recorded in their history vector.</li>
+<li>The converse isn’t true, though: if we know that the random-walker is at <span class="math inline">\(x = 0\)</span>, we cannot infer (at least, cannot infer with certainty) the <strong>history</strong> of states that led them to end up at that coordinate. As we already saw just in considering two time steps, for example, they could have arrived at <span class="math inline">\(x = 0\)</span> via the histories <span class="math inline">\(()\)</span>, <span class="math inline">\((L,R)\)</span>, or <span class="math inline">\((R,L)\)</span>.</li>
+</ul>
+<p>This insight becomes especially helpful if we think about how we could <strong>encode</strong> what we’re currently writing as <span class="math inline">\(R\)</span> or <span class="math inline">\(L\)</span> in a more helpful way: leaping once again over lots of thinking about it, if we chose to instead encode a move <strong>left</strong> as the number <span class="math inline">\(-1\)</span>, and a move <strong>right</strong> as the number <span class="math inline">\(1\)</span>, suddenly we may be able to see the relationship between the full-history state space and the “collapsed” state space where we just keep track of <span class="math inline">\(x\)</span>. We can write out some histories using this <span class="math inline">\(-1\)</span> or <span class="math inline">\(1\)</span> representation, then look at the <span class="math inline">\(x\)</span> value these histories produce, and try to see the pattern:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>History vector<br>(original)</th>
+<th>History vector<br>(numeric representation)</th>
+<th>Resulting values of <span class="math inline">\(x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(()\)</span></td>
+<td><span class="math inline">\(()\)</span></td>
+<td><span class="math inline">\(x = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((L,L,R)\)</span></td>
+<td><span class="math inline">\((-1, -1, 1)\)</span></td>
+<td><span class="math inline">\(x = -1\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((L,R)\)</span></td>
+<td><span class="math inline">\((-1,1)\)</span></td>
+<td><span class="math inline">\(x = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((R,R,R,R)\)</span></td>
+<td><span class="math inline">\((1,1,1,1)\)</span></td>
+<td><span class="math inline">\(x = 4\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((R,L,R,L,R,L)\)</span></td>
+<td><span class="math inline">\((1,-1,1,-1,1,-1)\)</span></td>
+<td><span class="math inline">\(x = 0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Do you see the pattern? Jumping to the punchline: by using the numeric representation of the history vector, we can immediately derive the <strong>final position</strong> of the random-walker by <strong>summing up</strong> the values of their history vector in this representation!</p>
+<p>If it’s still unclear why this is helpful, that’s ok: it may be an appreciation that only comes from spending hours debugging hundreds of tiny little errors in C code that your professor/boss has asked you to optimize down to the individual-bits-of-RAM level 😛 But it will hopefully become a little more clear regardless once we compare the runtimes of our two approaches!</p>
+<p>Let’s use this sum-to-get-final-state insight to rewrite our code <strong>without any loops</strong>. The main thing left to figure out is: <strong>how to generate a sequence of random values drawn uniformly from <span class="math inline">\(\{-1, 1\}\)</span>?</strong> We could approach this using the <strong>discrete uniform distribution</strong>, or we could approach this by transforming the <strong>Bernoulli distribution</strong> (which produces values in <span class="math inline">\(\{0,1\}\)</span>) in a smart way. But, optimizing for laziness, we can do even less work: there is already a <strong>name for this distribution</strong> (of a random variable <span class="math inline">\(X\)</span> with equally-likely outcomes drawn from the support set <span class="math inline">\(\mathcal{R}_X = \{-1,1\}\)</span>): it’s called the <strong>Rademacher Distribution</strong>.</p>
+<p>As with the Bernoulli distribution, base-R does not have a built-in function for generating random Rademacher-distributed variables, so instead we can use an implementation provided by the <code>extraDistr</code> library, a function named <code>rsign()</code> (since you can think about this distribution as determining a <strong>random sign</strong>: positive or negative). Let’s use <code>rsign()</code> to rewrite our function so it just</p>
+<ol type="1">
+<li>Generates <code>num_steps</code> random numbers, each one representing a piece of the history vector, and then</li>
+<li><strong>Sums them</strong> to get our resulting <span class="math inline">\(x\)</span> value</li>
+</ol>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (Uncomment and run the following line if you</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># don't have the extraDistr library installed)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("extraDistr")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>faster_simulation <span class="ot">&lt;-</span> <span class="cf">function</span>(num_steps, <span class="at">verbose =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a history vector with length `num_steps`,</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in the representation where every step is a coin</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># flip, but we record -1 for tails and 1 for heads</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    history_vec <span class="ot">&lt;-</span> <span class="fu">rsign</span>(num_steps)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    final_x <span class="ot">&lt;-</span> <span class="fu">sum</span>(history_vec)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(final_x)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now let’s check that it works for the corner case we identified above:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>,<span class="fu">faster_simulation</span>(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li><li>0</li></ol>
+</div>
+</div>
+<p>And check that the values it generates still seem right, for non-corner-case values:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">faster_simulation</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+2
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">faster_simulation</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+-2
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">faster_simulation</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+14
+</div>
+</div>
+</section>
+<section id="moving-from-individual-to-aggregated-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="moving-from-individual-to-aggregated-simulation">Moving From Individual to Aggregated Simulation</h2>
+<p>Now that we have this new version of our function, we can maybe already see how much faster it runs than our first attempt (it will be even more clear once we use it to simulate more people/steps). There are a few ways to <strong>measure the time</strong> that it takes for R functions to run, but to me the easiest way (and you want it to be easy when you’re spending hours and hours just trying to tweak the runtime of one function) is to use the <code>tictoc</code> library (not part of base-R): once you load this library using <code>library(tictoc)</code>, you literally just put <code>tic()</code> somewhere in your code, then <code>toc()</code> somewhere afterwards, and it measures the time that elapsed in between these two function calls:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (Uncomment to install, if needed)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tictoc")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+2
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.001 sec elapsed</code></pre>
+</div>
+</div>
+<p>So, let’s use this library to measure how long it takes the two approaches to simulate 1 million steps of the process (for one person):</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>steps_to_simulate <span class="ot">&lt;-</span> <span class="dv">1000000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first attempt</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">slow_simulation</span>(steps_to_simulate)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>slow_sim_times <span class="ot">&lt;-</span> <span class="fu">toc</span>()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>slow_sim_elapsed <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(slow_sim_times<span class="sc">$</span>toc <span class="sc">-</span> slow_sim_times<span class="sc">$</span>tic)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>slow_sim_elapsed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+374
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.539 sec elapsed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+1.53899999999976
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">faster_simulation</span>(steps_to_simulate)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>fast_sim_times <span class="ot">&lt;-</span> <span class="fu">toc</span>()</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>fast_sim_elapsed <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(fast_sim_times<span class="sc">$</span>toc <span class="sc">-</span> fast_sim_times<span class="sc">$</span>tic)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>fast_sim_elapsed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+1220
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.012 sec elapsed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+0.012000000000171
+</div>
+</div>
+<p>By dividing the elapsed times for the two approaches (which we’ll be able to interpret since these are <strong>ratio variables</strong> 😉):</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>elapsed_ratio <span class="ot">&lt;-</span> slow_sim_elapsed <span class="sc">/</span> fast_sim_elapsed</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>elapsed_ratio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+128.249999998153
+</div>
+</div>
+<p>We can see that, already (just for one person), the improved version using <code>sum()</code> runs 128 times faster than our original approach using a for loop 😳</p>
+<p>We could optimize the move to <strong>multiple people</strong> even more, but even if we just keep the two implementations as they currently are, and use <code>replicate()</code> to repeat them 10 times (i.e., generate history vectors and results for 10 people instead of 1), the efficiency difference becomes even more pronounced:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>num_people <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our first attempt, now for 10 people</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(num_people, <span class="fu">slow_simulation</span>(steps_to_simulate))</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>slow_sim_times <span class="ot">&lt;-</span> <span class="fu">toc</span>()</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>slow_sim_elapsed <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(slow_sim_times<span class="sc">$</span>toc <span class="sc">-</span> slow_sim_times<span class="sc">$</span>tic)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>slow_sim_elapsed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>-984</li><li>712</li><li>1304</li><li>98</li><li>-972</li><li>-1364</li><li>744</li><li>-1448</li><li>-578</li><li>-302</li></ol>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>14.903 sec elapsed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+14.9030000000002
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(num_people, <span class="fu">faster_simulation</span>(steps_to_simulate))</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>fast_sim_times <span class="ot">&lt;-</span> <span class="fu">toc</span>()</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>fast_sim_elapsed <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(fast_sim_times<span class="sc">$</span>toc <span class="sc">-</span> fast_sim_times<span class="sc">$</span>tic)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>fast_sim_elapsed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>814</li><li>560</li><li>-800</li><li>174</li><li>706</li><li>1094</li><li>330</li><li>708</li><li>-32</li><li>-544</li></ol>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.072 sec elapsed</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+0.0720000000001164
+</div>
+</div>
+<p>We now, in both cases, have simulated data for 10 people performing this random walk procedure, both equally valid in terms of our use to simulate [one of] the data-generating process[es] underlying the Normal Distribution. But the original approach takes about 15 seconds to generate this simulated data, while the second approach takes less than 1/10th of 1 second to generate the same amount of data 🤯</p>
+<p>So, if this efficiency gap has convinced you<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, we can now drop the first approach and just use the faster version to start digging into the Normal Distribution!</p>
+</section>
+<section id="simulating-n-normally-distributed-random-variables" class="level2">
+<h2 class="anchored" data-anchor-id="simulating-n-normally-distributed-random-variables">Simulating <code>N</code> Normally-Distributed Random Variables</h2>
+<p>Now that we have a function that will efficiently generate random variables for us, let’s use it to generate a <code>tibble</code> in <strong>tidy format</strong>:</p>
+<ul>
+<li>Each row will correspond to <strong>one</strong> person,</li>
+<li>Each of these people will be given a <strong>unique ID</strong>, and</li>
+<li>Each column will represent one <strong>property</strong> of this person.</li>
+</ul>
+<p>In this case, the property will be called <code>x_T</code>, and it will represent the person’s position <code>x</code> after <code>T</code> steps, where <code>T</code> is some value we will choose (as a <strong>hyperparameter</strong> of our simulation).</p>
+<p>So that we have a large enough dataset (the <code>N</code> value), and so that each person will be simulated for enough steps to make the resulting outcomes very close to Normally-distributed (the <code>T</code> value), let’s set</p>
+<ul>
+<li><code>N</code> (number of people) = 1 million</li>
+<li><code>T</code> (number of time steps each person should run the process for) = 1000</li>
+</ul>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>T <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>x_T_vals <span class="ot">&lt;-</span> <span class="fu">replicate</span>(N, <span class="fu">faster_simulation</span>(T))</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.948 sec elapsed</code></pre>
+</div>
+</div>
+<p>(Using <code>tic()</code> and <code>toc()</code> one last time, we see that it was able to generate the entire dataset, at least on my computer, in under a second!)</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_T_vals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'numeric'
+</div>
+</div>
+<p>And now, rather than the (numeric) vector format that the <code>replicate()</code> function has produced here, for the sake of <strong>analyzing</strong> this dataset let’s store the data in a structured format as a <code>tibble</code>:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x_T=</span>x_T_vals)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>x_tibble <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 x 1</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">x_T</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-42</td>
+</tr>
+<tr class="even">
+<td>-70</td>
+</tr>
+<tr class="odd">
+<td>-18</td>
+</tr>
+<tr class="even">
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>26</td>
+</tr>
+<tr class="even">
+<td>32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now, since in Lab 4 we ask you to simulate a “base” distribution, then simulate distributions <strong>derived</strong> by applying (mathematical) <strong>transformations</strong> (sum, product, max, min, etc.) to the base distribution, let’s start by making a plot to see what our base distribution—in the form of our <code>x_tibble</code> dataset—looks like:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(x_tibble, <span class="fu">aes</span>(<span class="at">x=</span>x_T)) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="DSAN5100_Lab_4_Prep_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>And… it should look familiar! It’s our old friend the “bell curve”! We can see from the plot that the mean of this simulated data is probably something very close to 0, but the standard deviation is harder to figure out just from looking at the picture, so let’s compute these directly from the data:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(x_tibble<span class="sc">$</span>x_T)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>mu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0.152660000000019
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(x_tibble<span class="sc">$</span>x_T)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+31.696258161685
+</div>
+</div>
+<p>So the overall mean <span class="math inline">\(\overline{x}\)</span> of the final positions of all 1 million people is about 0.153, while the overall standard deviation <span class="math inline">\(s_x\)</span> is about 31.696. The mean has an intuitive interpretation, but we need to use the <strong>68-95-99.7 Rule</strong> to interpret the standard deviation as follows:</p>
+<ul>
+<li>Approximately <strong>68%</strong> of the data lies within the range <span class="math inline">\([\mu - 1\cdot \sigma, \mu + 1 \cdot \sigma]\)</span>, which in our case is</li>
+</ul>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(mu <span class="sc">-</span> sigma, mu <span class="sc">+</span> sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>-31.5435981616849</li><li>31.848918161685</li></ol>
+</div>
+</div>
+<ul>
+<li>Approximately <strong>95%</strong> of the data lies within the range <span class="math inline">\([\mu - 2\cdot \sigma, \; \mu + 2 \cdot \sigma]\)</span>, which in our case is</li>
+</ul>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(mu <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> sigma, mu <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>-63.2398563233699</li><li>63.5451763233699</li></ol>
+</div>
+</div>
+<ul>
+<li>Approximately <strong>99.7%</strong> of the data lies within 3 standard deviations of the mean, that is, within the range <span class="math inline">\([\mu - 3 \cdot \sigma, \; \mu + 3 \cdot \sigma]\)</span>, which in our case is</li>
+</ul>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(mu <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> sigma, mu <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>-94.9361144850549</li><li>95.2414344850549</li></ol>
+</div>
+</div>
+<p>Roughly, then, we can interpret this last fact as saying that <strong>nearly all</strong> (99.7%) of the random walkers will still remain within 100 units of their starting position, after 1000 steps.</p>
+</section>
+<section id="applying-transformations-to-x_t" class="level2">
+<h2 class="anchored" data-anchor-id="applying-transformations-to-x_t">Applying Transformations to <code>x_T</code></h2>
+<p>It may have seemed like overkill to take the length-1000000 vector we had and convert it into a 1000000-row <code>tibble</code>, since we only had one column. But now let’s see why we did this: let’s take this column of the raw (simulated) values of <span class="math inline">\(x_T\)</span> and use it to derive simulated values of <strong>functions of <span class="math inline">\(x_T\)</span></strong>.</p>
+<p>For example, instead of analyzing the <strong>positions</strong>, perhaps in the context of our problem we only care about <strong>how far away</strong> the people end up from their starting point. In that case, what we really care about is not <span class="math inline">\(x\)</span> itself but <span class="math inline">\(|x - 0| = |x|\)</span>, the <strong>absolute distance</strong> (on the numberline) of the person’s final position from their starting position.</p>
+<p>Now that you’ve seen how changing from a for-loop-based approach to a “vectorized” approach can vastly improve efficiency, I also want you to move your focus away from how these absolute distances could be computed using a <em>loop</em> and instead focus on how they could be computed using a <strong>mathematical function</strong> that could be applied to <strong>an entire vector of data</strong> (in this case, the vector that we get by pulling the <code>x_T</code> column out of the <code>tibble</code>). In this case hopefully this mathematical operation is clear: we just want to apply the <strong>absolute value function</strong> to the <code>x_T</code> column vector. So, here let’s use the <code>mutate()</code> function from <code>dplyr</code> (part of the <code>tidyverse</code>) to create a <strong>new column</strong> in our <code>tibble</code> called <code>abs_dist</code>, computed on the basis of <code>x_T</code> and representing this absolute distance:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>x_tibble <span class="ot">&lt;-</span> x_tibble <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">abs_dist =</span> <span class="fu">abs</span>(x_T))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>x_tibble <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'
+
+
+The following object is masked from 'package:Rlab':
+
+    count
+
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 6 x 2</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">x_T</th>
+<th data-quarto-table-cell-role="th" scope="col">abs_dist</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-42</td>
+<td>42</td>
+</tr>
+<tr class="even">
+<td>-70</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>-18</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>26</td>
+<td>26</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>And we see that, at least in the first six columns, our “pipeline” has successfully taken the absolute values of the <code>x_T</code> column: <code>-42</code> has been transformed to <code>42</code>, <code>-70</code> to <code>70</code>, and so on.</p>
+<p>Now, just as we did above, we can plot the distribution of <strong>this</strong> data, which is not the “raw” (simulated) data but a <strong>function</strong> of the raw data, which forms its own distribution that may be <strong>different</strong> from the distribution of the original data:</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(x_tibble, <span class="fu">aes</span>(<span class="at">x =</span> abs_dist)) <span class="sc">+</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="DSAN5100_Lab_4_Prep_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>If it <strong>still</strong> hasn’t convinced you, try doing what we did earlier with the number of steps, increasing it to 1 million, and do that with the number of people as well… You will be sitting at your computer for a while.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
