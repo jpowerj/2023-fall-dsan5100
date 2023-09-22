@@ -761,7 +761,7 @@ The following objects are masked from 'package:Rlab':
 2
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.002 sec elapsed</code></pre>
+<pre><code>0.001 sec elapsed</code></pre>
 </div>
 </div>
 <p>So, let’s use this library to measure how long it takes the two approaches to simulate 1 million steps of the process (for one person):</p>
@@ -779,10 +779,10 @@ The following objects are masked from 'package:Rlab':
 2150
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.605 sec elapsed</code></pre>
+<pre><code>1.603 sec elapsed</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-1.605
+1.603
 </div>
 </div>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
@@ -806,7 +806,7 @@ The following objects are masked from 'package:Rlab':
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>elapsed_ratio <span class="ot">&lt;-</span> slow_sim_elapsed <span class="sc">/</span> fast_sim_elapsed</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>elapsed_ratio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-200.625
+200.375
 </div>
 </div>
 <p>We can see that, already (just for one person), the improved version using <code>sum()</code> runs 128 times faster than our original approach using a for loop 😳</p>
@@ -830,10 +830,10 @@ The following objects are masked from 'package:Rlab':
 <ol class="list-inline"><li>-220</li><li>482</li><li>-1626</li><li>-308</li><li>390</li><li>952</li><li>-1410</li><li>-1478</li><li>1180</li><li>-548</li></ol>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>15.153 sec elapsed</code></pre>
+<pre><code>15.27 sec elapsed</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-15.153
+15.27
 </div>
 </div>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="31">
@@ -851,10 +851,10 @@ The following objects are masked from 'package:Rlab':
 <ol class="list-inline"><li>-378</li><li>912</li><li>1174</li><li>-688</li><li>-1264</li><li>360</li><li>-2514</li><li>-298</li><li>-342</li><li>1208</li></ol>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.073 sec elapsed</code></pre>
+<pre><code>0.077 sec elapsed</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-0.0730000000000004
+0.0769999999999982
 </div>
 </div>
 <p>We now, in both cases, have simulated data for 10 people performing this random walk procedure, both equally valid in terms of our use to simulate [one of] the data-generating process[es] underlying the Normal Distribution. But the original approach takes about 15 seconds to generate this simulated data, while the second approach takes less than 1/10th of 1 second to generate the same amount of data… 🤯</p>
@@ -862,7 +862,7 @@ The following objects are masked from 'package:Rlab':
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>slow_sim_elapsed <span class="sc">/</span> fast_sim_elapsed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-207.575342465752
+198.311688311693
 </div>
 </div>
 <p>i.e., about a 20,000% speed boost…</p>
@@ -889,7 +889,7 @@ The following objects are masked from 'package:Rlab':
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>x_T_vals <span class="ot">&lt;-</span> <span class="fu">replicate</span>(N, <span class="fu">faster_simulation</span>(T))</span>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.875 sec elapsed</code></pre>
+<pre><code>0.861 sec elapsed</code></pre>
 </div>
 </div>
 <p>(Using <code>tic()</code> and <code>toc()</code> one last time, we see that it was able to generate the entire dataset, at least on my computer, in under a second!)</p>
@@ -1284,6 +1284,7 @@ Warning message:
 <p><img src="DSAN5100_Lab_4_Prep_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>By the way, just like in the absolute value case, this distribution has a name, and is far more common than the folded distribution: the <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution" target="_blank"><strong>Chi-Squared (<span class="math inline">\(\chi^2\)</span>) Distribution</strong></a>. We’ll learn more about this distribution soon.</p>
 </section>
 <section id="row-wise-operations-in-tidyverse" class="level2">
 <h2 class="anchored" data-anchor-id="row-wise-operations-in-tidyverse">Row-Wise Operations in <code>tidyverse</code></h2>
