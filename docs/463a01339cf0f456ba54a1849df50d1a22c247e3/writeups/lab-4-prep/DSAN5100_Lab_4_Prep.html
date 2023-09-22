@@ -308,19 +308,22 @@ Colab Link
 </div>
 <div class="callout-body-container callout-body">
 <center>
-<a href="https://colab.research.google.com/github/jpowerj/dsan5100-03/blob/main/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.ipynb?authuser=1" target="_blank">Click here to <strong>open in Colab</strong></a>
+<p><a href="https://colab.research.google.com/github/jpowerj/dsan5100-03/blob/main/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.ipynb?authuser=1" target="_blank">Click here to <strong>open in Colab</strong></a></p>
 </center>
+<p>If you are trying to <strong>edit</strong> this notebook in <strong>Colab</strong>, you’ll also want to make sure to run the following code cell, which will install some global functions that we use in the course: mainly the <code>dsan_theme()</code> function, which just ensures that the plots you create have a standardized theme, (making it easier for us and the TAs to quickly understand what’s going on in your plots)</p>
+<p>If the <code>dsan_theme()</code> function still gives you trouble after running this, no worries. You can just comment out <code>dsan_theme()</code> anywhere you see it, and use the default <code>ggplot2</code> theme instead.</p>
 </div>
 </div>
-<p>If you are running this outside of the full DSAN 5100 site structure (for example, on <strong>Colab</strong>), you’ll also want to uncomment and run the following lines of code, which will install some global functions that we use in the course: mainly the <code>dsan_theme()</code> function, which just ensures that the plots you create have a standardized theme, which makes it easier for us (and for the TAs) to quickly understand what’s going on in your plots:</p>
-<p>[If the <code>dsan_theme()</code> function still gives you trouble after running this, no worries, you can just comment out <code>dsan_theme()</code> anywhere you see it, and use the default <code>ggplot2</code> theme.]</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source_url</span>(<span class="st">'https://raw.githubusercontent.com/jpowerj/dsan5100-03/main/_globals.r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: usethis
-
-i SHA-1 hash of file is "2cf639264fd13d74c7ec47f9712d255f69e14ff7"</code></pre>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">Sys.getenv</span>(<span class="st">'COLAB_RELEASE_TAG'</span>) <span class="sc">!=</span> <span class="st">''</span>) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="st">"Colab detected: sourcing DSAN R globals"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(devtools)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">source_url</span>(<span class="st">'https://raw.githubusercontent.com/jpowerj/dsan5100-03/main/_globals.r'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeLines</span>(<span class="st">"No Colab environment detected"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>No Colab environment detected</code></pre>
 </div>
 </div>
 <p>Here, to prepare you for Lab 4, I’m going to walk you through generating data from a <strong>distribution</strong> via <strong>simulation</strong>, and then analyzing <strong>properties</strong> of this data (and therefore, if the data is sufficiently representative, properties of the distribution) by computing new pieces of information on the basis of the original data. Hopefully this helps drive the point home that <strong>probability distributions</strong> like the <strong>Normal distribution</strong> that we’ll look at in this case are not arbitrarily, pulled out of thin air or out of the brain of some imaginative mathematician. Rather, they</p>
