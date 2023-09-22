@@ -81,7 +81,7 @@
     "href": "writeups/lab-4-prep/DSAN5100_Lab_4_Prep.html",
     "title": "Lab 4 Prep",
     "section": "",
-    "text": "Here, to prepare you for Lab 4, I’m going to walk you through generating data from a distribution via simulation, and then analyzing properties of this data (and therefore, if the data is sufficiently representative, properties of the distribution) by computing new pieces of information on the basis of the original data. Hopefully this helps drive the point home that probability distributions like the Normal distribution that we’ll look at in this case are not arbitrarily, pulled out of thin air or out of the brain of some imaginative mathematician. Rather, they\nIn the latter case, I say “principled” in the sense that: we can “encode” information we have at some point in time as a particularly-suitable distribution and then, when we learn new information, we can update this distribution to reflect the new information, using Bayes’ rule 🧐‼️🧐."
+    "text": "::: {.callout-note title=“Colab Link”}"
   },
   {
     "objectID": "writeups/lab-4-prep/DSAN5100_Lab_4_Prep.html#the-drunkards-walkdrunkard",
