@@ -38,12 +38,12 @@ Today's Planned Schedule (Section 03)
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:40pm | [Recap &rarr;](#recap) | <a href="./recording-w03-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 12:40pm | 1:20pm | [Continuous Probability (Biting the Bullet) &rarr;](#continuous-distributions-biting-the-bullet) | <a href="./recording-w03-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 1:20pm | 2:00pm | [Common Continuous Distributions &rarr;](#common-continuous-distributions) | <a href="./recording-w03-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| **Lecture** | 12:30pm | 12:40pm | [Recap &rarr;](#recap) | <a href="../recordings/recording-w05-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:20pm | [Continuous Probability (Biting the Bullet) &rarr;](#continuous-distributions-biting-the-bullet) | <a href="../recordings/recording-w05-2.html" target="_blank" class=""><i class="bi bi-film"></i></a> |
+| | 1:20pm | 2:00pm | [Common Continuous Distributions &rarr;](#common-continuous-distributions) | <a href="../recordings/recording-w05-3.html" target="_blank" class=""><i class="bi bi-film"></i></a> |
 | **Break!** | 2:00pm | 2:10pm | | |
-| **Lab** | 2:10pm | 2:50pm | [Lab 4 Demonstration <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-demo.html){target="_blank"} | <a href="./recording-w03-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 2:50pm | 3:00pm | [Lab 4 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-1/lab-1-assignment.html){target="_blank"} | <a href="./recording-w03-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| **Lab** | 2:10pm | 2:50pm | [Lab 4 Demonstration](#lab-4-demo){target="_blank"} | <a href="../recordings/recording-w05-4.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 2:50pm | 3:00pm | [Lab 4 Assignment Overview <i class="bi bi-box-arrow-up-right" style="font-size: 1.2rem;"></i>](#lab-4-assignment){target="_blank"} | <a href="../recordings/recording-w05-5.html" target="_blank" class=""><i class="bi bi-film"></i></a> |
 | | 2:40pm | 3:00pm | Student Presentation |  |
 
 : {tbl-colwidths="[12,12,12,59,5]"}
