@@ -1,0 +1,500 @@
+---
+title: "Homework 5"
+author: "Matt Moriarty"
+date: "11/22/2022"
+output:
+  html_document: default
+---
+
+```{r message = FALSE}
+# load libraries for this assignment
+library(tidyverse)
+library(ggplot2)
+```
+
+## Problem 1 (20 points, 5 for each)
+
+Problem 5.10 \#12 in Chihara/Hesterberg. 
+
+The data set FishMercury contains mercury levels (parts per million) for 30 fish caught in lakes in Minnesota.
+
+```{r message = FALSE}
+# load in the data
+mercury <- read_csv('FishMercury.csv')
+```
+
+(a) <span style="color:#0000cc;">Create a histogram or boxplot of the data. What do you observe?</span>
+
+```{r fig.width = 10}
+# make plots of mercury data
+par(mfrow = c(1, 2))
+hist(mercury$Mercury, xlab = 'Mercury', main = 'Histogram of Mercury')
+boxplot(mercury$Mercury, ylab = 'Mercury', main = 'Boxplot of Mercury')
+```
+
+**Comments**: It looks like all concentrations of mercury are very small, between values of $0.0$ and $0.5$, except for one or two outliers that are above a value of $1.5$. The outlier(s) are making it difficult to see the distribution of mercury levels for the majority of data.
+
+(b) <span style="color:#0000cc;">Find the Bootstrap sampling mean and record the bootstrap standard error and the $95\%$ bootstrap percentile interval.</span>
+
+```{r}
+# set seed and extract length
+set.seed(0)
+n <- length(mercury$Mercury)
+
+# perform boostrap sampling
+boot_mean_mercury <- replicate(10000, mean(sample(mercury$Mercury, size = n, replace = T)))
+
+# report mean and standard error
+print(paste('The bootstrap sampling mean is:', round(mean(boot_mean_mercury), 7)))
+print(paste('The bootstrap sampling standard error is:', round(sd(boot_mean_mercury), 7)))
+
+# compute quantiles and report
+quantiles <- quantile(boot_mean_mercury, c(0.025, 0.975))
+print(paste('The 95% boostrap percentile interval is: [', round(quantiles[1], 7), ',', round(quantiles[2], 7), ']'))
+```
+
+(c) <span style="color:#0000cc;">Remove the outlier and find bootstrap sampling mean of the remaining data. Record the bootstrap standard error and the $95\%$ bootstrap percentile interval. Comment on your results.</span>
+
+```{r}
+# remove outlier
+mercury <- mercury[mercury$Mercury < 1.50,]
+
+# set seed and extract length
+set.seed(0)
+n <- length(mercury$Mercury)
+
+# perform boostrap sampling
+boot_mean_mercury <- replicate(10000, mean(sample(mercury$Mercury, size = n, replace = T)))
+
+# report mean and standard error
+print(paste('The bootstrap sampling mean is:', round(mean(boot_mean_mercury), 7)))
+print(paste('The bootstrap sampling standard error is:', round(sd(boot_mean_mercury), 7)))
+
+# compute quantiles and report
+quantiles <- quantile(boot_mean_mercury, c(0.025, 0.975))
+print(paste('The 95% boostrap percentile interval is: [', round(quantiles[1], 7), ',', round(quantiles[2], 7), ']'))
+```
+
+**Comments**: The results are now quite different. Most notably, the boostrap sampling mean is smaller, the standard error is _much_ smaller, and the width of the percentile interval is also much smaller.
+
+(d) <span style="color:#0000cc;">What effect did removing the outlier have on the bootstrap distribution, in particular, the standard error?</span>
+
+**Comments**: Removing the outlier had a large effect on the boostrap distribution. The standard error of the boostrap estimate of the mean mercury level decreased approximately $87$%, from $0.0578936$ in part (b) to $0.0078335$ in part (c). As a result, the 95% boostrap percentile interval is much narrower, with a width of only about $0.03$, as opposed to $0.20$ before removing the outlier.
+
+<br>
+
+## Problem 2 (20 points, extra bonus 5 points inside the question )
+
+Problem 3.9 \#12abc in Chihara/Hesterberg. 
+
+Two students went to a local supermarket and collected data on cereals; they classified cereals by their target consumer (children versus adults) and the placement of the cereal on the shelf (bottom, middle, and top). The data are given in _Cereals_.
+
+```{r message = FALSE}
+# load in the data
+cereals <- read_csv('Cereals.csv')
+```
+
+(a) (_2 points_) <span style="color:#0000cc;">Create a table (Two-way) to summarize the relationship between age of target consumer and shelf location.</span>
+
+```{r}
+# two-way table
+(t <- table(cereals$Age, cereals$Shelf))
+```
+
+(b) (_3 points_) <span style="color:#0000cc;">Conduct a chi-square test using R’s chisq.test() command. Write your null and alternative hypothesis. What is your conclusion based on the results of your test?</span>
+
+**Hypotheses**:
+
+* $H_0$: The age of a target consumer and the shelf location of a cereal are independent.
+* $H_A$: The age of a target consumer and the shelf location of a cereal are *not* independent; in other words, there is a relationship between the age of a target consumer and the shelf location of the cereal.
+* Significance Level: $\alpha = 0.05$
+
+```{r}
+# perform test using the two-way table created above
+chisq.test(t, correct = FALSE)
+```
+
+**Comments**: Upon running the Chi-squared test, we obtain a p-value of $6.083 * 10^{-7}$. This is a very small p-value, especially at a significance level of $\alpha = 0.05$. As a result, we reject the null hypothesis, $H_0$, and claim that there *is* some sort of relationship between the target consumer of a cereal and the shelf that it is placed on.
+
+(c) (_2 points_) <span style="color:#0000cc;">R returns a warning message. Compute the expected counts for each cell to see why.</span>
+
+```{r}
+# gather features of the table
+rows <- nrow(t)
+cols <- ncol(t)
+
+# gather values to use below in expected table construction
+rowsums <- rowSums(t)
+colsums <- colSums(t)
+totalsum <- sum(t)
+
+# construct the expected table using the table above
+expected <- matrix(rep(0, rows*cols), ncol = cols, byrow = TRUE)
+for (i in 1:rows) {
+  for (j in 1:cols) {
+    expected[i,j] <- rowsums[i] * colsums[j] / totalsum
+  }
+}
+
+# convert matrix to table and add row/column names
+expected <- as.table(expected)
+rownames(expected) <- rownames(t)
+colnames(expected) <- colnames(t)
+
+# print expected counts
+print(expected)
+```
+
+**Comments**: It looks like the warning is reported because the expected counts for certain cells in the table are very small (less than 5, for instance). For example, the expected count for cereal targeted toward adults and placed on the bottom shelf is only $3.558$. Due to these extremely low expected cell values, the function reports that the chi-squared approximation may be incorrect. More data would likely solve this problem, as we currently only have about $40$ observations.
+
+(d) (_3 points_) <span style="color:#0000cc;">Use a Yate's continuity correction and do the test again. What is your conclusion?</span>
+
+```{r}
+# perform test using Yate's continuity correction
+chisq.test(t, correct = TRUE)
+```
+
+**Comments**: The built-in Yate's continuity correction, using the `correct = TRUE` parameter, appears that it does not affect the result of the test. The chi-squared statistic is still $28.625$ and the p-value is still $6.083 * 10^{-7}$. The formula for this correction is given by:
+
+$$
+\chi^2_{Yates} = \sum_{i=1}^{n} \frac{(\vert O_i - E_i \vert - 0.5)^2}{E_i}
+$$
+
+I will compute this by hand and observe the result below.
+
+```{r}
+# compute chi-square statistic using Yate's continuity correction
+chi_sq <- sum( (abs(t - expected) - 0.5)^2 / expected )
+p_value <- pchisq(chi_sq, df = 2, lower.tail = FALSE)
+print(paste('Chi-Squared Statistic:', chi_sq, '; P-Value:', p_value))
+```
+
+**Comments**: Upon computing this continuity correction myself, it looks like the chi-squared statistic is now $24.458$ and the p-value is $4.887 * 10^{-6}$. These values are different, but prompt the same conclusion, as the p-value is still less than our threshold of $\alpha = 0.05$.
+
+(e) (_5 points_) (self-learn question) <span style="color:#0000cc;">Use a Fisher's Exact Test. What is your conclusion?. (We use a Fisher's Exact Test when the sample sizes are small and the expected cell counts are less than 5</span> : Example to refer:<https://statsandr.com/blog/fisher-s-exact-test-in-r-independence-test-for-a-small-sample/>).
+
+```{r}
+# perform the fisher's exact test
+fisher.test(t)
+```
+
+**Comments**: Observing the results above, we can see that we obtain a p-value of $6.464 * 10^{-8}$. This p-value is smaller than those obtained above, yielding the same conclusion: it appears that there is a relationship between the target consumer of a cereal and the shelf that the cereal is placed on.
+
+(f) (_5 points_) <span style="color:#0000cc;">Compare your results  of part (b),(d),(f). Explain/Compare in few sentences where/when/what situations should we use Yate's Continuity correction and Fisher's exact test.</span>
+
+**Answer**: The results of parts (b), (d), and (f) all agree in terms of the conclusion of the test. Still, their exact results differ a little bit. The Yate's continuity correction is used in part (d) in order to adjust for the low-frequency cells present in the two-way table constructed in part (a) and used throughout this problem. The Fisher's exact test is not necessarily a correction, but rather a way to test if proportions across groups of nominal variables are the same (under the null hypothesis that they are all the same). This test is also used when expected cell counts are very small. So, when working with a two-way table, such as the one describing the relationship between target consumer of a cereal and the shelf that cereal is on, we can use the Yate's continuity correction or the Fisher's exact test when we have expected cells with low frequency and the Fisher's exact test to test the similarity of proportions across the variables in that table. If we are not comparing proportions, we may opt to perform the correction using the Yate's continuity correction, rather than the Fisher's exact test.
+
+<br>
+
+## Problem 3 (15 points)
+
+<span style="color:#0000cc;">_Distribution A is a standard normal distribution and distribution B is a $N(1, 2^2)$ distribution. Generate 20 random numbers from distribution A and 30 random numbers form distribution B and record these in a suitable data frame._</span>
+
+```{r}
+# generate A and B
+set.seed(1)
+A <- rnorm(n = 20, mean = 0, sd = 1)
+B <- rnorm(n = 30, mean = 1, sd = 2)
+label <- rep(c('A', 'B'), c(20, 30))
+
+# store values in a data frame
+df <- data.frame(c(A,B), label)
+colnames(df) <- c('value', 'label')
+
+# give preview of data frame
+head(df[17:23,])
+```
+
+<span style="color:#0000cc;">Examine the  null hypothesis that the means of A and B are the same against the alternative that the mean of B is larger, using a permutation test. Report the p-value and state your conclusion.</span>
+
+```{r}
+# store the original mean difference
+diff_means <- mean(df$value[df$label == 'B']) - mean(df$value[df$label == 'A'])
+
+# store a copy of the original data frame for permutation inside loop
+df.permute <- df
+permuted_means <- vector()
+set.seed(2)
+for (i in 1:10000) {
+  # permute the original data frame
+  df.permute$label <- df.permute$label[sample(nrow(df.permute), nrow(df.permute), replace = F)]
+  mean_A <- mean(df.permute$value[df.permute$label == 'A'])
+  mean_B <- mean(df.permute$value[df.permute$label == 'B'])
+  # append permuted difference of means to vector
+  permuted_means <- append(permuted_means, mean_B - mean_A)
+}
+
+# compute p-value by comparing to original difference
+p_value <- mean(permuted_means > diff_means)
+print(paste('The p-value obtained is:', p_value))
+```
+
+**Comments**: Upon performing the permutation test, we obtain a p-value of $0.0112$. At a significance level of $\alpha = 0.05$, this value is statistically significant. As a result, we reject our null hypothesis, $H_0$, and claim that there appears to be a statistically significant difference between the means of distributions $A$ and $B$.
+
+<br>
+
+## Problem 4 (20 points)
+
+This problem is similar to what we have done in the lab using the spotify data. Please use the "Artists.csv" data set.
+
+Data Science Question: Does the average "liveness" is larger for Beyoncé than that of Taylor Swift?
+
+Liveness: This value describes the probability that the song was recorded with a live audience. According to the official documentation “a value above 0.8 provides strong likelihood that the track is live”.
+
+```{r message = FALSE}
+# load in the data
+artists <- read_csv('Artists.csv')
+```
+
+a. <span style="color:#0000cc;">Perform meaningful EDA (Exploratory Data Analysis) using some Data Visualizations (relevant to this data science question).</span>
+
+```{r}
+# extract liveness for Taylor Swift and Beyoncé
+taylor_live <- artists[artists$artist_name == 'Taylor Swift', ]$liveness
+beyonce_live <- artists[artists$artist_name == 'Beyoncé', ]$liveness
+
+# also extract the two artists together for easy comparison when plotting
+subset <- artists[artists$artist_name %in% c('Taylor Swift', 'Beyoncé'), ]
+
+par(mfrow = c(1, 2))
+
+# plot side by side boxplots of liveness for the two artists
+subset %>%
+  ggplot( aes(x = artist_name, y = liveness, fill = artist_name)) + 
+  geom_boxplot() + 
+  ggtitle('Liveness of Songs by Artist')
+
+# plot overlapping density plots of liveness for the two artists
+subset %>%
+  ggplot( aes(x = liveness, fill = artist_name)) + 
+  geom_density(alpha = 0.50) + 
+  ggtitle('Density Plot of Liveness by Artist')
+
+# numeric exploration
+n1 <- length(taylor_live) # 1199 observations
+n2 <- length(beyonce_live) # 670 observations
+```
+
+```{r eval = FALSE}
+# numeric summaries
+print('Summary of Liveness - Taylor Swift')
+print(paste('Total Number of Observations:', n1))
+print(summary(taylor_live))
+print('Summary of Liveness - Beyoncé')
+print(paste('Total Number of Observations:', n2))
+print(summary(beyonce_live))
+```
+
+Below is a tabular view of the statistical information above (evaluation halted above in order to provide neater view below).
+
+Artist            # Observations            Min.        1st Qu.       Median    Mean      3rd Qu.   Max.
+------------      ----------------------    -------     ---------     -------   -------   --------- -------
+Taylor Swift          1199                  0.02910     0.09925       0.11800   0.16276   0.17950   0.93100
+Beyoncé               670                   0.0162      0.1090        0.1880    0.2818    0.3505    0.9860
+
+Above, we can see that it appears that Beyoncé has a higher 'liveness' in her songs on average than Taylor Swift. This is indicated most clearly by the boxplots, where Beyoncé's boxplot appears to have higher quartiles, median, and maximum values for the 'liveness' feature than Taylor Swift. In the density plot, we can see that Beyoncé has a more uniform distribution of 'liveness' than Taylor Swift does. This is indicated by Beyoncé's density plot being somewhat level while Taylor Swift's has a massive peak at a liveness between approximately $0.00$ and $0.25$, with not much density elsewhere. Finally, looking at the numeric results, we can see that Beyoncé does, in fact, have a higher average 'liveness' than Taylor Swift, with a mean value of $0.2818$, compared to Taylor's $0.16276$. Taking all things into consideration, it looks as though Beyoncé likely has a higher 'liveness' in her songs on avearge than Taylor Swift. Let's investigate this relationship below.
+
+b. <span style="color:#0000cc;">Write the null and alternative hypothesis for this test.</span>
+
+**Hypotheses**:
+
+* $H_0$: The average song 'liveness' for Beyoncé is the same as that of Taylor Swift ($\mu_b = \mu_t$).
+* $H_A$: The average song 'liveness' for Beyoncé is the greater than that of Taylor Swift ($\mu_b > \mu_t$).
+* Significance Level: $\alpha = 0.05$
+
+c. <span style="color:#0000cc;">Perform a t-test and state your results and non-technical conclusion.</span>
+
+```{r}
+## Subscripts = {Taylor Swift: 1, Beyoncé: 2}
+
+# collect mean values
+mu_1 <- mean(taylor_live)
+mu_2 <- mean(beyonce_live)
+
+# two-sample t-test
+s2_1 <- sd(taylor_live)^2
+s2_2 <- sd(beyonce_live)^2
+t_statistic <- (mu_2 - mu_1 - 0) / sqrt(s2_1 / n1 + s2_2 / n2)
+
+# degrees of freedom
+df <- (s2_1 / n1 + s2_2 / n2)^2 / ( ((s2_1 / n1)^2 / (n1 - 1)) + ((s2_2 / n2)^2 / (n2 - 1)) )
+
+# gather the p-value using 'pt' (not 'pnorm')
+print("----- Using 'pt' Function -----")
+print(paste('t-statisitc:', round(t_statistic, 5), '; degrees of freedom:', round(df, 5), '; p-value:', pt(t_statistic, df = df, lower.tail = FALSE)))
+
+# confirm with the built-in t-test
+print("----- Using 't.test' Function -----")
+t.test(beyonce_live, taylor_live, alt = "greater")
+```
+
+**Comments**: Upon performing the t-test, we obtain a p-value less than $2.2 * 10^{-16}$. This is very small - small enough to be less than our threshold of $\alpha = 0.05$. As a result, we reject our null hypothesis, $H_0$, and claim that Beyoncé does have a higher 'liveness' in her songs on average than Taylor Swift.
+
+**Note**: I performed this test using the `pt` function and then again with the built-in `t.test` function. The results are identical, which is what I was hoping to see.
+
+d. <span style="color:#0000cc;">What can you say about the confidence interval? (Interpret)</span>
+
+**Answer**: The confidence interval provided by the `t.test` function is: $[0.1025548, \infty]$. From this, we can say that we are 95% confident that the average 'liveness' of Beyoncé's songs is *at least* $0.1025548$ more than that of Taylor Swift. In a more general sense, since the value $0.00$ is not in the interval, we can say that we are 95% confident that the average 'liveness' of Beyoncé's songs is greater than that of Taylor Swift's.
+
+e. <span style="color:#0000cc;">Perform a bootstrap test for ratio of means of "liveness", Find the 95% bootstrap percentile interval for the ratio of means and write your conclusion.</span>
+
+```{r}
+# bootstrap means for each artist
+set.seed(0)
+boot_mean_1 <- replicate(2000, mean(sample(taylor_live, size = n1, replace = T)))
+boot_mean_2 <- replicate(2000, mean(sample(beyonce_live, size = n2, replace = T)))
+
+# bootstrap ratio of means for each artist using bootstrapped means above
+boot_mean_ratio <- boot_mean_2 / boot_mean_1
+
+# 2.5% and 97.5% quantiles of boostrapped ratio (95% percentile interval)
+quantiles <- quantile(boot_mean_ratio, c(0.025, 0.975))
+print(paste("95% boostrap percentile interval for the ratio of means of 'liveness': [", round(quantiles[1], 5), ',', round(quantiles[2], 5), ']'))
+```
+
+With this result, we can say that we are 95% confident that the ratio of means of 'liveness' in songs, calculated as Beyoncé divided by Taylor Swift, is between $1.59932$ and $1.8666$. Furthermore, since $1.00$ is not in this interval, we can also say that we are 95% confident that the mean 'liveness' of Beyoncé's songs is greater than that of Taylor Swift.
+
+f. <span style="color:#0000cc;">What is the bootstrap estimate of the bias for the mean ratio?</span>
+
+```{r}
+# bias is the boostrapped mean ratio minus the true ratio provided by the data
+est <- mean(boot_mean_ratio) - mean(beyonce_live) / mean(taylor_live)
+print(paste("The bootstrap estimate of the bias for the mean ratio, Beyoncé 'liveness' / Taylor Swift 'liveness', is:", round(est, 7)))
+```
+
+g. <span style="color:#0000cc;">Compare your results from part c) and part e).</span>
+
+**Answer**: The results from parts (c) and (e) agree with each other in the sense that, from them, we can conclude that the average 'liveness' of Beyoncé's songs is greater than that of Taylor Swift. Just as the confidence interval expressing the difference of these means does not contain the value $0.00$ in part (c), the confidence interval expressing the ratio of means does not contain the value $1.00$ in part (e). These results support the claims that we have made in this statistical test.
+
+<br>
+
+## Problem 5 (15 points)
+
+<span style="color:#0000cc;">Write an R function that computes the t-formula confidence interval in (7.8) from sample mean, sample standard deviation, sample size, and confidence level, and use it to do exercise 7.6 #6 in Chihara/Hesterberg.</span>
+
+```{r}
+# function to compute the t-formula confidence interval from equation (7.8)
+t_formula <- function(sample_mean, sample_sd, sample_size, conf_level) {
+  
+  # assert that the incoming confidence level is expressed as a decimal
+  if(conf_level < 0 | conf_level > 1) {
+    stop('Confidence level must be expressed as a decimal between 0.00 and 1.00')
+  }
+  
+  # store the quantile value using the incoming information
+  quantile <- qt((1 + conf_level) / 2, df = sample_size - 1, lower.tail = TRUE)
+  
+  # compute the lower and upper limits for the confidence interval
+  lower <- sample_mean - quantile * sample_sd / sqrt(sample_size)
+  upper <- sample_mean + quantile * sample_sd / sqrt(sample_size)
+  
+  # return a list containing the lower and upper bounds
+  return ( list(lower = lower, upper = upper) )
+}
+```
+
+Q: <span style="color:#0000cc;">Julie is interested in the sugar content of vanilla ice cream. She obtains a random sample of $n = 20$ brands and finds an average of $18.05 g$ with standard deviation $5 g$ (per half cup serving). Assuming that the data come from a normal distribution, find a $90\%$ confidence interval for the mean amount of sugar in a half cup serving of vanilla ice cream.</span>
+
+```{r}
+# compute and print interval
+interval <- t_formula(sample_mean = 18.05, sample_sd = 5, sample_size = 20, conf_level = 0.90)
+print(paste('The 90% confidence interval is: [', interval$lower, ',', interval$upper, ']'))
+```
+
+**Comments**: We are 90% confident that the mean amount of sugar in a half-cup serving of vanilla ice cream is between $16.117$ and $19.983$ grams.
+
+<br>
+
+## Problem 6 (15 points, 5 for each)
+
+Exercise 7.6 #12 in Chihara/Hasterberg.
+
+Q: Consider the data set _Girls2004_ (see Case Study in Section 1.2).
+
+```{r message = FALSE}
+# load in the data
+girls <- read_csv('Girls2004.csv')
+```
+
+(a) Create exploratory plots and compare the distribution of weights between babies born to nonsmokers and babies born to smokers.
+
+```{r}
+# extract data pertaining to smokers and non-smokers
+smokers <- girls[girls$Smoker == 'Yes',]$Weight
+non_smokers <- girls[girls$Smoker == 'No',]$Weight
+
+par(mfrow = c(1, 2))
+
+# plot side by side boxplots of weight for babies born to both groups
+girls %>%
+  ggplot( aes(x = Smoker, y = Weight, fill = Smoker)) + 
+  geom_boxplot() + 
+  ggtitle('Weight of Babies Born by Group')
+
+# plot overlapping density plots of weight for babies born to both groups
+girls %>%
+  ggplot( aes(x = Weight, fill = Smoker)) + 
+  geom_density(alpha = 0.50) + 
+  ggtitle('Weight of Babies Born by Group')
+```
+
+**Comments**: Based on the side-by-side boxplots and density plot above, it appears that the weight of babies born to smokers is generally less than the weight of babies born to non-smokers.
+
+(b) Find a $95\%$ one-sided lower t confidence bound for the mean difference in weights between babies born to nonsmokers and smokers. Give a sentence interpreting the interval.
+
+```{r}
+# get sample lengths, means, and variances
+n1 <- length(non_smokers)
+n2 <- length(smokers)
+
+mu_1 <- mean(non_smokers)
+mu_2 <- mean(smokers)
+
+s2_1 <- sd(non_smokers)^2
+s2_2 <- sd(smokers)^2
+
+# compute degrees of freedom and standard error
+df <- (s2_1 / n1 + s2_2 / n2)^2 / ( ((s2_1 / n1)^2 / (n1 - 1)) + ((s2_2 / n2)^2 / (n2 - 1)) )
+se <- sqrt(s2_1 / n1 + s2_2 / n2)
+
+# store the 5% quantile value
+quantile <- qt(0.05, df = df, lower.tail = FALSE)
+
+# compute the lower bound of the interval
+lower_bound <- (mu_1 - mu_2) - quantile * se
+
+# report results
+print("----- Computing by Hand -----")
+print(paste('95% Confidence Lower Bound:', lower_bound))
+
+# confirm with the built-in t-test
+print("----- Using 't.test' Function -----")
+t.test(non_smokers, smokers, alt = "greater")
+```
+
+**Comments**: Interpreting this interval, we can say that we are 95% confident that the mean weight of babies born to non-smokers is at least $14.991$ grams more than the mean weight of babies born to smokers.
+
+**Note**: Note that I computed this lower bound by hand, and then using the `t.test` function, in order to compare the results. The result of $14.991$ matches across both techniques, which is good to see.
+
+(c) What is your conclusion?
+
+**Answer**: My conclusion is that I'm very confident that the mean weight of babies born to non-smokers is greater than that of babies born to smokers. This could very easily be a result of harmful substances impacting the babies' growth and development in the womb. Specifically, these substances can lead to stunted growth - and therefore, lesser weight - of babies born to smokers.
+
+<br>
+
+## BONUS: Submit _ONE_ of the Extra Problems:
+
+### Ex. Problem 1 (10 Points)
+
+Exercise 6.4 #1 in Chihara/Hesterberg.
+
+Let X be a binomial random variable, $X \sim Binom(n, p)$. Show that the MLE of $p$ is $\hat{p}  = X/n$.
+
+![Work for Bonus Problem 1](hw5_bonus.jpeg)
+
+### Ex. Problem 2 (10 Points)
+
+Exercise 6.4 #14 in Chihara/Hesterberg. 
+
+Let the five numbers 2, 3, 5, 9, 10 come from the uniform distribution on $[\alpha, \beta]$. Find the method of moments estimates of $\alpha$ and $\beta$.
+

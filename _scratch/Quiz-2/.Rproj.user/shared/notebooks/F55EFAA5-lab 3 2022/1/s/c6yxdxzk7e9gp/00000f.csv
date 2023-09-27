@@ -1,0 +1,3 @@
+"0","plot(0:n,pbinom(0:n,n,p), type = 's')"
+"2","Error in plot(0:n, pbinom(0:n, n, p), type = ""s"") : object 'n' not found
+"
