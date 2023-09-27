@@ -1,8 +1,11 @@
 ---
 title: "Simulating Sample Spaces With Tibbles"
+date: last-modified
 format:
   html:
     df-print: kable
+categories:
+  - "Extra Writeups"
 metadata-files: 
   - "../../_doc-meta.yml"
 ---
