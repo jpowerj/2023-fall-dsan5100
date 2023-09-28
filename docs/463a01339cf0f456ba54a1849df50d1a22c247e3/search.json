@@ -39,7 +39,7 @@
     "href": "index.html",
     "title": "DSAN 5100, Section 03 (Thursdays)",
     "section": "",
-    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nWednesday, September 6, 2023\n\n\n\n\nWeek 3: Conditional Probability\n\n\nThursday, September 7, 2023\n\n\n\n\nWeek 4: Discrete Probability Distributions\n\n\nThursday, September 14, 2023\n\n\n\n\nWeek 5: Continuous Probability Distributions\n\n\nThursday, September 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "This is a “hub” collecting relevant links for each week, for students in Prof. Jeff’s Thursday section (Section 03) of DSAN 5100: Probabilistic Modeling and Statistical Computing, Fall 2023 at Georgetown University. Sections take place in Car Barn room 201 on Thursdays from 12:30pm to 3:30pm.\nThis page is not a replacement for the Main Course Page or the course’s Canvas Page, which are shared across all sections!\nUse the menu on the left, or the table below, to view the resources for a specific week.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Welcome to DSAN 5100!\n\n\nThursday, August 24, 2023\n\n\n\n\nWeek 2: Introduction to Probabilistic Modeling\n\n\nWednesday, September 6, 2023\n\n\n\n\nWeek 3: Conditional Probability\n\n\nThursday, September 7, 2023\n\n\n\n\nWeek 4: Discrete Probability Distributions\n\n\nThursday, September 14, 2023\n\n\n\n\nWeek 5: Continuous Probability Distributions\n\n\nThursday, September 21, 2023\n\n\n\n\nWeek 6: Continuous Distributions, Moments, Covariance\n\n\nThursday, September 28, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "writeups/sampling-from-df/index.html",
@@ -186,7 +186,7 @@
     "href": "recordings/index.html",
     "title": "Lecture Recordings",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Week\n        \n         \n          Title\n        \n         \n          Last Updated - Oldest\n        \n         \n          Last Updated - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nWeek\n\n\nTitle\n\n\nLast Updated\n\n\n\n\n\n\n5\n\n\nWeek 05 Lecture Recording\n\n\nWednesday Sep 20, 2023\n\n\n\n\n4\n\n\nWeek 04 Lecture Recording\n\n\nWednesday Sep 13, 2023\n\n\n\n\n3\n\n\nWeek 03 Lecture Recording\n\n\nTuesday Sep 5, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Week\n        \n         \n          Title\n        \n         \n          Last Updated - Oldest\n        \n         \n          Last Updated - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nWeek\n\n\nTitle\n\n\nLast Updated\n\n\n\n\n\n\n6\n\n\nWeek 06 Lecture Recording\n\n\nThursday Sep 28, 2023\n\n\n\n\n5\n\n\nWeek 05 Lecture Recording\n\n\nThursday Sep 21, 2023\n\n\n\n\n4\n\n\nWeek 04 Lecture Recording\n\n\nThursday Sep 14, 2023\n\n\n\n\n3\n\n\nWeek 03 Lecture Recording\n\n\nTuesday Sep 5, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "w05/slides.html#from-last-week",
@@ -2151,8 +2151,393 @@
   {
     "objectID": "w06/index.html",
     "href": "w06/index.html",
-    "title": "Week 06",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
     "section": "",
-    "text": "(Soon to come!)"
+    "text": "Open slides in new window →"
+  },
+  {
+    "objectID": "w06/index.html#probability-theory-gives-us-distributions-for-rvs-not-numbers",
+    "href": "w06/index.html#probability-theory-gives-us-distributions-for-rvs-not-numbers",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Probability Theory Gives Us Distributions for RVs, not Numbers!",
+    "text": "Probability Theory Gives Us Distributions for RVs, not Numbers!\n\nWe’re going beyond “base” probability theory if we want to summarize these distributions\nHowever, we can understand a lot about the full distribution by looking at some basic summary statistics. Most common way to summarize:\n\n\n\n\n\n\n\n\n\n\\(\\underbrace{\\text{point estimate}}_{\\text{mean/median}}\\)\n\\(\\pm\\)\n\\(\\underbrace{\\text{uncertainty}}_{\\text{variance/standard deviation}}\\)"
+  },
+  {
+    "objectID": "w06/index.html#example-game-reviews",
+    "href": "w06/index.html#example-game-reviews",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Example: Game Reviews",
+    "text": "Example: Game Reviews\n\nlibrary(readr)\nfig_title &lt;- \"Reviews for a Popular Nintendo Switch Game\"\nfig_subtitle &lt;- \"(That I definitely didn't play for &gt;400 hours this summer...)\"\n#score_df &lt;- read_csv(\"https://gist.githubusercontent.com/jpowerj/8b2b6a50cef5a682db640e874a14646b/raw/e3c2b9d258380e817289fbb64f91ba9ed4357d62/totk_scores.csv\")\nscore_df &lt;- read_csv(\"assets/totk_scores.csv\")\n\nRows: 145 Columns: 1\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (1): score\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nmean_score &lt;- mean(score_df$score)\nlibrary(ggplot2)\nggplot(score_df, aes(x=score)) +\n  geom_histogram() +\n  #geom_vline(xintercept=mean_score) +\n  labs(\n    title=fig_title,\n    subtitle=fig_subtitle,\n    x=\"Review Score\",\n    y=\"Number of Reviews\"\n  ) +\n  dsan_theme(\"full\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n(Data from Metacritic)"
+  },
+  {
+    "objectID": "w06/index.html#adding-a-single-line",
+    "href": "w06/index.html#adding-a-single-line",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Adding a Single Line",
+    "text": "Adding a Single Line\n\nlibrary(readr)\nmean_score &lt;- mean(score_df$score)\nmean_score_label &lt;- sprintf(\"%0.2f\", mean_score)\nlibrary(ggplot2)\nggplot(score_df, aes(x=score)) +\n  geom_histogram() +\n  geom_vline(aes(xintercept=mean_score, linetype=\"dashed\"), color=\"purple\", size=1) +\n  scale_linetype_manual(\"\", values=c(\"dashed\"=\"dashed\"), labels=c(\"dashed\"=\"Mean Score\")) +\n  # Add single additional tick\n  scale_x_continuous(breaks=c(60, 70, 80, 90, mean_score, 100), labels=c(\"60\",\"70\",\"80\",\"90\",mean_score_label,\"100\")) +\n  labs(\n    title=fig_title,\n    subtitle=fig_subtitle,\n    x=\"Review Score\",\n    y=\"Number of Reviews\"\n  ) +\n  dsan_theme(\"full\") +\n  theme(\n    legend.title = element_blank(),\n    legend.spacing.y = unit(0, \"mm\")\n  ) +\n  theme(axis.text.x = element_text(colour = c('black', 'black','black', 'black', 'purple', 'black')))\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: Vectorized input to `element_text()` is not officially supported.\nℹ Results may be unexpected or may change in future versions of ggplot2.\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n(Data from Metacritic)"
+  },
+  {
+    "objectID": "w06/index.html#or-a-single-ribbon",
+    "href": "w06/index.html#or-a-single-ribbon",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Or a Single Ribbon",
+    "text": "Or a Single Ribbon\n\n\n\nlibrary(tibble)\nN &lt;- 10\n# Each x value gets 10 y values\nx &lt;- sort(rep(seq(1,10),10))\ny &lt;- x + rnorm(length(x), 0, 5)\ndf &lt;- tibble(x=x,y=y)\ntotal_N &lt;- nrow(df)\nggplot(df, aes(x=x,y=y)) +\n  geom_point(size=g_pointsize) +\n  dsan_theme(\"quarter_small\") +\n  labs(\n    title=paste0(\"N=\",total_N,\" Randomly-Generated Points\")\n  )\n\n\n\n\n\n\n\n\n\n# This time, just the means\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nmean_df &lt;- df %&gt;% group_by(x) %&gt;% summarize(mean=mean(y), min=min(y), max=max(y))\nggplot(mean_df, aes(x=x, y=mean)) +\n  geom_ribbon(aes(ymin=min, ymax=max, fill=\"ribbon\"), alpha=0.5) +\n  geom_point(aes(color=\"mean\"), size=g_pointsize) +\n  geom_line(size=g_linesize) +\n  dsan_theme(\"quarter_small\") +\n  scale_color_manual(\"\", values=c(\"mean\"=\"black\"), labels=c(\"mean\"=\"Mean\")) +\n  scale_fill_manual(\"\", values=c(\"ribbon\"=cbPalette[1]), labels=c(\"ribbon\"=\"Range\")) +\n  remove_legend_title() +\n  labs(\n    title=paste0(\"Means of N=\",total_N,\" Randomly-Generated Points\")\n  )\n\n\n\n\n\n\n\n\n\n\n\nlibrary(tibble)\nN &lt;- 100\n# Each x value gets 10 y values\nx &lt;- sort(rep(seq(1,10),10))\ny &lt;- x + rnorm(length(x), 0, 1)\ndf &lt;- tibble(x=x,y=y)\ntotal_N &lt;- nrow(df)\nggplot(df, aes(x=x,y=y)) +\n  geom_point(size=g_pointsize) +\n  dsan_theme(\"quarter_small\") +\n  labs(\n    title=paste0(\"N=\",total_N,\" Randomly-Generated Points\")\n  )\n\n\n\n\n\n\n\n\n\n# This time, just the means\nlibrary(dplyr)\nmean_df &lt;- df %&gt;% group_by(x) %&gt;% summarize(mean=mean(y), min=min(y), max=max(y))\nggplot(mean_df, aes(x=x, y=mean)) +\n  geom_ribbon(aes(ymin=min, ymax=max, fill=\"ribbon\"), alpha=0.5) +\n  geom_point(aes(color=\"mean\"), size=g_pointsize) +\n  geom_line(size=g_linesize) +\n  dsan_theme(\"quarter_small\") +\n  scale_color_manual(\"\", values=c(\"mean\"=\"black\"), labels=c(\"mean\"=\"Mean\")) +\n  scale_fill_manual(\"\", values=c(\"ribbon\"=cbPalette[1]), labels=c(\"ribbon\"=\"Range\")) +\n  remove_legend_title() +\n  labs(\n    title=paste0(\"Means of N=\",total_N,\" Randomly-Generated Points\")\n  )"
+  },
+  {
+    "objectID": "w06/index.html#expectations-weighted-means",
+    "href": "w06/index.html#expectations-weighted-means",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Expectations = Weighted Means",
+    "text": "Expectations = Weighted Means\n\nWe already know how to find the (unweighted) mean of a list of numbers:\n\n\\[\n\\begin{align*}\n\\begin{array}{|p{1cm}||p{1cm}|p{1cm}|p{1cm}|}\\hline X & \\orange{4} & \\orange{10} & \\orange{8} \\\\\\hline\\end{array} \\implies \\overline{X} &= \\frac{\\orange{4} + \\orange{10} + \\orange{8}}{\\purp{3}} = \\purp{\\left(\\frac{1}{3}\\right)} \\cdot \\orange{4} + \\purp{\\left( \\frac{1}{3} \\right)} \\cdot \\orange{10} + \\purp{\\left( \\frac{1}{3} \\right)} \\cdot \\orange{8} \\\\\n&= \\frac{22}{3} \\approx 7.33\n\\end{align*}\n\\]\n\nDiscrete distributions are just lists of numbers alongside their probability of occurring!\n\n\\[\n\\begin{align*}\n\\begin{array}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}\\hline X & \\orange{4} & \\orange{10} & \\orange{8} \\\\\\hline \\Pr(X) & \\purp{0.01} & \\purp{0.01} & \\purp{0.98}\\\\\\hline\\end{array} \\implies \\overline{X} &= \\purp{\\left( \\frac{1}{100} \\right)} \\cdot \\orange{4} + \\purp{\\left( \\frac{1}{100} \\right)} \\cdot \\orange{10} + \\purp{\\left( \\frac{98}{100} \\right)} \\cdot \\orange{8} \\\\\n&= \\left.\\frac{798}{100}\\right.^{1} \\approx 7.98\n\\end{align*}\n\\]\n\n\n\nIt will be helpful for later/life as a data scientist to notice that this is exactly \\(\\frac{4 + 10 + \\overbrace{8 + \\cdots + 8}^{98\\text{ times}}}{100}\\). That is: weighted mean = normal mean where numbers are repeated proportionally to their probabilities. (See Laplace smoothing!)."
+  },
+  {
+    "objectID": "w06/index.html#different-types-of-averages",
+    "href": "w06/index.html#different-types-of-averages",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Different Types of “Averages”",
+    "text": "Different Types of “Averages”\n\n(This will seem like overkill now, but will help us later!)\nTo avoid confusion, we denote the “regular” (arithmetic) mean function as \\(M_1(\\cdot)\\)\n\nIf \\(V = \\{v_1, \\ldots, v_n\\}\\), \\(M_1(V) \\definedas \\frac{v_1+\\cdots+v_n}{n}\\).\n\nThen \\(\\overline{V}\\) will denote the number which results from applying \\(M_1\\) to the set \\(V\\).\nOther common functions which get called “averages” in Machine Learning: median, harmonic mean (\\(M_{-1}\\)), geometric mean (\\(M_0\\)), the hadamard product \\(\\odot\\), etc.—pop up surprisingly often in Data Science/Machine Learning!\nThe things we’re averaging also take on weird forms: bits, logical predicates, vectors, tensors (Hence Google’s Machine Learning platform, TensorFlow), …\n\n\n\nFor what these subscripts (\\(M_{-1}\\), \\(M_0\\), \\(M_1\\)) mean, and more on the Hadamard product and its importance to Machine Learning, see Section 6.1"
+  },
+  {
+    "objectID": "w06/index.html#definition",
+    "href": "w06/index.html#definition",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Definition",
+    "text": "Definition\n\nFor a discrete RV \\(X\\):\n\n\\[\n\\expect{X} = \\sum_{x \\in \\mathcal{R}_X}x P(x)\n\\]\n\nFor a continuous RV \\(X\\):\n\n\\[\n\\expect{X} = \\int_{-\\infty}^{\\infty}xf(x)dx\n\\]\n\n\nRemember that \\(\\mathcal{R}_X\\) is the support of the random variable \\(X\\). If \\(X\\) is discrete, this is just \\(\\mathcal{R}_X = \\{x \\in \\mathbb{R} \\given P(X = x) &gt; 0\\}\\). If \\(X\\) is continuous, we can almost always* use the similar definition \\(\\mathcal{R}_X = \\{x \\in \\mathbb{R} \\given f_X(x) &gt; 0\\}\\), remembering that \\(f_X(x) \\neq P(X = x)\\)!!! See Section 6.2 for the scarier definition that works for all continuous RVs."
+  },
+  {
+    "objectID": "w06/index.html#important-properties",
+    "href": "w06/index.html#important-properties",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Important Properties",
+    "text": "Important Properties\n\n\nFor RVs \\(X\\), \\(Y\\), and \\(a, b \\in \\mathbb{R}\\):\n\n\n\n\n\n\nLinear\n\n\\[\n\\expect{aX} = a\\expect{X}\n\\]\n\n\n\n\nAdditive\n\n\\[\n\\expect{X + Y} = \\expect{X} + \\expect{Y}\n\\]\n\n\n\n\nAffine1\n\n\\[\n\\expect{aX + b} = a\\expect{X} + b\n\\]\n\n\n\n\nLOTUS:\n\n\\[\n\\expect{g(X)} = g(x)f(x)dx\n\\]\n\nNot Multiplicative:\n\n\\[\n\\expect{X \\cdot Y} = \\expect{X} \\cdot \\expect{Y} \\iff X \\perp Y\n\\]\n\nReally these should be called affine functions, but this property is usually just known as “linearity”, so for the sake of being able to google it I’m calling it “Linear” here as well, for now"
+  },
+  {
+    "objectID": "w06/index.html#variance-motivation",
+    "href": "w06/index.html#variance-motivation",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Variance: Motivation",
+    "text": "Variance: Motivation\n\nWe’ve now got a “measure of central tendency”, the expectation \\(\\expect{X}\\), with some nice properties. We can use it to produce point estimates.\nNow, how do we describe and communicate the spread of the data in a dataset? Similarly, how can we describe our uncertainty about a point estimate?\nLet’s try to develop a function, \\(\\text{Spread}\\), that takes in a set of values and computes how spread out they are\n(Hint: we can use the arithmetic mean, but apply it to differences between points rather than points themselves)"
+  },
+  {
+    "objectID": "w06/index.html#first-attempt",
+    "href": "w06/index.html#first-attempt",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "First Attempt",
+    "text": "First Attempt\n\nWhat properties should \\(\\text{Spread}(\\cdot)\\) have?\n\nShould be \\(0\\) if every data point is identical, then increase as they spread apart\n\nHow about: average difference between each point and the overall (arithmetic) mean? \\[\n\\text{Spread}(X) = M_1(X - \\overline{X}) = \\frac{(x_1 - \\overline{X}) + (x_2 - \\overline{X}) + \\cdots + (x_n - \\overline{X})}{n}\n\\]\n\n\n\n\nlibrary(latex2exp)\nN &lt;- 10\nx &lt;- seq(1,N)\ny &lt;- rnorm(N, 0, 10)\nmean_y &lt;- mean(y)\nspread &lt;- y - mean_y\ndf &lt;- tibble(x=x, y=y, spread=spread)\nggplot(df, aes(x=x, y=y)) +\n  geom_hline(aes(yintercept=mean_y, linetype=\"dashed\"), color=\"purple\", size=g_linesize) +\n  geom_segment(aes(xend=x, yend=mean_y, color=ifelse(y&gt;0,\"Positive\",\"Negative\")), size=g_linesize) +\n  geom_point(size=g_pointsize) +\n  scale_linetype_manual(element_blank(), values=c(\"dashed\"=\"dashed\"), labels=c(\"dashed\"=unname(TeX(c(\"$M_1(X)$\"))))) +\n  dsan_theme(\"half\") +\n  scale_color_manual(\"Spread\", values=c(\"Positive\"=cbPalette[3],\"Negative\"=cbPalette[6]), labels=c(\"Positive\"=\"Positive\",\"Negative\"=\"Negative\")) +\n  scale_x_continuous(breaks=seq(0,10,2)) +\n  #remove_legend_title() +\n  theme(legend.spacing.y=unit(0.1,\"mm\")) +\n  labs(\n    title=paste0(N, \" Randomly-Generated Points, N(0,10)\"),\n    x=\"Index\",\n    y=\"Value\"\n  )\n\n\n\n\n\n\n\n\n\nThe result? To ten decimal places:\n\nspread_fmt &lt;- sprintf(\"%0.10f\", mean(df$spread))\nwriteLines(spread_fmt)\n\n0.0000000000\n\n\n😞 What happened?"
+  },
+  {
+    "objectID": "w06/index.html#avoiding-cancellation",
+    "href": "w06/index.html#avoiding-cancellation",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Avoiding Cancellation",
+    "text": "Avoiding Cancellation\n\nHow do we avoid positive deviations and negative deviations cancelling out?\nTwo options\n\nAbsolute value \\(|X - \\overline{X}|\\)\nSquared error \\(\\left( X - \\overline{X} \\right)^2\\)…\n\nGhost of calculus past: which is differentiable everywhere?2\n\n\n\n\n# Could use facet_grid() here, but it doesn't work too nicely with stat_function() :(\nggplot(data.frame(x=c(-4,4)), aes(x=x)) +\n  stat_function(fun=~ .x^2, linewidth = g_linewidth) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=\"f(x) = x^2\",\n    y=\"f(x)\"\n  )\n\n\n\n\n\n\n\n\n\n\n# Could use facet_grid() here, but it doesn't work too nicely with stat_function() :(\nggplot(data.frame(x=c(-4,4)), aes(x=x)) +\n  stat_function(fun=~ abs(.x), linewidth=g_linewidth) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=\"f(x) = |x|\",\n    y=\"f(x)\"\n  )"
+  },
+  {
+    "objectID": "w06/index.html#weve-arrived-at-variance",
+    "href": "w06/index.html#weve-arrived-at-variance",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "We’ve Arrived at Variance!",
+    "text": "We’ve Arrived at Variance!\n\\[\n\\Var{X} = \\bigexpect{ \\left(X - \\expect{X}\\right)^2 }\n\\]\n\nAnd, we can apply what we know about \\(\\expect{X}\\) to derive:\n\n\\[\n\\begin{align*}\n\\Var{X} &= \\bigexpect{ \\left(X - \\expect{X}\\right)^2 } = \\bigexpect{ X^2 - 2X\\expect{X} + \\left( \\expect{X} \\right)^2 } \\\\\n&= \\expect{X^2} - \\expect{2 X\\expect{X}} + \\left( \\expect{X} \\right)^2 \\\\\n&= \\expect{X^2} - 2\\expect{X}\\expect{X} + \\left(\\expect{X}\\right)^2 \\\\\n&= \\expect{X^2} - \\left( \\expect{X} \\right)^2 \\; \\; \\green{\\small{\\text{ (we'll need this in a minute)}}}\n\\end{align*}\n\\]\n\n\nWhy does \\(\\expect{2X\\expect{X}} = 2\\expect{X}\\expect{X}\\)? Remember: \\(X\\) is an RV, but \\(\\expect{X}\\) is a number!"
+  },
+  {
+    "objectID": "w06/index.html#standard-deviation",
+    "href": "w06/index.html#standard-deviation",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Standard Deviation",
+    "text": "Standard Deviation\n\nWhen we squared the deviations, we lost the units of our datapoints!\nTo see spread, but in the same units as the original data, let’s just undo the squaring!\n\n\\[\n\\text{SD}[X] = \\sqrt{\\Var{X}}\n\\]\n\nBut, computers don’t care about the unit of this measure (just minimizing it). No reason to do this additional step if humans aren’t looking at the results!"
+  },
+  {
+    "objectID": "w06/index.html#properties-of-variance",
+    "href": "w06/index.html#properties-of-variance",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Properties of Variance",
+    "text": "Properties of Variance\n\nRecall that Expectation was an affine function:\n\n\\[\n\\mathbb{E}[aX + b] = a\\mathbb{E}[X] + b\n\\]\n\nVariance has a similar property, but is called homogeneous of degree 2, which means\n\n\\[\n\\Var{aX + b} = a^2\\Var{X} \\; \\underbrace{\\phantom{+ b}}_{\\mathclap{\\text{(Something missing?)}}}\n\\]\n\n\nNote that since the expected value function is linear, it is also homogeneous, of degree 1, even though the \\(b\\) term doesn’t “disappear” like it does in the variance equation!"
+  },
+  {
+    "objectID": "w06/index.html#what-happened-to-the-b-term",
+    "href": "w06/index.html#what-happened-to-the-b-term",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "What Happened to the \\(b\\) Term?",
+    "text": "What Happened to the \\(b\\) Term?\nMathematically:\n\\[\n\\begin{align*}\n\\Var{aX + b} \\definedas \\; &\\mathbb{E}[(aX + b - \\mathbb{E}[aX + b])^2] \\\\\n\\definedalign \\; &\\expect{(aX \\color{orange}{+ b} - a\\expect{X} \\color{orange}{- b})^2} \\\\\n\\definedalign \\; &\\expect{a^2X^2 - 2a^2\\expectsq{X} + a^2\\expectsq{X}} \\\\\n\\definedalign \\; &a^2 \\expect{X^2 - \\expectsq{X}} = a^2(\\expect{X^2} - \\expectsq{X})b \\\\\n\\definedas \\; & a^2\\Var{X}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w06/index.html#what-happened-to-the-b-term-1",
+    "href": "w06/index.html#what-happened-to-the-b-term-1",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "What Happened to the \\(b\\) Term?",
+    "text": "What Happened to the \\(b\\) Term?\n\nVisually (Assuming \\(X \\sim \\mathcal{N}(0,1)\\))\n\n\npdf_alpha &lt;- 0.333\nconst_variance &lt;- 0.25\ndnorm_center &lt;- function(x) dnorm(x, 0, const_variance)\ndnorm_p1 &lt;- function(x) dnorm(x, 1, const_variance)\ndnorm_m3 &lt;- function(x) dnorm(x, -3, const_variance)\nggplot(data.frame(x = c(-4, 2)), aes(x = x)) +\n    # X - 3\n    stat_function(aes(color=cbPalette[1]), fun = dnorm_m3, size=g_linesize) +\n    geom_area(stat = \"function\", fun = dnorm_m3, fill = cbPalette[3], xlim = c(-4, 2), alpha=pdf_alpha) +\n    # X + 1\n    stat_function(aes(color=cbPalette[2]), fun = dnorm_p1, size=g_linesize) +\n    geom_area(stat = \"function\", fun = dnorm_p1, fill = cbPalette[2], xlim = c(-4, 2), alpha=pdf_alpha) +\n    # X\n    stat_function(aes(color=cbPalette[3]), fun = dnorm_center, size = g_linesize) +\n    geom_area(stat = \"function\", fun = dnorm_center, fill = cbPalette[1], xlim = c(-4, 2), alpha=pdf_alpha) +\n    # Scales\n    scale_color_manual(\"RV\", values=c(cbPalette[1], cbPalette[2], cbPalette[3]), labels=c(\"X\", \"X + 1\", \"X - 3\")) +\n    geom_segment(x=0, y=0, xend=0, yend=dnorm_center(0), size = g_linesize, color=cbPalette[1]) +\n    geom_segment(x=1, y=0, xend=1, yend=dnorm_p1(1), size = g_linesize, color=cbPalette[2]) +\n    geom_segment(x=-3, y=0, xend=-3, yend=dnorm_m3(-3), size = g_linesize, color=cbPalette[3]) +\n    dsan_theme(\"quarter\") +\n    theme(\n      title = element_text(size=20)\n    ) +\n    labs(\n        title = \"Normal Distributions with Shifted Means\",\n        y = \"f(x)\"\n    )\n\n\n\n\n\n\n\n\n\\[\n\\begin{align*}\n\\expect{{\\color{lightblue}X + 1}} = \\expect{{\\color{orange}X}} + 1, \\; \\; \\Var{{\\color{lightblue}X + 1}} = \\Var{{\\color{orange}X}} \\\\\n\\expect{{\\color{green}X - 3}} = \\expect{{\\color{orange}X}} - 3, \\; \\; \\Var{{\\color{green}X - 3}} = \\Var{{\\color{orange}X}}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w06/index.html#generalizing-from-expectation-and-variance",
+    "href": "w06/index.html#generalizing-from-expectation-and-variance",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Generalizing from Expectation and Variance",
+    "text": "Generalizing from Expectation and Variance\n\nIt turns out that, expectation and variance are just two “levels” of a hierarchy of information about a distribution!\nIn calculus: knowing \\(f(x)\\) is sufficient information for us to subsequently figure out \\(f'(x)\\), \\(f''(x)\\), …\nIn probability/statistics: knowing \\(M_X(t)\\) is sufficient information for us to figure out \\(\\expect{X}\\), \\(\\Var{X}\\), …"
+  },
+  {
+    "objectID": "w06/index.html#not-a-metaphor",
+    "href": "w06/index.html#not-a-metaphor",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Not a Metaphor!",
+    "text": "Not a Metaphor!\n\nThis calculus \\(\\leftrightarrow\\) statistics connection is not a metaphor: differentiating \\(M_X(t)\\) literally gives us \\(\\expect{X}\\), \\(\\Var{X}\\), …\nLet’s look at MGF for \\(X \\sim \\text{Bern}(\\param{p})\\), and try to derive \\(\\expect{X}\\)3.\n\n\\[\n\\begin{align*}\nM_X(t) &= (1 - p) + pe^t \\\\\nM'_X(t) &= pe^t,\\text{ and }\\expect{X} = M'_X(0) = \\green{p} \\; ✅\n\\end{align*}\n\\]\n\n\\(\\Var{X}\\)?\n\n\\[\n\\begin{align*}\nM''_{X}(t) &= pe^t,\\text{ and }\\expect{X^2} = M''_X(0) = p \\\\\n\\Var{X} &\\definedas{} \\expect{X^2} - (\\expect{X})^2 = p - p^2 = \\green{p(1-p)} \\; ✅\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w06/index.html#mgf-in-econometrics",
+    "href": "w06/index.html#mgf-in-econometrics",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "MGF in Econometrics",
+    "text": "MGF in Econometrics\n\n\n\n\n\n\n\nOpen in new window →\n\n\n\nIn case it doesn’t load: (hansen_large_1982?) has 17,253 citations as of 2023-05-21"
+  },
+  {
+    "objectID": "w06/index.html#beware",
+    "href": "w06/index.html#beware",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "BEWARE ☠️",
+    "text": "BEWARE ☠️\nAs we saw last week (the Dreaded Cauchy Distribution):\n\nNot all random variables have moment-generating functions.\nWorse yet, not all random variables have well-defined variances\nWorse yet, not all random variables have well-defined means\n(This happens in non-contrived cases!)"
+  },
+  {
+    "objectID": "w06/index.html#multivariate-distributions-w02",
+    "href": "w06/index.html#multivariate-distributions-w02",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Multivariate Distributions (W02)",
+    "text": "Multivariate Distributions (W02)\n\nThe bivariate normal distribution represents the distribution of two normally-distributed RVs \\(\\mathbf{X} = [\\begin{smallmatrix} X_1 & X_2\\end{smallmatrix}]\\), which may or may not be correlated:\n\n\n\\[\n\\mathbf{X} = \\begin{bmatrix}X_1 \\\\ X_2\\end{bmatrix}, \\; \\boldsymbol{\\mu} =\n%\\begin{bmatrix}\\mu_1 \\\\ \\mu_2\\end{bmatrix}\n\\begin{bmatrix}\\smash{\\overbrace{\\mu_1}^{\\mathbb{E}[X_1]}} \\\\ \\smash{\\underbrace{\\mu_2}_{\\mathbb{E}[X_2]}}\\end{bmatrix}\n, \\; \\mathbf{\\Sigma} = \\begin{bmatrix}\\smash{\\overbrace{\\sigma_1^2}^{\\text{Var}[X_1]}} & \\smash{\\overbrace{\\rho\\sigma_1\\sigma_2}^{\\text{Cov}[X_1,X_2]}} \\\\ \\smash{\\underbrace{\\rho\\sigma_2\\sigma_1}_{\\text{Cov}[X_2,X_1]}} & \\smash{\\underbrace{\\sigma_2^2}_{\\text{Var}[X_2]}}\\end{bmatrix}\n% \\begin{bmatrix}\\sigma_1^2 & \\rho\\sigma_1\\sigma_2 \\\\ \\rho\\sigma_2\\sigma_1 & \\sigma_2^2 \\end{bmatrix}\n% = \\begin{bmatrix}\\text{Var}[X_1] & \\text{Cov}[X_1,X_2] \\\\ \\text{Cov}[X_2,X_1] & \\text{Var}[X_2] \\end{bmatrix}\n\\]\n\n\nBy squishing all this information intro matrices, we can specify the parameters of multivariate-normally-distributed vectors of RVs similarly to how we specify single-dimensional normally-distributed RVs:\n\n\n\\[\n\\begin{align*}\n\\overbrace{X}^{\\mathclap{\\text{scalar}}} &\\sim \\mathcal{N}\\phantom{_k}(\\overbrace{\\mu}^{\\text{scalar}}, \\overbrace{\\sigma}^{\\text{scalar}}) \\tag{Univariate} \\\\\n\\underbrace{\\mathbf{X}}_{\\text{vector}} &\\sim \\boldsymbol{\\mathcal{N}}_k(\\smash{\\underbrace{\\boldsymbol{\\mu}}_{\\text{vector}}}, \\underbrace{\\mathbf{\\Sigma}}_{\\text{matrix}}) \\tag{Multivariate}\n\\end{align*}\n\\]\n\n\nNote: In the future I’ll use the notation \\(\\mathbf{X}_{[a \\times b]}\\) to denote the dimensions of the vectors/matrices, like \\(\\mathbf{X}_{[k \\times 1]} \\sim \\boldsymbol{\\mathcal{N}}_k(\\boldsymbol{\\mu}_{[k \\times 1]}, \\mathbf{\\Sigma}_{[k \\times k]})\\)"
+  },
+  {
+    "objectID": "w06/index.html#visualizing-3d-distributions-projection",
+    "href": "w06/index.html#visualizing-3d-distributions-projection",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Visualizing 3D Distributions: Projection",
+    "text": "Visualizing 3D Distributions: Projection\n\nSince most of our intuitions about plots come from 2D plots, it is extremely useful to be able to take a 3D plot like this and imagine “projecting” it down into different 2D plots:\n\n\n\n\nAdapted (and corrected!) from LaTeX code in this StackExchange thread"
+  },
+  {
+    "objectID": "w06/index.html#visualizing-3d-distributions-contours",
+    "href": "w06/index.html#visualizing-3d-distributions-contours",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Visualizing 3D Distributions: Contours",
+    "text": "Visualizing 3D Distributions: Contours\n\n\n\nFrom Prof. Hickman’s slides!"
+  },
+  {
+    "objectID": "w06/index.html#visualizing-3d-distributions-contours-1",
+    "href": "w06/index.html#visualizing-3d-distributions-contours-1",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Visualizing 3D Distributions: Contours",
+    "text": "Visualizing 3D Distributions: Contours\n\n\n\nAlso from Prof. Hickman’s slides!"
+  },
+  {
+    "objectID": "w06/index.html#bivariate-distributions",
+    "href": "w06/index.html#bivariate-distributions",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Bivariate Distributions",
+    "text": "Bivariate Distributions\nDeGroot and Schervish (2013, 118) | DSPS Sec. 3.4 \n\nWe generalize the concept of the distribution of a random variable to the joint distribution of two random variables.\nIn doing so, we introduce the joint pmf for two discrete random variables, the joint pdf for two continuous variables, and the joint CDF for any two random variables."
+  },
+  {
+    "objectID": "w06/index.html#sec-hadamard",
+    "href": "w06/index.html#sec-hadamard",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Appendix A: The Hadamard Product",
+    "text": "Appendix A: The Hadamard Product\n\n\n\nUsed in nearly all neural NLP algorithms, as the basis of LSTM (see LSTM equations on the right)\nThe subscripts for the harmonic mean \\(M_{-1}\\), geometric mean \\(M_0\\), and arithmetic mean \\(M_1\\) come from the definition of the generalized mean:\n\n\\[\nM_p(V) = \\left( \\frac{1}{n} \\sum_{i=1}^n v_i^p \\right)^{1/p}\n\\]\n\n\\[\n\\begin{align*}\nf_t &= \\sigma(W_f [h_{t - 1}, x_t] + b_f) \\\\\ni_t &= \\sigma(W_i [h_{t - 1}, x_t] + b_i) \\\\\n\\tilde{C}_t &= \\tanh(W_C [h_{t - 1}, x_t] + b_C) \\\\\nC_t &= f_t \\odot C_{t - 1} + i_t \\odot \\tilde{C}_t \\\\\no_t &= \\sigma(W_o [h_{t - 1}, x_t] + b_o) \\\\\nh_t &= o_t \\odot \\tanh(C_t) \\\\\n\\hat{y} &= \\text{softmax}(W_y h_t + b_y)\n\\end{align*}\n\\]\n\n\n\nIf you’re a dork like me, you can read about generalized means, Fréchet means, or Stata’s trimmean function, all of which bring together seemingly-unrelated functions used throughout Machine Learning!"
+  },
+  {
+    "objectID": "w06/index.html#sec-continuous-support",
+    "href": "w06/index.html#sec-continuous-support",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Appendix B: Continuous RV Support",
+    "text": "Appendix B: Continuous RV Support\nIn most cases, for continuous RVs, the definition\n\\[\n\\mathcal{R}_X = \\{x \\in \\mathsf{Domain}(f_X) \\given f_X(x) &gt; 0\\}\n\\]\nworks fine. But, to fully capture all possible continuous RVs, the following formal definition is necessary:\n\\[\n\\mathcal{R}_X = \\left\\{x \\in \\mathbb{R} \\given \\forall r &gt; 0 \\left[ f_X(B(x,r)) &gt; 0 \\right] \\right\\},\n\\]\nwhere \\(B(x,r)\\) is a “band”4 around \\(x\\) with radius \\(r\\).\n\n\n\n\n\nFor a full explanation, see this StackExchange discussion."
+  },
+  {
+    "objectID": "w06/index.html#footnotes",
+    "href": "w06/index.html#footnotes",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMathematically, it’s somewhat important to call \\(aX + b\\) an “affine transformation”, not a linear transformation. In practice, everyone calls this “linear”, so I’ll try to use both (for sake of Googling!). The reason it matters will come up when we discuss Variance!↩︎\nFor why differentiability matters a lot for modern Machine Learning, see the Backpropagation algorithm.↩︎\nRecall that, for a Bernoulli-distributed random variable \\(X\\), \\(\\expect{X} = p\\)↩︎\nIn one dimension, this would be an interval; in two dimensions, a circle; in three dimensions, a sphere; etc.↩︎"
+  },
+  {
+    "objectID": "w06/slides.html#probability-theory-gives-us-distributions-for-rvs-not-numbers",
+    "href": "w06/slides.html#probability-theory-gives-us-distributions-for-rvs-not-numbers",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Probability Theory Gives Us Distributions for RVs, not Numbers!",
+    "text": "Probability Theory Gives Us Distributions for RVs, not Numbers!\n\nWe’re going beyond “base” probability theory if we want to summarize these distributions\nHowever, we can understand a lot about the full distribution by looking at some basic summary statistics. Most common way to summarize:\n\n\n\n\n\n\n\n\n\n\\(\\underbrace{\\text{point estimate}}_{\\text{mean/median}}\\)\n\\(\\pm\\)\n\\(\\underbrace{\\text{uncertainty}}_{\\text{variance/standard deviation}}\\)"
+  },
+  {
+    "objectID": "w06/slides.html#example-game-reviews",
+    "href": "w06/slides.html#example-game-reviews",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Example: Game Reviews",
+    "text": "Example: Game Reviews\n\n\nCode\nlibrary(readr)\nfig_title &lt;- \"Reviews for a Popular Nintendo Switch Game\"\nfig_subtitle &lt;- \"(That I definitely didn't play for &gt;400 hours this summer...)\"\n#score_df &lt;- read_csv(\"https://gist.githubusercontent.com/jpowerj/8b2b6a50cef5a682db640e874a14646b/raw/e3c2b9d258380e817289fbb64f91ba9ed4357d62/totk_scores.csv\")\nscore_df &lt;- read_csv(\"assets/totk_scores.csv\")\nmean_score &lt;- mean(score_df$score)\nlibrary(ggplot2)\nggplot(score_df, aes(x=score)) +\n  geom_histogram() +\n  #geom_vline(xintercept=mean_score) +\n  labs(\n    title=fig_title,\n    subtitle=fig_subtitle,\n    x=\"Review Score\",\n    y=\"Number of Reviews\"\n  ) +\n  dsan_theme(\"full\")\n\n\n\n(Data from Metacritic)"
+  },
+  {
+    "objectID": "w06/slides.html#adding-a-single-line",
+    "href": "w06/slides.html#adding-a-single-line",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Adding a Single Line",
+    "text": "Adding a Single Line\n\n\nCode\nlibrary(readr)\nmean_score &lt;- mean(score_df$score)\nmean_score_label &lt;- sprintf(\"%0.2f\", mean_score)\nlibrary(ggplot2)\nggplot(score_df, aes(x=score)) +\n  geom_histogram() +\n  geom_vline(aes(xintercept=mean_score, linetype=\"dashed\"), color=\"purple\", size=1) +\n  scale_linetype_manual(\"\", values=c(\"dashed\"=\"dashed\"), labels=c(\"dashed\"=\"Mean Score\")) +\n  # Add single additional tick\n  scale_x_continuous(breaks=c(60, 70, 80, 90, mean_score, 100), labels=c(\"60\",\"70\",\"80\",\"90\",mean_score_label,\"100\")) +\n  labs(\n    title=fig_title,\n    subtitle=fig_subtitle,\n    x=\"Review Score\",\n    y=\"Number of Reviews\"\n  ) +\n  dsan_theme(\"full\") +\n  theme(\n    legend.title = element_blank(),\n    legend.spacing.y = unit(0, \"mm\")\n  ) +\n  theme(axis.text.x = element_text(colour = c('black', 'black','black', 'black', 'purple', 'black')))\n\n\n\n(Data from Metacritic)"
+  },
+  {
+    "objectID": "w06/slides.html#or-a-single-ribbon",
+    "href": "w06/slides.html#or-a-single-ribbon",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Or a Single Ribbon",
+    "text": "Or a Single Ribbon\n\n\n\n\nCode\nlibrary(tibble)\nN &lt;- 10\n# Each x value gets 10 y values\nx &lt;- sort(rep(seq(1,10),10))\ny &lt;- x + rnorm(length(x), 0, 5)\ndf &lt;- tibble(x=x,y=y)\ntotal_N &lt;- nrow(df)\nggplot(df, aes(x=x,y=y)) +\n  geom_point(size=g_pointsize) +\n  dsan_theme(\"quarter_small\") +\n  labs(\n    title=paste0(\"N=\",total_N,\" Randomly-Generated Points\")\n  )\n\n\n\n\n\n\n\n\n\n\n\nCode\n# This time, just the means\nlibrary(dplyr)\nmean_df &lt;- df %&gt;% group_by(x) %&gt;% summarize(mean=mean(y), min=min(y), max=max(y))\nggplot(mean_df, aes(x=x, y=mean)) +\n  geom_ribbon(aes(ymin=min, ymax=max, fill=\"ribbon\"), alpha=0.5) +\n  geom_point(aes(color=\"mean\"), size=g_pointsize) +\n  geom_line(size=g_linesize) +\n  dsan_theme(\"quarter_small\") +\n  scale_color_manual(\"\", values=c(\"mean\"=\"black\"), labels=c(\"mean\"=\"Mean\")) +\n  scale_fill_manual(\"\", values=c(\"ribbon\"=cbPalette[1]), labels=c(\"ribbon\"=\"Range\")) +\n  remove_legend_title() +\n  labs(\n    title=paste0(\"Means of N=\",total_N,\" Randomly-Generated Points\")\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(tibble)\nN &lt;- 100\n# Each x value gets 10 y values\nx &lt;- sort(rep(seq(1,10),10))\ny &lt;- x + rnorm(length(x), 0, 1)\ndf &lt;- tibble(x=x,y=y)\ntotal_N &lt;- nrow(df)\nggplot(df, aes(x=x,y=y)) +\n  geom_point(size=g_pointsize) +\n  dsan_theme(\"quarter_small\") +\n  labs(\n    title=paste0(\"N=\",total_N,\" Randomly-Generated Points\")\n  )\n\n\n\n\n\n\n\n\n\n\n\nCode\n# This time, just the means\nlibrary(dplyr)\nmean_df &lt;- df %&gt;% group_by(x) %&gt;% summarize(mean=mean(y), min=min(y), max=max(y))\nggplot(mean_df, aes(x=x, y=mean)) +\n  geom_ribbon(aes(ymin=min, ymax=max, fill=\"ribbon\"), alpha=0.5) +\n  geom_point(aes(color=\"mean\"), size=g_pointsize) +\n  geom_line(size=g_linesize) +\n  dsan_theme(\"quarter_small\") +\n  scale_color_manual(\"\", values=c(\"mean\"=\"black\"), labels=c(\"mean\"=\"Mean\")) +\n  scale_fill_manual(\"\", values=c(\"ribbon\"=cbPalette[1]), labels=c(\"ribbon\"=\"Range\")) +\n  remove_legend_title() +\n  labs(\n    title=paste0(\"Means of N=\",total_N,\" Randomly-Generated Points\")\n  )"
+  },
+  {
+    "objectID": "w06/slides.html#expectations-weighted-means",
+    "href": "w06/slides.html#expectations-weighted-means",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Expectations = Weighted Means",
+    "text": "Expectations = Weighted Means\n\nWe already know how to find the (unweighted) mean of a list of numbers:\n\n\\[\n\\begin{align*}\n\\begin{array}{|p{1cm}||p{1cm}|p{1cm}|p{1cm}|}\\hline X & \\orange{4} & \\orange{10} & \\orange{8} \\\\\\hline\\end{array} \\implies \\overline{X} &= \\frac{\\orange{4} + \\orange{10} + \\orange{8}}{\\purp{3}} = \\purp{\\left(\\frac{1}{3}\\right)} \\cdot \\orange{4} + \\purp{\\left( \\frac{1}{3} \\right)} \\cdot \\orange{10} + \\purp{\\left( \\frac{1}{3} \\right)} \\cdot \\orange{8} \\\\\n&= \\frac{22}{3} \\approx 7.33\n\\end{align*}\n\\]\n\nDiscrete distributions are just lists of numbers alongside their probability of occurring!\n\n\\[\n\\begin{align*}\n\\begin{array}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}\\hline X & \\orange{4} & \\orange{10} & \\orange{8} \\\\\\hline \\Pr(X) & \\purp{0.01} & \\purp{0.01} & \\purp{0.98}\\\\\\hline\\end{array} \\implies \\overline{X} &= \\purp{\\left( \\frac{1}{100} \\right)} \\cdot \\orange{4} + \\purp{\\left( \\frac{1}{100} \\right)} \\cdot \\orange{10} + \\purp{\\left( \\frac{98}{100} \\right)} \\cdot \\orange{8} \\\\\n&= \\left.\\frac{798}{100}\\right.^{1} \\approx 7.98\n\\end{align*}\n\\]\n\n\n\nIt will be helpful for later/life as a data scientist to notice that this is exactly \\(\\frac{4 + 10 + \\overbrace{8 + \\cdots + 8}^{98\\text{ times}}}{100}\\). That is: weighted mean = normal mean where numbers are repeated proportionally to their probabilities. (See Laplace smoothing!)."
+  },
+  {
+    "objectID": "w06/slides.html#different-types-of-averages",
+    "href": "w06/slides.html#different-types-of-averages",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Different Types of “Averages”",
+    "text": "Different Types of “Averages”\n\n(This will seem like overkill now, but will help us later!)\nTo avoid confusion, we denote the “regular” (arithmetic) mean function as \\(M_1(\\cdot)\\)\n\nIf \\(V = \\{v_1, \\ldots, v_n\\}\\), \\(M_1(V) \\definedas \\frac{v_1+\\cdots+v_n}{n}\\).\n\nThen \\(\\overline{V}\\) will denote the number which results from applying \\(M_1\\) to the set \\(V\\).\nOther common functions which get called “averages” in Machine Learning: median, harmonic mean (\\(M_{-1}\\)), geometric mean (\\(M_0\\)), the hadamard product \\(\\odot\\), etc.—pop up surprisingly often in Data Science/Machine Learning!\nThe things we’re averaging also take on weird forms: bits, logical predicates, vectors, tensors (Hence Google’s Machine Learning platform, TensorFlow), …\n\n\n\nFor what these subscripts (\\(M_{-1}\\), \\(M_0\\), \\(M_1\\)) mean, and more on the Hadamard product and its importance to Machine Learning, see Section 6.1"
+  },
+  {
+    "objectID": "w06/slides.html#definition",
+    "href": "w06/slides.html#definition",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Definition",
+    "text": "Definition\n\nFor a discrete RV \\(X\\):\n\n\\[\n\\expect{X} = \\sum_{x \\in \\mathcal{R}_X}x P(x)\n\\]\n\nFor a continuous RV \\(X\\):\n\n\\[\n\\expect{X} = \\int_{-\\infty}^{\\infty}xf(x)dx\n\\]\n\n\nRemember that \\(\\mathcal{R}_X\\) is the support of the random variable \\(X\\). If \\(X\\) is discrete, this is just \\(\\mathcal{R}_X = \\{x \\in \\mathbb{R} \\given P(X = x) &gt; 0\\}\\). If \\(X\\) is continuous, we can almost always* use the similar definition \\(\\mathcal{R}_X = \\{x \\in \\mathbb{R} \\given f_X(x) &gt; 0\\}\\), remembering that \\(f_X(x) \\neq P(X = x)\\)!!! See Section 6.2 for the scarier definition that works for all continuous RVs."
+  },
+  {
+    "objectID": "w06/slides.html#important-properties",
+    "href": "w06/slides.html#important-properties",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Important Properties",
+    "text": "Important Properties\n\n\nFor RVs \\(X\\), \\(Y\\), and \\(a, b \\in \\mathbb{R}\\):\n\n\n\n\n\n\nLinear\n\n\\[\n\\expect{aX} = a\\expect{X}\n\\]\n\n\n\n\nAdditive\n\n\\[\n\\expect{X + Y} = \\expect{X} + \\expect{Y}\n\\]\n\n\n\n\nAffine1\n\n\\[\n\\expect{aX + b} = a\\expect{X} + b\n\\]\n\n\n\n\nLOTUS:\n\n\\[\n\\expect{g(X)} = g(x)f(x)dx\n\\]\n\nNot Multiplicative:\n\n\\[\n\\expect{X \\cdot Y} = \\expect{X} \\cdot \\expect{Y} \\iff X \\perp Y\n\\]\n\nReally these should be called affine functions, but this property is usually just known as “linearity”, so for the sake of being able to google it I’m calling it “Linear” here as well, for now\n\nMathematically, it’s somewhat important to call \\(aX + b\\) an “affine transformation”, not a linear transformation. In practice, everyone calls this “linear”, so I’ll try to use both (for sake of Googling!). The reason it matters will come up when we discuss Variance!"
+  },
+  {
+    "objectID": "w06/slides.html#variance-motivation",
+    "href": "w06/slides.html#variance-motivation",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Variance: Motivation",
+    "text": "Variance: Motivation\n\nWe’ve now got a “measure of central tendency”, the expectation \\(\\expect{X}\\), with some nice properties. We can use it to produce point estimates.\nNow, how do we describe and communicate the spread of the data in a dataset? Similarly, how can we describe our uncertainty about a point estimate?\nLet’s try to develop a function, \\(\\text{Spread}\\), that takes in a set of values and computes how spread out they are\n(Hint: we can use the arithmetic mean, but apply it to differences between points rather than points themselves)"
+  },
+  {
+    "objectID": "w06/slides.html#first-attempt",
+    "href": "w06/slides.html#first-attempt",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "First Attempt",
+    "text": "First Attempt\n\nWhat properties should \\(\\text{Spread}(\\cdot)\\) have?\n\nShould be \\(0\\) if every data point is identical, then increase as they spread apart\n\nHow about: average difference between each point and the overall (arithmetic) mean? \\[\n\\text{Spread}(X) = M_1(X - \\overline{X}) = \\frac{(x_1 - \\overline{X}) + (x_2 - \\overline{X}) + \\cdots + (x_n - \\overline{X})}{n}\n\\]\n\n\n\n\n\nCode\nlibrary(latex2exp)\nN &lt;- 10\nx &lt;- seq(1,N)\ny &lt;- rnorm(N, 0, 10)\nmean_y &lt;- mean(y)\nspread &lt;- y - mean_y\ndf &lt;- tibble(x=x, y=y, spread=spread)\nggplot(df, aes(x=x, y=y)) +\n  geom_hline(aes(yintercept=mean_y, linetype=\"dashed\"), color=\"purple\", size=g_linesize) +\n  geom_segment(aes(xend=x, yend=mean_y, color=ifelse(y&gt;0,\"Positive\",\"Negative\")), size=g_linesize) +\n  geom_point(size=g_pointsize) +\n  scale_linetype_manual(element_blank(), values=c(\"dashed\"=\"dashed\"), labels=c(\"dashed\"=unname(TeX(c(\"$M_1(X)$\"))))) +\n  dsan_theme(\"half\") +\n  scale_color_manual(\"Spread\", values=c(\"Positive\"=cbPalette[3],\"Negative\"=cbPalette[6]), labels=c(\"Positive\"=\"Positive\",\"Negative\"=\"Negative\")) +\n  scale_x_continuous(breaks=seq(0,10,2)) +\n  #remove_legend_title() +\n  theme(legend.spacing.y=unit(0.1,\"mm\")) +\n  labs(\n    title=paste0(N, \" Randomly-Generated Points, N(0,10)\"),\n    x=\"Index\",\n    y=\"Value\"\n  )\n\n\n\n\n\n\n\n\n\n\nThe result? To ten decimal places:\n\n\nCode\nspread_fmt &lt;- sprintf(\"%0.10f\", mean(df$spread))\nwriteLines(spread_fmt)\n\n\n0.0000000000\n\n\n😞 What happened?"
+  },
+  {
+    "objectID": "w06/slides.html#avoiding-cancellation",
+    "href": "w06/slides.html#avoiding-cancellation",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Avoiding Cancellation",
+    "text": "Avoiding Cancellation\n\nHow do we avoid positive deviations and negative deviations cancelling out?\nTwo options\n\nAbsolute value \\(|X - \\overline{X}|\\)\nSquared error \\(\\left( X - \\overline{X} \\right)^2\\)…\n\nGhost of calculus past: which is differentiable everywhere?1\n\n\n\n\n\nCode\n# Could use facet_grid() here, but it doesn't work too nicely with stat_function() :(\nggplot(data.frame(x=c(-4,4)), aes(x=x)) +\n  stat_function(fun=~ .x^2, linewidth = g_linewidth) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=\"f(x) = x^2\",\n    y=\"f(x)\"\n  )\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Could use facet_grid() here, but it doesn't work too nicely with stat_function() :(\nggplot(data.frame(x=c(-4,4)), aes(x=x)) +\n  stat_function(fun=~ abs(.x), linewidth=g_linewidth) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=\"f(x) = |x|\",\n    y=\"f(x)\"\n  )\n\n\n\n\n\n\n\n\n\n\n\nFor why differentiability matters a lot for modern Machine Learning, see the Backpropagation algorithm."
+  },
+  {
+    "objectID": "w06/slides.html#weve-arrived-at-variance",
+    "href": "w06/slides.html#weve-arrived-at-variance",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "We’ve Arrived at Variance!",
+    "text": "We’ve Arrived at Variance!\n\\[\n\\Var{X} = \\bigexpect{ \\left(X - \\expect{X}\\right)^2 }\n\\]\n\nAnd, we can apply what we know about \\(\\expect{X}\\) to derive:\n\n\\[\n\\begin{align*}\n\\Var{X} &= \\bigexpect{ \\left(X - \\expect{X}\\right)^2 } = \\bigexpect{ X^2 - 2X\\expect{X} + \\left( \\expect{X} \\right)^2 } \\\\\n&= \\expect{X^2} - \\expect{2 X\\expect{X}} + \\left( \\expect{X} \\right)^2 \\\\\n&= \\expect{X^2} - 2\\expect{X}\\expect{X} + \\left(\\expect{X}\\right)^2 \\\\\n&= \\expect{X^2} - \\left( \\expect{X} \\right)^2 \\; \\; \\green{\\small{\\text{ (we'll need this in a minute)}}}\n\\end{align*}\n\\]\n\n\nWhy does \\(\\expect{2X\\expect{X}} = 2\\expect{X}\\expect{X}\\)? Remember: \\(X\\) is an RV, but \\(\\expect{X}\\) is a number!"
+  },
+  {
+    "objectID": "w06/slides.html#standard-deviation",
+    "href": "w06/slides.html#standard-deviation",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Standard Deviation",
+    "text": "Standard Deviation\n\nWhen we squared the deviations, we lost the units of our datapoints!\nTo see spread, but in the same units as the original data, let’s just undo the squaring!\n\n\\[\n\\text{SD}[X] = \\sqrt{\\Var{X}}\n\\]\n\nBut, computers don’t care about the unit of this measure (just minimizing it). No reason to do this additional step if humans aren’t looking at the results!"
+  },
+  {
+    "objectID": "w06/slides.html#properties-of-variance",
+    "href": "w06/slides.html#properties-of-variance",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Properties of Variance",
+    "text": "Properties of Variance\n\nRecall that Expectation was an affine function:\n\n\\[\n\\mathbb{E}[aX + b] = a\\mathbb{E}[X] + b\n\\]\n\nVariance has a similar property, but is called homogeneous of degree 2, which means\n\n\\[\n\\Var{aX + b} = a^2\\Var{X} \\; \\underbrace{\\phantom{+ b}}_{\\mathclap{\\text{(Something missing?)}}}\n\\]\n\n\nNote that since the expected value function is linear, it is also homogeneous, of degree 1, even though the \\(b\\) term doesn’t “disappear” like it does in the variance equation!"
+  },
+  {
+    "objectID": "w06/slides.html#what-happened-to-the-b-term",
+    "href": "w06/slides.html#what-happened-to-the-b-term",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "What Happened to the \\(b\\) Term?",
+    "text": "What Happened to the \\(b\\) Term?\nMathematically:\n\\[\n\\begin{align*}\n\\Var{aX + b} \\definedas \\; &\\mathbb{E}[(aX + b - \\mathbb{E}[aX + b])^2] \\\\\n\\definedalign \\; &\\expect{(aX \\color{orange}{+ b} - a\\expect{X} \\color{orange}{- b})^2} \\\\\n\\definedalign \\; &\\expect{a^2X^2 - 2a^2\\expectsq{X} + a^2\\expectsq{X}} \\\\\n\\definedalign \\; &a^2 \\expect{X^2 - \\expectsq{X}} = a^2(\\expect{X^2} - \\expectsq{X})b \\\\\n\\definedas \\; & a^2\\Var{X}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w06/slides.html#what-happened-to-the-b-term-1",
+    "href": "w06/slides.html#what-happened-to-the-b-term-1",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "What Happened to the \\(b\\) Term?",
+    "text": "What Happened to the \\(b\\) Term?\n\nVisually (Assuming \\(X \\sim \\mathcal{N}(0,1)\\))\n\n\n\nCode\npdf_alpha &lt;- 0.333\nconst_variance &lt;- 0.25\ndnorm_center &lt;- function(x) dnorm(x, 0, const_variance)\ndnorm_p1 &lt;- function(x) dnorm(x, 1, const_variance)\ndnorm_m3 &lt;- function(x) dnorm(x, -3, const_variance)\nggplot(data.frame(x = c(-4, 2)), aes(x = x)) +\n    # X - 3\n    stat_function(aes(color=cbPalette[1]), fun = dnorm_m3, size=g_linesize) +\n    geom_area(stat = \"function\", fun = dnorm_m3, fill = cbPalette[3], xlim = c(-4, 2), alpha=pdf_alpha) +\n    # X + 1\n    stat_function(aes(color=cbPalette[2]), fun = dnorm_p1, size=g_linesize) +\n    geom_area(stat = \"function\", fun = dnorm_p1, fill = cbPalette[2], xlim = c(-4, 2), alpha=pdf_alpha) +\n    # X\n    stat_function(aes(color=cbPalette[3]), fun = dnorm_center, size = g_linesize) +\n    geom_area(stat = \"function\", fun = dnorm_center, fill = cbPalette[1], xlim = c(-4, 2), alpha=pdf_alpha) +\n    # Scales\n    scale_color_manual(\"RV\", values=c(cbPalette[1], cbPalette[2], cbPalette[3]), labels=c(\"X\", \"X + 1\", \"X - 3\")) +\n    geom_segment(x=0, y=0, xend=0, yend=dnorm_center(0), size = g_linesize, color=cbPalette[1]) +\n    geom_segment(x=1, y=0, xend=1, yend=dnorm_p1(1), size = g_linesize, color=cbPalette[2]) +\n    geom_segment(x=-3, y=0, xend=-3, yend=dnorm_m3(-3), size = g_linesize, color=cbPalette[3]) +\n    dsan_theme(\"quarter\") +\n    theme(\n      title = element_text(size=20)\n    ) +\n    labs(\n        title = \"Normal Distributions with Shifted Means\",\n        y = \"f(x)\"\n    )\n\n\n\n\n\n\n\n\n\n\\[\n\\begin{align*}\n\\expect{{\\color{lightblue}X + 1}} = \\expect{{\\color{orange}X}} + 1, \\; \\; \\Var{{\\color{lightblue}X + 1}} = \\Var{{\\color{orange}X}} \\\\\n\\expect{{\\color{green}X - 3}} = \\expect{{\\color{orange}X}} - 3, \\; \\; \\Var{{\\color{green}X - 3}} = \\Var{{\\color{orange}X}}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w06/slides.html#generalizing-from-expectation-and-variance",
+    "href": "w06/slides.html#generalizing-from-expectation-and-variance",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Generalizing from Expectation and Variance",
+    "text": "Generalizing from Expectation and Variance\n\nIt turns out that, expectation and variance are just two “levels” of a hierarchy of information about a distribution!\nIn calculus: knowing \\(f(x)\\) is sufficient information for us to subsequently figure out \\(f'(x)\\), \\(f''(x)\\), …\nIn probability/statistics: knowing \\(M_X(t)\\) is sufficient information for us to figure out \\(\\expect{X}\\), \\(\\Var{X}\\), …"
+  },
+  {
+    "objectID": "w06/slides.html#not-a-metaphor",
+    "href": "w06/slides.html#not-a-metaphor",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Not a Metaphor!",
+    "text": "Not a Metaphor!\n\nThis calculus \\(\\leftrightarrow\\) statistics connection is not a metaphor: differentiating \\(M_X(t)\\) literally gives us \\(\\expect{X}\\), \\(\\Var{X}\\), …\nLet’s look at MGF for \\(X \\sim \\text{Bern}(\\param{p})\\), and try to derive \\(\\expect{X}\\)1.\n\n\\[\n\\begin{align*}\nM_X(t) &= (1 - p) + pe^t \\\\\nM'_X(t) &= pe^t,\\text{ and }\\expect{X} = M'_X(0) = \\green{p} \\; ✅\n\\end{align*}\n\\]\n\n\\(\\Var{X}\\)?\n\n\\[\n\\begin{align*}\nM''_{X}(t) &= pe^t,\\text{ and }\\expect{X^2} = M''_X(0) = p \\\\\n\\Var{X} &\\definedas{} \\expect{X^2} - (\\expect{X})^2 = p - p^2 = \\green{p(1-p)} \\; ✅\n\\end{align*}\n\\]\nRecall that, for a Bernoulli-distributed random variable \\(X\\), \\(\\expect{X} = p\\)"
+  },
+  {
+    "objectID": "w06/slides.html#mgf-in-econometrics",
+    "href": "w06/slides.html#mgf-in-econometrics",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "MGF in Econometrics",
+    "text": "MGF in Econometrics\n\n\n\nOpen in new window →\n\n\n\nIn case it doesn’t load: (hansen_large_1982?) has 17,253 citations as of 2023-05-21"
+  },
+  {
+    "objectID": "w06/slides.html#beware",
+    "href": "w06/slides.html#beware",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "BEWARE ☠️",
+    "text": "BEWARE ☠️\nAs we saw last week (the Dreaded Cauchy Distribution):\n\nNot all random variables have moment-generating functions.\nWorse yet, not all random variables have well-defined variances\nWorse yet, not all random variables have well-defined means\n(This happens in non-contrived cases!)"
+  },
+  {
+    "objectID": "w06/slides.html#multivariate-distributions-w02",
+    "href": "w06/slides.html#multivariate-distributions-w02",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Multivariate Distributions (W02)",
+    "text": "Multivariate Distributions (W02)\n\nThe bivariate normal distribution represents the distribution of two normally-distributed RVs \\(\\mathbf{X} = [\\begin{smallmatrix} X_1 & X_2\\end{smallmatrix}]\\), which may or may not be correlated:\n\n\n\\[\n\\mathbf{X} = \\begin{bmatrix}X_1 \\\\ X_2\\end{bmatrix}, \\; \\boldsymbol{\\mu} =\n%\\begin{bmatrix}\\mu_1 \\\\ \\mu_2\\end{bmatrix}\n\\begin{bmatrix}\\smash{\\overbrace{\\mu_1}^{\\mathbb{E}[X_1]}} \\\\ \\smash{\\underbrace{\\mu_2}_{\\mathbb{E}[X_2]}}\\end{bmatrix}\n, \\; \\mathbf{\\Sigma} = \\begin{bmatrix}\\smash{\\overbrace{\\sigma_1^2}^{\\text{Var}[X_1]}} & \\smash{\\overbrace{\\rho\\sigma_1\\sigma_2}^{\\text{Cov}[X_1,X_2]}} \\\\ \\smash{\\underbrace{\\rho\\sigma_2\\sigma_1}_{\\text{Cov}[X_2,X_1]}} & \\smash{\\underbrace{\\sigma_2^2}_{\\text{Var}[X_2]}}\\end{bmatrix}\n% \\begin{bmatrix}\\sigma_1^2 & \\rho\\sigma_1\\sigma_2 \\\\ \\rho\\sigma_2\\sigma_1 & \\sigma_2^2 \\end{bmatrix}\n% = \\begin{bmatrix}\\text{Var}[X_1] & \\text{Cov}[X_1,X_2] \\\\ \\text{Cov}[X_2,X_1] & \\text{Var}[X_2] \\end{bmatrix}\n\\]\n\n\nBy squishing all this information intro matrices, we can specify the parameters of multivariate-normally-distributed vectors of RVs similarly to how we specify single-dimensional normally-distributed RVs:\n\n\n\\[\n\\begin{align*}\n\\overbrace{X}^{\\mathclap{\\text{scalar}}} &\\sim \\mathcal{N}\\phantom{_k}(\\overbrace{\\mu}^{\\text{scalar}}, \\overbrace{\\sigma}^{\\text{scalar}}) \\tag{Univariate} \\\\\n\\underbrace{\\mathbf{X}}_{\\text{vector}} &\\sim \\boldsymbol{\\mathcal{N}}_k(\\smash{\\underbrace{\\boldsymbol{\\mu}}_{\\text{vector}}}, \\underbrace{\\mathbf{\\Sigma}}_{\\text{matrix}}) \\tag{Multivariate}\n\\end{align*}\n\\]\n\n\nNote: In the future I’ll use the notation \\(\\mathbf{X}_{[a \\times b]}\\) to denote the dimensions of the vectors/matrices, like \\(\\mathbf{X}_{[k \\times 1]} \\sim \\boldsymbol{\\mathcal{N}}_k(\\boldsymbol{\\mu}_{[k \\times 1]}, \\mathbf{\\Sigma}_{[k \\times k]})\\)"
+  },
+  {
+    "objectID": "w06/slides.html#visualizing-3d-distributions-projection",
+    "href": "w06/slides.html#visualizing-3d-distributions-projection",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Visualizing 3D Distributions: Projection",
+    "text": "Visualizing 3D Distributions: Projection\n\nSince most of our intuitions about plots come from 2D plots, it is extremely useful to be able to take a 3D plot like this and imagine “projecting” it down into different 2D plots:\n\n\nAdapted (and corrected!) from LaTeX code in this StackExchange thread"
+  },
+  {
+    "objectID": "w06/slides.html#visualizing-3d-distributions-contours",
+    "href": "w06/slides.html#visualizing-3d-distributions-contours",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Visualizing 3D Distributions: Contours",
+    "text": "Visualizing 3D Distributions: Contours\n\nFrom Prof. Hickman’s slides!"
+  },
+  {
+    "objectID": "w06/slides.html#visualizing-3d-distributions-contours-1",
+    "href": "w06/slides.html#visualizing-3d-distributions-contours-1",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Visualizing 3D Distributions: Contours",
+    "text": "Visualizing 3D Distributions: Contours\n\nAlso from Prof. Hickman’s slides!"
+  },
+  {
+    "objectID": "w06/slides.html#bivariate-distributions",
+    "href": "w06/slides.html#bivariate-distributions",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Bivariate Distributions",
+    "text": "Bivariate Distributions\nDeGroot and Schervish (2013, 118) | DSPS Sec. 3.4 \n\nWe generalize the concept of the distribution of a random variable to the joint distribution of two random variables.\nIn doing so, we introduce the joint pmf for two discrete random variables, the joint pdf for two continuous variables, and the joint CDF for any two random variables."
+  },
+  {
+    "objectID": "w06/slides.html#sec-hadamard",
+    "href": "w06/slides.html#sec-hadamard",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Appendix A: The Hadamard Product",
+    "text": "Appendix A: The Hadamard Product\n\n\n\nUsed in nearly all neural NLP algorithms, as the basis of LSTM (see LSTM equations on the right)\nThe subscripts for the harmonic mean \\(M_{-1}\\), geometric mean \\(M_0\\), and arithmetic mean \\(M_1\\) come from the definition of the generalized mean:\n\n\\[\nM_p(V) = \\left( \\frac{1}{n} \\sum_{i=1}^n v_i^p \\right)^{1/p}\n\\]\n\n\\[\n\\begin{align*}\nf_t &= \\sigma(W_f [h_{t - 1}, x_t] + b_f) \\\\\ni_t &= \\sigma(W_i [h_{t - 1}, x_t] + b_i) \\\\\n\\tilde{C}_t &= \\tanh(W_C [h_{t - 1}, x_t] + b_C) \\\\\nC_t &= f_t \\odot C_{t - 1} + i_t \\odot \\tilde{C}_t \\\\\no_t &= \\sigma(W_o [h_{t - 1}, x_t] + b_o) \\\\\nh_t &= o_t \\odot \\tanh(C_t) \\\\\n\\hat{y} &= \\text{softmax}(W_y h_t + b_y)\n\\end{align*}\n\\]\n\n\n\nIf you’re a dork like me, you can read about generalized means, Fréchet means, or Stata’s trimmean function, all of which bring together seemingly-unrelated functions used throughout Machine Learning!"
+  },
+  {
+    "objectID": "w06/slides.html#sec-continuous-support",
+    "href": "w06/slides.html#sec-continuous-support",
+    "title": "Week 6: Continuous Distributions, Moments, Covariance",
+    "section": "Appendix B: Continuous RV Support",
+    "text": "Appendix B: Continuous RV Support\nIn most cases, for continuous RVs, the definition\n\\[\n\\mathcal{R}_X = \\{x \\in \\mathsf{Domain}(f_X) \\given f_X(x) &gt; 0\\}\n\\]\nworks fine. But, to fully capture all possible continuous RVs, the following formal definition is necessary:\n\\[\n\\mathcal{R}_X = \\left\\{x \\in \\mathbb{R} \\given \\forall r &gt; 0 \\left[ f_X(B(x,r)) &gt; 0 \\right] \\right\\},\n\\]\nwhere \\(B(x,r)\\) is a “band”1 around \\(x\\) with radius \\(r\\).\n\n\n\nDSAN 5100-03 Week 6: Distributions, Moments, Covariance\n\n\n\nDeGroot, Morris H., and Mark J. Schervish. 2013. Probability and Statistics. Pearson Education.\n\n\n\nFor a full explanation, see this StackExchange discussion.\nIn one dimension, this would be an interval; in two dimensions, a circle; in three dimensions, a sphere; etc."
   }
 ]

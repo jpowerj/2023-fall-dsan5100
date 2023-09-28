@@ -69,6 +69,8 @@ dsan_theme <- function(plot_type = "full", base_size = 16) {
         custom_base_size <- 16
     } else if (plot_type == "half") {
         custom_base_size <- 22
+    } else if (plot_type == "quarter_small") {
+      custom_base_size <- 25
     } else if (plot_type == "quarter") {
         custom_base_size <- 28
     } else {

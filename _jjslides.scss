@@ -253,6 +253,10 @@ transform: translateY(60px) !important;
     font-size: 0.4em !important;
 }
 
+.smallishish-math .math.display {
+    font-size: 95% !important;
+}
+
 .smallish-math .math.display {
     font-size: 90% !important;
 }
@@ -288,6 +292,10 @@ transform: translateY(60px) !important;
 .small-title h2 {
     // font-size: var(--r-heading2-size) !important;
     font-size: var(--r-heading3-size) !important;
+}
+
+.smallish-title h2 {
+    font-size: calc(1.4 * var(--r-heading2-size)) !important;
 }
 
 summary {

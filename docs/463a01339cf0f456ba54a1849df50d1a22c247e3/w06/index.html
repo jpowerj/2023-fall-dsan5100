@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jeff Jacobs">
 
-<title>Week 06</title>
+<title>Week 6: Continuous Distributions, Moments, Covariance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +21,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -70,11 +124,13 @@ gtag('js', new Date());
 gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -213,21 +269,92 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#quick-recap-week-02" id="toc-quick-recap-week-02" class="nav-link" data-scroll-target="#quick-recap-week-02">Quick Recap (Week 02)</a>
+  <ul class="collapse">
+  <li><a href="#probability-theory-gives-us-distributions-for-rvs-not-numbers" id="toc-probability-theory-gives-us-distributions-for-rvs-not-numbers" class="nav-link" data-scroll-target="#probability-theory-gives-us-distributions-for-rvs-not-numbers">Probability Theory Gives Us <em>Distributions</em> for RVs, not Numbers!</a></li>
+  <li><a href="#example-game-reviews" id="toc-example-game-reviews" class="nav-link" data-scroll-target="#example-game-reviews">Example: Game Reviews</a></li>
+  <li><a href="#adding-a-single-line" id="toc-adding-a-single-line" class="nav-link" data-scroll-target="#adding-a-single-line">Adding a Single Line</a></li>
+  <li><a href="#or-a-single-ribbon" id="toc-or-a-single-ribbon" class="nav-link" data-scroll-target="#or-a-single-ribbon">Or a Single Ribbon</a></li>
+  </ul></li>
+  <li><a href="#moments-of-a-distribution-expectation-and-variance" id="toc-moments-of-a-distribution-expectation-and-variance" class="nav-link" data-scroll-target="#moments-of-a-distribution-expectation-and-variance"><em>Moments</em> of a Distribution: Expectation and Variance</a>
+  <ul class="collapse">
+  <li><a href="#expectations-weighted-means" id="toc-expectations-weighted-means" class="nav-link" data-scroll-target="#expectations-weighted-means">Expectations = Weighted Means</a></li>
+  <li><a href="#different-types-of-averages" id="toc-different-types-of-averages" class="nav-link" data-scroll-target="#different-types-of-averages">Different Types of “Averages”</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition">Definition</a></li>
+  <li><a href="#important-properties" id="toc-important-properties" class="nav-link" data-scroll-target="#important-properties">Important Properties</a></li>
+  <li><a href="#variance-motivation" id="toc-variance-motivation" class="nav-link" data-scroll-target="#variance-motivation">Variance: Motivation</a></li>
+  <li><a href="#first-attempt" id="toc-first-attempt" class="nav-link" data-scroll-target="#first-attempt">First Attempt</a></li>
+  <li><a href="#avoiding-cancellation" id="toc-avoiding-cancellation" class="nav-link" data-scroll-target="#avoiding-cancellation">Avoiding Cancellation</a></li>
+  <li><a href="#weve-arrived-at-variance" id="toc-weve-arrived-at-variance" class="nav-link" data-scroll-target="#weve-arrived-at-variance">We’ve Arrived at Variance!</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard Deviation</a></li>
+  <li><a href="#properties-of-variance" id="toc-properties-of-variance" class="nav-link" data-scroll-target="#properties-of-variance">Properties of Variance</a></li>
+  <li><a href="#what-happened-to-the-b-term" id="toc-what-happened-to-the-b-term" class="nav-link" data-scroll-target="#what-happened-to-the-b-term">What Happened to the <span class="math inline">\(b\)</span> Term?</a></li>
+  <li><a href="#what-happened-to-the-b-term-1" id="toc-what-happened-to-the-b-term-1" class="nav-link" data-scroll-target="#what-happened-to-the-b-term-1">What Happened to the <span class="math inline">\(b\)</span> Term?</a></li>
+  </ul></li>
+  <li><a href="#generalizing-expectationvariance-the-moment-generating-function-mgf" id="toc-generalizing-expectationvariance-the-moment-generating-function-mgf" class="nav-link" data-scroll-target="#generalizing-expectationvariance-the-moment-generating-function-mgf">Generalizing Expectation/Variance: The Moment-Generating Function (MGF)</a>
+  <ul class="collapse">
+  <li><a href="#generalizing-from-expectation-and-variance" id="toc-generalizing-from-expectation-and-variance" class="nav-link" data-scroll-target="#generalizing-from-expectation-and-variance">Generalizing from Expectation and Variance</a></li>
+  <li><a href="#not-a-metaphor" id="toc-not-a-metaphor" class="nav-link" data-scroll-target="#not-a-metaphor">Not a Metaphor!</a></li>
+  <li><a href="#mgf-in-econometrics" id="toc-mgf-in-econometrics" class="nav-link" data-scroll-target="#mgf-in-econometrics">MGF in Econometrics</a></li>
+  <li><a href="#beware" id="toc-beware" class="nav-link" data-scroll-target="#beware">BEWARE ☠️</a></li>
+  </ul></li>
+  <li><a href="#moving-beyond-one-rv" id="toc-moving-beyond-one-rv" class="nav-link" data-scroll-target="#moving-beyond-one-rv">Moving Beyond One RV</a>
+  <ul class="collapse">
+  <li><a href="#multivariate-distributions-w02" id="toc-multivariate-distributions-w02" class="nav-link" data-scroll-target="#multivariate-distributions-w02">Multivariate Distributions (W02)</a></li>
+  <li><a href="#visualizing-3d-distributions-projection" id="toc-visualizing-3d-distributions-projection" class="nav-link" data-scroll-target="#visualizing-3d-distributions-projection">Visualizing 3D Distributions: Projection</a></li>
+  <li><a href="#visualizing-3d-distributions-contours" id="toc-visualizing-3d-distributions-contours" class="nav-link" data-scroll-target="#visualizing-3d-distributions-contours">Visualizing 3D Distributions: Contours</a></li>
+  <li><a href="#visualizing-3d-distributions-contours-1" id="toc-visualizing-3d-distributions-contours-1" class="nav-link" data-scroll-target="#visualizing-3d-distributions-contours-1">Visualizing 3D Distributions: Contours</a></li>
+  <li><a href="#bivariate-distributions" id="toc-bivariate-distributions" class="nav-link" data-scroll-target="#bivariate-distributions">Bivariate Distributions</a></li>
+  </ul></li>
+  <li><a href="#appendix-slides" id="toc-appendix-slides" class="nav-link" data-scroll-target="#appendix-slides">Appendix Slides</a>
+  <ul class="collapse">
+  <li><a href="#sec-hadamard" id="toc-sec-hadamard" class="nav-link" data-scroll-target="#sec-hadamard">Appendix A: The Hadamard Product</a></li>
+  <li><a href="#sec-continuous-support" id="toc-sec-continuous-support" class="nav-link" data-scroll-target="#sec-continuous-support">Appendix B: Continuous RV Support</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 06</h1>
-</div>
+<h1 class="title">Week 6: Continuous Distributions, Moments, Covariance</h1>
+<p class="subtitle lead"><em>DSAN 5100: Probabilistic Modeling and Statistical Computing</em><br>Section 03</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Class Sessions</div>
+  </div>
+  </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Thursday, September 28, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -235,11 +362,883 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 
 </header>
 
-<p>(Soon to come!)</p>
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
+</center>
+<section id="schedule" class="level1 smaller small-title crunch-title crunch-callout" data-name="Schedule">
+<h1 class="smaller small-title crunch-title crunch-callout" data-name="Schedule">Schedule</h1>
+<div class="hidden">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="hidden">
+<p><span class="math display">\[
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
+\newcommand{\definedas}{\overset{\text{def}}{=}}
+\newcommand{\definedalign}{\overset{\phantom{\text{def}}}{=}}
+\newcommand{\eqeventual}{\overset{\text{eventually}}{=}}
+\newcommand{\expect}[1]{\mathbb{E}[#1]}
+\newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
+\newcommand{\fw}[1]{\texttt{#1}}
+\newcommand{\given}{\mid}
+\newcommand{\green}[1]{\color{green}{#1}}
+\newcommand{\heads}{\outcome{heads}}
+\newcommand{\lik}{\mathcal{L}}
+\newcommand{\mle}{\textsf{ML}}
+\newcommand{\orange}[1]{\color{orange}{#1}}
+\newcommand{\outcome}[1]{\textsf{#1}}
+\newcommand{\param}[1]{{\color{purple} #1}}
+\newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
+\newcommand{\prob}[1]{P\left( #1 \right)}
+\newcommand{\purp}[1]{\color{purple}{#1}}
+\newcommand{\spacecap}{\; \cap \;}
+\newcommand{\spacewedge}{\; \wedge \;}
+\newcommand{\tails}{\outcome{tails}}
+\newcommand{\Var}[1]{\text{Var}[#1]}
+\newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
+\]</span></p>
+</div>
+</div>
+<p>Today’s Planned Schedule (Section <span class="sec-num">02</span>):</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 50%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: center;">Recording</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">12:30pm</td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;"><a href="#quick-recap-week-02">Quick Recap →</a></td>
+<td style="text-align: center;"><a id="rec-link-w06-1" href="../recordings/recording-w06s02-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">12:40pm</td>
+<td style="text-align: left;">1:00pm</td>
+<td style="text-align: left;"><a href="#exploratory-data-analysis-eda">Expectation and Variance →</a></td>
+<td style="text-align: center;"><a id="rec-link-w06-2" href="../recordings/recording-w06s02-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="sec-p55">1:00pm</span></td>
+<td style="text-align: left;"><span class="sec-p70">1:20pm</span></td>
+<td style="text-align: left;"><a href="#distance-metrics">Moment Generating Functions →</a></td>
+<td style="text-align: center;"><a id="rec-link-w06-3" href="../recordings/recording-w06s02-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="sec-p70">1:20pm</span></td>
+<td style="text-align: left;"><span class="sec-p90">2:00pm</span></td>
+<td style="text-align: left;"><a href="#moving-beyond-one-rv">Beyond Single-Variable Distributions →</a></td>
+<td style="text-align: center;"><a href="../recordings/recording-w06s02-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;"><span class="sec-p90">2:00pm</span></td>
+<td style="text-align: left;"><span class="sec-p100">2:10pm</span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lab</strong></td>
+<td style="text-align: left;"><span class="sec-p100">2:10pm</span></td>
+<td style="text-align: left;"><span class="sec-p130">2:40pm</span></td>
+<td style="text-align: left;"><a href="#lab-demonstrations">Lab 5 →</a></td>
+<td style="text-align: center;"><a id="rec-link-w06-5" href="../recordings/recording-w06s02-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="sec-p130">2:40pm</span></td>
+<td style="text-align: left;"><span class="sec-end">3:00pm</span></td>
+<td style="text-align: left;">Student Presentation</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quick-recap-week-02" class="level1" data-stack-name="Recap">
+<h1 data-stack-name="Recap">Quick Recap (Week 02)</h1>
+<section id="probability-theory-gives-us-distributions-for-rvs-not-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="probability-theory-gives-us-distributions-for-rvs-not-numbers">Probability Theory Gives Us <em>Distributions</em> for RVs, not Numbers!</h2>
+<ul>
+<li>We’re going beyond “base” probability theory if we want to <strong>summarize</strong> these distributions</li>
+<li>However, we can understand a lot about the full distribution by looking at some basic <strong>summary statistics</strong>. Most common way to summarize:</li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 10%">
+<col style="width: 45%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\underbrace{\text{point estimate}}_{\text{mean/median}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\pm\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\underbrace{\text{uncertainty}}_{\text{variance/standard deviation}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-game-reviews" class="level2">
+<h2 class="anchored" data-anchor-id="example-game-reviews">Example: Game Reviews</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fig_title <span class="ot">&lt;-</span> <span class="st">"Reviews for a Popular Nintendo Switch Game"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>fig_subtitle <span class="ot">&lt;-</span> <span class="st">"(That I definitely didn't play for &gt;400 hours this summer...)"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#score_df &lt;- read_csv("https://gist.githubusercontent.com/jpowerj/8b2b6a50cef5a682db640e874a14646b/raw/e3c2b9d258380e817289fbb64f91ba9ed4357d62/totk_scores.csv")</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>score_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"assets/totk_scores.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 145 Columns: 1
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (1): score
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mean_score <span class="ot">&lt;-</span> <span class="fu">mean</span>(score_df<span class="sc">$</span>score)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(score_df, <span class="fu">aes</span>(<span class="at">x=</span>score)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_vline(xintercept=mean_score) +</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>fig_title,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>fig_subtitle,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Review Score"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Number of Reviews"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"full"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/game-reviews-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">(Data from <a href="https://www.metacritic.com/game/switch/the-legend-of-zelda-tears-of-the-kingdom?ref=hp">Metacritic</a>)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-a-single-line" class="level2">
+<h2 class="anchored" data-anchor-id="adding-a-single-line">Adding a Single Line</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mean_score <span class="ot">&lt;-</span> <span class="fu">mean</span>(score_df<span class="sc">$</span>score)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mean_score_label <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%0.2f"</span>, mean_score)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(score_df, <span class="fu">aes</span>(<span class="at">x=</span>score)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept=</span>mean_score, <span class="at">linetype=</span><span class="st">"dashed"</span>), <span class="at">color=</span><span class="st">"purple"</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"dashed"</span><span class="ot">=</span><span class="st">"dashed"</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"dashed"</span><span class="ot">=</span><span class="st">"Mean Score"</span>)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add single additional tick</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>, mean_score, <span class="dv">100</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"60"</span>,<span class="st">"70"</span>,<span class="st">"80"</span>,<span class="st">"90"</span>,mean_score_label,<span class="st">"100"</span>)) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span>fig_title,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle=</span>fig_subtitle,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Review Score"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Number of Reviews"</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"full"</span>) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.spacing.y =</span> <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"mm"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">colour =</span> <span class="fu">c</span>(<span class="st">'black'</span>, <span class="st">'black'</span>,<span class="st">'black'</span>, <span class="st">'black'</span>, <span class="st">'purple'</span>, <span class="st">'black'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Vectorized input to `element_text()` is not officially supported.
+ℹ Results may be unexpected or may change in future versions of ggplot2.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/game-reviews-mean-line-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">(Data from <a href="https://www.metacritic.com/game/switch/the-legend-of-zelda-tears-of-the-kingdom?ref=hp">Metacritic</a>)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="or-a-single-ribbon" class="level2 smaller crunch-title crunch-code">
+<h2 class="smaller crunch-title crunch-code anchored" data-anchor-id="or-a-single-ribbon">Or a Single Ribbon</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Each x value gets 10 y values</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>),<span class="dv">10</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>total_N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span>g_pointsize) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter_small"</span>) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"N="</span>,total_N,<span class="st">" Randomly-Generated Points"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/noribbon-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time, just the means</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mean_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(x) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mean=</span><span class="fu">mean</span>(y), <span class="at">min=</span><span class="fu">min</span>(y), <span class="at">max=</span><span class="fu">max</span>(y))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>mean)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>min, <span class="at">ymax=</span>max, <span class="at">fill=</span><span class="st">"ribbon"</span>), <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span><span class="st">"mean"</span>), <span class="at">size=</span>g_pointsize) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span>g_linesize) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter_small"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"mean"</span><span class="ot">=</span><span class="st">"black"</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"mean"</span><span class="ot">=</span><span class="st">"Mean"</span>)) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"ribbon"</span><span class="ot">=</span>cbPalette[<span class="dv">1</span>]), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"ribbon"</span><span class="ot">=</span><span class="st">"Range"</span>)) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend_title</span>() <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"Means of N="</span>,total_N,<span class="st">" Randomly-Generated Points"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/ribbon-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Each x value gets 10 y values</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>),<span class="dv">10</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>total_N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span>g_pointsize) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter_small"</span>) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"N="</span>,total_N,<span class="st">" Randomly-Generated Points"</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/noribbon-demo-lowvar-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This time, just the means</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>mean_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(x) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">mean=</span><span class="fu">mean</span>(y), <span class="at">min=</span><span class="fu">min</span>(y), <span class="at">max=</span><span class="fu">max</span>(y))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>mean)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>min, <span class="at">ymax=</span>max, <span class="at">fill=</span><span class="st">"ribbon"</span>), <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span><span class="st">"mean"</span>), <span class="at">size=</span>g_pointsize) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span>g_linesize) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter_small"</span>) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"mean"</span><span class="ot">=</span><span class="st">"black"</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"mean"</span><span class="ot">=</span><span class="st">"Mean"</span>)) <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">""</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"ribbon"</span><span class="ot">=</span>cbPalette[<span class="dv">1</span>]), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"ribbon"</span><span class="ot">=</span><span class="st">"Range"</span>)) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend_title</span>() <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"Means of N="</span>,total_N,<span class="st">" Randomly-Generated Points"</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/ribbon-demo-lowvar-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="moments-of-a-distribution-expectation-and-variance" class="level1 page-columns page-full" data-stack-name="Moments">
+<h1 data-stack-name="Moments"><em>Moments</em> of a Distribution: Expectation and Variance</h1>
+<section id="expectations-weighted-means" class="level2 smaller smallishmath crunch-title crunch-ul page-columns page-full">
+<h2 class="smaller smallishmath crunch-title crunch-ul anchored" data-anchor-id="expectations-weighted-means">Expectations = Weighted Means</h2>
+<ul>
+<li>We already know how to find the (<strong>unweighted</strong>) <strong>mean</strong> of a list of <span style="color: orange;"><strong>numbers</strong></span>:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\begin{array}{|p{1cm}||p{1cm}|p{1cm}|p{1cm}|}\hline X &amp; \orange{4} &amp; \orange{10} &amp; \orange{8} \\\hline\end{array} \implies \overline{X} &amp;= \frac{\orange{4} + \orange{10} + \orange{8}}{\purp{3}} = \purp{\left(\frac{1}{3}\right)} \cdot \orange{4} + \purp{\left( \frac{1}{3} \right)} \cdot \orange{10} + \purp{\left( \frac{1}{3} \right)} \cdot \orange{8} \\
+&amp;= \frac{22}{3} \approx 7.33
+\end{align*}
+\]</span></p>
+<ul>
+<li>Discrete distributions are just lists of <span style="color: orange;"><strong>numbers</strong></span> alongside their <span style="color: purple"><strong>probability</strong></span> of occurring!</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\begin{array}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}\hline X &amp; \orange{4} &amp; \orange{10} &amp; \orange{8} \\\hline \Pr(X) &amp; \purp{0.01} &amp; \purp{0.01} &amp; \purp{0.98}\\\hline\end{array} \implies \overline{X} &amp;= \purp{\left( \frac{1}{100} \right)} \cdot \orange{4} + \purp{\left( \frac{1}{100} \right)} \cdot \orange{10} + \purp{\left( \frac{98}{100} \right)} \cdot \orange{8} \\
+&amp;= \left.\frac{798}{100}\right.^{1} \approx 7.98
+\end{align*}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<ol type="1">
+<li>It will be helpful for later/life as a data scientist to notice that this is exactly <span class="math inline">\(\frac{4 + 10 + \overbrace{8 + \cdots + 8}^{98\text{ times}}}{100}\)</span>. That is: weighted mean = normal mean where numbers are repeated proportionally to their probabilities. (See <a href="https://en.wikipedia.org/wiki/Additive_smoothing" target="_blank">Laplace smoothing</a>!).</li>
+</ol>
+</div></div></section>
+<section id="different-types-of-averages" class="level2 smaller page-columns page-full">
+<h2 class="smaller anchored" data-anchor-id="different-types-of-averages">Different Types of “Averages”</h2>
+<ul>
+<li>(This will seem like overkill now, but will help us later!)</li>
+<li>To avoid confusion, we denote the “regular” (<strong>arithmetic</strong>) mean <strong>function</strong> as <span class="math inline">\(M_1(\cdot)\)</span>
+<ul>
+<li>If <span class="math inline">\(V = \{v_1, \ldots, v_n\}\)</span>, <span class="math inline">\(M_1(V) \definedas \frac{v_1+\cdots+v_n}{n}\)</span>.</li>
+</ul></li>
+<li>Then <span class="math inline">\(\overline{V}\)</span> will denote the <strong>number</strong> which results from applying <span class="math inline">\(M_1\)</span> to the set <span class="math inline">\(V\)</span>.</li>
+<li>Other common <strong>functions</strong> which get called “averages” in Machine Learning: <strong>median</strong>, <strong>harmonic</strong> mean (<span class="math inline">\(M_{-1}\)</span>), <strong>geometric</strong> mean (<span class="math inline">\(M_0\)</span>), the <strong>hadamard product</strong> <span class="math inline">\(\odot\)</span>, etc.—pop up surprisingly often in Data Science/Machine Learning!</li>
+<li>The <strong>things</strong> we’re averaging also take on weird forms: bits, logical predicates, vectors, <strong>tensors</strong> (Hence Google’s Machine Learning platform, <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a>), …</li>
+</ul>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>For what these subscripts (<span class="math inline">\(M_{-1}\)</span>, <span class="math inline">\(M_0\)</span>, <span class="math inline">\(M_1\)</span>) mean, and more on the Hadamard product and its importance to Machine Learning, see <a href="#sec-hadamard">Section&nbsp;6.1</a></p>
+</div></div></section>
+<section id="definition" class="level2 smaller page-columns page-full">
+<h2 class="smaller anchored" data-anchor-id="definition">Definition</h2>
+<ul>
+<li>For a <strong>discrete</strong> RV <span class="math inline">\(X\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\expect{X} = \sum_{x \in \mathcal{R}_X}x P(x)
+\]</span></p>
+<ul>
+<li>For a <strong>continuous</strong> RV <span class="math inline">\(X\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\expect{X} = \int_{-\infty}^{\infty}xf(x)dx
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Remember that <span class="math inline">\(\mathcal{R}_X\)</span> is the <strong>support</strong> of the random variable <span class="math inline">\(X\)</span>. If <span class="math inline">\(X\)</span> is discrete, this is just <span class="math inline">\(\mathcal{R}_X = \{x \in \mathbb{R} \given P(X = x) &gt; 0\}\)</span>. If <span class="math inline">\(X\)</span> is continuous, we can almost always* use the similar definition <span class="math inline">\(\mathcal{R}_X = \{x \in \mathbb{R} \given f_X(x) &gt; 0\}\)</span>, <strong>remembering that <span class="math inline">\(f_X(x) \neq P(X = x)\)</span>!!!</strong> See <a href="#sec-continuous-support">Section&nbsp;6.2</a> for the scarier definition that works for <strong>all</strong> continuous RVs.</p>
+</div></div></section>
+<section id="important-properties" class="level2 smaller smallishish-math">
+<h2 class="smaller smallishish-math anchored" data-anchor-id="important-properties">Important Properties</h2>
+<div id="above">
+<ul>
+<li>For RVs <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and <span class="math inline">\(a, b \in \mathbb{R}\)</span>:</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div style="border: 1px solid black !important; padding: 4px !important;">
+<center>
+<strong>Linear</strong>
+</center>
+<p><span class="math display">\[
+\expect{aX} = a\expect{X}
+\]</span></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div style="border: 1px solid black !important; padding: 4px !important;">
+<center>
+<strong>Additive</strong>
+</center>
+<p><span class="math display">\[
+\expect{X + Y} = \expect{X} + \expect{Y}
+\]</span></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div style="border: 1px solid black !important; padding: 4px !important;">
+<center>
+<strong>Affine</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</center>
+<p><span class="math display">\[
+\expect{aX + b} = a\expect{X} + b
+\]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li>LOTUS:</li>
+</ul>
+<p><span class="math display">\[
+\expect{g(X)} = g(x)f(x)dx
+\]</span></p>
+<ul>
+<li><strong>Not</strong> Multiplicative:</li>
+</ul>
+<p><span class="math display">\[
+\expect{X \cdot Y} = \expect{X} \cdot \expect{Y} \iff X \perp Y
+\]</span></p>
+<div class="notes">
+<p>Really these should be called <strong>affine</strong> functions, but this property is usually just known as “linearity”, so for the sake of being able to google it I’m calling it “Linear” here as well, for now</p>
+</div>
+</section>
+<section id="variance-motivation" class="level2" data-name="Variance">
+<h2 data-name="Variance" class="anchored" data-anchor-id="variance-motivation">Variance: Motivation</h2>
+<ul>
+<li>We’ve now got a “measure of central tendency”, the expectation <span class="math inline">\(\expect{X}\)</span>, with some nice properties. We can use it to produce <strong>point estimates</strong>.</li>
+<li>Now, how do we describe and communicate the <strong>spread</strong> of the data in a dataset? Similarly, how can we describe our <strong>uncertainty</strong> about a point estimate?</li>
+<li>Let’s try to develop a function, <span class="math inline">\(\text{Spread}\)</span>, that takes in a set of values and computes <strong>how spread out</strong> they are</li>
+<li>(<em>Hint</em>: we can use the <strong>arithmetic mean</strong>, but apply it to <strong>differences between points</strong> rather than points themselves)</li>
+</ul>
+</section>
+<section id="first-attempt" class="level2 smaller crunch-title crunch-code smallmath">
+<h2 class="smaller crunch-title crunch-code smallmath anchored" data-anchor-id="first-attempt">First Attempt</h2>
+<ul>
+<li>What properties should <span class="math inline">\(\text{Spread}(\cdot)\)</span> have?
+<ul>
+<li>Should be <span class="math inline">\(0\)</span> if every data point is identical, then increase as they spread apart</li>
+</ul></li>
+<li>How about: average <strong>difference</strong> between each point and the overall (arithmetic) mean? <span class="math display">\[
+\text{Spread}(X) = M_1(X - \overline{X}) = \frac{(x_1 - \overline{X}) + (x_2 - \overline{X}) + \cdots + (x_n - \overline{X})}{n}
+\]</span></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:75%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,N)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>mean_y <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>spread <span class="ot">&lt;-</span> y <span class="sc">-</span> mean_y</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">spread=</span>spread)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span>mean_y, <span class="at">linetype=</span><span class="st">"dashed"</span>), <span class="at">color=</span><span class="st">"purple"</span>, <span class="at">size=</span>g_linesize) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend=</span>x, <span class="at">yend=</span>mean_y, <span class="at">color=</span><span class="fu">ifelse</span>(y<span class="sc">&gt;</span><span class="dv">0</span>,<span class="st">"Positive"</span>,<span class="st">"Negative"</span>)), <span class="at">size=</span>g_linesize) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span>g_pointsize) <span class="sc">+</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="fu">element_blank</span>(), <span class="at">values=</span><span class="fu">c</span>(<span class="st">"dashed"</span><span class="ot">=</span><span class="st">"dashed"</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"dashed"</span><span class="ot">=</span><span class="fu">unname</span>(<span class="fu">TeX</span>(<span class="fu">c</span>(<span class="st">"$M_1(X)$"</span>))))) <span class="sc">+</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"half"</span>) <span class="sc">+</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="st">"Spread"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"Positive"</span><span class="ot">=</span>cbPalette[<span class="dv">3</span>],<span class="st">"Negative"</span><span class="ot">=</span>cbPalette[<span class="dv">6</span>]), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Positive"</span><span class="ot">=</span><span class="st">"Positive"</span>,<span class="st">"Negative"</span><span class="ot">=</span><span class="st">"Negative"</span>)) <span class="sc">+</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#remove_legend_title() +</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.spacing.y=</span><span class="fu">unit</span>(<span class="fl">0.1</span>,<span class="st">"mm"</span>)) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="fu">paste0</span>(N, <span class="st">" Randomly-Generated Points, N(0,10)"</span>),</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"Index"</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Value"</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/spread-first-attempt-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<p>The result? To ten decimal places:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>spread_fmt <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%0.10f"</span>, <span class="fu">mean</span>(df<span class="sc">$</span>spread))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(spread_fmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0000000000</code></pre>
+</div>
+</div>
+<p>😞 What happened?</p>
+</div>
+</div>
+</section>
+<section id="avoiding-cancellation" class="level2 smaller crunch-title crunch-code">
+<h2 class="smaller crunch-title crunch-code anchored" data-anchor-id="avoiding-cancellation">Avoiding Cancellation</h2>
+<ul>
+<li>How do we avoid <strong>positive</strong> deviations and <strong>negative</strong> deviations cancelling out?</li>
+<li>Two options
+<ul>
+<li>Absolute value <span class="math inline">\(|X - \overline{X}|\)</span></li>
+<li>Squared error <span class="math inline">\(\left( X - \overline{X} \right)^2\)</span>…</li>
+</ul></li>
+<li>Ghost of calculus past: which is <strong>differentiable</strong> everywhere?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Could use facet_grid() here, but it doesn't work too nicely with stat_function() :(</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span><span class="sc">~</span> .x<span class="sc">^</span><span class="dv">2</span>, <span class="at">linewidth =</span> g_linewidth) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"f(x) = x^2"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"f(x)"</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/x2-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Could use facet_grid() here, but it doesn't work too nicely with stat_function() :(</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun=</span><span class="sc">~</span> <span class="fu">abs</span>(.x), <span class="at">linewidth=</span>g_linewidth) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"f(x) = |x|"</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"f(x)"</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/abs-x-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="weve-arrived-at-variance" class="level2 crunch-math crunch-title smallish-math page-columns page-full">
+<h2 class="crunch-math crunch-title smallish-math anchored" data-anchor-id="weve-arrived-at-variance">We’ve Arrived at Variance!</h2>
+<p><span class="math display">\[
+\Var{X} = \bigexpect{ \left(X - \expect{X}\right)^2 }
+\]</span></p>
+<ul>
+<li>And, we can apply what we know about <span class="math inline">\(\expect{X}\)</span> to derive:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\Var{X} &amp;= \bigexpect{ \left(X - \expect{X}\right)^2 } = \bigexpect{ X^2 - 2X\expect{X} + \left( \expect{X} \right)^2 } \\
+&amp;= \expect{X^2} - \expect{2 X\expect{X}} + \left( \expect{X} \right)^2 \\
+&amp;= \expect{X^2} - 2\expect{X}\expect{X} + \left(\expect{X}\right)^2 \\
+&amp;= \expect{X^2} - \left( \expect{X} \right)^2 \; \; \green{\small{\text{ (we'll need this in a minute)}}}
+\end{align*}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Why does <span class="math inline">\(\expect{2X\expect{X}} = 2\expect{X}\expect{X}\)</span>? Remember: <span class="math inline">\(X\)</span> is an <strong>RV</strong>, but <span class="math inline">\(\expect{X}\)</span> is a <strong>number</strong>!</p>
+</div></div></section>
+<section id="standard-deviation" class="level2 crunch-title crunch-ul small-math">
+<h2 class="crunch-title crunch-ul small-math anchored" data-anchor-id="standard-deviation">Standard Deviation</h2>
+<ul>
+<li>When we squared the deviations, we <strong>lost the units</strong> of our datapoints!</li>
+<li>To see spread, but <strong>in the same units as the original data</strong>, let’s just undo the squaring!</li>
+</ul>
+<p><span class="math display">\[
+\text{SD}[X] = \sqrt{\Var{X}}
+\]</span></p>
+<ul>
+<li>But, computers don’t care about the unit of this measure (just <strong>minimizing it</strong>). No reason to do this additional step <strong>if</strong> humans aren’t looking at the results!</li>
+</ul>
+</section>
+<section id="properties-of-variance" class="level2 crunch-title crunch-ul page-columns page-full">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="properties-of-variance">Properties of Variance</h2>
+<ul>
+<li>Recall that Expectation was an <strong>affine</strong> function:</li>
+</ul>
+<p><span class="math display">\[
+\mathbb{E}[aX + b] = a\mathbb{E}[X] + b
+\]</span></p>
+<ul>
+<li>Variance has a similar property, but is called <a href="https://en.wikipedia.org/wiki/Homogeneous_function" target="_blank"><strong>homogeneous</strong></a> <strong>of degree 2</strong>, which means</li>
+</ul>
+<p><span class="math display">\[
+\Var{aX + b} = a^2\Var{X} \; \underbrace{\phantom{+ b}}_{\mathclap{\text{(Something missing?)}}}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Note that since the expected value function is <strong>linear</strong>, it is also <strong>homogeneous</strong>, <strong>of degree 1</strong>, even though the <span class="math inline">\(b\)</span> term doesn’t “disappear” like it does in the variance equation!</p>
+</div></div></section>
+<section id="what-happened-to-the-b-term" class="level2">
+<h2 class="anchored" data-anchor-id="what-happened-to-the-b-term">What Happened to the <span class="math inline">\(b\)</span> Term?</h2>
+<p>Mathematically:</p>
+<p><span class="math display">\[
+\begin{align*}
+\Var{aX + b} \definedas \; &amp;\mathbb{E}[(aX + b - \mathbb{E}[aX + b])^2] \\
+\definedalign \; &amp;\expect{(aX \color{orange}{+ b} - a\expect{X} \color{orange}{- b})^2} \\
+\definedalign \; &amp;\expect{a^2X^2 - 2a^2\expectsq{X} + a^2\expectsq{X}} \\
+\definedalign \; &amp;a^2 \expect{X^2 - \expectsq{X}} = a^2(\expect{X^2} - \expectsq{X})b \\
+\definedas \; &amp; a^2\Var{X}
+\end{align*}
+\]</span></p>
+</section>
+<section id="what-happened-to-the-b-term-1" class="level2 smallish-math nostretch crunch-title crunch-code crunch-figures crunch-math crunch-ul">
+<h2 class="smallish-math nostretch crunch-title crunch-code crunch-figures crunch-math crunch-ul anchored" data-anchor-id="what-happened-to-the-b-term-1">What Happened to the <span class="math inline">\(b\)</span> Term?</h2>
+<ul>
+<li>Visually (Assuming <span class="math inline">\(X \sim \mathcal{N}(0,1)\)</span>)</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pdf_alpha <span class="ot">&lt;-</span> <span class="fl">0.333</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>const_variance <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dnorm_center <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="dv">0</span>, const_variance)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dnorm_p1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="dv">1</span>, const_variance)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>dnorm_m3 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="sc">-</span><span class="dv">3</span>, const_variance)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># X - 3</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color=</span>cbPalette[<span class="dv">1</span>]), <span class="at">fun =</span> dnorm_m3, <span class="at">size=</span>g_linesize) <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"function"</span>, <span class="at">fun =</span> dnorm_m3, <span class="at">fill =</span> cbPalette[<span class="dv">3</span>], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>), <span class="at">alpha=</span>pdf_alpha) <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># X + 1</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color=</span>cbPalette[<span class="dv">2</span>]), <span class="at">fun =</span> dnorm_p1, <span class="at">size=</span>g_linesize) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"function"</span>, <span class="at">fun =</span> dnorm_p1, <span class="at">fill =</span> cbPalette[<span class="dv">2</span>], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>), <span class="at">alpha=</span>pdf_alpha) <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># X</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color=</span>cbPalette[<span class="dv">3</span>]), <span class="at">fun =</span> dnorm_center, <span class="at">size =</span> g_linesize) <span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"function"</span>, <span class="at">fun =</span> dnorm_center, <span class="at">fill =</span> cbPalette[<span class="dv">1</span>], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">2</span>), <span class="at">alpha=</span>pdf_alpha) <span class="sc">+</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Scales</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="st">"RV"</span>, <span class="at">values=</span><span class="fu">c</span>(cbPalette[<span class="dv">1</span>], cbPalette[<span class="dv">2</span>], cbPalette[<span class="dv">3</span>]), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"X"</span>, <span class="st">"X + 1"</span>, <span class="st">"X - 3"</span>)) <span class="sc">+</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">x=</span><span class="dv">0</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">xend=</span><span class="dv">0</span>, <span class="at">yend=</span><span class="fu">dnorm_center</span>(<span class="dv">0</span>), <span class="at">size =</span> g_linesize, <span class="at">color=</span>cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">xend=</span><span class="dv">1</span>, <span class="at">yend=</span><span class="fu">dnorm_p1</span>(<span class="dv">1</span>), <span class="at">size =</span> g_linesize, <span class="at">color=</span>cbPalette[<span class="dv">2</span>]) <span class="sc">+</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">x=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">y=</span><span class="dv">0</span>, <span class="at">xend=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">yend=</span><span class="fu">dnorm_m3</span>(<span class="sc">-</span><span class="dv">3</span>), <span class="at">size =</span> g_linesize, <span class="at">color=</span>cbPalette[<span class="dv">3</span>]) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Normal Distributions with Shifted Means"</span>,</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"f(x)"</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/shifting-variance-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\begin{align*}
+\expect{{\color{lightblue}X + 1}} = \expect{{\color{orange}X}} + 1, \; \; \Var{{\color{lightblue}X + 1}} = \Var{{\color{orange}X}} \\
+\expect{{\color{green}X - 3}} = \expect{{\color{orange}X}} - 3, \; \; \Var{{\color{green}X - 3}} = \Var{{\color{orange}X}}
+\end{align*}
+\]</span></p>
+</section>
+</section>
+<section id="generalizing-expectationvariance-the-moment-generating-function-mgf" class="level1" data-stack-name="MGF">
+<h1 data-stack-name="MGF">Generalizing Expectation/Variance: The Moment-Generating Function (MGF)</h1>
+<section id="generalizing-from-expectation-and-variance" class="level2">
+<h2 class="anchored" data-anchor-id="generalizing-from-expectation-and-variance">Generalizing from Expectation and Variance</h2>
+<ul>
+<li>It turns out that, expectation and variance are just two “levels” of a <strong>hierarchy</strong> of <strong>information about a distribution!</strong></li>
+<li>In calculus: knowing <span class="math inline">\(f(x)\)</span> is <strong>sufficient information</strong> for us to subsequently figure out <span class="math inline">\(f'(x)\)</span>, <span class="math inline">\(f''(x)\)</span>, …</li>
+<li>In probability/statistics: knowing <span class="math inline">\(M_X(t)\)</span> is <strong>sufficient information</strong> for us to figure out <span class="math inline">\(\expect{X}\)</span>, <span class="math inline">\(\Var{X}\)</span>, …</li>
+</ul>
+</section>
+<section id="not-a-metaphor" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="not-a-metaphor">Not a Metaphor!</h2>
+<ul>
+<li>This calculus <span class="math inline">\(\leftrightarrow\)</span> statistics connection is not a metaphor: <strong>differentiating <span class="math inline">\(M_X(t)\)</span> literally gives us <span class="math inline">\(\expect{X}\)</span>, <span class="math inline">\(\Var{X}\)</span>, …</strong></li>
+<li>Let’s look at MGF for <span class="math inline">\(X \sim \text{Bern}(\param{p})\)</span>, and try to derive <span class="math inline">\(\expect{X}\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+M_X(t) &amp;= (1 - p) + pe^t \\
+M'_X(t) &amp;= pe^t,\text{ and }\expect{X} = M'_X(0) = \green{p} \; ✅
+\end{align*}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\Var{X}\)</span>?</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+M''_{X}(t) &amp;= pe^t,\text{ and }\expect{X^2} = M''_X(0) = p \\
+\Var{X} &amp;\definedas{} \expect{X^2} - (\expect{X})^2 = p - p^2 = \green{p(1-p)} \; ✅
+\end{align*}
+\]</span></p>
+</section>
+<section id="mgf-in-econometrics" class="level2">
+<h2 class="anchored" data-anchor-id="mgf-in-econometrics">MGF in Econometrics</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gmm_results.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div style="font-size: 75% !important;">
+<ul>
+<li><a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=generalized+method+of+moments&amp;btnG=" target="_blank">Open in new window →</a></li>
+</ul>
+</div>
+<div class="notes">
+<p>In case it doesn’t load: <span class="citation" data-cites="hansen_large_1982">(<a href="#ref-hansen_large_1982" role="doc-biblioref"><strong>hansen_large_1982?</strong></a>)</span> has 17,253 citations as of 2023-05-21</p>
+</div>
+</section>
+<section id="beware" class="level2">
+<h2 class="anchored" data-anchor-id="beware">BEWARE ☠️</h2>
+<p>As we saw last week (the Dreaded Cauchy Distribution):</p>
+<ul>
+<li>Not all random variables <strong>have</strong> moment-generating functions.</li>
+<li>Worse yet, not all random variables have well-defined <strong>variances</strong></li>
+<li>Worse yet, not all random variables have well-defined <strong>means</strong></li>
+<li>(This happens in non-contrived cases!)</li>
+</ul>
+</section>
+</section>
+<section id="moving-beyond-one-rv" class="level1" data-stack-name="Multivariate Dists">
+<h1 data-stack-name="Multivariate Dists">Moving Beyond One RV</h1>
+<section id="multivariate-distributions-w02" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="multivariate-distributions-w02">Multivariate Distributions (W02)</h2>
+<ul>
+<li>The <strong>bivariate normal</strong> distribution represents the distribution of <strong>two</strong> normally-distributed RVs <span class="math inline">\(\mathbf{X} = [\begin{smallmatrix} X_1 &amp; X_2\end{smallmatrix}]\)</span>, which may or may not be correlated:</li>
+</ul>
+<div class="special-math" style="margin-bottom: 42px !important;">
+<p><span class="math display">\[
+\mathbf{X} = \begin{bmatrix}X_1 \\ X_2\end{bmatrix}, \; \boldsymbol{\mu} =
+%\begin{bmatrix}\mu_1 \\ \mu_2\end{bmatrix}
+\begin{bmatrix}\smash{\overbrace{\mu_1}^{\mathbb{E}[X_1]}} \\ \smash{\underbrace{\mu_2}_{\mathbb{E}[X_2]}}\end{bmatrix}
+, \; \mathbf{\Sigma} = \begin{bmatrix}\smash{\overbrace{\sigma_1^2}^{\text{Var}[X_1]}} &amp; \smash{\overbrace{\rho\sigma_1\sigma_2}^{\text{Cov}[X_1,X_2]}} \\ \smash{\underbrace{\rho\sigma_2\sigma_1}_{\text{Cov}[X_2,X_1]}} &amp; \smash{\underbrace{\sigma_2^2}_{\text{Var}[X_2]}}\end{bmatrix}
+% \begin{bmatrix}\sigma_1^2 &amp; \rho\sigma_1\sigma_2 \\ \rho\sigma_2\sigma_1 &amp; \sigma_2^2 \end{bmatrix}
+% = \begin{bmatrix}\text{Var}[X_1] &amp; \text{Cov}[X_1,X_2] \\ \text{Cov}[X_2,X_1] &amp; \text{Var}[X_2] \end{bmatrix}
+\]</span></p>
+</div>
+<ul>
+<li>By squishing all this information intro matrices, we can specify the parameters of <strong>multivariate-normally-distributed</strong> <em>vectors</em> of RVs similarly to how we specify single-dimensional normally-distributed RVs:</li>
+</ul>
+<div class="crunch-math">
+<p><span class="math display">\[
+\begin{align*}
+\overbrace{X}^{\mathclap{\text{scalar}}} &amp;\sim \mathcal{N}\phantom{_k}(\overbrace{\mu}^{\text{scalar}}, \overbrace{\sigma}^{\text{scalar}}) \tag{Univariate} \\
+\underbrace{\mathbf{X}}_{\text{vector}} &amp;\sim \boldsymbol{\mathcal{N}}_k(\smash{\underbrace{\boldsymbol{\mu}}_{\text{vector}}}, \underbrace{\mathbf{\Sigma}}_{\text{matrix}}) \tag{Multivariate}
+\end{align*}
+\]</span></p>
+</div>
+<div class="footnote crunch-math" style="font-size: 1.2rem !important; margin-top: 16px !important;">
+<p><em>Note: In the future I’ll use the notation <span class="math inline">\(\mathbf{X}_{[a \times b]}\)</span> to denote the dimensions of the vectors/matrices, like <span class="math inline">\(\mathbf{X}_{[k \times 1]} \sim \boldsymbol{\mathcal{N}}_k(\boldsymbol{\mu}_{[k \times 1]}, \mathbf{\Sigma}_{[k \times k]})\)</span></em></p>
+</div>
+</section>
+<section id="visualizing-3d-distributions-projection" class="level2 smaller smallish-title">
+<h2 class="smaller smallish-title anchored" data-anchor-id="visualizing-3d-distributions-projection">Visualizing 3D Distributions: Projection</h2>
+<ul>
+<li>Since most of our intuitions about plots come from <strong>2D</strong> plots, it is <strong>extremely useful</strong> to be able to take a 3D plot like this and imagine “projecting” it down into different 2D plots:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bivariate_normal_corrected.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Adapted (and corrected!) from LaTeX code in <a href="https://tex.stackexchange.com/questions/31708/draw-a-bivariate-normal-distribution-in-tikz" target="_blank">this StackExchange thread</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="visualizing-3d-distributions-contours" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="visualizing-3d-distributions-contours">Visualizing 3D Distributions: Contours</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/contour_nocorr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">From <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#bi-variate-normal-uncorrelated" target="_blank">Prof.&nbsp;Hickman’s slides</a>!</figcaption>
+</figure>
+</div>
+</section>
+<section id="visualizing-3d-distributions-contours-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="visualizing-3d-distributions-contours-1">Visualizing 3D Distributions: Contours</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/contour_corr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Also from <a href="https://jfh.georgetown.domains/dsan5100/slides/W02/notes.html#bi-variate-correlated" target="_blank">Prof.&nbsp;Hickman’s slides</a>!</figcaption>
+</figure>
+</div>
+</section>
+<section id="bivariate-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-distributions">Bivariate Distributions</h2>
+<p><span class="citation" data-cites="degroot_probability_2013">DeGroot and Schervish (<a href="#ref-degroot_probability_2013" role="doc-biblioref">2013, 118</a>)</span> | <a href="https://jjacobs.me/dsps/03-random-variables.html#sec-3-4">DSPS Sec. 3.4 <i class="bi bi-box-arrow-up-right ps-1"></i></a></p>
+<ul>
+<li>We generalize the concept of the distribution of a random variable to the <strong>joint distribution</strong> of two random variables.</li>
+<li>In doing so, we introduce the <strong>joint pmf</strong> for two <strong>discrete</strong> random variables, the <strong>joint pdf</strong> for two <strong>continuous</strong> variables, and the <strong>joint CDF</strong> for <strong>any two</strong> random variables.</li>
+</ul>
+<!-- APPENDIX -->
+</section>
+</section>
+<section id="appendix-slides" class="level1 page-columns page-full">
+<h1>Appendix Slides</h1>
+<section id="sec-hadamard" class="level2 smaller smallmath">
+<h2 class="smaller smallmath anchored" data-anchor-id="sec-hadamard">Appendix A: The Hadamard Product</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Used in nearly all neural NLP algorithms, as the basis of <a href="https://jaketae.github.io/study/dissecting-lstm/" target="_blank">LSTM</a> (see LSTM equations on the right)</li>
+<li>The subscripts for the harmonic mean <span class="math inline">\(M_{-1}\)</span>, geometric mean <span class="math inline">\(M_0\)</span>, and arithmetic mean <span class="math inline">\(M_1\)</span> come from the definition of the <strong>generalized mean</strong>:</li>
+</ul>
+<p><span class="math display">\[
+M_p(V) = \left( \frac{1}{n} \sum_{i=1}^n v_i^p \right)^{1/p}
+\]</span></p>
+</div><div class="column" style="width:40%;">
+<p><span class="math display">\[
+\begin{align*}
+f_t &amp;= \sigma(W_f [h_{t - 1}, x_t] + b_f) \\
+i_t &amp;= \sigma(W_i [h_{t - 1}, x_t] + b_i) \\
+\tilde{C}_t &amp;= \tanh(W_C [h_{t - 1}, x_t] + b_C) \\
+C_t &amp;= f_t \odot C_{t - 1} + i_t \odot \tilde{C}_t \\
+o_t &amp;= \sigma(W_o [h_{t - 1}, x_t] + b_o) \\
+h_t &amp;= o_t \odot \tanh(C_t) \\
+\hat{y} &amp;= \text{softmax}(W_y h_t + b_y)
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<ul>
+<li>If you’re a dork like me, you can read about <a href="https://en.wikipedia.org/wiki/Generalized_mean" target="_blank">generalized means</a>, <a href="https://en.wikipedia.org/wiki/Fr%C3%A9chet_mean" target="_blank">Fréchet means</a>, or <a href="https://www.stata-journal.com/article.html?article=st0313" target="_blank">Stata’s <code>trimmean</code> function</a>, all of which bring together seemingly-unrelated functions used throughout Machine Learning!</li>
+</ul>
+</section>
+<section id="sec-continuous-support" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="sec-continuous-support">Appendix B: Continuous RV Support</h2>
+<p>In most cases, for continuous RVs, the definition</p>
+<p><span class="math display">\[
+\mathcal{R}_X = \{x \in \mathsf{Domain}(f_X) \given f_X(x) &gt; 0\}
+\]</span></p>
+<p>works fine. But, to fully capture <strong>all</strong> possible continuous RVs, the following formal definition is necessary:</p>
+<p><span class="math display">\[
+\mathcal{R}_X = \left\{x \in \mathbb{R} \given \forall r &gt; 0 \left[ f_X(B(x,r)) &gt; 0 \right] \right\},
+\]</span></p>
+<p>where <span class="math inline">\(B(x,r)\)</span> is a “band”<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> around <span class="math inline">\(x\)</span> with radius <span class="math inline">\(r\)</span>.</p>
 
 
 
-</main> <!-- /main -->
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>For a full explanation, see <a href="https://math.stackexchange.com/questions/846011/precise-definition-of-the-support-of-a-random-variable" target="_blank">this StackExchange discussion</a>.</p>
+</div></div></section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-degroot_probability_2013" class="csl-entry" role="listitem">
+DeGroot, Morris H., and Mark J. Schervish. 2013. <em>Probability and <span>Statistics</span></em>. <span>Pearson Education</span>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Mathematically, it’s somewhat important to call <span class="math inline">\(aX + b\)</span> an “affine transformation”, <em>not</em> a linear transformation. In practice, everyone calls this “linear”, so I’ll try to use both (for sake of Googling!). The reason it matters will come up when we discuss Variance!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>For why differentiability matters <strong>a lot</strong> for modern Machine Learning, see the <a href="https://en.wikipedia.org/wiki/Backpropagation" target="_blank">Backpropagation algorithm</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Recall that, for a Bernoulli-distributed random variable <span class="math inline">\(X\)</span>, <span class="math inline">\(\expect{X} = p\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>In one dimension, this would be an interval; in two dimensions, a circle; in three dimensions, a sphere; etc.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

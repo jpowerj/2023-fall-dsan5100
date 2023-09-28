@@ -4,8 +4,8 @@ $$
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
 \newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
-\newcommand{\definedas}{\overset{\text{defn}}{=}}
-\newcommand{\definedalign}{\overset{\phantom{\text{defn}}}{=}}
+\newcommand{\definedas}{\overset{\text{def}}{=}}
+\newcommand{\definedalign}{\overset{\phantom{\text{def}}}{=}}
 \newcommand{\eqeventual}{\overset{\text{eventually}}{=}}
 \newcommand{\expect}[1]{\mathbb{E}[#1]}
 \newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
