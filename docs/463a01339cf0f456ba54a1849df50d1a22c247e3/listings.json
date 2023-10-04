@@ -17,6 +17,7 @@
   {
     "listing": "/writeups/index.html",
     "items": [
+      "/writeups/deriving-pdf/index.html",
       "/writeups/sample-space-tibbles/index.html",
       "/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.html",
       "/writeups/sampling-from-df/index.html",

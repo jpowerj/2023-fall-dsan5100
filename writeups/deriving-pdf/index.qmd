@@ -1,6 +1,8 @@
 ---
 title: "Deriving a pdf from Scratch"
 date: last-modified
+categories:
+  - "Extra Writeups"
 format:
   html:
     df-print: kable
