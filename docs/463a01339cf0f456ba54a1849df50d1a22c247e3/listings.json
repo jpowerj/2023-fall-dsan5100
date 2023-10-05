@@ -1,20 +1,5 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/w01/index.html",
-      "/w02/index.html",
-      "/w03/index.html",
-      "/w04/index.html",
-      "/w05/index.html",
-      "/w06/index.html"
-    ]
-  },
-  {
-    "listing": "/recordings/index.html",
-    "items": []
-  },
-  {
     "listing": "/writeups/index.html",
     "items": [
       "/writeups/marginalization/index.html",
@@ -25,6 +10,22 @@
       "/writeups/computing-probabilities/index.html",
       "/writeups/quiz-1-clarifications/index.html",
       "/writeups/bayes-disease-tests/index.html"
+    ]
+  },
+  {
+    "listing": "/recordings/index.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/w01/index.html",
+      "/w02/index.html",
+      "/w03/index.html",
+      "/w04/index.html",
+      "/w05/index.html",
+      "/w06/index.html",
+      "/w07/index.html"
     ]
   },
   {

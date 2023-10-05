@@ -1,6 +1,30 @@
 /*-- scss:variables --*/
 
-$cb1: #E69F00;
+// cb1
+
+//$cb1: #E69F00;
+$cb1: rgb(230, 159, 0);
+//$cb1-alpha: #E69F007F;
+$cb1-alpha: rgba(230, 159, 0, 0.333);
+
+// cb2
+
+//$cb2: #56B4E9;
+$cb2: rgb(86, 180, 233);
+$cb2-alpha: rgba(86, 180, 233, 0.333);
+//$cb2-alpha: #56B4E97F;
+
+// cb3
+
+//$cb3: #009E73;
+$cb3: rgb(0, 158, 115);
+$cb3-alpha: rgba(0, 158, 115, 0.333);
+
+// gray
+
+$cbg: rgb(211, 211, 211);
+$cbg-alpha: rgba(211, 211, 211, 0.333);
+
 
 /*-- scss:rules --*/
 
@@ -28,6 +52,15 @@ aside {
     font-size: 0.5em !important;
 }
 
+// To fix the small TeX column headers in
+// quarto tables
+.big-header {
+    font-size: 1.3em !important;
+}
+.bigger-header {
+    font-size: 1.7em !important;
+}
+
 .bold {
     font-weight: bold !important;
 }
@@ -50,19 +83,47 @@ aside {
 }
 
 .cb1 {
-    color: #E69F00 !important;
+    color: $cb1 !important;
 }
-
+.cb1-bg {
+    background-color: $cb1 !important;
+}
+.cb1a-bg {
+    background-color: $cb1-alpha !important;
+    text-align: center !important;
+}
 .cb2 {
-    color: #56B4E9 !important;
+    color: $cb2 !important;
 }
-
+.cb2-bg {
+    background-color: $cb2 !important;
+}
+.cb2a-bg {
+    background-color: $cb2-alpha !important;
+    text-align: center !important;
+}
 .cb3 {
-    color: #009E73 !important;
+    color: $cb3 !important;
 }
-
+.cb3-bg {
+    background-color: $cb3 !important;
+}
+.cb3a-bg {
+    background-color: $cb3-alpha !important;
+    text-align: center !important;
+}
 .cb4 {
     color: #F0E442 !important;
+}
+.cbg {
+    color: $cbg !important;
+}
+.cbg-bg {
+    background-color: $cbg !important;
+}
+.cbga-bg {
+    background-color: $cbg-alpha !important;
+    text-align: center !important;
 }
 
 .coef-label {
@@ -160,6 +221,10 @@ figcaption {
     margin-right: auto !important;
 }
 
+.fix-tex-headers th {
+    font-size: 1em !important;
+}
+
 .fw-block {
     font-family: 'Courier New', Courier, monospace;
 }
@@ -221,6 +286,10 @@ figcaption {
 .px-4 {
     padding-left: 4px !important;
     padding-right: 4px !important;
+}
+
+.quarto-layout-cell-no-margin .quarto-layout-cell {
+    margin-right: 0px !important;
 }
 
 .red {
@@ -292,12 +361,26 @@ transform: translateY(60px) !important;
 .small-table td, th {
     font-size: 1.5rem !important;
 }
+.smallish-table td, th {
+    font-size: 1.7rem !important;
+}
+.smallishish-table td, th {
+    font-size: 2.0rem !important;
+}
+.small-tex-td {
+    font-size: 2.0rem !important;
+}
+.small-tex-th {
+    font-size: 2.0rem !important;
+}
 
 .small-title h2 {
     // font-size: var(--r-heading2-size) !important;
     font-size: var(--r-heading3-size) !important;
 }
-
+.less-smallish-title h2 {
+    font-size: calc(1.3 * var(--r-heading2-size)) !important;
+}
 .smallish-title h2 {
     font-size: calc(1.4 * var(--r-heading2-size)) !important;
 }

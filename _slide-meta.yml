@@ -18,6 +18,7 @@ format:
     code-fold: true
     footnotes-hover: true
     scrollable: true
+    tbl-cap-location: bottom
     theme: [default, "../_jjslides.scss"]
     revealjs-plugins:
       - simplemenu
