@@ -2,6 +2,7 @@
   {
     "listing": "/writeups/index.html",
     "items": [
+      "/writeups/order-of-integration/index.html",
       "/writeups/marginalization/index.html",
       "/writeups/deriving-pdf/index.html",
       "/writeups/sample-space-tibbles/index.html",
