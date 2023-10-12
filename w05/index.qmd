@@ -25,6 +25,13 @@ metadata-files:
   - "../_slide-meta.yml"
 ---
 
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
 
 # Schedule {.smaller .smaller-title data-name="Schedule"}
 

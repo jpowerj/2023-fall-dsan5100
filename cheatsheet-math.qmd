@@ -75,7 +75,7 @@ metadata-files:
 * $\frac{d}{dx} \left[ f(x) \right]$: The **derivative** of the function $f(x)$. For this class, you just need to remember that the derivative is what transforms a **Cumulative Density Function** (**CDF**) into a **Probability Density Function** (**PDF**): if $F_X(v)$ is the CDF of a random variable $X$, then $\frac{d}{dx}\left[ F_X(v) \right] = f_X(v)$, the PDF of $X$.
   * For functions of multiple variables, like the joint pdf $f_{X,Y}(v_X, v_Y)$, we use the $\partial$ symbol instead of $d$ to denote **partial derivatives**: for example, the change in $F_{X,Y}(v_X, v_Y)$ as $v_X$ changes is denoted $\frac{\partial}{\partial v_X}\left[ F_{X,Y}(v_X, v_Y) \right]$, while the change in $F_{X,Y}(v_X, v_Y)$ as $v_Y$ changes is denoted $\frac{\partial}{\partial v_Y}\left[ F_{X,Y}(v_X, v_Y) \right]$.
 
-## Week 03: Conditional Probability
+## Conditional Probability
 
 ### Probability Fundamentals
 
@@ -94,7 +94,7 @@ metadata-files:
 * **Probability Density Function** (**PDF**): Given a **continuous** random variable $X$, $f_X(v)$ is the unique function which allows us to determine, using integration, the probability that $X$ is in some range $[a,b]$. That is, it is the unique function satisfying $P(X \in [a,b]) = \int_a^b f_X(x)dx$.
   * **Remember**: unlike in the discrete case where $p_X(v) = P(X = v)$, $f_X(v)$ **is not** the probability that $X$ is realized as the value $v$. $f_X(v) \neq P(X = v)$.
 
-## Week 06: Expectation, Variance, Moments
+## Expectation, Variance, Moments
 
 * $M_1(V)$: The ("regular") **arithmetic mean** of a set of values $V = \{v_1, v_2, \ldots, v_n\}$: $M_1(V) = (v_1 + v_2 + \cdots + v_n)\frac{1}{n} = \left( \sum_{i=1}^n v_i \right)\frac{1}{n}$.
 * $M_0(V)$: The **geometric mean** of a set of values $V = \{v_1, v_2, \ldots, v_n\}$: $M_0(V) = (v_1\cdot v_2 \cdot \cdots \cdot v_n)^{\frac{1}{n}} = \left( \prod_{i=1}^n v_i \right)^{\frac{1}{n}}$

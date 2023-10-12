@@ -82,6 +82,8 @@ aside {
     font-size: 0.5em !important;
 }
 
+// Colors: text color, background color, and
+// transparent versions
 .cb1 {
     color: $cb1 !important;
 }
@@ -143,69 +145,91 @@ aside {
     vertical-align: middle !important;
 }
 
+// Crunch: Removing or decreasing gaps
+
+// caption
 .crunch-caption figcaption {
     margin-top: 0px !important;
 }
 
+// cell-output
 .crunch-cell-output div.cell-output-display p {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     // border: 5px solid green !important;
 }
 
+// center
+.crunch-center center {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+// code
 .crunch-code details {
     margin-bottom: 4px !important;
 }
 
+// figures
 .crunch-figures .quarto-figure {
     margin-bottom: 0 !important;
 }
-
 .crunch-figures figcaption {
     margin-top: 0 !important;
 }
 
+// images
 .crunch-images img {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
 
+// lists
 .crunch-lists li {
     margin-top: 4px !important;
     margin-bottom: 4px !important;
 }
 
+// math
 .crunch-math .MathJax {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
-
 .crunch-math .MathJax_Display {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
-
 .crunch-math-less .MathJax {
     margin-top: 4px !important;
     margin-bottom: 4px !important;
 }
-
 .crunch-math-less .MathJax_Display {
     margin-top: 4px !important;
     margin-bottom: 4px !important;
 }
 
+// output (pre)
 .crunch-output pre {
     font-size: 1.08rem !important;
 }
 
+// quarto-layout-panel
+.crunch-quarto-layout-panel .quarto-layout-panel {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+// title
 .crunch-title h2 {
     margin-bottom: 1px !important;
 }
 
+// ul
 .crunch-ul ul {
     margin-bottom: 0px !important;
 }
+
+// End crunch classes
 
 .dataTables_paginate {
     font-size: 0.8em !important;
@@ -225,10 +249,11 @@ figcaption {
     font-size: 1em !important;
 }
 
+// Fixed-width
+
 .fw-block {
     font-family: 'Courier New', Courier, monospace;
 }
-
 .fw-table {
     /* For tables with fixed-width font */
     font-family: 'Courier New', Courier, monospace;
@@ -271,6 +296,10 @@ figcaption {
         'opsz' 48
 }
 
+.music-automata .quarto-layout-panel {
+    height: 400px !important;
+}
+
 .nobotmargin * {
     margin-bottom: 0px !important;
 }
@@ -300,6 +329,8 @@ figcaption {
     background-color: rgba(255,0,0,0.1);
 }
 
+// Shift footnotes
+
 .shift-footnotes aside {
     transform: translateY(45px) !important;
 }
@@ -310,54 +341,54 @@ figcaption {
 transform: translateY(60px) !important;
 }
 
+// Smaller/smaller/smallish classes
+
+// aside
 .small-aside {
     font-size: 1rem !important;
 }
 
+// caption
 .smallish-caption figcaption {
     font-size: 1.5rem !important;
 }
-
 .small-caption figcaption {
     font-size: 0.45em !important;
 }
 
-.small-footer {
-    font-size: 0.4em !important;
-}
-
-.smallishish-math .math.display {
-    font-size: 95% !important;
-}
-
-.smallish-math .math.display {
-    font-size: 90% !important;
-}
-
-.small-math .math.display {
-    font-size: 85% !important;
-}
-
-.smaller-text {
-    font-size: 85% !important;
-}
-
-.small-inline .math.inline {
-    font-size: 85% !important;
-}
-
-.smaller-math .math.display {
-    font-size: 80% !important;
-}
-
+// codeblock
 .small-codeblock {
     font-size: 1.2rem !important;
 }
-
 .smallish-codeblock {
     font-size: 1.75rem !important;
 }
 
+// footer
+.small-footer {
+    font-size: 0.4em !important;
+}
+
+// inline math
+.small-inline .math.inline {
+    font-size: 85% !important;
+}
+
+// math
+.smallishish-math .math.display {
+    font-size: 95% !important;
+}
+.smallish-math .math.display {
+    font-size: 90% !important;
+}
+.small-math .math.display {
+    font-size: 85% !important;
+}
+.smaller-math .math.display {
+    font-size: 80% !important;
+}
+
+// table
 .small-table td, th {
     font-size: 1.5rem !important;
 }
@@ -367,6 +398,8 @@ transform: translateY(60px) !important;
 .smallishish-table td, th {
     font-size: 2.0rem !important;
 }
+
+// tex
 .small-tex-td {
     font-size: 2.0rem !important;
 }
@@ -374,15 +407,37 @@ transform: translateY(60px) !important;
     font-size: 2.0rem !important;
 }
 
+// text
+.small-text {
+    font-size: 85% !important;
+}
+.smaller-text {
+    font-size: 80% !important;
+}
+
+// title
 .small-title h2 {
     // font-size: var(--r-heading2-size) !important;
     font-size: var(--r-heading3-size) !important;
+}
+.title-12 h2 {
+    font-size: calc(1.2 * var(--r-heading2-size)) !important;
+}
+.title-13 h2 {
+    font-size: calc(1.3 * var(--r-heading2-size)) !important;
+}
+.title-14 h2 {
+    font-size: calc(1.4 * var(--r-heading2-size)) !important;
 }
 .less-smallish-title h2 {
     font-size: calc(1.3 * var(--r-heading2-size)) !important;
 }
 .smallish-title h2 {
     font-size: calc(1.4 * var(--r-heading2-size)) !important;
+}
+
+.split-table {
+    border-right: 3px solid black;
 }
 
 summary {
