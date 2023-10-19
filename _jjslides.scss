@@ -48,6 +48,14 @@ a.disabled {
     transform: rotate(45deg);
 }
 
+.align-right {
+    margin-left: auto;
+    margin-right: 0;
+    float: right;
+    padding-bottom: 2px!important;
+    margin-bottom: 2px!important;
+}
+
 aside {
     font-size: 0.5em !important;
 }
@@ -259,6 +267,14 @@ figcaption {
     font-family: 'Courier New', Courier, monospace;
 }
 
+.full-width-quotes .callout-body {
+    width: 100% !important;
+}
+
+.full-width-quotes .callout-content {
+    width: 100% !important;
+}
+
 .green {
     color: green !important;
 }
@@ -306,6 +322,11 @@ figcaption {
 
 .notopmargin * {
     margin-top: 0px !important;
+}
+
+.not-title-slide {
+    display: block !important;
+    top: 0px !important;
 }
 
 .param {
@@ -420,13 +441,31 @@ transform: translateY(60px) !important;
     // font-size: var(--r-heading2-size) !important;
     font-size: var(--r-heading3-size) !important;
 }
+.title-09 h2 {
+    font-size: calc(0.9 * var(--r-heading2-size)) !important;
+}
+.title-10 h2 {
+    font-size: calc(1.0 * var(--r-heading2-size)) !important;
+}
+.title-11 h2 {
+    font-size: calc(1.1 * var(--r-heading2-size)) !important;
+}
 .title-12 h2 {
+    font-size: calc(1.2 * var(--r-heading2-size)) !important;
+}
+.title-12 h1 {
     font-size: calc(1.2 * var(--r-heading2-size)) !important;
 }
 .title-13 h2 {
     font-size: calc(1.3 * var(--r-heading2-size)) !important;
 }
+.title-13 h1 {
+    font-size: calc(1.3 * var(--r-heading2-size)) !important;
+}
 .title-14 h2 {
+    font-size: calc(1.4 * var(--r-heading2-size)) !important;
+}
+.title-14 h1 {
     font-size: calc(1.4 * var(--r-heading2-size)) !important;
 }
 .less-smallish-title h2 {

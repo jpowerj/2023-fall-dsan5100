@@ -8,6 +8,8 @@ categories:
 bibliography: "../_DSAN5100.bib"
 format:
   revealjs:
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' integrity='sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65' crossorigin='anonymous'><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"
     footer: "DSAN 5100-03 Week 9: Statistical Inference"
     output-file: slides.html
   html:
@@ -42,8 +44,8 @@ Today's Planned Schedule:
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:40pm | <a href="#law-of-large-numbers">Statistical Inference Overview &rarr;</a> | <a href="../recordings/recording-w09-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 12:40pm | 1:10pm | <a href="#law-of-large-numbers">Asymptotic Laws for Random Samples &rarr;</a> | <a href="../recordings/recording-w09-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| **Lecture** | 12:30pm | 12:40pm | <a href="#statistical-inference">Statistical Inference Overview &rarr;</a> | <a href="../recordings/recording-w09-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:10pm | <a href="#asymptotic-laws-for-random-samples">Asymptotic Laws for Random Samples &rarr;</a> | <a href="../recordings/recording-w09-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
 | | 1:10pm | 1:40pm</span> | <a href="#maximum-likelihood-estimation">Maximum Likelihood, GMM Estimation &rarr;</a> | <a href="../recordings/recording-w09-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
 | **Break!** | 1:40pm | 1:50pm | | |
 | | 1:50pm | 2:20pm | <a href="#bias-variance-tradeoff-introduction">Bias-Variance Tradeoff Introduction &rarr;</a> | <a href="../recordings/recording-w09-6.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
@@ -52,7 +54,9 @@ Today's Planned Schedule:
 
 : {tbl-colwidths="[10,10,10,60,10]"}
 
-## Statistical Inference
+# Statistical Inference {data-stack-name="Inference"}
+
+## Statistical *Inference* vs. Statistics
 
 <!-- {data-name="Overview"} -->
 
@@ -67,7 +71,7 @@ Today's Planned Schedule:
 * Like "success" vs. "failure" in Bernoulli trials, no exact definition of what counts as sample vs. population
 * What we call the "sample" and the "population" is vocabulary there to help us know what to do
 
-## Inference
+## Inference (Statistical and Otherwise)
 
 What are we doing when we do science?
 
@@ -468,14 +472,15 @@ digraph grid
 If you're wondering, "what happened to Hypothesis Testing?", don't worry, we'll dive back into that over the next 2 weeks!
 :::
 
-## Law of Large Numbers {data-name="Law of Large Numbers"}
+# Asymptotic Laws for Random Samples {data-stack-name="Asymptotic Laws"}
 
-LLN
+* Law of Large Numbers (LLN)
+* Central Limit Theorem (CLT)
 
 ## Stability out of Randomness
 
 * $X$ = result of coin flip
-* Remembering that $X$ is a **random variable**, so it maps **outcomes** to **numbers**: $X($<span class="svg-span"><img src="/assets/img/puerto_rico_adobe_express.svg" height="70px" style="vertical-align: bottom; transform: translate(0, 18px)"></span>$) = 0$, $X($<span class="svg-span"><img src="/assets/img/quarter_adobe_express.svg" height="70px" style="display: inline-flex; vertical-align: bottom; transform: translate(0, 18px)"></span>$) = 1$
+* Remembering that $X$ is a **random variable**, so it maps **outcomes** to **numbers**: $X($<span class="svg-span"><img src="images/puerto_rico_adobe_express.svg" height="70px" style="vertical-align: bottom; transform: translate(0, 18px)"></span>$) = 0$, $X($<span class="svg-span"><img src="images/quarter_adobe_express.svg" height="70px" style="display: inline-flex; vertical-align: bottom; transform: translate(0, 18px)"></span>$) = 1$
 * We have no idea what the result of some **single** coin flip will be, yet we can be sure that the mean of **many trials** will converge to the **expected value** of $0.5$!
 
 ::: {.aside}
@@ -528,36 +533,71 @@ ggplot(results, aes(x=n, y=head_prop)) +
   scale_x_log10(breaks = c(10, 100, 1000, 10000, 100000), labels = c("10", "100", "1000", "10000", "100000"))
 ```
 
-## Law of Large Numbers
+## The Sample Mean {.crunch-title .crunch-math .crunch-ul}
 
-Suppose that $X_1, \ldots, X_n$ form a random sample from a distribution for which the mean is $\mu$ and for which the variance is finite. Let $\bar{X}_n$ denote the sample mean. Then
+* Like the **median** we saw earlier (along with lots of other examples), **sample mean** is just a function of RVs
+* Unlike the median, though, it is a **function of a vector-valued RV $\mathbf{X}_N$** (containing $N$ scalar RVs)![^cap-lower]
+* Let $\mathbf{X}_N = \{X_1, X_2, \ldots, X_n\}$, where $X_1$ is first observation, $X_2$ second observation, and so on. Then:
+
 $$
-\bar{X}_n \stackrel{p}{\longrightarrow} \mu \text {. }
+\overline{X}_N = f(\mathbf{X}_N) = \frac{1}{n}\sum_{i=1}^{n}X_i
 $$
 
-## Central Limit Theorem {data-name="Central Limit Theorem"}
+[^cap-lower]: Note that I'm trying really hard to differentiate between (capital-letter) $N$ as **cardinality** of observations, then (lowercase) $1, 2, \ldots, n$ for **ordinal** labels on each individual observation. This will spare you many headaches in life!
 
-* We'll never actually reach $n = \infty$, so we zoom in on **how close** our sample-based estimate gets to the true value
+## Weak Law of Large Numbers (WLLN) {.crunch-title .crunch-math .crunch-ul .small-math .small-inline}
+
+* Let $\mathbf{X}_N = \{X_1, \ldots, X_n\} \iid \mathcal{D}$ be a random sample from a distribution $\mathcal{D}$ with mean $\mu$, finite variance. Let $\overline{X}_N$ denote the sample mean from previous slide. Then
+
+$$
+\overline{X}_N \stackrel{p}{\longrightarrow} \mu
+$$
+
+* $\mathfrak{X}(N) \stackrel{p}{\longrightarrow} c$ means the Random Variable $\mathfrak{X}(N)$ (a **function** of the **sample size** $N$) **"converges in probability"** to the scalar value $c$. Formally:
+
+$$
+\mathfrak{X}(N) \overset{p}{\longrightarrow} c \iff \forall \varepsilon > 0 \left[ \lim_{N \rightarrow \infty}\Pr\left( | \mathfrak{X}(N) - c | < \varepsilon \right) = 1 \right]
+$$
+
+## Strong Law of Large Numbers (SLLN) {.crunch-title .crunch-math .crunch-ul .small-math .small-inline}
+
+* Same setup as last slide, but
+
+$$
+\overline{X}_N \convergesAS \mu
+$$
+
+* $\mathfrak{X}(N) \convergesAS c$ means the Random Variable $\mathfrak{X}(N)$ (a **function** of the **sample size** $N$) **"converges almost surely"** to the scalar value $c$. Formally:
+
+$$
+\mathfrak{X}(N) \convergesAS c \iff \Pr\left( \lim_{N \rightarrow \infty} \mathfrak{X}(N) = c \right) = 1
+$$
+
+* SLLN $\implies$ WLLN, but WLLN $~\nimplies$ SLLN!
+* WLLN easy to prove, SLLN very un-easy to prove
+
+## Central Limit Theorem
+
+* We'll never actually reach $N = \infty$, so we zoom in on **how close** our sample-based estimate gets to the true value
 * Central Limit Theorem says: these "closeness" values are **normally distributed**!
-* **LLN** guarantees that $X_n \eqeventual \mu$
-* **CLT** tells us what the **gap** $X_n - \mu$ looks like
+* **LLN** guarantees that $X_N \; \; \eqeventual \; \; \mu$
+* **CLT** tells us what the **gap** $(X_N - \mu)$ looks like
 
 ## Formal CLT
 
-* Sampled observations: $\mathbf{X} = \{X_1, \ldots, X_n\}$
+* Sampled observations: $\mathbf{X}_N = \{X_1, \ldots, X_n\}$
 * $\expect{X_i} = \mu, \Var{X_i} = \sigma^2 < \infty$
-* $\overline{X}_n \definedas M_1(\mathbf{X}) = \frac{X_1 + \cdots + X_n}{n}$
+* $\overline{X}_N \definedas M_1(\mathbf{X}_N) = \frac{X_1 + \cdots + X_n}{N}$
 
 $$
-\frac{\overline{X}_n - \mu}{\sigma / \sqrt{n}} \overset{\text{asymp}}{\sim} \mathcal{N}(0,1)
+\frac{\overline{X}_N - \mu}{\sigma / \sqrt{N}} \overset{\text{asymp}}{\sim} \mathcal{N}(0,1)
 $$
 
-## When is $\mathcal{N}(0, 1)$ a "good" approximation? {.smalltitle}
-
-::: columns
-::: {.column width="50%"}
+## When is $\mathcal{N}(0, 1)$ a "good" approximation? {.smaller .title-12 .crunch-title .crunch-code .crunch-figures .crunch-quarto-layout-panel}
 
 ```{r}
+#| echo: true
+#| code-fold: true
 #| label: clt-setup
 # Prepare data for all plots
 max_n <- 10000
@@ -591,37 +631,40 @@ gen_clt_plot <- function(n) {
 }
 ```
 
+::: {layout="[[1,1],[1,1]]"}
+
 ```{r}
-#| label: clt-10
+#| label: clt-first
+#| echo: false
 gen_clt_plot(2)
 ```
 
 ```{r}
 #| label: clt-1k
+#| echo: false
 gen_clt_plot(4)
 ```
 
-:::
-::: {.column width="50%"}
-
 ```{r}
 #| label: clt-100
+#| echo: false
 gen_clt_plot(5)
 ```
 
 ```{r}
 #| label: clt-10k
+#| echo: false
 gen_clt_plot(10000)
 ```
 
 :::
-:::
 
-## Q-Q Plots
+## Q-Q Plots {.smaller .crunch-title .crunch-code .crunch-figures .crunch-quarto-layout-panel}
 
-::: columns
-::: {.column width="50%"}
 ```{r}
+#| label: gen-qq-setup
+#| echo: true
+#| code-fold: true
 gen_qq <- function(n) {
   n_rolls <- all_rolls[1:n,]
   sample_means <- colMeans(n_rolls)
@@ -634,51 +677,74 @@ gen_qq <- function(n) {
   )
   return(qq_plot)
 }
+```
+
+::: {layout="[[1,1],[1,1]]"}
+
+```{r}
+#| label: qq-5
+#| echo: false
 gen_qq(5)
 ```
 
 ```{r}
-gen_qq(1000)
+#| label: qq-10
+#| echo: false
+gen_qq(10)
 ```
 
-:::
-::: {.column width="50%"}
-
 ```{r}
+#| label: qq-1k
+#| echo: false
 gen_qq(100)
 ```
 
 ```{r}
-gen_qq(10000)
+#| label: qq-10k
+#| echo: false
+gen_qq(1000)
 ```
 
 :::
+
+# Overthinking: Estimation {data-stack-name="Estimators"}
+
+* Maximum Likelihood Estimation (MLE)
+* Generalized Method of Moments (GMM) Estimation
+
+## Maximum Likelihood Estimation {data-stack-name="MLE"}
+
+* Creating a **model** $\mathcal{M}$ w/parameters $\param{\theta}$ means specifying
+
+$$
+\mathcal{M} = \Pr(\underbrace{x_1, \ldots, x_n}_{\text{Observed Data}} \mid \underbrace{\param{\theta}}_{\text{Model Parameters}})
+$$
+
+* When we view this as a function of $\param{\theta}$, **given** the observed data, we call it the **likelihood function** $\mathcal{L}_{\mathcal{M}}(\param{\theta} \mid x_1, \ldots, x_n)$
+* Read this as "the **likelihood** that our model $\mathcal{M}$, with parameters $\param{\theta}$, produced the data $x_1, \ldots, x_n$"
+
+## Probability Models are *Generative* Models {.title-09}
+
+* A given choice of model parameters $\param{\theta}$ can be used to **generate** simulated datapoints!
+* Simple example: $X \sim \text{Bern}(\param{p})$. Just one parameter, $\param{\theta} = \{\param{p}\}$
+* We observe 10 coin flips: 8 heads, 2 tails. Of all possible Bernoulli distributions (parameterized by $\param{p}$), which is **most likely to generate this data**?
+
+## Generative Models {.nostretch .crunch-title .crunch-figures .crunch-ul .crunch-lists .crunch-code}
+
+::: columns
+::: {.column width="60%"}
+
+* Given a choice of $\param{\theta}$ as our golem[^golem], we can generate **simulated datasets** (here 10 for each labeled value of $\param{p}$), then compute **likelihood** as proportion of datasets with 8 heads, 2 tails
+
+* From the plot: (Among these vals) $\param{p} = 0.8$ is **maximum likelihood estimate**
+
 :::
-
-## Maximum Likelihood Estimation {data-name="Maximum Likelihood"}
-
-* Recall: when we develop a model $\mathcal{M}$, we're working with
-
-$$
-P_{\mathcal{M}}(\underbrace{x_1, \ldots, x_n}_{\text{Observed Data}} \mid \underbrace{\theta}_{\text{Model Parameters}})
-$$
-
-* When we view this as a function of $\theta$, **given** the observed data, we call it the **likelihood function** $\mathcal{L}_{\mathcal{M}}(\theta \mid x_1, \ldots, x_n)$
-* Read this as "the **likelihood** that our model $\mathcal{M}$, with parameters $\theta$, produced the data $x_1, \ldots, x_n$"
-
-## Intuition: Generative Models
-
-* A given choice of model parameters $\theta$ can be used to **generate** simulated datapoints!
-* Simple example: $X \sim \text{Bern}(p)$. Just one parameter, $\theta = \{p\}$
-* We observe 10 coin flips: 8 heads, 2 tails. Of all the Bernoulli distributions (parameterized by $p$), which is **most likely to generate this data**?
-
-## Generative Models
-
-Given a choice of $\theta$, we can generate as many **simulated datasets** as we want (in this case, 10 datasets for each $\theta$ value), then compute **likelihood** of producing 8 heads, 2 tails
+::: {.column width="40%"}
 
 ```{r}
 #| label: bernoulli-sim
-#| cache: false
+#| fig-align: center
+#| fig-height: 12
 library(tibble)
 library(ggplot2)
 library(dplyr)
@@ -686,15 +752,14 @@ set.seed(1948)
 obs_heads <- 8
 num_flips <- 10
 num_reps <- 10
-theta_vals <- c(0.01, 0.2, 0.4, 0.6, 0.8, 0.99)
+p_vals <- c(0.01, 0.2, 0.4, 0.6, 0.8, 0.99)
 obs_matches <- c()
-for (i in 1:length(theta_vals)) {
-  theta <- theta_vals[i]
-  theta_str <- sprintf("%.2f", theta)
-  #print(theta_str)
+for (i in 1:length(p_vals)) {
+  cur_p <- p_vals[i]
+  theta_str <- sprintf("%.2f", cur_p)
   sim_data <- replicate(
     num_reps,
-    rbinom(num_flips, 1, theta)
+    rbinom(num_flips, 1, cur_p)
   )
   #print(sim_data)
   #data_str <- paste0(sim_data, collapse=", ")
@@ -711,106 +776,105 @@ for (i in 1:length(theta_vals)) {
   #writeLines(paste0("p = ",theta_str,": ",data_str))
 }
 #print(obs_matches)
-result_df <- tibble(theta=as.character(theta_vals), num_matches=obs_matches)
+result_df <- tibble(p=as.character(p_vals), num_matches=obs_matches)
 result_df <- result_df %>% mutate(prop_matches = obs_matches / num_reps)
-```
-
-```{r}
-#| label: bernoulli-fig
-#| fig-align: center
-#| cache: false
-ggplot(result_df, aes(x=theta, y=prop_matches)) +
+ggplot(result_df, aes(x=p, y=prop_matches)) +
   geom_bar(stat = 'identity', fill=cbPalette[1]) +
-  dsan_theme("full") +
+  dsan_theme("quarter") +
+  # theme(
+  #   axis.title.y = element_text(size = 12)
+  # ) +
   labs(
-    title = "Likelihood of data (8 heads, 2 tails) given theta value",
+    title = "Likelihood of data (8 heads, 2 tails) given p",
     y = "Proportion of times (8,2) generated"
   )
 ```
 
-(Among these vals) $p = 0.8$ is **maximum likelihood estimate**
+:::
+:::
 
-```{r}
-# for (i in 1:length(theta_vals)) {
-#   cur_theta <- theta_vals[i]
-#   print(cur_theta)
-#   cur_results <- results[[i]]
-#   print(cur_results)
-#   num_matches <- cur_results == 8
-#   writeLines(paste0("p = ",cur_theta,": our dataset was produced ",num_matches," times"))
-# }
-```
+[^golem]: A big rock boi from the Talmud (and Pokémon) who follows orders but has no common sense/nuance (like a computer). See @collins_golem_1993 and @mcelreath_statistical_2020
 
-## MLE in the Real World
+## Simulations $\rightarrow$ Math {.crunch-title .small-inline}
 
-Prev example may feel silly, since we could just mathematically solve for the optimal $p$ value...
+Prev example was overkill: we can **solve for** optimal $\param{p}$ value...
 
 $$
 \begin{align*}
-p^* &\overset{\phantom{x_i\text{ indep}}}{=} \argmax_{\theta} \mathcal{L}(x_1, \ldots, x_n \mid p) \\
-&\overset{x_i\text{ indep}}{=} \argmax_{\theta} \mathcal{L}(x_1 \mid p)\mathcal{L}(x_2 \mid p) \cdots \mathcal{L}(x_n \mid p)
+p^* &\overset{\phantom{x_i\text{ indep}}}{=} \argmax_{\param{p}} \mathcal{L}(x_1, \ldots, x_n \mid \param{p}) \\
+&\overset{x_i\text{ indep}}{=} \argmax_{\param{p}} \mathcal{L}(x_1 \mid \param{p})\mathcal{L}(x_2 \mid \param{p}) \cdots \mathcal{L}(x_n \mid \param{p})
 \end{align*}
 $$
 
-1. What are the individual $\mathcal{L}(x_i \mid p)$ terms?
-2. How do we maximize the product $\mathcal{L}(x_1 \mid p) \cdots \mathcal{L}(x_n \mid p)$?
+1. What are the individual $\mathcal{L}(x_i \mid \param{p})$ terms?
+2. How do we maximize the product $\mathcal{L}(x_1 \mid \param{p}) \cdots \mathcal{L}(x_n \mid \param{p})$?
 
 <center>
 Time for some **Math Magic**...
 </center>
 
-## Math Magic 1
+## Math Magic 1 {.small-math}
 
-1. What are the individual $P(x_i \mid p)$ terms?
+1. What are the individual $P(x_i \mid \param{p})$ terms?
 
-$X \sim \text{Bern}(p)$, so
+$X \sim \text{Bern}(\param{p})$, so
 
 $$
 \begin{align*}
-P(X = x_i \mid p) &= \begin{cases}1 - p & x_i = 0 \\ p & x_i = 1\end{cases} \leftarrow \genfrac{}{}{0pt}{}{\text{ Non-differentiable}}{😭} \\
-&\overset{\text{math}}{\underset{\text{magic}}{=}} (1-p)^{1-x_i}p^{x_i} \leftarrow \text{ Differentiable! 😲}
+\Pr(X = x_i \mid \param{p}) &= \begin{cases}1 - \param{p} & x_i = 0 \\ \param{p} & x_i = 1\end{cases} \; \leftarrow \genfrac{}{}{0pt}{}{\text{ Non-differentiable}}{😭} \\
+&\overset{\text{math}}{\underset{\text{magic}}{=}} (1-\param{p})^{1-x_i}\param{p}^{x_i} \; \leftarrow \text{ Differentiable! 😲}
 \end{align*}
 $$
 
 Why do we need it to be differentiable? Stay tuned...
 
-## Math Magic 2
+## Math Magic 2 {.crunch-title .crunch-math .crunch-p .crunch-quarto-layout-panel}
 
-Remember calculus!
+::: {layout="[2,1]" layout-valign="center"}
+
+::: {#calculus-text}
+
+2. How do we maximize the product?
 
 $$
-p^* = \argmax_p f(p) \implies f'(p^*) = 0
+p^* = \argmax_{\param{p}} f(\param{p}) \implies f'(p^*) = 0
 $$
 
-So, to **maximize** likelihood function, we need to find its **derivative**[^deriv], set it equal to 0, and solve:
+To **maximize** likelihood, we need to find its **derivative**[^deriv], set equal to 0, and solve:
+
+:::
+
+![](images/koolaid_calculus.png){width="320" height="190"}
+
+:::
 
 $$
 \begin{align*}
-&\frac{d}{dp}\mathcal{L}(x \mid p) = 0 \iff \\
-&\frac{d}{dp}\left[\mathcal{L}(x_1 \mid p)\mathcal{L}(x_2 \mid p)\cdots \mathcal{L}(x_n \mid p)\right] = 0
+&\frac{d}{d\param{p}}\lik(x \mid \param{p}) = 0 \iff \\
+&\frac{d}{d\param{p}}\left[\lik(x_1 \mid \param{p})\lik(x_2 \mid \param{p})\cdots \lik(x_n \mid \param{p})\right] = 0
 \end{align*}
 $$
 
-[^deriv]: This is why we used math magic to make $P(x_i \mid \theta)$ differentiable, in the previous slide!
+[^deriv]: And that's why we used math magic to make $\Pr(x_i \mid \param{p})$ differentiable, in the previous slide!
 
 ## Obstacle: Products vs. Sums {.smaller}
 
-* Finding $\frac{d}{dp}\left[ \mathcal{L}(x_1)\mathcal{L}(x_2)\cdots \mathcal{L}(x_n)\right]$ is a doozy, even with just $n = 2$ datapoints:
+* Finding $\frac{d}{d\param{p}}\left[ \lik(x_1)\lik(x_2)\cdots \lik(x_n)\right]$ is a doozy, even with just $n = 2$ datapoints:
 
 $$
 \begin{align*}
-&\frac{d}{dp}\left[ \mathcal{L}(x_1)\mathcal{L}(x_2) \right] = \left( \frac{d}{dp}\mathcal{L}(x_1)\right) \cdot \mathcal{L}(x_2) + \mathcal{L}(x_1)\cdot \left( \frac{d}{dp}\mathcal{L}(x_2) \right) \\
-&= (1-p)^{-x_1}p^{x_1-1}(x_1-p)\cdot (1-p)^{1-x_2}p^{x_2} \\
-&+ (1-p)^{1-x_1}p^{x_1} \cdot (1-p)^{-x_2}p^{x_2-1}(x_2 - p)
+&\frac{d}{d\param{p}}\left[ \lik(x_1)\lik(x_2) \right] = \left( \frac{d}{d\param{p}}\lik(x_1)\right) \cdot \lik(x_2) + \lik(x_1)\cdot \left( \frac{d}{d\param{p}}\lik(x_2) \right) \\
+&= (1-\param{p})^{-x_1}\param{p}^{x_1-1}(x_1-\param{p})\cdot (1-\param{p})^{1-x_2}\param{p}^{x_2} \\
+&+ (1-\param{p})^{1-x_1}\param{p}^{x_1} \cdot (1-\param{p})^{-x_2}\param{p}^{x_2-1}(x_2 - \param{p})
 %&= \frac{d}{d\theta}\left[ (1-p)^{1-x_1}p^{x_1}(1-p)^{1-x_2}p^{x_2} \right]
 \end{align*}
 $$
 
-* Complicating factor: $\mathcal{L}(x_i)$ terms are all **multiplied together**, forcing us to use product rule: $\frac{d}{d\theta}\left[P(x_1)P(x_2)\right] = \left(\frac{d}{d\theta}P(x_1)\right)\cdot P(x_2) + P(x_1)\cdot \left(\frac{d}{d\theta}P(x_2)\right)$
-* If we had terms that were **added** rather than **multiplied**, we'd have a much easier time: $\frac{d}{d\theta}\left[ \mathcal{L}(x_1) + \mathcal{L}(x_2)\right] = \frac{d}{d\theta}P(x_1) + \frac{d}{d\theta} P(x_2)$[^linear]
+* Complicating factor: $\lik(x_i)$ terms are all **multiplied together**, forcing us to use product rule: $\frac{d}{d\param{p}}\left[\lik(x_1)\lik(x_2)\right] = \left(\frac{d}{d\param{p}}\lik(x_1)\right)\cdot \lik(x_2) + \lik(x_1)\cdot \left(\frac{d}{d\param{p}}\lik(x_2)\right)$
+* If we had terms that were **added** rather than **multiplied**, we'd have a much easier time: $\frac{d}{d\param{p}}\left[ \lik(x_1) + \lik(x_2)\right] = \frac{d}{d\param{p}}\lik(x_1) + \frac{d}{d\param{p}} \lik(x_2)$[^additive]
 * So, what math operation do we know that turns **multiplications** into **additions**?
 
-[^linear]: We achieve this simplification because the derivative operator is **linear**: $\frac{d}{dx}\left[ f(x) + g(x) \right] = \frac{d}{dx}f(x) + \frac{d}{dx}g(x)$
+[^additive]: We achieve this simplification because the derivative operator is **additive**: $\frac{d}{dx}\left[ f(x) + g(x) \right] = \frac{d}{dx}f(x) + \frac{d}{dx}g(x)$
 
 <!-- ::: {.aside}
 Remember the **product rule**: $\frac{d}{dx}\left[f(x)g(x)\right] = \left(\frac{d}{dx}f(x)\right)\cdot g(x) + \left(\frac{d}{dx}g(x)\right) \cdot f(x)$.
@@ -822,7 +886,7 @@ $$
 \log(a\cdot b) = \log(a) + \log(b)
 $$
 
-Bingo! So, can we maximize $\ell(x_i) = \log(\mathcal{L}(x_i))$ rather than $\mathcal{L}(x_i)$? Bingo again! Because logarithms are **monotonic**,
+Bingo! So, can we maximize $\loglik(x_i) = \log(\mathcal{L}(x_i))$ rather than $\mathcal{L}(x_i)$? Bingo again! Because logarithms are **monotonic**,
 
 $$
 x^* = \argmax_x \left[ \log\left(f(x)\right) \right] \iff x^* = \argmax_x \left[ f(x) \right]
@@ -831,7 +895,7 @@ $$
 So, we can just solve
 
 $$
-p^* = \argmax_p \left[ \ell(x_1, \ldots, x_n)\right]
+p^* = \argmax_{\param{p}} \left[ \ell(x_1, \ldots, x_n)\right]
 $$
 
 ## Simplifying {.smaller}
@@ -840,41 +904,41 @@ Our problem simplifies to figuring out
 
 $$
 \begin{align*}
-\frac{d}{dp}\left[ \log \left( \mathcal{L}(x_1)\cdots \mathcal{L}(x_n) \right) \right] &= \frac{d}{dp}\left[ \log \mathcal{L}(x_1) + \log\mathcal{L}(x_2) + \cdots + \log\mathcal{L}(x_n) \right] \\
-&= \frac{d}{dp}\left[ \ell(x_1) + \ell(x_2) + \cdots + \ell(x_n) \right] = \frac{d}{dp}\left[ \sum_{i=1}^n \ell(x_i)\right]
+\frac{d}{d\param{p}}\left[ \log \left( \lik(x_1)\cdots \lik(x_n) \right) \right] &= \frac{d}{d\param{p}}\left[ \log \lik(x_1) + \log\lik(x_2) + \cdots + \log\lik(x_n) \right] \\
+&= \frac{d}{d\param{p}}\left[ \ell(x_1) + \ell(x_2) + \cdots + \ell(x_n) \right] = \frac{d}{d\param{p}}\left[ \sum_{i=1}^n \ell(x_i)\right]
 \end{align*}
 $$
 
-But since the derivative is a **linear operator**, $\frac{d}{dp}\left[ \sum_{i=1}^n \ell(x_i) \right] = \sum_{i=1}^n \frac{d}{dp}\left[ \ell(x_i) \right]$, so we just have to compute $\frac{d}{dp}\ell(x_i)$! No product rule required (though we still need chain rule):
+But since the derivative is an **additive** operator, $\frac{d}{d\param{p}}\left[ \sum_{i=1}^n \ell(x_i) \right] = \sum_{i=1}^n \frac{d}{d\param{p}}\left[ \ell(x_i) \right]$, so we just have to compute $\frac{d}{d\param{p}}\ell(x_i)$! No product rule required (we still need chain rule):
 
 $$
 \begin{align*}
-\frac{d}{dp}\left[ \ell(x_i) \right] &= \frac{d}{dp}\left[ \log((1-p)^{1-x_i}p^{x_i}) \right] = \frac{d}{dp}\left[(1-x_i)\log(1-p) + x_i\log(p)\right] \\
-&= (1-x_i)\frac{d}{dp}\log(1-p) + x_i\frac{d}{dp}\log(p) = -\frac{1-x_i}{1-p} + \frac{x_i}{p} \\
-&= \frac{p - x_i}{(p-1)p}
+\frac{d}{d\param{p}}\left[ \ell(x_i) \right] &= \frac{d}{d\param{p}}\left[ \log((1-\param{p})^{1-x_i}\param{p}^{x_i}) \right] = \frac{d}{d\param{p}}\left[(1-x_i)\log(1-\param{p}) + x_i\log(\param{p})\right] \\
+&= (1-x_i)\frac{d}{d\param{p}}\log(1-\param{p}) + x_i\frac{d}{d\param{p}}\log(\param{p}) = -\frac{1-x_i}{1-\param{p}} + \frac{x_i}{\param{p}} \\
+&= \frac{\param{p} - x_i}{(\param{p}-1)\param{p}}
 \end{align*}
 $$
 
-## Maximizing
+## Maximizing {.crunch-title .crunch-math}
 
-Now that we know $\frac{d}{dp}\ell(x_i)$, we set our log-likelihood equation equal to zero to find the likelihood-maximizing $p$ value, $p^*$:
+Now that we know $\frac{d}{d\param{p}}\ell(x_i)$, we set our log-likelihood equation equal to zero to find the likelihood-maximizing $\param{p}$ value, $p^*$:
 
 $$
 \begin{align*}
-&\sum_{i=1}^n\frac{d}{dp}\ell(x_i) = 0 \iff \sum_{i=1}^n \frac{p^* - x_i}{(p^*-1)p^*} = 0 \\
+&\sum_{i=1}^n\frac{d}{d\param{p}}\ell(x_i) = 0 \iff \sum_{i=1}^n \frac{p^* - x_i}{(p^*-1)p^*} = 0 \\
 &\iff -\frac{1}{(p^*-1)p^*}\sum_{i=1}^nx_i - np^* = 0 \\
 &\iff \sum_{i=1}^nx_i = np^* \iff \boxed{p^* = \frac{\sum_{i=1}^nx_i}{n}}
 \end{align*}
 $$
 
-## MLE Intuition
+## MLE Intuition {.crunch-title .crunch-ul}
 
 $$
 p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \genfrac{}{}{0pt}{}{\leftarrow \text{\# Heads}}{\leftarrow \text{\# Flips }}
 $$
 
 * MLE almost always matches intuition! Example: given data $x_1, \ldots, x_n$, what **Normal distribution** best fits this data?
-* Same as asking: what **parameter settings** for $\mathcal{N}(\mu, \sigma^2)$ are most likely to produce $x_1, \ldots, x_n$? The answer:
+* Same as asking: what **parameter settings** for $\mathcal{N}(\param{\mu}, \param{\sigma^2})$ are most likely to produce $x_1, \ldots, x_n$? The answer:
 
 $$
 \mu^* = \frac{\sum_{i=1}^n x_i}{n} \; \; \; \sigma^2_* = \frac{\sum_{i=1}^n (x_i-\mu^*)^2}{n}
@@ -908,7 +972,7 @@ $$
 
 * Now we're ready to compute $\expect{\sigma^2_*}$!
 
-## Computing $\expect{\sigma^2_*}$ {.smaller}
+## Computing $\expect{\sigma^2_*}$ {.smaller .crunch-title}
 
 $$
 \begin{align*}
@@ -916,8 +980,7 @@ $$
 \end{align*}
 $$
 
-* What do we know about $\expect{x_i^2}$?
-* Remember the (alternate) definition of **variance**: $\Var{X} = \expect{X^2} - \left(\expect{X}\right)^2$. Then
+* What do we know about $\expect{x_i^2}$? Remember the (alternate) definition of **variance**: $\Var{X} = \expect{X^2} - \left(\expect{X}\right)^2$. Then
 
 $$
 \expect{X^2} = \Var{X} + \left(\expect{X}\right)^2
@@ -934,7 +997,7 @@ $$
 
 ## Almost There! {.smaller}
 
-* Almost there! We know that $\expect{\mu^*} = \mu$, but what is $\Var{\mu^*}$? Remember that $\Var{aX} = a^2\Var{X}$!
+We know that $\expect{\mu^*} = \mu$, but what is $\Var{\mu^*}$? Remember that $\Var{aX} = a^2\Var{X}$!
 
 $$
 \Var{\mu^*} = \bigVar{\frac{1}{n}\sum_{i=1}^nx_i} = \frac{1}{n^2}\sum_{i=1}^n\Var{x_i} = \frac{n\sigma^2}{n^2} = \frac{\sigma^2}{n}
@@ -955,10 +1018,10 @@ $$
 
 * Long story short, we **underpredict** the population variance because we already **used some of the data to compute $\mu^*$**!
 * This is where the **heuristic** of **degrees of freedom** comes in:
-  * When computing an estimate $e$, $df(e) = n - k_e$
+  * When we construct an **estimate** $e$, $df(e) = n - k_e$
   * $k_e =$ number of **other estimates** used to calculate $e$!
 
-## Handwavy Intuition {.crunch-math .smaller}
+## Handwavy Intuition {.crunch-title .crunch-ul .crunch-math .smaller}
 
 * Consider $X_1, X_2 \sim \mathcal{N}(0,1)$: $\mu = 0$, $\sigma^2 = 1$.
 
@@ -989,7 +1052,7 @@ $$
 \expect{\sigma^2_\circledast} = \bigexpect{\frac{n}{n-1}\sigma^2_*} = \frac{n}{n-1}\frac{n-1}{n}\sigma^2 = \color{green}{\sigma^2} \; ✅
 $$
 
-## 21st-Century Solution {.smaller .crunch-math .nobotmargin}
+## 21st-Century Solution {.smaller .crunch-math .crunch-title .nobotmargin}
 
 * Be **Bayesian**, use priors on parameters (creating hyperparameters)!
 * Pretend we know $\sigma^2$, but want to find the "best" value of $\mu$:
@@ -1004,11 +1067,11 @@ $$
 
 ::: {.no-stretch style="margin-top: 8px;"}
 
-![](images/bayesian_pgm.svg)
+![](images/bayesian_pgm.svg){fig-align="center" width="40%"}
 
 :::
 
-## Single Datapoint {.smaller}
+## Single Datapoint {.smaller .crunch-title .crunch-math}
 
 * Let's consider the estimate of $\mu$ from a single datapoint $X_i$. MLE just gives us $\mu^* = X_i$. How about MAP estimate?
 
@@ -1028,7 +1091,7 @@ $$
 \ell(X_i, \mu, m, s) = \log\left[\frac{1}{\sigma\sqrt{2\pi}}\right] - \frac{(X_i-\mu)^2}{2\sigma^2} + \log\left[\frac{1}{s\sqrt{2\pi}}\right] - \frac{(\mu - m)^2}{2s^2}
 $$
 
-## Taking the Derivative {.smaller .crunch-math .nobotmargin}
+## Taking the Derivative {.smaller .crunch-math .nobotmargin .crunch-title}
 
 * Taking the derivative gives us:
 
@@ -1060,6 +1123,34 @@ P_{\text{post}}(\mathcal{H}) &\hspace{-6mm}\propto &\hspace{-6mm} P(X \mid \math
 \text{Posterior} &\hspace{-6mm}\propto &\hspace{-6mm}\text{Evidence} &\hspace{-6mm} \times &\hspace{-6mm} \text{Prior}
 \end{array}
 $$
+
+## Generalized Method of Moments (GMM) Estimation
+
+# The Bias-Variance Tradeoff {.title-14 .not-title-slide .full-width-quotes .crunch-images data-stack-name="Bias-Variance"}
+
+::: {.callout-note appearance="minimal"}
+::: {.quote-text style="display: block; width: 100% !important;"}
+*There's no such thing as a free lunch.*
+
+::: {.align-right}
+<a href='https://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch' target='_blank'>Life</a> / <a href='https://www.nytimes.com/1993/02/14/magazine/on-language-words-out-in-the-cold.html' target='_blank'>Conservative Economists</a>
+:::
+
+:::
+
+:::
+
+::: {.callout-note appearance="minimal"}
+::: {.quote-text style="display: block; width: 100% !important;"}
+*And yet, Machine Learning gets us rly close to free lunches!*
+
+::: {.align-right}
+![](images/always_exhausted.jpeg){width="130"} Jeff
+:::
+
+:::
+
+:::
 
 <!--
 

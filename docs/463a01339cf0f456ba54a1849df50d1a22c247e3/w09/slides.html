@@ -95,7 +95,26 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RFMTL6Q5J5"></script>
 
@@ -396,6 +415,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -418,7 +438,6 @@ Jeff Jacobs
 
   <p class="date">Thursday, October 19, 2023</p>
 </section>
-<section>
 <section id="schedule" class="title-slide slide level1 smaller small-title crunch-title center" data-name="Schedule">
 <h1>Schedule</h1>
 <div class="hidden">
@@ -434,17 +453,21 @@ Jeff Jacobs
 \DeclareMathOperator*{\argmin}{argmin}
 \newcommand{\bigexp}[1]{\exp\mkern-4mu\left[ #1 \right]}
 \newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
+\newcommand{\convergesAS}{\overset{\text{a.s.}}{\longrightarrow}}
 \newcommand{\definedas}{\overset{\text{def}}{=}}
 \newcommand{\definedalign}{\overset{\phantom{\text{def}}}{=}}
-\newcommand{\eqeventual}{\overset{\text{eventually}}{=}}
+\newcommand{\eqeventual}{\overset{\mathclap{\text{\small{eventually}}}}{=}}
 \newcommand{\expect}[1]{\mathbb{E}[#1]}
 \newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
 \newcommand{\fw}[1]{\texttt{#1}}
 \newcommand{\given}{\mid}
 \newcommand{\green}[1]{\color{green}{#1}}
 \newcommand{\heads}{\outcome{heads}}
+\newcommand{\iid}{\overset{\text{\small{iid}}}{\sim}}
 \newcommand{\lik}{\mathcal{L}}
+\newcommand{\loglik}{\ell}
 \newcommand{\mle}{\textsf{ML}}
+\newcommand{\nimplies}{\;\not\!\!\!\!\implies}
 \newcommand{\orange}[1]{\color{orange}{#1}}
 \newcommand{\outcome}[1]{\textsf{#1}}
 \newcommand{\param}[1]{{\color{purple} #1}}
@@ -482,14 +505,14 @@ Jeff Jacobs
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">12:30pm</td>
 <td style="text-align: left;">12:40pm</td>
-<td style="text-align: left;"><a href="#law-of-large-numbers">Statistical Inference Overview →</a></td>
+<td style="text-align: left;"><a href="#statistical-inference">Statistical Inference Overview →</a></td>
 <td style="text-align: center;"><a href="../recordings/recording-w09-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">12:40pm</td>
 <td style="text-align: left;">1:10pm</td>
-<td style="text-align: left;"><a href="#law-of-large-numbers">Asymptotic Laws for Random Samples →</a></td>
+<td style="text-align: left;"><a href="#asymptotic-laws-for-random-samples">Asymptotic Laws for Random Samples →</a></td>
 <td style="text-align: center;"><a href="../recordings/recording-w09-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a></td>
 </tr>
 <tr class="odd">
@@ -530,8 +553,14 @@ Jeff Jacobs
 </tbody>
 </table>
 </section>
-<section id="statistical-inference" class="slide level2">
-<h2>Statistical Inference</h2>
+
+<section>
+<section id="statistical-inference" class="title-slide slide level1 center" data-stack-name="Inference">
+<h1>Statistical Inference</h1>
+
+</section>
+<section id="statistical-inference-vs.-statistics" class="slide level2">
+<h2>Statistical <em>Inference</em> vs.&nbsp;Statistics</h2>
 <!-- {data-name="Overview"} -->
 <ul>
 <li>Moving from <em>understanding</em> probability to <em>getting things done</em> using probability!</li>
@@ -548,8 +577,8 @@ Jeff Jacobs
 <li>What we call the “sample” and the “population” is vocabulary there to help us know what to do</li>
 </ul>
 </section>
-<section id="inference" class="slide level2">
-<h2>Inference</h2>
+<section id="inference-statistical-and-otherwise" class="slide level2">
+<h2>Inference (Statistical and Otherwise)</h2>
 <p>What are we doing when we do science?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -969,16 +998,20 @@ Stats-&gt;Sample
 
 <aside><div>
 <p>If you’re wondering, “what happened to Hypothesis Testing?”, don’t worry, we’ll dive back into that over the next 2 weeks!</p>
-</div></aside></section>
-<section id="law-of-large-numbers" class="slide level2" data-name="Law of Large Numbers">
-<h2>Law of Large Numbers</h2>
-<p>LLN</p>
+</div></aside></section></section>
+<section>
+<section id="asymptotic-laws-for-random-samples" class="title-slide slide level1 center" data-stack-name="Asymptotic Laws">
+<h1>Asymptotic Laws for Random Samples</h1>
+<ul>
+<li>Law of Large Numbers (LLN)</li>
+<li>Central Limit Theorem (CLT)</li>
+</ul>
 </section>
 <section id="stability-out-of-randomness" class="slide level2">
 <h2>Stability out of Randomness</h2>
 <ul>
 <li><span class="math inline">\(X\)</span> = result of coin flip</li>
-<li>Remembering that <span class="math inline">\(X\)</span> is a <strong>random variable</strong>, so it maps <strong>outcomes</strong> to <strong>numbers</strong>: <span class="math inline">\(X(\)</span><span class="svg-span"><img src="../assets/img/puerto_rico_adobe_express.svg" height="70px" style="vertical-align: bottom; transform: translate(0, 18px)"></span><span class="math inline">\() = 0\)</span>, <span class="math inline">\(X(\)</span><span class="svg-span"><img src="../assets/img/quarter_adobe_express.svg" height="70px" style="display: inline-flex; vertical-align: bottom; transform: translate(0, 18px)"></span><span class="math inline">\() = 1\)</span></li>
+<li>Remembering that <span class="math inline">\(X\)</span> is a <strong>random variable</strong>, so it maps <strong>outcomes</strong> to <strong>numbers</strong>: <span class="math inline">\(X(\)</span><span class="svg-span"><img src="images/puerto_rico_adobe_express.svg" height="70px" style="vertical-align: bottom; transform: translate(0, 18px)"></span><span class="math inline">\() = 0\)</span>, <span class="math inline">\(X(\)</span><span class="svg-span"><img src="images/quarter_adobe_express.svg" height="70px" style="display: inline-flex; vertical-align: bottom; transform: translate(0, 18px)"></span><span class="math inline">\() = 1\)</span></li>
 <li>We have no idea what the result of some <strong>single</strong> coin flip will be, yet we can be sure that the mean of <strong>many trials</strong> will converge to the <strong>expected value</strong> of <span class="math inline">\(0.5\)</span>!</li>
 </ul>
 
@@ -1035,36 +1068,73 @@ Stats-&gt;Sample
 
 </div>
 <img data-src="index_files/figure-revealjs/large-nums-convergence-1.png" width="960" class="r-stretch quarto-figure-center"></section>
-<section id="law-of-large-numbers-1" class="slide level2">
-<h2>Law of Large Numbers</h2>
-<p>Suppose that <span class="math inline">\(X_1, \ldots, X_n\)</span> form a random sample from a distribution for which the mean is <span class="math inline">\(\mu\)</span> and for which the variance is finite. Let <span class="math inline">\(\bar{X}_n\)</span> denote the sample mean. Then <span class="math display">\[
-\bar{X}_n \stackrel{p}{\longrightarrow} \mu \text {. }
+<section id="the-sample-mean" class="slide level2 crunch-title crunch-math crunch-ul">
+<h2>The Sample Mean</h2>
+<ul>
+<li>Like the <strong>median</strong> we saw earlier (along with lots of other examples), <strong>sample mean</strong> is just a function of RVs</li>
+<li>Unlike the median, though, it is a <strong>function of a vector-valued RV <span class="math inline">\(\mathbf{X}_N\)</span></strong> (containing <span class="math inline">\(N\)</span> scalar RVs)!<sup>1</sup></li>
+<li>Let <span class="math inline">\(\mathbf{X}_N = \{X_1, X_2, \ldots, X_n\}\)</span>, where <span class="math inline">\(X_1\)</span> is first observation, <span class="math inline">\(X_2\)</span> second observation, and so on. Then:</li>
+</ul>
+<p><span class="math display">\[
+\overline{X}_N = f(\mathbf{X}_N) = \frac{1}{n}\sum_{i=1}^{n}X_i
+\]</span></p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Note that I’m trying really hard to differentiate between (capital-letter) <span class="math inline">\(N\)</span> as <strong>cardinality</strong> of observations, then (lowercase) <span class="math inline">\(1, 2, \ldots, n\)</span> for <strong>ordinal</strong> labels on each individual observation. This will spare you many headaches in life!</p></li></ol></aside></section>
+<section id="weak-law-of-large-numbers-wlln" class="slide level2 crunch-title crunch-math crunch-ul small-math small-inline">
+<h2>Weak Law of Large Numbers (WLLN)</h2>
+<ul>
+<li>Let <span class="math inline">\(\mathbf{X}_N = \{X_1, \ldots, X_n\} \iid \mathcal{D}\)</span> be a random sample from a distribution <span class="math inline">\(\mathcal{D}\)</span> with mean <span class="math inline">\(\mu\)</span>, finite variance. Let <span class="math inline">\(\overline{X}_N\)</span> denote the sample mean from previous slide. Then</li>
+</ul>
+<p><span class="math display">\[
+\overline{X}_N \stackrel{p}{\longrightarrow} \mu
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathfrak{X}(N) \stackrel{p}{\longrightarrow} c\)</span> means the Random Variable <span class="math inline">\(\mathfrak{X}(N)\)</span> (a <strong>function</strong> of the <strong>sample size</strong> <span class="math inline">\(N\)</span>) <strong>“converges in probability”</strong> to the scalar value <span class="math inline">\(c\)</span>. Formally:</li>
+</ul>
+<p><span class="math display">\[
+\mathfrak{X}(N) \overset{p}{\longrightarrow} c \iff \forall \varepsilon &gt; 0 \left[ \lim_{N \rightarrow \infty}\Pr\left( | \mathfrak{X}(N) - c | &lt; \varepsilon \right) = 1 \right]
 \]</span></p>
 </section>
-<section id="central-limit-theorem" class="slide level2" data-name="Central Limit Theorem">
+<section id="strong-law-of-large-numbers-slln" class="slide level2 crunch-title crunch-math crunch-ul small-math small-inline">
+<h2>Strong Law of Large Numbers (SLLN)</h2>
+<ul>
+<li>Same setup as last slide, but</li>
+</ul>
+<p><span class="math display">\[
+\overline{X}_N \convergesAS \mu
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathfrak{X}(N) \convergesAS c\)</span> means the Random Variable <span class="math inline">\(\mathfrak{X}(N)\)</span> (a <strong>function</strong> of the <strong>sample size</strong> <span class="math inline">\(N\)</span>) <strong>“converges almost surely”</strong> to the scalar value <span class="math inline">\(c\)</span>. Formally:</li>
+</ul>
+<p><span class="math display">\[
+\mathfrak{X}(N) \convergesAS c \iff \Pr\left( \lim_{N \rightarrow \infty} \mathfrak{X}(N) = c \right) = 1
+\]</span></p>
+<ul>
+<li>SLLN <span class="math inline">\(\implies\)</span> WLLN, but WLLN <span class="math inline">\(~\nimplies\)</span> SLLN!</li>
+<li>WLLN easy to prove, SLLN very un-easy to prove</li>
+</ul>
+</section>
+<section id="central-limit-theorem" class="slide level2">
 <h2>Central Limit Theorem</h2>
 <ul>
-<li>We’ll never actually reach <span class="math inline">\(n = \infty\)</span>, so we zoom in on <strong>how close</strong> our sample-based estimate gets to the true value</li>
+<li>We’ll never actually reach <span class="math inline">\(N = \infty\)</span>, so we zoom in on <strong>how close</strong> our sample-based estimate gets to the true value</li>
 <li>Central Limit Theorem says: these “closeness” values are <strong>normally distributed</strong>!</li>
-<li><strong>LLN</strong> guarantees that <span class="math inline">\(X_n \eqeventual \mu\)</span></li>
-<li><strong>CLT</strong> tells us what the <strong>gap</strong> <span class="math inline">\(X_n - \mu\)</span> looks like</li>
+<li><strong>LLN</strong> guarantees that <span class="math inline">\(X_N \; \; \eqeventual \; \; \mu\)</span></li>
+<li><strong>CLT</strong> tells us what the <strong>gap</strong> <span class="math inline">\((X_N - \mu)\)</span> looks like</li>
 </ul>
 </section>
 <section id="formal-clt" class="slide level2">
 <h2>Formal CLT</h2>
 <ul>
-<li>Sampled observations: <span class="math inline">\(\mathbf{X} = \{X_1, \ldots, X_n\}\)</span></li>
+<li>Sampled observations: <span class="math inline">\(\mathbf{X}_N = \{X_1, \ldots, X_n\}\)</span></li>
 <li><span class="math inline">\(\expect{X_i} = \mu, \Var{X_i} = \sigma^2 &lt; \infty\)</span></li>
-<li><span class="math inline">\(\overline{X}_n \definedas M_1(\mathbf{X}) = \frac{X_1 + \cdots + X_n}{n}\)</span></li>
+<li><span class="math inline">\(\overline{X}_N \definedas M_1(\mathbf{X}_N) = \frac{X_1 + \cdots + X_n}{N}\)</span></li>
 </ul>
 <p><span class="math display">\[
-\frac{\overline{X}_n - \mu}{\sigma / \sqrt{n}} \overset{\text{asymp}}{\sim} \mathcal{N}(0,1)
+\frac{\overline{X}_N - \mu}{\sigma / \sqrt{N}} \overset{\text{asymp}}{\sim} \mathcal{N}(0,1)
 \]</span></p>
 </section>
-<section id="when-is-mathcaln0-1-a-good-approximation" class="slide level2 smalltitle">
+<section id="when-is-mathcaln0-1-a-good-approximation" class="slide level2 smaller title-12 crunch-title crunch-code crunch-figures crunch-quarto-layout-panel">
 <h2>When is <span class="math inline">\(\mathcal{N}(0, 1)\)</span> a “good” approximation?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
@@ -1100,24 +1170,18 @@ Stats-&gt;Sample
 <span id="cb3-30"><a href="#cb3-30"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">gen_clt_plot</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/clt-10-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/clt-first-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">gen_clt_plot</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1126,12 +1190,9 @@ Stats-&gt;Sample
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">gen_clt_plot</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1140,11 +1201,7 @@ Stats-&gt;Sample
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">gen_clt_plot</span>(<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1156,248 +1213,254 @@ Stats-&gt;Sample
 </div>
 </div>
 </section>
-<section id="q-q-plots" class="slide level2">
+<section id="q-q-plots" class="slide level2 smaller crunch-title crunch-code crunch-figures crunch-quarto-layout-panel">
 <h2>Q-Q Plots</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>gen_qq <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  n_rolls <span class="ot">&lt;-</span> all_rolls[<span class="dv">1</span><span class="sc">:</span>n,]</span>
-<span id="cb8-3"><a href="#cb8-3"></a>  sample_means <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(n_rolls)</span>
-<span id="cb8-4"><a href="#cb8-4"></a>  qq_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">smean =</span> sample_means)</span>
-<span id="cb8-5"><a href="#cb8-5"></a>  qq_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(qq_df, <span class="fu">aes</span>(<span class="at">sample =</span> smean)) <span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"n = "</span>,n)</span>
-<span id="cb8-10"><a href="#cb8-10"></a>  )</span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">return</span>(qq_plot)</span>
-<span id="cb8-12"><a href="#cb8-12"></a>}</span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="fu">gen_qq</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>gen_qq <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  n_rolls <span class="ot">&lt;-</span> all_rolls[<span class="dv">1</span><span class="sc">:</span>n,]</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  sample_means <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(n_rolls)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  qq_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">smean =</span> sample_means)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  qq_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(qq_df, <span class="fu">aes</span>(<span class="at">sample =</span> smean)) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"n = "</span>,n)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>  )</span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">return</span>(qq_plot)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/qq-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">gen_qq</span>(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/qq-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">gen_qq</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/qq-1k-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">gen_qq</span>(<span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/qq-10k-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="overthinking-estimation" class="title-slide slide level1 center" data-stack-name="Estimators">
+<h1>Overthinking: Estimation</h1>
+<ul>
+<li>Maximum Likelihood Estimation (MLE)</li>
+<li>Generalized Method of Moments (GMM) Estimation</li>
+</ul>
 </section>
-<section id="maximum-likelihood-estimation" class="slide level2" data-name="Maximum Likelihood">
+<section id="maximum-likelihood-estimation" class="slide level2" data-stack-name="MLE">
 <h2>Maximum Likelihood Estimation</h2>
 <ul>
-<li>Recall: when we develop a model <span class="math inline">\(\mathcal{M}\)</span>, we’re working with</li>
+<li>Creating a <strong>model</strong> <span class="math inline">\(\mathcal{M}\)</span> w/parameters <span class="math inline">\(\param{\theta}\)</span> means specifying</li>
 </ul>
 <p><span class="math display">\[
-P_{\mathcal{M}}(\underbrace{x_1, \ldots, x_n}_{\text{Observed Data}} \mid \underbrace{\theta}_{\text{Model Parameters}})
+\mathcal{M} = \Pr(\underbrace{x_1, \ldots, x_n}_{\text{Observed Data}} \mid \underbrace{\param{\theta}}_{\text{Model Parameters}})
 \]</span></p>
 <ul>
-<li>When we view this as a function of <span class="math inline">\(\theta\)</span>, <strong>given</strong> the observed data, we call it the <strong>likelihood function</strong> <span class="math inline">\(\mathcal{L}_{\mathcal{M}}(\theta \mid x_1, \ldots, x_n)\)</span></li>
-<li>Read this as “the <strong>likelihood</strong> that our model <span class="math inline">\(\mathcal{M}\)</span>, with parameters <span class="math inline">\(\theta\)</span>, produced the data <span class="math inline">\(x_1, \ldots, x_n\)</span>”</li>
+<li>When we view this as a function of <span class="math inline">\(\param{\theta}\)</span>, <strong>given</strong> the observed data, we call it the <strong>likelihood function</strong> <span class="math inline">\(\mathcal{L}_{\mathcal{M}}(\param{\theta} \mid x_1, \ldots, x_n)\)</span></li>
+<li>Read this as “the <strong>likelihood</strong> that our model <span class="math inline">\(\mathcal{M}\)</span>, with parameters <span class="math inline">\(\param{\theta}\)</span>, produced the data <span class="math inline">\(x_1, \ldots, x_n\)</span>”</li>
 </ul>
 </section>
-<section id="intuition-generative-models" class="slide level2">
-<h2>Intuition: Generative Models</h2>
+<section id="probability-models-are-generative-models" class="slide level2 title-09">
+<h2>Probability Models are <em>Generative</em> Models</h2>
 <ul>
-<li>A given choice of model parameters <span class="math inline">\(\theta\)</span> can be used to <strong>generate</strong> simulated datapoints!</li>
-<li>Simple example: <span class="math inline">\(X \sim \text{Bern}(p)\)</span>. Just one parameter, <span class="math inline">\(\theta = \{p\}\)</span></li>
-<li>We observe 10 coin flips: 8 heads, 2 tails. Of all the Bernoulli distributions (parameterized by <span class="math inline">\(p\)</span>), which is <strong>most likely to generate this data</strong>?</li>
+<li>A given choice of model parameters <span class="math inline">\(\param{\theta}\)</span> can be used to <strong>generate</strong> simulated datapoints!</li>
+<li>Simple example: <span class="math inline">\(X \sim \text{Bern}(\param{p})\)</span>. Just one parameter, <span class="math inline">\(\param{\theta} = \{\param{p}\}\)</span></li>
+<li>We observe 10 coin flips: 8 heads, 2 tails. Of all possible Bernoulli distributions (parameterized by <span class="math inline">\(\param{p}\)</span>), which is <strong>most likely to generate this data</strong>?</li>
 </ul>
 </section>
-<section id="generative-models" class="slide level2">
+<section id="generative-models" class="slide level2 nostretch crunch-title crunch-figures crunch-ul crunch-lists crunch-code">
 <h2>Generative Models</h2>
-<p>Given a choice of <span class="math inline">\(\theta\)</span>, we can generate as many <strong>simulated datasets</strong> as we want (in this case, 10 datasets for each <span class="math inline">\(\theta\)</span> value), then compute <strong>likelihood</strong> of producing 8 heads, 2 tails</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>Given a choice of <span class="math inline">\(\param{\theta}\)</span> as our golem<sup>1</sup>, we can generate <strong>simulated datasets</strong> (here 10 for each labeled value of <span class="math inline">\(\param{p}\)</span>), then compute <strong>likelihood</strong> as proportion of datasets with 8 heads, 2 tails</p></li>
+<li><p>From the plot: (Among these vals) <span class="math inline">\(\param{p} = 0.8\)</span> is <strong>maximum likelihood estimate</strong></p></li>
+</ul>
+</div><div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">set.seed</span>(<span class="dv">1948</span>)</span>
-<span id="cb12-5"><a href="#cb12-5"></a>obs_heads <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>num_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>num_reps <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>theta_vals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>, <span class="fl">0.99</span>)</span>
-<span id="cb12-9"><a href="#cb12-9"></a>obs_matches <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(theta_vals)) {</span>
-<span id="cb12-11"><a href="#cb12-11"></a>  theta <span class="ot">&lt;-</span> theta_vals[i]</span>
-<span id="cb12-12"><a href="#cb12-12"></a>  theta_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.2f"</span>, theta)</span>
-<span id="cb12-13"><a href="#cb12-13"></a>  <span class="co">#print(theta_str)</span></span>
-<span id="cb12-14"><a href="#cb12-14"></a>  sim_data <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
-<span id="cb12-15"><a href="#cb12-15"></a>    num_reps,</span>
-<span id="cb12-16"><a href="#cb12-16"></a>    <span class="fu">rbinom</span>(num_flips, <span class="dv">1</span>, theta)</span>
-<span id="cb12-17"><a href="#cb12-17"></a>  )</span>
-<span id="cb12-18"><a href="#cb12-18"></a>  <span class="co">#print(sim_data)</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a>  <span class="co">#data_str &lt;- paste0(sim_data, collapse=", ")</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a>  num_heads <span class="ot">&lt;-</span> <span class="fu">colSums</span>(sim_data)</span>
-<span id="cb12-21"><a href="#cb12-21"></a>  <span class="co">#print(num_heads)</span></span>
-<span id="cb12-22"><a href="#cb12-22"></a>  num_matches <span class="ot">&lt;-</span> <span class="fu">sum</span>(num_heads <span class="sc">==</span> obs_heads)</span>
-<span id="cb12-23"><a href="#cb12-23"></a>  obs_matches <span class="ot">&lt;-</span> <span class="fu">c</span>(obs_matches, num_matches)</span>
-<span id="cb12-24"><a href="#cb12-24"></a>  <span class="co">#print(num_matches)</span></span>
-<span id="cb12-25"><a href="#cb12-25"></a>  <span class="co">#print(num_heads)</span></span>
-<span id="cb12-26"><a href="#cb12-26"></a>  num_tails <span class="ot">&lt;-</span> num_flips <span class="sc">-</span> num_heads</span>
-<span id="cb12-27"><a href="#cb12-27"></a>  <span class="co">#print(num_tails)</span></span>
-<span id="cb12-28"><a href="#cb12-28"></a>  data_strs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"["</span>,num_heads,<span class="st">" heads, "</span>,num_tails,<span class="st">" tails]"</span>)</span>
-<span id="cb12-29"><a href="#cb12-29"></a>  data_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(data_strs, <span class="at">collapse=</span><span class="st">", "</span>)</span>
-<span id="cb12-30"><a href="#cb12-30"></a>  <span class="co">#writeLines(paste0("p = ",theta_str,": ",data_str))</span></span>
-<span id="cb12-31"><a href="#cb12-31"></a>}</span>
-<span id="cb12-32"><a href="#cb12-32"></a><span class="co">#print(obs_matches)</span></span>
-<span id="cb12-33"><a href="#cb12-33"></a>result_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">theta=</span><span class="fu">as.character</span>(theta_vals), <span class="at">num_matches=</span>obs_matches)</span>
-<span id="cb12-34"><a href="#cb12-34"></a>result_df <span class="ot">&lt;-</span> result_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prop_matches =</span> obs_matches <span class="sc">/</span> num_reps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">set.seed</span>(<span class="dv">1948</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>obs_heads <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>num_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>num_reps <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>p_vals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>, <span class="fl">0.99</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>obs_matches <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(p_vals)) {</span>
+<span id="cb5-11"><a href="#cb5-11"></a>  cur_p <span class="ot">&lt;-</span> p_vals[i]</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  theta_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.2f"</span>, cur_p)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  sim_data <span class="ot">&lt;-</span> <span class="fu">replicate</span>(</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    num_reps,</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    <span class="fu">rbinom</span>(num_flips, <span class="dv">1</span>, cur_p)</span>
+<span id="cb5-16"><a href="#cb5-16"></a>  )</span>
+<span id="cb5-17"><a href="#cb5-17"></a>  <span class="co">#print(sim_data)</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="co">#data_str &lt;- paste0(sim_data, collapse=", ")</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>  num_heads <span class="ot">&lt;-</span> <span class="fu">colSums</span>(sim_data)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>  <span class="co">#print(num_heads)</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>  num_matches <span class="ot">&lt;-</span> <span class="fu">sum</span>(num_heads <span class="sc">==</span> obs_heads)</span>
+<span id="cb5-22"><a href="#cb5-22"></a>  obs_matches <span class="ot">&lt;-</span> <span class="fu">c</span>(obs_matches, num_matches)</span>
+<span id="cb5-23"><a href="#cb5-23"></a>  <span class="co">#print(num_matches)</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>  <span class="co">#print(num_heads)</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a>  num_tails <span class="ot">&lt;-</span> num_flips <span class="sc">-</span> num_heads</span>
+<span id="cb5-26"><a href="#cb5-26"></a>  <span class="co">#print(num_tails)</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a>  data_strs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"["</span>,num_heads,<span class="st">" heads, "</span>,num_tails,<span class="st">" tails]"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>  data_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(data_strs, <span class="at">collapse=</span><span class="st">", "</span>)</span>
+<span id="cb5-29"><a href="#cb5-29"></a>  <span class="co">#writeLines(paste0("p = ",theta_str,": ",data_str))</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a>}</span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#print(obs_matches)</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>result_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">p=</span><span class="fu">as.character</span>(p_vals), <span class="at">num_matches=</span>obs_matches)</span>
+<span id="cb5-33"><a href="#cb5-33"></a>result_df <span class="ot">&lt;-</span> result_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prop_matches =</span> obs_matches <span class="sc">/</span> num_reps)</span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="fu">ggplot</span>(result_df, <span class="fu">aes</span>(<span class="at">x=</span>p, <span class="at">y=</span>prop_matches)) <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>, <span class="at">fill=</span>cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a>  <span class="co"># theme(</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a>  <span class="co">#   axis.title.y = element_text(size = 12)</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a>  <span class="co"># ) +</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-41"><a href="#cb5-41"></a>    <span class="at">title =</span> <span class="st">"Likelihood of data (8 heads, 2 tails) given p"</span>,</span>
+<span id="cb5-42"><a href="#cb5-42"></a>    <span class="at">y =</span> <span class="st">"Proportion of times (8,2) generated"</span></span>
+<span id="cb5-43"><a href="#cb5-43"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/bernoulli-sim-1.png" width="960"></p>
+</figure>
 </div>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(result_df, <span class="fu">aes</span>(<span class="at">x=</span>theta, <span class="at">y=</span>prop_matches)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>, <span class="at">fill=</span>cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">dsan_theme</span>(<span class="st">"full"</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-5"><a href="#cb13-5"></a>    <span class="at">title =</span> <span class="st">"Likelihood of data (8 heads, 2 tails) given theta value"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6"></a>    <span class="at">y =</span> <span class="st">"Proportion of times (8,2) generated"</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-
 </div>
-<img data-src="index_files/figure-revealjs/bernoulli-fig-1.png" width="960" class="r-stretch quarto-figure-center"><p>(Among these vals) <span class="math inline">\(p = 0.8\)</span> is <strong>maximum likelihood estimate</strong></p>
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># for (i in 1:length(theta_vals)) {</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#   cur_theta &lt;- theta_vals[i]</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#   print(cur_theta)</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#   cur_results &lt;- results[[i]]</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#   print(cur_results)</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#   num_matches &lt;- cur_results == 8</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="co">#   writeLines(paste0("p = ",cur_theta,": our dataset was produced ",num_matches," times"))</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="co"># }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-</section>
-<section id="mle-in-the-real-world" class="slide level2">
-<h2>MLE in the Real World</h2>
-<p>Prev example may feel silly, since we could just mathematically solve for the optimal <span class="math inline">\(p\)</span> value…</p>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>A big rock boi from the Talmud (and Pokémon) who follows orders but has no common sense/nuance (like a computer). See <span class="citation" data-cites="collins_golem_1993">Collins and Pinch (<a href="#/appendix-3-derivation-of-expectsigma2_" role="doc-biblioref" onclick="">1993</a>)</span> and <span class="citation" data-cites="mcelreath_statistical_2020">McElreath (<a href="#/appendix-3-derivation-of-expectsigma2_" role="doc-biblioref" onclick="">2020</a>)</span></p></li></ol></aside></section>
+<section id="simulations-rightarrow-math" class="slide level2 crunch-title small-inline">
+<h2>Simulations <span class="math inline">\(\rightarrow\)</span> Math</h2>
+<p>Prev example was overkill: we can <strong>solve for</strong> optimal <span class="math inline">\(\param{p}\)</span> value…</p>
 <p><span class="math display">\[
 \begin{align*}
-p^* &amp;\overset{\phantom{x_i\text{ indep}}}{=} \argmax_{\theta} \mathcal{L}(x_1, \ldots, x_n \mid p) \\
-&amp;\overset{x_i\text{ indep}}{=} \argmax_{\theta} \mathcal{L}(x_1 \mid p)\mathcal{L}(x_2 \mid p) \cdots \mathcal{L}(x_n \mid p)
+p^* &amp;\overset{\phantom{x_i\text{ indep}}}{=} \argmax_{\param{p}} \mathcal{L}(x_1, \ldots, x_n \mid \param{p}) \\
+&amp;\overset{x_i\text{ indep}}{=} \argmax_{\param{p}} \mathcal{L}(x_1 \mid \param{p})\mathcal{L}(x_2 \mid \param{p}) \cdots \mathcal{L}(x_n \mid \param{p})
 \end{align*}
 \]</span></p>
 <ol type="1">
-<li>What are the individual <span class="math inline">\(\mathcal{L}(x_i \mid p)\)</span> terms?</li>
-<li>How do we maximize the product <span class="math inline">\(\mathcal{L}(x_1 \mid p) \cdots \mathcal{L}(x_n \mid p)\)</span>?</li>
+<li>What are the individual <span class="math inline">\(\mathcal{L}(x_i \mid \param{p})\)</span> terms?</li>
+<li>How do we maximize the product <span class="math inline">\(\mathcal{L}(x_1 \mid \param{p}) \cdots \mathcal{L}(x_n \mid \param{p})\)</span>?</li>
 </ol>
 <center>
 Time for some <strong>Math Magic</strong>…
 </center>
 </section>
-<section id="math-magic-1" class="slide level2">
+<section id="math-magic-1" class="slide level2 small-math">
 <h2>Math Magic 1</h2>
 <ol type="1">
-<li>What are the individual <span class="math inline">\(P(x_i \mid p)\)</span> terms?</li>
+<li>What are the individual <span class="math inline">\(P(x_i \mid \param{p})\)</span> terms?</li>
 </ol>
-<p><span class="math inline">\(X \sim \text{Bern}(p)\)</span>, so</p>
+<p><span class="math inline">\(X \sim \text{Bern}(\param{p})\)</span>, so</p>
 <p><span class="math display">\[
 \begin{align*}
-P(X = x_i \mid p) &amp;= \begin{cases}1 - p &amp; x_i = 0 \\ p &amp; x_i = 1\end{cases} \leftarrow \genfrac{}{}{0pt}{}{\text{ Non-differentiable}}{😭} \\
-&amp;\overset{\text{math}}{\underset{\text{magic}}{=}} (1-p)^{1-x_i}p^{x_i} \leftarrow \text{ Differentiable! 😲}
+\Pr(X = x_i \mid \param{p}) &amp;= \begin{cases}1 - \param{p} &amp; x_i = 0 \\ \param{p} &amp; x_i = 1\end{cases} \; \leftarrow \genfrac{}{}{0pt}{}{\text{ Non-differentiable}}{😭} \\
+&amp;\overset{\text{math}}{\underset{\text{magic}}{=}} (1-\param{p})^{1-x_i}\param{p}^{x_i} \; \leftarrow \text{ Differentiable! 😲}
 \end{align*}
 \]</span></p>
 <p>Why do we need it to be differentiable? Stay tuned…</p>
 </section>
-<section id="math-magic-2" class="slide level2">
+<section id="math-magic-2" class="slide level2 crunch-title crunch-math crunch-p crunch-quarto-layout-panel">
 <h2>Math Magic 2</h2>
-<p>Remember calculus!</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="calculus-text" class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<ol start="2" type="1">
+<li>How do we maximize the product?</li>
+</ol>
 <p><span class="math display">\[
-p^* = \argmax_p f(p) \implies f'(p^*) = 0
+p^* = \argmax_{\param{p}} f(\param{p}) \implies f'(p^*) = 0
 \]</span></p>
-<p>So, to <strong>maximize</strong> likelihood function, we need to find its <strong>derivative</strong><sup>1</sup>, set it equal to 0, and solve:</p>
+<p>To <strong>maximize</strong> likelihood, we need to find its <strong>derivative</strong><sup>1</sup>, set equal to 0, and solve:</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/koolaid_calculus.png" width="320"></p>
+</div>
+</div>
+</div>
 <p><span class="math display">\[
 \begin{align*}
-&amp;\frac{d}{dp}\mathcal{L}(x \mid p) = 0 \iff \\
-&amp;\frac{d}{dp}\left[\mathcal{L}(x_1 \mid p)\mathcal{L}(x_2 \mid p)\cdots \mathcal{L}(x_n \mid p)\right] = 0
+&amp;\frac{d}{d\param{p}}\lik(x \mid \param{p}) = 0 \iff \\
+&amp;\frac{d}{d\param{p}}\left[\lik(x_1 \mid \param{p})\lik(x_2 \mid \param{p})\cdots \lik(x_n \mid \param{p})\right] = 0
 \end{align*}
 \]</span></p>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>This is why we used math magic to make <span class="math inline">\(P(x_i \mid \theta)\)</span> differentiable, in the previous slide!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>And that’s why we used math magic to make <span class="math inline">\(\Pr(x_i \mid \param{p})\)</span> differentiable, in the previous slide!</p></li></ol></aside></section>
 <section id="obstacle-products-vs.-sums" class="slide level2 smaller">
 <h2>Obstacle: Products vs.&nbsp;Sums</h2>
 <ul>
-<li>Finding <span class="math inline">\(\frac{d}{dp}\left[ \mathcal{L}(x_1)\mathcal{L}(x_2)\cdots \mathcal{L}(x_n)\right]\)</span> is a doozy, even with just <span class="math inline">\(n = 2\)</span> datapoints:</li>
+<li>Finding <span class="math inline">\(\frac{d}{d\param{p}}\left[ \lik(x_1)\lik(x_2)\cdots \lik(x_n)\right]\)</span> is a doozy, even with just <span class="math inline">\(n = 2\)</span> datapoints:</li>
 </ul>
 <p><span class="math display">\[
 \begin{align*}
-&amp;\frac{d}{dp}\left[ \mathcal{L}(x_1)\mathcal{L}(x_2) \right] = \left( \frac{d}{dp}\mathcal{L}(x_1)\right) \cdot \mathcal{L}(x_2) + \mathcal{L}(x_1)\cdot \left( \frac{d}{dp}\mathcal{L}(x_2) \right) \\
-&amp;= (1-p)^{-x_1}p^{x_1-1}(x_1-p)\cdot (1-p)^{1-x_2}p^{x_2} \\
-&amp;+ (1-p)^{1-x_1}p^{x_1} \cdot (1-p)^{-x_2}p^{x_2-1}(x_2 - p)
+&amp;\frac{d}{d\param{p}}\left[ \lik(x_1)\lik(x_2) \right] = \left( \frac{d}{d\param{p}}\lik(x_1)\right) \cdot \lik(x_2) + \lik(x_1)\cdot \left( \frac{d}{d\param{p}}\lik(x_2) \right) \\
+&amp;= (1-\param{p})^{-x_1}\param{p}^{x_1-1}(x_1-\param{p})\cdot (1-\param{p})^{1-x_2}\param{p}^{x_2} \\
+&amp;+ (1-\param{p})^{1-x_1}\param{p}^{x_1} \cdot (1-\param{p})^{-x_2}\param{p}^{x_2-1}(x_2 - \param{p})
 %&amp;= \frac{d}{d\theta}\left[ (1-p)^{1-x_1}p^{x_1}(1-p)^{1-x_2}p^{x_2} \right]
 \end{align*}
 \]</span></p>
 <ul>
-<li>Complicating factor: <span class="math inline">\(\mathcal{L}(x_i)\)</span> terms are all <strong>multiplied together</strong>, forcing us to use product rule: <span class="math inline">\(\frac{d}{d\theta}\left[P(x_1)P(x_2)\right] = \left(\frac{d}{d\theta}P(x_1)\right)\cdot P(x_2) + P(x_1)\cdot \left(\frac{d}{d\theta}P(x_2)\right)\)</span></li>
-<li>If we had terms that were <strong>added</strong> rather than <strong>multiplied</strong>, we’d have a much easier time: <span class="math inline">\(\frac{d}{d\theta}\left[ \mathcal{L}(x_1) + \mathcal{L}(x_2)\right] = \frac{d}{d\theta}P(x_1) + \frac{d}{d\theta} P(x_2)\)</span><sup>1</sup></li>
+<li>Complicating factor: <span class="math inline">\(\lik(x_i)\)</span> terms are all <strong>multiplied together</strong>, forcing us to use product rule: <span class="math inline">\(\frac{d}{d\param{p}}\left[\lik(x_1)\lik(x_2)\right] = \left(\frac{d}{d\param{p}}\lik(x_1)\right)\cdot \lik(x_2) + \lik(x_1)\cdot \left(\frac{d}{d\param{p}}\lik(x_2)\right)\)</span></li>
+<li>If we had terms that were <strong>added</strong> rather than <strong>multiplied</strong>, we’d have a much easier time: <span class="math inline">\(\frac{d}{d\param{p}}\left[ \lik(x_1) + \lik(x_2)\right] = \frac{d}{d\param{p}}\lik(x_1) + \frac{d}{d\param{p}} \lik(x_2)\)</span><sup>1</sup></li>
 <li>So, what math operation do we know that turns <strong>multiplications</strong> into <strong>additions</strong>?</li>
 </ul>
 <!-- ::: {.aside}
 Remember the **product rule**: $\frac{d}{dx}\left[f(x)g(x)\right] = \left(\frac{d}{dx}f(x)\right)\cdot g(x) + \left(\frac{d}{dx}g(x)\right) \cdot f(x)$.
 ::: -->
-<aside><ol class="aside-footnotes"><li id="fn2"><p>We achieve this simplification because the derivative operator is <strong>linear</strong>: <span class="math inline">\(\frac{d}{dx}\left[ f(x) + g(x) \right] = \frac{d}{dx}f(x) + \frac{d}{dx}g(x)\)</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>We achieve this simplification because the derivative operator is <strong>additive</strong>: <span class="math inline">\(\frac{d}{dx}\left[ f(x) + g(x) \right] = \frac{d}{dx}f(x) + \frac{d}{dx}g(x)\)</span></p></li></ol></aside></section>
 <section id="math-magic-3-log-likelihood" class="slide level2">
 <h2>Math Magic 3: Log-Likelihood</h2>
 <p><span class="math display">\[
 \log(a\cdot b) = \log(a) + \log(b)
 \]</span></p>
-<p>Bingo! So, can we maximize <span class="math inline">\(\ell(x_i) = \log(\mathcal{L}(x_i))\)</span> rather than <span class="math inline">\(\mathcal{L}(x_i)\)</span>? Bingo again! Because logarithms are <strong>monotonic</strong>,</p>
+<p>Bingo! So, can we maximize <span class="math inline">\(\loglik(x_i) = \log(\mathcal{L}(x_i))\)</span> rather than <span class="math inline">\(\mathcal{L}(x_i)\)</span>? Bingo again! Because logarithms are <strong>monotonic</strong>,</p>
 <p><span class="math display">\[
 x^* = \argmax_x \left[ \log\left(f(x)\right) \right] \iff x^* = \argmax_x \left[ f(x) \right]
 \]</span></p>
 <p>So, we can just solve</p>
 <p><span class="math display">\[
-p^* = \argmax_p \left[ \ell(x_1, \ldots, x_n)\right]
+p^* = \argmax_{\param{p}} \left[ \ell(x_1, \ldots, x_n)\right]
 \]</span></p>
 </section>
 <section id="simplifying" class="slide level2 smaller">
@@ -1405,38 +1468,38 @@ p^* = \argmax_p \left[ \ell(x_1, \ldots, x_n)\right]
 <p>Our problem simplifies to figuring out</p>
 <p><span class="math display">\[
 \begin{align*}
-\frac{d}{dp}\left[ \log \left( \mathcal{L}(x_1)\cdots \mathcal{L}(x_n) \right) \right] &amp;= \frac{d}{dp}\left[ \log \mathcal{L}(x_1) + \log\mathcal{L}(x_2) + \cdots + \log\mathcal{L}(x_n) \right] \\
-&amp;= \frac{d}{dp}\left[ \ell(x_1) + \ell(x_2) + \cdots + \ell(x_n) \right] = \frac{d}{dp}\left[ \sum_{i=1}^n \ell(x_i)\right]
+\frac{d}{d\param{p}}\left[ \log \left( \lik(x_1)\cdots \lik(x_n) \right) \right] &amp;= \frac{d}{d\param{p}}\left[ \log \lik(x_1) + \log\lik(x_2) + \cdots + \log\lik(x_n) \right] \\
+&amp;= \frac{d}{d\param{p}}\left[ \ell(x_1) + \ell(x_2) + \cdots + \ell(x_n) \right] = \frac{d}{d\param{p}}\left[ \sum_{i=1}^n \ell(x_i)\right]
 \end{align*}
 \]</span></p>
-<p>But since the derivative is a <strong>linear operator</strong>, <span class="math inline">\(\frac{d}{dp}\left[ \sum_{i=1}^n \ell(x_i) \right] = \sum_{i=1}^n \frac{d}{dp}\left[ \ell(x_i) \right]\)</span>, so we just have to compute <span class="math inline">\(\frac{d}{dp}\ell(x_i)\)</span>! No product rule required (though we still need chain rule):</p>
+<p>But since the derivative is an <strong>additive</strong> operator, <span class="math inline">\(\frac{d}{d\param{p}}\left[ \sum_{i=1}^n \ell(x_i) \right] = \sum_{i=1}^n \frac{d}{d\param{p}}\left[ \ell(x_i) \right]\)</span>, so we just have to compute <span class="math inline">\(\frac{d}{d\param{p}}\ell(x_i)\)</span>! No product rule required (we still need chain rule):</p>
 <p><span class="math display">\[
 \begin{align*}
-\frac{d}{dp}\left[ \ell(x_i) \right] &amp;= \frac{d}{dp}\left[ \log((1-p)^{1-x_i}p^{x_i}) \right] = \frac{d}{dp}\left[(1-x_i)\log(1-p) + x_i\log(p)\right] \\
-&amp;= (1-x_i)\frac{d}{dp}\log(1-p) + x_i\frac{d}{dp}\log(p) = -\frac{1-x_i}{1-p} + \frac{x_i}{p} \\
-&amp;= \frac{p - x_i}{(p-1)p}
+\frac{d}{d\param{p}}\left[ \ell(x_i) \right] &amp;= \frac{d}{d\param{p}}\left[ \log((1-\param{p})^{1-x_i}\param{p}^{x_i}) \right] = \frac{d}{d\param{p}}\left[(1-x_i)\log(1-\param{p}) + x_i\log(\param{p})\right] \\
+&amp;= (1-x_i)\frac{d}{d\param{p}}\log(1-\param{p}) + x_i\frac{d}{d\param{p}}\log(\param{p}) = -\frac{1-x_i}{1-\param{p}} + \frac{x_i}{\param{p}} \\
+&amp;= \frac{\param{p} - x_i}{(\param{p}-1)\param{p}}
 \end{align*}
 \]</span></p>
 </section>
-<section id="maximizing" class="slide level2">
+<section id="maximizing" class="slide level2 crunch-title crunch-math">
 <h2>Maximizing</h2>
-<p>Now that we know <span class="math inline">\(\frac{d}{dp}\ell(x_i)\)</span>, we set our log-likelihood equation equal to zero to find the likelihood-maximizing <span class="math inline">\(p\)</span> value, <span class="math inline">\(p^*\)</span>:</p>
+<p>Now that we know <span class="math inline">\(\frac{d}{d\param{p}}\ell(x_i)\)</span>, we set our log-likelihood equation equal to zero to find the likelihood-maximizing <span class="math inline">\(\param{p}\)</span> value, <span class="math inline">\(p^*\)</span>:</p>
 <p><span class="math display">\[
 \begin{align*}
-&amp;\sum_{i=1}^n\frac{d}{dp}\ell(x_i) = 0 \iff \sum_{i=1}^n \frac{p^* - x_i}{(p^*-1)p^*} = 0 \\
+&amp;\sum_{i=1}^n\frac{d}{d\param{p}}\ell(x_i) = 0 \iff \sum_{i=1}^n \frac{p^* - x_i}{(p^*-1)p^*} = 0 \\
 &amp;\iff -\frac{1}{(p^*-1)p^*}\sum_{i=1}^nx_i - np^* = 0 \\
 &amp;\iff \sum_{i=1}^nx_i = np^* \iff \boxed{p^* = \frac{\sum_{i=1}^nx_i}{n}}
 \end{align*}
 \]</span></p>
 </section>
-<section id="mle-intuition" class="slide level2">
+<section id="mle-intuition" class="slide level2 crunch-title crunch-ul">
 <h2>MLE Intuition</h2>
 <p><span class="math display">\[
 p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \genfrac{}{}{0pt}{}{\leftarrow \text{\# Heads}}{\leftarrow \text{\# Flips }}
 \]</span></p>
 <ul>
 <li>MLE almost always matches intuition! Example: given data <span class="math inline">\(x_1, \ldots, x_n\)</span>, what <strong>Normal distribution</strong> best fits this data?</li>
-<li>Same as asking: what <strong>parameter settings</strong> for <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> are most likely to produce <span class="math inline">\(x_1, \ldots, x_n\)</span>? The answer:</li>
+<li>Same as asking: what <strong>parameter settings</strong> for <span class="math inline">\(\mathcal{N}(\param{\mu}, \param{\sigma^2})\)</span> are most likely to produce <span class="math inline">\(x_1, \ldots, x_n\)</span>? The answer:</li>
 </ul>
 <p><span class="math display">\[
 \mu^* = \frac{\sum_{i=1}^n x_i}{n} \; \; \; \sigma^2_* = \frac{\sum_{i=1}^n (x_i-\mu^*)^2}{n}
@@ -1474,7 +1537,7 @@ p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \ge
 <li>Now we’re ready to compute <span class="math inline">\(\expect{\sigma^2_*}\)</span>!</li>
 </ul>
 </section>
-<section id="computing-expectsigma2_" class="slide level2 smaller">
+<section id="computing-expectsigma2_" class="slide level2 smaller crunch-title">
 <h2>Computing <span class="math inline">\(\expect{\sigma^2_*}\)</span></h2>
 <p><span class="math display">\[
 \begin{align*}
@@ -1482,8 +1545,7 @@ p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \ge
 \end{align*}
 \]</span></p>
 <ul>
-<li>What do we know about <span class="math inline">\(\expect{x_i^2}\)</span>?</li>
-<li>Remember the (alternate) definition of <strong>variance</strong>: <span class="math inline">\(\Var{X} = \expect{X^2} - \left(\expect{X}\right)^2\)</span>. Then</li>
+<li>What do we know about <span class="math inline">\(\expect{x_i^2}\)</span>? Remember the (alternate) definition of <strong>variance</strong>: <span class="math inline">\(\Var{X} = \expect{X^2} - \left(\expect{X}\right)^2\)</span>. Then</li>
 </ul>
 <p><span class="math display">\[
 \expect{X^2} = \Var{X} + \left(\expect{X}\right)^2
@@ -1498,9 +1560,7 @@ p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \ge
 </section>
 <section id="almost-there" class="slide level2 smaller">
 <h2>Almost There!</h2>
-<ul>
-<li>Almost there! We know that <span class="math inline">\(\expect{\mu^*} = \mu\)</span>, but what is <span class="math inline">\(\Var{\mu^*}\)</span>? Remember that <span class="math inline">\(\Var{aX} = a^2\Var{X}\)</span>!</li>
-</ul>
+<p>We know that <span class="math inline">\(\expect{\mu^*} = \mu\)</span>, but what is <span class="math inline">\(\Var{\mu^*}\)</span>? Remember that <span class="math inline">\(\Var{aX} = a^2\Var{X}\)</span>!</p>
 <p><span class="math display">\[
 \Var{\mu^*} = \bigVar{\frac{1}{n}\sum_{i=1}^nx_i} = \frac{1}{n^2}\sum_{i=1}^n\Var{x_i} = \frac{n\sigma^2}{n^2} = \frac{\sigma^2}{n}
 \]</span></p>
@@ -1520,12 +1580,12 @@ p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \ge
 <li>Long story short, we <strong>underpredict</strong> the population variance because we already <strong>used some of the data to compute <span class="math inline">\(\mu^*\)</span></strong>!</li>
 <li>This is where the <strong>heuristic</strong> of <strong>degrees of freedom</strong> comes in:
 <ul>
-<li>When computing an estimate <span class="math inline">\(e\)</span>, <span class="math inline">\(df(e) = n - k_e\)</span></li>
+<li>When we construct an <strong>estimate</strong> <span class="math inline">\(e\)</span>, <span class="math inline">\(df(e) = n - k_e\)</span></li>
 <li><span class="math inline">\(k_e =\)</span> number of <strong>other estimates</strong> used to calculate <span class="math inline">\(e\)</span>!</li>
 </ul></li>
 </ul>
 </section>
-<section id="handwavy-intuition" class="slide level2 crunch-math smaller">
+<section id="handwavy-intuition" class="slide level2 crunch-title crunch-ul crunch-math smaller">
 <h2>Handwavy Intuition</h2>
 <ul>
 <li>Consider <span class="math inline">\(X_1, X_2 \sim \mathcal{N}(0,1)\)</span>: <span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\sigma^2 = 1\)</span>.</li>
@@ -1559,7 +1619,7 @@ p^* = \frac{\sum_{i=1}^nx_i}{n} = \frac{\sum_{i=1}^n \mathbf{1}[x_i = 1]}{n} \ge
 \expect{\sigma^2_\circledast} = \bigexpect{\frac{n}{n-1}\sigma^2_*} = \frac{n}{n-1}\frac{n-1}{n}\sigma^2 = \color{green}{\sigma^2} \; ✅
 \]</span></p>
 </section>
-<section id="st-century-solution" class="slide level2 smaller crunch-math nobotmargin">
+<section id="st-century-solution" class="slide level2 smaller crunch-math crunch-title nobotmargin">
 <h2>21st-Century Solution</h2>
 <ul>
 <li>Be <strong>Bayesian</strong>, use priors on parameters (creating hyperparameters)!</li>
@@ -1573,10 +1633,14 @@ X_1, X_2 \overset{iid}{\sim} \mathcal{N}( &amp;\hspace{-5mm}\mu\hspace{0.5mm}, &
 \end{array}
 \]</span></p>
 <div class="no-stretch" style="margin-top: 8px;">
-<p><img data-src="images/bayesian_pgm.svg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/bayesian_pgm.svg" style="width:40.0%"></p>
+</figure>
+</div>
 </div>
 </section>
-<section id="single-datapoint" class="slide level2 smaller">
+<section id="single-datapoint" class="slide level2 smaller crunch-title crunch-math">
 <h2>Single Datapoint</h2>
 <ul>
 <li>Let’s consider the estimate of <span class="math inline">\(\mu\)</span> from a single datapoint <span class="math inline">\(X_i\)</span>. MLE just gives us <span class="math inline">\(\mu^* = X_i\)</span>. How about MAP estimate?</li>
@@ -1597,7 +1661,7 @@ X_1, X_2 \overset{iid}{\sim} \mathcal{N}( &amp;\hspace{-5mm}\mu\hspace{0.5mm}, &
 \ell(X_i, \mu, m, s) = \log\left[\frac{1}{\sigma\sqrt{2\pi}}\right] - \frac{(X_i-\mu)^2}{2\sigma^2} + \log\left[\frac{1}{s\sqrt{2\pi}}\right] - \frac{(\mu - m)^2}{2s^2}
 \]</span></p>
 </section>
-<section id="taking-the-derivative" class="slide level2 smaller crunch-math nobotmargin">
+<section id="taking-the-derivative" class="slide level2 smaller crunch-math nobotmargin crunch-title">
 <h2>Taking the Derivative</h2>
 <ul>
 <li>Taking the derivative gives us:</li>
@@ -1631,6 +1695,37 @@ P_{\text{post}}(\mathcal{H}) &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm} P(X \m
 \text{Posterior} &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm}\text{Evidence} &amp;\hspace{-6mm} \times &amp;\hspace{-6mm} \text{Prior}
 \end{array}
 \]</span></p>
+</section>
+<section id="generalized-method-of-moments-gmm-estimation" class="slide level2">
+<h2>Generalized Method of Moments (GMM) Estimation</h2>
+</section></section>
+<section>
+<section id="the-bias-variance-tradeoff" class="title-slide slide level1 title-14 not-title-slide full-width-quotes crunch-images center" data-stack-name="Bias-Variance">
+<h1>The Bias-Variance Tradeoff</h1>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div class="quote-text" style="display: block; width: 100% !important;">
+<p><em>There’s no such thing as a free lunch.</em></p>
+<div class="align-right">
+<p><a href="https://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch" target="_blank">Life</a> / <a href="https://www.nytimes.com/1993/02/14/magazine/on-language-words-out-in-the-cold.html" target="_blank">Conservative Economists</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<div class="quote-text" style="display: block; width: 100% !important;">
+<p><em>And yet, Machine Learning gets us rly close to free lunches!</em></p>
+<div class="align-right">
+<p><img data-src="images/always_exhausted.jpeg" width="130"> Jeff</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!--
 
 APPENDICES
@@ -1664,7 +1759,7 @@ APPENDICES
 \boxed{\expect{\mu^*X_i} = \mu^2 + \frac{\sigma^2}{2}}
 \]</span></p>
 </section>
-<section id="appendix-3-derivation-of-expectsigma2_" class="slide level2 smaller crunch-math">
+<section id="appendix-3-derivation-of-expectsigma2_" class="slide level2 smaller crunch-math scrollable">
 <h2>Appendix 3: Derivation of <span class="math inline">\(\expect{\sigma^2_*}\)</span></h2>
 <p><span class="math display">\[
 \begin{align*}
@@ -1680,6 +1775,14 @@ APPENDICES
 
 <div class="footer footer-default">
 <p>DSAN 5100-03 Week 9: Statistical Inference</p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-collins_golem_1993" class="csl-entry" role="listitem">
+Collins, Harry M., and Trevor Pinch. 1993. <em>The <span>Golem</span>: <span>What You Should Know About Science</span></em>. <span>Cambridge University Press</span>.
+</div>
+<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
+McElreath, Richard. 2020. <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em>. <span>CRC Press</span>.
+</div>
 </div>
 </section></section>
 

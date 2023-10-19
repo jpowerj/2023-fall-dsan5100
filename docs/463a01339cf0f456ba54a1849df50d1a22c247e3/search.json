@@ -2716,11 +2716,11 @@
     "text": "Open slides in new window →"
   },
   {
-    "objectID": "w09/index.html#statistical-inference",
-    "href": "w09/index.html#statistical-inference",
+    "objectID": "w09/index.html#statistical-inference-vs.-statistics",
+    "href": "w09/index.html#statistical-inference-vs.-statistics",
     "title": "Week 9: Statistical Inference",
-    "section": "Statistical Inference",
-    "text": "Statistical Inference\n\n\nMoving from understanding probability to getting things done using probability!\nEverything up to this point: understanding the “rules” of stochastic processes\nNow: Using what we know to allow us to draw inferences about populations without having to carry out a census"
+    "section": "Statistical Inference vs. Statistics",
+    "text": "Statistical Inference vs. Statistics\n\n\nMoving from understanding probability to getting things done using probability!\nEverything up to this point: understanding the “rules” of stochastic processes\nNow: Using what we know to allow us to draw inferences about populations without having to carry out a census"
   },
   {
     "objectID": "w09/index.html#samples-vs.-populations",
@@ -2730,11 +2730,11 @@
     "text": "Samples vs. Populations\n\nSample = The data you have\nPopulation = The thing you want to learn about, by looking at the sample\nLike “success” vs. “failure” in Bernoulli trials, no exact definition of what counts as sample vs. population\nWhat we call the “sample” and the “population” is vocabulary there to help us know what to do"
   },
   {
-    "objectID": "w09/index.html#inference",
-    "href": "w09/index.html#inference",
+    "objectID": "w09/index.html#inference-statistical-and-otherwise",
+    "href": "w09/index.html#inference-statistical-and-otherwise",
     "title": "Week 9: Statistical Inference",
-    "section": "Inference",
-    "text": "Inference\nWhat are we doing when we do science?\n\n\n\nScience in General\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\nExample: Newton\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\nRemember that the filled-in nodes represent things we can observe, while the non-filled nodes represent things we have to infer from the observable data."
+    "section": "Inference (Statistical and Otherwise)",
+    "text": "Inference (Statistical and Otherwise)\nWhat are we doing when we do science?\n\n\n\nScience in General\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\nExample: Newton\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Isaac Newton  \n\ncluster_04\n\n  Woolsthorpe Manor     \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\nRemember that the filled-in nodes represent things we can observe, while the non-filled nodes represent things we have to infer from the observable data."
   },
   {
     "objectID": "w09/index.html#examples-abound",
@@ -2772,13 +2772,6 @@
     "text": "Our Case\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Us  \n\ncluster_04\n\n The World   \n\nSample\n\n Sample   \n\nPopulation\n\n Population   \n\nPopulation-&gt;Sample\n\n  Take Sample    \n\nStats\n\n Statistics   \n\nPopulation-&gt;Stats\n\n  Infer   \n\nStats-&gt;Sample\n\n  Observe  \n\n\n\n\n\n\n\nIf you’re wondering, “what happened to Hypothesis Testing?”, don’t worry, we’ll dive back into that over the next 2 weeks!"
   },
   {
-    "objectID": "w09/index.html#law-of-large-numbers",
-    "href": "w09/index.html#law-of-large-numbers",
-    "title": "Week 9: Statistical Inference",
-    "section": "Law of Large Numbers",
-    "text": "Law of Large Numbers\nLLN"
-  },
-  {
     "objectID": "w09/index.html#stability-out-of-randomness",
     "href": "w09/index.html#stability-out-of-randomness",
     "title": "Week 9: Statistical Inference",
@@ -2800,116 +2793,130 @@
     "text": "How Many is “Many”?\n\nlibrary(ggplot2)\nlibrary(tibble)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nn_vals &lt;- c(ceiling(sqrt(10)), 10, ceiling(10*sqrt(10)), 100, ceiling(100*sqrt(10)), 1000, ceiling(1000*sqrt(10)), 10000, ceiling(10000*sqrt(10)), 100000)\nheads_data &lt;- c()\ntotal_data &lt;- c()\nfor (n in n_vals) {\n  coin_flips &lt;- rbinom(n, 1, 0.5)\n  num_heads &lt;- sum(coin_flips)\n  heads_data &lt;- c(heads_data, num_heads)\n  num_flipped &lt;- length(coin_flips)\n  total_data &lt;- c(total_data, num_flipped)\n}\nresults &lt;- tibble(n = n_vals, heads=heads_data, total=total_data)\nresults &lt;- results %&gt;% mutate(head_prop = heads / total)\n#results\nggplot(results, aes(x=n, y=head_prop)) +\n  geom_hline(aes(yintercept=0.5, linetype='dashed'), color=cbPalette[2]) +\n  geom_line(aes(color='black'), fill=cbPalette[1], linewidth=g_linewidth, color=cbPalette[1]) +\n  geom_point(aes(color='black'), size=g_pointsize*0.9) +\n  scale_color_manual(\"\", values=c(\"black\",\"purple\"), labels=c(\"Mean of n samples\",\"Expected Value\")) +\n  scale_linetype_manual(\"\", values=\"dashed\", labels=\"Expected Value\") +\n  scale_fill_manual(\"\", values=cbPalette[1], labels=\"95% CI\") +\n  #scale_linetype_manual('type', values=c('dashed', 'solid'), labels=c(\"Expected Value\", \"Sample Mean\")) +\n  #scale_color_manual('color', values=c(cbPalette[1], 'black'), labels=c('Expected Value', 'Sample Mean')) +\n  dsan_theme(\"full\") +\n  theme(\n      legend.title = element_blank(),\n      legend.spacing.y = unit(0, \"mm\")\n  ) +\n      labs(\n          title = \"Estimates of Population Mean for Increasing Sample Sizes\",\n          x = \"n (Sample Size)\",\n          y = \"Sample Mean\"\n      ) +\n  scale_x_log10(breaks = c(10, 100, 1000, 10000, 100000), labels = c(\"10\", \"100\", \"1000\", \"10000\", \"100000\"))\n\nWarning in geom_line(aes(color = \"black\"), fill = cbPalette[1], linewidth =\ng_linewidth, : Ignoring unknown parameters: `fill`"
   },
   {
-    "objectID": "w09/index.html#law-of-large-numbers-1",
-    "href": "w09/index.html#law-of-large-numbers-1",
+    "objectID": "w09/index.html#the-sample-mean",
+    "href": "w09/index.html#the-sample-mean",
     "title": "Week 9: Statistical Inference",
-    "section": "Law of Large Numbers",
-    "text": "Law of Large Numbers\nSuppose that \\(X_1, \\ldots, X_n\\) form a random sample from a distribution for which the mean is \\(\\mu\\) and for which the variance is finite. Let \\(\\bar{X}_n\\) denote the sample mean. Then \\[\n\\bar{X}_n \\stackrel{p}{\\longrightarrow} \\mu \\text {. }\n\\]"
+    "section": "The Sample Mean",
+    "text": "The Sample Mean\n\nLike the median we saw earlier (along with lots of other examples), sample mean is just a function of RVs\nUnlike the median, though, it is a function of a vector-valued RV \\(\\mathbf{X}_N\\) (containing \\(N\\) scalar RVs)!1\nLet \\(\\mathbf{X}_N = \\{X_1, X_2, \\ldots, X_n\\}\\), where \\(X_1\\) is first observation, \\(X_2\\) second observation, and so on. Then:\n\n\\[\n\\overline{X}_N = f(\\mathbf{X}_N) = \\frac{1}{n}\\sum_{i=1}^{n}X_i\n\\]"
+  },
+  {
+    "objectID": "w09/index.html#weak-law-of-large-numbers-wlln",
+    "href": "w09/index.html#weak-law-of-large-numbers-wlln",
+    "title": "Week 9: Statistical Inference",
+    "section": "Weak Law of Large Numbers (WLLN)",
+    "text": "Weak Law of Large Numbers (WLLN)\n\nLet \\(\\mathbf{X}_N = \\{X_1, \\ldots, X_n\\} \\iid \\mathcal{D}\\) be a random sample from a distribution \\(\\mathcal{D}\\) with mean \\(\\mu\\), finite variance. Let \\(\\overline{X}_N\\) denote the sample mean from previous slide. Then\n\n\\[\n\\overline{X}_N \\stackrel{p}{\\longrightarrow} \\mu\n\\]\n\n\\(\\mathfrak{X}(N) \\stackrel{p}{\\longrightarrow} c\\) means the Random Variable \\(\\mathfrak{X}(N)\\) (a function of the sample size \\(N\\)) “converges in probability” to the scalar value \\(c\\). Formally:\n\n\\[\n\\mathfrak{X}(N) \\overset{p}{\\longrightarrow} c \\iff \\forall \\varepsilon &gt; 0 \\left[ \\lim_{N \\rightarrow \\infty}\\Pr\\left( | \\mathfrak{X}(N) - c | &lt; \\varepsilon \\right) = 1 \\right]\n\\]"
+  },
+  {
+    "objectID": "w09/index.html#strong-law-of-large-numbers-slln",
+    "href": "w09/index.html#strong-law-of-large-numbers-slln",
+    "title": "Week 9: Statistical Inference",
+    "section": "Strong Law of Large Numbers (SLLN)",
+    "text": "Strong Law of Large Numbers (SLLN)\n\nSame setup as last slide, but\n\n\\[\n\\overline{X}_N \\convergesAS \\mu\n\\]\n\n\\(\\mathfrak{X}(N) \\convergesAS c\\) means the Random Variable \\(\\mathfrak{X}(N)\\) (a function of the sample size \\(N\\)) “converges almost surely” to the scalar value \\(c\\). Formally:\n\n\\[\n\\mathfrak{X}(N) \\convergesAS c \\iff \\Pr\\left( \\lim_{N \\rightarrow \\infty} \\mathfrak{X}(N) = c \\right) = 1\n\\]\n\nSLLN \\(\\implies\\) WLLN, but WLLN \\(~\\nimplies\\) SLLN!\nWLLN easy to prove, SLLN very un-easy to prove"
   },
   {
     "objectID": "w09/index.html#central-limit-theorem",
     "href": "w09/index.html#central-limit-theorem",
     "title": "Week 9: Statistical Inference",
     "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\nWe’ll never actually reach \\(n = \\infty\\), so we zoom in on how close our sample-based estimate gets to the true value\nCentral Limit Theorem says: these “closeness” values are normally distributed!\nLLN guarantees that \\(X_n \\eqeventual \\mu\\)\nCLT tells us what the gap \\(X_n - \\mu\\) looks like"
+    "text": "Central Limit Theorem\n\nWe’ll never actually reach \\(N = \\infty\\), so we zoom in on how close our sample-based estimate gets to the true value\nCentral Limit Theorem says: these “closeness” values are normally distributed!\nLLN guarantees that \\(X_N \\; \\; \\eqeventual \\; \\; \\mu\\)\nCLT tells us what the gap \\((X_N - \\mu)\\) looks like"
   },
   {
     "objectID": "w09/index.html#formal-clt",
     "href": "w09/index.html#formal-clt",
     "title": "Week 9: Statistical Inference",
     "section": "Formal CLT",
-    "text": "Formal CLT\n\nSampled observations: \\(\\mathbf{X} = \\{X_1, \\ldots, X_n\\}\\)\n\\(\\expect{X_i} = \\mu, \\Var{X_i} = \\sigma^2 &lt; \\infty\\)\n\\(\\overline{X}_n \\definedas M_1(\\mathbf{X}) = \\frac{X_1 + \\cdots + X_n}{n}\\)\n\n\\[\n\\frac{\\overline{X}_n - \\mu}{\\sigma / \\sqrt{n}} \\overset{\\text{asymp}}{\\sim} \\mathcal{N}(0,1)\n\\]"
+    "text": "Formal CLT\n\nSampled observations: \\(\\mathbf{X}_N = \\{X_1, \\ldots, X_n\\}\\)\n\\(\\expect{X_i} = \\mu, \\Var{X_i} = \\sigma^2 &lt; \\infty\\)\n\\(\\overline{X}_N \\definedas M_1(\\mathbf{X}_N) = \\frac{X_1 + \\cdots + X_n}{N}\\)\n\n\\[\n\\frac{\\overline{X}_N - \\mu}{\\sigma / \\sqrt{N}} \\overset{\\text{asymp}}{\\sim} \\mathcal{N}(0,1)\n\\]"
   },
   {
     "objectID": "w09/index.html#when-is-mathcaln0-1-a-good-approximation",
     "href": "w09/index.html#when-is-mathcaln0-1-a-good-approximation",
     "title": "Week 9: Statistical Inference",
     "section": "When is \\(\\mathcal{N}(0, 1)\\) a “good” approximation?",
-    "text": "When is \\(\\mathcal{N}(0, 1)\\) a “good” approximation?\n\n\n\n# Prepare data for all plots\nmax_n &lt;- 10000\nnum_reps &lt;- 1000\nall_rolls &lt;- replicate(\n  num_reps,\n  sample(1:6, size = max_n, replace = TRUE, prob = rep(1 / 6, 6))\n)\ngen_clt_plot &lt;- function(n) {\n  exp_val &lt;- 3.5\n  sigma &lt;- sqrt(35/12)\n  denom &lt;- sigma / sqrt(n)\n  # Get the slice of all_rolls for this n\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  norm_gaps &lt;- (sample_means - exp_val) / denom\n  n_df &lt;- tibble(norm_gap=norm_gaps)\n  #if (n == 5) {\n  #  print(sample_means)\n  #  print(n_df)\n  #}\n  ggplot(n_df, aes(x = norm_gap)) +\n  geom_histogram(aes(y = after_stat(density)), binwidth = 1/2) +\n  #geom_density() +\n  stat_function(fun=dnorm, size=g_linesize) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n),\n    x = \"Normalized Sample Gap\"\n  )\n}\n\n\ngen_clt_plot(2)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n\n\n\n\n\n\n\n\ngen_clt_plot(4)\n\n\n\n\n\n\n\n\n\n\ngen_clt_plot(5)\n\n\n\n\n\n\n\n\n\ngen_clt_plot(10000)"
+    "text": "When is \\(\\mathcal{N}(0, 1)\\) a “good” approximation?\n\n\nCode\n# Prepare data for all plots\nmax_n &lt;- 10000\nnum_reps &lt;- 1000\nall_rolls &lt;- replicate(\n  num_reps,\n  sample(1:6, size = max_n, replace = TRUE, prob = rep(1 / 6, 6))\n)\ngen_clt_plot &lt;- function(n) {\n  exp_val &lt;- 3.5\n  sigma &lt;- sqrt(35/12)\n  denom &lt;- sigma / sqrt(n)\n  # Get the slice of all_rolls for this n\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  norm_gaps &lt;- (sample_means - exp_val) / denom\n  n_df &lt;- tibble(norm_gap=norm_gaps)\n  #if (n == 5) {\n  #  print(sample_means)\n  #  print(n_df)\n  #}\n  ggplot(n_df, aes(x = norm_gap)) +\n  geom_histogram(aes(y = after_stat(density)), binwidth = 1/2) +\n  #geom_density() +\n  stat_function(fun=dnorm, size=g_linesize) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n),\n    x = \"Normalized Sample Gap\"\n  )\n}\n\n\n\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
   },
   {
     "objectID": "w09/index.html#q-q-plots",
     "href": "w09/index.html#q-q-plots",
     "title": "Week 9: Statistical Inference",
     "section": "Q-Q Plots",
-    "text": "Q-Q Plots\n\n\n\ngen_qq &lt;- function(n) {\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  qq_df &lt;- tibble(smean = sample_means)\n  qq_plot &lt;- ggplot(qq_df, aes(sample = smean)) +\n  stat_qq() + stat_qq_line() +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n)\n  )\n  return(qq_plot)\n}\ngen_qq(5)\n\n\n\n\n\n\n\n\n\ngen_qq(1000)\n\n\n\n\n\n\n\n\n\n\ngen_qq(100)\n\n\n\n\n\n\n\n\n\ngen_qq(10000)"
+    "text": "Q-Q Plots\n\n\nCode\ngen_qq &lt;- function(n) {\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  qq_df &lt;- tibble(smean = sample_means)\n  qq_plot &lt;- ggplot(qq_df, aes(sample = smean)) +\n  stat_qq() + stat_qq_line() +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n)\n  )\n  return(qq_plot)\n}"
   },
   {
     "objectID": "w09/index.html#maximum-likelihood-estimation",
     "href": "w09/index.html#maximum-likelihood-estimation",
     "title": "Week 9: Statistical Inference",
     "section": "Maximum Likelihood Estimation",
-    "text": "Maximum Likelihood Estimation\n\nRecall: when we develop a model \\(\\mathcal{M}\\), we’re working with\n\n\\[\nP_{\\mathcal{M}}(\\underbrace{x_1, \\ldots, x_n}_{\\text{Observed Data}} \\mid \\underbrace{\\theta}_{\\text{Model Parameters}})\n\\]\n\nWhen we view this as a function of \\(\\theta\\), given the observed data, we call it the likelihood function \\(\\mathcal{L}_{\\mathcal{M}}(\\theta \\mid x_1, \\ldots, x_n)\\)\nRead this as “the likelihood that our model \\(\\mathcal{M}\\), with parameters \\(\\theta\\), produced the data \\(x_1, \\ldots, x_n\\)”"
+    "text": "Maximum Likelihood Estimation\n\nCreating a model \\(\\mathcal{M}\\) w/parameters \\(\\param{\\theta}\\) means specifying\n\n\\[\n\\mathcal{M} = \\Pr(\\underbrace{x_1, \\ldots, x_n}_{\\text{Observed Data}} \\mid \\underbrace{\\param{\\theta}}_{\\text{Model Parameters}})\n\\]\n\nWhen we view this as a function of \\(\\param{\\theta}\\), given the observed data, we call it the likelihood function \\(\\mathcal{L}_{\\mathcal{M}}(\\param{\\theta} \\mid x_1, \\ldots, x_n)\\)\nRead this as “the likelihood that our model \\(\\mathcal{M}\\), with parameters \\(\\param{\\theta}\\), produced the data \\(x_1, \\ldots, x_n\\)”"
   },
   {
-    "objectID": "w09/index.html#intuition-generative-models",
-    "href": "w09/index.html#intuition-generative-models",
+    "objectID": "w09/index.html#probability-models-are-generative-models",
+    "href": "w09/index.html#probability-models-are-generative-models",
     "title": "Week 9: Statistical Inference",
-    "section": "Intuition: Generative Models",
-    "text": "Intuition: Generative Models\n\nA given choice of model parameters \\(\\theta\\) can be used to generate simulated datapoints!\nSimple example: \\(X \\sim \\text{Bern}(p)\\). Just one parameter, \\(\\theta = \\{p\\}\\)\nWe observe 10 coin flips: 8 heads, 2 tails. Of all the Bernoulli distributions (parameterized by \\(p\\)), which is most likely to generate this data?"
+    "section": "Probability Models are Generative Models",
+    "text": "Probability Models are Generative Models\n\nA given choice of model parameters \\(\\param{\\theta}\\) can be used to generate simulated datapoints!\nSimple example: \\(X \\sim \\text{Bern}(\\param{p})\\). Just one parameter, \\(\\param{\\theta} = \\{\\param{p}\\}\\)\nWe observe 10 coin flips: 8 heads, 2 tails. Of all possible Bernoulli distributions (parameterized by \\(\\param{p}\\)), which is most likely to generate this data?"
   },
   {
     "objectID": "w09/index.html#generative-models",
     "href": "w09/index.html#generative-models",
     "title": "Week 9: Statistical Inference",
     "section": "Generative Models",
-    "text": "Generative Models\nGiven a choice of \\(\\theta\\), we can generate as many simulated datasets as we want (in this case, 10 datasets for each \\(\\theta\\) value), then compute likelihood of producing 8 heads, 2 tails\n\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(dplyr)\nset.seed(1948)\nobs_heads &lt;- 8\nnum_flips &lt;- 10\nnum_reps &lt;- 10\ntheta_vals &lt;- c(0.01, 0.2, 0.4, 0.6, 0.8, 0.99)\nobs_matches &lt;- c()\nfor (i in 1:length(theta_vals)) {\n  theta &lt;- theta_vals[i]\n  theta_str &lt;- sprintf(\"%.2f\", theta)\n  #print(theta_str)\n  sim_data &lt;- replicate(\n    num_reps,\n    rbinom(num_flips, 1, theta)\n  )\n  #print(sim_data)\n  #data_str &lt;- paste0(sim_data, collapse=\", \")\n  num_heads &lt;- colSums(sim_data)\n  #print(num_heads)\n  num_matches &lt;- sum(num_heads == obs_heads)\n  obs_matches &lt;- c(obs_matches, num_matches)\n  #print(num_matches)\n  #print(num_heads)\n  num_tails &lt;- num_flips - num_heads\n  #print(num_tails)\n  data_strs &lt;- paste0(\"[\",num_heads,\" heads, \",num_tails,\" tails]\")\n  data_str &lt;- paste0(data_strs, collapse=\", \")\n  #writeLines(paste0(\"p = \",theta_str,\": \",data_str))\n}\n#print(obs_matches)\nresult_df &lt;- tibble(theta=as.character(theta_vals), num_matches=obs_matches)\nresult_df &lt;- result_df %&gt;% mutate(prop_matches = obs_matches / num_reps)\n\n\nggplot(result_df, aes(x=theta, y=prop_matches)) +\n  geom_bar(stat = 'identity', fill=cbPalette[1]) +\n  dsan_theme(\"full\") +\n  labs(\n    title = \"Likelihood of data (8 heads, 2 tails) given theta value\",\n    y = \"Proportion of times (8,2) generated\"\n  )\n\n\n\n\n\n\n\n\n(Among these vals) \\(p = 0.8\\) is maximum likelihood estimate\n\n# for (i in 1:length(theta_vals)) {\n#   cur_theta &lt;- theta_vals[i]\n#   print(cur_theta)\n#   cur_results &lt;- results[[i]]\n#   print(cur_results)\n#   num_matches &lt;- cur_results == 8\n#   writeLines(paste0(\"p = \",cur_theta,\": our dataset was produced \",num_matches,\" times\"))\n# }"
+    "text": "Generative Models\n\n\n\nGiven a choice of \\(\\param{\\theta}\\) as our golem2, we can generate simulated datasets (here 10 for each labeled value of \\(\\param{p}\\)), then compute likelihood as proportion of datasets with 8 heads, 2 tails\nFrom the plot: (Among these vals) \\(\\param{p} = 0.8\\) is maximum likelihood estimate\n\n\n\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(dplyr)\nset.seed(1948)\nobs_heads &lt;- 8\nnum_flips &lt;- 10\nnum_reps &lt;- 10\np_vals &lt;- c(0.01, 0.2, 0.4, 0.6, 0.8, 0.99)\nobs_matches &lt;- c()\nfor (i in 1:length(p_vals)) {\n  cur_p &lt;- p_vals[i]\n  theta_str &lt;- sprintf(\"%.2f\", cur_p)\n  sim_data &lt;- replicate(\n    num_reps,\n    rbinom(num_flips, 1, cur_p)\n  )\n  #print(sim_data)\n  #data_str &lt;- paste0(sim_data, collapse=\", \")\n  num_heads &lt;- colSums(sim_data)\n  #print(num_heads)\n  num_matches &lt;- sum(num_heads == obs_heads)\n  obs_matches &lt;- c(obs_matches, num_matches)\n  #print(num_matches)\n  #print(num_heads)\n  num_tails &lt;- num_flips - num_heads\n  #print(num_tails)\n  data_strs &lt;- paste0(\"[\",num_heads,\" heads, \",num_tails,\" tails]\")\n  data_str &lt;- paste0(data_strs, collapse=\", \")\n  #writeLines(paste0(\"p = \",theta_str,\": \",data_str))\n}\n#print(obs_matches)\nresult_df &lt;- tibble(p=as.character(p_vals), num_matches=obs_matches)\nresult_df &lt;- result_df %&gt;% mutate(prop_matches = obs_matches / num_reps)\nggplot(result_df, aes(x=p, y=prop_matches)) +\n  geom_bar(stat = 'identity', fill=cbPalette[1]) +\n  dsan_theme(\"quarter\") +\n  # theme(\n  #   axis.title.y = element_text(size = 12)\n  # ) +\n  labs(\n    title = \"Likelihood of data (8 heads, 2 tails) given p\",\n    y = \"Proportion of times (8,2) generated\"\n  )"
   },
   {
-    "objectID": "w09/index.html#mle-in-the-real-world",
-    "href": "w09/index.html#mle-in-the-real-world",
+    "objectID": "w09/index.html#simulations-rightarrow-math",
+    "href": "w09/index.html#simulations-rightarrow-math",
     "title": "Week 9: Statistical Inference",
-    "section": "MLE in the Real World",
-    "text": "MLE in the Real World\nPrev example may feel silly, since we could just mathematically solve for the optimal \\(p\\) value…\n\\[\n\\begin{align*}\np^* &\\overset{\\phantom{x_i\\text{ indep}}}{=} \\argmax_{\\theta} \\mathcal{L}(x_1, \\ldots, x_n \\mid p) \\\\\n&\\overset{x_i\\text{ indep}}{=} \\argmax_{\\theta} \\mathcal{L}(x_1 \\mid p)\\mathcal{L}(x_2 \\mid p) \\cdots \\mathcal{L}(x_n \\mid p)\n\\end{align*}\n\\]\n\nWhat are the individual \\(\\mathcal{L}(x_i \\mid p)\\) terms?\nHow do we maximize the product \\(\\mathcal{L}(x_1 \\mid p) \\cdots \\mathcal{L}(x_n \\mid p)\\)?\n\n\nTime for some Math Magic…"
+    "section": "Simulations \\(\\rightarrow\\) Math",
+    "text": "Simulations \\(\\rightarrow\\) Math\nPrev example was overkill: we can solve for optimal \\(\\param{p}\\) value…\n\\[\n\\begin{align*}\np^* &\\overset{\\phantom{x_i\\text{ indep}}}{=} \\argmax_{\\param{p}} \\mathcal{L}(x_1, \\ldots, x_n \\mid \\param{p}) \\\\\n&\\overset{x_i\\text{ indep}}{=} \\argmax_{\\param{p}} \\mathcal{L}(x_1 \\mid \\param{p})\\mathcal{L}(x_2 \\mid \\param{p}) \\cdots \\mathcal{L}(x_n \\mid \\param{p})\n\\end{align*}\n\\]\n\nWhat are the individual \\(\\mathcal{L}(x_i \\mid \\param{p})\\) terms?\nHow do we maximize the product \\(\\mathcal{L}(x_1 \\mid \\param{p}) \\cdots \\mathcal{L}(x_n \\mid \\param{p})\\)?\n\n\nTime for some Math Magic…"
   },
   {
     "objectID": "w09/index.html#math-magic-1",
     "href": "w09/index.html#math-magic-1",
     "title": "Week 9: Statistical Inference",
     "section": "Math Magic 1",
-    "text": "Math Magic 1\n\nWhat are the individual \\(P(x_i \\mid p)\\) terms?\n\n\\(X \\sim \\text{Bern}(p)\\), so\n\\[\n\\begin{align*}\nP(X = x_i \\mid p) &= \\begin{cases}1 - p & x_i = 0 \\\\ p & x_i = 1\\end{cases} \\leftarrow \\genfrac{}{}{0pt}{}{\\text{ Non-differentiable}}{😭} \\\\\n&\\overset{\\text{math}}{\\underset{\\text{magic}}{=}} (1-p)^{1-x_i}p^{x_i} \\leftarrow \\text{ Differentiable! 😲}\n\\end{align*}\n\\]\nWhy do we need it to be differentiable? Stay tuned…"
+    "text": "Math Magic 1\n\nWhat are the individual \\(P(x_i \\mid \\param{p})\\) terms?\n\n\\(X \\sim \\text{Bern}(\\param{p})\\), so\n\\[\n\\begin{align*}\n\\Pr(X = x_i \\mid \\param{p}) &= \\begin{cases}1 - \\param{p} & x_i = 0 \\\\ \\param{p} & x_i = 1\\end{cases} \\; \\leftarrow \\genfrac{}{}{0pt}{}{\\text{ Non-differentiable}}{😭} \\\\\n&\\overset{\\text{math}}{\\underset{\\text{magic}}{=}} (1-\\param{p})^{1-x_i}\\param{p}^{x_i} \\; \\leftarrow \\text{ Differentiable! 😲}\n\\end{align*}\n\\]\nWhy do we need it to be differentiable? Stay tuned…"
   },
   {
     "objectID": "w09/index.html#math-magic-2",
     "href": "w09/index.html#math-magic-2",
     "title": "Week 9: Statistical Inference",
     "section": "Math Magic 2",
-    "text": "Math Magic 2\nRemember calculus!\n\\[\np^* = \\argmax_p f(p) \\implies f'(p^*) = 0\n\\]\nSo, to maximize likelihood function, we need to find its derivative1, set it equal to 0, and solve:\n\\[\n\\begin{align*}\n&\\frac{d}{dp}\\mathcal{L}(x \\mid p) = 0 \\iff \\\\\n&\\frac{d}{dp}\\left[\\mathcal{L}(x_1 \\mid p)\\mathcal{L}(x_2 \\mid p)\\cdots \\mathcal{L}(x_n \\mid p)\\right] = 0\n\\end{align*}\n\\]"
+    "text": "Math Magic 2\n\n\n\n\nHow do we maximize the product?\n\n\\[\np^* = \\argmax_{\\param{p}} f(\\param{p}) \\implies f'(p^*) = 0\n\\]\nTo maximize likelihood, we need to find its derivative3, set equal to 0, and solve:\n\n\n\n\n\n\n\\[\n\\begin{align*}\n&\\frac{d}{d\\param{p}}\\lik(x \\mid \\param{p}) = 0 \\iff \\\\\n&\\frac{d}{d\\param{p}}\\left[\\lik(x_1 \\mid \\param{p})\\lik(x_2 \\mid \\param{p})\\cdots \\lik(x_n \\mid \\param{p})\\right] = 0\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/index.html#obstacle-products-vs.-sums",
     "href": "w09/index.html#obstacle-products-vs.-sums",
     "title": "Week 9: Statistical Inference",
     "section": "Obstacle: Products vs. Sums",
-    "text": "Obstacle: Products vs. Sums\n\nFinding \\(\\frac{d}{dp}\\left[ \\mathcal{L}(x_1)\\mathcal{L}(x_2)\\cdots \\mathcal{L}(x_n)\\right]\\) is a doozy, even with just \\(n = 2\\) datapoints:\n\n\\[\n\\begin{align*}\n&\\frac{d}{dp}\\left[ \\mathcal{L}(x_1)\\mathcal{L}(x_2) \\right] = \\left( \\frac{d}{dp}\\mathcal{L}(x_1)\\right) \\cdot \\mathcal{L}(x_2) + \\mathcal{L}(x_1)\\cdot \\left( \\frac{d}{dp}\\mathcal{L}(x_2) \\right) \\\\\n&= (1-p)^{-x_1}p^{x_1-1}(x_1-p)\\cdot (1-p)^{1-x_2}p^{x_2} \\\\\n&+ (1-p)^{1-x_1}p^{x_1} \\cdot (1-p)^{-x_2}p^{x_2-1}(x_2 - p)\n%&= \\frac{d}{d\\theta}\\left[ (1-p)^{1-x_1}p^{x_1}(1-p)^{1-x_2}p^{x_2} \\right]\n\\end{align*}\n\\]\n\nComplicating factor: \\(\\mathcal{L}(x_i)\\) terms are all multiplied together, forcing us to use product rule: \\(\\frac{d}{d\\theta}\\left[P(x_1)P(x_2)\\right] = \\left(\\frac{d}{d\\theta}P(x_1)\\right)\\cdot P(x_2) + P(x_1)\\cdot \\left(\\frac{d}{d\\theta}P(x_2)\\right)\\)\nIf we had terms that were added rather than multiplied, we’d have a much easier time: \\(\\frac{d}{d\\theta}\\left[ \\mathcal{L}(x_1) + \\mathcal{L}(x_2)\\right] = \\frac{d}{d\\theta}P(x_1) + \\frac{d}{d\\theta} P(x_2)\\)2\nSo, what math operation do we know that turns multiplications into additions?"
+    "text": "Obstacle: Products vs. Sums\n\nFinding \\(\\frac{d}{d\\param{p}}\\left[ \\lik(x_1)\\lik(x_2)\\cdots \\lik(x_n)\\right]\\) is a doozy, even with just \\(n = 2\\) datapoints:\n\n\\[\n\\begin{align*}\n&\\frac{d}{d\\param{p}}\\left[ \\lik(x_1)\\lik(x_2) \\right] = \\left( \\frac{d}{d\\param{p}}\\lik(x_1)\\right) \\cdot \\lik(x_2) + \\lik(x_1)\\cdot \\left( \\frac{d}{d\\param{p}}\\lik(x_2) \\right) \\\\\n&= (1-\\param{p})^{-x_1}\\param{p}^{x_1-1}(x_1-\\param{p})\\cdot (1-\\param{p})^{1-x_2}\\param{p}^{x_2} \\\\\n&+ (1-\\param{p})^{1-x_1}\\param{p}^{x_1} \\cdot (1-\\param{p})^{-x_2}\\param{p}^{x_2-1}(x_2 - \\param{p})\n%&= \\frac{d}{d\\theta}\\left[ (1-p)^{1-x_1}p^{x_1}(1-p)^{1-x_2}p^{x_2} \\right]\n\\end{align*}\n\\]\n\nComplicating factor: \\(\\lik(x_i)\\) terms are all multiplied together, forcing us to use product rule: \\(\\frac{d}{d\\param{p}}\\left[\\lik(x_1)\\lik(x_2)\\right] = \\left(\\frac{d}{d\\param{p}}\\lik(x_1)\\right)\\cdot \\lik(x_2) + \\lik(x_1)\\cdot \\left(\\frac{d}{d\\param{p}}\\lik(x_2)\\right)\\)\nIf we had terms that were added rather than multiplied, we’d have a much easier time: \\(\\frac{d}{d\\param{p}}\\left[ \\lik(x_1) + \\lik(x_2)\\right] = \\frac{d}{d\\param{p}}\\lik(x_1) + \\frac{d}{d\\param{p}} \\lik(x_2)\\)4\nSo, what math operation do we know that turns multiplications into additions?"
   },
   {
     "objectID": "w09/index.html#math-magic-3-log-likelihood",
     "href": "w09/index.html#math-magic-3-log-likelihood",
     "title": "Week 9: Statistical Inference",
     "section": "Math Magic 3: Log-Likelihood",
-    "text": "Math Magic 3: Log-Likelihood\n\\[\n\\log(a\\cdot b) = \\log(a) + \\log(b)\n\\]\nBingo! So, can we maximize \\(\\ell(x_i) = \\log(\\mathcal{L}(x_i))\\) rather than \\(\\mathcal{L}(x_i)\\)? Bingo again! Because logarithms are monotonic,\n\\[\nx^* = \\argmax_x \\left[ \\log\\left(f(x)\\right) \\right] \\iff x^* = \\argmax_x \\left[ f(x) \\right]\n\\]\nSo, we can just solve\n\\[\np^* = \\argmax_p \\left[ \\ell(x_1, \\ldots, x_n)\\right]\n\\]"
+    "text": "Math Magic 3: Log-Likelihood\n\\[\n\\log(a\\cdot b) = \\log(a) + \\log(b)\n\\]\nBingo! So, can we maximize \\(\\loglik(x_i) = \\log(\\mathcal{L}(x_i))\\) rather than \\(\\mathcal{L}(x_i)\\)? Bingo again! Because logarithms are monotonic,\n\\[\nx^* = \\argmax_x \\left[ \\log\\left(f(x)\\right) \\right] \\iff x^* = \\argmax_x \\left[ f(x) \\right]\n\\]\nSo, we can just solve\n\\[\np^* = \\argmax_{\\param{p}} \\left[ \\ell(x_1, \\ldots, x_n)\\right]\n\\]"
   },
   {
     "objectID": "w09/index.html#simplifying",
     "href": "w09/index.html#simplifying",
     "title": "Week 9: Statistical Inference",
     "section": "Simplifying",
-    "text": "Simplifying\nOur problem simplifies to figuring out\n\\[\n\\begin{align*}\n\\frac{d}{dp}\\left[ \\log \\left( \\mathcal{L}(x_1)\\cdots \\mathcal{L}(x_n) \\right) \\right] &= \\frac{d}{dp}\\left[ \\log \\mathcal{L}(x_1) + \\log\\mathcal{L}(x_2) + \\cdots + \\log\\mathcal{L}(x_n) \\right] \\\\\n&= \\frac{d}{dp}\\left[ \\ell(x_1) + \\ell(x_2) + \\cdots + \\ell(x_n) \\right] = \\frac{d}{dp}\\left[ \\sum_{i=1}^n \\ell(x_i)\\right]\n\\end{align*}\n\\]\nBut since the derivative is a linear operator, \\(\\frac{d}{dp}\\left[ \\sum_{i=1}^n \\ell(x_i) \\right] = \\sum_{i=1}^n \\frac{d}{dp}\\left[ \\ell(x_i) \\right]\\), so we just have to compute \\(\\frac{d}{dp}\\ell(x_i)\\)! No product rule required (though we still need chain rule):\n\\[\n\\begin{align*}\n\\frac{d}{dp}\\left[ \\ell(x_i) \\right] &= \\frac{d}{dp}\\left[ \\log((1-p)^{1-x_i}p^{x_i}) \\right] = \\frac{d}{dp}\\left[(1-x_i)\\log(1-p) + x_i\\log(p)\\right] \\\\\n&= (1-x_i)\\frac{d}{dp}\\log(1-p) + x_i\\frac{d}{dp}\\log(p) = -\\frac{1-x_i}{1-p} + \\frac{x_i}{p} \\\\\n&= \\frac{p - x_i}{(p-1)p}\n\\end{align*}\n\\]"
+    "text": "Simplifying\nOur problem simplifies to figuring out\n\\[\n\\begin{align*}\n\\frac{d}{d\\param{p}}\\left[ \\log \\left( \\lik(x_1)\\cdots \\lik(x_n) \\right) \\right] &= \\frac{d}{d\\param{p}}\\left[ \\log \\lik(x_1) + \\log\\lik(x_2) + \\cdots + \\log\\lik(x_n) \\right] \\\\\n&= \\frac{d}{d\\param{p}}\\left[ \\ell(x_1) + \\ell(x_2) + \\cdots + \\ell(x_n) \\right] = \\frac{d}{d\\param{p}}\\left[ \\sum_{i=1}^n \\ell(x_i)\\right]\n\\end{align*}\n\\]\nBut since the derivative is an additive operator, \\(\\frac{d}{d\\param{p}}\\left[ \\sum_{i=1}^n \\ell(x_i) \\right] = \\sum_{i=1}^n \\frac{d}{d\\param{p}}\\left[ \\ell(x_i) \\right]\\), so we just have to compute \\(\\frac{d}{d\\param{p}}\\ell(x_i)\\)! No product rule required (we still need chain rule):\n\\[\n\\begin{align*}\n\\frac{d}{d\\param{p}}\\left[ \\ell(x_i) \\right] &= \\frac{d}{d\\param{p}}\\left[ \\log((1-\\param{p})^{1-x_i}\\param{p}^{x_i}) \\right] = \\frac{d}{d\\param{p}}\\left[(1-x_i)\\log(1-\\param{p}) + x_i\\log(\\param{p})\\right] \\\\\n&= (1-x_i)\\frac{d}{d\\param{p}}\\log(1-\\param{p}) + x_i\\frac{d}{d\\param{p}}\\log(\\param{p}) = -\\frac{1-x_i}{1-\\param{p}} + \\frac{x_i}{\\param{p}} \\\\\n&= \\frac{\\param{p} - x_i}{(\\param{p}-1)\\param{p}}\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/index.html#maximizing",
     "href": "w09/index.html#maximizing",
     "title": "Week 9: Statistical Inference",
     "section": "Maximizing",
-    "text": "Maximizing\nNow that we know \\(\\frac{d}{dp}\\ell(x_i)\\), we set our log-likelihood equation equal to zero to find the likelihood-maximizing \\(p\\) value, \\(p^*\\):\n\\[\n\\begin{align*}\n&\\sum_{i=1}^n\\frac{d}{dp}\\ell(x_i) = 0 \\iff \\sum_{i=1}^n \\frac{p^* - x_i}{(p^*-1)p^*} = 0 \\\\\n&\\iff -\\frac{1}{(p^*-1)p^*}\\sum_{i=1}^nx_i - np^* = 0 \\\\\n&\\iff \\sum_{i=1}^nx_i = np^* \\iff \\boxed{p^* = \\frac{\\sum_{i=1}^nx_i}{n}}\n\\end{align*}\n\\]"
+    "text": "Maximizing\nNow that we know \\(\\frac{d}{d\\param{p}}\\ell(x_i)\\), we set our log-likelihood equation equal to zero to find the likelihood-maximizing \\(\\param{p}\\) value, \\(p^*\\):\n\\[\n\\begin{align*}\n&\\sum_{i=1}^n\\frac{d}{d\\param{p}}\\ell(x_i) = 0 \\iff \\sum_{i=1}^n \\frac{p^* - x_i}{(p^*-1)p^*} = 0 \\\\\n&\\iff -\\frac{1}{(p^*-1)p^*}\\sum_{i=1}^nx_i - np^* = 0 \\\\\n&\\iff \\sum_{i=1}^nx_i = np^* \\iff \\boxed{p^* = \\frac{\\sum_{i=1}^nx_i}{n}}\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/index.html#mle-intuition",
     "href": "w09/index.html#mle-intuition",
     "title": "Week 9: Statistical Inference",
     "section": "MLE Intuition",
-    "text": "MLE Intuition\n\\[\np^* = \\frac{\\sum_{i=1}^nx_i}{n} = \\frac{\\sum_{i=1}^n \\mathbf{1}[x_i = 1]}{n} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{\\# Heads}}{\\leftarrow \\text{\\# Flips }}\n\\]\n\nMLE almost always matches intuition! Example: given data \\(x_1, \\ldots, x_n\\), what Normal distribution best fits this data?\nSame as asking: what parameter settings for \\(\\mathcal{N}(\\mu, \\sigma^2)\\) are most likely to produce \\(x_1, \\ldots, x_n\\)? The answer:\n\n\\[\n\\mu^* = \\frac{\\sum_{i=1}^n x_i}{n} \\; \\; \\; \\sigma^2_* = \\frac{\\sum_{i=1}^n (x_i-\\mu^*)^2}{n}\n\\]"
+    "text": "MLE Intuition\n\\[\np^* = \\frac{\\sum_{i=1}^nx_i}{n} = \\frac{\\sum_{i=1}^n \\mathbf{1}[x_i = 1]}{n} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{\\# Heads}}{\\leftarrow \\text{\\# Flips }}\n\\]\n\nMLE almost always matches intuition! Example: given data \\(x_1, \\ldots, x_n\\), what Normal distribution best fits this data?\nSame as asking: what parameter settings for \\(\\mathcal{N}(\\param{\\mu}, \\param{\\sigma^2})\\) are most likely to produce \\(x_1, \\ldots, x_n\\)? The answer:\n\n\\[\n\\mu^* = \\frac{\\sum_{i=1}^n x_i}{n} \\; \\; \\; \\sigma^2_* = \\frac{\\sum_{i=1}^n (x_i-\\mu^*)^2}{n}\n\\]"
   },
   {
     "objectID": "w09/index.html#the-dark-side-of-mle",
@@ -2930,21 +2937,21 @@
     "href": "w09/index.html#computing-expectsigma2_",
     "title": "Week 9: Statistical Inference",
     "section": "Computing \\(\\expect{\\sigma^2_*}\\)",
-    "text": "Computing \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\bigexpect{\\frac{1}{n}\\sum_{i=1}^nx_i^2 - (\\mu^*)^2} = \\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2}\n\\end{align*}\n\\]\n\nWhat do we know about \\(\\expect{x_i^2}\\)?\nRemember the (alternate) definition of variance: \\(\\Var{X} = \\expect{X^2} - \\left(\\expect{X}\\right)^2\\). Then\n\n\\[\n\\expect{X^2} = \\Var{X} + \\left(\\expect{X}\\right)^2\n\\]\nSo let’s plug in the right side when we see \\(\\expect{X^2}\\) or \\(\\expect{(\\mu^*)^2}\\):\n\\[\n\\begin{align*}\n\\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2} &= \\frac{1}{n}\\sum_{i=1}^n\\left(\\Var{X} + \\left(\\expect{X}\\right)^2\\right) - \\expect{(\\mu^*)^2} \\\\\n&= (\\sigma^2 + \\mu^2) - \\left(\\Var{\\mu^*} + \\left(\\expect{\\mu^*}\\right)^2\\right)\n\\end{align*}\n\\]"
+    "text": "Computing \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\bigexpect{\\frac{1}{n}\\sum_{i=1}^nx_i^2 - (\\mu^*)^2} = \\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2}\n\\end{align*}\n\\]\n\nWhat do we know about \\(\\expect{x_i^2}\\)? Remember the (alternate) definition of variance: \\(\\Var{X} = \\expect{X^2} - \\left(\\expect{X}\\right)^2\\). Then\n\n\\[\n\\expect{X^2} = \\Var{X} + \\left(\\expect{X}\\right)^2\n\\]\nSo let’s plug in the right side when we see \\(\\expect{X^2}\\) or \\(\\expect{(\\mu^*)^2}\\):\n\\[\n\\begin{align*}\n\\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2} &= \\frac{1}{n}\\sum_{i=1}^n\\left(\\Var{X} + \\left(\\expect{X}\\right)^2\\right) - \\expect{(\\mu^*)^2} \\\\\n&= (\\sigma^2 + \\mu^2) - \\left(\\Var{\\mu^*} + \\left(\\expect{\\mu^*}\\right)^2\\right)\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/index.html#almost-there",
     "href": "w09/index.html#almost-there",
     "title": "Week 9: Statistical Inference",
     "section": "Almost There!",
-    "text": "Almost There!\n\nAlmost there! We know that \\(\\expect{\\mu^*} = \\mu\\), but what is \\(\\Var{\\mu^*}\\)? Remember that \\(\\Var{aX} = a^2\\Var{X}\\)!\n\n\\[\n\\Var{\\mu^*} = \\bigVar{\\frac{1}{n}\\sum_{i=1}^nx_i} = \\frac{1}{n^2}\\sum_{i=1}^n\\Var{x_i} = \\frac{n\\sigma^2}{n^2} = \\frac{\\sigma^2}{n}\n\\]\nAnd we plug back in to get:\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\sigma^2 + \\mu^2 - \\Var{\\mu^*} - \\left(\\expect{\\mu^*}\\right)^2 \\\\\n&= \\sigma^2 + \\mu^2 - \\frac{\\sigma^2}{n} - \\mu^2 = \\sigma^2 - \\frac{\\sigma^2}{n} \\\\\n&= \\frac{n\\sigma^2 - \\sigma^2}{n} = \\frac{\\sigma^2(n-1)}{n} \\\\\n&= \\color{red}{\\left(\\frac{n-1}{n}\\right)\\sigma^2} \\neq \\sigma^2 \\; 💀\n\\end{align*}\n\\]"
+    "text": "Almost There!\nWe know that \\(\\expect{\\mu^*} = \\mu\\), but what is \\(\\Var{\\mu^*}\\)? Remember that \\(\\Var{aX} = a^2\\Var{X}\\)!\n\\[\n\\Var{\\mu^*} = \\bigVar{\\frac{1}{n}\\sum_{i=1}^nx_i} = \\frac{1}{n^2}\\sum_{i=1}^n\\Var{x_i} = \\frac{n\\sigma^2}{n^2} = \\frac{\\sigma^2}{n}\n\\]\nAnd we plug back in to get:\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\sigma^2 + \\mu^2 - \\Var{\\mu^*} - \\left(\\expect{\\mu^*}\\right)^2 \\\\\n&= \\sigma^2 + \\mu^2 - \\frac{\\sigma^2}{n} - \\mu^2 = \\sigma^2 - \\frac{\\sigma^2}{n} \\\\\n&= \\frac{n\\sigma^2 - \\sigma^2}{n} = \\frac{\\sigma^2(n-1)}{n} \\\\\n&= \\color{red}{\\left(\\frac{n-1}{n}\\right)\\sigma^2} \\neq \\sigma^2 \\; 💀\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/index.html#why-does-this-happen-handwaving",
     "href": "w09/index.html#why-does-this-happen-handwaving",
     "title": "Week 9: Statistical Inference",
     "section": "Why Does This Happen?: Handwaving",
-    "text": "Why Does This Happen?: Handwaving\n\nLong story short, we underpredict the population variance because we already used some of the data to compute \\(\\mu^*\\)!\nThis is where the heuristic of degrees of freedom comes in:\n\nWhen computing an estimate \\(e\\), \\(df(e) = n - k_e\\)\n\\(k_e =\\) number of other estimates used to calculate \\(e\\)!"
+    "text": "Why Does This Happen?: Handwaving\n\nLong story short, we underpredict the population variance because we already used some of the data to compute \\(\\mu^*\\)!\nThis is where the heuristic of degrees of freedom comes in:\n\nWhen we construct an estimate \\(e\\), \\(df(e) = n - k_e\\)\n\\(k_e =\\) number of other estimates used to calculate \\(e\\)!"
   },
   {
     "objectID": "w09/index.html#handwavy-intuition",
@@ -2989,6 +2996,13 @@
     "text": "The Takeaway\n\nBayesian approach allows new evidence to be weighed against existing evidence, with statistically principled way to derive these weights:\n\n\\[\n\\begin{array}{ccccc}\nP_{\\text{post}}(\\mathcal{H}) &\\hspace{-6mm}\\propto &\\hspace{-6mm} P(X \\mid \\mathcal{H}) &\\hspace{-6mm} \\times &\\hspace{-6mm} P_{\\text{pre}}(\\mathcal{H}) \\\\\n\\text{Posterior} &\\hspace{-6mm}\\propto &\\hspace{-6mm}\\text{Evidence} &\\hspace{-6mm} \\times &\\hspace{-6mm} \\text{Prior}\n\\end{array}\n\\]"
   },
   {
+    "objectID": "w09/index.html#generalized-method-of-moments-gmm-estimation",
+    "href": "w09/index.html#generalized-method-of-moments-gmm-estimation",
+    "title": "Week 9: Statistical Inference",
+    "section": "Generalized Method of Moments (GMM) Estimation",
+    "text": "Generalized Method of Moments (GMM) Estimation"
+  },
+  {
     "objectID": "w09/index.html#appendix-1-derivation-of-expectmu_2",
     "href": "w09/index.html#appendix-1-derivation-of-expectmu_2",
     "title": "Week 9: Statistical Inference",
@@ -3014,14 +3028,14 @@
     "href": "w09/index.html#footnotes",
     "title": "Week 9: Statistical Inference",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis is why we used math magic to make \\(P(x_i \\mid \\theta)\\) differentiable, in the previous slide!↩︎\nWe achieve this simplification because the derivative operator is linear: \\(\\frac{d}{dx}\\left[ f(x) + g(x) \\right] = \\frac{d}{dx}f(x) + \\frac{d}{dx}g(x)\\)↩︎"
+    "text": "Footnotes\n\n\nNote that I’m trying really hard to differentiate between (capital-letter) \\(N\\) as cardinality of observations, then (lowercase) \\(1, 2, \\ldots, n\\) for ordinal labels on each individual observation. This will spare you many headaches in life!↩︎\nA big rock boi from the Talmud (and Pokémon) who follows orders but has no common sense/nuance (like a computer). See Collins and Pinch (1993) and McElreath (2020)↩︎\nAnd that’s why we used math magic to make \\(\\Pr(x_i \\mid \\param{p})\\) differentiable, in the previous slide!↩︎\nWe achieve this simplification because the derivative operator is additive: \\(\\frac{d}{dx}\\left[ f(x) + g(x) \\right] = \\frac{d}{dx}f(x) + \\frac{d}{dx}g(x)\\)↩︎"
   },
   {
-    "objectID": "w09/slides.html#statistical-inference",
-    "href": "w09/slides.html#statistical-inference",
+    "objectID": "w09/slides.html#statistical-inference-vs.-statistics",
+    "href": "w09/slides.html#statistical-inference-vs.-statistics",
     "title": "Week 9: Statistical Inference",
-    "section": "Statistical Inference",
-    "text": "Statistical Inference\n\n\nMoving from understanding probability to getting things done using probability!\nEverything up to this point: understanding the “rules” of stochastic processes\nNow: Using what we know to allow us to draw inferences about populations without having to carry out a census"
+    "section": "Statistical Inference vs. Statistics",
+    "text": "Statistical Inference vs. Statistics\n\n\nMoving from understanding probability to getting things done using probability!\nEverything up to this point: understanding the “rules” of stochastic processes\nNow: Using what we know to allow us to draw inferences about populations without having to carry out a census"
   },
   {
     "objectID": "w09/slides.html#samples-vs.-populations",
@@ -3031,11 +3045,11 @@
     "text": "Samples vs. Populations\n\nSample = The data you have\nPopulation = The thing you want to learn about, by looking at the sample\nLike “success” vs. “failure” in Bernoulli trials, no exact definition of what counts as sample vs. population\nWhat we call the “sample” and the “population” is vocabulary there to help us know what to do"
   },
   {
-    "objectID": "w09/slides.html#inference",
-    "href": "w09/slides.html#inference",
+    "objectID": "w09/slides.html#inference-statistical-and-otherwise",
+    "href": "w09/slides.html#inference-statistical-and-otherwise",
     "title": "Week 9: Statistical Inference",
-    "section": "Inference",
-    "text": "Inference\nWhat are we doing when we do science?\n\n\n\nScience in General\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\nExample: Newton\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\nRemember that the filled-in nodes represent things we can observe, while the non-filled nodes represent things we have to infer from the observable data."
+    "section": "Inference (Statistical and Otherwise)",
+    "text": "Inference (Statistical and Otherwise)\nWhat are we doing when we do science?\n\n\n\nScience in General\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_02\n\n “Science”  \n\ncluster_01\n\n “Nature”   \n\nObs\n\n Thing(s) we can see   \n\nUnd\n\n Underlying processes   \n\nUnd-&gt;Obs\n\n    \n\nModel\n\n Model   \n\nUnd-&gt;Model\n\n    \n\nModel-&gt;Obs\n\n   \n\n\n\n\n\n\n\nExample: Newton\n\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_04\n\n  Woolsthorpe Manor    \n\ncluster_03\n\n Isaac Newton   \n\nTree\n\n  Falling Apple     \n\nPhysics\n\n  Particle Interactions     \n\nPhysics-&gt;Tree\n\n    \n\nNewton\n\n Newton’s Laws   \n\nPhysics-&gt;Newton\n\n    \n\nNewton-&gt;Tree\n\n   \n\n\n\n\n\n\n\n\n\nRemember that the filled-in nodes represent things we can observe, while the non-filled nodes represent things we have to infer from the observable data."
   },
   {
     "objectID": "w09/slides.html#examples-abound",
@@ -3073,13 +3087,6 @@
     "text": "Our Case\n\n\n\n\n\n\n\ngrid\n\n \n\ncluster_03\n\n Us  \n\ncluster_04\n\n The World   \n\nSample\n\n Sample   \n\nPopulation\n\n Population   \n\nPopulation-&gt;Sample\n\n  Take Sample    \n\nStats\n\n Statistics   \n\nPopulation-&gt;Stats\n\n  Infer   \n\nStats-&gt;Sample\n\n  Observe  \n\n\n\n\n\n\n\nIf you’re wondering, “what happened to Hypothesis Testing?”, don’t worry, we’ll dive back into that over the next 2 weeks!"
   },
   {
-    "objectID": "w09/slides.html#law-of-large-numbers",
-    "href": "w09/slides.html#law-of-large-numbers",
-    "title": "Week 9: Statistical Inference",
-    "section": "Law of Large Numbers",
-    "text": "Law of Large Numbers\nLLN"
-  },
-  {
     "objectID": "w09/slides.html#stability-out-of-randomness",
     "href": "w09/slides.html#stability-out-of-randomness",
     "title": "Week 9: Statistical Inference",
@@ -3101,116 +3108,130 @@
     "text": "How Many is “Many”?\n\n\nCode\nlibrary(ggplot2)\nlibrary(tibble)\nlibrary(dplyr)\nn_vals &lt;- c(ceiling(sqrt(10)), 10, ceiling(10*sqrt(10)), 100, ceiling(100*sqrt(10)), 1000, ceiling(1000*sqrt(10)), 10000, ceiling(10000*sqrt(10)), 100000)\nheads_data &lt;- c()\ntotal_data &lt;- c()\nfor (n in n_vals) {\n  coin_flips &lt;- rbinom(n, 1, 0.5)\n  num_heads &lt;- sum(coin_flips)\n  heads_data &lt;- c(heads_data, num_heads)\n  num_flipped &lt;- length(coin_flips)\n  total_data &lt;- c(total_data, num_flipped)\n}\nresults &lt;- tibble(n = n_vals, heads=heads_data, total=total_data)\nresults &lt;- results %&gt;% mutate(head_prop = heads / total)\n#results\nggplot(results, aes(x=n, y=head_prop)) +\n  geom_hline(aes(yintercept=0.5, linetype='dashed'), color=cbPalette[2]) +\n  geom_line(aes(color='black'), fill=cbPalette[1], linewidth=g_linewidth, color=cbPalette[1]) +\n  geom_point(aes(color='black'), size=g_pointsize*0.9) +\n  scale_color_manual(\"\", values=c(\"black\",\"purple\"), labels=c(\"Mean of n samples\",\"Expected Value\")) +\n  scale_linetype_manual(\"\", values=\"dashed\", labels=\"Expected Value\") +\n  scale_fill_manual(\"\", values=cbPalette[1], labels=\"95% CI\") +\n  #scale_linetype_manual('type', values=c('dashed', 'solid'), labels=c(\"Expected Value\", \"Sample Mean\")) +\n  #scale_color_manual('color', values=c(cbPalette[1], 'black'), labels=c('Expected Value', 'Sample Mean')) +\n  dsan_theme(\"full\") +\n  theme(\n      legend.title = element_blank(),\n      legend.spacing.y = unit(0, \"mm\")\n  ) +\n      labs(\n          title = \"Estimates of Population Mean for Increasing Sample Sizes\",\n          x = \"n (Sample Size)\",\n          y = \"Sample Mean\"\n      ) +\n  scale_x_log10(breaks = c(10, 100, 1000, 10000, 100000), labels = c(\"10\", \"100\", \"1000\", \"10000\", \"100000\"))"
   },
   {
-    "objectID": "w09/slides.html#law-of-large-numbers-1",
-    "href": "w09/slides.html#law-of-large-numbers-1",
+    "objectID": "w09/slides.html#the-sample-mean",
+    "href": "w09/slides.html#the-sample-mean",
     "title": "Week 9: Statistical Inference",
-    "section": "Law of Large Numbers",
-    "text": "Law of Large Numbers\nSuppose that \\(X_1, \\ldots, X_n\\) form a random sample from a distribution for which the mean is \\(\\mu\\) and for which the variance is finite. Let \\(\\bar{X}_n\\) denote the sample mean. Then \\[\n\\bar{X}_n \\stackrel{p}{\\longrightarrow} \\mu \\text {. }\n\\]"
+    "section": "The Sample Mean",
+    "text": "The Sample Mean\n\nLike the median we saw earlier (along with lots of other examples), sample mean is just a function of RVs\nUnlike the median, though, it is a function of a vector-valued RV \\(\\mathbf{X}_N\\) (containing \\(N\\) scalar RVs)!1\nLet \\(\\mathbf{X}_N = \\{X_1, X_2, \\ldots, X_n\\}\\), where \\(X_1\\) is first observation, \\(X_2\\) second observation, and so on. Then:\n\n\\[\n\\overline{X}_N = f(\\mathbf{X}_N) = \\frac{1}{n}\\sum_{i=1}^{n}X_i\n\\]\nNote that I’m trying really hard to differentiate between (capital-letter) \\(N\\) as cardinality of observations, then (lowercase) \\(1, 2, \\ldots, n\\) for ordinal labels on each individual observation. This will spare you many headaches in life!"
+  },
+  {
+    "objectID": "w09/slides.html#weak-law-of-large-numbers-wlln",
+    "href": "w09/slides.html#weak-law-of-large-numbers-wlln",
+    "title": "Week 9: Statistical Inference",
+    "section": "Weak Law of Large Numbers (WLLN)",
+    "text": "Weak Law of Large Numbers (WLLN)\n\nLet \\(\\mathbf{X}_N = \\{X_1, \\ldots, X_n\\} \\iid \\mathcal{D}\\) be a random sample from a distribution \\(\\mathcal{D}\\) with mean \\(\\mu\\), finite variance. Let \\(\\overline{X}_N\\) denote the sample mean from previous slide. Then\n\n\\[\n\\overline{X}_N \\stackrel{p}{\\longrightarrow} \\mu\n\\]\n\n\\(\\mathfrak{X}(N) \\stackrel{p}{\\longrightarrow} c\\) means the Random Variable \\(\\mathfrak{X}(N)\\) (a function of the sample size \\(N\\)) “converges in probability” to the scalar value \\(c\\). Formally:\n\n\\[\n\\mathfrak{X}(N) \\overset{p}{\\longrightarrow} c \\iff \\forall \\varepsilon &gt; 0 \\left[ \\lim_{N \\rightarrow \\infty}\\Pr\\left( | \\mathfrak{X}(N) - c | &lt; \\varepsilon \\right) = 1 \\right]\n\\]"
+  },
+  {
+    "objectID": "w09/slides.html#strong-law-of-large-numbers-slln",
+    "href": "w09/slides.html#strong-law-of-large-numbers-slln",
+    "title": "Week 9: Statistical Inference",
+    "section": "Strong Law of Large Numbers (SLLN)",
+    "text": "Strong Law of Large Numbers (SLLN)\n\nSame setup as last slide, but\n\n\\[\n\\overline{X}_N \\convergesAS \\mu\n\\]\n\n\\(\\mathfrak{X}(N) \\convergesAS c\\) means the Random Variable \\(\\mathfrak{X}(N)\\) (a function of the sample size \\(N\\)) “converges almost surely” to the scalar value \\(c\\). Formally:\n\n\\[\n\\mathfrak{X}(N) \\convergesAS c \\iff \\Pr\\left( \\lim_{N \\rightarrow \\infty} \\mathfrak{X}(N) = c \\right) = 1\n\\]\n\nSLLN \\(\\implies\\) WLLN, but WLLN \\(~\\nimplies\\) SLLN!\nWLLN easy to prove, SLLN very un-easy to prove"
   },
   {
     "objectID": "w09/slides.html#central-limit-theorem",
     "href": "w09/slides.html#central-limit-theorem",
     "title": "Week 9: Statistical Inference",
     "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\nWe’ll never actually reach \\(n = \\infty\\), so we zoom in on how close our sample-based estimate gets to the true value\nCentral Limit Theorem says: these “closeness” values are normally distributed!\nLLN guarantees that \\(X_n \\eqeventual \\mu\\)\nCLT tells us what the gap \\(X_n - \\mu\\) looks like"
+    "text": "Central Limit Theorem\n\nWe’ll never actually reach \\(N = \\infty\\), so we zoom in on how close our sample-based estimate gets to the true value\nCentral Limit Theorem says: these “closeness” values are normally distributed!\nLLN guarantees that \\(X_N \\; \\; \\eqeventual \\; \\; \\mu\\)\nCLT tells us what the gap \\((X_N - \\mu)\\) looks like"
   },
   {
     "objectID": "w09/slides.html#formal-clt",
     "href": "w09/slides.html#formal-clt",
     "title": "Week 9: Statistical Inference",
     "section": "Formal CLT",
-    "text": "Formal CLT\n\nSampled observations: \\(\\mathbf{X} = \\{X_1, \\ldots, X_n\\}\\)\n\\(\\expect{X_i} = \\mu, \\Var{X_i} = \\sigma^2 &lt; \\infty\\)\n\\(\\overline{X}_n \\definedas M_1(\\mathbf{X}) = \\frac{X_1 + \\cdots + X_n}{n}\\)\n\n\\[\n\\frac{\\overline{X}_n - \\mu}{\\sigma / \\sqrt{n}} \\overset{\\text{asymp}}{\\sim} \\mathcal{N}(0,1)\n\\]"
+    "text": "Formal CLT\n\nSampled observations: \\(\\mathbf{X}_N = \\{X_1, \\ldots, X_n\\}\\)\n\\(\\expect{X_i} = \\mu, \\Var{X_i} = \\sigma^2 &lt; \\infty\\)\n\\(\\overline{X}_N \\definedas M_1(\\mathbf{X}_N) = \\frac{X_1 + \\cdots + X_n}{N}\\)\n\n\\[\n\\frac{\\overline{X}_N - \\mu}{\\sigma / \\sqrt{N}} \\overset{\\text{asymp}}{\\sim} \\mathcal{N}(0,1)\n\\]"
   },
   {
     "objectID": "w09/slides.html#when-is-mathcaln0-1-a-good-approximation",
     "href": "w09/slides.html#when-is-mathcaln0-1-a-good-approximation",
     "title": "Week 9: Statistical Inference",
     "section": "When is \\(\\mathcal{N}(0, 1)\\) a “good” approximation?",
-    "text": "When is \\(\\mathcal{N}(0, 1)\\) a “good” approximation?\n\n\n\n\nCode\n# Prepare data for all plots\nmax_n &lt;- 10000\nnum_reps &lt;- 1000\nall_rolls &lt;- replicate(\n  num_reps,\n  sample(1:6, size = max_n, replace = TRUE, prob = rep(1 / 6, 6))\n)\ngen_clt_plot &lt;- function(n) {\n  exp_val &lt;- 3.5\n  sigma &lt;- sqrt(35/12)\n  denom &lt;- sigma / sqrt(n)\n  # Get the slice of all_rolls for this n\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  norm_gaps &lt;- (sample_means - exp_val) / denom\n  n_df &lt;- tibble(norm_gap=norm_gaps)\n  #if (n == 5) {\n  #  print(sample_means)\n  #  print(n_df)\n  #}\n  ggplot(n_df, aes(x = norm_gap)) +\n  geom_histogram(aes(y = after_stat(density)), binwidth = 1/2) +\n  #geom_density() +\n  stat_function(fun=dnorm, size=g_linesize) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n),\n    x = \"Normalized Sample Gap\"\n  )\n}\n\n\n\n\nCode\ngen_clt_plot(2)\n\n\n\n\n\n\n\n\n\n\n\nCode\ngen_clt_plot(4)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ngen_clt_plot(5)\n\n\n\n\n\n\n\n\n\n\n\nCode\ngen_clt_plot(10000)"
+    "text": "When is \\(\\mathcal{N}(0, 1)\\) a “good” approximation?\n\n\nCode\n# Prepare data for all plots\nmax_n &lt;- 10000\nnum_reps &lt;- 1000\nall_rolls &lt;- replicate(\n  num_reps,\n  sample(1:6, size = max_n, replace = TRUE, prob = rep(1 / 6, 6))\n)\ngen_clt_plot &lt;- function(n) {\n  exp_val &lt;- 3.5\n  sigma &lt;- sqrt(35/12)\n  denom &lt;- sigma / sqrt(n)\n  # Get the slice of all_rolls for this n\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  norm_gaps &lt;- (sample_means - exp_val) / denom\n  n_df &lt;- tibble(norm_gap=norm_gaps)\n  #if (n == 5) {\n  #  print(sample_means)\n  #  print(n_df)\n  #}\n  ggplot(n_df, aes(x = norm_gap)) +\n  geom_histogram(aes(y = after_stat(density)), binwidth = 1/2) +\n  #geom_density() +\n  stat_function(fun=dnorm, size=g_linesize) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n),\n    x = \"Normalized Sample Gap\"\n  )\n}"
   },
   {
     "objectID": "w09/slides.html#q-q-plots",
     "href": "w09/slides.html#q-q-plots",
     "title": "Week 9: Statistical Inference",
     "section": "Q-Q Plots",
-    "text": "Q-Q Plots\n\n\n\n\nCode\ngen_qq &lt;- function(n) {\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  qq_df &lt;- tibble(smean = sample_means)\n  qq_plot &lt;- ggplot(qq_df, aes(sample = smean)) +\n  stat_qq() + stat_qq_line() +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n)\n  )\n  return(qq_plot)\n}\ngen_qq(5)\n\n\n\n\n\n\n\n\n\n\n\nCode\ngen_qq(1000)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ngen_qq(100)\n\n\n\n\n\n\n\n\n\n\n\nCode\ngen_qq(10000)"
+    "text": "Q-Q Plots\n\n\nCode\ngen_qq &lt;- function(n) {\n  n_rolls &lt;- all_rolls[1:n,]\n  sample_means &lt;- colMeans(n_rolls)\n  qq_df &lt;- tibble(smean = sample_means)\n  qq_plot &lt;- ggplot(qq_df, aes(sample = smean)) +\n  stat_qq() + stat_qq_line() +\n  dsan_theme(\"quarter\") +\n  labs(\n    title = paste0(\"n = \",n)\n  )\n  return(qq_plot)\n}"
   },
   {
     "objectID": "w09/slides.html#maximum-likelihood-estimation",
     "href": "w09/slides.html#maximum-likelihood-estimation",
     "title": "Week 9: Statistical Inference",
     "section": "Maximum Likelihood Estimation",
-    "text": "Maximum Likelihood Estimation\n\nRecall: when we develop a model \\(\\mathcal{M}\\), we’re working with\n\n\\[\nP_{\\mathcal{M}}(\\underbrace{x_1, \\ldots, x_n}_{\\text{Observed Data}} \\mid \\underbrace{\\theta}_{\\text{Model Parameters}})\n\\]\n\nWhen we view this as a function of \\(\\theta\\), given the observed data, we call it the likelihood function \\(\\mathcal{L}_{\\mathcal{M}}(\\theta \\mid x_1, \\ldots, x_n)\\)\nRead this as “the likelihood that our model \\(\\mathcal{M}\\), with parameters \\(\\theta\\), produced the data \\(x_1, \\ldots, x_n\\)”"
+    "text": "Maximum Likelihood Estimation\n\nCreating a model \\(\\mathcal{M}\\) w/parameters \\(\\param{\\theta}\\) means specifying\n\n\\[\n\\mathcal{M} = \\Pr(\\underbrace{x_1, \\ldots, x_n}_{\\text{Observed Data}} \\mid \\underbrace{\\param{\\theta}}_{\\text{Model Parameters}})\n\\]\n\nWhen we view this as a function of \\(\\param{\\theta}\\), given the observed data, we call it the likelihood function \\(\\mathcal{L}_{\\mathcal{M}}(\\param{\\theta} \\mid x_1, \\ldots, x_n)\\)\nRead this as “the likelihood that our model \\(\\mathcal{M}\\), with parameters \\(\\param{\\theta}\\), produced the data \\(x_1, \\ldots, x_n\\)”"
   },
   {
-    "objectID": "w09/slides.html#intuition-generative-models",
-    "href": "w09/slides.html#intuition-generative-models",
+    "objectID": "w09/slides.html#probability-models-are-generative-models",
+    "href": "w09/slides.html#probability-models-are-generative-models",
     "title": "Week 9: Statistical Inference",
-    "section": "Intuition: Generative Models",
-    "text": "Intuition: Generative Models\n\nA given choice of model parameters \\(\\theta\\) can be used to generate simulated datapoints!\nSimple example: \\(X \\sim \\text{Bern}(p)\\). Just one parameter, \\(\\theta = \\{p\\}\\)\nWe observe 10 coin flips: 8 heads, 2 tails. Of all the Bernoulli distributions (parameterized by \\(p\\)), which is most likely to generate this data?"
+    "section": "Probability Models are Generative Models",
+    "text": "Probability Models are Generative Models\n\nA given choice of model parameters \\(\\param{\\theta}\\) can be used to generate simulated datapoints!\nSimple example: \\(X \\sim \\text{Bern}(\\param{p})\\). Just one parameter, \\(\\param{\\theta} = \\{\\param{p}\\}\\)\nWe observe 10 coin flips: 8 heads, 2 tails. Of all possible Bernoulli distributions (parameterized by \\(\\param{p}\\)), which is most likely to generate this data?"
   },
   {
     "objectID": "w09/slides.html#generative-models",
     "href": "w09/slides.html#generative-models",
     "title": "Week 9: Statistical Inference",
     "section": "Generative Models",
-    "text": "Generative Models\nGiven a choice of \\(\\theta\\), we can generate as many simulated datasets as we want (in this case, 10 datasets for each \\(\\theta\\) value), then compute likelihood of producing 8 heads, 2 tails\n\n\nCode\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(dplyr)\nset.seed(1948)\nobs_heads &lt;- 8\nnum_flips &lt;- 10\nnum_reps &lt;- 10\ntheta_vals &lt;- c(0.01, 0.2, 0.4, 0.6, 0.8, 0.99)\nobs_matches &lt;- c()\nfor (i in 1:length(theta_vals)) {\n  theta &lt;- theta_vals[i]\n  theta_str &lt;- sprintf(\"%.2f\", theta)\n  #print(theta_str)\n  sim_data &lt;- replicate(\n    num_reps,\n    rbinom(num_flips, 1, theta)\n  )\n  #print(sim_data)\n  #data_str &lt;- paste0(sim_data, collapse=\", \")\n  num_heads &lt;- colSums(sim_data)\n  #print(num_heads)\n  num_matches &lt;- sum(num_heads == obs_heads)\n  obs_matches &lt;- c(obs_matches, num_matches)\n  #print(num_matches)\n  #print(num_heads)\n  num_tails &lt;- num_flips - num_heads\n  #print(num_tails)\n  data_strs &lt;- paste0(\"[\",num_heads,\" heads, \",num_tails,\" tails]\")\n  data_str &lt;- paste0(data_strs, collapse=\", \")\n  #writeLines(paste0(\"p = \",theta_str,\": \",data_str))\n}\n#print(obs_matches)\nresult_df &lt;- tibble(theta=as.character(theta_vals), num_matches=obs_matches)\nresult_df &lt;- result_df %&gt;% mutate(prop_matches = obs_matches / num_reps)\n\n\n\n\nCode\nggplot(result_df, aes(x=theta, y=prop_matches)) +\n  geom_bar(stat = 'identity', fill=cbPalette[1]) +\n  dsan_theme(\"full\") +\n  labs(\n    title = \"Likelihood of data (8 heads, 2 tails) given theta value\",\n    y = \"Proportion of times (8,2) generated\"\n  )\n\n\n\n(Among these vals) \\(p = 0.8\\) is maximum likelihood estimate\n\n\nCode\n# for (i in 1:length(theta_vals)) {\n#   cur_theta &lt;- theta_vals[i]\n#   print(cur_theta)\n#   cur_results &lt;- results[[i]]\n#   print(cur_results)\n#   num_matches &lt;- cur_results == 8\n#   writeLines(paste0(\"p = \",cur_theta,\": our dataset was produced \",num_matches,\" times\"))\n# }"
+    "text": "Generative Models\n\n\n\nGiven a choice of \\(\\param{\\theta}\\) as our golem1, we can generate simulated datasets (here 10 for each labeled value of \\(\\param{p}\\)), then compute likelihood as proportion of datasets with 8 heads, 2 tails\nFrom the plot: (Among these vals) \\(\\param{p} = 0.8\\) is maximum likelihood estimate\n\n\n\n\nCode\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(dplyr)\nset.seed(1948)\nobs_heads &lt;- 8\nnum_flips &lt;- 10\nnum_reps &lt;- 10\np_vals &lt;- c(0.01, 0.2, 0.4, 0.6, 0.8, 0.99)\nobs_matches &lt;- c()\nfor (i in 1:length(p_vals)) {\n  cur_p &lt;- p_vals[i]\n  theta_str &lt;- sprintf(\"%.2f\", cur_p)\n  sim_data &lt;- replicate(\n    num_reps,\n    rbinom(num_flips, 1, cur_p)\n  )\n  #print(sim_data)\n  #data_str &lt;- paste0(sim_data, collapse=\", \")\n  num_heads &lt;- colSums(sim_data)\n  #print(num_heads)\n  num_matches &lt;- sum(num_heads == obs_heads)\n  obs_matches &lt;- c(obs_matches, num_matches)\n  #print(num_matches)\n  #print(num_heads)\n  num_tails &lt;- num_flips - num_heads\n  #print(num_tails)\n  data_strs &lt;- paste0(\"[\",num_heads,\" heads, \",num_tails,\" tails]\")\n  data_str &lt;- paste0(data_strs, collapse=\", \")\n  #writeLines(paste0(\"p = \",theta_str,\": \",data_str))\n}\n#print(obs_matches)\nresult_df &lt;- tibble(p=as.character(p_vals), num_matches=obs_matches)\nresult_df &lt;- result_df %&gt;% mutate(prop_matches = obs_matches / num_reps)\nggplot(result_df, aes(x=p, y=prop_matches)) +\n  geom_bar(stat = 'identity', fill=cbPalette[1]) +\n  dsan_theme(\"quarter\") +\n  # theme(\n  #   axis.title.y = element_text(size = 12)\n  # ) +\n  labs(\n    title = \"Likelihood of data (8 heads, 2 tails) given p\",\n    y = \"Proportion of times (8,2) generated\"\n  )\n\n\n\n\n\n\n\n\n\n\n\nA big rock boi from the Talmud (and Pokémon) who follows orders but has no common sense/nuance (like a computer). See Collins and Pinch (1993) and McElreath (2020)"
   },
   {
-    "objectID": "w09/slides.html#mle-in-the-real-world",
-    "href": "w09/slides.html#mle-in-the-real-world",
+    "objectID": "w09/slides.html#simulations-rightarrow-math",
+    "href": "w09/slides.html#simulations-rightarrow-math",
     "title": "Week 9: Statistical Inference",
-    "section": "MLE in the Real World",
-    "text": "MLE in the Real World\nPrev example may feel silly, since we could just mathematically solve for the optimal \\(p\\) value…\n\\[\n\\begin{align*}\np^* &\\overset{\\phantom{x_i\\text{ indep}}}{=} \\argmax_{\\theta} \\mathcal{L}(x_1, \\ldots, x_n \\mid p) \\\\\n&\\overset{x_i\\text{ indep}}{=} \\argmax_{\\theta} \\mathcal{L}(x_1 \\mid p)\\mathcal{L}(x_2 \\mid p) \\cdots \\mathcal{L}(x_n \\mid p)\n\\end{align*}\n\\]\n\nWhat are the individual \\(\\mathcal{L}(x_i \\mid p)\\) terms?\nHow do we maximize the product \\(\\mathcal{L}(x_1 \\mid p) \\cdots \\mathcal{L}(x_n \\mid p)\\)?\n\n\nTime for some Math Magic…"
+    "section": "Simulations \\(\\rightarrow\\) Math",
+    "text": "Simulations \\(\\rightarrow\\) Math\nPrev example was overkill: we can solve for optimal \\(\\param{p}\\) value…\n\\[\n\\begin{align*}\np^* &\\overset{\\phantom{x_i\\text{ indep}}}{=} \\argmax_{\\param{p}} \\mathcal{L}(x_1, \\ldots, x_n \\mid \\param{p}) \\\\\n&\\overset{x_i\\text{ indep}}{=} \\argmax_{\\param{p}} \\mathcal{L}(x_1 \\mid \\param{p})\\mathcal{L}(x_2 \\mid \\param{p}) \\cdots \\mathcal{L}(x_n \\mid \\param{p})\n\\end{align*}\n\\]\n\nWhat are the individual \\(\\mathcal{L}(x_i \\mid \\param{p})\\) terms?\nHow do we maximize the product \\(\\mathcal{L}(x_1 \\mid \\param{p}) \\cdots \\mathcal{L}(x_n \\mid \\param{p})\\)?\n\n\nTime for some Math Magic…"
   },
   {
     "objectID": "w09/slides.html#math-magic-1",
     "href": "w09/slides.html#math-magic-1",
     "title": "Week 9: Statistical Inference",
     "section": "Math Magic 1",
-    "text": "Math Magic 1\n\nWhat are the individual \\(P(x_i \\mid p)\\) terms?\n\n\\(X \\sim \\text{Bern}(p)\\), so\n\\[\n\\begin{align*}\nP(X = x_i \\mid p) &= \\begin{cases}1 - p & x_i = 0 \\\\ p & x_i = 1\\end{cases} \\leftarrow \\genfrac{}{}{0pt}{}{\\text{ Non-differentiable}}{😭} \\\\\n&\\overset{\\text{math}}{\\underset{\\text{magic}}{=}} (1-p)^{1-x_i}p^{x_i} \\leftarrow \\text{ Differentiable! 😲}\n\\end{align*}\n\\]\nWhy do we need it to be differentiable? Stay tuned…"
+    "text": "Math Magic 1\n\nWhat are the individual \\(P(x_i \\mid \\param{p})\\) terms?\n\n\\(X \\sim \\text{Bern}(\\param{p})\\), so\n\\[\n\\begin{align*}\n\\Pr(X = x_i \\mid \\param{p}) &= \\begin{cases}1 - \\param{p} & x_i = 0 \\\\ \\param{p} & x_i = 1\\end{cases} \\; \\leftarrow \\genfrac{}{}{0pt}{}{\\text{ Non-differentiable}}{😭} \\\\\n&\\overset{\\text{math}}{\\underset{\\text{magic}}{=}} (1-\\param{p})^{1-x_i}\\param{p}^{x_i} \\; \\leftarrow \\text{ Differentiable! 😲}\n\\end{align*}\n\\]\nWhy do we need it to be differentiable? Stay tuned…"
   },
   {
     "objectID": "w09/slides.html#math-magic-2",
     "href": "w09/slides.html#math-magic-2",
     "title": "Week 9: Statistical Inference",
     "section": "Math Magic 2",
-    "text": "Math Magic 2\nRemember calculus!\n\\[\np^* = \\argmax_p f(p) \\implies f'(p^*) = 0\n\\]\nSo, to maximize likelihood function, we need to find its derivative1, set it equal to 0, and solve:\n\\[\n\\begin{align*}\n&\\frac{d}{dp}\\mathcal{L}(x \\mid p) = 0 \\iff \\\\\n&\\frac{d}{dp}\\left[\\mathcal{L}(x_1 \\mid p)\\mathcal{L}(x_2 \\mid p)\\cdots \\mathcal{L}(x_n \\mid p)\\right] = 0\n\\end{align*}\n\\]\nThis is why we used math magic to make \\(P(x_i \\mid \\theta)\\) differentiable, in the previous slide!"
+    "text": "Math Magic 2\n\n\n\n\nHow do we maximize the product?\n\n\\[\np^* = \\argmax_{\\param{p}} f(\\param{p}) \\implies f'(p^*) = 0\n\\]\nTo maximize likelihood, we need to find its derivative1, set equal to 0, and solve:\n\n\n\n\n\n\n\\[\n\\begin{align*}\n&\\frac{d}{d\\param{p}}\\lik(x \\mid \\param{p}) = 0 \\iff \\\\\n&\\frac{d}{d\\param{p}}\\left[\\lik(x_1 \\mid \\param{p})\\lik(x_2 \\mid \\param{p})\\cdots \\lik(x_n \\mid \\param{p})\\right] = 0\n\\end{align*}\n\\]\nAnd that’s why we used math magic to make \\(\\Pr(x_i \\mid \\param{p})\\) differentiable, in the previous slide!"
   },
   {
     "objectID": "w09/slides.html#obstacle-products-vs.-sums",
     "href": "w09/slides.html#obstacle-products-vs.-sums",
     "title": "Week 9: Statistical Inference",
     "section": "Obstacle: Products vs. Sums",
-    "text": "Obstacle: Products vs. Sums\n\nFinding \\(\\frac{d}{dp}\\left[ \\mathcal{L}(x_1)\\mathcal{L}(x_2)\\cdots \\mathcal{L}(x_n)\\right]\\) is a doozy, even with just \\(n = 2\\) datapoints:\n\n\\[\n\\begin{align*}\n&\\frac{d}{dp}\\left[ \\mathcal{L}(x_1)\\mathcal{L}(x_2) \\right] = \\left( \\frac{d}{dp}\\mathcal{L}(x_1)\\right) \\cdot \\mathcal{L}(x_2) + \\mathcal{L}(x_1)\\cdot \\left( \\frac{d}{dp}\\mathcal{L}(x_2) \\right) \\\\\n&= (1-p)^{-x_1}p^{x_1-1}(x_1-p)\\cdot (1-p)^{1-x_2}p^{x_2} \\\\\n&+ (1-p)^{1-x_1}p^{x_1} \\cdot (1-p)^{-x_2}p^{x_2-1}(x_2 - p)\n%&= \\frac{d}{d\\theta}\\left[ (1-p)^{1-x_1}p^{x_1}(1-p)^{1-x_2}p^{x_2} \\right]\n\\end{align*}\n\\]\n\nComplicating factor: \\(\\mathcal{L}(x_i)\\) terms are all multiplied together, forcing us to use product rule: \\(\\frac{d}{d\\theta}\\left[P(x_1)P(x_2)\\right] = \\left(\\frac{d}{d\\theta}P(x_1)\\right)\\cdot P(x_2) + P(x_1)\\cdot \\left(\\frac{d}{d\\theta}P(x_2)\\right)\\)\nIf we had terms that were added rather than multiplied, we’d have a much easier time: \\(\\frac{d}{d\\theta}\\left[ \\mathcal{L}(x_1) + \\mathcal{L}(x_2)\\right] = \\frac{d}{d\\theta}P(x_1) + \\frac{d}{d\\theta} P(x_2)\\)1\nSo, what math operation do we know that turns multiplications into additions?\n\n\nWe achieve this simplification because the derivative operator is linear: \\(\\frac{d}{dx}\\left[ f(x) + g(x) \\right] = \\frac{d}{dx}f(x) + \\frac{d}{dx}g(x)\\)"
+    "text": "Obstacle: Products vs. Sums\n\nFinding \\(\\frac{d}{d\\param{p}}\\left[ \\lik(x_1)\\lik(x_2)\\cdots \\lik(x_n)\\right]\\) is a doozy, even with just \\(n = 2\\) datapoints:\n\n\\[\n\\begin{align*}\n&\\frac{d}{d\\param{p}}\\left[ \\lik(x_1)\\lik(x_2) \\right] = \\left( \\frac{d}{d\\param{p}}\\lik(x_1)\\right) \\cdot \\lik(x_2) + \\lik(x_1)\\cdot \\left( \\frac{d}{d\\param{p}}\\lik(x_2) \\right) \\\\\n&= (1-\\param{p})^{-x_1}\\param{p}^{x_1-1}(x_1-\\param{p})\\cdot (1-\\param{p})^{1-x_2}\\param{p}^{x_2} \\\\\n&+ (1-\\param{p})^{1-x_1}\\param{p}^{x_1} \\cdot (1-\\param{p})^{-x_2}\\param{p}^{x_2-1}(x_2 - \\param{p})\n%&= \\frac{d}{d\\theta}\\left[ (1-p)^{1-x_1}p^{x_1}(1-p)^{1-x_2}p^{x_2} \\right]\n\\end{align*}\n\\]\n\nComplicating factor: \\(\\lik(x_i)\\) terms are all multiplied together, forcing us to use product rule: \\(\\frac{d}{d\\param{p}}\\left[\\lik(x_1)\\lik(x_2)\\right] = \\left(\\frac{d}{d\\param{p}}\\lik(x_1)\\right)\\cdot \\lik(x_2) + \\lik(x_1)\\cdot \\left(\\frac{d}{d\\param{p}}\\lik(x_2)\\right)\\)\nIf we had terms that were added rather than multiplied, we’d have a much easier time: \\(\\frac{d}{d\\param{p}}\\left[ \\lik(x_1) + \\lik(x_2)\\right] = \\frac{d}{d\\param{p}}\\lik(x_1) + \\frac{d}{d\\param{p}} \\lik(x_2)\\)1\nSo, what math operation do we know that turns multiplications into additions?\n\n\nWe achieve this simplification because the derivative operator is additive: \\(\\frac{d}{dx}\\left[ f(x) + g(x) \\right] = \\frac{d}{dx}f(x) + \\frac{d}{dx}g(x)\\)"
   },
   {
     "objectID": "w09/slides.html#math-magic-3-log-likelihood",
     "href": "w09/slides.html#math-magic-3-log-likelihood",
     "title": "Week 9: Statistical Inference",
     "section": "Math Magic 3: Log-Likelihood",
-    "text": "Math Magic 3: Log-Likelihood\n\\[\n\\log(a\\cdot b) = \\log(a) + \\log(b)\n\\]\nBingo! So, can we maximize \\(\\ell(x_i) = \\log(\\mathcal{L}(x_i))\\) rather than \\(\\mathcal{L}(x_i)\\)? Bingo again! Because logarithms are monotonic,\n\\[\nx^* = \\argmax_x \\left[ \\log\\left(f(x)\\right) \\right] \\iff x^* = \\argmax_x \\left[ f(x) \\right]\n\\]\nSo, we can just solve\n\\[\np^* = \\argmax_p \\left[ \\ell(x_1, \\ldots, x_n)\\right]\n\\]"
+    "text": "Math Magic 3: Log-Likelihood\n\\[\n\\log(a\\cdot b) = \\log(a) + \\log(b)\n\\]\nBingo! So, can we maximize \\(\\loglik(x_i) = \\log(\\mathcal{L}(x_i))\\) rather than \\(\\mathcal{L}(x_i)\\)? Bingo again! Because logarithms are monotonic,\n\\[\nx^* = \\argmax_x \\left[ \\log\\left(f(x)\\right) \\right] \\iff x^* = \\argmax_x \\left[ f(x) \\right]\n\\]\nSo, we can just solve\n\\[\np^* = \\argmax_{\\param{p}} \\left[ \\ell(x_1, \\ldots, x_n)\\right]\n\\]"
   },
   {
     "objectID": "w09/slides.html#simplifying",
     "href": "w09/slides.html#simplifying",
     "title": "Week 9: Statistical Inference",
     "section": "Simplifying",
-    "text": "Simplifying\nOur problem simplifies to figuring out\n\\[\n\\begin{align*}\n\\frac{d}{dp}\\left[ \\log \\left( \\mathcal{L}(x_1)\\cdots \\mathcal{L}(x_n) \\right) \\right] &= \\frac{d}{dp}\\left[ \\log \\mathcal{L}(x_1) + \\log\\mathcal{L}(x_2) + \\cdots + \\log\\mathcal{L}(x_n) \\right] \\\\\n&= \\frac{d}{dp}\\left[ \\ell(x_1) + \\ell(x_2) + \\cdots + \\ell(x_n) \\right] = \\frac{d}{dp}\\left[ \\sum_{i=1}^n \\ell(x_i)\\right]\n\\end{align*}\n\\]\nBut since the derivative is a linear operator, \\(\\frac{d}{dp}\\left[ \\sum_{i=1}^n \\ell(x_i) \\right] = \\sum_{i=1}^n \\frac{d}{dp}\\left[ \\ell(x_i) \\right]\\), so we just have to compute \\(\\frac{d}{dp}\\ell(x_i)\\)! No product rule required (though we still need chain rule):\n\\[\n\\begin{align*}\n\\frac{d}{dp}\\left[ \\ell(x_i) \\right] &= \\frac{d}{dp}\\left[ \\log((1-p)^{1-x_i}p^{x_i}) \\right] = \\frac{d}{dp}\\left[(1-x_i)\\log(1-p) + x_i\\log(p)\\right] \\\\\n&= (1-x_i)\\frac{d}{dp}\\log(1-p) + x_i\\frac{d}{dp}\\log(p) = -\\frac{1-x_i}{1-p} + \\frac{x_i}{p} \\\\\n&= \\frac{p - x_i}{(p-1)p}\n\\end{align*}\n\\]"
+    "text": "Simplifying\nOur problem simplifies to figuring out\n\\[\n\\begin{align*}\n\\frac{d}{d\\param{p}}\\left[ \\log \\left( \\lik(x_1)\\cdots \\lik(x_n) \\right) \\right] &= \\frac{d}{d\\param{p}}\\left[ \\log \\lik(x_1) + \\log\\lik(x_2) + \\cdots + \\log\\lik(x_n) \\right] \\\\\n&= \\frac{d}{d\\param{p}}\\left[ \\ell(x_1) + \\ell(x_2) + \\cdots + \\ell(x_n) \\right] = \\frac{d}{d\\param{p}}\\left[ \\sum_{i=1}^n \\ell(x_i)\\right]\n\\end{align*}\n\\]\nBut since the derivative is an additive operator, \\(\\frac{d}{d\\param{p}}\\left[ \\sum_{i=1}^n \\ell(x_i) \\right] = \\sum_{i=1}^n \\frac{d}{d\\param{p}}\\left[ \\ell(x_i) \\right]\\), so we just have to compute \\(\\frac{d}{d\\param{p}}\\ell(x_i)\\)! No product rule required (we still need chain rule):\n\\[\n\\begin{align*}\n\\frac{d}{d\\param{p}}\\left[ \\ell(x_i) \\right] &= \\frac{d}{d\\param{p}}\\left[ \\log((1-\\param{p})^{1-x_i}\\param{p}^{x_i}) \\right] = \\frac{d}{d\\param{p}}\\left[(1-x_i)\\log(1-\\param{p}) + x_i\\log(\\param{p})\\right] \\\\\n&= (1-x_i)\\frac{d}{d\\param{p}}\\log(1-\\param{p}) + x_i\\frac{d}{d\\param{p}}\\log(\\param{p}) = -\\frac{1-x_i}{1-\\param{p}} + \\frac{x_i}{\\param{p}} \\\\\n&= \\frac{\\param{p} - x_i}{(\\param{p}-1)\\param{p}}\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/slides.html#maximizing",
     "href": "w09/slides.html#maximizing",
     "title": "Week 9: Statistical Inference",
     "section": "Maximizing",
-    "text": "Maximizing\nNow that we know \\(\\frac{d}{dp}\\ell(x_i)\\), we set our log-likelihood equation equal to zero to find the likelihood-maximizing \\(p\\) value, \\(p^*\\):\n\\[\n\\begin{align*}\n&\\sum_{i=1}^n\\frac{d}{dp}\\ell(x_i) = 0 \\iff \\sum_{i=1}^n \\frac{p^* - x_i}{(p^*-1)p^*} = 0 \\\\\n&\\iff -\\frac{1}{(p^*-1)p^*}\\sum_{i=1}^nx_i - np^* = 0 \\\\\n&\\iff \\sum_{i=1}^nx_i = np^* \\iff \\boxed{p^* = \\frac{\\sum_{i=1}^nx_i}{n}}\n\\end{align*}\n\\]"
+    "text": "Maximizing\nNow that we know \\(\\frac{d}{d\\param{p}}\\ell(x_i)\\), we set our log-likelihood equation equal to zero to find the likelihood-maximizing \\(\\param{p}\\) value, \\(p^*\\):\n\\[\n\\begin{align*}\n&\\sum_{i=1}^n\\frac{d}{d\\param{p}}\\ell(x_i) = 0 \\iff \\sum_{i=1}^n \\frac{p^* - x_i}{(p^*-1)p^*} = 0 \\\\\n&\\iff -\\frac{1}{(p^*-1)p^*}\\sum_{i=1}^nx_i - np^* = 0 \\\\\n&\\iff \\sum_{i=1}^nx_i = np^* \\iff \\boxed{p^* = \\frac{\\sum_{i=1}^nx_i}{n}}\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/slides.html#mle-intuition",
     "href": "w09/slides.html#mle-intuition",
     "title": "Week 9: Statistical Inference",
     "section": "MLE Intuition",
-    "text": "MLE Intuition\n\\[\np^* = \\frac{\\sum_{i=1}^nx_i}{n} = \\frac{\\sum_{i=1}^n \\mathbf{1}[x_i = 1]}{n} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{\\# Heads}}{\\leftarrow \\text{\\# Flips }}\n\\]\n\nMLE almost always matches intuition! Example: given data \\(x_1, \\ldots, x_n\\), what Normal distribution best fits this data?\nSame as asking: what parameter settings for \\(\\mathcal{N}(\\mu, \\sigma^2)\\) are most likely to produce \\(x_1, \\ldots, x_n\\)? The answer:\n\n\\[\n\\mu^* = \\frac{\\sum_{i=1}^n x_i}{n} \\; \\; \\; \\sigma^2_* = \\frac{\\sum_{i=1}^n (x_i-\\mu^*)^2}{n}\n\\]"
+    "text": "MLE Intuition\n\\[\np^* = \\frac{\\sum_{i=1}^nx_i}{n} = \\frac{\\sum_{i=1}^n \\mathbf{1}[x_i = 1]}{n} \\genfrac{}{}{0pt}{}{\\leftarrow \\text{\\# Heads}}{\\leftarrow \\text{\\# Flips }}\n\\]\n\nMLE almost always matches intuition! Example: given data \\(x_1, \\ldots, x_n\\), what Normal distribution best fits this data?\nSame as asking: what parameter settings for \\(\\mathcal{N}(\\param{\\mu}, \\param{\\sigma^2})\\) are most likely to produce \\(x_1, \\ldots, x_n\\)? The answer:\n\n\\[\n\\mu^* = \\frac{\\sum_{i=1}^n x_i}{n} \\; \\; \\; \\sigma^2_* = \\frac{\\sum_{i=1}^n (x_i-\\mu^*)^2}{n}\n\\]"
   },
   {
     "objectID": "w09/slides.html#the-dark-side-of-mle",
@@ -3231,21 +3252,21 @@
     "href": "w09/slides.html#computing-expectsigma2_",
     "title": "Week 9: Statistical Inference",
     "section": "Computing \\(\\expect{\\sigma^2_*}\\)",
-    "text": "Computing \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\bigexpect{\\frac{1}{n}\\sum_{i=1}^nx_i^2 - (\\mu^*)^2} = \\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2}\n\\end{align*}\n\\]\n\nWhat do we know about \\(\\expect{x_i^2}\\)?\nRemember the (alternate) definition of variance: \\(\\Var{X} = \\expect{X^2} - \\left(\\expect{X}\\right)^2\\). Then\n\n\\[\n\\expect{X^2} = \\Var{X} + \\left(\\expect{X}\\right)^2\n\\]\nSo let’s plug in the right side when we see \\(\\expect{X^2}\\) or \\(\\expect{(\\mu^*)^2}\\):\n\\[\n\\begin{align*}\n\\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2} &= \\frac{1}{n}\\sum_{i=1}^n\\left(\\Var{X} + \\left(\\expect{X}\\right)^2\\right) - \\expect{(\\mu^*)^2} \\\\\n&= (\\sigma^2 + \\mu^2) - \\left(\\Var{\\mu^*} + \\left(\\expect{\\mu^*}\\right)^2\\right)\n\\end{align*}\n\\]"
+    "text": "Computing \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\bigexpect{\\frac{1}{n}\\sum_{i=1}^nx_i^2 - (\\mu^*)^2} = \\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2}\n\\end{align*}\n\\]\n\nWhat do we know about \\(\\expect{x_i^2}\\)? Remember the (alternate) definition of variance: \\(\\Var{X} = \\expect{X^2} - \\left(\\expect{X}\\right)^2\\). Then\n\n\\[\n\\expect{X^2} = \\Var{X} + \\left(\\expect{X}\\right)^2\n\\]\nSo let’s plug in the right side when we see \\(\\expect{X^2}\\) or \\(\\expect{(\\mu^*)^2}\\):\n\\[\n\\begin{align*}\n\\frac{1}{n}\\sum_{i=1}^n \\expect{x_i^2} - \\expect{(\\mu^*)^2} &= \\frac{1}{n}\\sum_{i=1}^n\\left(\\Var{X} + \\left(\\expect{X}\\right)^2\\right) - \\expect{(\\mu^*)^2} \\\\\n&= (\\sigma^2 + \\mu^2) - \\left(\\Var{\\mu^*} + \\left(\\expect{\\mu^*}\\right)^2\\right)\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/slides.html#almost-there",
     "href": "w09/slides.html#almost-there",
     "title": "Week 9: Statistical Inference",
     "section": "Almost There!",
-    "text": "Almost There!\n\nAlmost there! We know that \\(\\expect{\\mu^*} = \\mu\\), but what is \\(\\Var{\\mu^*}\\)? Remember that \\(\\Var{aX} = a^2\\Var{X}\\)!\n\n\\[\n\\Var{\\mu^*} = \\bigVar{\\frac{1}{n}\\sum_{i=1}^nx_i} = \\frac{1}{n^2}\\sum_{i=1}^n\\Var{x_i} = \\frac{n\\sigma^2}{n^2} = \\frac{\\sigma^2}{n}\n\\]\nAnd we plug back in to get:\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\sigma^2 + \\mu^2 - \\Var{\\mu^*} - \\left(\\expect{\\mu^*}\\right)^2 \\\\\n&= \\sigma^2 + \\mu^2 - \\frac{\\sigma^2}{n} - \\mu^2 = \\sigma^2 - \\frac{\\sigma^2}{n} \\\\\n&= \\frac{n\\sigma^2 - \\sigma^2}{n} = \\frac{\\sigma^2(n-1)}{n} \\\\\n&= \\color{red}{\\left(\\frac{n-1}{n}\\right)\\sigma^2} \\neq \\sigma^2 \\; 💀\n\\end{align*}\n\\]"
+    "text": "Almost There!\nWe know that \\(\\expect{\\mu^*} = \\mu\\), but what is \\(\\Var{\\mu^*}\\)? Remember that \\(\\Var{aX} = a^2\\Var{X}\\)!\n\\[\n\\Var{\\mu^*} = \\bigVar{\\frac{1}{n}\\sum_{i=1}^nx_i} = \\frac{1}{n^2}\\sum_{i=1}^n\\Var{x_i} = \\frac{n\\sigma^2}{n^2} = \\frac{\\sigma^2}{n}\n\\]\nAnd we plug back in to get:\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\sigma^2 + \\mu^2 - \\Var{\\mu^*} - \\left(\\expect{\\mu^*}\\right)^2 \\\\\n&= \\sigma^2 + \\mu^2 - \\frac{\\sigma^2}{n} - \\mu^2 = \\sigma^2 - \\frac{\\sigma^2}{n} \\\\\n&= \\frac{n\\sigma^2 - \\sigma^2}{n} = \\frac{\\sigma^2(n-1)}{n} \\\\\n&= \\color{red}{\\left(\\frac{n-1}{n}\\right)\\sigma^2} \\neq \\sigma^2 \\; 💀\n\\end{align*}\n\\]"
   },
   {
     "objectID": "w09/slides.html#why-does-this-happen-handwaving",
     "href": "w09/slides.html#why-does-this-happen-handwaving",
     "title": "Week 9: Statistical Inference",
     "section": "Why Does This Happen?: Handwaving",
-    "text": "Why Does This Happen?: Handwaving\n\nLong story short, we underpredict the population variance because we already used some of the data to compute \\(\\mu^*\\)!\nThis is where the heuristic of degrees of freedom comes in:\n\nWhen computing an estimate \\(e\\), \\(df(e) = n - k_e\\)\n\\(k_e =\\) number of other estimates used to calculate \\(e\\)!"
+    "text": "Why Does This Happen?: Handwaving\n\nLong story short, we underpredict the population variance because we already used some of the data to compute \\(\\mu^*\\)!\nThis is where the heuristic of degrees of freedom comes in:\n\nWhen we construct an estimate \\(e\\), \\(df(e) = n - k_e\\)\n\\(k_e =\\) number of other estimates used to calculate \\(e\\)!"
   },
   {
     "objectID": "w09/slides.html#handwavy-intuition",
@@ -3290,6 +3311,13 @@
     "text": "The Takeaway\n\nBayesian approach allows new evidence to be weighed against existing evidence, with statistically principled way to derive these weights:\n\n\\[\n\\begin{array}{ccccc}\nP_{\\text{post}}(\\mathcal{H}) &\\hspace{-6mm}\\propto &\\hspace{-6mm} P(X \\mid \\mathcal{H}) &\\hspace{-6mm} \\times &\\hspace{-6mm} P_{\\text{pre}}(\\mathcal{H}) \\\\\n\\text{Posterior} &\\hspace{-6mm}\\propto &\\hspace{-6mm}\\text{Evidence} &\\hspace{-6mm} \\times &\\hspace{-6mm} \\text{Prior}\n\\end{array}\n\\]"
   },
   {
+    "objectID": "w09/slides.html#generalized-method-of-moments-gmm-estimation",
+    "href": "w09/slides.html#generalized-method-of-moments-gmm-estimation",
+    "title": "Week 9: Statistical Inference",
+    "section": "Generalized Method of Moments (GMM) Estimation",
+    "text": "Generalized Method of Moments (GMM) Estimation"
+  },
+  {
     "objectID": "w09/slides.html#appendix-1-derivation-of-expectmu_2",
     "href": "w09/slides.html#appendix-1-derivation-of-expectmu_2",
     "title": "Week 9: Statistical Inference",
@@ -3308,7 +3336,7 @@
     "href": "w09/slides.html#appendix-3-derivation-of-expectsigma2_",
     "title": "Week 9: Statistical Inference",
     "section": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)",
-    "text": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\frac{1}{2}\\bigexpect{(X_1 - \\mu^*)^2 + (X_2 - \\mu^*)^2} \\\\\n&= \\frac{1}{2}\\bigexpect{\\left(X_1^2 + \\mu^2_* -2\\mu^*X_1\\right) + \\left(X_2^2 + \\mu^2_* - 2X_2\\mu^*\\right)} \\\\\n&= \\frac{1}{2}\\expect{X_1^2 + X_2^2 + 2\\mu_*^2 - 2\\mu^*X_1 - 2\\mu^*X_2} \\\\\n&= \\frac{1}{2}\\left(\\expect{X_1^2} + \\expect{X_2^2} + 2\\expect{\\mu_*^2} - 2\\expect{\\mu^*X_1} - 2\\expect{\\mu^*X_2}\\right) \\\\\n&= \\frac{1}{2}\\left( 2\\sigma^2 + 2\\mu^2 + 2\\left(\\mu^2 + \\frac{\\sigma^2}{2}\\right) - 2\\left(\\mu^2 + s/2\\right) - 2\\left(\\mu^2 + s/2\\right) \\right) \\\\\n&= \\sigma^2 + \\mu^2 + \\mu^2 + \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} = \\sigma^2 - \\frac{\\sigma^2}{2} \\\\\n&\\implies \\boxed{\\expect{\\sigma^2_*} = \\frac{1}{2}\\sigma^2}\n\\end{align*}\n\\]\n\n\nDSAN 5100-03 Week 9: Statistical Inference"
+    "text": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\frac{1}{2}\\bigexpect{(X_1 - \\mu^*)^2 + (X_2 - \\mu^*)^2} \\\\\n&= \\frac{1}{2}\\bigexpect{\\left(X_1^2 + \\mu^2_* -2\\mu^*X_1\\right) + \\left(X_2^2 + \\mu^2_* - 2X_2\\mu^*\\right)} \\\\\n&= \\frac{1}{2}\\expect{X_1^2 + X_2^2 + 2\\mu_*^2 - 2\\mu^*X_1 - 2\\mu^*X_2} \\\\\n&= \\frac{1}{2}\\left(\\expect{X_1^2} + \\expect{X_2^2} + 2\\expect{\\mu_*^2} - 2\\expect{\\mu^*X_1} - 2\\expect{\\mu^*X_2}\\right) \\\\\n&= \\frac{1}{2}\\left( 2\\sigma^2 + 2\\mu^2 + 2\\left(\\mu^2 + \\frac{\\sigma^2}{2}\\right) - 2\\left(\\mu^2 + s/2\\right) - 2\\left(\\mu^2 + s/2\\right) \\right) \\\\\n&= \\sigma^2 + \\mu^2 + \\mu^2 + \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} = \\sigma^2 - \\frac{\\sigma^2}{2} \\\\\n&\\implies \\boxed{\\expect{\\sigma^2_*} = \\frac{1}{2}\\sigma^2}\n\\end{align*}\n\\]\n\n\nDSAN 5100-03 Week 9: Statistical Inference\n\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press."
   },
   {
     "objectID": "w08/index.html",
