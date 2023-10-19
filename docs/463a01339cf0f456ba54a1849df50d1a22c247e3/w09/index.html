@@ -340,13 +340,13 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
   <li><a href="#single-datapoint" id="toc-single-datapoint" class="nav-link" data-scroll-target="#single-datapoint">Single Datapoint</a></li>
   <li><a href="#taking-the-derivative" id="toc-taking-the-derivative" class="nav-link" data-scroll-target="#taking-the-derivative">Taking the Derivative</a></li>
   <li><a href="#the-takeaway" id="toc-the-takeaway" class="nav-link" data-scroll-target="#the-takeaway">The Takeaway</a></li>
-  <li><a href="#generalized-method-of-moments-gmm-estimation" id="toc-generalized-method-of-moments-gmm-estimation" class="nav-link" data-scroll-target="#generalized-method-of-moments-gmm-estimation">Generalized Method of Moments (GMM) Estimation</a></li>
   </ul></li>
   <li><a href="#the-bias-variance-tradeoff" id="toc-the-bias-variance-tradeoff" class="nav-link" data-scroll-target="#the-bias-variance-tradeoff">The Bias-Variance Tradeoff</a>
   <ul class="collapse">
   <li><a href="#appendix-1-derivation-of-expectmu_2" id="toc-appendix-1-derivation-of-expectmu_2" class="nav-link" data-scroll-target="#appendix-1-derivation-of-expectmu_2">Appendix 1: Derivation of <span class="math inline">\(\expect{\mu_*^2}\)</span></a></li>
   <li><a href="#appendix-2-derivation-of-expectmux_i" id="toc-appendix-2-derivation-of-expectmux_i" class="nav-link" data-scroll-target="#appendix-2-derivation-of-expectmux_i">Appendix 2: Derivation of <span class="math inline">\(\expect{\mu^*X_i}\)</span></a></li>
   <li><a href="#appendix-3-derivation-of-expectsigma2_" id="toc-appendix-3-derivation-of-expectsigma2_" class="nav-link" data-scroll-target="#appendix-3-derivation-of-expectsigma2_">Appendix 3: Derivation of <span class="math inline">\(\expect{\sigma^2_*}\)</span></a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -1667,9 +1667,7 @@ P_{\text{post}}(\mathcal{H}) &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm} P(X \m
 \text{Posterior} &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm}\text{Evidence} &amp;\hspace{-6mm} \times &amp;\hspace{-6mm} \text{Prior}
 \end{array}
 \]</span></p>
-</section>
-<section id="generalized-method-of-moments-gmm-estimation" class="level2">
-<h2 class="anchored" data-anchor-id="generalized-method-of-moments-gmm-estimation">Generalized Method of Moments (GMM) Estimation</h2>
+<!-- Generalized Method of Moments (GMM) Estimation -->
 </section>
 </section>
 <section id="the-bias-variance-tradeoff" class="level1 title-14 not-title-slide full-width-quotes crunch-images" data-stack-name="Bias-Variance">
@@ -1749,21 +1747,24 @@ APPENDICES
 &amp;\implies \boxed{\expect{\sigma^2_*} = \frac{1}{2}\sigma^2}
 \end{align*}
 \]</span></p>
-
-
-
 </section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-collins_golem_1993" class="csl-entry" role="listitem">
 Collins, Harry M., and Trevor Pinch. 1993. <em>The <span>Golem</span>: <span>What You Should Know About Science</span></em>. <span>Cambridge University Press</span>.
 </div>
 <div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
 McElreath, Richard. 2020. <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em>. <span>CRC Press</span>.
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+</div>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Note that I’m trying really hard to differentiate between (capital-letter) <span class="math inline">\(N\)</span> as <strong>cardinality</strong> of observations, then (lowercase) <span class="math inline">\(1, 2, \ldots, n\)</span> for <strong>ordinal</strong> labels on each individual observation. This will spare you many headaches in life!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

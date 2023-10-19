@@ -2996,13 +2996,6 @@
     "text": "The Takeaway\n\nBayesian approach allows new evidence to be weighed against existing evidence, with statistically principled way to derive these weights:\n\n\\[\n\\begin{array}{ccccc}\nP_{\\text{post}}(\\mathcal{H}) &\\hspace{-6mm}\\propto &\\hspace{-6mm} P(X \\mid \\mathcal{H}) &\\hspace{-6mm} \\times &\\hspace{-6mm} P_{\\text{pre}}(\\mathcal{H}) \\\\\n\\text{Posterior} &\\hspace{-6mm}\\propto &\\hspace{-6mm}\\text{Evidence} &\\hspace{-6mm} \\times &\\hspace{-6mm} \\text{Prior}\n\\end{array}\n\\]"
   },
   {
-    "objectID": "w09/index.html#generalized-method-of-moments-gmm-estimation",
-    "href": "w09/index.html#generalized-method-of-moments-gmm-estimation",
-    "title": "Week 9: Statistical Inference",
-    "section": "Generalized Method of Moments (GMM) Estimation",
-    "text": "Generalized Method of Moments (GMM) Estimation"
-  },
-  {
     "objectID": "w09/index.html#appendix-1-derivation-of-expectmu_2",
     "href": "w09/index.html#appendix-1-derivation-of-expectmu_2",
     "title": "Week 9: Statistical Inference",
@@ -3022,6 +3015,13 @@
     "title": "Week 9: Statistical Inference",
     "section": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)",
     "text": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\frac{1}{2}\\bigexpect{(X_1 - \\mu^*)^2 + (X_2 - \\mu^*)^2} \\\\\n&= \\frac{1}{2}\\bigexpect{\\left(X_1^2 + \\mu^2_* -2\\mu^*X_1\\right) + \\left(X_2^2 + \\mu^2_* - 2X_2\\mu^*\\right)} \\\\\n&= \\frac{1}{2}\\expect{X_1^2 + X_2^2 + 2\\mu_*^2 - 2\\mu^*X_1 - 2\\mu^*X_2} \\\\\n&= \\frac{1}{2}\\left(\\expect{X_1^2} + \\expect{X_2^2} + 2\\expect{\\mu_*^2} - 2\\expect{\\mu^*X_1} - 2\\expect{\\mu^*X_2}\\right) \\\\\n&= \\frac{1}{2}\\left( 2\\sigma^2 + 2\\mu^2 + 2\\left(\\mu^2 + \\frac{\\sigma^2}{2}\\right) - 2\\left(\\mu^2 + s/2\\right) - 2\\left(\\mu^2 + s/2\\right) \\right) \\\\\n&= \\sigma^2 + \\mu^2 + \\mu^2 + \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} = \\sigma^2 - \\frac{\\sigma^2}{2} \\\\\n&\\implies \\boxed{\\expect{\\sigma^2_*} = \\frac{1}{2}\\sigma^2}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w09/index.html#references",
+    "href": "w09/index.html#references",
+    "title": "Week 9: Statistical Inference",
+    "section": "References",
+    "text": "References\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press."
   },
   {
     "objectID": "w09/index.html#footnotes",
@@ -3311,13 +3311,6 @@
     "text": "The Takeaway\n\nBayesian approach allows new evidence to be weighed against existing evidence, with statistically principled way to derive these weights:\n\n\\[\n\\begin{array}{ccccc}\nP_{\\text{post}}(\\mathcal{H}) &\\hspace{-6mm}\\propto &\\hspace{-6mm} P(X \\mid \\mathcal{H}) &\\hspace{-6mm} \\times &\\hspace{-6mm} P_{\\text{pre}}(\\mathcal{H}) \\\\\n\\text{Posterior} &\\hspace{-6mm}\\propto &\\hspace{-6mm}\\text{Evidence} &\\hspace{-6mm} \\times &\\hspace{-6mm} \\text{Prior}\n\\end{array}\n\\]"
   },
   {
-    "objectID": "w09/slides.html#generalized-method-of-moments-gmm-estimation",
-    "href": "w09/slides.html#generalized-method-of-moments-gmm-estimation",
-    "title": "Week 9: Statistical Inference",
-    "section": "Generalized Method of Moments (GMM) Estimation",
-    "text": "Generalized Method of Moments (GMM) Estimation"
-  },
-  {
     "objectID": "w09/slides.html#appendix-1-derivation-of-expectmu_2",
     "href": "w09/slides.html#appendix-1-derivation-of-expectmu_2",
     "title": "Week 9: Statistical Inference",
@@ -3336,7 +3329,14 @@
     "href": "w09/slides.html#appendix-3-derivation-of-expectsigma2_",
     "title": "Week 9: Statistical Inference",
     "section": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)",
-    "text": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\frac{1}{2}\\bigexpect{(X_1 - \\mu^*)^2 + (X_2 - \\mu^*)^2} \\\\\n&= \\frac{1}{2}\\bigexpect{\\left(X_1^2 + \\mu^2_* -2\\mu^*X_1\\right) + \\left(X_2^2 + \\mu^2_* - 2X_2\\mu^*\\right)} \\\\\n&= \\frac{1}{2}\\expect{X_1^2 + X_2^2 + 2\\mu_*^2 - 2\\mu^*X_1 - 2\\mu^*X_2} \\\\\n&= \\frac{1}{2}\\left(\\expect{X_1^2} + \\expect{X_2^2} + 2\\expect{\\mu_*^2} - 2\\expect{\\mu^*X_1} - 2\\expect{\\mu^*X_2}\\right) \\\\\n&= \\frac{1}{2}\\left( 2\\sigma^2 + 2\\mu^2 + 2\\left(\\mu^2 + \\frac{\\sigma^2}{2}\\right) - 2\\left(\\mu^2 + s/2\\right) - 2\\left(\\mu^2 + s/2\\right) \\right) \\\\\n&= \\sigma^2 + \\mu^2 + \\mu^2 + \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} = \\sigma^2 - \\frac{\\sigma^2}{2} \\\\\n&\\implies \\boxed{\\expect{\\sigma^2_*} = \\frac{1}{2}\\sigma^2}\n\\end{align*}\n\\]\n\n\nDSAN 5100-03 Week 9: Statistical Inference\n\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press."
+    "text": "Appendix 3: Derivation of \\(\\expect{\\sigma^2_*}\\)\n\\[\n\\begin{align*}\n\\expect{\\sigma^2_*} &= \\frac{1}{2}\\bigexpect{(X_1 - \\mu^*)^2 + (X_2 - \\mu^*)^2} \\\\\n&= \\frac{1}{2}\\bigexpect{\\left(X_1^2 + \\mu^2_* -2\\mu^*X_1\\right) + \\left(X_2^2 + \\mu^2_* - 2X_2\\mu^*\\right)} \\\\\n&= \\frac{1}{2}\\expect{X_1^2 + X_2^2 + 2\\mu_*^2 - 2\\mu^*X_1 - 2\\mu^*X_2} \\\\\n&= \\frac{1}{2}\\left(\\expect{X_1^2} + \\expect{X_2^2} + 2\\expect{\\mu_*^2} - 2\\expect{\\mu^*X_1} - 2\\expect{\\mu^*X_2}\\right) \\\\\n&= \\frac{1}{2}\\left( 2\\sigma^2 + 2\\mu^2 + 2\\left(\\mu^2 + \\frac{\\sigma^2}{2}\\right) - 2\\left(\\mu^2 + s/2\\right) - 2\\left(\\mu^2 + s/2\\right) \\right) \\\\\n&= \\sigma^2 + \\mu^2 + \\mu^2 + \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} - \\mu^2 - \\frac{\\sigma^2}{2} = \\sigma^2 - \\frac{\\sigma^2}{2} \\\\\n&\\implies \\boxed{\\expect{\\sigma^2_*} = \\frac{1}{2}\\sigma^2}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w09/slides.html#references",
+    "href": "w09/slides.html#references",
+    "title": "Week 9: Statistical Inference",
+    "section": "References",
+    "text": "References\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.\n\n\n\n\nDSAN 5100-03 Week 9: Statistical Inference"
   },
   {
     "objectID": "w08/index.html",

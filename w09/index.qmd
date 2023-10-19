@@ -1124,7 +1124,7 @@ P_{\text{post}}(\mathcal{H}) &\hspace{-6mm}\propto &\hspace{-6mm} P(X \mid \math
 \end{array}
 $$
 
-## Generalized Method of Moments (GMM) Estimation
+<!-- Generalized Method of Moments (GMM) Estimation -->
 
 # The Bias-Variance Tradeoff {.title-14 .not-title-slide .full-width-quotes .crunch-images data-stack-name="Bias-Variance"}
 
@@ -1201,3 +1201,7 @@ $$
 \end{align*}
 $$
 
+## References
+
+::: {#refs}
+:::
