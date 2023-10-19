@@ -5,7 +5,6 @@ format:
   revealjs:
     html-math-method: mathjax
     section-divs: false
-    #center: true
     simplemenu:
       flat: true
       barhtml:
@@ -13,8 +12,6 @@ format:
       scale: 0.5
     slide-number: true
     number-sections: false
-    number-depth: 2
-    #smaller: true
     code-fold: true
     footnotes-hover: true
     scrollable: true

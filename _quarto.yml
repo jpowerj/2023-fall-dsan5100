@@ -52,6 +52,10 @@ website:
         text: "Week 6: Sep 27"
       - href: w07/index.qmd
         text: "Week 7: Oct 5"
+      - href: w08/index.qmd
+        text: "Week 8: Oct 12"
+      - href: w09/index.qmd
+        text: "Week 9: Oct 19"
       - href: recordings/index.qmd
         text: "Lecture Recordings"
       - "---"
