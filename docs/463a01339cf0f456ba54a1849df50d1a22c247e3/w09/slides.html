@@ -457,6 +457,7 @@ Jeff Jacobs
 \newcommand{\definedas}{\overset{\text{def}}{=}}
 \newcommand{\definedalign}{\overset{\phantom{\text{def}}}{=}}
 \newcommand{\eqeventual}{\overset{\mathclap{\text{\small{eventually}}}}{=}}
+\newcommand{\Err}{\text{Err}}
 \newcommand{\expect}[1]{\mathbb{E}[#1]}
 \newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
 \newcommand{\fw}[1]{\texttt{#1}}
@@ -1695,7 +1696,24 @@ P_{\text{post}}(\mathcal{H}) &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm} P(X \m
 \text{Posterior} &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm}\text{Evidence} &amp;\hspace{-6mm} \times &amp;\hspace{-6mm} \text{Prior}
 \end{array}
 \]</span></p>
-<!-- Generalized Method of Moments (GMM) Estimation -->
+</section>
+<section id="generalized-method-of-moments-gmm-estimation" class="slide level2 smaller title-10">
+<h2>Generalized Method of Moments (GMM) Estimation</h2>
+<ul>
+<li><p>Recall that the <strong><span class="math inline">\(k\)</span>th moment</strong> of an RV <span class="math inline">\(X\)</span> is <span class="math inline">\(\mu_k = \expect{X^k}\)</span></p></li>
+<li><p>e.g., <span class="math inline">\(\mu_1 = \expect{X}\)</span>, <span class="math inline">\(\mu_2 = \Var{X} + \expect{X}^2\)</span></p></li>
+<li><p>Also recall (I rambled on about) how the MGF contains <strong>all information about a distribution</strong>. This means we can <strong>estimate distributions from data</strong>:</p></li>
+<li><p>Define <strong><span class="math inline">\(k\)</span>th sample moment</strong> of <span class="math inline">\(\mathbf{X}_N\)</span> to be <span class="math inline">\(\widehat{\mu}_k = \frac{1}{N}\sum_{i=1}^nX_i^k\)</span>. Then the system of equations:</p>
+<p><span class="math display">\[
+  \begin{align*}
+  \mu_1(\param{\theta}) &amp;= \widehat{\mu}_1 \\
+  \mu_2(\param{\theta}) &amp;= \widehat{\mu}_2 \\
+  &amp;\vdots \\
+  \mu_N(\param{\theta}) &amp;= \widehat{\mu}_N
+  \end{align*}
+  \]</span></p>
+<p>Gives us a system of equations, allowing us to <strong>solve for parameters of our distribution</strong>!</p></li>
+</ul>
 </section></section>
 <section>
 <section id="the-bias-variance-tradeoff" class="title-slide slide level1 title-14 not-title-slide full-width-quotes crunch-images center" data-stack-name="Bias-Variance">
@@ -1716,7 +1734,7 @@ P_{\text{post}}(\mathcal{H}) &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm} P(X \m
 <div class="callout-body">
 <div class="callout-content">
 <div class="quote-text" style="display: block; width: 100% !important;">
-<p><em>And yet, Machine Learning gets us rly close to free lunches!</em></p>
+<p><em>But modern Machine Learning basically gets us rly close to a free lunch</em></p>
 <div class="align-right">
 <p><img data-src="images/always_exhausted.jpeg" width="130"> Jeff</p>
 </div>
@@ -1724,12 +1742,63 @@ P_{\text{post}}(\mathcal{H}) &amp;\hspace{-6mm}\propto &amp;\hspace{-6mm} P(X \m
 </div>
 </div>
 </div>
+</section>
+<section id="intuition" class="slide level2 fix-tex-headers">
+<h2>Intuition</h2>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: center;"><strong>Low Variance</strong></th>
+<th style="text-align: center;"><strong>High Variance</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><strong>Low Bias</strong></td>
+<td style="text-align: center;"><img data-src="images/var-low-bias-low.svg"></td>
+<td style="text-align: center;"><img data-src="images/var-high-bias-low.svg"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><strong>High Bias</strong></td>
+<td style="text-align: center;"><img data-src="images/var-low-bias-high.svg"></td>
+<td style="text-align: center;"><img data-src="images/var-high-bias-high.svg"></td>
+</tr>
+</tbody>
+</table>
+
+<aside><div>
+<p>Figure adapted from Fortmann-Roe (2012), <a href="https://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank">“Understanding the Bias-Variance Tradeoff”</a></p>
+</div></aside></section>
+<section id="math" class="slide level2 small-math crunch-title crunch-ul crunch-p crunch-lists">
+<h2>Math</h2>
+<ul>
+<li>We estimate “true” DGP <span class="math inline">\(Y = f(X)\)</span> with model <span class="math inline">\(\widehat{f}(X)\)</span><sup>1</sup>, and then we use <span class="math inline">\(\widehat{f}\)</span> to predict the value of <span class="math inline">\(Y\)</span> for a point <span class="math inline">\(x_0\)</span>.</li>
+<li>What is our <strong>expected error</strong> at this point, <span class="math inline">\(\Err(x_0)\)</span>?</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\Err(x_0) &amp;= \bigexpect{\left.(Y − \widehat{f}(x_0))^2 \right| X = x_0} \\
+&amp;= \sigma^2_{\varepsilon} + \left( \bigexpect{\widehat{f}(x_0)} − f(x_0) \right)^2 + \mathbb{E}\left[\widehat{f}(x_0) − \bigexpect{\widehat{f}(x_0)}\right]^2 \\
+&amp;= \sigma^2_{\varepsilon} + \left( \text{Bias}(\widehat{f}(x_0)\right)^2 + \bigVar{\widehat{f}(x_0)} \\
+&amp;= \text{Irreducible Error} + \text{Bias}^2 + \text{Variance}.
+\end{align*}
+\]</span></p>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>It’s even more complicated, since we don’t even know whether the features <span class="math inline">\(X\)</span> we’ve chosen are actually the features in the world that causally affect <span class="math inline">\(Y\)</span>, but that’s for later classes… Or see <span class="citation" data-cites="hastie_elements_2013">Hastie, Tibshirani, and Friedman (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>!</p></li></ol></aside></section>
+<section id="in-practice" class="slide level2">
+<h2>In Practice</h2>
+
 <!--
 
 APPENDICES
 
 -->
-</section>
+<img data-src="images/overfitting-underfitting.jpg" class="r-stretch quarto-figure-center"><p class="caption">Figure from <span class="citation" data-cites="tharwat_parameter_2019">Tharwat (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></p></section>
 <section id="appendix-1-derivation-of-expectmu_2" class="slide level2 smaller crunch-math">
 <h2>Appendix 1: Derivation of <span class="math inline">\(\expect{\mu_*^2}\)</span></h2>
 <p><span class="math display">\[
@@ -1777,8 +1846,14 @@ APPENDICES
 <div id="ref-collins_golem_1993" class="csl-entry" role="listitem">
 Collins, Harry M., and Trevor Pinch. 1993. <em>The <span>Golem</span>: <span>What You Should Know About Science</span></em>. <span>Cambridge University Press</span>.
 </div>
+<div id="ref-hastie_elements_2013" class="csl-entry" role="listitem">
+Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. <em>The <span>Elements</span> of <span>Statistical Learning</span>: <span>Data Mining</span>, <span>Inference</span>, and <span>Prediction</span></em>. <span>Springer Science &amp; Business Media</span>.
+</div>
 <div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
 McElreath, Richard. 2020. <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em>. <span>CRC Press</span>.
+</div>
+<div id="ref-tharwat_parameter_2019" class="csl-entry" role="listitem">
+Tharwat, Alaa. 2019. <span>“Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.”</span> <em>Knowledge and Information Systems</em> 61 (3): 1269–1302. <a href="https://doi.org/10.1007/s10115-019-01335-4">https://doi.org/10.1007/s10115-019-01335-4</a>.
 </div>
 </div>
 

@@ -2996,6 +2996,34 @@
     "text": "The Takeaway\n\nBayesian approach allows new evidence to be weighed against existing evidence, with statistically principled way to derive these weights:\n\n\\[\n\\begin{array}{ccccc}\nP_{\\text{post}}(\\mathcal{H}) &\\hspace{-6mm}\\propto &\\hspace{-6mm} P(X \\mid \\mathcal{H}) &\\hspace{-6mm} \\times &\\hspace{-6mm} P_{\\text{pre}}(\\mathcal{H}) \\\\\n\\text{Posterior} &\\hspace{-6mm}\\propto &\\hspace{-6mm}\\text{Evidence} &\\hspace{-6mm} \\times &\\hspace{-6mm} \\text{Prior}\n\\end{array}\n\\]"
   },
   {
+    "objectID": "w09/index.html#generalized-method-of-moments-gmm-estimation",
+    "href": "w09/index.html#generalized-method-of-moments-gmm-estimation",
+    "title": "Week 9: Statistical Inference",
+    "section": "Generalized Method of Moments (GMM) Estimation",
+    "text": "Generalized Method of Moments (GMM) Estimation\n\nRecall that the \\(k\\)th moment of an RV \\(X\\) is \\(\\mu_k = \\expect{X^k}\\)\ne.g., \\(\\mu_1 = \\expect{X}\\), \\(\\mu_2 = \\Var{X} + \\expect{X}^2\\)\nAlso recall (I rambled on about) how the MGF contains all information about a distribution. This means we can estimate distributions from data:\nDefine \\(k\\)th sample moment of \\(\\mathbf{X}_N\\) to be \\(\\widehat{\\mu}_k = \\frac{1}{N}\\sum_{i=1}^nX_i^k\\). Then the system of equations:\n\\[\n  \\begin{align*}\n  \\mu_1(\\param{\\theta}) &= \\widehat{\\mu}_1 \\\\\n  \\mu_2(\\param{\\theta}) &= \\widehat{\\mu}_2 \\\\\n  &\\vdots \\\\\n  \\mu_N(\\param{\\theta}) &= \\widehat{\\mu}_N\n  \\end{align*}\n  \\]\nGives us a system of equations, allowing us to solve for parameters of our distribution!"
+  },
+  {
+    "objectID": "w09/index.html#intuition",
+    "href": "w09/index.html#intuition",
+    "title": "Week 9: Statistical Inference",
+    "section": "Intuition",
+    "text": "Intuition\n\n\n\n\n\n\n\n\n\nLow Variance\nHigh Variance\n\n\n\n\nLow Bias\n\n\n\n\nHigh Bias\n\n\n\n\n\n\n\nFigure adapted from Fortmann-Roe (2012), “Understanding the Bias-Variance Tradeoff”"
+  },
+  {
+    "objectID": "w09/index.html#math",
+    "href": "w09/index.html#math",
+    "title": "Week 9: Statistical Inference",
+    "section": "Math",
+    "text": "Math\n\nWe estimate “true” DGP \\(Y = f(X)\\) with model \\(\\widehat{f}(X)\\)5, and then we use \\(\\widehat{f}\\) to predict the value of \\(Y\\) for a point \\(x_0\\).\nWhat is our expected error at this point, \\(\\Err(x_0)\\)?\n\n\\[\n\\begin{align*}\n\\Err(x_0) &= \\bigexpect{\\left.(Y − \\widehat{f}(x_0))^2 \\right| X = x_0} \\\\\n&= \\sigma^2_{\\varepsilon} + \\left( \\bigexpect{\\widehat{f}(x_0)} − f(x_0) \\right)^2 + \\mathbb{E}\\left[\\widehat{f}(x_0) − \\bigexpect{\\widehat{f}(x_0)}\\right]^2 \\\\\n&= \\sigma^2_{\\varepsilon} + \\left( \\text{Bias}(\\widehat{f}(x_0)\\right)^2 + \\bigVar{\\widehat{f}(x_0)} \\\\\n&= \\text{Irreducible Error} + \\text{Bias}^2 + \\text{Variance}.\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w09/index.html#in-practice",
+    "href": "w09/index.html#in-practice",
+    "title": "Week 9: Statistical Inference",
+    "section": "In Practice",
+    "text": "In Practice\n\n\n\nFigure from Tharwat (2019)"
+  },
+  {
     "objectID": "w09/index.html#appendix-1-derivation-of-expectmu_2",
     "href": "w09/index.html#appendix-1-derivation-of-expectmu_2",
     "title": "Week 9: Statistical Inference",
@@ -3021,14 +3049,14 @@
     "href": "w09/index.html#references",
     "title": "Week 9: Statistical Inference",
     "section": "References",
-    "text": "References\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press."
+    "text": "References\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nHastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Science & Business Media.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.\n\n\nTharwat, Alaa. 2019. “Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.” Knowledge and Information Systems 61 (3): 1269–1302. https://doi.org/10.1007/s10115-019-01335-4."
   },
   {
     "objectID": "w09/index.html#footnotes",
     "href": "w09/index.html#footnotes",
     "title": "Week 9: Statistical Inference",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nNote that I’m trying really hard to differentiate between (capital-letter) \\(N\\) as cardinality of observations, then (lowercase) \\(1, 2, \\ldots, n\\) for ordinal labels on each individual observation. This will spare you many headaches in life!↩︎\nA big rock boi from the Talmud (and Pokémon) who follows orders but has no common sense/nuance (like a computer). See Collins and Pinch (1993) and McElreath (2020)↩︎\nAnd that’s why we used math magic to make \\(\\Pr(x_i \\mid \\param{p})\\) differentiable, in the previous slide!↩︎\nWe achieve this simplification because the derivative operator is additive: \\(\\frac{d}{dx}\\left[ f(x) + g(x) \\right] = \\frac{d}{dx}f(x) + \\frac{d}{dx}g(x)\\)↩︎"
+    "text": "Footnotes\n\n\nNote that I’m trying really hard to differentiate between (capital-letter) \\(N\\) as cardinality of observations, then (lowercase) \\(1, 2, \\ldots, n\\) for ordinal labels on each individual observation. This will spare you many headaches in life!↩︎\nA big rock boi from the Talmud (and Pokémon) who follows orders but has no common sense/nuance (like a computer). See Collins and Pinch (1993) and McElreath (2020)↩︎\nAnd that’s why we used math magic to make \\(\\Pr(x_i \\mid \\param{p})\\) differentiable, in the previous slide!↩︎\nWe achieve this simplification because the derivative operator is additive: \\(\\frac{d}{dx}\\left[ f(x) + g(x) \\right] = \\frac{d}{dx}f(x) + \\frac{d}{dx}g(x)\\)↩︎\nIt’s even more complicated, since we don’t even know whether the features \\(X\\) we’ve chosen are actually the features in the world that causally affect \\(Y\\), but that’s for later classes… Or see Hastie, Tibshirani, and Friedman (2013)!↩︎"
   },
   {
     "objectID": "w09/slides.html#statistical-inference-vs.-statistics",
@@ -3311,6 +3339,34 @@
     "text": "The Takeaway\n\nBayesian approach allows new evidence to be weighed against existing evidence, with statistically principled way to derive these weights:\n\n\\[\n\\begin{array}{ccccc}\nP_{\\text{post}}(\\mathcal{H}) &\\hspace{-6mm}\\propto &\\hspace{-6mm} P(X \\mid \\mathcal{H}) &\\hspace{-6mm} \\times &\\hspace{-6mm} P_{\\text{pre}}(\\mathcal{H}) \\\\\n\\text{Posterior} &\\hspace{-6mm}\\propto &\\hspace{-6mm}\\text{Evidence} &\\hspace{-6mm} \\times &\\hspace{-6mm} \\text{Prior}\n\\end{array}\n\\]"
   },
   {
+    "objectID": "w09/slides.html#generalized-method-of-moments-gmm-estimation",
+    "href": "w09/slides.html#generalized-method-of-moments-gmm-estimation",
+    "title": "Week 9: Statistical Inference",
+    "section": "Generalized Method of Moments (GMM) Estimation",
+    "text": "Generalized Method of Moments (GMM) Estimation\n\nRecall that the \\(k\\)th moment of an RV \\(X\\) is \\(\\mu_k = \\expect{X^k}\\)\ne.g., \\(\\mu_1 = \\expect{X}\\), \\(\\mu_2 = \\Var{X} + \\expect{X}^2\\)\nAlso recall (I rambled on about) how the MGF contains all information about a distribution. This means we can estimate distributions from data:\nDefine \\(k\\)th sample moment of \\(\\mathbf{X}_N\\) to be \\(\\widehat{\\mu}_k = \\frac{1}{N}\\sum_{i=1}^nX_i^k\\). Then the system of equations:\n\\[\n  \\begin{align*}\n  \\mu_1(\\param{\\theta}) &= \\widehat{\\mu}_1 \\\\\n  \\mu_2(\\param{\\theta}) &= \\widehat{\\mu}_2 \\\\\n  &\\vdots \\\\\n  \\mu_N(\\param{\\theta}) &= \\widehat{\\mu}_N\n  \\end{align*}\n  \\]\nGives us a system of equations, allowing us to solve for parameters of our distribution!"
+  },
+  {
+    "objectID": "w09/slides.html#intuition",
+    "href": "w09/slides.html#intuition",
+    "title": "Week 9: Statistical Inference",
+    "section": "Intuition",
+    "text": "Intuition\n\n\n\n\n\n\n\n\n\nLow Variance\nHigh Variance\n\n\n\n\nLow Bias\n\n\n\n\nHigh Bias\n\n\n\n\n\n\n\nFigure adapted from Fortmann-Roe (2012), “Understanding the Bias-Variance Tradeoff”"
+  },
+  {
+    "objectID": "w09/slides.html#math",
+    "href": "w09/slides.html#math",
+    "title": "Week 9: Statistical Inference",
+    "section": "Math",
+    "text": "Math\n\nWe estimate “true” DGP \\(Y = f(X)\\) with model \\(\\widehat{f}(X)\\)1, and then we use \\(\\widehat{f}\\) to predict the value of \\(Y\\) for a point \\(x_0\\).\nWhat is our expected error at this point, \\(\\Err(x_0)\\)?\n\n\\[\n\\begin{align*}\n\\Err(x_0) &= \\bigexpect{\\left.(Y − \\widehat{f}(x_0))^2 \\right| X = x_0} \\\\\n&= \\sigma^2_{\\varepsilon} + \\left( \\bigexpect{\\widehat{f}(x_0)} − f(x_0) \\right)^2 + \\mathbb{E}\\left[\\widehat{f}(x_0) − \\bigexpect{\\widehat{f}(x_0)}\\right]^2 \\\\\n&= \\sigma^2_{\\varepsilon} + \\left( \\text{Bias}(\\widehat{f}(x_0)\\right)^2 + \\bigVar{\\widehat{f}(x_0)} \\\\\n&= \\text{Irreducible Error} + \\text{Bias}^2 + \\text{Variance}.\n\\end{align*}\n\\]\nIt’s even more complicated, since we don’t even know whether the features \\(X\\) we’ve chosen are actually the features in the world that causally affect \\(Y\\), but that’s for later classes… Or see Hastie, Tibshirani, and Friedman (2013)!"
+  },
+  {
+    "objectID": "w09/slides.html#in-practice",
+    "href": "w09/slides.html#in-practice",
+    "title": "Week 9: Statistical Inference",
+    "section": "In Practice",
+    "text": "In Practice\n\n\nFigure from Tharwat (2019)"
+  },
+  {
     "objectID": "w09/slides.html#appendix-1-derivation-of-expectmu_2",
     "href": "w09/slides.html#appendix-1-derivation-of-expectmu_2",
     "title": "Week 9: Statistical Inference",
@@ -3336,7 +3392,7 @@
     "href": "w09/slides.html#references",
     "title": "Week 9: Statistical Inference",
     "section": "References",
-    "text": "References\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.\n\n\n\n\nDSAN 5100-03 Week 9: Statistical Inference"
+    "text": "References\n\n\nCollins, Harry M., and Trevor Pinch. 1993. The Golem: What You Should Know About Science. Cambridge University Press.\n\n\nHastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Science & Business Media.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.\n\n\nTharwat, Alaa. 2019. “Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.” Knowledge and Information Systems 61 (3): 1269–1302. https://doi.org/10.1007/s10115-019-01335-4.\n\n\n\n\nDSAN 5100-03 Week 9: Statistical Inference"
   },
   {
     "objectID": "w08/index.html",
