@@ -11,6 +11,7 @@ format:
     output-file: slides.html
   html:
     output-file: index.html
+    embed-resources: true
 metadata-files: 
   - "../_meta-slides.yml"
 ---
