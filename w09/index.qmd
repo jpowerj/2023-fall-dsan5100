@@ -18,6 +18,7 @@ format:
     embed-resources: true
 metadata-files: 
   - "../_slide-meta.yml"
+  - "../_notes-meta.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -973,7 +974,7 @@ $$
 
 * Now we're ready to compute $\expect{\sigma^2_*}$!
 
-## Computing $\expect{\sigma^2_*}$ {.smaller .crunch-title}
+## Computing $\mathbb{E}[\sigma^2_*]$ {.smaller .crunch-title}
 
 $$
 \begin{align*}

@@ -1,0 +1,9 @@
+format:
+  html:
+    html-math-method: mathjax
+    number-sections: false
+    code-fold: true
+    footnotes-hover: true
+    scrollable: true
+    tbl-cap-location: bottom
+    theme: [default, "../_jjslides.scss"]
