@@ -349,7 +349,7 @@ gtag('config', 'G-RFMTL6Q5J5', { 'anonymize_ip': true});
 </header>
 
 <div class="hidden">
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/source-r-globals_55d00b4e2a464c5d8105f4786543f0c6">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -413,7 +413,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 <h2 class="anchored" data-anchor-id="finding-the-issue-by-thinking-geometrically">Finding The Issue By Thinking Geometrically</h2>
 <p>There are a lot of ways we could stop and try to diagnose what’s going on here, but the approach that helped me most in thinking through this problem was to <strong>plot out the space</strong> over which we’re integrating the joint pdf, <strong>geometrically</strong>:</p>
 <p>Here I create what is sometimes called a “mesh grid”, by running the <code>expand_grid()</code> function (from <code>tidyverse</code>, which <strong>replaces</strong> the base-R <code>expand.grid()</code> function you have already seen, but isn’t very different) to create a grid of points, where these points’ <span class="math inline">\(x\)</span> values are drawn from <code>x</code> and their <span class="math inline">\(y\)</span> values are drawn from <code>y</code>:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/create-grid_a1324c5f0e0d0138b84e0a5033a0b0f5">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -501,7 +501,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 </div>
 </div>
 <p>Next I use the <code>mutate()</code> function to create a new variable, <code>x_leq_y</code>, on the basis of this grid, and look at the count of the number of <strong>points</strong> in my grid which do and do not satisfy the boolean expression <code>x &lt;= y</code>:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/dummy-var_df6771493a255d4a185a83274302f57c">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>xy_df <span class="ot">&lt;-</span> xy_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
@@ -533,7 +533,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 </div>
 </div>
 <p>Finally, I use <code>ggplot</code> with the <code>geom_tile()</code> geometry to create a simple but helpful visualization of the <strong>subset</strong> of <span class="math inline">\([0,2] \times [0,3]\)</span> within which the boolean condition is <strong>true</strong> (and where I have explicitly drawn lines showing the <strong>boundaries</strong> within which the point <span class="math inline">\((x,y)\)</span> has a non-zero probability density, as well as the function <span class="math inline">\(f(x) = x\)</span>, which will both come in handy later):</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/plot-factor_13ce70f446cee57fa83c2f2ae24b40f7">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
@@ -582,7 +582,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 <li><strong>Solid arrows</strong> to represent the <strong>direction</strong> of the sweeping</li>
 </ul>
 <p>Which means that ultimately, after computing the two integrals, we have integrated over the <strong>region</strong> of the <span class="math inline">\(xy\)</span>-plane bounded by the dashed and solid yellow lines.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/plot-a1-inner_7b1961da14d93abb3a84c961d2b6602a">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
@@ -670,7 +670,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 \end{align*}
 \]</span></p>
 <p>Given <strong>this</strong> double integral setup, we can employ this same way of thinking about integration (as “sweeping” across a dimension) to obtain the following diagram, which helps illustrate why we obtain a value <strong>greater than 1</strong> in this case:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/plot-a2-inner_aa7480dd9d64b1f1f2a923743ef57c93">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a2_inner_yvals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>, <span class="fl">2.5</span>, <span class="fl">2.95</span>)</span>
@@ -758,7 +758,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 \end{align*}
 \]</span></p>
 <p>One way of thinking about this is, if we had set our upper bounds in <strong>Approach 2</strong> this way, the diagram showing the “sweeping” over the <span class="math inline">\(x\)</span> dimension would instead look like the following, where the yellow line traces out <span class="math inline">\(x = \min(2,y)\)</span> instead of <span class="math inline">\(x = y\)</span> (the black line):</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/plot-a2-fixed_29768d006d8103a42be15095bd1862a6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a2_inner_df_fixed <span class="ot">&lt;-</span> a2_inner_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
@@ -836,7 +836,7 @@ f_{X,Y}(x,y) = 3C(x^2 + 2xy^2) = \frac{1}{44}(x^2 + 2xy^2),
 \Pr(X \leq Y) = \int_{0}^{2}\int_{0}^{y}f_{X,Y}(x,y)~dx~dy + \int_{2}^{3}\int_{0}^{2}f_{X,Y}(x,y)~dx~dy
 \]</span></p>
 <p>Thus we’ll call this way of integrating <strong>Approach 3</strong>, which can be visualized as follows:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-hash="index_cache/html/a3-integral_fc408016e9873ca929ceeb73b95363b8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a31_inner_yvals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="fl">1.95</span>)</span>

@@ -46,7 +46,7 @@ source("../_globals.r")
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:40pm | [Recap &rarr;](#recap) | <a href="./recording-w03-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| **Lecture** | 12:30pm | 12:40pm | [Recap &rarr;](#recap) | <a href="../recordings/recording-w03-1.html" target="_blank"><i class="bi bi-film"></i></a> |
 | | 12:40pm | 1:20pm | [What is Conditional Probability? &rarr;](#what-is-conditional-probability) | <a href="./recording-w03-2.html" target="_blank"><i class="bi bi-film"></i></a> |
 | | 1:20pm | 2:00pm | [Bayes' Theorem and its Implications &rarr;](#bayes-theorem-and-its-implications) | <a href="./recording-w03-3.html" target="_blank"><i class="bi bi-film"></i></a> |
 | **Break!** | 2:00pm | 2:10pm | | |

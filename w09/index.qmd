@@ -48,12 +48,12 @@ Today's Planned Schedule:
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:40pm | <a href="#statistical-inference">Statistical Inference Overview &rarr;</a> | <a href="../recordings/recording-w09-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 12:40pm | 1:10pm | <a href="#asymptotic-laws-for-random-samples">Asymptotic Laws for Random Samples &rarr;</a> | <a href="../recordings/recording-w09-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 1:10pm | 1:40pm</span> | <a href="#maximum-likelihood-estimation">Maximum Likelihood, GMM Estimation &rarr;</a> | <a href="../recordings/recording-w09-4.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| **Lecture** | 12:30pm | 12:40pm | <a href="#statistical-inference">Statistical Inference Overview &rarr;</a> | <a href="../recordings/recording-w09-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:10pm | <a href="#asymptotic-laws-for-random-samples">Asymptotic Laws for Random Samples &rarr;</a> | <a href="../recordings/recording-w09-2.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:10pm | 1:40pm</span> | <a href="#maximum-likelihood-estimation">Maximum Likelihood, GMM Estimation &rarr;</a> | <a href="../recordings/recording-w09-3.html" target="_blank"><i class="bi bi-film"></i></a> |
 | **Break!** | 1:40pm | 1:50pm | | |
-| | 1:50pm | 2:20pm | <a href="#bias-variance-tradeoff-introduction">Bias-Variance Tradeoff Introduction &rarr;</a> | <a href="../recordings/recording-w09-6.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| **Lab** | 2:20pm | 2:40pm | <a href="#lab-demonstrations">Lab &rarr;</a> | <a href="../recordings/recording-w09-7.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
+| | 1:50pm | 2:20pm | <a href="#bias-variance-tradeoff-introduction">Bias-Variance Tradeoff Introduction &rarr;</a> | <a href="../recordings/recording-w09-4.html" target="_blank"><i class="bi bi-film"></i></a> |
+| **Lab** | 2:20pm | 2:40pm | <a href="#lab-demonstrations">Lab &rarr;</a> | <a href="../recordings/recording-w09-5.html" target="_blank"><i class="bi bi-film"></i></a> |
 | | 2:40pm | 3:00pm | Student Presentation | |
 
 : {tbl-colwidths="[10,10,10,60,10]"}

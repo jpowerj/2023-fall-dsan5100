@@ -37,18 +37,18 @@ source("../_globals.r")
 
 :::
 
-Today's Planned Schedule (Section <span class='sec-num'>02</span>):
+Today's Planned Schedule:
 
 
 | | Start | End | Topic | Recording |
 |:- |:- |:- |:- |:-:|
-| **Lecture** | 12:30pm | 12:40pm | <a href="#quick-recap-week-02">Quick Recap &rarr;</a> | <a id="rec-link-w06-1" href="../recordings/recording-w06s02-1.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | 12:40pm | 1:00pm</span> | <a href="#exploratory-data-analysis-eda">Expectation and Variance &rarr;</a> | <a id="rec-link-w06-2" href="../recordings/recording-w06s02-2.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | <span class='sec-p55'>1:00pm</span> | <span class='sec-p70'>1:20pm</span> | <a href="#distance-metrics">Moment Generating Functions &rarr;</a> | <a id="rec-link-w06-3" href="../recordings/recording-w06s02-3.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | <span class='sec-p70'>1:20pm</span> | <span class='sec-p90'>2:00pm</span> | <a href='#moving-beyond-one-rv'>Beyond Single-Variable Distributions &rarr;</a> | <a href='../recordings/recording-w06s02-4.html' target='_blank' class='disabled'><i class='bi bi-film'></i></a> |
-| **Break!** | <span class='sec-p90'>2:00pm</span> | <span class='sec-p100'>2:10pm</span> | | |
-| **Lab** | <span class='sec-p100'>2:10pm</span> | <span class='sec-p130'>2:40pm</span> | <a href="#lab-demonstrations">Lab 5 &rarr;</a> | <a id="rec-link-w06-5" href="../recordings/recording-w06s02-5.html" target="_blank" class="disabled"><i class="bi bi-film"></i></a> |
-| | <span class='sec-p130'>2:40pm</span> | <span class='sec-end'>3:00pm</span> | Student Presentation | |
+| **Lecture** | 12:30pm | 12:40pm | <a href="#quick-recap">Quick Recap &rarr;</a> | <a href="../recordings/recording-w06-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:00pm | <a href="#expectation-and-variance">Expectation and Variance &rarr;</a> | <a href="../recordings/recording-w06-2.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:00pm | 1:20pm | <a href="#moment-generating-functions">Moment Generating Functions &rarr;</a> | <a href="../recordings/recording-w06-3.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:20pm | 2:00pm | <a href='#moving-beyond-one-rv'>Beyond Single-Variable Distributions &rarr;</a> | <a href='../recordings/recording-w06-4.html' target='_blank'><i class='bi bi-film'></i></a> |
+| **Break!** | 2:00pm | 2:10pm | | |
+| **Lab** | 2:10pm | 2:40pm | <a href="#lab-demonstrations">Lab 5 &rarr;</a> | <a href="../recordings/recording-w06-5.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 2:40pm | 3:00pm | Student Presentation | |
 
 : {tbl-colwidths="[14,12,12,50,12]"}
 
