@@ -15,6 +15,7 @@ format:
   html:
     output-file: index.html
     html-math-method: mathjax
+    embed-resources: true
 metadata-files: 
   - "../_slide-meta.yml"
 ---
@@ -1206,7 +1207,7 @@ APPENDICES
 
 -->
 
-## Appendix 1: Derivation of $\expect{\mu_*^2}$ {.smaller .crunch-math}
+## Appendix 1: Derivation of $\mathbb{E}[\mu_*^2]$ {.smaller .crunch-math}
 
 $$
 \begin{align*}
@@ -1219,7 +1220,7 @@ $$
 \end{align*}
 $$
 
-## Appendix 2: Derivation of $\expect{\mu^*X_i}$ {.smaller}
+## Appendix 2: Derivation of $\mathbb{E}[\mu^*X_i]$ {.smaller}
 
 $$
 \begin{align*}
@@ -1235,7 +1236,7 @@ $$
 \boxed{\expect{\mu^*X_i} = \mu^2 + \frac{\sigma^2}{2}}
 $$
 
-## Appendix 3: Derivation of $\expect{\sigma^2_*}$ {.smaller .crunch-math}
+## Appendix 3: Derivation of $\mathbb{E}[\sigma^2_*]$ {.smaller .crunch-math}
 
 $$
 \begin{align*}
