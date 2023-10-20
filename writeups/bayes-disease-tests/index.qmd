@@ -3,6 +3,8 @@ title: "Bayes' Theorem: Disease Probabilities"
 date: last-modified
 categories:
   - "Extra Writeups"
+metadata-files: 
+  - "../../_meta-docs.yml"
 ---
 
 ## What We're Given

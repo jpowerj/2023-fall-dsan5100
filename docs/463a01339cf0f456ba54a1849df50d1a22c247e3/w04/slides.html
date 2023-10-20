@@ -12,6 +12,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Jeff Jacobs">
+  <meta name="dcterms.date" content="2023-09-14">
   <title>Week 4: Discrete Probability Distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -319,6 +320,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -416,12 +418,17 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Thursday, September 14, 2023</p>
+  <p class="date">2023-09-14</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
 <div class="hidden">
-
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 <table style="width:95%;">
 <colgroup>
@@ -501,6 +508,31 @@ Jeff Jacobs
 <li><span class="math inline">\(\Pr(A)\)</span>: Four marbles <span class="math inline">\(\{A, B, C, D\}\)</span> in box, all equally likely, what is the probability I pull out <span class="math inline">\(A\)</span>?</li>
 </ul>
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>disc_df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y, <span class="sc">~</span>label,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="st">"A"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="dv">0</span>, <span class="dv">1</span>, <span class="st">"B"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">"C"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="dv">1</span>, <span class="dv">1</span>, <span class="st">"D"</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>)</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">ggplot</span>(disc_df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">label=</span>label)) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span>g_pointsize) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="fu">geom_text</span>(</span>
+<span id="cb2-13"><a href="#cb2-13"></a>      <span class="at">size=</span>g_textsize,</span>
+<span id="cb2-14"><a href="#cb2-14"></a>      <span class="at">hjust=</span><span class="fl">1.5</span>,</span>
+<span id="cb2-15"><a href="#cb2-15"></a>      <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>    ) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="fu">labs</span>(</span>
+<span id="cb2-21"><a href="#cb2-21"></a>      <span class="at">title=</span><span class="st">"Discrete Probability Space in N"</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -518,6 +550,30 @@ Jeff Jacobs
 <li><span class="math inline">\(\Pr(A)\)</span>: If I throw a dart at this square, what is the probability that I hit region <span class="math inline">\(A\)</span>?</li>
 </ul>
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">ggplot</span>(disc_df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">label=</span>label)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">1.5</span>, <span class="at">ymin =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">ymax =</span> <span class="fl">1.5</span>), <span class="at">fill=</span>cbPalette[<span class="dv">1</span>], <span class="at">color=</span><span class="st">"black"</span>, <span class="at">alpha=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="fu">geom_circle</span>(<span class="fu">aes</span>(<span class="at">x0=</span>x, <span class="at">y0=</span>y, <span class="at">r=</span><span class="fl">0.25</span>), <span class="at">fill=</span>cbPalette[<span class="dv">2</span>]) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="fu">coord_fixed</span>() <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="fu">geom_text</span>(</span>
+<span id="cb3-9"><a href="#cb3-9"></a>      <span class="at">size=</span>g_textsize,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      <span class="co">#hjust=1.75,</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>      <span class="co">#vjust=-0.75</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="fu">geom_text</span>(</span>
+<span id="cb3-14"><a href="#cb3-14"></a>      <span class="at">data=</span><span class="fu">data.frame</span>(<span class="at">label=</span><span class="st">"Ω"</span>),</span>
+<span id="cb3-15"><a href="#cb3-15"></a>      <span class="fu">aes</span>(<span class="at">x=</span><span class="sc">-</span><span class="fl">0.4</span>,<span class="at">y=</span><span class="fl">1.39</span>),</span>
+<span id="cb3-16"><a href="#cb3-16"></a>      <span class="at">parse=</span><span class="cn">TRUE</span>,</span>
+<span id="cb3-17"><a href="#cb3-17"></a>      <span class="at">size=</span>g_textsize</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>    <span class="fu">labs</span>(</span>
+<span id="cb3-20"><a href="#cb3-20"></a>      <span class="at">title=</span><span class="fu">expression</span>(<span class="st">"Continuous Probability Space in "</span><span class="sc">*</span>R<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -625,7 +681,27 @@ f_X(v) = \lim_{\varepsilon \to 0}\frac{P(X \in [v-\varepsilon, v + \varepsilon])
 <li>Single trial with two outcomes, <strong>“success”</strong> (<strong>1</strong>) or <strong>“failure”</strong> (<strong>0</strong>): basic model of a <strong>coin flip</strong> (heads = 1, tails = 0)</li>
 <li><span class="math inline">\(X \sim \text{Bern}({\color{purple} p}) \implies \mathcal{R}_X = \{0,1\}, \; \Pr(X = 1) = {\color{purple}p}\)</span>.</li>
 </ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>bern_tibble <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="sc">~</span>Outcome, <span class="sc">~</span>Probability, <span class="sc">~</span>Color,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="st">"Failure"</span>, <span class="fl">0.2</span>, cbPalette[<span class="dv">1</span>],</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="st">"Success"</span>, <span class="fl">0.8</span>, cbPalette[<span class="dv">2</span>]</span>
+<span id="cb4-7"><a href="#cb4-7"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="fu">ggplot</span>(<span class="at">data =</span> bern_tibble, <span class="fu">aes</span>(<span class="at">x=</span>Outcome, <span class="at">y=</span>Probability)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Outcome), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="fu">dsan_theme</span>(<span class="st">"half"</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="at">y =</span> <span class="st">"Probability Mass"</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(cbPalette[<span class="dv">1</span>], cbPalette[<span class="dv">2</span>])) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>  <span class="fu">remove_legend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
+</div>
 <img data-src="index_files/figure-revealjs/bernoulli-demo-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="binomial-distribution" class="slide level2">
 <h2>Binomial Distribution</h2>
@@ -642,17 +718,17 @@ f_X(v) = \lim_{\varepsilon \to 0}\frac{P(X \in [v-\varepsilon, v + \varepsilon])
 <div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>k <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>prob <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(k, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>bar_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(k, prob)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(bar_data, <span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>prob)) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    <span class="at">title=</span><span class="st">"Binomial Distribution, N = 10, p = 0.5"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8"></a>    <span class="at">y=</span><span class="st">"Probability Mass"</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">dsan_theme</span>(<span class="st">"half"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>k <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>prob <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(k, <span class="dv">10</span>, <span class="fl">0.5</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>bar_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(k, prob)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">ggplot</span>(bar_data, <span class="fu">aes</span>(<span class="at">x=</span>k, <span class="at">y=</span>prob)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">fill=</span>cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="at">title=</span><span class="st">"Binomial Distribution, N = 10, p = 0.5"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="at">y=</span><span class="st">"Probability Mass"</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">dsan_theme</span>(<span class="st">"half"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
@@ -699,7 +775,24 @@ f_X(v) = \lim_{\varepsilon \to 0}\frac{P(X \in [v-\varepsilon, v + \varepsilon])
 <li>Probability of <span class="math inline">\(k-1\)</span> failures followed by a success</li>
 </ul></li>
 </ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>k <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">8</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>prob <span class="ot">&lt;-</span> <span class="fu">dgeom</span>(k, <span class="fl">0.5</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>bar_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(k, prob)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">ggplot</span>(bar_data, <span class="fu">aes</span>(<span class="at">x =</span> k, <span class="at">y =</span> prob)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> cbPalette[<span class="dv">1</span>]) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>    <span class="fu">labs</span>(</span>
+<span id="cb6-8"><a href="#cb6-8"></a>        <span class="at">title =</span> <span class="st">"Geometric Distribution, p = 0.5"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9"></a>        <span class="at">y =</span> <span class="st">"Probability Mass"</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    ) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="fu">dsan_theme</span>(<span class="st">"half"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
+</div>
 <img data-src="index_files/figure-revealjs/geometric-demo-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="less-common-but-important-distributions" class="slide level2 smaller">
 <h2>Less Common (But Important) Distributions</h2>
@@ -782,7 +875,7 @@ h: \mathbb{Z} \leftrightarrow \mathbb{Q} &amp; h(n) = \begin{cases}h_+(n) &amp;n
 
 
 <div class="footer footer-default">
-
+<p>DSAN 5100-03 Week 4: Discrete Distributions</p>
 </div>
 <aside><div>
 <p>Image credit: <a href="https://math.stackexchange.com/a/659373" target="_blank">Rebecca J. Stones, Math StackExchange</a>. Math credit: <a href="https://math.stackexchange.com/a/1067928" target="_blank">Thomas Andrews, Math StackExchange</a></p>
@@ -821,7 +914,7 @@ h: \mathbb{Z} \leftrightarrow \mathbb{Q} &amp; h(n) = \begin{cases}h_+(n) &amp;n
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":false,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
+'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":true,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
 'smaller': false,
  
         // Display controls in the bottom right corner

@@ -7,7 +7,7 @@ project:
   preview:
     port: 4321
   post-render:
-    - _pw_protect.py
+    - _post-pw-protect.py
 
 website:
   favicon: "favicon.png"

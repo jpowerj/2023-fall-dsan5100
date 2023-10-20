@@ -8,7 +8,6 @@ categories:
 
 *(Week 1 of DSAN 5100 was a joint session across all individual sections, taught on Zoom.)*
 
-
 ::: {.callout-note}
 
 # Today's Links

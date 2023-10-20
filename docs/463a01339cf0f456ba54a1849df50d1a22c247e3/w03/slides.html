@@ -319,6 +319,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -395,21 +396,7 @@
       margin-right: 0; 
     }
   </style>
-  
-  <script src="../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-  <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-  <script src="../site_libs/datatables-binding-0.28/datatables.js"></script>
-  <script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="../site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="../site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
-  <script src="../site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
-  <link href="../site_libs/dt-ext-fixedcolumns-1.13.4/css/fixedColumns.dataTables.min.css" rel="stylesheet">
-  <script src="../site_libs/dt-ext-fixedcolumns-1.13.4/js/dataTables.fixedColumns.min.js"></script>
-  <link href="../site_libs/dt-ext-fixedheader-1.13.4/css/fixedHeader.dataTables.min.css" rel="stylesheet">
-  <script src="../site_libs/dt-ext-fixedheader-1.13.4/js/dataTables.fixedHeader.min.js"></script>
-  <link href="../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-  <script src="../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"><script src="https://d3js.org/d3.v4.min.js"></script><script src="../assets/_venn.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -435,7 +422,12 @@ Jeff Jacobs
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
 <div class="hidden">
-
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-1_3000a0cb2305ca1353c5d756a73c4ff3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 <table style="width:95%;">
 <colgroup>
@@ -532,28 +524,10 @@ Jeff Jacobs
 </section>
 <section id="venn-diagrams-sets" class="slide level2 smaller">
 <h2>Venn Diagrams: Sets</h2>
-<style>
-.venntooltip {
-  position: absolute;
-  text-align: center;
-  width: 128px;
-  height: 16px;
-  background: #333;
-  color: #ddd;
-  padding: 2px;
-  border: 0px;
-  border-radius: 8px;
-  opacity: 0;
-  z-index: 999 !important;
-}
-</style>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="fig-venn-mutex" class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
 <figure>
-<center>
-<div id="vennMutex"></div>
-</center>
 <p><span class="math display">\[
 \begin{align*}
 &amp;A = \{0, 1, 2\}, \; B = \{4, 5, 6\} \\
@@ -565,9 +539,6 @@ Jeff Jacobs
 </div>
 <div id="fig-venn" class="quarto-figure quarto-figure-center" style="flex-basis: 50.0%;justify-content: center;">
 <figure>
-<center>
-<div id="venn"></div>
-</center>
 <p><span class="math display">\[
 \begin{align*}
 &amp;A = \{1, 2, 3\}, \; B = \{3, 4, 5\} \\
@@ -579,104 +550,6 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-<script>
-var setsMutex = [
-  {sets: ['A'], size: 3},
-  {sets: ['B'], size: 3},
-  {sets: ['A','B'], size: 0}
-];
-var sets = [
-  {sets: ['A'], size: 3},
-  {sets: ['B'], size: 3},
-  {sets: ['A','B'], size: 1}
-];
-
-var chart = venn.VennDiagram().width(500);
-var chartMutex = venn.VennDiagram().width(500);
-// draw venn diagram
-var div = d3.select("#venn");
-var divMutex = d3.select("#vennMutex");
-div.datum(sets).call(chart);
-divMutex.datum(setsMutex).call(chartMutex);
-
-// add a tooltip
-var tooltip = d3.select("body").append("div")
-    .attr("class", "venntooltip");
-
-div.selectAll("path")
-    .style("stroke-opacity", 0)
-    .style("stroke", "#fff")
-    .style("stroke-width", 3);
-divMutex.selectAll("path")
-    .style("stroke-opacity", 0)
-    .style("stroke", "#fff")
-    .style("stroke-width", 3);
-
-// add listeners to all the groups to display tooltip on mouseover
-div.selectAll("g")
-    .on("mouseover", function(d, i) {
-        // sort all the areas relative to the current item
-        venn.sortAreas(div, d);
-
-        // Display a tooltip with the current size
-        tooltip.transition().duration(400).style("opacity", .9);
-        //console.log(d.size + " users");
-        tooltip.text(d.size + " elements");
-        
-        // highlight the current path
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 3)
-            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
-            .style("stroke-opacity", 1);
-    })
-
-    .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-    })
-    
-    .on("mouseout", function(d, i) {
-        tooltip.transition().duration(400).style("opacity", 0);
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 0)
-            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
-            .style("stroke-opacity", 0);
-    });
-
-
-divMutex.selectAll("g")
-    .on("mouseover", function(d, i) {
-        // sort all the areas relative to the current item
-        venn.sortAreas(div, d);
-
-        // Display a tooltip with the current size
-        tooltip.transition().duration(400).style("opacity", .9);
-        tooltip.text(d.size + " elements");
-        
-        // highlight the current path
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 3)
-            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
-            .style("stroke-opacity", 1);
-    })
-
-    .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-    })
-    
-    .on("mouseout", function(d, i) {
-        tooltip.transition().duration(400).style("opacity", 0);
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 0)
-            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
-            .style("stroke-opacity", 0);
-    });
-</script>
 </section>
 <section id="venn-diagrams-events-dice" class="slide level2 smaller">
 <h2>Venn Diagrams: Events (Dice)</h2>
@@ -1114,17 +987,20 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 \end{align*}
 \]</span></p>
 <div class="cell" data-hash="index_cache/revealjs/prob-sick-bayes_04ea9db2fe2927e38f97fc249c11d8ee">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>p_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>p_healthy <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_sick</span>
-<span id="cb1-3"><a href="#cb1-3"></a>p_pos_given_sick <span class="ot">&lt;-</span> <span class="fl">0.99</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>p_neg_given_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_pos_given_sick</span>
-<span id="cb1-5"><a href="#cb1-5"></a>p_neg_given_healthy <span class="ot">&lt;-</span> <span class="fl">0.99</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>p_pos_given_healthy <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_neg_given_healthy</span>
-<span id="cb1-7"><a href="#cb1-7"></a>numer <span class="ot">&lt;-</span> p_pos_given_sick <span class="sc">*</span> p_sick</span>
-<span id="cb1-8"><a href="#cb1-8"></a>denom1 <span class="ot">&lt;-</span> numer</span>
-<span id="cb1-9"><a href="#cb1-9"></a>denom2 <span class="ot">&lt;-</span> p_pos_given_healthy <span class="sc">*</span> p_healthy</span>
-<span id="cb1-10"><a href="#cb1-10"></a>final_prob <span class="ot">&lt;-</span> numer <span class="sc">/</span> (denom1 <span class="sc">+</span> denom2)</span>
-<span id="cb1-11"><a href="#cb1-11"></a>final_prob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>p_healthy <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_sick</span>
+<span id="cb2-3"><a href="#cb2-3"></a>p_pos_given_sick <span class="ot">&lt;-</span> <span class="fl">0.99</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>p_neg_given_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_pos_given_sick</span>
+<span id="cb2-5"><a href="#cb2-5"></a>p_neg_given_healthy <span class="ot">&lt;-</span> <span class="fl">0.99</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>p_pos_given_healthy <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> p_neg_given_healthy</span>
+<span id="cb2-7"><a href="#cb2-7"></a>numer <span class="ot">&lt;-</span> p_pos_given_sick <span class="sc">*</span> p_sick</span>
+<span id="cb2-8"><a href="#cb2-8"></a>denom1 <span class="ot">&lt;-</span> numer</span>
+<span id="cb2-9"><a href="#cb2-9"></a>denom2 <span class="ot">&lt;-</span> p_pos_given_healthy <span class="sc">*</span> p_healthy</span>
+<span id="cb2-10"><a href="#cb2-10"></a>final_prob <span class="ot">&lt;-</span> numer <span class="sc">/</span> (denom1 <span class="sc">+</span> denom2)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>final_prob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.009803922</code></pre>
 </div>
@@ -1138,26 +1014,32 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>Let’s generate a dataset of <strong>5,000</strong> people, using <span class="math inline">\(\Pr(\textsf{Disease}) = \frac{1}{10000}\)</span></li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bayes-sick-mc_b068d4fc35724b7268c7e91745d7d4f8">
+<div class="cell" data-hash="index_cache/revealjs/bayes-sick-mc_356a6180b0f03247dd6775914a97b60a">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Disease rarity</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>p_disease <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># 1K people</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>num_people <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Give them ids</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>ppl_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id=</span><span class="fu">seq</span>(<span class="dv">1</span>,num_people))</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># Whether they have the disease or not</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>has_disease <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(num_people, <span class="dv">1</span>, p_disease)</span>
-<span id="cb3-11"><a href="#cb3-11"></a>ppl_df <span class="ot">&lt;-</span> ppl_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">has_disease=</span>has_disease)</span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="fu">disp</span>(ppl_df <span class="sc">%&gt;%</span> <span class="fu">head</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Disease rarity</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>p_disease <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># 1K people</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>num_people <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># Give them ids</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>ppl_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id=</span><span class="fu">seq</span>(<span class="dv">1</span>,num_people))</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Whether they have the disease or not</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>has_disease <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(num_people, <span class="dv">1</span>, p_disease)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>ppl_df <span class="ot">&lt;-</span> ppl_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">has_disease=</span>has_disease)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>ppl_df <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-00817f6fadb51e05b010" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-00817f6fadb51e05b010">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6"],[1,2,3,4,5,6],[0,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+     id has_disease
+  &lt;int&gt;       &lt;int&gt;
+1     1           0
+2     2           0
+3     3           0
+4     4           0
+5     5           0
+6     6           0</code></pre>
 </div>
 </div>
 </section>
@@ -1173,19 +1055,22 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </ul>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/fake-binary-data_55ce646daee0bb4b2062d040b5a96c6f">
+<div class="cell" data-hash="index_cache/revealjs/fake-binary-data_bdf79372edb313bd1357f31485767405">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>binary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="at">id=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">disp</span>(binary_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>binary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="at">id=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>binary_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-69ee4c7ee915de9be826" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-69ee4c7ee915de9be826">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3"],[1,2,3],[0,1,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>x<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+     id     x
+  &lt;dbl&gt; &lt;dbl&gt;
+1     1     0
+2     2     1
+3     3     0</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
@@ -1193,7 +1078,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <div class="cell" data-hash="index_cache/revealjs/binary-df-sum_7de2bfd8fb2f7106fd2aa18df0a31abf">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">sum</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">sum</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
@@ -1203,7 +1088,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <div class="cell" data-hash="index_cache/revealjs/binary-df-mean_52e8f0c6d35c3a92d9c66ee6f497a696">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">mean</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mean</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3333333</code></pre>
@@ -1220,8 +1105,8 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <div class="cell" data-hash="index_cache/revealjs/compute-disease-count_2e7869f951363ba988037cbc913e7a32">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Compute the *number* of people who have the disease</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">sum</span>(ppl_df<span class="sc">$</span>has_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Compute the *number* of people who have the disease</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">sum</span>(ppl_df<span class="sc">$</span>has_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
@@ -1233,8 +1118,8 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <div class="cell" data-hash="index_cache/revealjs/compute-disease-rate_642cbb2a15e5414e8d5f3f8d709e6735">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Compute the *proportion* of people who have the disease</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">mean</span>(ppl_df<span class="sc">$</span>has_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Compute the *proportion* of people who have the disease</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">mean</span>(ppl_df<span class="sc">$</span>has_disease)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1e-04</code></pre>
@@ -1246,7 +1131,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <div class="cell" data-hash="index_cache/revealjs/compute-disease-rate-decimal_8dcd1de3114d791266436300557dd0a9">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">format</span>(<span class="fu">mean</span>(ppl_df<span class="sc">$</span>has_disease), <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">format</span>(<span class="fu">mean</span>(ppl_df<span class="sc">$</span>has_disease), <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "0.0001"</code></pre>
@@ -1271,29 +1156,40 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <div class="cell" data-hash="index_cache/revealjs/count-positive-tests_f6c582c6b7dd7f144e94c8992515753d">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># Data Generating Process</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>take_test <span class="ot">&lt;-</span> <span class="cf">function</span>(is_sick) {</span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="cf">if</span> (is_sick) {</span>
-<span id="cb15-5"><a href="#cb15-5"></a>    <span class="fu">return</span>(<span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="dv">1</span>,p_pos_given_sick))</span>
-<span id="cb15-6"><a href="#cb15-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb15-7"><a href="#cb15-7"></a>    <span class="fu">return</span>(<span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="dv">1</span>,p_pos_given_healthy))</span>
-<span id="cb15-8"><a href="#cb15-8"></a>  }</span>
-<span id="cb15-9"><a href="#cb15-9"></a>}</span>
-<span id="cb15-10"><a href="#cb15-10"></a>ppl_df[<span class="st">'test_result'</span>] <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(ppl_df<span class="sc">$</span>has_disease, take_test))</span>
-<span id="cb15-11"><a href="#cb15-11"></a>num_positive <span class="ot">&lt;-</span> <span class="fu">sum</span>(ppl_df<span class="sc">$</span>test_result)</span>
-<span id="cb15-12"><a href="#cb15-12"></a>p_positive <span class="ot">&lt;-</span> <span class="fu">mean</span>(ppl_df<span class="sc">$</span>test_result)</span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(num_positive,<span class="st">" positive tests / "</span>,num_people,<span class="st">" total = "</span>,p_positive))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Data Generating Process</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>take_test <span class="ot">&lt;-</span> <span class="cf">function</span>(is_sick) {</span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="cf">if</span> (is_sick) {</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    <span class="fu">return</span>(<span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="dv">1</span>,p_pos_given_sick))</span>
+<span id="cb18-6"><a href="#cb18-6"></a>  } <span class="cf">else</span> {</span>
+<span id="cb18-7"><a href="#cb18-7"></a>    <span class="fu">return</span>(<span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="dv">1</span>,p_pos_given_healthy))</span>
+<span id="cb18-8"><a href="#cb18-8"></a>  }</span>
+<span id="cb18-9"><a href="#cb18-9"></a>}</span>
+<span id="cb18-10"><a href="#cb18-10"></a>ppl_df[<span class="st">'test_result'</span>] <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(ppl_df<span class="sc">$</span>has_disease, take_test))</span>
+<span id="cb18-11"><a href="#cb18-11"></a>num_positive <span class="ot">&lt;-</span> <span class="fu">sum</span>(ppl_df<span class="sc">$</span>test_result)</span>
+<span id="cb18-12"><a href="#cb18-12"></a>p_positive <span class="ot">&lt;-</span> <span class="fu">mean</span>(ppl_df<span class="sc">$</span>test_result)</span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(num_positive,<span class="st">" positive tests / "</span>,num_people,<span class="st">" total = "</span>,p_positive))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>111 positive tests / 10000 total = 0.0111</code></pre>
+<pre><code>113 positive tests / 10000 total = 0.0113</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/df-test-result-var_b7abeb44437beec1549cc7c33158dd7e">
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ac8a1a01dc334156866e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ac8a1a01dc334156866e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":3,"scrollX":true,"paging":true,"dom":"tp","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[3,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell" data-hash="index_cache/revealjs/df-test-result-var_48035c136781f83fdab6facfdce4fb90">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#disp(ppl_df %&gt;% head(50), obs_per_page = 3)</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>ppl_df <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1     1           0           0
+2     2           0           0
+3     3           0           0
+4     4           0           0
+5     5           0           0
+6     6           0           0</code></pre>
 </div>
 </div>
 </section>
@@ -1301,11 +1197,23 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <h2>Zooming In On Positive Tests</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/filter-positives-only_ad8cf0e5582a62e926f119e6e7f9615b">
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-59d468b14e1488828a1e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-59d468b14e1488828a1e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],[146,246,271,272,306,345,425,466,492,503,699,852,911,998],[0,0,0,0,0,0,0,0,0,0,0,0,0,0],[1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"paging":true,"dom":"tp","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="cell" data-hash="index_cache/revealjs/filter-positives-only_c0b4e49f784e0ec186e313bf4af342ba">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>pos_ppl <span class="ot">&lt;-</span> ppl_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(test_result <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co">#disp(pos_ppl, obs_per_page = 10)</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>pos_ppl <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1    87           1           1
+2   114           0           1
+3   177           0           1
+4   216           0           1
+5   259           0           1
+6   330           0           1</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1326,43 +1234,48 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>What if we look at only those who actually have the disease? Maybe the cost of 111 people panicking is worth it if we correctly catch those who do have it?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/disease-only_f55f53ec924e6b63b9311beebff5fe43">
+<div class="cell" data-hash="index_cache/revealjs/disease-only_74832c4aa0eee31d67599d24cfa3f0fb">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">disp</span>(ppl_df[ppl_df<span class="sc">$</span>has_disease <span class="sc">==</span> <span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">#disp(ppl_df[ppl_df$has_disease == 1,])</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>ppl_df[ppl_df<span class="sc">$</span>has_disease <span class="sc">==</span> <span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-094a98026a6ae63608b9" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-094a98026a6ae63608b9">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1"],[8900],[1],[1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1    87           1           1</code></pre>
 </div>
 </div>
 <p>Is this always going to be the case?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/repeating-disease-simulation_cec02c21ed26510dd018f03d709e8aed">
+<div class="cell" data-hash="index_cache/revealjs/repeating-disease-simulation_391b90f15e1ad68f5eecd43442fb821c">
 <div class="cell-output cell-output-stdout">
 <pre><code>Num with disease: 0
 Proportion with disease: 0
-Number of positive tests: 45</code></pre>
+Number of positive tests: 69</code></pre>
 </div>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ff1b9477f2fb77e894f1" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ff1b9477f2fb77e894f1">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[[],[],[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 3
+# ℹ 3 variables: id &lt;int&gt;, has_disease &lt;int&gt;, test_result &lt;int&gt;</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/sim-disease-again_0651794b66165dad70d6b64552745161">
+<div class="cell" data-hash="index_cache/revealjs/sim-disease-again_ec9a81e6a1f7e1c15812c9dae327056f">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#disp(simulate_disease(5000, 1/10000))</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">simulate_disease</span>(<span class="dv">5000</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Num with disease: 0
 Proportion with disease: 0
-Number of positive tests: 62</code></pre>
+Number of positive tests: 42</code></pre>
 </div>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-238bef6dfa411c50650e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-238bef6dfa411c50650e">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[[],[],[],[]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>has_disease<\/th>\n      <th>test_result<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 3
+# ℹ 3 variables: id &lt;int&gt;, has_disease &lt;int&gt;, test_result &lt;int&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1372,31 +1285,72 @@ Number of positive tests: 62</code></pre>
 <h2>Worst-Case Worlds</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-16_1d53f9fac1e569949c5ac5d6f8554978">
+<div class="cell" data-hash="index_cache/revealjs/worse-case-sim_4ecacbc5d439bacb3e22b73e5070eab1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">1000</span>)) {</span>
+<span id="cb31-2"><a href="#cb31-2"></a>  sim_result <span class="ot">&lt;-</span> <span class="fu">simulate_disease</span>(<span class="dv">5000</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10000</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">return_all_detected =</span> <span class="cn">FALSE</span>, <span class="at">return_df =</span> <span class="cn">FALSE</span>, <span class="at">return_info =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="cf">if</span> (<span class="sc">!</span>sim_result<span class="sc">$</span>all_detected) {</span>
+<span id="cb31-4"><a href="#cb31-4"></a>    <span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"World #"</span>,i,<span class="st">" / 1000 ("</span>,sim_result<span class="sc">$</span>num_people,<span class="st">" people):"</span>))</span>
+<span id="cb31-5"><a href="#cb31-5"></a>    <span class="fu">print</span>(sim_result<span class="sc">$</span>df)</span>
+<span id="cb31-6"><a href="#cb31-6"></a>    <span class="fu">writeLines</span>(<span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a>  }</span>
+<span id="cb31-8"><a href="#cb31-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>World #415 / 1000 (5000 people):
-# A tibble: 2 × 3
-     id has_disease test_result
-  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1   617           1           1
-2  2192           1           0
-
-
-World #503 / 1000 (5000 people):
+<pre><code>World #167 / 1000 (5000 people):
 # A tibble: 1 × 3
      id has_disease test_result
   &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1  1669           1           0
+1  3597           1           0
 
 
-World #729 / 1000 (5000 people):
-# A tibble: 3 × 3
+World #231 / 1000 (5000 people):
+# A tibble: 1 × 3
      id has_disease test_result
   &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
-1  1378           1           1
-2  1427           1           1
-3  4062           1           0</code></pre>
+1  3431           1           0
+
+
+World #271 / 1000 (5000 people):
+# A tibble: 2 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1   506           1           0
+2  2748           1           1
+
+
+World #458 / 1000 (5000 people):
+# A tibble: 1 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1  4911           1           0
+
+
+World #686 / 1000 (5000 people):
+# A tibble: 1 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1   905           1           0
+
+
+World #790 / 1000 (5000 people):
+# A tibble: 1 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1   268           1           0
+
+
+World #878 / 1000 (5000 people):
+# A tibble: 1 × 3
+     id has_disease test_result
+  &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+1  3869           1           0</code></pre>
 </div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">format</span>(<span class="dv">4</span> <span class="sc">/</span> <span class="dv">5000000</span>, <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "0.0000008"</code></pre>
 </div>
@@ -1411,12 +1365,25 @@ World #729 / 1000 (5000 people):
 \end{align*}
 \]</span></p>
 <p>Computers:</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-17_8eab155687d8d131c0af77987d4b07ba">
+<div class="cell" data-hash="index_cache/revealjs/how-unlikely-sim_09a81abcb06a48bc74f33ef63b97d8a5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>result_df <span class="ot">&lt;-</span> <span class="fu">simulate_disease</span>(<span class="dv">1000000</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10000</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">return_full_df =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-2"><a href="#cb35-2"></a>false_negatives <span class="ot">&lt;-</span> result_df[result_df<span class="sc">$</span>has_disease <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> result_df<span class="sc">$</span>test_result <span class="sc">==</span> <span class="dv">0</span>,]</span>
+<span id="cb35-3"><a href="#cb35-3"></a>num_false_negatives <span class="ot">&lt;-</span> <span class="fu">nrow</span>(false_negatives)</span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"False Negatives: "</span>,num_false_negatives,<span class="st">", Total Cases: "</span>, <span class="fu">nrow</span>(result_df)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>False Negatives: 1, Total Cases: 1000000</code></pre>
+<pre><code>False Negatives: 2, Total Cases: 1000000</code></pre>
 </div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>false_negative_rate <span class="ot">&lt;-</span> num_false_negatives <span class="sc">/</span> <span class="fu">nrow</span>(result_df)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>false_negative_rate_decimal <span class="ot">&lt;-</span> <span class="fu">format</span>(false_negative_rate, <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(<span class="st">"False Negative Rate: "</span>, false_negative_rate_decimal))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>False Negative Rate: 0.000001</code></pre>
+<pre><code>False Negative Rate: 0.000002</code></pre>
 </div>
 </div>
 <p>(Perfect match!)</p>
@@ -1479,27 +1446,34 @@ World #729 / 1000 (5000 people):
 <li>Analytic solution is fun, but requires some thought… Monte Carlo it!</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/monty-hall-mc_57d21f2dd9cb357209a69b64e2b4d2a8">
+<div class="cell" data-hash="index_cache/revealjs/monty-hall-mc_28b05b3f4dc2bd846cc1c9cfd8b1de16">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>gen_bday_room <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">room_num=</span><span class="cn">NULL</span>) {</span>
-<span id="cb24-2"><a href="#cb24-2"></a>  num_people <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>  num_days <span class="ot">&lt;-</span> <span class="dv">366</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  ppl_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id=</span><span class="fu">seq</span>(<span class="dv">1</span>,num_people))</span>
-<span id="cb24-5"><a href="#cb24-5"></a>birthdays <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>num_days, num_people,<span class="at">replace =</span> T)</span>
-<span id="cb24-6"><a href="#cb24-6"></a>  ppl_df[<span class="st">'birthday'</span>] <span class="ot">&lt;-</span> birthdays</span>
-<span id="cb24-7"><a href="#cb24-7"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(room_num)) {</span>
-<span id="cb24-8"><a href="#cb24-8"></a>    ppl_df <span class="ot">&lt;-</span> ppl_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">room_num=</span>room_num) <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(room_num)</span>
-<span id="cb24-9"><a href="#cb24-9"></a>  }</span>
-<span id="cb24-10"><a href="#cb24-10"></a>  <span class="fu">return</span>(ppl_df)</span>
-<span id="cb24-11"><a href="#cb24-11"></a>}</span>
-<span id="cb24-12"><a href="#cb24-12"></a>ppl_df <span class="ot">&lt;-</span> <span class="fu">gen_bday_room</span>(<span class="dv">1</span>)</span>
-<span id="cb24-13"><a href="#cb24-13"></a><span class="fu">disp</span>(ppl_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()) <span class="co">#, obs_per_page = 3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>gen_bday_room <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">room_num=</span><span class="cn">NULL</span>) {</span>
+<span id="cb39-2"><a href="#cb39-2"></a>  num_people <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>  num_days <span class="ot">&lt;-</span> <span class="dv">366</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>  ppl_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id=</span><span class="fu">seq</span>(<span class="dv">1</span>,num_people))</span>
+<span id="cb39-5"><a href="#cb39-5"></a>birthdays <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>num_days, num_people,<span class="at">replace =</span> T)</span>
+<span id="cb39-6"><a href="#cb39-6"></a>  ppl_df[<span class="st">'birthday'</span>] <span class="ot">&lt;-</span> birthdays</span>
+<span id="cb39-7"><a href="#cb39-7"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(room_num)) {</span>
+<span id="cb39-8"><a href="#cb39-8"></a>    ppl_df <span class="ot">&lt;-</span> ppl_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">room_num=</span>room_num) <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(room_num)</span>
+<span id="cb39-9"><a href="#cb39-9"></a>  }</span>
+<span id="cb39-10"><a href="#cb39-10"></a>  <span class="fu">return</span>(ppl_df)</span>
+<span id="cb39-11"><a href="#cb39-11"></a>}</span>
+<span id="cb39-12"><a href="#cb39-12"></a>ppl_df <span class="ot">&lt;-</span> <span class="fu">gen_bday_room</span>(<span class="dv">1</span>)</span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="co">#disp(ppl_df %&gt;% head())</span></span>
+<span id="cb39-14"><a href="#cb39-14"></a>ppl_df <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d19477f426ad7346c1af" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d19477f426ad7346c1af">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns","FixedHeader"],"data":[["1","2","3","4","5","6"],[1,1,1,1,1,1],[1,2,3,4,5,6],[90,105,79,21,131,139]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>room_num<\/th>\n      <th>id<\/th>\n      <th>birthday<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"paging":true,"dom":"t","fixedHeader":true,"filter":false,"ordering":false,"language":{"paginate":{"previous":"<i class='bi bi-chevron-left'><\/i>","next":"<i class='bi bi-chevron-right'><\/i>"}},"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  room_num    id birthday
+     &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+1        1     1      321
+2        1     2      365
+3        1     3      353
+4        1     4      121
+5        1     5       60
+6        1     6      174</code></pre>
 </div>
 </div>
 </div>
@@ -1507,9 +1481,49 @@ World #729 / 1000 (5000 people):
 </section>
 <section id="section-5" class="slide level2 unnumbered">
 <h2></h2>
-<div class="cell" data-hash="index_cache/revealjs/shared-bdays-fn_02c23f1f02745030e7ca4143f0cbd5f5">
+<div class="cell" data-hash="index_cache/revealjs/shared-bdays-fn_e1ca91f6aa9332c5c39ab588a1e5d225">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Inefficient version (return_num=FALSE) is for: if you want tibbles of *all* shared bdays for each room</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>get_shared_bdays <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">is_grouped=</span><span class="cn">NULL</span>, <span class="at">return_num=</span><span class="cn">FALSE</span>, <span class="at">return_bool=</span><span class="cn">FALSE</span>) {</span>
+<span id="cb41-3"><a href="#cb41-3"></a>  bday_pairs <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">nrow</span>(df)<span class="sc">-</span><span class="dv">1</span>)) {</span>
+<span id="cb41-5"><a href="#cb41-5"></a>    i_data <span class="ot">&lt;-</span> df[i,]</span>
+<span id="cb41-6"><a href="#cb41-6"></a>    i_bday <span class="ot">&lt;-</span> i_data<span class="sc">$</span>birthday</span>
+<span id="cb41-7"><a href="#cb41-7"></a>    <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(df)) {</span>
+<span id="cb41-8"><a href="#cb41-8"></a>      j_data <span class="ot">&lt;-</span> df[j,]</span>
+<span id="cb41-9"><a href="#cb41-9"></a>      j_bday <span class="ot">&lt;-</span> j_data<span class="sc">$</span>birthday</span>
+<span id="cb41-10"><a href="#cb41-10"></a>      <span class="co"># Check if they're the same</span></span>
+<span id="cb41-11"><a href="#cb41-11"></a>      same_bday <span class="ot">&lt;-</span> i_bday <span class="sc">==</span> j_bday</span>
+<span id="cb41-12"><a href="#cb41-12"></a>      <span class="cf">if</span> (same_bday) {</span>
+<span id="cb41-13"><a href="#cb41-13"></a>        <span class="cf">if</span> (return_bool) {</span>
+<span id="cb41-14"><a href="#cb41-14"></a>          <span class="fu">return</span>(<span class="dv">1</span>)</span>
+<span id="cb41-15"><a href="#cb41-15"></a>        }</span>
+<span id="cb41-16"><a href="#cb41-16"></a>        pair_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">i=</span>i,<span class="at">j=</span>j,<span class="at">bday=</span>i_bday)</span>
+<span id="cb41-17"><a href="#cb41-17"></a>        <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(is_grouped)) {</span>
+<span id="cb41-18"><a href="#cb41-18"></a>          i_room <span class="ot">&lt;-</span> i_data<span class="sc">$</span>room_num</span>
+<span id="cb41-19"><a href="#cb41-19"></a>          pair_data[<span class="st">'room'</span>] <span class="ot">&lt;-</span> i_room</span>
+<span id="cb41-20"><a href="#cb41-20"></a>        }</span>
+<span id="cb41-21"><a href="#cb41-21"></a>        bday_pairs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(bday_pairs, pair_data)</span>
+<span id="cb41-22"><a href="#cb41-22"></a>      }</span>
+<span id="cb41-23"><a href="#cb41-23"></a>    }</span>
+<span id="cb41-24"><a href="#cb41-24"></a>  }</span>
+<span id="cb41-25"><a href="#cb41-25"></a>  <span class="cf">if</span> (return_bool) {</span>
+<span id="cb41-26"><a href="#cb41-26"></a>    <span class="fu">return</span>(<span class="dv">0</span>)</span>
+<span id="cb41-27"><a href="#cb41-27"></a>  }</span>
+<span id="cb41-28"><a href="#cb41-28"></a>  <span class="cf">if</span> (return_num) {</span>
+<span id="cb41-29"><a href="#cb41-29"></a>    <span class="fu">return</span>(<span class="fu">nrow</span>(bday_pairs))</span>
+<span id="cb41-30"><a href="#cb41-30"></a>  }</span>
+<span id="cb41-31"><a href="#cb41-31"></a>  <span class="fu">return</span>(bday_pairs)</span>
+<span id="cb41-32"><a href="#cb41-32"></a>}</span>
+<span id="cb41-33"><a href="#cb41-33"></a><span class="co">#get_shared_bdays(ppl_df)</span></span>
+<span id="cb41-34"><a href="#cb41-34"></a><span class="fu">get_shared_bdays</span>(ppl_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 0 × 0</code></pre>
+<pre><code># A tibble: 1 × 3
+      i     j  bday
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1    15    23    98</code></pre>
 </div>
 </div>
 </section>
@@ -1519,99 +1533,101 @@ World #729 / 1000 (5000 people):
 <div class="columns">
 <div class="column" style="width:48%;">
 <div class="cell" data-hash="index_cache/revealjs/bday-mc-multiple-rooms_0c3cd218ff29b7cfee25e19beba8f3b6">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Get tibbles for each room</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb26-3"><a href="#cb26-3"></a>gen_bday_rooms <span class="ot">&lt;-</span> <span class="cf">function</span>(num_rooms) {</span>
-<span id="cb26-4"><a href="#cb26-4"></a>  rooms_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="cf">for</span> (r <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, num_rooms)) {</span>
-<span id="cb26-6"><a href="#cb26-6"></a>      cur_room <span class="ot">&lt;-</span> <span class="fu">gen_bday_room</span>(r)</span>
-<span id="cb26-7"><a href="#cb26-7"></a>      rooms_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(rooms_df, cur_room)</span>
-<span id="cb26-8"><a href="#cb26-8"></a>  }</span>
-<span id="cb26-9"><a href="#cb26-9"></a>  <span class="fu">return</span>(rooms_df)</span>
-<span id="cb26-10"><a href="#cb26-10"></a>}</span>
-<span id="cb26-11"><a href="#cb26-11"></a>num_rooms <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb26-12"><a href="#cb26-12"></a>rooms_df <span class="ot">&lt;-</span> <span class="fu">gen_bday_rooms</span>(num_rooms)</span>
-<span id="cb26-13"><a href="#cb26-13"></a>rooms_df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span> <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">get_shared_bdays</span>(.x, <span class="at">is_grouped=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Get tibbles for each room</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb43-3"><a href="#cb43-3"></a>gen_bday_rooms <span class="ot">&lt;-</span> <span class="cf">function</span>(num_rooms) {</span>
+<span id="cb43-4"><a href="#cb43-4"></a>  rooms_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>()</span>
+<span id="cb43-5"><a href="#cb43-5"></a>  <span class="cf">for</span> (r <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, num_rooms)) {</span>
+<span id="cb43-6"><a href="#cb43-6"></a>      cur_room <span class="ot">&lt;-</span> <span class="fu">gen_bday_room</span>(r)</span>
+<span id="cb43-7"><a href="#cb43-7"></a>      rooms_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(rooms_df, cur_room)</span>
+<span id="cb43-8"><a href="#cb43-8"></a>  }</span>
+<span id="cb43-9"><a href="#cb43-9"></a>  <span class="fu">return</span>(rooms_df)</span>
+<span id="cb43-10"><a href="#cb43-10"></a>}</span>
+<span id="cb43-11"><a href="#cb43-11"></a>num_rooms <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb43-12"><a href="#cb43-12"></a>rooms_df <span class="ot">&lt;-</span> <span class="fu">gen_bday_rooms</span>(num_rooms)</span>
+<span id="cb43-13"><a href="#cb43-13"></a>rooms_df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span> <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">get_shared_bdays</span>(.x, <span class="at">is_grouped=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-# A tibble: 3 × 3
+# A tibble: 1 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     3     6   116
-2     7    12   287
-3    19    30   267
+1     2     8    60
 
 [[2]]
 # A tibble: 0 × 0
 
 [[3]]
-# A tibble: 1 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     7    23   138
+# A tibble: 0 × 0
 
 [[4]]
-# A tibble: 1 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     6    18    72
-
-[[5]]
 # A tibble: 2 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     8    10   255
-2    16    30    66
+1     2    12   152
+2     5    24   119
+
+[[5]]
+# A tibble: 1 × 3
+      i     j  bday
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1    23    30     3
 
 [[6]]
 # A tibble: 0 × 0
 
 [[7]]
-# A tibble: 1 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1    11    23   333
-
-[[8]]
-# A tibble: 1 × 3
-      i     j  bday
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     2    17   328
-
-[[9]]
 # A tibble: 2 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     2     4   283
-2    13    21    28
+1     1    16   182
+2     4    29   275
+
+[[8]]
+# A tibble: 0 × 0
+
+[[9]]
+# A tibble: 1 × 3
+      i     j  bday
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1    12    14   242
 
 [[10]]
 # A tibble: 2 × 3
       i     j  bday
   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-1     8    23   135
-2    11    12   204</code></pre>
+1    18    21   205
+2    19    28   270</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:48%;">
 <p>Number of shared birthdays per room:</p>
 <div class="cell" data-hash="index_cache/revealjs/get-shared-bdays_1bf0c73c6aa6705abb9817653c8bebf9">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Now just get the # shared bdays</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>shared_per_room <span class="ot">&lt;-</span> rooms_df <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a>    <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a>    <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">get_shared_bdays</span>(.x, <span class="at">is_grouped =</span> <span class="cn">TRUE</span>, <span class="at">return_num=</span><span class="cn">TRUE</span>))</span>
-<span id="cb28-5"><a href="#cb28-5"></a>shared_per_room <span class="ot">&lt;-</span> <span class="fu">unlist</span>(shared_per_room)</span>
-<span id="cb28-6"><a href="#cb28-6"></a>shared_per_room</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Now just get the # shared bdays</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>shared_per_room <span class="ot">&lt;-</span> rooms_df <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>    <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4"></a>    <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">get_shared_bdays</span>(.x, <span class="at">is_grouped =</span> <span class="cn">TRUE</span>, <span class="at">return_num=</span><span class="cn">TRUE</span>))</span>
+<span id="cb45-5"><a href="#cb45-5"></a>shared_per_room <span class="ot">&lt;-</span> <span class="fu">unlist</span>(shared_per_room)</span>
+<span id="cb45-6"><a href="#cb45-6"></a>shared_per_room</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 0 1 1 2 0 1 1 2 2</code></pre>
+<pre><code> [1] 1 0 0 2 1 0 2 0 1 2</code></pre>
 </div>
 </div>
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared})\)</span></li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/shared-bday-rooms-pct_36a4dd9dda7d700da74543ebeb0b3e35">
+<div class="cell" data-hash="index_cache/revealjs/shared-bday-rooms-pct_dd6014dca15624ff3c3cef7cc267627f">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">sum</span>(shared_per_room <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">/</span> num_rooms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8</code></pre>
+<pre><code>[1] 0.6</code></pre>
 </div>
 </div>
 </div>
@@ -1622,19 +1638,34 @@ World #729 / 1000 (5000 people):
 <ul>
 <li>How about <strong>A THOUSAND ROOMS</strong>?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms_8901b25388ab7f737b2535b611c4da15">
+<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms_8b809d3450c9e245b211bf0b30e2ccc5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>num_rooms_many <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>many_rooms_df <span class="ot">&lt;-</span> <span class="fu">gen_bday_rooms</span>(num_rooms_many)</span>
+<span id="cb49-3"><a href="#cb49-3"></a>anyshared_per_room <span class="ot">&lt;-</span> many_rooms_df <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4"></a>    <span class="fu">group_by</span>(room_num) <span class="sc">%&gt;%</span></span>
+<span id="cb49-5"><a href="#cb49-5"></a>    <span class="fu">group_map</span>(<span class="sc">~</span> <span class="fu">get_shared_bdays</span>(.x, <span class="at">is_grouped =</span> <span class="cn">TRUE</span>, <span class="at">return_bool =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb49-6"><a href="#cb49-6"></a>anyshared_per_room <span class="ot">&lt;-</span> <span class="fu">unlist</span>(anyshared_per_room)</span>
+<span id="cb49-7"><a href="#cb49-7"></a>anyshared_per_room</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 0 0 1 1 1 1 1 0 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 1 1
- [38] 1 0 1 0 1 1 1 0 0 1 0 0 0 1 1 1 0 1 1 1 1 0 1 1 1 1 0 1 1 0 1 1 1 1 1 1 1
- [75] 1 0 1 0 1 0 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 0 1 0 1</code></pre>
+<pre><code>  [1] 1 1 0 0 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1 0 0 0 0 0 0 0 1 1 1 1
+ [38] 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 1 0 0 1 0 1 0 1 0 0 0 0 1 0 1 1 1
+ [75] 1 1 1 0 1 0 0 0 1 1 1 1 1 0 1 0 1 0 1 0 1 1 0 1 0 0</code></pre>
 </div>
 </div>
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared bday})\)</span>?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms-prob_2a1844d7799e057e1766dbd0bbf284f8">
+<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms-prob_79b1d25bb4a247902423f63544640b85">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># And now the probability estimate</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="fu">sum</span>(anyshared_per_room <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">/</span> num_rooms_many</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.72</code></pre>
+<pre><code>[1] 0.64</code></pre>
 </div>
 </div>
 <ul>
@@ -1642,16 +1673,33 @@ World #729 / 1000 (5000 people):
 <li>In our case: <span class="math inline">\(1 - \frac{366!}{366^{30}(366-30)!} = 1 - \frac{366!}{366^{30}336!} = 1 - \frac{\prod_{i=337}^{366}i}{366^{30}}\)</span></li>
 <li><code>R</code> can juust barely handle these numbers:</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-exact-soln_3cac3dd692f327afddc4a41fcaf08fd9">
+<div class="cell" data-hash="index_cache/revealjs/bday-exact-soln_8a2f229c99943926c9e79de820723099">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>(exact_solution <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="fu">prod</span>(<span class="fu">seq</span>(<span class="dv">337</span>,<span class="dv">366</span>))) <span class="sc">/</span> (<span class="dv">366</span><span class="sc">^</span><span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7053034</code></pre>
 </div>
 </div>
 </section>
-<section id="wrapping-up" class="slide level2 smaller">
+<section id="wrapping-up" class="slide level2 smaller nostretch">
 <h2>Wrapping Up</h2>
-
-<img data-src="index_files/figure-revealjs/bday-solns-plot-1.png" width="960" class="r-stretch"></section>
+<style>
+#bday-solns-plot {
+  width: 50% !important;
+}
+</style>
+<center>
+<div class="quarto-embed-nb-cell" data-notebook="_bday-solutions-plot.ipynb">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-fig-width="8" data-fig-height="6" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/bday-solns-plot-output-1.png" id="bday-solns-plot"></p>
+</div>
+</div>
+</div>
+</center>
+</section>
 <section id="final-note-functions-of-random-variables" class="slide level2">
 <h2>Final Note: Functions of Random Variables</h2>
 <ul>
@@ -1675,7 +1723,7 @@ World #729 / 1000 (5000 people):
 <p><a href="https://jfh.georgetown.domains/dsan5100/share-point/labs/lab-2/lab-2-assignment.html">Lab 2 Assignment</a></p>
 
 <div class="footer footer-default">
-
+<p>DSAN 5100-03 Week 03: Conditional Probability</p>
 </div>
 </section></section>
     </div>

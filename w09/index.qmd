@@ -5,7 +5,6 @@ date-format: full
 lecnum: 9
 categories:
   - "Class Sessions"
-bibliography: "../_DSAN5100.bib"
 format:
   revealjs:
     include-in-header:
@@ -14,11 +13,9 @@ format:
     output-file: slides.html
   html:
     output-file: index.html
-    html-math-method: mathjax
-    embed-resources: true
 metadata-files: 
-  - "../_slide-meta.yml"
-  - "../_notes-meta.yml"
+  - "../_meta-slides.yml"
+  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -38,7 +35,7 @@ metadata-files:
 source("../_globals.r")
 ```
 
-{{< include ../_tex-globals.qmd >}}
+{{< include ../_globals-tex.qmd >}}
 
 :::
 

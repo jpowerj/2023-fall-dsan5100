@@ -9,7 +9,7 @@ format:
 categories:
   - "Extra Writeups"
 metadata-files: 
-  - ../../_doc-meta.yml
+  - ../../_meta-docs.yml
 ---
 
 ::: {.hidden}

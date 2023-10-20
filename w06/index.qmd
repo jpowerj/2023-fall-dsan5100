@@ -1,26 +1,19 @@
 ---
 title: "Week 6: Continuous Distributions, Moments, Covariance"
-date: "Thursday, September 28, 2023"
-date-format: full
-#date: last-modified
-#date-format: "dddd MMM D, YYYY, HH:mm:ss"
+date: 2023-09-28
 lecnum: 6
 categories:
   - "Class Sessions"
-bibliography: "../_DSAN5100.bib"
 format:
   revealjs:
     cache: false
     footer: "DSAN 5100-03 Week 6: Distributions, Moments, Covariance"
-    html-math-method: mathjax
-    slide-number: true
     output-file: slides.html
-    theme: [default, "../_jjslides.scss"]
   html:
     output-file: index.html
-    html-math-method: mathjax
 metadata-files: 
-  - "../_slide-meta.yml"
+  - "../_meta-slides.yml"
+  - "../_meta-notes.yml"
 ---
 
 
@@ -41,7 +34,7 @@ metadata-files:
 source("../_globals.r")
 ```
 
-{{< include ../_tex-globals.qmd >}}
+{{< include ../_globals-tex.qmd >}}
 
 :::
 

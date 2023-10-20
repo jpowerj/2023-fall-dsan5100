@@ -3,7 +3,7 @@ title: "DSAN 5100 Math Cheatsheet"
 date: last-modified
 format: html
 metadata-files: 
-  - "./_doc-meta.yml"
+  - "./_meta-docs.yml"
 ---
 
 ## Math Preliminaries

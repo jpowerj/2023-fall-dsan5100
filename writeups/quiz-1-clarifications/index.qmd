@@ -1,13 +1,13 @@
 ---
 title: "Quiz 1 Clarifications"
-author: "Jeff Jacobs"
-institute: "<a href='mailto: jj1088@georgetown.edu'>jj1088@georgetown.edu</a>"
 date: last-modified
 format:
   html:
     cache: false
 categories:
   - "Clarifications"
+metadata-files: 
+  - "../../_meta-docs.yml"
 ---
 
 ::: {.callout-tip title="Quiz 1 Links"}

@@ -4,7 +4,6 @@ subtitle: "*DSAN 5100: Probabilistic Modeling and Statistical Computing*<br>Sect
 author: "Jeff Jacobs"
 institute: "<a href=\"mailto:jj1088@georgetown.edu\" target=\"_blank\">`jj1088@georgetown.edu`</a>"
 date: 2023-09-21
-date-format: full
 #date: last-modified
 #date-format: "dddd MMM D, YYYY, HH:mm:ss"
 lecnum: 5
@@ -13,16 +12,15 @@ categories:
 format:
   revealjs:
     html-math-method: mathjax
-    slide-number: true
     #cache: true
     output-file: slides.html
-    theme: [default, "../_jjslides.scss"]
+    footer: "DSAN 5100-03 Week 5: Continuous Distributions"
   html:
     cache: true
     output-file: index.html
-    html-math-method: mathjax
 metadata-files: 
-  - "../_slide-meta.yml"
+  - "../_meta-slides.yml"
+  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -37,7 +35,7 @@ metadata-files:
 
 ::: {.hidden}
 
-{{< include ../_lecture-globals.qmd >}}
+{{< include ../_globals-lecture.qmd >}}
 
 :::
 

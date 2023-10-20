@@ -7,7 +7,7 @@ format:
   html:
     df-print: kable
 metadata-files: 
-  - "../../_doc-meta.yml"
+  - "../../_meta-docs.yml"
 ---
 
 ::: {.callout-note title="Setting Random Seed"}

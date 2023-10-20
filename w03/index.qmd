@@ -14,23 +14,17 @@ execute:
   enabled: true
 format:
   revealjs:
-    html-math-method: mathjax
-    slide-number: true
+    footer: "DSAN 5100-03 Week 03: Conditional Probability"
     cache: true
     output-file: slides.html
-    simplemenu:
-      flat: true
-      barhtml:
-        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
-      scale: 0.5
-    theme: [default, "../_jjslides.scss"]
-    revealjs-plugins:
-      - simplemenu
-    include-in-header: {"text":"<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\"><script src=\"https://d3js.org/d3.v4.min.js\"></script><script src=\"../assets/_venn.js\"></script>"}
+    include-in-header:
+      text: "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"
   html:
-    cache: true
+    cahce: true
     output-file: index.html
-    html-math-method: mathjax
+metadata-files: 
+  - "../_meta-slides.yml"
+  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -85,32 +79,8 @@ $$
 
 ## Venn Diagrams: Sets {.smaller}
 
-```{=html}
-<style>
-.venntooltip {
-  position: absolute;
-  text-align: center;
-  width: 128px;
-  height: 16px;
-  background: #333;
-  color: #ddd;
-  padding: 2px;
-  border: 0px;
-  border-radius: 8px;
-  opacity: 0;
-  z-index: 999 !important;
-}
-</style>
-```
-
 ::: {layout-ncol=2}
 ::: {#fig-venn-mutex}
-
-```{=html}
-<center>
-<div id="vennMutex"></div>
-</center>
-```
 
 $$
 \begin{align*}
@@ -123,12 +93,6 @@ Mutually-exclusive (disjoint) sets
 :::
 ::: {#fig-venn}
 
-```{=html}
-<center>
-<div id="venn"></div>
-</center>
-```
-
 $$
 \begin{align*}
 &A = \{1, 2, 3\}, \; B = \{3, 4, 5\} \\
@@ -139,107 +103,6 @@ $$
 Non-mutually-exclusive sets
 :::
 :::
-
-```{=html}
-<script>
-var setsMutex = [
-  {sets: ['A'], size: 3},
-  {sets: ['B'], size: 3},
-  {sets: ['A','B'], size: 0}
-];
-var sets = [
-  {sets: ['A'], size: 3},
-  {sets: ['B'], size: 3},
-  {sets: ['A','B'], size: 1}
-];
-
-var chart = venn.VennDiagram().width(500);
-var chartMutex = venn.VennDiagram().width(500);
-// draw venn diagram
-var div = d3.select("#venn");
-var divMutex = d3.select("#vennMutex");
-div.datum(sets).call(chart);
-divMutex.datum(setsMutex).call(chartMutex);
-
-// add a tooltip
-var tooltip = d3.select("body").append("div")
-    .attr("class", "venntooltip");
-
-div.selectAll("path")
-    .style("stroke-opacity", 0)
-    .style("stroke", "#fff")
-    .style("stroke-width", 3);
-divMutex.selectAll("path")
-    .style("stroke-opacity", 0)
-    .style("stroke", "#fff")
-    .style("stroke-width", 3);
-
-// add listeners to all the groups to display tooltip on mouseover
-div.selectAll("g")
-    .on("mouseover", function(d, i) {
-        // sort all the areas relative to the current item
-        venn.sortAreas(div, d);
-
-        // Display a tooltip with the current size
-        tooltip.transition().duration(400).style("opacity", .9);
-        //console.log(d.size + " users");
-        tooltip.text(d.size + " elements");
-        
-        // highlight the current path
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 3)
-            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
-            .style("stroke-opacity", 1);
-    })
-
-    .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-    })
-    
-    .on("mouseout", function(d, i) {
-        tooltip.transition().duration(400).style("opacity", 0);
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 0)
-            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
-            .style("stroke-opacity", 0);
-    });
-
-
-divMutex.selectAll("g")
-    .on("mouseover", function(d, i) {
-        // sort all the areas relative to the current item
-        venn.sortAreas(div, d);
-
-        // Display a tooltip with the current size
-        tooltip.transition().duration(400).style("opacity", .9);
-        tooltip.text(d.size + " elements");
-        
-        // highlight the current path
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 3)
-            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
-            .style("stroke-opacity", 1);
-    })
-
-    .on("mousemove", function() {
-        tooltip.style("left", (d3.event.pageX) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
-    })
-    
-    .on("mouseout", function(d, i) {
-        tooltip.transition().duration(400).style("opacity", 0);
-        var selection = d3.select(this).transition("tooltip").duration(400);
-        selection.select("path")
-            .style("stroke-width", 0)
-            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
-            .style("stroke-opacity", 0);
-    });
-</script>
-```
 
 ## Venn Diagrams: Events (Dice) {.smaller}
 
@@ -598,7 +461,7 @@ ppl_df <- tibble(id=seq(1,num_people))
 # Whether they have the disease or not
 has_disease <- rbinom(num_people, 1, p_disease)
 ppl_df <- ppl_df %>% mutate(has_disease=has_disease)
-disp(ppl_df %>% head())
+ppl_df |> head()
 ```
 
 ## Binary Variable Trick {.smaller .crunch-code}
@@ -619,7 +482,7 @@ binary_df <- tibble(
   id=c(1,2,3),
   x=c(0,1,0)
 )
-disp(binary_df)
+binary_df
 ```
 
 :::
@@ -704,7 +567,8 @@ writeLines(paste0(num_positive," positive tests / ",num_people," total = ",p_pos
 
 ```{r}
 #| label: df-test-result-var
-disp(ppl_df %>% head(50), obs_per_page = 3)
+#disp(ppl_df %>% head(50), obs_per_page = 3)
+ppl_df |> head()
 ```
 
 ## Zooming In On Positive Tests {.smaller}
@@ -715,7 +579,8 @@ disp(ppl_df %>% head(50), obs_per_page = 3)
 ```{r}
 #| label: filter-positives-only
 pos_ppl <- ppl_df %>% filter(test_result == 1)
-disp(pos_ppl, obs_per_page = 10)
+#disp(pos_ppl, obs_per_page = 10)
+pos_ppl |> head()
 ```
 
 :::
@@ -737,7 +602,8 @@ disp(pos_ppl, obs_per_page = 10)
 #| label: disease-only
 #| echo: true
 #| code-fold: show
-disp(ppl_df[ppl_df$has_disease == 1,])
+#disp(ppl_df[ppl_df$has_disease == 1,])
+ppl_df[ppl_df$has_disease == 1,]
 ```
 
 Is this always going to be the case?
@@ -802,7 +668,8 @@ simulate_disease <- function(num_people, p_disease, verbose = TRUE, return_df = 
     ))
   }
 }
-disp(simulate_disease(5000, 1/10000))
+#disp(simulate_disease(5000, 1/10000))
+simulate_disease(5000, 1/10000)
 ```
 
 :::
@@ -810,7 +677,8 @@ disp(simulate_disease(5000, 1/10000))
 
 ```{r}
 #| label: sim-disease-again
-disp(simulate_disease(5000, 1/10000))
+#disp(simulate_disease(5000, 1/10000))
+simulate_disease(5000, 1/10000)
 ```
 
 :::
@@ -822,6 +690,7 @@ disp(simulate_disease(5000, 1/10000))
 ::: {.column width="50%"}
 
 ```{r}
+#| label: worse-case-sim
 for (i in seq(1,1000)) {
   sim_result <- simulate_disease(5000, 1/10000, verbose = FALSE, return_all_detected = FALSE, return_df = FALSE, return_info = TRUE)
   if (!sim_result$all_detected) {
@@ -849,6 +718,7 @@ $$
 Computers:
 
 ```{r}
+#| label: how-unlikely-sim
 result_df <- simulate_disease(1000000, 1/10000, verbose = FALSE, return_full_df = TRUE)
 false_negatives <- result_df[result_df$has_disease == 1 & result_df$test_result == 0,]
 num_false_negatives <- nrow(false_negatives)
@@ -930,7 +800,8 @@ birthdays <- sample(1:num_days, num_people,replace = T)
   return(ppl_df)
 }
 ppl_df <- gen_bday_room(1)
-disp(ppl_df %>% head()) #, obs_per_page = 3)
+#disp(ppl_df %>% head())
+ppl_df |> head()
 ```
 
 :::
@@ -1059,67 +930,21 @@ sum(anyshared_per_room > 0) / num_rooms_many
 (exact_solution <- 1 - (prod(seq(337,366))) / (366^30))
 ```
 
-## Wrapping Up {.smaller}
+## Wrapping Up {.smaller .nostretch}
 
-```{r}
-#| label: bday-solns-plot
-#| cache: true
-library(ggplot2)
-options(ggplot2.discrete.colour = cbPalette)
-global_theme <- ggplot2::theme_classic() + ggplot2::theme(
-    plot.title = element_text(hjust = 0.5, size = 18),
-    axis.title = element_text(size = 16),
-    axis.text = element_text(size = 14),
-    legend.title = element_text(size = 16, hjust = 0.5),
-    legend.text = element_text(size = 14),
-    legend.box.background = element_rect(colour = "black")
-)
-knitr::opts_chunk$set(fig.align = "center")
-g_pointsize <- 6
-# Bday problem
-trials_per_roomsize <- 3
-bday_est_lbounds <- c()
-bday_est_means <- c()
-bday_est_ubounds <- c()
-sample_sizes <- c()
-for (num_rooms_many in c(10,50,100,500, 1000)) {
-  cur_size_ests <- c()
-  for (trial_num in seq(1,trials_per_roomsize)) {
-    many_rooms_df <- gen_bday_rooms(num_rooms_many)
-    anyshared_per_room <- many_rooms_df %>%
-        group_by(room_num) %>%
-        group_map(~ get_shared_bdays(.x, is_grouped = TRUE, return_bool = TRUE))
-    anyshared_per_room <- unlist(anyshared_per_room)
-    cur_est <- sum(anyshared_per_room > 0) / num_rooms_many
-    cur_size_ests <- c(cur_size_ests, cur_est)
-  }
-  bday_est_lbounds <- c(bday_est_lbounds, min(cur_size_ests))
-  bday_est_ubounds <- c(bday_est_ubounds, max(cur_size_ests))
-  bday_est_means <- c(bday_est_means, mean(cur_size_ests))
-  sample_sizes <- c(sample_sizes, num_rooms_many)
+```{=html}
+<style>
+#bday-solns-plot {
+  width: 50% !important;
 }
-result_df <- tibble(n=sample_sizes,est=bday_est_means, lbound=bday_est_lbounds, ubound=bday_est_ubounds)
-base_plot <- ggplot(result_df, aes(x=n, y=est)) +
-  geom_point(aes(color="black")) +
-  geom_line(color="black") +
-  geom_ribbon(aes(ymin = lbound, ymax = ubound, fill = cbPalette[1]), alpha = 0.3) +
-      geom_hline(aes(yintercept = exact_solution, linetype = "dashed"), color = "purple") +
-      scale_color_manual("", values = c("black", "purple"), labels = c("Sample Mean X", "True Mean mu")) +
-      scale_linetype_manual("", values = "dashed", labels = "True Mean mu") +
-      scale_fill_manual("", values = cbPalette[1], labels = "95% CI") +
-      global_theme +
-      theme(
-          legend.title = element_blank(),
-          legend.spacing.y = unit(0, "mm")
-      ) +
-      labs(
-          title = "Monte Carlo Estimates of Birthday Problem Solution",
-          x = "n (Sample Size)",
-          y = "Estimate"
-      )
-log_plot <- base_plot + scale_x_log10(breaks=c(10,100,1000,10000,100000), labels=c("10","100","1000","10000","100000"))
-log_plot
+</style>
 ```
+
+<center>
+
+{{< embed _bday-solutions-plot.ipynb#bday-solns-plot width="100%" height="75%" >}}
+
+</center>
 
 ## Final Note: Functions of Random Variables
 

@@ -1,0 +1,10 @@
+format:
+  html:
+    html-math-method: mathjax
+    number-sections: false
+    code-fold: true
+    footnotes-hover: true
+    scrollable: true
+    tbl-cap-location: bottom
+    embed-resources: true
+    theme: [default, "../_style_slides.scss"]
