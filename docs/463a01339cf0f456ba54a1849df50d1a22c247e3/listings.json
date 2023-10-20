@@ -6,8 +6,8 @@
   {
     "listing": "/writeups/index.html",
     "items": [
-      "/writeups/quiz-1-clarifications/index.html",
       "/writeups/order-of-integration/index.html",
+      "/writeups/quiz-1-clarifications/index.html",
       "/writeups/computing-probabilities/index.html",
       "/writeups/sampling-from-df/index.html",
       "/writeups/sample-space-tibbles/index.html",
