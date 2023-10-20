@@ -13,9 +13,9 @@ format:
     output-file: slides.html
   html:
     output-file: index.html
-metadata-files: 
-  - "../_meta-slides.yml"
+metadata-files:
   - "../_meta-notes.yml"
+  - "../_meta-slides.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}
