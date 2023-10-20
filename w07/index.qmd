@@ -12,9 +12,9 @@ format:
     output-file: slides.html
   html:
     output-file: index.html
+    code-fold: true
 metadata-files: 
   - "../_meta-slides.yml"
-  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}

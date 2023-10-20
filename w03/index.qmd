@@ -15,16 +15,15 @@ execute:
 format:
   revealjs:
     footer: "DSAN 5100-03 Week 03: Conditional Probability"
-    cache: true
+    cache: false
     output-file: slides.html
     include-in-header:
       text: "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css\">"
   html:
-    cahce: true
+    cache: false
     output-file: index.html
 metadata-files: 
   - "../_meta-slides.yml"
-  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}

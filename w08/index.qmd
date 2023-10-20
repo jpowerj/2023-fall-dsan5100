@@ -19,7 +19,6 @@ format:
     output-file: index.html
 metadata-files: 
   - "../_meta-slides.yml"
-  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}

@@ -3,7 +3,7 @@ title: "Quiz 1 Clarifications"
 date: last-modified
 format:
   html:
-    cache: false
+    df-print: kable
 categories:
   - "Clarifications"
 metadata-files: 

@@ -422,7 +422,7 @@ Jeff Jacobs
 <section id="schedule" class="title-slide slide level1 smaller smaller-title center" data-name="Schedule">
 <h1>Schedule</h1>
 <div class="hidden">
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-1_3000a0cb2305ca1353c5d756a73c4ff3">
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -986,7 +986,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 &amp;= \frac{(0.99)\left(\frac{1}{10000}\right)}{(0.99)\left( \frac{1}{10000} \right) + (0.01)\left( \frac{9999}{10000} \right)}
 \end{align*}
 \]</span></p>
-<div class="cell" data-hash="index_cache/revealjs/prob-sick-bayes_04ea9db2fe2927e38f97fc249c11d8ee">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p_sick <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">10000</span></span>
@@ -1014,7 +1014,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>Let’s generate a dataset of <strong>5,000</strong> people, using <span class="math inline">\(\Pr(\textsf{Disease}) = \frac{1}{10000}\)</span></li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bayes-sick-mc_356a6180b0f03247dd6775914a97b60a">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(tibble)</span>
@@ -1055,7 +1055,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </ul>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-hash="index_cache/revealjs/fake-binary-data_bdf79372edb313bd1357f31485767405">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>binary_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
@@ -1075,7 +1075,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </div>
 </div><div class="column" style="width:60%;">
 <p>Taking the <strong>sum</strong> tells us: <strong>one</strong> row where <code>x == 1</code>:</p>
-<div class="cell" data-hash="index_cache/revealjs/binary-df-sum_7de2bfd8fb2f7106fd2aa18df0a31abf">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">sum</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1085,7 +1085,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </div>
 </div>
 <p>Taking the <strong>mean</strong> tells us: <strong>1/3</strong> of rows have <code>x == 1</code>:</p>
-<div class="cell" data-hash="index_cache/revealjs/binary-df-mean_52e8f0c6d35c3a92d9c66ee6f497a696">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mean</span>(binary_df<span class="sc">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1102,7 +1102,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>If we want the <strong>number</strong> of people who have the disease:</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/compute-disease-count_2e7869f951363ba988037cbc913e7a32">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Compute the *number* of people who have the disease</span></span>
@@ -1115,7 +1115,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>If we want the <strong>proportion</strong> of people who have the disease:</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/compute-disease-rate_642cbb2a15e5414e8d5f3f8d709e6735">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Compute the *proportion* of people who have the disease</span></span>
@@ -1128,7 +1128,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>(And if you dislike scientific notation like I do…)</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/compute-disease-rate-decimal_8dcd1de3114d791266436300557dd0a9">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">format</span>(<span class="fu">mean</span>(ppl_df<span class="sc">$</span>has_disease), <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1153,7 +1153,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 </section>
 <section id="data-generating-process-test-results" class="slide level2 smaller">
 <h2>Data-Generating Process: Test Results</h2>
-<div class="cell" data-hash="index_cache/revealjs/count-positive-tests_f6c582c6b7dd7f144e94c8992515753d">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -1174,7 +1174,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <pre><code>113 positive tests / 10000 total = 0.0113</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/df-test-result-var_48035c136781f83fdab6facfdce4fb90">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#disp(ppl_df %&gt;% head(50), obs_per_page = 3)</span></span>
@@ -1197,7 +1197,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <h2>Zooming In On Positive Tests</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/filter-positives-only_c0b4e49f784e0ec186e313bf4af342ba">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>pos_ppl <span class="ot">&lt;-</span> ppl_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(test_result <span class="sc">==</span> <span class="dv">1</span>)</span>
@@ -1234,7 +1234,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <ul>
 <li>What if we look at only those who actually have the disease? Maybe the cost of 111 people panicking is worth it if we correctly catch those who do have it?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/disease-only_74832c4aa0eee31d67599d24cfa3f0fb">
+<div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">#disp(ppl_df[ppl_df$has_disease == 1,])</span></span>
@@ -1250,7 +1250,7 @@ P(W = \textsf{Sun} \mid A = \textsf{Go}) &amp;= \frac{\overbrace{P(A = \textsf{G
 <p>Is this always going to be the case?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/repeating-disease-simulation_391b90f15e1ad68f5eecd43442fb821c">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code>Num with disease: 0
 Proportion with disease: 0
@@ -1262,7 +1262,7 @@ Number of positive tests: 69</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/sim-disease-again_ec9a81e6a1f7e1c15812c9dae327056f">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">#disp(simulate_disease(5000, 1/10000))</span></span>
@@ -1285,7 +1285,7 @@ Number of positive tests: 42</code></pre>
 <h2>Worst-Case Worlds</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/worse-case-sim_4ecacbc5d439bacb3e22b73e5070eab1">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">1000</span>)) {</span>
@@ -1365,7 +1365,7 @@ World #878 / 1000 (5000 people):
 \end{align*}
 \]</span></p>
 <p>Computers:</p>
-<div class="cell" data-hash="index_cache/revealjs/how-unlikely-sim_09a81abcb06a48bc74f33ef63b97d8a5">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>result_df <span class="ot">&lt;-</span> <span class="fu">simulate_disease</span>(<span class="dv">1000000</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">10000</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">return_full_df =</span> <span class="cn">TRUE</span>)</span>
@@ -1446,7 +1446,7 @@ World #878 / 1000 (5000 people):
 <li>Analytic solution is fun, but requires some thought… Monte Carlo it!</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-hash="index_cache/revealjs/monty-hall-mc_28b05b3f4dc2bd846cc1c9cfd8b1de16">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>gen_bday_room <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">room_num=</span><span class="cn">NULL</span>) {</span>
@@ -1481,7 +1481,7 @@ World #878 / 1000 (5000 people):
 </section>
 <section id="section-5" class="slide level2 unnumbered">
 <h2></h2>
-<div class="cell" data-hash="index_cache/revealjs/shared-bdays-fn_e1ca91f6aa9332c5c39ab588a1e5d225">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Inefficient version (return_num=FALSE) is for: if you want tibbles of *all* shared bdays for each room</span></span>
@@ -1532,7 +1532,7 @@ World #878 / 1000 (5000 people):
 <p>Let’s try more rooms…</p>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="cell" data-hash="index_cache/revealjs/bday-mc-multiple-rooms_0c3cd218ff29b7cfee25e19beba8f3b6">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Get tibbles for each room</span></span>
@@ -1604,7 +1604,7 @@ World #878 / 1000 (5000 people):
 </div>
 </div><div class="column" style="width:48%;">
 <p>Number of shared birthdays per room:</p>
-<div class="cell" data-hash="index_cache/revealjs/get-shared-bdays_1bf0c73c6aa6705abb9817653c8bebf9">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Now just get the # shared bdays</span></span>
@@ -1621,7 +1621,7 @@ World #878 / 1000 (5000 people):
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared})\)</span></li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/shared-bday-rooms-pct_dd6014dca15624ff3c3cef7cc267627f">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">sum</span>(shared_per_room <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">/</span> num_rooms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1638,7 +1638,7 @@ World #878 / 1000 (5000 people):
 <ul>
 <li>How about <strong>A THOUSAND ROOMS</strong>?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms_8b809d3450c9e245b211bf0b30e2ccc5">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>num_rooms_many <span class="ot">&lt;-</span> <span class="dv">100</span></span>
@@ -1658,7 +1658,7 @@ World #878 / 1000 (5000 people):
 <ul>
 <li><span class="math inline">\(\widehat{\Pr}(\text{shared bday})\)</span>?</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-1k-rooms-prob_79b1d25bb4a247902423f63544640b85">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># And now the probability estimate</span></span>
@@ -1673,7 +1673,7 @@ World #878 / 1000 (5000 people):
 <li>In our case: <span class="math inline">\(1 - \frac{366!}{366^{30}(366-30)!} = 1 - \frac{366!}{366^{30}336!} = 1 - \frac{\prod_{i=337}^{366}i}{366^{30}}\)</span></li>
 <li><code>R</code> can juust barely handle these numbers:</li>
 </ul>
-<div class="cell" data-hash="index_cache/revealjs/bday-exact-soln_8a2f229c99943926c9e79de820723099">
+<div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>(exact_solution <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="fu">prod</span>(<span class="fu">seq</span>(<span class="dv">337</span>,<span class="dv">366</span>))) <span class="sc">/</span> (<span class="dv">366</span><span class="sc">^</span><span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

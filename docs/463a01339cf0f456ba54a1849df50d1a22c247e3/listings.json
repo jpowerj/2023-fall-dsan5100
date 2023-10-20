@@ -6,11 +6,11 @@
   {
     "listing": "/writeups/index.html",
     "items": [
+      "/writeups/quiz-1-clarifications/index.html",
+      "/writeups/order-of-integration/index.html",
       "/writeups/computing-probabilities/index.html",
       "/writeups/sampling-from-df/index.html",
       "/writeups/sample-space-tibbles/index.html",
-      "/writeups/quiz-1-clarifications/index.html",
-      "/writeups/order-of-integration/index.html",
       "/writeups/marginalization/index.html",
       "/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.html",
       "/writeups/deriving-pdf/index.html",

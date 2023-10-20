@@ -16,11 +16,10 @@ format:
     output-file: slides.html
     footer: "DSAN 5100-03 Week 5: Continuous Distributions"
   html:
-    cache: true
+    #cache: true
     output-file: index.html
 metadata-files: 
   - "../_meta-slides.yml"
-  - "../_meta-notes.yml"
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -35,7 +34,12 @@ metadata-files:
 
 ::: {.hidden}
 
-{{< include ../_globals-lecture.qmd >}}
+```{r}
+#| label: r-source-globals
+source("../_globals.r")
+```
+
+{{< include ../_globals-tex.qmd >}}
 
 :::
 
