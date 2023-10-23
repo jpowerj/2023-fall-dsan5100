@@ -6,10 +6,9 @@ date: last-modified
 format:
   html:
     df-print: kable
+    cache: false
 categories:
   - "Extra Writeups"
-metadata-files: 
-  - "../../_meta-docs.yml"
 ---
 
 In several of the assignments for DSAN5100, we ask you to "compute" a probability. This can be ambiguous, as we've already learned several different ways to compute probabilities, so here I will try to distinguish between two different **approaches** to computing a probability using a computer. Hopefully it will help you in general when asking us questions, and will help us clarify which of these approaches we are looking for when we ask you to compute a probability in future assignments.

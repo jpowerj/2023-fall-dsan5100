@@ -1,5 +1,7 @@
 ---
 title: "Continuous Probability and the Order of Integration"
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 date: last-modified
 format:
   html:
@@ -8,8 +10,6 @@ format:
     cache: true
 categories:
   - "Extra Writeups"
-metadata-files: 
-  - ../../_meta-docs.yml
 ---
 
 ::: {.hidden}

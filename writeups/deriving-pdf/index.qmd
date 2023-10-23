@@ -1,13 +1,14 @@
 ---
 title: "Deriving a pdf from Scratch"
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>jj1088@georgetown.edu</a>"
 date: last-modified
 categories:
   - "Extra Writeups"
 format:
   html:
+    cache: false
     df-print: kable
-metadata-files: 
-  - "../../_meta-docs.yml"
 ---
 
 ::: {.callout-note title="Setting Random Seed"}

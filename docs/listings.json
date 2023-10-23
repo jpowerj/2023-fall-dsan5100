@@ -1,0 +1,23 @@
+[
+  {
+    "listing": "/extra-videos/index.html",
+    "items": []
+  },
+  {
+    "listing": "/writeups/index.html",
+    "items": [
+      "/writeups/order-of-integration/index.html",
+      "/writeups/sampling-from-df/index.html",
+      "/writeups/marginalization/index.html",
+      "/writeups/sample-space-tibbles/index.html",
+      "/writeups/lab-4-prep/DSAN5100_Lab_4_Prep.html",
+      "/writeups/computing-probabilities/index.html",
+      "/writeups/bayes-disease-tests/index.html",
+      "/writeups/deriving-pdf/index.html"
+    ]
+  },
+  {
+    "listing": "/recordings/index.html",
+    "items": []
+  }
+]

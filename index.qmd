@@ -1,19 +1,7 @@
 ---
-title: "DSAN 5100, Section 03 (Thursdays)"
-listing:
-  sort-ui: false
-  filter-ui: false
-  type: table
-  include:
-    categories: "{Class Sessions}"
-  fields: [title,date]
-  sort: "lecnum asc"
-  table-hover: true
-  date-format: full
+title: "dsan5100redo"
 ---
 
-This is a "hub" collecting relevant links for each week, for students in Prof. Jeff's **Thursday section (Section 03)** of *DSAN 5100: Probabilistic Modeling and Statistical Computing*, Fall 2023 at Georgetown University. Sections take place in **Car Barn room 201** on **Thursdays** from **12:30pm to 3:30pm**.
+This is a Quarto website.
 
-This page is *not* a replacement for the **<a href="https://jfh.georgetown.domains/dsan5100/" target="_blank">Main Course Page</a>** or the course's **<a href="https://georgetown.instructure.com/courses/173333" target="_blank">Canvas Page</a>**, which are shared across all sections!
-
-Use the menu on the left, or the table below, to view the resources for a specific week.
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

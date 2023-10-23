@@ -10,9 +10,7 @@ project:
     - _post-pw-protect.py
 
 website:
-  favicon: "favicon.png"
   title: ""
-  google-analytics: "G-RFMTL6Q5J5"
   sidebar:
     title: |
       DSAN 5100 Section 03 (Thursdays, 12:30-3pm)<br>
@@ -77,7 +75,5 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: styles.css
-    toc: true
-

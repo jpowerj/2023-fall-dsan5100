@@ -1,7 +1,7 @@
 ---
 title: "Two Ways of Sampling from a Data Frame"
 author: "Jeff Jacobs"
-institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>jj1088@georgetown.edu</a>"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 date: last-modified
 categories:
   - "Extra Writeups"
@@ -12,8 +12,6 @@ format:
 execute: 
   echo: true
   code-fold: show
-metadata-files: 
-  - "../../_meta-docs.yml"
 ---
 
 A few students have run into issues when trying to use the `sample()` function, from base-R, to sample from a full `data.frame` or `tibble`. In this writeup I'll argue that this is a case where using a function from the `tidyverse` called [slice_sample()](https://dplyr.tidyverse.org/reference/slice.html){target="_blank"} will make your life much easier, but I will also show how to do this sampling using only base-R functions.
