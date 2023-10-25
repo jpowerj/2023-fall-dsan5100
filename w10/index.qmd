@@ -1,0 +1,438 @@
+---
+title: "Week 10: Method of Moments and Bootstrap Sampling"
+date: "Thursday, October 26, 2023"
+date-format: full
+lecnum: 10
+categories:
+  - "Class Sessions"
+subtitle: "*DSAN 5100: Probabilistic Modeling and Statistical Computing*<br>Section 03"
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+bibliography: "../_DSAN5100.bib"
+execute:
+  echo: true
+format:
+  revealjs:
+    cache: false
+    footer: "DSAN 5100-03 Week 10: Bootstrap Sampling"
+    output-file: slides.html
+    df-print: kable
+    code-fold: true
+    html-math-method: mathjax
+    scrollable: true
+    slide-number: true
+    section-divs: false
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    number-sections: false
+    footnotes-hover: true
+    tbl-cap-location: bottom
+    theme: [default, "../_style-slides.scss"]
+    revealjs-plugins:
+      - simplemenu
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' integrity='sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65' crossorigin='anonymous'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css'>"
+  html:
+    output-file: index.html
+    cache: false
+    html-math-method: mathjax
+    number-sections: false
+    code-fold: true
+    footnotes-hover: true
+    tbl-cap-location: bottom
+---
+
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .small-title .crunch-title data-name="Schedule"}
+
+::: {.hidden}
+
+```{r}
+#| label: r-source-globals
+source("../_globals.r")
+```
+
+{{< include ../_globals-tex.qmd >}}
+
+:::
+
+Today's Planned Schedule:
+
+| | Start | End | Topic | Recording |
+|:- |:- |:- |:- |:-:|
+| **Lecture** | 12:30pm | 12:40pm | <a href="#method-of-moments">Method of Moments (Deeper Dive) &rarr;</a> | <a href="../recordings/recording-w09-1.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 12:40pm | 1:10pm | <a href="#bootstrap-sampling">Bootstrap Sampling &rarr;</a> | <a href="../recordings/recording-w09-2.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 1:10pm | 1:40pm</span> | <a href="#maximum-likelihood-estimation">Maximum Likelihood, GMM Estimation &rarr;</a> | <a href="../recordings/recording-w09-3.html" target="_blank"><i class="bi bi-film"></i></a> |
+| **Break!** | 1:40pm | 1:50pm | | |
+| | 1:50pm | 2:20pm | <a href="#bias-variance-tradeoff-introduction">Bias-Variance Tradeoff Introduction &rarr;</a> | <a href="../recordings/recording-w09-4.html" target="_blank"><i class="bi bi-film"></i></a> |
+| **Lab** | 2:20pm | 2:40pm | <a href="#lab-demonstrations">Lab &rarr;</a> | <a href="../recordings/recording-w09-5.html" target="_blank"><i class="bi bi-film"></i></a> |
+| | 2:40pm | 3:00pm | Student Presentation | |
+
+: {tbl-colwidths="[10,10,10,60,10]"}
+
+# Method of Moments {data-stack-name="Method of Moments"}
+
+## Generalized Method of Moments (GMM) Estimation {.smaller .title-10}
+
+* Recall that the **$k$th moment** of an RV $X$ is $\mu_k = \expect{X^k}$
+* e.g., $\mu_1 = \expect{X}$, $\mu_2 = \Var{X} + \expect{X}^2$
+* Also recall (I rambled on about) how the MGF contains **all information about a distribution**. This means we can **estimate distributions from data**:
+* Define **$k$th sample moment** of $\mathbf{X}_N$ to be $\widehat{\mu}_k = \frac{1}{N}\sum_{i=1}^nX_i^k$. Then the system of equations:
+
+    $$
+    \begin{align*}
+    \mu_1(\param{\theta}) &= \widehat{\mu}_1 \\
+    \mu_2(\param{\theta}) &= \widehat{\mu}_2 \\
+    &\vdots \\
+    \mu_N(\param{\theta}) &= \widehat{\mu}_N
+    \end{align*}
+    $$
+
+    Gives us a system of equations, allowing us to **solve for parameters of our distribution**!
+
+## Method of Moments Step-By-Step {.smaller}
+
+::: {layout="[1,1]"}
+
+::: {#gmm-steps}
+
+1. Specify Model: Define a mathematical model for the distribution of the data.
+2. Identify Parameters: Identify the parameters of the distribution to be estimated.
+3. Calculate Sample Moments: e.g. mean, variance, etc., from the observed data.
+4. Set up Equations: Set up equations by equating population moments (expressed as functions of parameters) to their sample counterparts.
+5. Solve Equations: Solve the system of equations to get estimates for the parameters.
+
+:::
+::: {#gmm-pro-con}
+
+Advantages:
+
+* Intuitive: Conceptually straightforward and easy to understand.
+* Applicability: Applicable to a wide range of distributions.
+
+Limitations:
+
+* Assumptions: Accuracy depends on correctness of assumed distribution.
+* Efficiency: May not always yield the most efficient estimates w.r.t other methods
+
+:::
+:::
+
+# The Bias-Variance Tradeoff {.title-14 .not-title-slide .full-width-quotes .crunch-images data-stack-name="Bias-Variance"}
+
+::: {.callout-note appearance="minimal"}
+::: {.quote-text style="display: block; width: 100% !important;"}
+*There's no such thing as a free lunch.*
+
+::: {.align-right}
+<a href='https://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch' target='_blank'>Life</a> / <a href='https://www.nytimes.com/1993/02/14/magazine/on-language-words-out-in-the-cold.html' target='_blank'>Conservative Economists</a>
+:::
+
+:::
+
+:::
+
+::: {.callout-note appearance="minimal"}
+::: {.quote-text style="display: block; width: 100% !important;"}
+*But modern Machine Learning basically gets us rly close to a free lunch*
+
+::: {.align-right}
+![](images/always_exhausted.jpeg){width="130"} Jeff
+:::
+
+:::
+
+:::
+
+## Intuition {.fix-tex-headers}
+
+| | **Low Variance** | **High Variance** |
+| -:|:-:|:-:|
+| **Low Bias** | ![](images/var-low-bias-low.svg) | ![](images/var-high-bias-low.svg) |
+| **High Bias**  | ![](images/var-low-bias-high.svg) | ![](images/var-high-bias-high.svg) |
+
+::: {.aside}
+
+Figure adapted from Fortmann-Roe (2012), <a href='https://scott.fortmann-roe.com/docs/BiasVariance.html' target='_blank'>"Understanding the Bias-Variance Tradeoff"</a>
+
+:::
+
+## Math {.small-math .crunch-title .crunch-ul .crunch-p .crunch-lists}
+
+* We estimate "true" DGP $Y = f(X)$ with model $\widehat{f}(X)$^[It's even more complicated, since we don't even know whether the features $X$ we've chosen are actually the features in the world that causally affect $Y$, but that's for later classes... Or see @hastie_elements_2013!], and then we use $\widehat{f}$ to predict the value of $Y$ for a point $x_0$.
+* What is our **expected error** at this point, $\Err(x_0)$?
+
+$$
+\begin{align*}
+\Err(x_0) &= \bigexpect{\left.(Y − \widehat{f}(x_0))^2 \right| X = x_0} \\
+&= \sigma^2_{\varepsilon} + \left( \bigexpect{\widehat{f}(x_0)} − f(x_0) \right)^2 + \mathbb{E}\left[\widehat{f}(x_0) − \bigexpect{\widehat{f}(x_0)}\right]^2 \\
+&= \sigma^2_{\varepsilon} + \left( \text{Bias}(\widehat{f}(x_0)\right)^2 + \bigVar{\widehat{f}(x_0)} \\
+&= \text{Irreducible Error} + \text{Bias}^2 + \text{Variance}.
+\end{align*}
+$$
+
+## In Practice
+
+![Figure from @tharwat_parameter_2019](images/overfitting-underfitting.jpg){fig-align="center"}
+
+# Bootstrap Sampling {data-stack-name="Bootstrap"}
+
+## Bootstrap Sampling {data-name="Intuition"}
+
+* Basically a cheat code for **squeezing** as much information as possible out of your sample
+* Intuition: Your model is **robust** to the extent that it still works for random **subsamples** of the full dataset
+
+## Building Intuition
+
+Consider the following dataset:
+
+```{r}
+#| label: overfitting-plot
+x <- seq(from = 0, to = 1, by = 0.1)
+n <- length(x)
+eps <- rnorm(n, 0, 0.04)
+y <- x + eps
+# But make one big outlier
+midpoint <- ceiling((3/4)*n)
+y[midpoint] <- 0
+of_data <- tibble::tibble(x=x, y=y)
+# Linear model
+lin_model <- lm(y ~ x)
+# But now polynomial regression
+poly_model <- lm(y ~ poly(x, degree = 10, raw=TRUE))
+ggplot(of_data, aes(x = x, y = y)) +
+    geom_point(size = g_pointsize / 1.5) +
+    dsan_theme("full")
+```
+
+## Using All Observations
+
+Fitting a linear model gives us:
+
+```{r}
+#| label: of-linear
+ggplot(of_data, aes(x = x, y = y)) +
+    geom_point(size = g_pointsize / 1.5) +
+    geom_smooth(aes(color="Linear"), method = lm, se = FALSE, show.legend=FALSE) +
+    # geom_abline(aes(intercept = 0, slope = 1, color = "Linear"), linewidth = 1, show.legend = FALSE) +
+    # stat_smooth(
+    #     method = "lm",
+    #     formula = y ~ poly(x, 10, raw = TRUE),
+    #     se = FALSE, aes(color = "Polynomial")
+    # ) +
+    dsan_theme("full")
+```
+
+::: {.notes}
+(What's wrong with this picture?)
+:::
+
+## But is it Robust?
+
+```{r}
+#| label: bootstrap-models
+## Part 1: Set up data
+library(dplyr)
+library(ggplot2)
+library(tibble)
+# subsample <- of_data |> sample_n() sample(of_data, size=5)
+gen_subsamples <- function(obs_data, num_subsamples, subsample_size) {
+  #print(subsample_size)
+  subsample_ints <- c()
+  subsample_coefs <- c()
+  for (i in 1:num_subsamples) {
+      cur_subsample <- obs_data |> sample_n(subsample_size, replace = TRUE)
+      cur_lin_model <- lm(y ~ x, data = cur_subsample)
+      cur_int <- cur_lin_model$coefficients[1]
+      subsample_ints <- c(subsample_ints, cur_int)
+      cur_coef <- cur_lin_model$coefficients[2]
+      subsample_coefs <- c(subsample_coefs, cur_coef)
+  }
+  subsample_df <- tibble(intercept = subsample_ints, coef = subsample_coefs)
+  return(subsample_df)
+}
+num_subsamples <- 50
+subsample_size <- floor(nrow(of_data) / 2)
+subsample_df <- gen_subsamples(of_data, num_subsamples, subsample_size)
+full_model <- lm(y ~ x, data = of_data)
+full_int <- full_model$coefficients[1]
+full_coef <- full_model$coefficients[2]
+full_df <- tibble(intercept=full_int, coef=full_coef)
+mean_df <- tibble(
+    intercept=mean(subsample_df$intercept),
+    coef = mean(subsample_df$coef)
+)
+
+## Part 2: Plot
+ggplot(of_data, aes(x = x, y = y)) +
+    geom_point(size=g_pointsize) +
+    # The random lines
+    geom_abline(data = subsample_df, aes(slope = coef, intercept = intercept, color='Subsample Model'), linewidth=g_linewidth, linetype="solid", alpha=0.25) +
+    # The original regression line
+    geom_abline(data=full_df, aes(slope = coef, intercept = intercept, color='Full-Data Model'), linewidth=2*g_linewidth) +
+    # The average of the random lines
+    #geom_abline(data=mean_df, aes(slope = coef, intercept = intercept, color='mean'), linewidth=2*g_linewidth) +
+    labs(
+        title = paste0("Linear Models for ", num_subsamples, " Subsamples of Size n = ", subsample_size),
+        color = element_blank()
+    ) +
+    dsan_theme("full") +
+    theme(
+      legend.title = element_blank(),
+      legend.spacing.y = unit(0, "mm")
+    )
+```
+
+## What a Robust Model Looks Like
+
+```{r}
+#| label: robust-plot
+x <- seq(from = 0, to = 1, by = 0.1)
+n <- length(x)
+eps <- rnorm(n, 0, 0.04)
+y <- x + eps
+robust_data <- tibble(x = x, y = y)
+robust_sub_df <- gen_subsamples(robust_data, 30, 5)
+#print(robust_sub_df)
+full_model_robust <- lm(y ~ x, data = robust_data)
+full_int_robust <- full_model_robust$coefficients[1]
+full_coef_robust <- full_model_robust$coefficients[2]
+full_df_robust <- tibble(intercept = full_int_robust, coef = full_coef_robust)
+ggplot(robust_data, aes(x = x, y = y)) +
+    geom_point(size=g_pointsize) +
+    # The random lines
+    geom_abline(data = robust_sub_df, aes(slope = coef, intercept = intercept, color='Subsample Model'), linewidth=g_linewidth, linetype="solid", alpha=0.25) +
+    # The original regression line
+    geom_abline(data=full_df_robust, aes(slope = coef, intercept = intercept, color='Full-Data Model'), linewidth=2*g_linewidth) +
+    # The average of the random lines
+    #geom_abline(data=mean_df, aes(slope = coef, intercept = intercept, color='mean'), linewidth=2*g_linewidth) +
+    labs(
+        title = paste0("Linear Models for ", num_subsamples, " Subsamples of Size n = ", subsample_size),
+        color = element_blank()
+    ) +
+    dsan_theme("full") +
+    theme(
+      legend.title = element_blank(),
+      legend.spacing.y = unit(0, "mm")
+    )
+```
+
+Here the model is **not** "misled" by outliers
+
+## The Bootstrap Principle {.crunch-title .crunch-math}
+
+* (This is the cheat code)[^naive] Given a sample $X = \{x_1, \ldots, x_n\}$, we can "squeeze" more information about out of it by **pretending it is the population** and **sampling from this "population", with replacement**
+
+$$
+\begin{align*}
+\widetilde{X}_1 &= \{x_2, x_4, x_5, x_7, x_9\} \\
+\widetilde{X}_2 &= \{x_2, x_3, x_4, x_7, x_{10}\} \\
+&~\vdots \\
+\widetilde{X}_{100} &= \{x_3, x_3, x_7, x_8, x_8\}
+\end{align*}
+$$
+
+[^naive]: The fact that this "just works" is similar to the surprising efficacy of the <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="_blank">**Naïve Bayes** model</a> (see DSAN 5000!)
+
+## In Pictures
+
+![](images/bootstrap-diagram.svg){fig-align="center"}
+
+::: {.notes}
+Note in particular how: (a) sampling is done **with replacement** and (b) the original sample could therefore be replicated exactly in a bootstrap sample (here, $\widetilde{X}_3$)
+:::
+
+## How Well Does it Work? {.crunch-title .crunch-code}
+
+Answer: Absurdly, unreasonably well.
+
+```{r}
+#| label: bootstrap-accuracy
+pop <- rnorm(1000000, mean = 3, sd = 1)
+# Sampling 1k times
+rand_samples <- replicate(
+  1000,
+  sample(pop, size=100, replace = FALSE)
+)
+sample_means <- colMeans(rand_samples)
+sample_df <- tibble(est = sample_means, Method = "1000 Samples")
+# Sampling 1 time and bootstrapping
+bs_sample <- sample(pop, size = 100, replace = FALSE)
+subsamples <- replicate(1000, sample(bs_sample, size=100, replace = TRUE))
+bs_means <- colMeans(subsamples)
+bs_df <- tibble(est = bs_means, Method = "Bootstrap (1 Sample)")
+result_df <- bind_rows(sample_df, bs_df)
+sim_dnorm <- function(x) dnorm(x, mean = 3, sd = 1)
+ggplot(result_df, aes(x=est, fill=Method)) +
+  dsan_theme("full") +
+  geom_density(alpha=0.2, linewidth=g_linewidth) +
+  geom_vline(aes(xintercept=3, linetype="value"),linewidth=g_linewidth) +
+  scale_linetype_manual("", values=c("density"="solid", "value"="dashed"), labels=c("Population Mean", "testing")) +
+  theme(
+    legend.title = element_blank(),
+    legend.spacing.y = unit(0, "mm")
+  ) +
+  labs(
+    title = "Bootstrap vs. Multiple Samples",
+    x = "Sample / Subsample Means",
+    y = "Density"
+  )
+```
+
+```{r}
+#| label: bs-estimates
+sample_est <- mean(sample_means)
+sample_str <- sprintf("%.3f", sample_est)
+sample_err <- abs(sample_est - 3)
+sample_err_str <- sprintf("%.3f", sample_err)
+sample_output <- paste0("1K samples estimate: ", sample_str, " (abs. err: ", sample_err_str, ")")
+writeLines(sample_output)
+bs_est <- mean(bs_means)
+bs_str <- sprintf("%.3f", bs_est)
+bs_err <- abs(bs_est - 3)
+bs_err_str <- sprintf("%.3f", bs_err)
+bs_output <- paste0("Bootstrap estimate:  ", bs_str, " (abs. err: ", bs_err_str, ")")
+writeLines(bs_output)
+```
+
+## Bootstrapped "Confidence" Intervals {data-name="Applications"}
+
+* We get a "confidence" interval **for free**!
+* $\alpha = 0.05$? Just take middle 95% of your bootstrapped estimates!
+
+```{r}
+#| label: bs-intervals
+#| echo: true
+#| code-fold: show
+quantile(bs_means, c(0.025, 0.975))
+```
+
+* Easily interpretable: "After repeating this process 1000 times, **95% of the results** fell **between 2.84 and 3.20**"
+
+## Hypothesis Testing via Bootstrap {.crunch-title}
+
+* Note that our choice to estimate the **mean** was **arbitrary**!
+* Could just as easily be any chosen **test statistic**: mean, median, variance, range, 35th percentile, etc.
+* Hypothesis testing **requires** choice for **test statistic**
+* $\mathcal{H}_A$: Group A taller than Group B 
+* $\mathcal{H}_0$: No difference between Group A and Group B heights
+* $\mathcal{H}_0 \iff \mu_A = \mu_B \iff \underbrace{\mu_A - \mu_B}_{\text{Test Statistic for }\mathcal{H}_0} = 0$
+* **Bootstrapped** test statistic, therefore, is just $\widehat{\mu}_A - \widehat{\mu}_B$!
+
+<!-- Next: show this in action -->
+
+## References
+
+::: {#refs}
+:::

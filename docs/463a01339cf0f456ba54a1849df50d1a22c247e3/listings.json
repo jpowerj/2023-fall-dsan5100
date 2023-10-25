@@ -8,10 +8,6 @@
     "items": []
   },
   {
-    "listing": "/recordings/index.html",
-    "items": []
-  },
-  {
     "listing": "/writeups/index.html",
     "items": [
       "/writeups/order-of-integration/index.html",
@@ -23,5 +19,9 @@
       "/writeups/bayes-disease-tests/index.html",
       "/writeups/deriving-pdf/index.html"
     ]
+  },
+  {
+    "listing": "/recordings/index.html",
+    "items": []
   }
 ]
