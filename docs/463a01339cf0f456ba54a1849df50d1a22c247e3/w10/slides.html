@@ -554,9 +554,9 @@ Jeff Jacobs
 <h2>Generalized Method of Moments (GMM) Estimation</h2>
 <ul>
 <li><p>Recall that the <strong><span class="math inline">\(k\)</span>th moment</strong> of an RV <span class="math inline">\(X\)</span> is <span class="math inline">\(\mu_k = \expect{X^k}\)</span></p></li>
-<li><p>e.g., <span class="math inline">\(\mu_1 = \expect{X}\)</span>, <span class="math inline">\(\mu_2 = \Var{X} + \expect{X}^2\)</span></p></li>
+<li><p>e.g., <span class="math inline">\(\mu_1 = \expect{X}\)</span>, <span class="math inline">\(\mu_2 = \expect{X^2} = \Var{X} + \expect{X}^2\)</span></p></li>
 <li><p>Also recall (I rambled on about) how the MGF contains <strong>all information about a distribution</strong>. This means we can <strong>estimate distributions from data</strong>:</p></li>
-<li><p>Define <strong><span class="math inline">\(k\)</span>th sample moment</strong> of <span class="math inline">\(\mathbf{X}_N\)</span> to be <span class="math inline">\(\widehat{\mu}_k = \frac{1}{N}\sum_{i=1}^nX_i^k\)</span>. Then the system of equations:</p>
+<li><p>Define <strong><span class="math inline">\(k\)</span>th sample moment</strong> of <span class="math inline">\(\mathbf{X}_N\)</span> to be <span class="math inline">\(\widehat{\mu}_k = \frac{1}{N}\sum_{i=1}^nX_i^k\)</span>. Then the equations</p>
 <p><span class="math display">\[
   \begin{align*}
   \mu_1(\param{\theta}) &amp;= \widehat{\mu}_1 \\
@@ -565,8 +565,25 @@ Jeff Jacobs
   \mu_N(\param{\theta}) &amp;= \widehat{\mu}_N
   \end{align*}
   \]</span></p>
-<p>Gives us a system of equations, allowing us to <strong>solve for parameters of our distribution</strong>!</p></li>
+<p>Give us a <strong>system of equations</strong>, allowing us to <strong>solve for parameters of our distribution</strong>!</p></li>
 </ul>
+</section>
+<section id="example-bernoulli-distribution" class="slide level2 crunch-title crunch-ul crunch-math crunch-lists small-inline small-math">
+<h2>Example: Bernoulli Distribution</h2>
+<ul>
+<li><span class="math inline">\(\mathbf{X}_N = \{X_1, X_2, \ldots, X_n\} \iid \text{Bern}(\param{p})\)</span></li>
+<li>Only <strong>one</strong> parameter (<span class="math inline">\(\param{p}\)</span>), so <strong>all of our data</strong> can be used solely to generate an estimate of <span class="math inline">\(\param{p}\)</span>!</li>
+<li><span class="math inline">\(\mu_1 = \expect{X_i^1} = p\)</span>, <span class="math inline">\(\widehat{\mu}_1 = \frac{1}{N}\sum_{i=1}^N X_i^1\)</span></li>
+</ul>
+<p><span class="math display">\[
+\mu_1(p) = \widehat{\mu}_1 \iff p = \frac{1}{N}\sum_{i=1}^N X_i^1,
+\]</span></p>
+<ul>
+<li>Solve this system of 1 equation for <span class="math inline">\(p\)</span> to obtain</li>
+</ul>
+<p><span class="math display">\[
+\underbrace{p^*_{\text{GMM}}}_{\mathclap{\text{Found using algebra}}} = \frac{1}{N}\sum_{i=1}^N X_i = \underbrace{p^*_{\text{MLE}}}_{\mathclap{\text{Found using calculus}}}
+\]</span></p>
 </section>
 <section id="method-of-moments-step-by-step" class="slide level2 smaller">
 <h2>Method of Moments Step-By-Step</h2>
@@ -574,23 +591,18 @@ Jeff Jacobs
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="gmm-steps" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <ol type="1">
-<li>Specify Model: Define a mathematical model for the distribution of the data.</li>
-<li>Identify Parameters: Identify the parameters of the distribution to be estimated.</li>
-<li>Calculate Sample Moments: e.g.&nbsp;mean, variance, etc., from the observed data.</li>
-<li>Set up Equations: Set up equations by equating population moments (expressed as functions of parameters) to their sample counterparts.</li>
-<li>Solve Equations: Solve the system of equations to get estimates for the parameters.</li>
+<li>Specify <strong>Model</strong>: Define a probabilistic model for the distribution of the data.</li>
+<li>Identify <span class="math inline">\(J\)</span> <span class="param"><strong>Parameters</strong></span> of the distribution you’re trying to estimate: <span class="math inline">\(\param{\boldsymbol\theta} = (\param{\theta_1}, \ldots, \param{\theta_J})\)</span></li>
+<li>Calculate <strong>Sample Moments</strong> <span class="math inline">\(\widehat{\boldsymbol\mu} = (\widehat{\mu}_1, \ldots, \widehat{\mu}_J)\)</span> from observed data.</li>
+<li>Set up <strong>Equations</strong>: equate population moments <span class="math inline">\(\mu_j\)</span> (expressed as functions of <span class="math inline">\(\param{\boldsymbol\theta}\)</span>) to their sample counterparts <span class="math inline">\(\widehat{\mu}_j\)</span></li>
+<li>Solve Equations: Solve the system of equations to obtain <span class="math inline">\(\boldsymbol\theta^*_{\text{GMM}}\)</span></li>
 </ol>
 </div>
 <div id="gmm-pro-con" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>Advantages:</p>
 <ul>
-<li>Intuitive: Conceptually straightforward and easy to understand.</li>
-<li>Applicability: Applicable to a wide range of distributions.</li>
-</ul>
-<p>Limitations:</p>
-<ul>
-<li>Assumptions: Accuracy depends on correctness of assumed distribution.</li>
-<li>Efficiency: May not always yield the most efficient estimates w.r.t other methods</li>
+<li>🙌: Applicable to a wide range of distributions.</li>
+<li>😎: No calculus</li>
+<li>🧐: Other estimators may be more <strong>efficient</strong></li>
 </ul>
 </div>
 </div>
@@ -674,7 +686,31 @@ Jeff Jacobs
 <section id="in-practice" class="slide level2">
 <h2>In Practice</h2>
 
-<img data-src="images/overfitting-underfitting.jpg" class="r-stretch quarto-figure-center"><p class="caption">Figure from <span class="citation" data-cites="tharwat_parameter_2019">Tharwat (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></p></section></section>
+<img data-src="images/overfitting-underfitting.jpg" class="r-stretch quarto-figure-center"><p class="caption">Figure from <span class="citation" data-cites="tharwat_parameter_2019">Tharwat (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></p></section>
+<section id="efficiency" class="slide level2 smaller">
+<h2>Efficiency</h2>
+<ul>
+<li>If we were just <strong>statisticians</strong>, we could stop at bias-variance</li>
+<li>A third consideration, since we’re also <strong>computer scientists</strong>, is <strong>computational efficiency</strong>:</li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="bi bi-info-circle pe-1"></i> Definition: Efficiency</strong></p>
+</div>
+<div class="callout-content">
+<p>if <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span> are both <strong>unbiased</strong> estimators for the same parameter <span class="math inline">\(\theta\)</span> (i.e., if <span class="math inline">\(\mathbb{E}[T_1] = \theta\)</span> and <span class="math inline">\(\mathbb{E}[T_2] = \theta\)</span>), then we can compute their <strong>relative efficiency</strong> as</p>
+<p><span class="math display">\[
+\text{RE}(T_2, T_1) = \frac{\Var{T_2}}{\Var{T_1}},
+\]</span></p>
+<p>and then we say that <strong><span class="math inline">\(T_2\)</span> is more efficient than <span class="math inline">\(T_1\)</span></strong> if</p>
+<p><span class="math display">\[
+\Var{T_2} &lt; \Var{T_1} \iff \text{RE}(T_2, T_1) &lt; 1.
+\]</span></p>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="bootstrap-sampling" class="title-slide slide level1 center" data-stack-name="Bootstrap">
 <h1>Bootstrap Sampling</h1>
@@ -919,22 +955,16 @@ Jeff Jacobs
 <span id="cb7-3"><a href="#cb7-3"></a>sample_err <span class="ot">&lt;-</span> <span class="fu">abs</span>(sample_est <span class="sc">-</span> <span class="dv">3</span>)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>sample_err_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, sample_err)</span>
 <span id="cb7-5"><a href="#cb7-5"></a>sample_output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"1K samples estimate: "</span>, sample_str, <span class="st">" (abs. err: "</span>, sample_err_str, <span class="st">")"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">writeLines</span>(sample_output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6"></a>bs_est <span class="ot">&lt;-</span> <span class="fu">mean</span>(bs_means)</span>
+<span id="cb7-7"><a href="#cb7-7"></a>bs_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, bs_est)</span>
+<span id="cb7-8"><a href="#cb7-8"></a>bs_err <span class="ot">&lt;-</span> <span class="fu">abs</span>(bs_est <span class="sc">-</span> <span class="dv">3</span>)</span>
+<span id="cb7-9"><a href="#cb7-9"></a>bs_err_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, bs_err)</span>
+<span id="cb7-10"><a href="#cb7-10"></a>bs_output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Bootstrap estimate:  "</span>, bs_str, <span class="st">" (abs. err: "</span>, bs_err_str, <span class="st">")"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(sample_output,<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,bs_output))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1K samples estimate: 3.003 (abs. err: 0.003)</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>bs_est <span class="ot">&lt;-</span> <span class="fu">mean</span>(bs_means)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>bs_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, bs_est)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>bs_err <span class="ot">&lt;-</span> <span class="fu">abs</span>(bs_est <span class="sc">-</span> <span class="dv">3</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>bs_err_str <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"%.3f"</span>, bs_err)</span>
-<span id="cb9-5"><a href="#cb9-5"></a>bs_output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Bootstrap estimate:  "</span>, bs_str, <span class="st">" (abs. err: "</span>, bs_err_str, <span class="st">")"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">writeLines</span>(bs_output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bootstrap estimate:  3.026 (abs. err: 0.026)</code></pre>
+<pre><code>1K samples estimate: 3.003 (abs. err: 0.003)
+Bootstrap estimate:  3.026 (abs. err: 0.026)</code></pre>
 </div>
 </div>
 </section>
@@ -947,7 +977,7 @@ Jeff Jacobs
 <div class="cell" data-layout-align="center">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">quantile</span>(bs_means, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">quantile</span>(bs_means, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
@@ -957,17 +987,22 @@ Jeff Jacobs
 <ul>
 <li>Easily interpretable: “After repeating this process 1000 times, <strong>95% of the results</strong> fell <strong>between 2.84 and 3.20</strong>”</li>
 </ul>
+</section></section>
+<section>
+<section id="bootstrapped-hypothesis-testing" class="title-slide slide level1 center" data-stack-name="Hypothesis Testing">
+<h1>Bootstrapped Hypothesis Testing</h1>
+
 </section>
-<section id="hypothesis-testing-via-bootstrap" class="slide level2 crunch-title">
+<section id="hypothesis-testing-via-bootstrap" class="slide level2 crunch-title crunch-ul small-inline">
 <h2>Hypothesis Testing via Bootstrap</h2>
 <ul>
 <li>Note that our choice to estimate the <strong>mean</strong> was <strong>arbitrary</strong>!</li>
 <li>Could just as easily be any chosen <strong>test statistic</strong>: mean, median, variance, range, 35th percentile, etc.</li>
-<li>Hypothesis testing <strong>requires</strong> choice for <strong>test statistic</strong></li>
+<li>Hypothesis testing <strong>requires</strong> choice for <strong>test statistic</strong> <span class="math inline">\(t\)</span></li>
 <li><span class="math inline">\(\mathcal{H}_A\)</span>: Group A taller than Group B</li>
 <li><span class="math inline">\(\mathcal{H}_0\)</span>: No difference between Group A and Group B heights</li>
-<li><span class="math inline">\(\mathcal{H}_0 \iff \mu_A = \mu_B \iff \underbrace{\mu_A - \mu_B}_{\text{Test Statistic for }\mathcal{H}_0} = 0\)</span></li>
-<li><strong>Bootstrapped</strong> test statistic, therefore, is just <span class="math inline">\(\widehat{\mu}_A - \widehat{\mu}_B\)</span>!</li>
+<li><span class="math inline">\(\mathcal{H}_0 \iff \mu_A = \mu_B \iff \underbrace{t = \mu_A - \mu_B}_{\text{Test statistic for }\mathcal{H}_0} = 0\)</span></li>
+<li><strong>Bootstrapped</strong> test stat, therefore, is just <span class="math inline">\(\widehat{t} = \widehat{\mu}_A - \widehat{\mu}_B\)</span>!</li>
 </ul>
 <!-- Next: show this in action -->
 </section>
@@ -979,33 +1014,73 @@ Jeff Jacobs
 <li>Now look at <strong>how likely/unlikely the <em>observed</em> test statistic is</strong> <em>relative to</em> these 10000 <strong>null-world-based</strong> test statistics.</li>
 </ul>
 </section>
-<section id="real-world-example-charter-school-dropout-rates" class="slide level2">
+<section id="real-world-example-charter-school-dropout-rates" class="slide level2 smaller fix-tex-headers title-10">
 <h2>Real World Example: Charter School Dropout Rates</h2>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>(New York City)</th>
+<th>Public Schools</th>
+<th>Charter Schools</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Enrolled Students</strong></td>
+<td><span class="math inline">\(N_\text{pub} \approx 893000\)</span></td>
+<td><span class="math inline">\(N_\text{ch} \approx 157000\)</span></td>
+<td><span class="math inline">\(N = 1050649\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Yearly Dropouts</strong></td>
+<td><span class="math inline">\(D_\text{pub} \approx 24500\)</span></td>
+<td><span class="math inline">\(D_\text{ch} \approx 16000\)</span></td>
+<td><span class="math inline">\(D \approx 44000\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Yearly Dropout Rate</strong></td>
+<td><span class="math inline">\(R_\text{pub} \approx 2.7\%\)</span></td>
+<td><span class="math inline">\(R_\text{ch} \approx 10\%\)</span></td>
+<td><span class="math inline">\(R \approx 4.2\%\)</span></td>
+</tr>
+<tr class="even">
+<td><strong><span class="math inline">\(\mathbb{E}[D \mid R = 4.2\%]\)</span></strong></td>
+<td><span class="math inline">\(\mathbb{E}[D_\text{pub}] = 37506\)</span></td>
+<td><span class="math inline">\(\mathbb{E}[D_\text{ch}] = 6594\)</span></td>
+<td><span class="math inline">\(\mathbb{E}[\Delta] = 30912\)</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Public school</strong> dropout rate <span class="math inline">\(R_\text{pub}\)</span> in NYC: 5%</li>
-<li><strong>Charter school</strong> dropout rate <span class="math inline">\(R_\text{ch}\)</span> in NYC: 10%</li>
-<li>So, are charter schools systematically <em>pushing</em> lower-performing students to drop out?</li>
+<li>So, are charter schools systematically <em>pushing</em> lower-performing students out?</li>
 <li>It depends on how we <strong>model</strong> the decision to drop out, how we set up our <strong>null</strong> and <strong>alternative</strong> hypotheses, and what <strong>test statistic</strong> we use to <strong>evaluate</strong> these hypotheses!</li>
 </ul>
 </section>
-<section id="intuition-check-why-do-we-need-to-do-all-this" class="slide level2 crunch-title crunch-code title-11 crunch-quarto-layout-panel">
+<section id="intuition-check-why-do-we-need-to-do-all-this" class="slide level2 crunch-title crunch-code title-07 crunch-quarto-layout-panel crunch-ul">
 <h2>Intuition Check: Why Do We Need To Do All This?</h2>
 <ul>
-<li>Why can’t we just say: <span class="math inline">\(R_\text{ch} &gt; R_\text{pub}\)</span> therefore charter schools are <strong>guilty!</strong>?</li>
+<li>Doesn’t <span class="math inline">\(R_\text{ch} &gt; R_\text{pub} \implies\)</span> charter schools <strong>guilty</strong>?</li>
 <li><em>Remember our <strong>fair vs.&nbsp;biased coins</strong> examples</em></li>
 <li>Let’s simulate a <strong>fair</strong> coin: <span class="math inline">\(\param{p} = \Pr(\textsf{H}) = 0.5\)</span></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<details>
+<details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">set.seed</span>(<span class="dv">5100</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">library</span>(Rlab)</span>
-<span id="cb13-3"><a href="#cb13-3"></a>num_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>coin_obs <span class="ot">&lt;-</span> <span class="fu">rbern</span>(num_flips, p)</span>
-<span id="cb13-6"><a href="#cb13-6"></a>coin_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(coin_obs, <span class="at">collapse=</span><span class="st">' '</span>)</span>
-<span id="cb13-7"><a href="#cb13-7"></a>num_heads <span class="ot">&lt;-</span> <span class="fu">sum</span>(coin_obs)</span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(coin_str,<span class="st">" =&gt; "</span>,num_heads,<span class="st">" heads"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">set.seed</span>(<span class="dv">5100</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(Rlab)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>num_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>coin_obs <span class="ot">&lt;-</span> <span class="fu">rbern</span>(num_flips, p)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>coin_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(coin_obs, <span class="at">collapse=</span><span class="st">' '</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>num_heads <span class="ot">&lt;-</span> <span class="fu">sum</span>(coin_obs)</span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(coin_str,<span class="st">" =&gt; "</span>,num_heads,<span class="st">" heads"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads</code></pre>
@@ -1015,7 +1090,7 @@ Jeff Jacobs
 <li>Seeing 3 heads <span class="math inline">\(~\nimplies \Pr(\textsf{H}) = 0.3\)</span>!</li>
 </ul>
 </section>
-<section id="so-how-can-we-determine-whether-the-coin-is-fair" class="slide level2 smaller crunch-title crunch-code crunch-quarto-layout-panel">
+<section id="so-how-can-we-determine-whether-the-coin-is-fair" class="slide level2 smaller crunch-title crunch-code crunch-quarto-layout-panel title-10">
 <h2>So How <em>Can</em> We Determine Whether The Coin Is Fair?</h2>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -1028,18 +1103,18 @@ Jeff Jacobs
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>num_replications <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>coin_seqs <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_replications, <span class="fu">rbern</span>(num_flips, p))</span>
-<span id="cb15-4"><a href="#cb15-4"></a>heads_per_seq <span class="ot">&lt;-</span> <span class="fu">colSums</span>(coin_seqs)</span>
-<span id="cb15-5"><a href="#cb15-5"></a>heads_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num_heads =</span> heads_per_seq)</span>
-<span id="cb15-6"><a href="#cb15-6"></a>highlight_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"grey"</span>,<span class="dv">2</span>), <span class="fu">rep</span>(cbPalette[<span class="dv">1</span>],<span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">"grey"</span>,<span class="dv">7</span>))</span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="fu">ggplot</span>(heads_df, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(num_heads))) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">geom_histogram</span>(<span class="at">stat=</span><span class="st">'count'</span>, <span class="at">fill=</span>highlight_3) <span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">labs</span>(</span>
-<span id="cb15-11"><a href="#cb15-11"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"Results From N="</span>,num_replications,<span class="st">" 10-Coin-Flip Trials"</span>)</span>
-<span id="cb15-12"><a href="#cb15-12"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>num_replications <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>coin_seqs <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_replications, <span class="fu">rbern</span>(num_flips, p))</span>
+<span id="cb13-4"><a href="#cb13-4"></a>heads_per_seq <span class="ot">&lt;-</span> <span class="fu">colSums</span>(coin_seqs)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>heads_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num_heads =</span> heads_per_seq)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>highlight_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"grey"</span>,<span class="dv">2</span>), <span class="fu">rep</span>(cbPalette[<span class="dv">1</span>],<span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">"grey"</span>,<span class="dv">7</span>))</span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="fu">ggplot</span>(heads_df, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(num_heads))) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">geom_histogram</span>(<span class="at">stat=</span><span class="st">'count'</span>, <span class="at">fill=</span>highlight_3) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"Results From N="</span>,num_replications,<span class="st">" 10-Coin-Flip Trials"</span>)</span>
+<span id="cb13-12"><a href="#cb13-12"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1062,8 +1137,8 @@ Jeff Jacobs
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>three_df <span class="ot">&lt;-</span> heads_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(num_heads <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">nrow</span>(three_df) <span class="sc">/</span> <span class="fu">nrow</span>(heads_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>three_df <span class="ot">&lt;-</span> heads_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(num_heads <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">nrow</span>(three_df) <span class="sc">/</span> <span class="fu">nrow</span>(heads_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.107</code></pre>
@@ -1072,53 +1147,266 @@ Jeff Jacobs
 </div>
 </div>
 </section>
-<section id="how-fishy-is-too-fishy" class="slide level2 crunch-title crunch-ul crunch-p crunch-blockquote">
+<section id="how-fishy-is-too-fishy" class="slide level2 crunch-title crunch-ul crunch-p crunch-blockquote crunch-lists small-inline">
 <h2>How Fishy Is Too Fishy?</h2>
 <ul>
-<li>This means, given a <strong>context</strong> within which we’re analyzing the data, we can construct a <strong>fishiness threshold</strong>:</li>
-<li>If <span class="math inline">\(\Pr(v) &lt; 1\%\)</span>, for example, we can say coin is <strong>not fair</strong></li>
-<li>Scientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:</li>
+<li>This means, given a <strong>context</strong> within which we’re analyzing the data, we can construct a <strong>fishiness threshold</strong> <span class="math inline">\(T\)</span>: then, if <span class="math inline">\(\Pr(\text{observed outcome}) &lt; T%\)</span>, we can say coin is <strong>not fair</strong></li>
+<li>Some journals arbitrarily choose <span class="math inline">\(T = 5\%\)</span> (95% confidence)</li>
+<li>I prefer <span class="math inline">\(T = 11\%\)</span> (89% confidence), for same reason as anthropologist/statistician Richard McElreath:</li>
 </ul>
 <blockquote>
 <p>89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, <strong>“why, because it’s prime, of course!”</strong> That’s no worse than the conventional justification for 95%. <span class="citation" data-cites="mcelreath_statistical_2020">(<a href="#/references" role="doc-biblioref" onclick="">McElreath 2020, 88</a>)</span></p>
 </blockquote>
 <!-- ![From @mcelreath_statistical_2020](images/mcelreath-prime.jpeg){fig-align="center"} -->
 </section>
-<section id="model-the-data-generating-process" class="slide level2">
-<h2>Model: The Data-Generating Process</h2>
+<section id="our-model-data-generating-process" class="slide level2 crunch-title">
+<h2>Our Model (Data-Generating Process)</h2>
 <ul>
 <li>What process <strong>gives rise to</strong> these dropout rates?</li>
 <li>Straightforward model (which we can extend / complicate to include additional factors as needed):
 <ul>
 <li>Student <span class="math inline">\(i\)</span> flips a coin with <span class="math inline">\(\Pr(\textsf{H}) = \param{p}\)</span>: if <span class="math inline">\(\textsf{H}\)</span> student drops out, if <span class="math inline">\(\textsf{T}\)</span> they stay enrolled</li>
-<li>Let <span class="math inline">\(D_i = 1\)</span> if student <span class="math inline">\(i\)</span> drops out, <span class="math inline">\(0\)</span> otherwise.</li>
+<li>Let <span class="math inline">\(X_i = 1\)</span> if student <span class="math inline">\(i\)</span> drops out, <span class="math inline">\(0\)</span> otherwise.</li>
 </ul></li>
-<li>Under this DGP, at the level of a <strong>school</strong> <span class="math inline">\(j\)</span> with <span class="math inline">\(N_j\)</span> students, <span class="math inline">\(C_j \sim \text{Binom}(N_j, p_j)\)</span> represents the <strong>count</strong> of dropouts at school <span class="math inline">\(j\)</span>, so <span class="math inline">\(R_j = C_j / N_j\)</span> is the <strong>dropout rate</strong></li>
+<li>Then for <strong>school</strong> <span class="math inline">\(j\)</span> with <span class="math inline">\(N_j\)</span> students, <span class="math inline">\(D_j = \sum_{i=1}^{N_j}X_i\)</span> = <strong>number of dropouts</strong>. Since sum of Bernoulli RVs has Binomial distribution, <span class="math inline">\(D_j \sim \text{Binom}(N_j, p_j)\)</span></li>
 </ul>
 </section>
-<section id="formulatingsimulating-the-null-hypothesis" class="slide level2">
+<section id="formulatingsimulating-the-null-hypothesis" class="slide level2 smaller title-12">
 <h2>Formulating+Simulating the Null Hypothesis</h2>
 <ul>
-<li><span class="math inline">\(H_0: p_\text{pub} = p_\text{ch} \iff p_\text{pub} - p_\text{ch} = 0\)</span>. There is <strong>no difference</strong> between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools</li>
-<li><span class="math inline">\(H_A: p_\text{pub} \neq p_\text{ch} \iff p_\text{pub} - p_\text{ch} \neq 0\)</span>. There is an <strong>underlying difference</strong> between the rates at which public school students and charter school students choose to drop out</li>
-<li>So, to <strong>simulate null-world</strong>, we will simulate <strong>two schools</strong> with the <strong>same individual-student dropout rate</strong>, then check how often the <strong>school-level dropout rates</strong> differ by more than 5%</li>
+<li><span class="math inline">\(H_0: p_\text{ch} = p_\text{pub} \iff p_\text{ch} - p_\text{pub} = 0\)</span>. There is <strong>no difference</strong> between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools</li>
+<li><span class="math inline">\(H_A: p_\text{pub} &lt; p_\text{ch} \iff p_\text{pub} - p_\text{ch} &lt; 0\)</span>. There is an <strong>underlying difference</strong> between the rates at which charter school students and public school students choose to drop out. In this case, the former is <strong>greater than</strong> the latter</li>
+<li>So, to <strong>simulate null-world</strong>, we will simulate <strong>public school population</strong> and <strong>charter school population</strong> with the <strong>same individual-student dropout rate</strong>: <span class="math inline">\(\param{p_\text{pub}} = \param{p_\text{ch}} = \param{p}\)</span> then check how often the <strong>school-level dropouts</strong> <span class="math inline">\(D_\text{pub}\)</span> and <span class="math inline">\(D_\text{ch}\)</span> differ by <span class="math inline">\(24500 - 16000 = 8500\)</span> or more</li>
 </ul>
+<!-- * *(To be extra careful, we'll make sure the relative **populations** of our simulated schools are proportional to the real-world populations: $\frac{N_\text{pub}^\text{sim}}{N_\text{ch}^\text{sim}} = \frac{N_\text{pub}}{N_\text{ch}}$)* -->
 </section>
-<section id="in-code" class="slide level2">
-<h2>In Code</h2>
+<section id="coding-the-simulation" class="slide level2 crunch-code">
+<h2>Coding the Simulation</h2>
+<ul>
+<li>Simulating a few public-charter pairs:</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>N_pub <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>N_ch <span class="ot">&lt;-</span> <span class="dv">250</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># The true population sizes</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>N_ch <span class="ot">&lt;-</span> <span class="dv">157000</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>N_pub <span class="ot">&lt;-</span> <span class="dv">893000</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># We'll use a function to compute num_sims simulations of a school with N_j</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># students, each with dropout probability p</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>simulate_dropouts <span class="ot">&lt;-</span> <span class="cf">function</span>(num_sims, N_j, p) {</span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">return</span>(<span class="fu">rbinom</span>(num_sims, N_j, p))</span>
+<span id="cb16-8"><a href="#cb16-8"></a>}</span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="co"># We're simulating "null world" by generating data</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># on the basis of the assumption p_pub_sim = p_ch_sim</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="co"># So we call the function with the same p for both</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="co"># simulated schools. In this case, we'll use the</span></span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="co"># *overall average* dropout rate across all schools:</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="co"># 4.2% = 0.042</span></span>
+<span id="cb16-15"><a href="#cb16-15"></a>p_sim <span class="ot">&lt;-</span> <span class="fl">0.042</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a><span class="co"># But we'll write a general function for simulating</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a><span class="co"># pairs of schools, whether or not they have the same</span></span>
+<span id="cb16-18"><a href="#cb16-18"></a><span class="co"># Pr(dropout):</span></span>
+<span id="cb16-19"><a href="#cb16-19"></a>simulate_pair <span class="ot">&lt;-</span> <span class="cf">function</span>(num_sims, p_ch, p_pub) {</span>
+<span id="cb16-20"><a href="#cb16-20"></a>  D_ch <span class="ot">&lt;-</span> <span class="fu">simulate_dropouts</span>(num_sims, N_ch, p_ch)</span>
+<span id="cb16-21"><a href="#cb16-21"></a>  D_pub <span class="ot">&lt;-</span> <span class="fu">simulate_dropouts</span>(num_sims, N_pub, p_pub)</span>
+<span id="cb16-22"><a href="#cb16-22"></a>  sim_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">D_ch=</span>D_ch, <span class="at">D_pub=</span>D_pub)</span>
+<span id="cb16-23"><a href="#cb16-23"></a>  <span class="fu">return</span>(sim_df)</span>
+<span id="cb16-24"><a href="#cb16-24"></a>}</span>
+<span id="cb16-25"><a href="#cb16-25"></a><span class="co"># Run the simulation, with the *same* p parameter</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a><span class="co"># for both our simulated schools:</span></span>
+<span id="cb16-27"><a href="#cb16-27"></a>run_sims_same_p <span class="ot">&lt;-</span> <span class="cf">function</span>(num_sims, <span class="at">printResults=</span><span class="cn">FALSE</span>) {</span>
+<span id="cb16-28"><a href="#cb16-28"></a>  sim_df <span class="ot">&lt;-</span> <span class="fu">simulate_pair</span>(num_sims, p_sim, p_sim)</span>
+<span id="cb16-29"><a href="#cb16-29"></a>  <span class="co"># And from these two counts, we can compute the</span></span>
+<span id="cb16-30"><a href="#cb16-30"></a>  <span class="co"># *test statistic*: in this case, the difference</span></span>
+<span id="cb16-31"><a href="#cb16-31"></a>  sim_df <span class="ot">&lt;-</span> sim_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb16-32"><a href="#cb16-32"></a>    <span class="at">test_stat =</span> D_pub <span class="sc">-</span> D_ch</span>
+<span id="cb16-33"><a href="#cb16-33"></a>  )</span>
+<span id="cb16-34"><a href="#cb16-34"></a>  <span class="fu">return</span>(sim_df)</span>
+<span id="cb16-35"><a href="#cb16-35"></a>}</span>
+<span id="cb16-36"><a href="#cb16-36"></a>small_sim_df <span class="ot">&lt;-</span> <span class="fu">run_sims_same_p</span>(<span class="dv">3</span>)</span>
+<span id="cb16-37"><a href="#cb16-37"></a>small_sim_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">D_ch</th>
+<th style="text-align: right;">D_pub</th>
+<th style="text-align: right;">test_stat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6528</td>
+<td style="text-align: right;">37395</td>
+<td style="text-align: right;">30867</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6606</td>
+<td style="text-align: right;">37287</td>
+<td style="text-align: right;">30681</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6607</td>
+<td style="text-align: right;">37469</td>
+<td style="text-align: right;">30862</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </section>
-<section id="drawing-conclusions" class="slide level2">
-<h2>Drawing Conclusions</h2>
+<section id="generating-the-null-distribution" class="slide level2 smaller title-11">
+<h2>Generating The Null <em>Distribution</em></h2>
 <ul>
-<li>The probability of the difference being this large (5% or more) is</li>
+<li>This is the range of values we might expect to see (under our model!) if two schools had the same underlying dropout probabilities</li>
+<li><span class="math inline">\(\Pr(D_\text{pub} - D_\text{ch} = v \mid H_0) \propto\)</span> height of bar at <span class="math inline">\(x = v\)</span>:</li>
 </ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>num_trials <span class="ot">&lt;-</span> <span class="dv">10000000</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>bw <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">run_sims_same_p</span>(num_trials)</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># And plot the values of our test statistic</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>null_dist_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x=</span>test_stat)) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span>bw) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb17-8"><a href="#cb17-8"></a>    <span class="fu">aes</span>(<span class="at">y =</span> bw <span class="sc">*</span> <span class="fu">after_stat</span>(count)),</span>
+<span id="cb17-9"><a href="#cb17-9"></a>    <span class="at">linewidth =</span> g_linewidth,</span>
+<span id="cb17-10"><a href="#cb17-10"></a>    <span class="at">fill =</span> cbPalette[<span class="dv">1</span>],</span>
+<span id="cb17-11"><a href="#cb17-11"></a>    <span class="at">alpha =</span> <span class="fl">0.333</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a>  <span class="fu">dsan_theme</span>() <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-15"><a href="#cb17-15"></a>    <span class="at">x =</span> <span class="st">"Test Statistic (D_pub - D_ch)"</span>,</span>
+<span id="cb17-16"><a href="#cb17-16"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"(Public Dropouts - Charter Dropouts), "</span>,<span class="fu">format</span>(num_trials,<span class="at">big.mark=</span><span class="st">' '</span>, <span class="at">scientific=</span><span class="cn">FALSE</span>),<span class="st">" Simulations"</span>)</span>
+<span id="cb17-18"><a href="#cb17-18"></a>  )</span>
+<span id="cb17-19"><a href="#cb17-19"></a>null_dist_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/generate-null-dist-sim-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="how-extreme-is-our-observed-value-relative-to-this-range" class="slide level2 crunch-code crunch-title crunch-ul">
+<h2>How Extreme Is Our <em>Observed</em> Value Relative To This Range?</h2>
+<ul>
+<li>Same plot, with a vertical (red) line at our <strong>observed</strong> value:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>null_obs_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x=</span>test_stat)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span>bw) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    <span class="fu">aes</span>(<span class="at">y =</span> (bw<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> <span class="fu">after_stat</span>(count)),</span>
+<span id="cb18-6"><a href="#cb18-6"></a>    <span class="at">linewidth =</span> g_linewidth,</span>
+<span id="cb18-7"><a href="#cb18-7"></a>    <span class="at">fill =</span> cbPalette[<span class="dv">1</span>],</span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="at">alpha =</span> <span class="fl">0.333</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    <span class="at">xintercept =</span> <span class="dv">8500</span>,</span>
+<span id="cb18-12"><a href="#cb18-12"></a>    <span class="at">color=</span><span class="st">'red'</span>,</span>
+<span id="cb18-13"><a href="#cb18-13"></a>    <span class="at">linewidth =</span> g_linewidth,</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    <span class="at">linetype =</span> <span class="st">'dashed'</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">5000</span>, <span class="at">to=</span><span class="dv">35000</span>, <span class="at">by=</span><span class="dv">5000</span>), <span class="at">limits=</span><span class="fu">c</span>(<span class="dv">5000</span>, <span class="dv">35000</span>)) <span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">big.mark=</span><span class="st">' '</span>)) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18"></a>  <span class="fu">dsan_theme</span>() <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-20"><a href="#cb18-20"></a>    <span class="at">x =</span> <span class="st">"Test Statistic (D_pub - D_ch)"</span>,</span>
+<span id="cb18-21"><a href="#cb18-21"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
+<span id="cb18-22"><a href="#cb18-22"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"(Public Dropouts - Charter Dropouts), "</span>,<span class="fu">format</span>(num_trials,<span class="at">big.mark=</span><span class="st">' '</span>,<span class="at">scientific=</span><span class="cn">FALSE</span>),<span class="st">" Simulations"</span>)</span>
+<span id="cb18-23"><a href="#cb18-23"></a>  )</span>
+<span id="cb18-24"><a href="#cb18-24"></a>null_obs_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/null-dist-with-observed-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="drawing-conclusions" class="slide level2 smaller">
+<h2>Drawing Conclusions</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="conclusions-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<ul>
+<li><span class="math inline">\(\overline{T} = \overline{D_\text{pub} - D_\text{ch}}\)</span>:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">mean</span>(sim_df<span class="sc">$</span>test_stat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30911.98</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\Pr(D_\text{pub} - D_\text{ch}) &lt; 31000\)</span>:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>cdf_at_val <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
+<span id="cb21-2"><a href="#cb21-2"></a>  lt_val_df <span class="ot">&lt;-</span> sim_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(test_stat <span class="sc">&lt;</span> v)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  prop_lt <span class="ot">&lt;-</span> <span class="fu">nrow</span>(lt_val_df) <span class="sc">/</span> <span class="fu">nrow</span>(sim_df)</span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">return</span>(prop_lt)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>}</span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="fu">writeLines</span>(<span class="fu">format</span>(<span class="fu">cdf_at_val</span>(<span class="dv">31000</span>), <span class="at">scientific=</span><span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6650288</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\Pr(D_\text{pub} - D_\text{ch}) &lt; 30500\)</span>:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">writeLines</span>(<span class="fu">format</span>(<span class="fu">cdf_at_val</span>(<span class="dv">30500</span>), <span class="at">scientific=</span><span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0222126</code></pre>
+</div>
+</div>
+</div>
+<div id="conclusions-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<ul>
+<li><span class="math inline">\(\Pr(D_\text{pub} - D_\text{ch}) &lt; 30000\)</span>:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>cdf_val <span class="ot">&lt;-</span> <span class="fu">cdf_at_val</span>(<span class="dv">30000</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>cdf_val_fmt <span class="ot">&lt;-</span> <span class="fu">format</span>(cdf_val, <span class="at">scientific=</span><span class="cn">FALSE</span>)</span>
+<span id="cb25-3"><a href="#cb25-3"></a>lt30k_df <span class="ot">&lt;-</span> sim_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(test_stat <span class="sc">&lt;</span> <span class="dv">30000</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>num_lt30k <span class="ot">&lt;-</span> <span class="fu">nrow</span>(lt30k_df)</span>
+<span id="cb25-5"><a href="#cb25-5"></a>num_total <span class="ot">&lt;-</span> <span class="fu">nrow</span>(sim_df)</span>
+<span id="cb25-6"><a href="#cb25-6"></a>num_total_fmt <span class="ot">&lt;-</span> <span class="fu">format</span>(num_total, <span class="at">big.mark=</span><span class="st">','</span>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(cdf_val_fmt,<span class="st">" = "</span>,num_lt30k,<span class="st">" / "</span>,num_total_fmt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0000037 = 37 / 10,000,000</code></pre>
+</div>
+</div>
+<ul>
+<li>In fact, the lowest value we ever saw, across 10 million simulations, was:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">min</span>(sim_df<span class="sc">$</span>test_stat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 29879</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="now-you-can-present-your-findings-in-congressional-testimony" class="slide level2">
 <h2>(Now You Can Present Your Findings In Congressional Testimony 😉)</h2>

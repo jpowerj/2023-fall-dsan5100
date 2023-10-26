@@ -2706,14 +2706,21 @@
     "href": "w10/index.html#generalized-method-of-moments-gmm-estimation",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Generalized Method of Moments (GMM) Estimation",
-    "text": "Generalized Method of Moments (GMM) Estimation\n\nRecall that the \\(k\\)th moment of an RV \\(X\\) is \\(\\mu_k = \\expect{X^k}\\)\ne.g., \\(\\mu_1 = \\expect{X}\\), \\(\\mu_2 = \\Var{X} + \\expect{X}^2\\)\nAlso recall (I rambled on about) how the MGF contains all information about a distribution. This means we can estimate distributions from data:\nDefine \\(k\\)th sample moment of \\(\\mathbf{X}_N\\) to be \\(\\widehat{\\mu}_k = \\frac{1}{N}\\sum_{i=1}^nX_i^k\\). Then the system of equations:\n\\[\n  \\begin{align*}\n  \\mu_1(\\param{\\theta}) &= \\widehat{\\mu}_1 \\\\\n  \\mu_2(\\param{\\theta}) &= \\widehat{\\mu}_2 \\\\\n  &\\vdots \\\\\n  \\mu_N(\\param{\\theta}) &= \\widehat{\\mu}_N\n  \\end{align*}\n  \\]\nGives us a system of equations, allowing us to solve for parameters of our distribution!"
+    "text": "Generalized Method of Moments (GMM) Estimation\n\nRecall that the \\(k\\)th moment of an RV \\(X\\) is \\(\\mu_k = \\expect{X^k}\\)\ne.g., \\(\\mu_1 = \\expect{X}\\), \\(\\mu_2 = \\expect{X^2} = \\Var{X} + \\expect{X}^2\\)\nAlso recall (I rambled on about) how the MGF contains all information about a distribution. This means we can estimate distributions from data:\nDefine \\(k\\)th sample moment of \\(\\mathbf{X}_N\\) to be \\(\\widehat{\\mu}_k = \\frac{1}{N}\\sum_{i=1}^nX_i^k\\). Then the equations\n\\[\n  \\begin{align*}\n  \\mu_1(\\param{\\theta}) &= \\widehat{\\mu}_1 \\\\\n  \\mu_2(\\param{\\theta}) &= \\widehat{\\mu}_2 \\\\\n  &\\vdots \\\\\n  \\mu_N(\\param{\\theta}) &= \\widehat{\\mu}_N\n  \\end{align*}\n  \\]\nGive us a system of equations, allowing us to solve for parameters of our distribution!"
+  },
+  {
+    "objectID": "w10/index.html#example-bernoulli-distribution",
+    "href": "w10/index.html#example-bernoulli-distribution",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Example: Bernoulli Distribution",
+    "text": "Example: Bernoulli Distribution\n\n\\(\\mathbf{X}_N = \\{X_1, X_2, \\ldots, X_n\\} \\iid \\text{Bern}(\\param{p})\\)\nOnly one parameter (\\(\\param{p}\\)), so all of our data can be used solely to generate an estimate of \\(\\param{p}\\)!\n\\(\\mu_1 = \\expect{X_i^1} = p\\), \\(\\widehat{\\mu}_1 = \\frac{1}{N}\\sum_{i=1}^N X_i^1\\)\n\n\\[\n\\mu_1(p) = \\widehat{\\mu}_1 \\iff p = \\frac{1}{N}\\sum_{i=1}^N X_i^1,\n\\]\n\nSolve this system of 1 equation for \\(p\\) to obtain\n\n\\[\n\\underbrace{p^*_{\\text{GMM}}}_{\\mathclap{\\text{Found using algebra}}} = \\frac{1}{N}\\sum_{i=1}^N X_i = \\underbrace{p^*_{\\text{MLE}}}_{\\mathclap{\\text{Found using calculus}}}\n\\]"
   },
   {
     "objectID": "w10/index.html#method-of-moments-step-by-step",
     "href": "w10/index.html#method-of-moments-step-by-step",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Method of Moments Step-By-Step",
-    "text": "Method of Moments Step-By-Step\n\n\n\n\nSpecify Model: Define a mathematical model for the distribution of the data.\nIdentify Parameters: Identify the parameters of the distribution to be estimated.\nCalculate Sample Moments: e.g. mean, variance, etc., from the observed data.\nSet up Equations: Set up equations by equating population moments (expressed as functions of parameters) to their sample counterparts.\nSolve Equations: Solve the system of equations to get estimates for the parameters.\n\n\n\nAdvantages:\n\nIntuitive: Conceptually straightforward and easy to understand.\nApplicability: Applicable to a wide range of distributions.\n\nLimitations:\n\nAssumptions: Accuracy depends on correctness of assumed distribution.\nEfficiency: May not always yield the most efficient estimates w.r.t other methods"
+    "text": "Method of Moments Step-By-Step\n\n\n\n\nSpecify Model: Define a probabilistic model for the distribution of the data.\nIdentify \\(J\\) Parameters of the distribution you’re trying to estimate: \\(\\param{\\boldsymbol\\theta} = (\\param{\\theta_1}, \\ldots, \\param{\\theta_J})\\)\nCalculate Sample Moments \\(\\widehat{\\boldsymbol\\mu} = (\\widehat{\\mu}_1, \\ldots, \\widehat{\\mu}_J)\\) from observed data.\nSet up Equations: equate population moments \\(\\mu_j\\) (expressed as functions of \\(\\param{\\boldsymbol\\theta}\\)) to their sample counterparts \\(\\widehat{\\mu}_j\\)\nSolve Equations: Solve the system of equations to obtain \\(\\boldsymbol\\theta^*_{\\text{GMM}}\\)\n\n\n\n\n🙌: Applicable to a wide range of distributions.\n😎: No calculus\n🧐: Other estimators may be more efficient"
   },
   {
     "objectID": "w10/index.html#intuition",
@@ -2735,6 +2742,13 @@
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "In Practice",
     "text": "In Practice\n\n\n\nFigure from Tharwat (2019)"
+  },
+  {
+    "objectID": "w10/index.html#efficiency",
+    "href": "w10/index.html#efficiency",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Efficiency",
+    "text": "Efficiency\n\nIf we were just statisticians, we could stop at bias-variance\nA third consideration, since we’re also computer scientists, is computational efficiency:\n\n\n\n\n\n\n\n Definition: Efficiency\n\n\n\nif \\(T_1\\) and \\(T_2\\) are both unbiased estimators for the same parameter \\(\\theta\\) (i.e., if \\(\\mathbb{E}[T_1] = \\theta\\) and \\(\\mathbb{E}[T_2] = \\theta\\)), then we can compute their relative efficiency as\n\\[\n\\text{RE}(T_2, T_1) = \\frac{\\Var{T_2}}{\\Var{T_1}},\n\\]\nand then we say that \\(T_2\\) is more efficient than \\(T_1\\) if\n\\[\n\\Var{T_2} &lt; \\Var{T_1} \\iff \\text{RE}(T_2, T_1) &lt; 1.\n\\]"
   },
   {
     "objectID": "w10/index.html#bootstrap-sampling-1",
@@ -2790,7 +2804,7 @@
     "href": "w10/index.html#how-well-does-it-work",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "How Well Does it Work?",
-    "text": "How Well Does it Work?\nAnswer: Absurdly, unreasonably well.\n\n\nCode\npop &lt;- rnorm(1000000, mean = 3, sd = 1)\n# Sampling 1k times\nrand_samples &lt;- replicate(\n  1000,\n  sample(pop, size=100, replace = FALSE)\n)\nsample_means &lt;- colMeans(rand_samples)\nsample_df &lt;- tibble(est = sample_means, Method = \"1000 Samples\")\n# Sampling 1 time and bootstrapping\nbs_sample &lt;- sample(pop, size = 100, replace = FALSE)\nsubsamples &lt;- replicate(1000, sample(bs_sample, size=100, replace = TRUE))\nbs_means &lt;- colMeans(subsamples)\nbs_df &lt;- tibble(est = bs_means, Method = \"Bootstrap (1 Sample)\")\nresult_df &lt;- bind_rows(sample_df, bs_df)\nsim_dnorm &lt;- function(x) dnorm(x, mean = 3, sd = 1)\nggplot(result_df, aes(x=est, fill=Method)) +\n  dsan_theme(\"full\") +\n  geom_density(alpha=0.2, linewidth=g_linewidth) +\n  geom_vline(aes(xintercept=3, linetype=\"value\"),linewidth=g_linewidth) +\n  scale_linetype_manual(\"\", values=c(\"density\"=\"solid\", \"value\"=\"dashed\"), labels=c(\"Population Mean\", \"testing\")) +\n  theme(\n    legend.title = element_blank(),\n    legend.spacing.y = unit(0, \"mm\")\n  ) +\n  labs(\n    title = \"Bootstrap vs. Multiple Samples\",\n    x = \"Sample / Subsample Means\",\n    y = \"Density\"\n  )\n\n\n\n\n\n\n\n\n\n\n\nCode\nsample_est &lt;- mean(sample_means)\nsample_str &lt;- sprintf(\"%.3f\", sample_est)\nsample_err &lt;- abs(sample_est - 3)\nsample_err_str &lt;- sprintf(\"%.3f\", sample_err)\nsample_output &lt;- paste0(\"1K samples estimate: \", sample_str, \" (abs. err: \", sample_err_str, \")\")\nwriteLines(sample_output)\n\n\n1K samples estimate: 3.003 (abs. err: 0.003)\n\n\nCode\nbs_est &lt;- mean(bs_means)\nbs_str &lt;- sprintf(\"%.3f\", bs_est)\nbs_err &lt;- abs(bs_est - 3)\nbs_err_str &lt;- sprintf(\"%.3f\", bs_err)\nbs_output &lt;- paste0(\"Bootstrap estimate:  \", bs_str, \" (abs. err: \", bs_err_str, \")\")\nwriteLines(bs_output)\n\n\nBootstrap estimate:  3.026 (abs. err: 0.026)"
+    "text": "How Well Does it Work?\nAnswer: Absurdly, unreasonably well.\n\n\nCode\npop &lt;- rnorm(1000000, mean = 3, sd = 1)\n# Sampling 1k times\nrand_samples &lt;- replicate(\n  1000,\n  sample(pop, size=100, replace = FALSE)\n)\nsample_means &lt;- colMeans(rand_samples)\nsample_df &lt;- tibble(est = sample_means, Method = \"1000 Samples\")\n# Sampling 1 time and bootstrapping\nbs_sample &lt;- sample(pop, size = 100, replace = FALSE)\nsubsamples &lt;- replicate(1000, sample(bs_sample, size=100, replace = TRUE))\nbs_means &lt;- colMeans(subsamples)\nbs_df &lt;- tibble(est = bs_means, Method = \"Bootstrap (1 Sample)\")\nresult_df &lt;- bind_rows(sample_df, bs_df)\nsim_dnorm &lt;- function(x) dnorm(x, mean = 3, sd = 1)\nggplot(result_df, aes(x=est, fill=Method)) +\n  dsan_theme(\"full\") +\n  geom_density(alpha=0.2, linewidth=g_linewidth) +\n  geom_vline(aes(xintercept=3, linetype=\"value\"),linewidth=g_linewidth) +\n  scale_linetype_manual(\"\", values=c(\"density\"=\"solid\", \"value\"=\"dashed\"), labels=c(\"Population Mean\", \"testing\")) +\n  theme(\n    legend.title = element_blank(),\n    legend.spacing.y = unit(0, \"mm\")\n  ) +\n  labs(\n    title = \"Bootstrap vs. Multiple Samples\",\n    x = \"Sample / Subsample Means\",\n    y = \"Density\"\n  )\n\n\n\n\n\n\n\n\n\n\n\nCode\nsample_est &lt;- mean(sample_means)\nsample_str &lt;- sprintf(\"%.3f\", sample_est)\nsample_err &lt;- abs(sample_est - 3)\nsample_err_str &lt;- sprintf(\"%.3f\", sample_err)\nsample_output &lt;- paste0(\"1K samples estimate: \", sample_str, \" (abs. err: \", sample_err_str, \")\")\nbs_est &lt;- mean(bs_means)\nbs_str &lt;- sprintf(\"%.3f\", bs_est)\nbs_err &lt;- abs(bs_est - 3)\nbs_err_str &lt;- sprintf(\"%.3f\", bs_err)\nbs_output &lt;- paste0(\"Bootstrap estimate:  \", bs_str, \" (abs. err: \", bs_err_str, \")\")\nwriteLines(paste0(sample_output,\"\\n\",bs_output))\n\n\n1K samples estimate: 3.003 (abs. err: 0.003)\nBootstrap estimate:  3.026 (abs. err: 0.026)"
   },
   {
     "objectID": "w10/index.html#bootstrapped-confidence-intervals",
@@ -2804,7 +2818,7 @@
     "href": "w10/index.html#hypothesis-testing-via-bootstrap",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Hypothesis Testing via Bootstrap",
-    "text": "Hypothesis Testing via Bootstrap\n\nNote that our choice to estimate the mean was arbitrary!\nCould just as easily be any chosen test statistic: mean, median, variance, range, 35th percentile, etc.\nHypothesis testing requires choice for test statistic\n\\(\\mathcal{H}_A\\): Group A taller than Group B\n\\(\\mathcal{H}_0\\): No difference between Group A and Group B heights\n\\(\\mathcal{H}_0 \\iff \\mu_A = \\mu_B \\iff \\underbrace{\\mu_A - \\mu_B}_{\\text{Test Statistic for }\\mathcal{H}_0} = 0\\)\nBootstrapped test statistic, therefore, is just \\(\\widehat{\\mu}_A - \\widehat{\\mu}_B\\)!"
+    "text": "Hypothesis Testing via Bootstrap\n\nNote that our choice to estimate the mean was arbitrary!\nCould just as easily be any chosen test statistic: mean, median, variance, range, 35th percentile, etc.\nHypothesis testing requires choice for test statistic \\(t\\)\n\\(\\mathcal{H}_A\\): Group A taller than Group B\n\\(\\mathcal{H}_0\\): No difference between Group A and Group B heights\n\\(\\mathcal{H}_0 \\iff \\mu_A = \\mu_B \\iff \\underbrace{t = \\mu_A - \\mu_B}_{\\text{Test statistic for }\\mathcal{H}_0} = 0\\)\nBootstrapped test stat, therefore, is just \\(\\widehat{t} = \\widehat{\\mu}_A - \\widehat{\\mu}_B\\)!"
   },
   {
     "objectID": "w10/index.html#veracity-of-hypothesis-is-relative-to-null-distributions",
@@ -2818,14 +2832,14 @@
     "href": "w10/index.html#real-world-example-charter-school-dropout-rates",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Real World Example: Charter School Dropout Rates",
-    "text": "Real World Example: Charter School Dropout Rates\n\nPublic school dropout rate \\(R_\\text{pub}\\) in NYC: 5%\nCharter school dropout rate \\(R_\\text{ch}\\) in NYC: 10%\nSo, are charter schools systematically pushing lower-performing students to drop out?\nIt depends on how we model the decision to drop out, how we set up our null and alternative hypotheses, and what test statistic we use to evaluate these hypotheses!"
+    "text": "Real World Example: Charter School Dropout Rates\n\n\n\n\n\n\n\n\n\n(New York City)\nPublic Schools\nCharter Schools\nTotal\n\n\n\n\nEnrolled Students\n\\(N_\\text{pub} \\approx 893000\\)\n\\(N_\\text{ch} \\approx 157000\\)\n\\(N = 1050649\\)\n\n\nYearly Dropouts\n\\(D_\\text{pub} \\approx 24500\\)\n\\(D_\\text{ch} \\approx 16000\\)\n\\(D \\approx 44000\\)\n\n\nYearly Dropout Rate\n\\(R_\\text{pub} \\approx 2.7\\%\\)\n\\(R_\\text{ch} \\approx 10\\%\\)\n\\(R \\approx 4.2\\%\\)\n\n\n\\(\\mathbb{E}[D \\mid R = 4.2\\%]\\)\n\\(\\mathbb{E}[D_\\text{pub}] = 37506\\)\n\\(\\mathbb{E}[D_\\text{ch}] = 6594\\)\n\\(\\mathbb{E}[\\Delta] = 30912\\)\n\n\n\n\nSo, are charter schools systematically pushing lower-performing students out?\nIt depends on how we model the decision to drop out, how we set up our null and alternative hypotheses, and what test statistic we use to evaluate these hypotheses!"
   },
   {
     "objectID": "w10/index.html#intuition-check-why-do-we-need-to-do-all-this",
     "href": "w10/index.html#intuition-check-why-do-we-need-to-do-all-this",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Intuition Check: Why Do We Need To Do All This?",
-    "text": "Intuition Check: Why Do We Need To Do All This?\n\nWhy can’t we just say: \\(R_\\text{ch} &gt; R_\\text{pub}\\) therefore charter schools are guilty!?\nRemember our fair vs. biased coins examples\nLet’s simulate a fair coin: \\(\\param{p} = \\Pr(\\textsf{H}) = 0.5\\)\n\n\n\nCode\nset.seed(5100)\nlibrary(Rlab)\n\n\nRlab 4.0 attached.\n\n\n\nAttaching package: 'Rlab'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\n\nThe following object is masked from 'package:dplyr':\n\n    count\n\n\nThe following objects are masked from 'package:stats':\n\n    dexp, dgamma, dweibull, pexp, pgamma, pweibull, qexp, qgamma,\n    qweibull, rexp, rgamma, rweibull\n\n\nThe following object is masked from 'package:datasets':\n\n    precip\n\n\nCode\nnum_flips &lt;- 10\np &lt;- 0.5\ncoin_obs &lt;- rbern(num_flips, p)\ncoin_str &lt;- paste0(coin_obs, collapse=' ')\nnum_heads &lt;- sum(coin_obs)\nwriteLines(paste0(coin_str,\" =&gt; \",num_heads,\" heads\"))\n\n\n1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads\n\n\n\nSeeing 3 heads \\(~\\nimplies \\Pr(\\textsf{H}) = 0.3\\)!"
+    "text": "Intuition Check: Why Do We Need To Do All This?\n\nDoesn’t \\(R_\\text{ch} &gt; R_\\text{pub} \\implies\\) charter schools guilty?\nRemember our fair vs. biased coins examples\nLet’s simulate a fair coin: \\(\\param{p} = \\Pr(\\textsf{H}) = 0.5\\)\n\n\n\nCode\nset.seed(5100)\nlibrary(Rlab)\n\n\nRlab 4.0 attached.\n\n\n\nAttaching package: 'Rlab'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\n\nThe following object is masked from 'package:dplyr':\n\n    count\n\n\nThe following objects are masked from 'package:stats':\n\n    dexp, dgamma, dweibull, pexp, pgamma, pweibull, qexp, qgamma,\n    qweibull, rexp, rgamma, rweibull\n\n\nThe following object is masked from 'package:datasets':\n\n    precip\n\n\nCode\nnum_flips &lt;- 10\np &lt;- 0.5\ncoin_obs &lt;- rbern(num_flips, p)\ncoin_str &lt;- paste0(coin_obs, collapse=' ')\nnum_heads &lt;- sum(coin_obs)\nwriteLines(paste0(coin_str,\" =&gt; \",num_heads,\" heads\"))\n\n\n1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads\n\n\n\nSeeing 3 heads \\(~\\nimplies \\Pr(\\textsf{H}) = 0.3\\)!"
   },
   {
     "objectID": "w10/index.html#so-how-can-we-determine-whether-the-coin-is-fair",
@@ -2839,35 +2853,49 @@
     "href": "w10/index.html#how-fishy-is-too-fishy",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "How Fishy Is Too Fishy?",
-    "text": "How Fishy Is Too Fishy?\n\nThis means, given a context within which we’re analyzing the data, we can construct a fishiness threshold:\nIf \\(\\Pr(v) &lt; 1\\%\\), for example, we can say coin is not fair\nScientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:\n\n\n89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, “why, because it’s prime, of course!” That’s no worse than the conventional justification for 95%. (McElreath 2020, 88)"
+    "text": "How Fishy Is Too Fishy?\n\nThis means, given a context within which we’re analyzing the data, we can construct a fishiness threshold \\(T\\): then, if \\(\\Pr(\\text{observed outcome}) &lt; T%\\), we can say coin is not fair\nSome journals arbitrarily choose \\(T = 5\\%\\) (95% confidence)\nI prefer \\(T = 11\\%\\) (89% confidence), for same reason as anthropologist/statistician Richard McElreath:\n\n\n89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, “why, because it’s prime, of course!” That’s no worse than the conventional justification for 95%. (McElreath 2020, 88)"
   },
   {
-    "objectID": "w10/index.html#model-the-data-generating-process",
-    "href": "w10/index.html#model-the-data-generating-process",
+    "objectID": "w10/index.html#our-model-data-generating-process",
+    "href": "w10/index.html#our-model-data-generating-process",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
-    "section": "Model: The Data-Generating Process",
-    "text": "Model: The Data-Generating Process\n\nWhat process gives rise to these dropout rates?\nStraightforward model (which we can extend / complicate to include additional factors as needed):\n\nStudent \\(i\\) flips a coin with \\(\\Pr(\\textsf{H}) = \\param{p}\\): if \\(\\textsf{H}\\) student drops out, if \\(\\textsf{T}\\) they stay enrolled\nLet \\(D_i = 1\\) if student \\(i\\) drops out, \\(0\\) otherwise.\n\nUnder this DGP, at the level of a school \\(j\\) with \\(N_j\\) students, \\(C_j \\sim \\text{Binom}(N_j, p_j)\\) represents the count of dropouts at school \\(j\\), so \\(R_j = C_j / N_j\\) is the dropout rate"
+    "section": "Our Model (Data-Generating Process)",
+    "text": "Our Model (Data-Generating Process)\n\nWhat process gives rise to these dropout rates?\nStraightforward model (which we can extend / complicate to include additional factors as needed):\n\nStudent \\(i\\) flips a coin with \\(\\Pr(\\textsf{H}) = \\param{p}\\): if \\(\\textsf{H}\\) student drops out, if \\(\\textsf{T}\\) they stay enrolled\nLet \\(X_i = 1\\) if student \\(i\\) drops out, \\(0\\) otherwise.\n\nThen for school \\(j\\) with \\(N_j\\) students, \\(D_j = \\sum_{i=1}^{N_j}X_i\\) = number of dropouts. Since sum of Bernoulli RVs has Binomial distribution, \\(D_j \\sim \\text{Binom}(N_j, p_j)\\)"
   },
   {
     "objectID": "w10/index.html#formulatingsimulating-the-null-hypothesis",
     "href": "w10/index.html#formulatingsimulating-the-null-hypothesis",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Formulating+Simulating the Null Hypothesis",
-    "text": "Formulating+Simulating the Null Hypothesis\n\n\\(H_0: p_\\text{pub} = p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} = 0\\). There is no difference between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools\n\\(H_A: p_\\text{pub} \\neq p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} \\neq 0\\). There is an underlying difference between the rates at which public school students and charter school students choose to drop out\nSo, to simulate null-world, we will simulate two schools with the same individual-student dropout rate, then check how often the school-level dropout rates differ by more than 5%"
+    "text": "Formulating+Simulating the Null Hypothesis\n\n\\(H_0: p_\\text{ch} = p_\\text{pub} \\iff p_\\text{ch} - p_\\text{pub} = 0\\). There is no difference between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools\n\\(H_A: p_\\text{pub} &lt; p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} &lt; 0\\). There is an underlying difference between the rates at which charter school students and public school students choose to drop out. In this case, the former is greater than the latter\nSo, to simulate null-world, we will simulate public school population and charter school population with the same individual-student dropout rate: \\(\\param{p_\\text{pub}} = \\param{p_\\text{ch}} = \\param{p}\\) then check how often the school-level dropouts \\(D_\\text{pub}\\) and \\(D_\\text{ch}\\) differ by \\(24500 - 16000 = 8500\\) or more"
   },
   {
-    "objectID": "w10/index.html#in-code",
-    "href": "w10/index.html#in-code",
+    "objectID": "w10/index.html#coding-the-simulation",
+    "href": "w10/index.html#coding-the-simulation",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
-    "section": "In Code",
-    "text": "In Code\n\n\nCode\nN_pub &lt;- 1000\nN_ch &lt;- 250"
+    "section": "Coding the Simulation",
+    "text": "Coding the Simulation\n\nSimulating a few public-charter pairs:\n\n\n\nCode\n# The true population sizes\nN_ch &lt;- 157000\nN_pub &lt;- 893000\n# We'll use a function to compute num_sims simulations of a school with N_j\n# students, each with dropout probability p\nsimulate_dropouts &lt;- function(num_sims, N_j, p) {\n  return(rbinom(num_sims, N_j, p))\n}\n# We're simulating \"null world\" by generating data\n# on the basis of the assumption p_pub_sim = p_ch_sim\n# So we call the function with the same p for both\n# simulated schools. In this case, we'll use the\n# *overall average* dropout rate across all schools:\n# 4.2% = 0.042\np_sim &lt;- 0.042\n# But we'll write a general function for simulating\n# pairs of schools, whether or not they have the same\n# Pr(dropout):\nsimulate_pair &lt;- function(num_sims, p_ch, p_pub) {\n  D_ch &lt;- simulate_dropouts(num_sims, N_ch, p_ch)\n  D_pub &lt;- simulate_dropouts(num_sims, N_pub, p_pub)\n  sim_df &lt;- tibble(D_ch=D_ch, D_pub=D_pub)\n  return(sim_df)\n}\n# Run the simulation, with the *same* p parameter\n# for both our simulated schools:\nrun_sims_same_p &lt;- function(num_sims, printResults=FALSE) {\n  sim_df &lt;- simulate_pair(num_sims, p_sim, p_sim)\n  # And from these two counts, we can compute the\n  # *test statistic*: in this case, the difference\n  sim_df &lt;- sim_df |&gt; mutate(\n    test_stat = D_pub - D_ch\n  )\n  return(sim_df)\n}\nsmall_sim_df &lt;- run_sims_same_p(3)\nsmall_sim_df\n\n\n# A tibble: 3 × 3\n   D_ch D_pub test_stat\n  &lt;int&gt; &lt;int&gt;     &lt;int&gt;\n1  6528 37395     30867\n2  6606 37287     30681\n3  6607 37469     30862"
+  },
+  {
+    "objectID": "w10/index.html#generating-the-null-distribution",
+    "href": "w10/index.html#generating-the-null-distribution",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Generating The Null Distribution",
+    "text": "Generating The Null Distribution\n\nThis is the range of values we might expect to see (under our model!) if two schools had the same underlying dropout probabilities\n\\(\\Pr(D_\\text{pub} - D_\\text{ch} = v \\mid H_0) \\propto\\) height of bar at \\(x = v\\):\n\n\n\nCode\nnum_trials &lt;- 10000000\nbw &lt;- 100\nsim_df &lt;- run_sims_same_p(num_trials)\n# And plot the values of our test statistic\nnull_dist_plot &lt;- ggplot(sim_df, aes(x=test_stat)) +\n  geom_histogram(binwidth=bw) +\n  geom_density(\n    aes(y = bw * after_stat(count)),\n    linewidth = g_linewidth,\n    fill = cbPalette[1],\n    alpha = 0.333\n  ) +\n  dsan_theme() +\n  labs(\n    x = \"Test Statistic (D_pub - D_ch)\",\n    y = \"Count\",\n    title = paste0(\"(Public Dropouts - Charter Dropouts), \",format(num_trials,big.mark=' ', scientific=FALSE),\" Simulations\")\n  )\nnull_dist_plot"
+  },
+  {
+    "objectID": "w10/index.html#how-extreme-is-our-observed-value-relative-to-this-range",
+    "href": "w10/index.html#how-extreme-is-our-observed-value-relative-to-this-range",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "How Extreme Is Our Observed Value Relative To This Range?",
+    "text": "How Extreme Is Our Observed Value Relative To This Range?\n\nSame plot, with a vertical (red) line at our observed value:\n\n\n\nCode\nlibrary(scales)\n\n\n\nAttaching package: 'scales'\n\n\nThe following object is masked from 'package:purrr':\n\n    discard\n\n\nThe following object is masked from 'package:readr':\n\n    col_factor\n\n\nCode\nnull_obs_plot &lt;- ggplot(sim_df, aes(x=test_stat)) +\n  geom_histogram(binwidth=bw) +\n  geom_density(\n    aes(y = (bw/3) * after_stat(count)),\n    linewidth = g_linewidth,\n    fill = cbPalette[1],\n    alpha = 0.333\n  ) +\n  geom_vline(\n    xintercept = 8500,\n    color='red',\n    linewidth = g_linewidth,\n    linetype = 'dashed'\n  ) +\n  scale_x_continuous(breaks=seq(from=5000, to=35000, by=5000), limits=c(5000, 35000)) +\n  scale_y_continuous(labels = label_number(big.mark=' ')) +\n  dsan_theme() +\n  labs(\n    x = \"Test Statistic (D_pub - D_ch)\",\n    y = \"Count\",\n    title = paste0(\"(Public Dropouts - Charter Dropouts), \",format(num_trials,big.mark=' ',scientific=FALSE),\" Simulations\")\n  )\nnull_obs_plot\n\n\nWarning: Removed 2 rows containing missing values (`geom_bar()`)."
   },
   {
     "objectID": "w10/index.html#drawing-conclusions",
     "href": "w10/index.html#drawing-conclusions",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Drawing Conclusions",
-    "text": "Drawing Conclusions\n\nThe probability of the difference being this large (5% or more) is"
+    "text": "Drawing Conclusions\n\n\n\n\n\\(\\overline{T} = \\overline{D_\\text{pub} - D_\\text{ch}}\\):\n\n\n\nCode\nmean(sim_df$test_stat)\n\n\n[1] 30911.98\n\n\n\n\\(\\Pr(D_\\text{pub} - D_\\text{ch}) &lt; 31000\\):\n\n\n\nCode\ncdf_at_val &lt;- function(v) {\n  lt_val_df &lt;- sim_df |&gt; filter(test_stat &lt; v)\n  prop_lt &lt;- nrow(lt_val_df) / nrow(sim_df)\n  return(prop_lt)\n}\nwriteLines(format(cdf_at_val(31000), scientific=FALSE))\n\n\n0.6650288\n\n\n\n\\(\\Pr(D_\\text{pub} - D_\\text{ch}) &lt; 30500\\):\n\n\n\nCode\nwriteLines(format(cdf_at_val(30500), scientific=FALSE))\n\n\n0.0222126\n\n\n\n\n\n\\(\\Pr(D_\\text{pub} - D_\\text{ch}) &lt; 30000\\):\n\n\n\nCode\ncdf_val &lt;- cdf_at_val(30000)\ncdf_val_fmt &lt;- format(cdf_val, scientific=FALSE)\nlt30k_df &lt;- sim_df |&gt; filter(test_stat &lt; 30000)\nnum_lt30k &lt;- nrow(lt30k_df)\nnum_total &lt;- nrow(sim_df)\nnum_total_fmt &lt;- format(num_total, big.mark=',')\nwriteLines(paste0(cdf_val_fmt,\" = \",num_lt30k,\" / \",num_total_fmt))\n\n\n0.0000037 = 37 / 10,000,000\n\n\n\nIn fact, the lowest value we ever saw, across 10 million simulations, was:\n\n\n\nCode\nmin(sim_df$test_stat)\n\n\n[1] 29879"
   },
   {
     "objectID": "w10/index.html#now-you-can-present-your-findings-in-congressional-testimony",
@@ -2895,14 +2923,21 @@
     "href": "w10/slides.html#generalized-method-of-moments-gmm-estimation",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Generalized Method of Moments (GMM) Estimation",
-    "text": "Generalized Method of Moments (GMM) Estimation\n\nRecall that the \\(k\\)th moment of an RV \\(X\\) is \\(\\mu_k = \\expect{X^k}\\)\ne.g., \\(\\mu_1 = \\expect{X}\\), \\(\\mu_2 = \\Var{X} + \\expect{X}^2\\)\nAlso recall (I rambled on about) how the MGF contains all information about a distribution. This means we can estimate distributions from data:\nDefine \\(k\\)th sample moment of \\(\\mathbf{X}_N\\) to be \\(\\widehat{\\mu}_k = \\frac{1}{N}\\sum_{i=1}^nX_i^k\\). Then the system of equations:\n\\[\n  \\begin{align*}\n  \\mu_1(\\param{\\theta}) &= \\widehat{\\mu}_1 \\\\\n  \\mu_2(\\param{\\theta}) &= \\widehat{\\mu}_2 \\\\\n  &\\vdots \\\\\n  \\mu_N(\\param{\\theta}) &= \\widehat{\\mu}_N\n  \\end{align*}\n  \\]\nGives us a system of equations, allowing us to solve for parameters of our distribution!"
+    "text": "Generalized Method of Moments (GMM) Estimation\n\nRecall that the \\(k\\)th moment of an RV \\(X\\) is \\(\\mu_k = \\expect{X^k}\\)\ne.g., \\(\\mu_1 = \\expect{X}\\), \\(\\mu_2 = \\expect{X^2} = \\Var{X} + \\expect{X}^2\\)\nAlso recall (I rambled on about) how the MGF contains all information about a distribution. This means we can estimate distributions from data:\nDefine \\(k\\)th sample moment of \\(\\mathbf{X}_N\\) to be \\(\\widehat{\\mu}_k = \\frac{1}{N}\\sum_{i=1}^nX_i^k\\). Then the equations\n\\[\n  \\begin{align*}\n  \\mu_1(\\param{\\theta}) &= \\widehat{\\mu}_1 \\\\\n  \\mu_2(\\param{\\theta}) &= \\widehat{\\mu}_2 \\\\\n  &\\vdots \\\\\n  \\mu_N(\\param{\\theta}) &= \\widehat{\\mu}_N\n  \\end{align*}\n  \\]\nGive us a system of equations, allowing us to solve for parameters of our distribution!"
+  },
+  {
+    "objectID": "w10/slides.html#example-bernoulli-distribution",
+    "href": "w10/slides.html#example-bernoulli-distribution",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Example: Bernoulli Distribution",
+    "text": "Example: Bernoulli Distribution\n\n\\(\\mathbf{X}_N = \\{X_1, X_2, \\ldots, X_n\\} \\iid \\text{Bern}(\\param{p})\\)\nOnly one parameter (\\(\\param{p}\\)), so all of our data can be used solely to generate an estimate of \\(\\param{p}\\)!\n\\(\\mu_1 = \\expect{X_i^1} = p\\), \\(\\widehat{\\mu}_1 = \\frac{1}{N}\\sum_{i=1}^N X_i^1\\)\n\n\\[\n\\mu_1(p) = \\widehat{\\mu}_1 \\iff p = \\frac{1}{N}\\sum_{i=1}^N X_i^1,\n\\]\n\nSolve this system of 1 equation for \\(p\\) to obtain\n\n\\[\n\\underbrace{p^*_{\\text{GMM}}}_{\\mathclap{\\text{Found using algebra}}} = \\frac{1}{N}\\sum_{i=1}^N X_i = \\underbrace{p^*_{\\text{MLE}}}_{\\mathclap{\\text{Found using calculus}}}\n\\]"
   },
   {
     "objectID": "w10/slides.html#method-of-moments-step-by-step",
     "href": "w10/slides.html#method-of-moments-step-by-step",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Method of Moments Step-By-Step",
-    "text": "Method of Moments Step-By-Step\n\n\n\n\nSpecify Model: Define a mathematical model for the distribution of the data.\nIdentify Parameters: Identify the parameters of the distribution to be estimated.\nCalculate Sample Moments: e.g. mean, variance, etc., from the observed data.\nSet up Equations: Set up equations by equating population moments (expressed as functions of parameters) to their sample counterparts.\nSolve Equations: Solve the system of equations to get estimates for the parameters.\n\n\n\nAdvantages:\n\nIntuitive: Conceptually straightforward and easy to understand.\nApplicability: Applicable to a wide range of distributions.\n\nLimitations:\n\nAssumptions: Accuracy depends on correctness of assumed distribution.\nEfficiency: May not always yield the most efficient estimates w.r.t other methods"
+    "text": "Method of Moments Step-By-Step\n\n\n\n\nSpecify Model: Define a probabilistic model for the distribution of the data.\nIdentify \\(J\\) Parameters of the distribution you’re trying to estimate: \\(\\param{\\boldsymbol\\theta} = (\\param{\\theta_1}, \\ldots, \\param{\\theta_J})\\)\nCalculate Sample Moments \\(\\widehat{\\boldsymbol\\mu} = (\\widehat{\\mu}_1, \\ldots, \\widehat{\\mu}_J)\\) from observed data.\nSet up Equations: equate population moments \\(\\mu_j\\) (expressed as functions of \\(\\param{\\boldsymbol\\theta}\\)) to their sample counterparts \\(\\widehat{\\mu}_j\\)\nSolve Equations: Solve the system of equations to obtain \\(\\boldsymbol\\theta^*_{\\text{GMM}}\\)\n\n\n\n\n🙌: Applicable to a wide range of distributions.\n😎: No calculus\n🧐: Other estimators may be more efficient"
   },
   {
     "objectID": "w10/slides.html#intuition",
@@ -2924,6 +2959,13 @@
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "In Practice",
     "text": "In Practice\n\nFigure from Tharwat (2019)"
+  },
+  {
+    "objectID": "w10/slides.html#efficiency",
+    "href": "w10/slides.html#efficiency",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Efficiency",
+    "text": "Efficiency\n\nIf we were just statisticians, we could stop at bias-variance\nA third consideration, since we’re also computer scientists, is computational efficiency:\n\n\n\n\n Definition: Efficiency\n\n\nif \\(T_1\\) and \\(T_2\\) are both unbiased estimators for the same parameter \\(\\theta\\) (i.e., if \\(\\mathbb{E}[T_1] = \\theta\\) and \\(\\mathbb{E}[T_2] = \\theta\\)), then we can compute their relative efficiency as\n\\[\n\\text{RE}(T_2, T_1) = \\frac{\\Var{T_2}}{\\Var{T_1}},\n\\]\nand then we say that \\(T_2\\) is more efficient than \\(T_1\\) if\n\\[\n\\Var{T_2} &lt; \\Var{T_1} \\iff \\text{RE}(T_2, T_1) &lt; 1.\n\\]"
   },
   {
     "objectID": "w10/slides.html#bootstrap-sampling-1",
@@ -2979,7 +3021,7 @@
     "href": "w10/slides.html#how-well-does-it-work",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "How Well Does it Work?",
-    "text": "How Well Does it Work?\nAnswer: Absurdly, unreasonably well.\n\n\nCode\npop &lt;- rnorm(1000000, mean = 3, sd = 1)\n# Sampling 1k times\nrand_samples &lt;- replicate(\n  1000,\n  sample(pop, size=100, replace = FALSE)\n)\nsample_means &lt;- colMeans(rand_samples)\nsample_df &lt;- tibble(est = sample_means, Method = \"1000 Samples\")\n# Sampling 1 time and bootstrapping\nbs_sample &lt;- sample(pop, size = 100, replace = FALSE)\nsubsamples &lt;- replicate(1000, sample(bs_sample, size=100, replace = TRUE))\nbs_means &lt;- colMeans(subsamples)\nbs_df &lt;- tibble(est = bs_means, Method = \"Bootstrap (1 Sample)\")\nresult_df &lt;- bind_rows(sample_df, bs_df)\nsim_dnorm &lt;- function(x) dnorm(x, mean = 3, sd = 1)\nggplot(result_df, aes(x=est, fill=Method)) +\n  dsan_theme(\"full\") +\n  geom_density(alpha=0.2, linewidth=g_linewidth) +\n  geom_vline(aes(xintercept=3, linetype=\"value\"),linewidth=g_linewidth) +\n  scale_linetype_manual(\"\", values=c(\"density\"=\"solid\", \"value\"=\"dashed\"), labels=c(\"Population Mean\", \"testing\")) +\n  theme(\n    legend.title = element_blank(),\n    legend.spacing.y = unit(0, \"mm\")\n  ) +\n  labs(\n    title = \"Bootstrap vs. Multiple Samples\",\n    x = \"Sample / Subsample Means\",\n    y = \"Density\"\n  )\n\n\n\n\n\nCode\nsample_est &lt;- mean(sample_means)\nsample_str &lt;- sprintf(\"%.3f\", sample_est)\nsample_err &lt;- abs(sample_est - 3)\nsample_err_str &lt;- sprintf(\"%.3f\", sample_err)\nsample_output &lt;- paste0(\"1K samples estimate: \", sample_str, \" (abs. err: \", sample_err_str, \")\")\nwriteLines(sample_output)\n\n\n1K samples estimate: 3.003 (abs. err: 0.003)\n\n\nCode\nbs_est &lt;- mean(bs_means)\nbs_str &lt;- sprintf(\"%.3f\", bs_est)\nbs_err &lt;- abs(bs_est - 3)\nbs_err_str &lt;- sprintf(\"%.3f\", bs_err)\nbs_output &lt;- paste0(\"Bootstrap estimate:  \", bs_str, \" (abs. err: \", bs_err_str, \")\")\nwriteLines(bs_output)\n\n\nBootstrap estimate:  3.026 (abs. err: 0.026)"
+    "text": "How Well Does it Work?\nAnswer: Absurdly, unreasonably well.\n\n\nCode\npop &lt;- rnorm(1000000, mean = 3, sd = 1)\n# Sampling 1k times\nrand_samples &lt;- replicate(\n  1000,\n  sample(pop, size=100, replace = FALSE)\n)\nsample_means &lt;- colMeans(rand_samples)\nsample_df &lt;- tibble(est = sample_means, Method = \"1000 Samples\")\n# Sampling 1 time and bootstrapping\nbs_sample &lt;- sample(pop, size = 100, replace = FALSE)\nsubsamples &lt;- replicate(1000, sample(bs_sample, size=100, replace = TRUE))\nbs_means &lt;- colMeans(subsamples)\nbs_df &lt;- tibble(est = bs_means, Method = \"Bootstrap (1 Sample)\")\nresult_df &lt;- bind_rows(sample_df, bs_df)\nsim_dnorm &lt;- function(x) dnorm(x, mean = 3, sd = 1)\nggplot(result_df, aes(x=est, fill=Method)) +\n  dsan_theme(\"full\") +\n  geom_density(alpha=0.2, linewidth=g_linewidth) +\n  geom_vline(aes(xintercept=3, linetype=\"value\"),linewidth=g_linewidth) +\n  scale_linetype_manual(\"\", values=c(\"density\"=\"solid\", \"value\"=\"dashed\"), labels=c(\"Population Mean\", \"testing\")) +\n  theme(\n    legend.title = element_blank(),\n    legend.spacing.y = unit(0, \"mm\")\n  ) +\n  labs(\n    title = \"Bootstrap vs. Multiple Samples\",\n    x = \"Sample / Subsample Means\",\n    y = \"Density\"\n  )\n\n\n\n\n\nCode\nsample_est &lt;- mean(sample_means)\nsample_str &lt;- sprintf(\"%.3f\", sample_est)\nsample_err &lt;- abs(sample_est - 3)\nsample_err_str &lt;- sprintf(\"%.3f\", sample_err)\nsample_output &lt;- paste0(\"1K samples estimate: \", sample_str, \" (abs. err: \", sample_err_str, \")\")\nbs_est &lt;- mean(bs_means)\nbs_str &lt;- sprintf(\"%.3f\", bs_est)\nbs_err &lt;- abs(bs_est - 3)\nbs_err_str &lt;- sprintf(\"%.3f\", bs_err)\nbs_output &lt;- paste0(\"Bootstrap estimate:  \", bs_str, \" (abs. err: \", bs_err_str, \")\")\nwriteLines(paste0(sample_output,\"\\n\",bs_output))\n\n\n1K samples estimate: 3.003 (abs. err: 0.003)\nBootstrap estimate:  3.026 (abs. err: 0.026)"
   },
   {
     "objectID": "w10/slides.html#bootstrapped-confidence-intervals",
@@ -2993,7 +3035,7 @@
     "href": "w10/slides.html#hypothesis-testing-via-bootstrap",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Hypothesis Testing via Bootstrap",
-    "text": "Hypothesis Testing via Bootstrap\n\nNote that our choice to estimate the mean was arbitrary!\nCould just as easily be any chosen test statistic: mean, median, variance, range, 35th percentile, etc.\nHypothesis testing requires choice for test statistic\n\\(\\mathcal{H}_A\\): Group A taller than Group B\n\\(\\mathcal{H}_0\\): No difference between Group A and Group B heights\n\\(\\mathcal{H}_0 \\iff \\mu_A = \\mu_B \\iff \\underbrace{\\mu_A - \\mu_B}_{\\text{Test Statistic for }\\mathcal{H}_0} = 0\\)\nBootstrapped test statistic, therefore, is just \\(\\widehat{\\mu}_A - \\widehat{\\mu}_B\\)!"
+    "text": "Hypothesis Testing via Bootstrap\n\nNote that our choice to estimate the mean was arbitrary!\nCould just as easily be any chosen test statistic: mean, median, variance, range, 35th percentile, etc.\nHypothesis testing requires choice for test statistic \\(t\\)\n\\(\\mathcal{H}_A\\): Group A taller than Group B\n\\(\\mathcal{H}_0\\): No difference between Group A and Group B heights\n\\(\\mathcal{H}_0 \\iff \\mu_A = \\mu_B \\iff \\underbrace{t = \\mu_A - \\mu_B}_{\\text{Test statistic for }\\mathcal{H}_0} = 0\\)\nBootstrapped test stat, therefore, is just \\(\\widehat{t} = \\widehat{\\mu}_A - \\widehat{\\mu}_B\\)!"
   },
   {
     "objectID": "w10/slides.html#veracity-of-hypothesis-is-relative-to-null-distributions",
@@ -3007,14 +3049,14 @@
     "href": "w10/slides.html#real-world-example-charter-school-dropout-rates",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Real World Example: Charter School Dropout Rates",
-    "text": "Real World Example: Charter School Dropout Rates\n\nPublic school dropout rate \\(R_\\text{pub}\\) in NYC: 5%\nCharter school dropout rate \\(R_\\text{ch}\\) in NYC: 10%\nSo, are charter schools systematically pushing lower-performing students to drop out?\nIt depends on how we model the decision to drop out, how we set up our null and alternative hypotheses, and what test statistic we use to evaluate these hypotheses!"
+    "text": "Real World Example: Charter School Dropout Rates\n\n\n\n\n\n\n\n\n\n(New York City)\nPublic Schools\nCharter Schools\nTotal\n\n\n\n\nEnrolled Students\n\\(N_\\text{pub} \\approx 893000\\)\n\\(N_\\text{ch} \\approx 157000\\)\n\\(N = 1050649\\)\n\n\nYearly Dropouts\n\\(D_\\text{pub} \\approx 24500\\)\n\\(D_\\text{ch} \\approx 16000\\)\n\\(D \\approx 44000\\)\n\n\nYearly Dropout Rate\n\\(R_\\text{pub} \\approx 2.7\\%\\)\n\\(R_\\text{ch} \\approx 10\\%\\)\n\\(R \\approx 4.2\\%\\)\n\n\n\\(\\mathbb{E}[D \\mid R = 4.2\\%]\\)\n\\(\\mathbb{E}[D_\\text{pub}] = 37506\\)\n\\(\\mathbb{E}[D_\\text{ch}] = 6594\\)\n\\(\\mathbb{E}[\\Delta] = 30912\\)\n\n\n\n\nSo, are charter schools systematically pushing lower-performing students out?\nIt depends on how we model the decision to drop out, how we set up our null and alternative hypotheses, and what test statistic we use to evaluate these hypotheses!"
   },
   {
     "objectID": "w10/slides.html#intuition-check-why-do-we-need-to-do-all-this",
     "href": "w10/slides.html#intuition-check-why-do-we-need-to-do-all-this",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Intuition Check: Why Do We Need To Do All This?",
-    "text": "Intuition Check: Why Do We Need To Do All This?\n\nWhy can’t we just say: \\(R_\\text{ch} &gt; R_\\text{pub}\\) therefore charter schools are guilty!?\nRemember our fair vs. biased coins examples\nLet’s simulate a fair coin: \\(\\param{p} = \\Pr(\\textsf{H}) = 0.5\\)\n\n\n\nCode\nset.seed(5100)\nlibrary(Rlab)\nnum_flips &lt;- 10\np &lt;- 0.5\ncoin_obs &lt;- rbern(num_flips, p)\ncoin_str &lt;- paste0(coin_obs, collapse=' ')\nnum_heads &lt;- sum(coin_obs)\nwriteLines(paste0(coin_str,\" =&gt; \",num_heads,\" heads\"))\n\n\n1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads\n\n\n\nSeeing 3 heads \\(~\\nimplies \\Pr(\\textsf{H}) = 0.3\\)!"
+    "text": "Intuition Check: Why Do We Need To Do All This?\n\nDoesn’t \\(R_\\text{ch} &gt; R_\\text{pub} \\implies\\) charter schools guilty?\nRemember our fair vs. biased coins examples\nLet’s simulate a fair coin: \\(\\param{p} = \\Pr(\\textsf{H}) = 0.5\\)\n\n\n\nCode\nset.seed(5100)\nlibrary(Rlab)\nnum_flips &lt;- 10\np &lt;- 0.5\ncoin_obs &lt;- rbern(num_flips, p)\ncoin_str &lt;- paste0(coin_obs, collapse=' ')\nnum_heads &lt;- sum(coin_obs)\nwriteLines(paste0(coin_str,\" =&gt; \",num_heads,\" heads\"))\n\n\n1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads\n\n\n\nSeeing 3 heads \\(~\\nimplies \\Pr(\\textsf{H}) = 0.3\\)!"
   },
   {
     "objectID": "w10/slides.html#so-how-can-we-determine-whether-the-coin-is-fair",
@@ -3028,35 +3070,49 @@
     "href": "w10/slides.html#how-fishy-is-too-fishy",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "How Fishy Is Too Fishy?",
-    "text": "How Fishy Is Too Fishy?\n\nThis means, given a context within which we’re analyzing the data, we can construct a fishiness threshold:\nIf \\(\\Pr(v) &lt; 1\\%\\), for example, we can say coin is not fair\nScientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:\n\n\n89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, “why, because it’s prime, of course!” That’s no worse than the conventional justification for 95%. (McElreath 2020, 88)"
+    "text": "How Fishy Is Too Fishy?\n\nThis means, given a context within which we’re analyzing the data, we can construct a fishiness threshold \\(T\\): then, if \\(\\Pr(\\text{observed outcome}) &lt; T%\\), we can say coin is not fair\nSome journals arbitrarily choose \\(T = 5\\%\\) (95% confidence)\nI prefer \\(T = 11\\%\\) (89% confidence), for same reason as anthropologist/statistician Richard McElreath:\n\n\n89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, “why, because it’s prime, of course!” That’s no worse than the conventional justification for 95%. (McElreath 2020, 88)"
   },
   {
-    "objectID": "w10/slides.html#model-the-data-generating-process",
-    "href": "w10/slides.html#model-the-data-generating-process",
+    "objectID": "w10/slides.html#our-model-data-generating-process",
+    "href": "w10/slides.html#our-model-data-generating-process",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
-    "section": "Model: The Data-Generating Process",
-    "text": "Model: The Data-Generating Process\n\nWhat process gives rise to these dropout rates?\nStraightforward model (which we can extend / complicate to include additional factors as needed):\n\nStudent \\(i\\) flips a coin with \\(\\Pr(\\textsf{H}) = \\param{p}\\): if \\(\\textsf{H}\\) student drops out, if \\(\\textsf{T}\\) they stay enrolled\nLet \\(D_i = 1\\) if student \\(i\\) drops out, \\(0\\) otherwise.\n\nUnder this DGP, at the level of a school \\(j\\) with \\(N_j\\) students, \\(C_j \\sim \\text{Binom}(N_j, p_j)\\) represents the count of dropouts at school \\(j\\), so \\(R_j = C_j / N_j\\) is the dropout rate"
+    "section": "Our Model (Data-Generating Process)",
+    "text": "Our Model (Data-Generating Process)\n\nWhat process gives rise to these dropout rates?\nStraightforward model (which we can extend / complicate to include additional factors as needed):\n\nStudent \\(i\\) flips a coin with \\(\\Pr(\\textsf{H}) = \\param{p}\\): if \\(\\textsf{H}\\) student drops out, if \\(\\textsf{T}\\) they stay enrolled\nLet \\(X_i = 1\\) if student \\(i\\) drops out, \\(0\\) otherwise.\n\nThen for school \\(j\\) with \\(N_j\\) students, \\(D_j = \\sum_{i=1}^{N_j}X_i\\) = number of dropouts. Since sum of Bernoulli RVs has Binomial distribution, \\(D_j \\sim \\text{Binom}(N_j, p_j)\\)"
   },
   {
     "objectID": "w10/slides.html#formulatingsimulating-the-null-hypothesis",
     "href": "w10/slides.html#formulatingsimulating-the-null-hypothesis",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Formulating+Simulating the Null Hypothesis",
-    "text": "Formulating+Simulating the Null Hypothesis\n\n\\(H_0: p_\\text{pub} = p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} = 0\\). There is no difference between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools\n\\(H_A: p_\\text{pub} \\neq p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} \\neq 0\\). There is an underlying difference between the rates at which public school students and charter school students choose to drop out\nSo, to simulate null-world, we will simulate two schools with the same individual-student dropout rate, then check how often the school-level dropout rates differ by more than 5%"
+    "text": "Formulating+Simulating the Null Hypothesis\n\n\\(H_0: p_\\text{ch} = p_\\text{pub} \\iff p_\\text{ch} - p_\\text{pub} = 0\\). There is no difference between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools\n\\(H_A: p_\\text{pub} &lt; p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} &lt; 0\\). There is an underlying difference between the rates at which charter school students and public school students choose to drop out. In this case, the former is greater than the latter\nSo, to simulate null-world, we will simulate public school population and charter school population with the same individual-student dropout rate: \\(\\param{p_\\text{pub}} = \\param{p_\\text{ch}} = \\param{p}\\) then check how often the school-level dropouts \\(D_\\text{pub}\\) and \\(D_\\text{ch}\\) differ by \\(24500 - 16000 = 8500\\) or more"
   },
   {
-    "objectID": "w10/slides.html#in-code",
-    "href": "w10/slides.html#in-code",
+    "objectID": "w10/slides.html#coding-the-simulation",
+    "href": "w10/slides.html#coding-the-simulation",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
-    "section": "In Code",
-    "text": "In Code\n\n\nCode\nN_pub &lt;- 1000\nN_ch &lt;- 250"
+    "section": "Coding the Simulation",
+    "text": "Coding the Simulation\n\nSimulating a few public-charter pairs:\n\n\n\nCode\n# The true population sizes\nN_ch &lt;- 157000\nN_pub &lt;- 893000\n# We'll use a function to compute num_sims simulations of a school with N_j\n# students, each with dropout probability p\nsimulate_dropouts &lt;- function(num_sims, N_j, p) {\n  return(rbinom(num_sims, N_j, p))\n}\n# We're simulating \"null world\" by generating data\n# on the basis of the assumption p_pub_sim = p_ch_sim\n# So we call the function with the same p for both\n# simulated schools. In this case, we'll use the\n# *overall average* dropout rate across all schools:\n# 4.2% = 0.042\np_sim &lt;- 0.042\n# But we'll write a general function for simulating\n# pairs of schools, whether or not they have the same\n# Pr(dropout):\nsimulate_pair &lt;- function(num_sims, p_ch, p_pub) {\n  D_ch &lt;- simulate_dropouts(num_sims, N_ch, p_ch)\n  D_pub &lt;- simulate_dropouts(num_sims, N_pub, p_pub)\n  sim_df &lt;- tibble(D_ch=D_ch, D_pub=D_pub)\n  return(sim_df)\n}\n# Run the simulation, with the *same* p parameter\n# for both our simulated schools:\nrun_sims_same_p &lt;- function(num_sims, printResults=FALSE) {\n  sim_df &lt;- simulate_pair(num_sims, p_sim, p_sim)\n  # And from these two counts, we can compute the\n  # *test statistic*: in this case, the difference\n  sim_df &lt;- sim_df |&gt; mutate(\n    test_stat = D_pub - D_ch\n  )\n  return(sim_df)\n}\nsmall_sim_df &lt;- run_sims_same_p(3)\nsmall_sim_df\n\n\n\n\n\n\nD_ch\nD_pub\ntest_stat\n\n\n\n\n6528\n37395\n30867\n\n\n6606\n37287\n30681\n\n\n6607\n37469\n30862"
+  },
+  {
+    "objectID": "w10/slides.html#generating-the-null-distribution",
+    "href": "w10/slides.html#generating-the-null-distribution",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Generating The Null Distribution",
+    "text": "Generating The Null Distribution\n\nThis is the range of values we might expect to see (under our model!) if two schools had the same underlying dropout probabilities\n\\(\\Pr(D_\\text{pub} - D_\\text{ch} = v \\mid H_0) \\propto\\) height of bar at \\(x = v\\):\n\n\n\nCode\nnum_trials &lt;- 10000000\nbw &lt;- 100\nsim_df &lt;- run_sims_same_p(num_trials)\n# And plot the values of our test statistic\nnull_dist_plot &lt;- ggplot(sim_df, aes(x=test_stat)) +\n  geom_histogram(binwidth=bw) +\n  geom_density(\n    aes(y = bw * after_stat(count)),\n    linewidth = g_linewidth,\n    fill = cbPalette[1],\n    alpha = 0.333\n  ) +\n  dsan_theme() +\n  labs(\n    x = \"Test Statistic (D_pub - D_ch)\",\n    y = \"Count\",\n    title = paste0(\"(Public Dropouts - Charter Dropouts), \",format(num_trials,big.mark=' ', scientific=FALSE),\" Simulations\")\n  )\nnull_dist_plot"
+  },
+  {
+    "objectID": "w10/slides.html#how-extreme-is-our-observed-value-relative-to-this-range",
+    "href": "w10/slides.html#how-extreme-is-our-observed-value-relative-to-this-range",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "How Extreme Is Our Observed Value Relative To This Range?",
+    "text": "How Extreme Is Our Observed Value Relative To This Range?\n\nSame plot, with a vertical (red) line at our observed value:\n\n\n\nCode\nlibrary(scales)\nnull_obs_plot &lt;- ggplot(sim_df, aes(x=test_stat)) +\n  geom_histogram(binwidth=bw) +\n  geom_density(\n    aes(y = (bw/3) * after_stat(count)),\n    linewidth = g_linewidth,\n    fill = cbPalette[1],\n    alpha = 0.333\n  ) +\n  geom_vline(\n    xintercept = 8500,\n    color='red',\n    linewidth = g_linewidth,\n    linetype = 'dashed'\n  ) +\n  scale_x_continuous(breaks=seq(from=5000, to=35000, by=5000), limits=c(5000, 35000)) +\n  scale_y_continuous(labels = label_number(big.mark=' ')) +\n  dsan_theme() +\n  labs(\n    x = \"Test Statistic (D_pub - D_ch)\",\n    y = \"Count\",\n    title = paste0(\"(Public Dropouts - Charter Dropouts), \",format(num_trials,big.mark=' ',scientific=FALSE),\" Simulations\")\n  )\nnull_obs_plot"
   },
   {
     "objectID": "w10/slides.html#drawing-conclusions",
     "href": "w10/slides.html#drawing-conclusions",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "Drawing Conclusions",
-    "text": "Drawing Conclusions\n\nThe probability of the difference being this large (5% or more) is"
+    "text": "Drawing Conclusions\n\n\n\n\n\\(\\overline{T} = \\overline{D_\\text{pub} - D_\\text{ch}}\\):\n\n\n\nCode\nmean(sim_df$test_stat)\n\n\n[1] 30911.98\n\n\n\n\\(\\Pr(D_\\text{pub} - D_\\text{ch}) &lt; 31000\\):\n\n\n\nCode\ncdf_at_val &lt;- function(v) {\n  lt_val_df &lt;- sim_df |&gt; filter(test_stat &lt; v)\n  prop_lt &lt;- nrow(lt_val_df) / nrow(sim_df)\n  return(prop_lt)\n}\nwriteLines(format(cdf_at_val(31000), scientific=FALSE))\n\n\n0.6650288\n\n\n\n\\(\\Pr(D_\\text{pub} - D_\\text{ch}) &lt; 30500\\):\n\n\n\nCode\nwriteLines(format(cdf_at_val(30500), scientific=FALSE))\n\n\n0.0222126\n\n\n\n\n\n\\(\\Pr(D_\\text{pub} - D_\\text{ch}) &lt; 30000\\):\n\n\n\nCode\ncdf_val &lt;- cdf_at_val(30000)\ncdf_val_fmt &lt;- format(cdf_val, scientific=FALSE)\nlt30k_df &lt;- sim_df |&gt; filter(test_stat &lt; 30000)\nnum_lt30k &lt;- nrow(lt30k_df)\nnum_total &lt;- nrow(sim_df)\nnum_total_fmt &lt;- format(num_total, big.mark=',')\nwriteLines(paste0(cdf_val_fmt,\" = \",num_lt30k,\" / \",num_total_fmt))\n\n\n0.0000037 = 37 / 10,000,000\n\n\n\nIn fact, the lowest value we ever saw, across 10 million simulations, was:\n\n\n\nCode\nmin(sim_df$test_stat)\n\n\n[1] 29879"
   },
   {
     "objectID": "w10/slides.html#now-you-can-present-your-findings-in-congressional-testimony",
