@@ -265,8 +265,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#frequency-tables-leftrightarrow-probabilities" id="toc-frequency-tables-leftrightarrow-probabilities" class="nav-link" data-scroll-target="#frequency-tables-leftrightarrow-probabilities">Frequency Tables <span class="math inline">\(\leftrightarrow\)</span> Probabilities</a>
+  <ul class="collapse">
+  <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables">Frequency Tables</a></li>
+  <li><a href="#why-do-we-need-the-total" id="toc-why-do-we-need-the-total" class="nav-link" data-scroll-target="#why-do-we-need-the-total">Why Do We Need The Total?</a></li>
+  <li><a href="#back-to-the-naïve-definition" id="toc-back-to-the-naïve-definition" class="nav-link" data-scroll-target="#back-to-the-naïve-definition">Back to the Naïve Definition</a></li>
+  <li><a href="#frequency-table-rightarrow-probability-table" id="toc-frequency-table-rightarrow-probability-table" class="nav-link" data-scroll-target="#frequency-table-rightarrow-probability-table">Frequency Table <span class="math inline">\(\rightarrow\)</span> Probability Table</a></li>
+  <li><a href="#computing-overall-total-by-column" id="toc-computing-overall-total-by-column" class="nav-link" data-scroll-target="#computing-overall-total-by-column">Computing Overall Total by Column</a></li>
+  <li><a href="#computing-overall-total-by-row" id="toc-computing-overall-total-by-row" class="nav-link" data-scroll-target="#computing-overall-total-by-row">Computing Overall Total by Row</a></li>
+  <li><a href="#bringing-both-methods-together" id="toc-bringing-both-methods-together" class="nav-link" data-scroll-target="#bringing-both-methods-together">Bringing Both Methods Together</a></li>
+  <li><a href="#frequencies-to-probabilities" id="toc-frequencies-to-probabilities" class="nav-link" data-scroll-target="#frequencies-to-probabilities">Frequencies to Probabilities</a></li>
+  </ul></li>
+  <li><a href="#distributions-in-discrete-world" id="toc-distributions-in-discrete-world" class="nav-link" data-scroll-target="#distributions-in-discrete-world">Distributions in Discrete World</a>
+  <ul class="collapse">
+  <li><a href="#one-table-three-distributions" id="toc-one-table-three-distributions" class="nav-link" data-scroll-target="#one-table-three-distributions">One Table, Three Distributions!</a></li>
+  <li><a href="#summary-joint-rightarrow-marginal" id="toc-summary-joint-rightarrow-marginal" class="nav-link" data-scroll-target="#summary-joint-rightarrow-marginal">Summary: Joint <span class="math inline">\(\rightarrow\)</span> Marginal</a></li>
+  <li><a href="#whats-missing-conditional-distributions" id="toc-whats-missing-conditional-distributions" class="nav-link" data-scroll-target="#whats-missing-conditional-distributions">What’s Missing? Conditional Distributions</a></li>
+  <li><a href="#conditional-distributions-from-columns" id="toc-conditional-distributions-from-columns" class="nav-link" data-scroll-target="#conditional-distributions-from-columns">Conditional Distributions from Columns</a></li>
+  <li><a href="#conditional-distributions-from-rows" id="toc-conditional-distributions-from-rows" class="nav-link" data-scroll-target="#conditional-distributions-from-rows">Conditional Distributions from Rows</a></li>
+  <li><a href="#discrete-world-summary" id="toc-discrete-world-summary" class="nav-link" data-scroll-target="#discrete-world-summary">Discrete World Summary</a></li>
+  <li><a href="#working-backwards" id="toc-working-backwards" class="nav-link" data-scroll-target="#working-backwards">Working Backwards</a></li>
+  </ul></li>
+  <li><a href="#continuous-world" id="toc-continuous-world" class="nav-link" data-scroll-target="#continuous-world">Continuous World</a>
+  <ul class="collapse">
+  <li><a href="#moving-to-continuous-world" id="toc-moving-to-continuous-world" class="nav-link" data-scroll-target="#moving-to-continuous-world">Moving to Continuous World</a></li>
+  <li><a href="#smoothing-our-example" id="toc-smoothing-our-example" class="nav-link" data-scroll-target="#smoothing-our-example">“Smoothing” Our Example</a></li>
+  <li><a href="#smoothing-our-tables" id="toc-smoothing-our-tables" class="nav-link" data-scroll-target="#smoothing-our-tables">“Smoothing” Our Tables</a></li>
+  <li><a href="#working-backwards-redux" id="toc-working-backwards-redux" class="nav-link" data-scroll-target="#working-backwards-redux">Working Backwards Redux</a></li>
+  <li><a href="#the-marginal-pdfs-of-g-and-h" id="toc-the-marginal-pdfs-of-g-and-h" class="nav-link" data-scroll-target="#the-marginal-pdfs-of-g-and-h">The Marginal pdfs of <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span></a></li>
+  <li><a href="#the-truncated-normal-distribution" id="toc-the-truncated-normal-distribution" class="nav-link" data-scroll-target="#the-truncated-normal-distribution">The Truncated Normal Distribution</a></li>
+  <li><a href="#the-truncated-normal-pdf" id="toc-the-truncated-normal-pdf" class="nav-link" data-scroll-target="#the-truncated-normal-pdf">The Truncated Normal pdf</a></li>
+  <li><a href="#back-to-working-backwards" id="toc-back-to-working-backwards" class="nav-link" data-scroll-target="#back-to-working-backwards">Back to Working Backwards</a></li>
+  <li><a href="#moving-forwards-again" id="toc-moving-forwards-again" class="nav-link" data-scroll-target="#moving-forwards-again">Moving Forwards Again</a></li>
+  <li><a href="#conditional-distributions-in-continuous-world" id="toc-conditional-distributions-in-continuous-world" class="nav-link" data-scroll-target="#conditional-distributions-in-continuous-world">Conditional Distributions in Continuous World</a></li>
+  <li><a href="#you-dont-have-to-stare-helplessly-at-scary-math" id="toc-you-dont-have-to-stare-helplessly-at-scary-math" class="nav-link" data-scroll-target="#you-dont-have-to-stare-helplessly-at-scary-math">You Don’t Have To Stare Helplessly At Scary Math!</a></li>
+  <li><a href="#a-concrete-strategy" id="toc-a-concrete-strategy" class="nav-link" data-scroll-target="#a-concrete-strategy">A Concrete Strategy</a></li>
+  </ul></li>
+  <li><a href="#thinking-through-specific-multivariate-distributions" id="toc-thinking-through-specific-multivariate-distributions" class="nav-link" data-scroll-target="#thinking-through-specific-multivariate-distributions">Thinking Through Specific Multivariate Distributions</a>
+  <ul class="collapse">
+  <li><a href="#the-multinoulli-distribution" id="toc-the-multinoulli-distribution" class="nav-link" data-scroll-target="#the-multinoulli-distribution">The Multinoulli Distribution</a></li>
+  <li><a href="#the-multivariate-normal-distribution" id="toc-the-multivariate-normal-distribution" class="nav-link" data-scroll-target="#the-multivariate-normal-distribution">The Multivariate Normal Distribution</a></li>
+  <li><a href="#quadratic-forms" id="toc-quadratic-forms" class="nav-link" data-scroll-target="#quadratic-forms">Quadratic Forms</a></li>
+  <li><a href="#the-2d-case" id="toc-the-2d-case" class="nav-link" data-scroll-target="#the-2d-case">The 2D Case</a></li>
+  <li><a href="#the-2d-case-in-its-final-form" id="toc-the-2d-case-in-its-final-form" class="nav-link" data-scroll-target="#the-2d-case-in-its-final-form">The 2D Case In Its FINAL FORM</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 

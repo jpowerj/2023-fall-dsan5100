@@ -285,8 +285,55 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#recap-continuous-probability" id="toc-recap-continuous-probability" class="nav-link" data-scroll-target="#recap-continuous-probability">Recap / Continuous Probability</a>
+  <ul class="collapse">
+  <li><a href="#from-last-week" id="toc-from-last-week" class="nav-link" data-scroll-target="#from-last-week">From Last Week</a></li>
+  <li><a href="#what-things-have-distributions" id="toc-what-things-have-distributions" class="nav-link" data-scroll-target="#what-things-have-distributions">What Things Have Distributions?</a></li>
+  <li><a href="#cdfspdfspmfs-what-are-they" id="toc-cdfspdfspmfs-what-are-they" class="nav-link" data-scroll-target="#cdfspdfspmfs-what-are-they">CDFs/pdfs/pmfs: <em>What</em> Are They?</a></li>
+  </ul></li>
+  <li><a href="#continuous-probability" id="toc-continuous-probability" class="nav-link" data-scroll-target="#continuous-probability">Continuous Probability</a>
+  <ul class="collapse">
+  <li><a href="#cdfspdfspmfs-why-do-we-use-them" id="toc-cdfspdfspmfs-why-do-we-use-them" class="nav-link" data-scroll-target="#cdfspdfspmfs-why-do-we-use-them">CDFs/pdfs/pmfs: <em>Why</em> Do We Use Them?</a></li>
+  <li><a href="#finding-a-median-via-the-cdf" id="toc-finding-a-median-via-the-cdf" class="nav-link" data-scroll-target="#finding-a-median-via-the-cdf">Finding a Median via the CDF</a></li>
+  <li><a href="#median-via-cdf-example" id="toc-median-via-cdf-example" class="nav-link" data-scroll-target="#median-via-cdf-example">Median via CDF Example</a></li>
+  <li><a href="#step-by-step" id="toc-step-by-step" class="nav-link" data-scroll-target="#step-by-step">Step-by-Step</a></li>
+  <li><a href="#what-is-a-pdf" id="toc-what-is-a-pdf" class="nav-link" data-scroll-target="#what-is-a-pdf">What is a pdf?</a></li>
+  <li><a href="#top-secret-fun-fact" id="toc-top-secret-fun-fact" class="nav-link" data-scroll-target="#top-secret-fun-fact">Top Secret Fun Fact</a></li>
+  </ul></li>
+  <li><a href="#common-continuous-distributions" id="toc-common-continuous-distributions" class="nav-link" data-scroll-target="#common-continuous-distributions">Common Continuous Distributions</a>
+  <ul class="collapse">
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal Distribution</a></li>
+  <li><a href="#the-emergence-of-order" id="toc-the-emergence-of-order" class="nav-link" data-scroll-target="#the-emergence-of-order">The Emergence of Order</a></li>
+  <li><a href="#the-result-16-steps" id="toc-the-result-16-steps" class="nav-link" data-scroll-target="#the-result-16-steps">The Result: 16 Steps</a></li>
+  <li><a href="#the-result-64-steps" id="toc-the-result-64-steps" class="nav-link" data-scroll-target="#the-result-64-steps">The Result: 64 Steps</a></li>
+  <li><a href="#whats-going-on-here" id="toc-whats-going-on-here" class="nav-link" data-scroll-target="#whats-going-on-here">What’s Going On Here?</a></li>
+  <li><a href="#properties-of-the-normal-distribution" id="toc-properties-of-the-normal-distribution" class="nav-link" data-scroll-target="#properties-of-the-normal-distribution">Properties of the Normal Distribution</a></li>
+  <li><a href="#most-conservative-how" id="toc-most-conservative-how" class="nav-link" data-scroll-target="#most-conservative-how">“Most Conservative” How?</a></li>
+  <li><a href="#the-takeaway" id="toc-the-takeaway" class="nav-link" data-scroll-target="#the-takeaway">The Takeaway</a></li>
+  <li><a href="#recall-discrete-uniform-distribution" id="toc-recall-discrete-uniform-distribution" class="nav-link" data-scroll-target="#recall-discrete-uniform-distribution">[Recall] Discrete Uniform Distribution</a></li>
+  <li><a href="#continuous-uniform-distribution" id="toc-continuous-uniform-distribution" class="nav-link" data-scroll-target="#continuous-uniform-distribution">Continuous Uniform Distribution</a></li>
+  <li><a href="#constructing-the-uniform-cdf" id="toc-constructing-the-uniform-cdf" class="nav-link" data-scroll-target="#constructing-the-uniform-cdf">Constructing the Uniform CDF</a></li>
+  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution">Exponential Distribution</a></li>
+  <li><a href="#now-in-continuous-form" id="toc-now-in-continuous-form" class="nav-link" data-scroll-target="#now-in-continuous-form">Now In Continuous Form!</a></li>
+  <li><a href="#the-dreaded-cauchy-distribution" id="toc-the-dreaded-cauchy-distribution" class="nav-link" data-scroll-target="#the-dreaded-cauchy-distribution">The Dreaded Cauchy Distribution</a></li>
+  <li><a href="#so-whats-the-issue" id="toc-so-whats-the-issue" class="nav-link" data-scroll-target="#so-whats-the-issue">So What’s the Issue?</a></li>
+  </ul></li>
+  <li><a href="#lab-4" id="toc-lab-4" class="nav-link" data-scroll-target="#lab-4">Lab 4</a>
+  <ul class="collapse">
+  <li><a href="#lab-4-demo" id="toc-lab-4-demo" class="nav-link" data-scroll-target="#lab-4-demo">Lab 4 Demo</a></li>
+  <li><a href="#lab-4-assignment-prep" id="toc-lab-4-assignment-prep" class="nav-link" data-scroll-target="#lab-4-assignment-prep">Lab 4 Assignment Prep</a></li>
+  <li><a href="#lab-4-assignment" id="toc-lab-4-assignment" class="nav-link" data-scroll-target="#lab-4-assignment">Lab 4 Assignment</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix-dirac-delta-function" id="toc-appendix-dirac-delta-function" class="nav-link" data-scroll-target="#appendix-dirac-delta-function">Appendix: Dirac Delta Function</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 

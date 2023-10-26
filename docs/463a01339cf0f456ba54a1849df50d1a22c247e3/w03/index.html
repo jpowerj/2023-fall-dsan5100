@@ -265,8 +265,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="_bday-solutions-plot.ipynb.html"><i class="bi bi-journal-code"></i>_bday-solutions-plot.ipynb</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a>
+  <ul class="collapse">
+  <li><a href="#recap-1" id="toc-recap-1" class="nav-link" data-scroll-target="#recap-1">Recap</a></li>
+  <li><a href="#venn-diagrams-sets" id="toc-venn-diagrams-sets" class="nav-link" data-scroll-target="#venn-diagrams-sets">Venn Diagrams: Sets</a></li>
+  <li><a href="#venn-diagrams-events-dice" id="toc-venn-diagrams-events-dice" class="nav-link" data-scroll-target="#venn-diagrams-events-dice">Venn Diagrams: Events (Dice)</a></li>
+  <li><a href="#rules-of-probability" id="toc-rules-of-probability" class="nav-link" data-scroll-target="#rules-of-probability">“Rules” of Probability</a></li>
+  </ul></li>
+  <li><a href="#what-is-conditional-probability" id="toc-what-is-conditional-probability" class="nav-link" data-scroll-target="#what-is-conditional-probability">What is Conditional Probability?</a>
+  <ul class="collapse">
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional Probability</a></li>
+  <li><a href="#naïve-definition-2.0" id="toc-naïve-definition-2.0" class="nav-link" data-scroll-target="#naïve-definition-2.0">Naïve Definition 2.0</a></li>
+  <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#bayes-theorem-and-its-implications" id="toc-bayes-theorem-and-its-implications" class="nav-link" data-scroll-target="#bayes-theorem-and-its-implications">Bayes’ Theorem and its Implications</a>
+  <ul class="collapse">
+  <li><a href="#deriving-bayes-theorem" id="toc-deriving-bayes-theorem" class="nav-link" data-scroll-target="#deriving-bayes-theorem">Deriving Bayes’ Theorem</a></li>
+  <li><a href="#why-is-this-helpful" id="toc-why-is-this-helpful" class="nav-link" data-scroll-target="#why-is-this-helpful">Why Is This Helpful?</a></li>
+  <li><a href="#why-is-this-helpful-for-data-science" id="toc-why-is-this-helpful-for-data-science" class="nav-link" data-scroll-target="#why-is-this-helpful-for-data-science">Why Is This Helpful for <em>Data Science</em>?</a></li>
+  <li><a href="#probability-forwards-and-backwards" id="toc-probability-forwards-and-backwards" class="nav-link" data-scroll-target="#probability-forwards-and-backwards">Probability Forwards and Backwards</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it All Together</a></li>
+  <li><a href="#a-scarier-example" id="toc-a-scarier-example" class="nav-link" data-scroll-target="#a-scarier-example">A Scarier Example</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#proof-in-the-pudding" id="toc-proof-in-the-pudding" class="nav-link" data-scroll-target="#proof-in-the-pudding">Proof in the Pudding</a></li>
+  <li><a href="#binary-variable-trick" id="toc-binary-variable-trick" class="nav-link" data-scroll-target="#binary-variable-trick">Binary Variable Trick</a></li>
+  <li><a href="#applying-this-to-the-disease-data" id="toc-applying-this-to-the-disease-data" class="nav-link" data-scroll-target="#applying-this-to-the-disease-data">Applying This to the Disease Data</a></li>
+  <li><a href="#data-generating-process-test-results" id="toc-data-generating-process-test-results" class="nav-link" data-scroll-target="#data-generating-process-test-results">Data-Generating Process: Test Results</a></li>
+  <li><a href="#zooming-in-on-positive-tests" id="toc-zooming-in-on-positive-tests" class="nav-link" data-scroll-target="#zooming-in-on-positive-tests">Zooming In On Positive Tests</a></li>
+  <li><a href="#zooming-in-on-disease-havers" id="toc-zooming-in-on-disease-havers" class="nav-link" data-scroll-target="#zooming-in-on-disease-havers">Zooming In On Disease-Havers</a></li>
+  <li><a href="#worst-case-worlds" id="toc-worst-case-worlds" class="nav-link" data-scroll-target="#worst-case-worlds">Worst-Case Worlds</a></li>
+  <li><a href="#bayes-takeaway" id="toc-bayes-takeaway" class="nav-link" data-scroll-target="#bayes-takeaway">Bayes: Takeaway</a></li>
+  <li><a href="#monte-carlo-methods-overview" id="toc-monte-carlo-methods-overview" class="nav-link" data-scroll-target="#monte-carlo-methods-overview">Monte Carlo Methods: Overview</a></li>
+  <li><a href="#birthday-problem" id="toc-birthday-problem" class="nav-link" data-scroll-target="#birthday-problem">Birthday Problem</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping Up</a></li>
+  <li><a href="#final-note-functions-of-random-variables" id="toc-final-note-functions-of-random-variables" class="nav-link" data-scroll-target="#final-note-functions-of-random-variables">Final Note: Functions of Random Variables</a></li>
+  </ul></li>
+  <li><a href="#lab-2" id="toc-lab-2" class="nav-link" data-scroll-target="#lab-2">Lab 2</a>
+  <ul class="collapse">
+  <li><a href="#lab-2-demonstrations" id="toc-lab-2-demonstrations" class="nav-link" data-scroll-target="#lab-2-demonstrations">Lab 2 Demonstrations</a></li>
+  <li><a href="#lab-2-assignment-overview" id="toc-lab-2-assignment-overview" class="nav-link" data-scroll-target="#lab-2-assignment-overview">Lab 2 Assignment Overview</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div><div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="_bday-solutions-plot.ipynb.html"><i class="bi bi-journal-code"></i>_bday-solutions-plot.ipynb</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 

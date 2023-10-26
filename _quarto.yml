@@ -64,5 +64,6 @@ format:
   html:
     theme: default
     css: styles.css
+    toc: true
     include-in-header:
       text: "<script src='https://code.jquery.com/jquery-3.7.1.slim.min.js'></script><script src='/jjcustom.js'></script>"

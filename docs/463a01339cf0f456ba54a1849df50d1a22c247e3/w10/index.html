@@ -284,8 +284,49 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#method-of-moments" id="toc-method-of-moments" class="nav-link" data-scroll-target="#method-of-moments">Method of Moments</a>
+  <ul class="collapse">
+  <li><a href="#generalized-method-of-moments-gmm-estimation" id="toc-generalized-method-of-moments-gmm-estimation" class="nav-link" data-scroll-target="#generalized-method-of-moments-gmm-estimation">Generalized Method of Moments (GMM) Estimation</a></li>
+  <li><a href="#method-of-moments-step-by-step" id="toc-method-of-moments-step-by-step" class="nav-link" data-scroll-target="#method-of-moments-step-by-step">Method of Moments Step-By-Step</a></li>
+  </ul></li>
+  <li><a href="#the-bias-variance-tradeoff" id="toc-the-bias-variance-tradeoff" class="nav-link" data-scroll-target="#the-bias-variance-tradeoff">The Bias-Variance Tradeoff</a>
+  <ul class="collapse">
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition">Intuition</a></li>
+  <li><a href="#math" id="toc-math" class="nav-link" data-scroll-target="#math">Math</a></li>
+  <li><a href="#in-practice" id="toc-in-practice" class="nav-link" data-scroll-target="#in-practice">In Practice</a></li>
+  </ul></li>
+  <li><a href="#bootstrap-sampling" id="toc-bootstrap-sampling" class="nav-link" data-scroll-target="#bootstrap-sampling">Bootstrap Sampling</a>
+  <ul class="collapse">
+  <li><a href="#bootstrap-sampling-1" id="toc-bootstrap-sampling-1" class="nav-link" data-scroll-target="#bootstrap-sampling-1">Bootstrap Sampling</a></li>
+  <li><a href="#building-intuition" id="toc-building-intuition" class="nav-link" data-scroll-target="#building-intuition">Building Intuition</a></li>
+  <li><a href="#using-all-observations" id="toc-using-all-observations" class="nav-link" data-scroll-target="#using-all-observations">Using All Observations</a></li>
+  <li><a href="#but-is-it-robust" id="toc-but-is-it-robust" class="nav-link" data-scroll-target="#but-is-it-robust">But is it Robust?</a></li>
+  <li><a href="#what-a-robust-model-looks-like" id="toc-what-a-robust-model-looks-like" class="nav-link" data-scroll-target="#what-a-robust-model-looks-like">What a Robust Model Looks Like</a></li>
+  <li><a href="#the-bootstrap-principle" id="toc-the-bootstrap-principle" class="nav-link" data-scroll-target="#the-bootstrap-principle">The Bootstrap Principle</a></li>
+  <li><a href="#in-pictures" id="toc-in-pictures" class="nav-link" data-scroll-target="#in-pictures">In Pictures</a></li>
+  <li><a href="#how-well-does-it-work" id="toc-how-well-does-it-work" class="nav-link" data-scroll-target="#how-well-does-it-work">How Well Does it Work?</a></li>
+  <li><a href="#bootstrapped-confidence-intervals" id="toc-bootstrapped-confidence-intervals" class="nav-link" data-scroll-target="#bootstrapped-confidence-intervals">Bootstrapped “Confidence” Intervals</a></li>
+  <li><a href="#hypothesis-testing-via-bootstrap" id="toc-hypothesis-testing-via-bootstrap" class="nav-link" data-scroll-target="#hypothesis-testing-via-bootstrap">Hypothesis Testing via Bootstrap</a></li>
+  <li><a href="#veracity-of-hypothesis-is-relative-to-null-distributions" id="toc-veracity-of-hypothesis-is-relative-to-null-distributions" class="nav-link" data-scroll-target="#veracity-of-hypothesis-is-relative-to-null-distributions"><em>Veracity</em> of Hypothesis is Relative to Null Distributions</a></li>
+  <li><a href="#real-world-example-charter-school-dropout-rates" id="toc-real-world-example-charter-school-dropout-rates" class="nav-link" data-scroll-target="#real-world-example-charter-school-dropout-rates">Real World Example: Charter School Dropout Rates</a></li>
+  <li><a href="#intuition-check-why-do-we-need-to-do-all-this" id="toc-intuition-check-why-do-we-need-to-do-all-this" class="nav-link" data-scroll-target="#intuition-check-why-do-we-need-to-do-all-this">Intuition Check: Why Do We Need To Do All This?</a></li>
+  <li><a href="#so-how-can-we-determine-whether-the-coin-is-fair" id="toc-so-how-can-we-determine-whether-the-coin-is-fair" class="nav-link" data-scroll-target="#so-how-can-we-determine-whether-the-coin-is-fair">So How <em>Can</em> We Determine Whether The Coin Is Fair?</a></li>
+  <li><a href="#how-fishy-is-too-fishy" id="toc-how-fishy-is-too-fishy" class="nav-link" data-scroll-target="#how-fishy-is-too-fishy">How Fishy Is Too Fishy?</a></li>
+  <li><a href="#model-the-data-generating-process" id="toc-model-the-data-generating-process" class="nav-link" data-scroll-target="#model-the-data-generating-process">Model: The Data-Generating Process</a></li>
+  <li><a href="#formulatingsimulating-the-null-hypothesis" id="toc-formulatingsimulating-the-null-hypothesis" class="nav-link" data-scroll-target="#formulatingsimulating-the-null-hypothesis">Formulating+Simulating the Null Hypothesis</a></li>
+  <li><a href="#in-code" id="toc-in-code" class="nav-link" data-scroll-target="#in-code">In Code</a></li>
+  <li><a href="#drawing-conclusions" id="toc-drawing-conclusions" class="nav-link" data-scroll-target="#drawing-conclusions">Drawing Conclusions</a></li>
+  <li><a href="#now-you-can-present-your-findings-in-congressional-testimony" id="toc-now-you-can-present-your-findings-in-congressional-testimony" class="nav-link" data-scroll-target="#now-you-can-present-your-findings-in-congressional-testimony">(Now You Can Present Your Findings In Congressional Testimony 😉)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 

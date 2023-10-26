@@ -266,8 +266,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#quick-recap-week-02" id="toc-quick-recap-week-02" class="nav-link" data-scroll-target="#quick-recap-week-02">Quick Recap (Week 02)</a>
+  <ul class="collapse">
+  <li><a href="#probability-theory-gives-us-distributions-for-rvs-not-numbers" id="toc-probability-theory-gives-us-distributions-for-rvs-not-numbers" class="nav-link" data-scroll-target="#probability-theory-gives-us-distributions-for-rvs-not-numbers">Probability Theory Gives Us <em>Distributions</em> for RVs, not Numbers!</a></li>
+  <li><a href="#example-game-reviews" id="toc-example-game-reviews" class="nav-link" data-scroll-target="#example-game-reviews">Example: Game Reviews</a></li>
+  <li><a href="#adding-a-single-line" id="toc-adding-a-single-line" class="nav-link" data-scroll-target="#adding-a-single-line">Adding a Single Line</a></li>
+  <li><a href="#or-a-single-ribbon" id="toc-or-a-single-ribbon" class="nav-link" data-scroll-target="#or-a-single-ribbon">Or a Single Ribbon</a></li>
+  </ul></li>
+  <li><a href="#moments-of-a-distribution-expectation-and-variance" id="toc-moments-of-a-distribution-expectation-and-variance" class="nav-link" data-scroll-target="#moments-of-a-distribution-expectation-and-variance"><em>Moments</em> of a Distribution: Expectation and Variance</a>
+  <ul class="collapse">
+  <li><a href="#expectations-weighted-means" id="toc-expectations-weighted-means" class="nav-link" data-scroll-target="#expectations-weighted-means">Expectations = Weighted Means</a></li>
+  <li><a href="#different-types-of-averages" id="toc-different-types-of-averages" class="nav-link" data-scroll-target="#different-types-of-averages">Different Types of “Averages”</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition">Definition</a></li>
+  <li><a href="#important-properties" id="toc-important-properties" class="nav-link" data-scroll-target="#important-properties">Important Properties</a></li>
+  <li><a href="#variance-motivation" id="toc-variance-motivation" class="nav-link" data-scroll-target="#variance-motivation">Variance: Motivation</a></li>
+  <li><a href="#first-attempt" id="toc-first-attempt" class="nav-link" data-scroll-target="#first-attempt">First Attempt</a></li>
+  <li><a href="#avoiding-cancellation" id="toc-avoiding-cancellation" class="nav-link" data-scroll-target="#avoiding-cancellation">Avoiding Cancellation</a></li>
+  <li><a href="#weve-arrived-at-variance" id="toc-weve-arrived-at-variance" class="nav-link" data-scroll-target="#weve-arrived-at-variance">We’ve Arrived at Variance!</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard Deviation</a></li>
+  <li><a href="#properties-of-variance" id="toc-properties-of-variance" class="nav-link" data-scroll-target="#properties-of-variance">Properties of Variance</a></li>
+  <li><a href="#what-happened-to-the-b-term" id="toc-what-happened-to-the-b-term" class="nav-link" data-scroll-target="#what-happened-to-the-b-term">What Happened to the <span class="math inline">\(b\)</span> Term?</a></li>
+  <li><a href="#what-happened-to-the-b-term-1" id="toc-what-happened-to-the-b-term-1" class="nav-link" data-scroll-target="#what-happened-to-the-b-term-1">What Happened to the <span class="math inline">\(b\)</span> Term?</a></li>
+  </ul></li>
+  <li><a href="#generalizing-expectationvariance-the-moment-generating-function-mgf" id="toc-generalizing-expectationvariance-the-moment-generating-function-mgf" class="nav-link" data-scroll-target="#generalizing-expectationvariance-the-moment-generating-function-mgf">Generalizing Expectation/Variance: The Moment-Generating Function (MGF)</a>
+  <ul class="collapse">
+  <li><a href="#generalizing-from-expectation-and-variance" id="toc-generalizing-from-expectation-and-variance" class="nav-link" data-scroll-target="#generalizing-from-expectation-and-variance">Generalizing from Expectation and Variance</a></li>
+  <li><a href="#not-a-metaphor" id="toc-not-a-metaphor" class="nav-link" data-scroll-target="#not-a-metaphor">Not a Metaphor!</a></li>
+  <li><a href="#mgf-in-econometrics" id="toc-mgf-in-econometrics" class="nav-link" data-scroll-target="#mgf-in-econometrics">MGF in Econometrics</a></li>
+  <li><a href="#beware" id="toc-beware" class="nav-link" data-scroll-target="#beware">BEWARE ☠️</a></li>
+  </ul></li>
+  <li><a href="#moving-beyond-one-rv" id="toc-moving-beyond-one-rv" class="nav-link" data-scroll-target="#moving-beyond-one-rv">Moving Beyond One RV</a>
+  <ul class="collapse">
+  <li><a href="#multivariate-distributions-w02" id="toc-multivariate-distributions-w02" class="nav-link" data-scroll-target="#multivariate-distributions-w02">Multivariate Distributions (W02)</a></li>
+  <li><a href="#visualizing-3d-distributions-projection" id="toc-visualizing-3d-distributions-projection" class="nav-link" data-scroll-target="#visualizing-3d-distributions-projection">Visualizing 3D Distributions: Projection</a></li>
+  <li><a href="#visualizing-3d-distributions-contours" id="toc-visualizing-3d-distributions-contours" class="nav-link" data-scroll-target="#visualizing-3d-distributions-contours">Visualizing 3D Distributions: Contours</a></li>
+  <li><a href="#visualizing-3d-distributions-contours-1" id="toc-visualizing-3d-distributions-contours-1" class="nav-link" data-scroll-target="#visualizing-3d-distributions-contours-1">Visualizing 3D Distributions: Contours</a></li>
+  <li><a href="#bivariate-distributions" id="toc-bivariate-distributions" class="nav-link" data-scroll-target="#bivariate-distributions">Bivariate Distributions</a></li>
+  </ul></li>
+  <li><a href="#appendix-slides" id="toc-appendix-slides" class="nav-link" data-scroll-target="#appendix-slides">Appendix Slides</a>
+  <ul class="collapse">
+  <li><a href="#sec-hadamard" id="toc-sec-hadamard" class="nav-link" data-scroll-target="#sec-hadamard">Appendix A: The Hadamard Product</a></li>
+  <li><a href="#sec-continuous-support" id="toc-sec-continuous-support" class="nav-link" data-scroll-target="#sec-continuous-support">Appendix B: Continuous RV Support</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
