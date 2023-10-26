@@ -971,11 +971,167 @@ Jeff Jacobs
 </ul>
 <!-- Next: show this in action -->
 </section>
+<section id="veracity-of-hypothesis-is-relative-to-null-distributions" class="slide level2">
+<h2><em>Veracity</em> of Hypothesis is Relative to Null Distributions</h2>
+<ul>
+<li><strong>Counterfactual thinking</strong>: What would the world look like if the <strong>null hypothesis</strong> was <strong>true</strong>? That is, if the relationship of interest did <strong>not</strong> exist.</li>
+<li>Simulate the <strong>test statistic</strong> within this <strong>null world</strong>, say, <span class="math inline">\(N = 10000\)</span> times.</li>
+<li>Now look at <strong>how likely/unlikely the <em>observed</em> test statistic is</strong> <em>relative to</em> these 10000 <strong>null-world-based</strong> test statistics.</li>
+</ul>
+</section>
+<section id="real-world-example-charter-school-dropout-rates" class="slide level2">
+<h2>Real World Example: Charter School Dropout Rates</h2>
+<ul>
+<li><strong>Public school</strong> dropout rate <span class="math inline">\(R_\text{pub}\)</span> in NYC: 5%</li>
+<li><strong>Charter school</strong> dropout rate <span class="math inline">\(R_\text{ch}\)</span> in NYC: 10%</li>
+<li>So, are charter schools systematically <em>pushing</em> lower-performing students to drop out?</li>
+<li>It depends on how we <strong>model</strong> the decision to drop out, how we set up our <strong>null</strong> and <strong>alternative</strong> hypotheses, and what <strong>test statistic</strong> we use to <strong>evaluate</strong> these hypotheses!</li>
+</ul>
+</section>
+<section id="intuition-check-why-do-we-need-to-do-all-this" class="slide level2 crunch-title crunch-code title-11 crunch-quarto-layout-panel">
+<h2>Intuition Check: Why Do We Need To Do All This?</h2>
+<ul>
+<li>Why can’t we just say: <span class="math inline">\(R_\text{ch} &gt; R_\text{pub}\)</span> therefore charter schools are <strong>guilty!</strong>?</li>
+<li><em>Remember our <strong>fair vs.&nbsp;biased coins</strong> examples</em></li>
+<li>Let’s simulate a <strong>fair</strong> coin: <span class="math inline">\(\param{p} = \Pr(\textsf{H}) = 0.5\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">set.seed</span>(<span class="dv">5100</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">library</span>(Rlab)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>num_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>coin_obs <span class="ot">&lt;-</span> <span class="fu">rbern</span>(num_flips, p)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>coin_str <span class="ot">&lt;-</span> <span class="fu">paste0</span>(coin_obs, <span class="at">collapse=</span><span class="st">' '</span>)</span>
+<span id="cb13-7"><a href="#cb13-7"></a>num_heads <span class="ot">&lt;-</span> <span class="fu">sum</span>(coin_obs)</span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="fu">writeLines</span>(<span class="fu">paste0</span>(coin_str,<span class="st">" =&gt; "</span>,num_heads,<span class="st">" heads"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads</code></pre>
+</div>
+</div>
+<ul>
+<li>Seeing 3 heads <span class="math inline">\(~\nimplies \Pr(\textsf{H}) = 0.3\)</span>!</li>
+</ul>
+</section>
+<section id="so-how-can-we-determine-whether-the-coin-is-fair" class="slide level2 smaller crunch-title crunch-code crunch-quarto-layout-panel">
+<h2>So How <em>Can</em> We Determine Whether The Coin Is Fair?</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="fair-coins-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<ul>
+<li>We have to generate <strong>many sequences</strong> of coin flips, then look at the <strong>distribution</strong> of the number of heads in each sequence →</li>
+</ul>
+</div>
+<div id="fair-coins-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>num_replications <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>coin_seqs <span class="ot">&lt;-</span> <span class="fu">replicate</span>(num_replications, <span class="fu">rbern</span>(num_flips, p))</span>
+<span id="cb15-4"><a href="#cb15-4"></a>heads_per_seq <span class="ot">&lt;-</span> <span class="fu">colSums</span>(coin_seqs)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>heads_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">num_heads =</span> heads_per_seq)</span>
+<span id="cb15-6"><a href="#cb15-6"></a>highlight_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"grey"</span>,<span class="dv">2</span>), <span class="fu">rep</span>(cbPalette[<span class="dv">1</span>],<span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">"grey"</span>,<span class="dv">7</span>))</span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="fu">ggplot</span>(heads_df, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(num_heads))) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">geom_histogram</span>(<span class="at">stat=</span><span class="st">'count'</span>, <span class="at">fill=</span>highlight_3) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-11"><a href="#cb15-11"></a>    <span class="at">title=</span><span class="fu">paste0</span>(<span class="st">"Results From N="</span>,num_replications,<span class="st">" 10-Coin-Flip Trials"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/fair-coin-sim-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<ul>
+<li><strong>Now</strong> we can <strong>quantify</strong> exactly <strong>how “fishy”</strong> it was to get 3 heads: if the coin was fair, this would happen about <strong>10.7% of the time</strong>:</li>
+</ul>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>three_df <span class="ot">&lt;-</span> heads_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(num_heads <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">nrow</span>(three_df) <span class="sc">/</span> <span class="fu">nrow</span>(heads_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.107</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-fishy-is-too-fishy" class="slide level2 crunch-title crunch-ul crunch-p crunch-blockquote">
+<h2>How Fishy Is Too Fishy?</h2>
+<ul>
+<li>This means, given a <strong>context</strong> within which we’re analyzing the data, we can construct a <strong>fishiness threshold</strong>:</li>
+<li>If <span class="math inline">\(\Pr(v) &lt; 1\%\)</span>, for example, we can say coin is <strong>not fair</strong></li>
+<li>Scientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:</li>
+</ul>
+<blockquote>
+<p>89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, <strong>“why, because it’s prime, of course!”</strong> That’s no worse than the conventional justification for 95%. <span class="citation" data-cites="mcelreath_statistical_2020">(<a href="#/references" role="doc-biblioref" onclick="">McElreath 2020, 88</a>)</span></p>
+</blockquote>
+<!-- ![From @mcelreath_statistical_2020](images/mcelreath-prime.jpeg){fig-align="center"} -->
+</section>
+<section id="model-the-data-generating-process" class="slide level2">
+<h2>Model: The Data-Generating Process</h2>
+<ul>
+<li>What process <strong>gives rise to</strong> these dropout rates?</li>
+<li>Straightforward model (which we can extend / complicate to include additional factors as needed):
+<ul>
+<li>Student <span class="math inline">\(i\)</span> flips a coin with <span class="math inline">\(\Pr(\textsf{H}) = \param{p}\)</span>: if <span class="math inline">\(\textsf{H}\)</span> student drops out, if <span class="math inline">\(\textsf{T}\)</span> they stay enrolled</li>
+<li>Let <span class="math inline">\(D_i = 1\)</span> if student <span class="math inline">\(i\)</span> drops out, <span class="math inline">\(0\)</span> otherwise.</li>
+</ul></li>
+<li>Under this DGP, at the level of a <strong>school</strong> <span class="math inline">\(j\)</span> with <span class="math inline">\(N_j\)</span> students, <span class="math inline">\(C_j \sim \text{Binom}(N_j, p_j)\)</span> represents the <strong>count</strong> of dropouts at school <span class="math inline">\(j\)</span>, so <span class="math inline">\(R_j = C_j / N_j\)</span> is the <strong>dropout rate</strong></li>
+</ul>
+</section>
+<section id="formulatingsimulating-the-null-hypothesis" class="slide level2">
+<h2>Formulating+Simulating the Null Hypothesis</h2>
+<ul>
+<li><span class="math inline">\(H_0: p_\text{pub} = p_\text{ch} \iff p_\text{pub} - p_\text{ch} = 0\)</span>. There is <strong>no difference</strong> between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools</li>
+<li><span class="math inline">\(H_A: p_\text{pub} \neq p_\text{ch} \iff p_\text{pub} - p_\text{ch} \neq 0\)</span>. There is an <strong>underlying difference</strong> between the rates at which public school students and charter school students choose to drop out</li>
+<li>So, to <strong>simulate null-world</strong>, we will simulate <strong>two schools</strong> with the <strong>same individual-student dropout rate</strong>, then check how often the <strong>school-level dropout rates</strong> differ by more than 5%</li>
+</ul>
+</section>
+<section id="in-code" class="slide level2">
+<h2>In Code</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>N_pub <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>N_ch <span class="ot">&lt;-</span> <span class="dv">250</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="drawing-conclusions" class="slide level2">
+<h2>Drawing Conclusions</h2>
+<ul>
+<li>The probability of the difference being this large (5% or more) is</li>
+</ul>
+</section>
+<section id="now-you-can-present-your-findings-in-congressional-testimony" class="slide level2">
+<h2>(Now You Can Present Your Findings In Congressional Testimony 😉)</h2>
+
+<img data-src="images/guardian.jpeg" class="r-stretch quarto-figure-center"><p class="caption">(From <em><a href="https://www.theguardian.com/us-news/2016/feb/21/success-academy-charter-school-students-got-to-go" target="_blank">The Guardian</a></em>, 2016 Feb 21)</p></section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-hastie_elements_2013" class="csl-entry" role="listitem">
 Hastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. <em>The <span>Elements</span> of <span>Statistical Learning</span>: <span>Data Mining</span>, <span>Inference</span>, and <span>Prediction</span></em>. <span>Springer Science &amp; Business Media</span>.
+</div>
+<div id="ref-mcelreath_statistical_2020" class="csl-entry" role="listitem">
+McElreath, Richard. 2020. <em>Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>STAN</span></em>. <span>CRC Press</span>.
 </div>
 <div id="ref-tharwat_parameter_2019" class="csl-entry" role="listitem">
 Tharwat, Alaa. 2019. <span>“Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.”</span> <em>Knowledge and Information Systems</em> 61 (3): 1269–1302. <a href="https://doi.org/10.1007/s10115-019-01335-4">https://doi.org/10.1007/s10115-019-01335-4</a>.

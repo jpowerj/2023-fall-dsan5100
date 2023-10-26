@@ -2807,11 +2807,81 @@
     "text": "Hypothesis Testing via Bootstrap\n\nNote that our choice to estimate the mean was arbitrary!\nCould just as easily be any chosen test statistic: mean, median, variance, range, 35th percentile, etc.\nHypothesis testing requires choice for test statistic\n\\(\\mathcal{H}_A\\): Group A taller than Group B\n\\(\\mathcal{H}_0\\): No difference between Group A and Group B heights\n\\(\\mathcal{H}_0 \\iff \\mu_A = \\mu_B \\iff \\underbrace{\\mu_A - \\mu_B}_{\\text{Test Statistic for }\\mathcal{H}_0} = 0\\)\nBootstrapped test statistic, therefore, is just \\(\\widehat{\\mu}_A - \\widehat{\\mu}_B\\)!"
   },
   {
+    "objectID": "w10/index.html#veracity-of-hypothesis-is-relative-to-null-distributions",
+    "href": "w10/index.html#veracity-of-hypothesis-is-relative-to-null-distributions",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Veracity of Hypothesis is Relative to Null Distributions",
+    "text": "Veracity of Hypothesis is Relative to Null Distributions\n\nCounterfactual thinking: What would the world look like if the null hypothesis was true? That is, if the relationship of interest did not exist.\nSimulate the test statistic within this null world, say, \\(N = 10000\\) times.\nNow look at how likely/unlikely the observed test statistic is relative to these 10000 null-world-based test statistics."
+  },
+  {
+    "objectID": "w10/index.html#real-world-example-charter-school-dropout-rates",
+    "href": "w10/index.html#real-world-example-charter-school-dropout-rates",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Real World Example: Charter School Dropout Rates",
+    "text": "Real World Example: Charter School Dropout Rates\n\nPublic school dropout rate \\(R_\\text{pub}\\) in NYC: 5%\nCharter school dropout rate \\(R_\\text{ch}\\) in NYC: 10%\nSo, are charter schools systematically pushing lower-performing students to drop out?\nIt depends on how we model the decision to drop out, how we set up our null and alternative hypotheses, and what test statistic we use to evaluate these hypotheses!"
+  },
+  {
+    "objectID": "w10/index.html#intuition-check-why-do-we-need-to-do-all-this",
+    "href": "w10/index.html#intuition-check-why-do-we-need-to-do-all-this",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Intuition Check: Why Do We Need To Do All This?",
+    "text": "Intuition Check: Why Do We Need To Do All This?\n\nWhy can’t we just say: \\(R_\\text{ch} &gt; R_\\text{pub}\\) therefore charter schools are guilty!?\nRemember our fair vs. biased coins examples\nLet’s simulate a fair coin: \\(\\param{p} = \\Pr(\\textsf{H}) = 0.5\\)\n\n\n\nCode\nset.seed(5100)\nlibrary(Rlab)\n\n\nRlab 4.0 attached.\n\n\n\nAttaching package: 'Rlab'\n\n\nThe following object is masked from 'package:tibble':\n\n    view\n\n\nThe following object is masked from 'package:dplyr':\n\n    count\n\n\nThe following objects are masked from 'package:stats':\n\n    dexp, dgamma, dweibull, pexp, pgamma, pweibull, qexp, qgamma,\n    qweibull, rexp, rgamma, rweibull\n\n\nThe following object is masked from 'package:datasets':\n\n    precip\n\n\nCode\nnum_flips &lt;- 10\np &lt;- 0.5\ncoin_obs &lt;- rbern(num_flips, p)\ncoin_str &lt;- paste0(coin_obs, collapse=' ')\nnum_heads &lt;- sum(coin_obs)\nwriteLines(paste0(coin_str,\" =&gt; \",num_heads,\" heads\"))\n\n\n1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads\n\n\n\nSeeing 3 heads \\(~\\nimplies \\Pr(\\textsf{H}) = 0.3\\)!"
+  },
+  {
+    "objectID": "w10/index.html#so-how-can-we-determine-whether-the-coin-is-fair",
+    "href": "w10/index.html#so-how-can-we-determine-whether-the-coin-is-fair",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "So How Can We Determine Whether The Coin Is Fair?",
+    "text": "So How Can We Determine Whether The Coin Is Fair?\n\n\n\n\nWe have to generate many sequences of coin flips, then look at the distribution of the number of heads in each sequence →\n\n\n\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ forcats   1.0.0     ✔ readr     2.1.4\n✔ lubridate 1.9.2     ✔ stringr   1.5.0\n✔ purrr     1.0.2     ✔ tidyr     1.3.0\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ Rlab::count()   masks dplyr::count()\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n✖ Rlab::view()    masks tibble::view()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nnum_replications &lt;- 1000\ncoin_seqs &lt;- replicate(num_replications, rbern(num_flips, p))\nheads_per_seq &lt;- colSums(coin_seqs)\nheads_df &lt;- tibble(num_heads = heads_per_seq)\nhighlight_3 &lt;- c(rep(\"grey\",2), rep(cbPalette[1],1), rep(\"grey\",7))\nggplot(heads_df, aes(x=factor(num_heads))) +\n  geom_histogram(stat='count', fill=highlight_3) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=paste0(\"Results From N=\",num_replications,\" 10-Coin-Flip Trials\")\n  )\n\n\nWarning in geom_histogram(stat = \"count\", fill = highlight_3): Ignoring unknown\nparameters: `binwidth`, `bins`, and `pad`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow we can quantify exactly how “fishy” it was to get 3 heads: if the coin was fair, this would happen about 10.7% of the time:\n\n\n\n\nCode\nthree_df &lt;- heads_df |&gt; filter(num_heads == 3)\nnrow(three_df) / nrow(heads_df)\n\n\n[1] 0.107"
+  },
+  {
+    "objectID": "w10/index.html#how-fishy-is-too-fishy",
+    "href": "w10/index.html#how-fishy-is-too-fishy",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "How Fishy Is Too Fishy?",
+    "text": "How Fishy Is Too Fishy?\n\nThis means, given a context within which we’re analyzing the data, we can construct a fishiness threshold:\nIf \\(\\Pr(v) &lt; 1\\%\\), for example, we can say coin is not fair\nScientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:\n\n\n89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, “why, because it’s prime, of course!” That’s no worse than the conventional justification for 95%. (McElreath 2020, 88)"
+  },
+  {
+    "objectID": "w10/index.html#model-the-data-generating-process",
+    "href": "w10/index.html#model-the-data-generating-process",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Model: The Data-Generating Process",
+    "text": "Model: The Data-Generating Process\n\nWhat process gives rise to these dropout rates?\nStraightforward model (which we can extend / complicate to include additional factors as needed):\n\nStudent \\(i\\) flips a coin with \\(\\Pr(\\textsf{H}) = \\param{p}\\): if \\(\\textsf{H}\\) student drops out, if \\(\\textsf{T}\\) they stay enrolled\nLet \\(D_i = 1\\) if student \\(i\\) drops out, \\(0\\) otherwise.\n\nUnder this DGP, at the level of a school \\(j\\) with \\(N_j\\) students, \\(C_j \\sim \\text{Binom}(N_j, p_j)\\) represents the count of dropouts at school \\(j\\), so \\(R_j = C_j / N_j\\) is the dropout rate"
+  },
+  {
+    "objectID": "w10/index.html#formulatingsimulating-the-null-hypothesis",
+    "href": "w10/index.html#formulatingsimulating-the-null-hypothesis",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Formulating+Simulating the Null Hypothesis",
+    "text": "Formulating+Simulating the Null Hypothesis\n\n\\(H_0: p_\\text{pub} = p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} = 0\\). There is no difference between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools\n\\(H_A: p_\\text{pub} \\neq p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} \\neq 0\\). There is an underlying difference between the rates at which public school students and charter school students choose to drop out\nSo, to simulate null-world, we will simulate two schools with the same individual-student dropout rate, then check how often the school-level dropout rates differ by more than 5%"
+  },
+  {
+    "objectID": "w10/index.html#in-code",
+    "href": "w10/index.html#in-code",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "In Code",
+    "text": "In Code\n\n\nCode\nN_pub &lt;- 1000\nN_ch &lt;- 250"
+  },
+  {
+    "objectID": "w10/index.html#drawing-conclusions",
+    "href": "w10/index.html#drawing-conclusions",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Drawing Conclusions",
+    "text": "Drawing Conclusions\n\nThe probability of the difference being this large (5% or more) is"
+  },
+  {
+    "objectID": "w10/index.html#now-you-can-present-your-findings-in-congressional-testimony",
+    "href": "w10/index.html#now-you-can-present-your-findings-in-congressional-testimony",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "(Now You Can Present Your Findings In Congressional Testimony 😉)",
+    "text": "(Now You Can Present Your Findings In Congressional Testimony 😉)\n\n\n\n(From The Guardian, 2016 Feb 21)"
+  },
+  {
     "objectID": "w10/index.html#references",
     "href": "w10/index.html#references",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "References",
-    "text": "References\n\n\nHastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Science & Business Media.\n\n\nTharwat, Alaa. 2019. “Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.” Knowledge and Information Systems 61 (3): 1269–1302. https://doi.org/10.1007/s10115-019-01335-4."
+    "text": "References\n\n\nHastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Science & Business Media.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.\n\n\nTharwat, Alaa. 2019. “Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.” Knowledge and Information Systems 61 (3): 1269–1302. https://doi.org/10.1007/s10115-019-01335-4."
   },
   {
     "objectID": "w10/index.html#footnotes",
@@ -2926,11 +2996,81 @@
     "text": "Hypothesis Testing via Bootstrap\n\nNote that our choice to estimate the mean was arbitrary!\nCould just as easily be any chosen test statistic: mean, median, variance, range, 35th percentile, etc.\nHypothesis testing requires choice for test statistic\n\\(\\mathcal{H}_A\\): Group A taller than Group B\n\\(\\mathcal{H}_0\\): No difference between Group A and Group B heights\n\\(\\mathcal{H}_0 \\iff \\mu_A = \\mu_B \\iff \\underbrace{\\mu_A - \\mu_B}_{\\text{Test Statistic for }\\mathcal{H}_0} = 0\\)\nBootstrapped test statistic, therefore, is just \\(\\widehat{\\mu}_A - \\widehat{\\mu}_B\\)!"
   },
   {
+    "objectID": "w10/slides.html#veracity-of-hypothesis-is-relative-to-null-distributions",
+    "href": "w10/slides.html#veracity-of-hypothesis-is-relative-to-null-distributions",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Veracity of Hypothesis is Relative to Null Distributions",
+    "text": "Veracity of Hypothesis is Relative to Null Distributions\n\nCounterfactual thinking: What would the world look like if the null hypothesis was true? That is, if the relationship of interest did not exist.\nSimulate the test statistic within this null world, say, \\(N = 10000\\) times.\nNow look at how likely/unlikely the observed test statistic is relative to these 10000 null-world-based test statistics."
+  },
+  {
+    "objectID": "w10/slides.html#real-world-example-charter-school-dropout-rates",
+    "href": "w10/slides.html#real-world-example-charter-school-dropout-rates",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Real World Example: Charter School Dropout Rates",
+    "text": "Real World Example: Charter School Dropout Rates\n\nPublic school dropout rate \\(R_\\text{pub}\\) in NYC: 5%\nCharter school dropout rate \\(R_\\text{ch}\\) in NYC: 10%\nSo, are charter schools systematically pushing lower-performing students to drop out?\nIt depends on how we model the decision to drop out, how we set up our null and alternative hypotheses, and what test statistic we use to evaluate these hypotheses!"
+  },
+  {
+    "objectID": "w10/slides.html#intuition-check-why-do-we-need-to-do-all-this",
+    "href": "w10/slides.html#intuition-check-why-do-we-need-to-do-all-this",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Intuition Check: Why Do We Need To Do All This?",
+    "text": "Intuition Check: Why Do We Need To Do All This?\n\nWhy can’t we just say: \\(R_\\text{ch} &gt; R_\\text{pub}\\) therefore charter schools are guilty!?\nRemember our fair vs. biased coins examples\nLet’s simulate a fair coin: \\(\\param{p} = \\Pr(\\textsf{H}) = 0.5\\)\n\n\n\nCode\nset.seed(5100)\nlibrary(Rlab)\nnum_flips &lt;- 10\np &lt;- 0.5\ncoin_obs &lt;- rbern(num_flips, p)\ncoin_str &lt;- paste0(coin_obs, collapse=' ')\nnum_heads &lt;- sum(coin_obs)\nwriteLines(paste0(coin_str,\" =&gt; \",num_heads,\" heads\"))\n\n\n1 0 0 0 1 0 0 0 0 1 =&gt; 3 heads\n\n\n\nSeeing 3 heads \\(~\\nimplies \\Pr(\\textsf{H}) = 0.3\\)!"
+  },
+  {
+    "objectID": "w10/slides.html#so-how-can-we-determine-whether-the-coin-is-fair",
+    "href": "w10/slides.html#so-how-can-we-determine-whether-the-coin-is-fair",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "So How Can We Determine Whether The Coin Is Fair?",
+    "text": "So How Can We Determine Whether The Coin Is Fair?\n\n\n\n\nWe have to generate many sequences of coin flips, then look at the distribution of the number of heads in each sequence →\n\n\n\n\n\nCode\nlibrary(tidyverse)\nnum_replications &lt;- 1000\ncoin_seqs &lt;- replicate(num_replications, rbern(num_flips, p))\nheads_per_seq &lt;- colSums(coin_seqs)\nheads_df &lt;- tibble(num_heads = heads_per_seq)\nhighlight_3 &lt;- c(rep(\"grey\",2), rep(cbPalette[1],1), rep(\"grey\",7))\nggplot(heads_df, aes(x=factor(num_heads))) +\n  geom_histogram(stat='count', fill=highlight_3) +\n  dsan_theme(\"quarter\") +\n  labs(\n    title=paste0(\"Results From N=\",num_replications,\" 10-Coin-Flip Trials\")\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow we can quantify exactly how “fishy” it was to get 3 heads: if the coin was fair, this would happen about 10.7% of the time:\n\n\n\n\nCode\nthree_df &lt;- heads_df |&gt; filter(num_heads == 3)\nnrow(three_df) / nrow(heads_df)\n\n\n[1] 0.107"
+  },
+  {
+    "objectID": "w10/slides.html#how-fishy-is-too-fishy",
+    "href": "w10/slides.html#how-fishy-is-too-fishy",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "How Fishy Is Too Fishy?",
+    "text": "How Fishy Is Too Fishy?\n\nThis means, given a context within which we’re analyzing the data, we can construct a fishiness threshold:\nIf \\(\\Pr(v) &lt; 1\\%\\), for example, we can say coin is not fair\nScientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:\n\n\n89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, “why, because it’s prime, of course!” That’s no worse than the conventional justification for 95%. (McElreath 2020, 88)"
+  },
+  {
+    "objectID": "w10/slides.html#model-the-data-generating-process",
+    "href": "w10/slides.html#model-the-data-generating-process",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Model: The Data-Generating Process",
+    "text": "Model: The Data-Generating Process\n\nWhat process gives rise to these dropout rates?\nStraightforward model (which we can extend / complicate to include additional factors as needed):\n\nStudent \\(i\\) flips a coin with \\(\\Pr(\\textsf{H}) = \\param{p}\\): if \\(\\textsf{H}\\) student drops out, if \\(\\textsf{T}\\) they stay enrolled\nLet \\(D_i = 1\\) if student \\(i\\) drops out, \\(0\\) otherwise.\n\nUnder this DGP, at the level of a school \\(j\\) with \\(N_j\\) students, \\(C_j \\sim \\text{Binom}(N_j, p_j)\\) represents the count of dropouts at school \\(j\\), so \\(R_j = C_j / N_j\\) is the dropout rate"
+  },
+  {
+    "objectID": "w10/slides.html#formulatingsimulating-the-null-hypothesis",
+    "href": "w10/slides.html#formulatingsimulating-the-null-hypothesis",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Formulating+Simulating the Null Hypothesis",
+    "text": "Formulating+Simulating the Null Hypothesis\n\n\\(H_0: p_\\text{pub} = p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} = 0\\). There is no difference between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools\n\\(H_A: p_\\text{pub} \\neq p_\\text{ch} \\iff p_\\text{pub} - p_\\text{ch} \\neq 0\\). There is an underlying difference between the rates at which public school students and charter school students choose to drop out\nSo, to simulate null-world, we will simulate two schools with the same individual-student dropout rate, then check how often the school-level dropout rates differ by more than 5%"
+  },
+  {
+    "objectID": "w10/slides.html#in-code",
+    "href": "w10/slides.html#in-code",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "In Code",
+    "text": "In Code\n\n\nCode\nN_pub &lt;- 1000\nN_ch &lt;- 250"
+  },
+  {
+    "objectID": "w10/slides.html#drawing-conclusions",
+    "href": "w10/slides.html#drawing-conclusions",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "Drawing Conclusions",
+    "text": "Drawing Conclusions\n\nThe probability of the difference being this large (5% or more) is"
+  },
+  {
+    "objectID": "w10/slides.html#now-you-can-present-your-findings-in-congressional-testimony",
+    "href": "w10/slides.html#now-you-can-present-your-findings-in-congressional-testimony",
+    "title": "Week 10: Method of Moments and Bootstrap Sampling",
+    "section": "(Now You Can Present Your Findings In Congressional Testimony 😉)",
+    "text": "(Now You Can Present Your Findings In Congressional Testimony 😉)\n\n(From The Guardian, 2016 Feb 21)"
+  },
+  {
     "objectID": "w10/slides.html#references",
     "href": "w10/slides.html#references",
     "title": "Week 10: Method of Moments and Bootstrap Sampling",
     "section": "References",
-    "text": "References\n\n\nHastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Science & Business Media.\n\n\nTharwat, Alaa. 2019. “Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.” Knowledge and Information Systems 61 (3): 1269–1302. https://doi.org/10.1007/s10115-019-01335-4.\n\n\n\n\nDSAN 5100-03 Week 10: Bootstrap Sampling"
+    "text": "References\n\n\nHastie, Trevor, Robert Tibshirani, and Jerome Friedman. 2013. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Science & Business Media.\n\n\nMcElreath, Richard. 2020. Statistical Rethinking: A Bayesian Course with Examples in R and STAN. CRC Press.\n\n\nTharwat, Alaa. 2019. “Parameter Investigation of Support Vector Machine Classifier with Kernel Functions.” Knowledge and Information Systems 61 (3): 1269–1302. https://doi.org/10.1007/s10115-019-01335-4.\n\n\n\n\nDSAN 5100-03 Week 10: Bootstrap Sampling"
   },
   {
     "objectID": "index.html",

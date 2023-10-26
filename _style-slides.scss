@@ -155,6 +155,12 @@ aside {
 
 // Crunch: Removing or decreasing gaps
 
+// blockquote
+.crunch-blockquote blockquote {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
 // caption
 .crunch-caption figcaption {
     margin-top: 0px !important;

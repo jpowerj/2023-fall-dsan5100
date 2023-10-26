@@ -432,6 +432,122 @@ quantile(bs_means, c(0.025, 0.975))
 
 <!-- Next: show this in action -->
 
+## *Veracity* of Hypothesis is Relative to Null Distributions
+
+* **Counterfactual thinking**: What would the world look like if the **null hypothesis** was **true**? That is, if the relationship of interest did **not** exist.
+* Simulate the **test statistic** within this **null world**, say, $N = 10000$ times.
+* Now look at **how likely/unlikely the *observed* test statistic is** *relative to* these 10000 **null-world-based** test statistics.
+
+## Real World Example: Charter School Dropout Rates
+
+* **Public school** dropout rate $R_\text{pub}$ in NYC: 5\%
+* **Charter school** dropout rate $R_\text{ch}$ in NYC: 10\%
+* So, are charter schools systematically *pushing* lower-performing students to drop out?
+* It depends on how we **model** the decision to drop out, how we set up our **null** and **alternative** hypotheses, and what **test statistic** we use to **evaluate** these hypotheses!
+
+## Intuition Check: Why Do We Need To Do All This? {.crunch-title .crunch-code .title-11 .crunch-quarto-layout-panel}
+
+* Why can't we just say: $R_\text{ch} > R_\text{pub}$ therefore charter schools are **guilty!**?
+* *Remember our **fair vs. biased coins** examples*
+* Let's simulate a **fair** coin: $\param{p} = \Pr(\textsf{H}) = 0.5$
+
+```{r}
+#| label: fair-coin-model
+set.seed(5100)
+library(Rlab)
+num_flips <- 10
+p <- 0.5
+coin_obs <- rbern(num_flips, p)
+coin_str <- paste0(coin_obs, collapse=' ')
+num_heads <- sum(coin_obs)
+writeLines(paste0(coin_str," => ",num_heads," heads"))
+```
+
+* Seeing 3 heads $~\nimplies \Pr(\textsf{H}) = 0.3$!
+
+## So How *Can* We Determine Whether The Coin Is Fair? {.smaller .crunch-title .crunch-code .crunch-quarto-layout-panel}
+
+::: {layout="[1,1]" layout-valign="center"}
+
+::: {#fair-coins-left}
+
+* We have to generate **many sequences** of coin flips, then look at the **distribution** of the number of heads in each sequence &rarr;
+
+:::
+::: {#fair-coins-right}
+
+```{r}
+#| label: fair-coin-sim
+library(tidyverse)
+num_replications <- 1000
+coin_seqs <- replicate(num_replications, rbern(num_flips, p))
+heads_per_seq <- colSums(coin_seqs)
+heads_df <- tibble(num_heads = heads_per_seq)
+highlight_3 <- c(rep("grey",2), rep(cbPalette[1],1), rep("grey",7))
+ggplot(heads_df, aes(x=factor(num_heads))) +
+  geom_histogram(stat='count', fill=highlight_3) +
+  dsan_theme("quarter") +
+  labs(
+    title=paste0("Results From N=",num_replications," 10-Coin-Flip Trials")
+  )
+```
+
+:::
+:::
+
+::: {layout="[1,1]" layout-valign="center"}
+
+* **Now** we can **quantify** exactly **how "fishy"** it was to get 3 heads: if the coin was fair, this would happen about **10.7% of the time**:
+
+```{r}
+#| label: three-heads-count
+#| code-fold: show
+three_df <- heads_df |> filter(num_heads == 3)
+nrow(three_df) / nrow(heads_df)
+```
+
+:::
+
+## How Fishy Is Too Fishy? {.crunch-title .crunch-ul .crunch-p .crunch-blockquote}
+
+* This means, given a **context** within which we're analyzing the data, we can construct a **fishiness threshold**:
+* If $\Pr(v) < 1\%$, for example, we can say coin is **not fair**
+* Scientific journals arbitrarily choose 5% (95% confidence) as their threshold: I prefer 11% (89% confidence), for same reason as anthropologist/statistician Richard McElreath:
+
+> 89 is a prime number, so if someone asks you to justify it, you can stare at them meaningfully and incant, **"why, because it's prime, of course!"** That's no worse than the conventional justification for 95%. [@mcelreath_statistical_2020, 88]
+
+<!-- ![From @mcelreath_statistical_2020](images/mcelreath-prime.jpeg){fig-align="center"} -->
+
+## Model: The Data-Generating Process
+
+* What process **gives rise to** these dropout rates?
+* Straightforward model (which we can extend / complicate to include additional factors as needed):
+  * Student $i$ flips a coin with $\Pr(\textsf{H}) = \param{p}$: if $\textsf{H}$ student drops out, if $\textsf{T}$ they stay enrolled
+  * Let $D_i = 1$ if student $i$ drops out, $0$ otherwise.
+* Under this DGP, at the level of a **school** $j$ with $N_j$ students, $C_j \sim \text{Binom}(N_j, p_j)$ represents the **count** of dropouts at school $j$, so $R_j = C_j / N_j$ is the **dropout rate**
+
+## Formulating+Simulating the Null Hypothesis
+
+* $H_0: p_\text{pub} = p_\text{ch} \iff p_\text{pub} - p_\text{ch} = 0$. There is **no difference** between the individual-student dropout rate at public schools and the individual-student dropout rate at charter schools
+* $H_A: p_\text{pub} \neq p_\text{ch} \iff p_\text{pub} - p_\text{ch} \neq 0$. There is an **underlying difference** between the rates at which public school students and charter school students choose to drop out
+* So, to **simulate null-world**, we will simulate **two schools** with the **same individual-student dropout rate**, then check how often the **school-level dropout rates** differ by more than 5%
+
+## In Code
+
+```{r}
+#| label: simulate-two-schools
+N_pub <- 1000
+N_ch <- 250
+```
+
+## Drawing Conclusions
+
+* The probability of the difference being this large (5% or more) is
+
+## (Now You Can Present Your Findings In Congressional Testimony 😉)
+
+![(From *[The Guardian](https://www.theguardian.com/us-news/2016/feb/21/success-academy-charter-school-students-got-to-go){target='_blank'}*, 2016 Feb 21)](images/guardian.jpeg)
+
 ## References
 
 ::: {#refs}
