@@ -361,6 +361,21 @@ figcaption {
 .shift-footnotes aside {
     transform: translateY(45px) !important;
 }
+.shift-footnotes-0 aside {
+    bottom: 0px !important;
+}
+.shift-footnotes-10 aside {
+    transform: translateY(10px) !important;
+    bottom: 0px !important;
+}
+.shift-footnotes-20 aside {
+    transform: translateY(20px) !important;
+    bottom: 0px !important;
+}
+.shift-footnotes-30 aside {
+    transform: translateY(30px) !important;
+    bottom: 0px !important;
+}
 .shift-footnotes-less aside {
     transform: translateY(30px) !important;
 }
@@ -456,8 +471,14 @@ transform: translateY(60px) !important;
 .title-09 h2 {
     font-size: calc(0.9 * var(--r-heading2-size)) !important;
 }
+.title-10 h1 {
+    font-size: calc(1.0 * var(--r-heading2-size)) !important;
+}
 .title-10 h2 {
     font-size: calc(1.0 * var(--r-heading2-size)) !important;
+}
+.title-11 h1 {
+    font-size: calc(1.1 * var(--r-heading2-size)) !important;
 }
 .title-11 h2 {
     font-size: calc(1.1 * var(--r-heading2-size)) !important;

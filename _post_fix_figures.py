@@ -20,6 +20,10 @@ def main():
     #print(week_dirs)
     for cur_week_dir in week_dirs:
         cur_notes_fpath = os.path.join(cur_week_dir, "index.html")
+        if not os.path.isfile(cur_notes_fpath):
+            # This happens when we're just previewing the slides, so it hasn't
+            # created an index.html file yet
+            continue
         #html_glob_str = os.path.join(cur_week_dir, "*.html")
         orig_notes_html = load_file(cur_notes_fpath)
         #print(orig_notes_html)

@@ -41,6 +41,8 @@ website:
         text: "Week 9: Oct 19"
       - href: w10/index.qmd
         text: "Week 10: Oct 26"
+      - href: w11/index.qmd
+        text: "Weel 11: Nov 2"
       - href: recordings/index.qmd
         text: "Lecture Recordings"
       - "---"
