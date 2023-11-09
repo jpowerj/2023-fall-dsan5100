@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeff Jacobs">
+
+<title>Week 12: Fancy Hypothesis Testing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script><script src="../jjcustom.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w12/index.html">Week 12: Nov 9</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">DSAN 5100 Section 03 (Thursdays, 12:30-3pm)</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jfh.georgetown.domains/dsan5100/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-arrow-left" style="margin-right: 4px"></i>Main Course Page</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Section 03 Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Aug 24</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Aug 31</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Sep 7</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Sep 14</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Sep 20</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6: Sep 27</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7: Oct 5</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8: Oct 12</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w09/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 9: Oct 19</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w10/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 10: Oct 26</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w11/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 11: Nov 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w12/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 12: Nov 9</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../recordings/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Recordings</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extra-videos/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra Videos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra Writeups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cheatsheet-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Math Cheatsheet</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.instructure.com/courses/173333" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Canvas Page <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://calendar.app.google/yMnESMtMNPdKEaPz5" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Book Office Hours <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/QBT621Vmcez4Y99r5" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Suggestion Box <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://jjacobs.me/dsps" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Textbook <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#types-of-hypotheses" id="toc-types-of-hypotheses" class="nav-link" data-scroll-target="#types-of-hypotheses">Types of Hypotheses</a>
+  <ul class="collapse">
+  <li><a href="#differences-vs.-ratios" id="toc-differences-vs.-ratios" class="nav-link" data-scroll-target="#differences-vs.-ratios">Differences vs.&nbsp;Ratios</a></li>
+  <li><a href="#the-difference-in-math" id="toc-the-difference-in-math" class="nav-link" data-scroll-target="#the-difference-in-math">The Difference, In Math</a></li>
+  <li><a href="#the-takeaway" id="toc-the-takeaway" class="nav-link" data-scroll-target="#the-takeaway">The Takeaway</a></li>
+  </ul></li>
+  <li><a href="#the-t-test" id="toc-the-t-test" class="nav-link" data-scroll-target="#the-t-test">The <span class="math inline">\(t\)</span>-Test</a>
+  <ul class="collapse">
+  <li><a href="#moving-from-known-rightarrow-unknown-sigma" id="toc-moving-from-known-rightarrow-unknown-sigma" class="nav-link" data-scroll-target="#moving-from-known-rightarrow-unknown-sigma">Moving From Known <span class="math inline">\(\rightarrow\)</span> Unknown <span class="math inline">\(\sigma\)</span></a></li>
+  <li><a href="#errors-now-make-our-estimates-exponentially-worse" id="toc-errors-now-make-our-estimates-exponentially-worse" class="nav-link" data-scroll-target="#errors-now-make-our-estimates-exponentially-worse">Errors Now Make Our Estimates <em>Exponentially Worse</em>(!)</a></li>
+  <li><a href="#z-test-rightarrow-t-test" id="toc-z-test-rightarrow-t-test" class="nav-link" data-scroll-target="#z-test-rightarrow-t-test"><span class="math inline">\(z\)</span>-Test <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(t\)</span>-Test</a></li>
+  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">In R</a></li>
+  <li><a href="#the-infer-package" id="toc-the-infer-package" class="nav-link" data-scroll-target="#the-infer-package">The <code>infer</code> Package</a></li>
+  </ul></li>
+  <li><a href="#the-chi-squared-test-of-independence" id="toc-the-chi-squared-test-of-independence" class="nav-link" data-scroll-target="#the-chi-squared-test-of-independence">The Chi-Squared Test of Independence</a>
+  <ul class="collapse">
+  <li><a href="#what-hypothesis-are-we-testing" id="toc-what-hypothesis-are-we-testing" class="nav-link" data-scroll-target="#what-hypothesis-are-we-testing">What Hypothesis Are We Testing?</a></li>
+  <li><a href="#base-notation" id="toc-base-notation" class="nav-link" data-scroll-target="#base-notation">Base Notation</a></li>
+  <li><a href="#joint-and-marginal-frequencies" id="toc-joint-and-marginal-frequencies" class="nav-link" data-scroll-target="#joint-and-marginal-frequencies">Joint and Marginal Frequencies</a></li>
+  <li><a href="#we-made-it" id="toc-we-made-it" class="nav-link" data-scroll-target="#we-made-it">We Made It</a></li>
+  <li><a href="#in-r-1" id="toc-in-r-1" class="nav-link" data-scroll-target="#in-r-1">In R</a></li>
+  <li><a href="#computing-marginal-frequencies" id="toc-computing-marginal-frequencies" class="nav-link" data-scroll-target="#computing-marginal-frequencies">Computing Marginal Frequencies</a></li>
+  <li><a href="#computing-the-test-statistic" id="toc-computing-the-test-statistic" class="nav-link" data-scroll-target="#computing-the-test-statistic">Computing the Test Statistic</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  <li><a href="#drawing-conclusions-in-classical-world" id="toc-drawing-conclusions-in-classical-world" class="nav-link" data-scroll-target="#drawing-conclusions-in-classical-world">Drawing Conclusions in Classical World</a></li>
+  <li><a href="#drawing-conclusions-in-modern-bayesian-world" id="toc-drawing-conclusions-in-modern-bayesian-world" class="nav-link" data-scroll-target="#drawing-conclusions-in-modern-bayesian-world">Drawing Conclusions in Modern (Bayesian) World</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 12: Fancy Hypothesis Testing</h1>
+<p class="subtitle lead"><em>DSAN 5100: Probabilistic Modeling and Statistical Computing</em><br>Section 03</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Class Sessions</div>
+  </div>
+  </div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Thursday, November 2, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
+</center>
+<section id="schedule" class="level1 smaller small-title crunch-title" data-name="Schedule">
+<h1 class="smaller small-title crunch-title" data-name="Schedule">Schedule</h1>
+<div class="hidden">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"../_globals.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="hidden">
+<p><span class="math display">\[
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\bigexp}[1]{\exp\mkern-4mu\left[ #1 \right]}
+\newcommand{\bigexpect}[1]{\mathbb{E}\mkern-4mu \left[ #1 \right]}
+\newcommand{\convergesAS}{\overset{\text{a.s.}}{\longrightarrow}}
+\newcommand{\definedas}{\overset{\text{def}}{=}}
+\newcommand{\definedalign}{\overset{\phantom{\text{def}}}{=}}
+\newcommand{\eqeventual}{\overset{\mathclap{\text{\small{eventually}}}}{=}}
+\newcommand{\Err}{\text{Err}}
+\newcommand{\expect}[1]{\mathbb{E}[#1]}
+\newcommand{\expectsq}[1]{\mathbb{E}^2[#1]}
+\newcommand{\fw}[1]{\texttt{#1}}
+\newcommand{\given}{\mid}
+\newcommand{\green}[1]{\color{green}{#1}}
+\newcommand{\heads}{\outcome{heads}}
+\newcommand{\iid}{\overset{\text{\small{iid}}}{\sim}}
+\newcommand{\lik}{\mathcal{L}}
+\newcommand{\loglik}{\ell}
+\newcommand{\mle}{\textsf{ML}}
+\newcommand{\nimplies}{\;\not\!\!\!\!\implies}
+\newcommand{\orange}[1]{\color{orange}{#1}}
+\newcommand{\outcome}[1]{\textsf{#1}}
+\newcommand{\param}[1]{{\color{purple} #1}}
+\newcommand{\pgsamplespace}{\{\green{1},\green{2},\green{3},\purp{4},\purp{5},\purp{6}\}}
+\newcommand{\prob}[1]{P\left( #1 \right)}
+\newcommand{\purp}[1]{\color{purple}{#1}}
+\newcommand{\spacecap}{\; \cap \;}
+\newcommand{\spacewedge}{\; \wedge \;}
+\newcommand{\tails}{\outcome{tails}}
+\newcommand{\Var}[1]{\text{Var}[#1]}
+\newcommand{\bigVar}[1]{\text{Var}\mkern-4mu \left[ #1 \right]}
+\]</span></p>
+</div>
+</div>
+<p>Today’s Planned Schedule:</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 60%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: center;">Recording</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">12:30pm</td>
+<td style="text-align: left;">1:00pm</td>
+<td style="text-align: left;"><a href="#method-of-moments">Types of Hypotheses →</a></td>
+<td style="text-align: center;"><a href="../recordings/recording-w12-1.html" target="_blank"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1:00pm</td>
+<td style="text-align: left;">1:30pm</td>
+<td style="text-align: left;"><a href="#the-chi-squared-test-of-independence">Chi-Squared Test of Independence →</a></td>
+<td style="text-align: center;"><a href="../recordings/recording-w12-2.html" target="_blank"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1:30pm</td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;"><a href="#testing-hypotheses-about-proportions">Testing Hypotheses About Proportions →</a></td>
+<td style="text-align: center;"><a href="../recordings/recording-w12-3.html" target="_blank"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">2:00pm</td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:10pm</td>
+<td style="text-align: left;">2:40pm</td>
+<td style="text-align: left;"><a href="#bias-variance-tradeoff-introduction">Hypothesis Testing Lab →</a></td>
+<td style="text-align: center;"><a href="../recordings/recording-w11-2.html" target="_blank"><i class="bi bi-film"></i></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2:40pm</td>
+<td style="text-align: left;">3:00pm</td>
+<td style="text-align: left;">Student Presentation</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="types-of-hypotheses" class="level1" data-stack-name="Hypotheses">
+<h1 data-stack-name="Hypotheses">Types of Hypotheses</h1>
+<section id="differences-vs.-ratios" class="level2 smaller crunch-title crunch-ul crunch-math">
+<h2 class="smaller crunch-title crunch-ul crunch-math anchored" data-anchor-id="differences-vs.-ratios">Differences vs.&nbsp;Ratios</h2>
+<ul>
+<li><strong>Setting</strong>: We have a sample <span class="math inline">\(\mathbf{X}_1\)</span> taken from a population <span class="math inline">\(P_1\)</span> and a sample <span class="math inline">\(\mathbf{X}_2\)</span> taken from a population <span class="math inline">\(P_2\)</span>.</li>
+<li>We care about some variable <span class="math inline">\(v\)</span> that we measured as part of our sampling: in particular, we care about <span class="math inline">\(\mu^{(v)}_1\)</span>, the mean of this variable in <strong>population 1</strong>, and <span class="math inline">\(\mu^{(v)}_2\)</span>, the mean of this variable in <strong>population 2</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li><strong>Goal</strong>: Test whether the <strong>mean</strong> of <span class="math inline">\(v\)</span> in population 1 is <strong>equal to</strong> the mean of <span class="math inline">\(v\)</span> in population 2. Formally, we test the hypothesis <span class="math inline">\(\mathcal{H}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\mathcal{H}: \mu_1 = \mu_2
+\]</span></p>
+<ul>
+<li><p>It is ambiguous what <strong>test statistic</strong> we should use to check this(!), since</p>
+<p><span class="math display">\[
+  \begin{align*}
+  \mu_1 = \mu_2 &amp;\iff \mu_1 - \mu_2 = 0 \\
+  \mu_1 = \mu_2 &amp;\iff \frac{\mu_1}{\mu_2} = 0
+  \end{align*}
+  \]</span></p>
+<p>(where we assume, for the second equivalence, that <span class="math inline">\(\mu_2 \neq 0\)</span>)</p></li>
+</ul>
+</section>
+<section id="the-difference-in-math" class="level2 smaller crunch-ul crunch-code crunch-math crunch-quarto-layout-panel">
+<h2 class="smaller crunch-ul crunch-code crunch-math crunch-quarto-layout-panel anchored" data-anchor-id="the-difference-in-math">The Difference, In Math</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="test-stats-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<ul>
+<li><p>Our test statistic is some function <span class="math inline">\(t(\mu_1, \mu_2)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(t_d(\mu_1, \mu_2) = \mu_1 - \mu_2\)</span></p></li>
+<li><p>Let <span class="math inline">\(t_r(\mu_1, \mu_2) = \frac{\mu_1}{\mu_2}\)</span></p></li>
+<li><p>How <strong>sensitive</strong> are these two ways of defining <span class="math inline">\(t\)</span> to changes in the individual terms?</p>
+<p><span class="math display">\[
+  t'_d(\mu_2) = \frac{\partial t^-(\mu_1, \mu_2)}{\partial \mu_1} = 1,
+  \]</span></p>
+<p>whereas</p>
+<p><span class="math display">\[
+  t'_r(\mu_2) = \frac{\partial t^\div(\mu_1, \mu_2)}{\partial \mu_1} = \frac{1}{\mu_2}
+  \]</span></p></li>
+</ul>
+</div>
+<div id="test-stats-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ lubridate 1.9.2     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>my_const <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>my_ratio <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">1</span><span class="sc">/</span>x</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#data_df &lt;- data_df |&gt; mutate(</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  z = my_diff(x, y)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#print(data_df)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>x_label <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="st">"$</span><span class="sc">\\</span><span class="st">mu_2$"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>td_title <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="st">"Stability of $t_d$"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>td_label <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="st">"$t'_d(</span><span class="sc">\\</span><span class="st">mu_2)$"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>base_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"quarter"</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x_label</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>diff_plot <span class="ot">&lt;-</span> base_plot <span class="sc">+</span> <span class="fu">stat_function</span>(</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> my_const,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> g_linewidth</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> td_title,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> td_label</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>diff_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/diff-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tr_title <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="st">"Stability of $t_r$"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tr_label <span class="ot">&lt;-</span> <span class="fu">TeX</span>(<span class="st">"$t'_r(</span><span class="sc">\\</span><span class="st">mu_2)$"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ratio_plot <span class="ot">&lt;-</span> base_plot <span class="sc">+</span> <span class="fu">stat_function</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> my_ratio,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> g_linewidth</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">labs</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> tr_title,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> tr_label</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ratio_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/ratio-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-takeaway" class="level2">
+<h2 class="anchored" data-anchor-id="the-takeaway">The Takeaway</h2>
+<ul>
+<li>In scenarios where <span class="math inline">\(\mu\)</span> values are <strong>far from zero</strong>, both behave similarly</li>
+<li>But in scenarios where <span class="math inline">\(\mu\)</span> values are <strong>close to zero</strong>, need to be careful about using <span class="math inline">\(t_r(\mu_1, \mu_2) = \frac{\mu_1}{\mu_2}\)</span>!</li>
+<li>If <span class="math inline">\(\mu_2\)</span> could feasibly <strong>be</strong> zero… <span class="math inline">\(t_r(\mu_1, \mu_2) = 💀😵💀\)</span></li>
+</ul>
+</section>
+</section>
+<section id="the-t-test" class="level1" data-stack-name="t-Test">
+<h1 data-stack-name="t-Test">The <span class="math inline">\(t\)</span>-Test</h1>
+<section id="moving-from-known-rightarrow-unknown-sigma" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="moving-from-known-rightarrow-unknown-sigma">Moving From Known <span class="math inline">\(\rightarrow\)</span> Unknown <span class="math inline">\(\sigma\)</span></h2>
+<ul>
+<li>Last week: <span class="math inline">\(z\)</span>-test for scenario where we (somehow) <strong>know</strong> population variance <span class="math inline">\(\sigma\)</span></li>
+<li>This week: More realistic case where we <strong>don’t</strong> know <span class="math inline">\(\sigma\)</span>, so we <strong>estimate it</strong> from our sample <span class="math inline">\(\mathbf{X}\)</span>: <span class="math inline">\(\widehat{\sigma^2} = s^2_{\mathbf{X}}\)</span></li>
+<li>This means we have <strong>recursive uncertainty</strong> in our estimates!</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\widehat{\mu}(\mathbf{X}) = f(\mathbf{X}) &amp;= \frac{1}{N}\sum_{i=1}^{N}X_i \\
+\widehat{\sigma^2}(\mathbf{X}) = g(\mathbf{X}, \widehat{\mu}(\mathbf{X})) &amp;= \frac{1}{N}\sum_{i=1}^N (X_i - \boxed{\widehat{\mu}(\mathbf{X})})^2 \\
+&amp;= \frac{1}{N}\sum_{i=1}^N\left(X_i - \boxed{\frac{1}{N}\sum_{j=1}^NX_j}\right)^2
+\end{align*}
+\]</span></p>
+</section>
+<section id="errors-now-make-our-estimates-exponentially-worse" class="level2 smaller title-10 crunch-title crunch-ul">
+<h2 class="smaller title-10 crunch-title crunch-ul anchored" data-anchor-id="errors-now-make-our-estimates-exponentially-worse">Errors Now Make Our Estimates <em>Exponentially Worse</em>(!)</h2>
+<ul>
+<li>Imagine that when calculating <span class="math inline">\(\widehat{\mu} = \frac{1}{N}\sum_{i=1}^nX_i\)</span> (recall that this is an <strong>unbiased</strong> estimator for <span class="math inline">\(\mu\)</span>), we accidentally add <span class="math inline">\(\varepsilon\)</span> to every value <span class="math inline">\(X_i\)</span>, so that we instead compute <span class="math inline">\(\widetilde{\mu} = \frac{1}{N}\sum_{i=1}^n(X_i+\varepsilon) = \widehat{\mu} + \varepsilon\)</span></li>
+<li>This means our estimate of <span class="math inline">\(\mu\)</span> is now <strong>biased</strong> by some amount <span class="math inline">\(\varepsilon\)</span>: while <span class="math inline">\(\mathbb{E}[\widehat{\mu}] = \mu\)</span>, <span class="math inline">\(\mathbb{E}[\widetilde{\mu}] = \mu + {\color{red}\varepsilon}\)</span></li>
+<li>How does this affect subsequent estimates of the <strong>variance</strong> <span class="math inline">\(\widehat{\sigma^2}\)</span>? Even if we use an <strong>unbiased</strong> estimator <span class="math inline">\(\widehat{\sigma^2}\)</span>, so that <span class="math inline">\(\mathbb{E}[\widehat{\sigma^2}] = \sigma^2\)</span>, we get something that looks like the following (sweeping some details under the rug):</li>
+</ul>
+<p><span class="math display">\[
+\mathbb{E}[\widehat{\sigma^2}] = \cdots = \sigma^2 + \mathbb{E}[\varepsilon^2] - 2\varepsilon\mathbb{E}[X_i-\mu] = \sigma^2 + {\color{red}\varepsilon^2}
+\]</span></p>
+<ul>
+<li>While our estimate of the <strong>mean</strong> was off by <span class="math inline">\({\color{red}\varepsilon}\)</span>, our estimate of the <strong>variance</strong> is off by <span class="math inline">\({\color{red}\varepsilon^2}\)</span>!</li>
+<li>Taking square root to obtain the standard deviation <span class="math inline">\(\widehat{\sigma}\)</span> doesn’t “fix” this, either, since <span class="math inline">\(\sqrt{\sigma^2 + \varepsilon^2} \neq \sigma + \varepsilon\)</span> in general (e.g., <span class="math inline">\(\sqrt{2^2 + 3^2} = \sqrt{4+9} = \sqrt{13} \neq 2 + 3 = 5\)</span>)</li>
+</ul>
+</section>
+<section id="z-test-rightarrow-t-test" class="level2 smaller crunch-title crunch-ul crunch-quarto-layout-panel">
+<h2 class="smaller crunch-title crunch-ul crunch-quarto-layout-panel anchored" data-anchor-id="z-test-rightarrow-t-test"><span class="math inline">\(z\)</span>-Test <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(t\)</span>-Test</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="t-test-left" class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<center>
+<strong>The Takeaway:</strong>
+</center>
+<ul>
+<li>When we <strong>know</strong> <span class="math inline">\(\sigma^2\)</span> but we <strong>estimate</strong> <span class="math inline">\(\mu\)</span> from a sample, we represent our uncertainty via test statistic <span class="math inline">\(z \sim \mathcal{N}(\widehat{\mu}, \sigma^2)\)</span></li>
+<li>When we estimate <strong>both</strong> <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> from a sample, we use a test statistic <span class="math inline">\(t\)</span> with a <em>wider</em> <strong>“Student’s <span class="math inline">\(t\)</span>”</strong> Distribution in place of the <strong>Normal</strong> Distribution: <span class="math inline">\(t \sim \mathcal{T}(\widehat{\mu}, \widehat{\sigma}^2, N)\)</span></li>
+<li>As <span class="math inline">\(N \rightarrow \infty\)</span>, <span class="math inline">\(\mathcal{T}_N(\widehat{\mu},\widehat{\sigma}^2,N) \rightarrow \mathcal{N}(\widehat{\mu},\widehat{\sigma}^2)\)</span></li>
+</ul>
+</div>
+<div id="t-test-right" class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_normal <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>my_st <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">dt</span>(x, <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color=</span><span class="st">'norm'</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun=</span>my_normal,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> g_linewidth</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color=</span><span class="st">'st'</span>),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun=</span>my_st,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> g_linewidth</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>(<span class="st">"half"</span>) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Distribution"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values=</span><span class="fu">c</span>(<span class="st">'norm'</span><span class="ot">=</span>cbPalette[<span class="dv">1</span>],<span class="st">'st'</span><span class="ot">=</span>cbPalette[<span class="dv">2</span>]),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">'norm'</span><span class="ot">=</span><span class="st">"Standard Normal"</span>,<span class="st">'st'</span><span class="ot">=</span><span class="st">"Student's t (df=2)"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_legend_title</span>() <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Standard Normal vs. Student's t Distribution"</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/normal-vs-t-dist-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">A comparison of the two distributions, showing how the Student’s t Distribution has <strong>greater variance</strong>, representing the <strong>greater uncertainty</strong> when estimating two population parameters instead of just one</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="in-r" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="in-r">In R</h2>
+<ul>
+<li>Let’s create a tibble containing samples from <strong>two populations</strong></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nl_height_mean <span class="ot">&lt;-</span> <span class="fl">182.535</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>nl_height_sd <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>yemen_height_mean <span class="ot">&lt;-</span> <span class="fl">159.887</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>yemen_height_sd <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>nl_sample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean=</span>nl_height_mean, <span class="at">sd =</span> nl_height_sd)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>nl_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">height=</span>nl_sample, <span class="at">Country=</span><span class="st">"Netherlands"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>yemen_sample <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean=</span>yemen_height_mean, <span class="at">sd =</span> yemen_height_sd)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>yemen_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">height=</span>yemen_sample, <span class="at">Country=</span><span class="st">"Yemen"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>data_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(nl_df, yemen_df)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_df, <span class="fu">aes</span>(<span class="at">x=</span>height, <span class="at">fill=</span>Country)) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dsan_theme</span>() <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#xlim(150,200) +</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Heights: Yemen (N=100) vs. Netherlands (N=100)"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Height (cm)"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sample Probability Density"</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">"Country"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">'Netherlands'</span><span class="ot">=</span>cbPalette[<span class="dv">1</span>], <span class="st">'Yemen'</span><span class="ot">=</span>cbPalette[<span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/two-pops-tibble-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(H_0: \mu_{\text{NL}} - \mu_{\text{Yem}} = 0\)</span>, <span class="math inline">\(H_A: \mu_{\text{NL}} - \mu_{\text{Yem}} &gt; 0\)</span>, <span class="math inline">\(t = \overline{h}_{\text{NL}} - \overline{h}_{\text{Yem}}\)</span></li>
+</ul>
+</section>
+<section id="the-infer-package" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="the-infer-package">The <code>infer</code> Package</h2>
+<ul>
+<li><p>It’s easy to find resources on built-in <code>t.test()</code>, harder to find resources on <a href="https://infer.netlify.app/reference/t_test.html" target="_blank">newer, tidyverse-based <code>t_test()</code></a>! 😉</p></li>
+<li><p>Syntax is <code>t_test(df, formula, order, alternative)</code></p></li>
+<li><p><code>order = c(pop1, pop2)</code> <span class="math inline">\(\rightarrow H_0: \mu_1 - \mu_2 = 0\)</span></p></li>
+<li><p><code>alternative = {"two-sided", "greater", "less"}</code></p></li>
+<li><p><code>formula</code> slightly trickier, but tldr is:</p>
+<pre><code>variable you're computing means for ~ variable splitting df into two populations</code></pre></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_df <span class="sc">|&gt;</span> <span class="fu">t_test</span>(<span class="at">formula =</span> height <span class="sc">~</span> Country, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"Netherlands"</span>, <span class="st">"Yemen"</span>), <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 7
+  statistic  t_df  p_value alternative estimate lower_ci upper_ci
+      &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1      19.3  191. 5.28e-47 greater         23.9     21.8      Inf</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="the-chi-squared-test-of-independence" class="level1 not-title-slide crunch-title crunch-quarto-layout-panel title-10" data-stack-name="Chi-Squared Test">
+<h1 class="not-title-slide crunch-title crunch-quarto-layout-panel title-10" data-stack-name="Chi-Squared Test">The Chi-Squared Test of Independence</h1>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pooh_nobg.png" class="img-fluid figure-img" width="300"></p>
+<figcaption class="figure-caption"><span class="math inline">\(z\)</span>-Tests and <span class="math inline">\(t\)</span>-Tests</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/swole_pooh.jpeg" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">The Chi-Squared Test</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<section id="what-hypothesis-are-we-testing" class="level2 crunch-title crunch-math crunch-ul small-math crunch-lists">
+<h2 class="crunch-title crunch-math crunch-ul small-math crunch-lists anchored" data-anchor-id="what-hypothesis-are-we-testing">What Hypothesis Are We Testing?</h2>
+<ul>
+<li><span class="math inline">\(z\)</span>-Tests and <span class="math inline">\(t\)</span>-Tests might feel a bit weak: they allow us to hypothesize about a single population parameter, which is nice, but throughout the course we have been talking about <strong>distributions</strong>, not just means or variances!</li>
+<li>The <strong>Chi-Squared Test</strong> allows us to hypothesize about distributions: for categorical random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> we can test the null and alternative hypotheses:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+H_0: X_1 \perp X_2 &amp;\iff \Pr(X_1 = v_1 \mid X_2 = v_2) = \Pr(X_1 = v_1) \\
+H_A: X_1 \not\perp X_2 &amp;\iff \Pr(X_1 = v_1 \mid X_2 = v_2) \neq \Pr(X_1 = v_1)
+\end{align*}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(H_0\)</span> in words: “learning the value of <span class="math inline">\(X_2\)</span> does not give me any information about the value of <span class="math inline">\(X_1\)</span>, and vice-versa”</li>
+</ul>
+</section>
+<section id="base-notation" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="base-notation">Base Notation</h2>
+<ul>
+<li><em>(May seem tedious, but you will be thankful later if you use this notation!)</em></li>
+<li>Let <span class="math inline">\(N\)</span> be the total number of samples we have in our dataset</li>
+<li>Let <span class="math inline">\(K_1\)</span> be the total number of <strong>categories</strong> that <span class="math inline">\(X_1\)</span> can take on: formally, <span class="math inline">\(K_1 = |\mathcal{R}_{X_1}|\)</span>.</li>
+<li>Similarly, let <span class="math inline">\(K_2 = |\mathcal{R}_{X_2}|\)</span>, the cardinality of the support of <span class="math inline">\(X_2\)</span>.</li>
+<li>We will use a <strong>lowercase</strong> <span class="math inline">\(k_{1,i}\)</span> to represent the <strong><span class="math inline">\(i\)</span>th possible value</strong> of <span class="math inline">\(X_1\)</span>, (i.e., the <span class="math inline">\(i\)</span>th element of <span class="math inline">\(\mathcal{R}_{X_1}\)</span>), and <span class="math inline">\(k_{2,i}\)</span> to represent the <span class="math inline">\(i\)</span>th possible value of <span class="math inline">\(\mathcal{R}_{X_2}\)</span>.
+<ul>
+<li>e.g., <span class="math inline">\(k_{1,1}\)</span> is the first element of <span class="math inline">\(\mathcal{R}_{X_1}\)</span>, <span class="math inline">\(k_{1,2}\)</span> is the second element of <span class="math inline">\(\mathcal{R}_{X_2}\)</span>, and so on.</li>
+</ul></li>
+</ul>
+</section>
+<section id="joint-and-marginal-frequencies" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="joint-and-marginal-frequencies">Joint and Marginal Frequencies</h2>
+<ul>
+<li><p>Now we can define the central quantities that the chi-squared test involves: the <strong>frequencies</strong> (i.e., unnormalized probabilities) of observations with certain (categorical) variable values:</p></li>
+<li><p><span class="math inline">\(f_{i,j}\)</span>: The <strong>number of observations</strong> for which <span class="math inline">\(X_1 = k_{1,i}\)</span> (the <span class="math inline">\(i\)</span>th value that <span class="math inline">\(X_1\)</span> can take on) and <span class="math inline">\(X_2 = k_{2,j}\)</span> (the <span class="math inline">\(j\)</span>th value that <span class="math inline">\(X_2\)</span> can take on).</p>
+<ul>
+<li>Example: <span class="math inline">\(f_{1,3}\)</span>, represents the <strong>number of observations</strong> for which <span class="math inline">\(X_1 = k_{1,1}\)</span> and <span class="math inline">\(X_2 = k_{2,3}\)</span>.</li>
+</ul></li>
+<li><p>Let <span class="math inline">\(f_{i,\cdot} = \sum_{j=1}^{K_2}f_{i,j}\)</span> be the <strong>number of observations</strong> for which <span class="math inline">\(X_1 = k_{1,i}\)</span>, regardless of the value of <span class="math inline">\(X_2\)</span> (hence we call this the <strong>marginal frequency</strong> of <span class="math inline">\(X_1 = k_{1,i}\)</span>).</p>
+<ul>
+<li><span class="math inline">\(f_{7,\cdot}\)</span>, for example, represents the <strong>number of observations</strong> for which <span class="math inline">\(X_1 = k_{1,7}\)</span>, <strong>regardless</strong> of the values of <span class="math inline">\(X_2\)</span> across these observations.</li>
+<li>This is called “dot notation”, and makes it easy for us to notationally represent which marginal distributions we are talking about.</li>
+</ul></li>
+<li><p>Similarly, let <span class="math inline">\(f_{\cdot, j} = \sum_{i=1}^{K_1}f_{i,j}\)</span> be the <strong>marginal frequency</strong> with which songs have <span class="math inline">\(V_2 = k_j\)</span>. <span class="math inline">\(f_{\cdot, 2}\)</span>, for example, represents the <strong>number of songs</strong> for which the <strong>valence</strong> value is at level 2 (Moderate), <strong>regardless</strong> of its artist.</p></li>
+</ul>
+</section>
+<section id="we-made-it" class="level2">
+<h2 class="anchored" data-anchor-id="we-made-it">We Made It</h2>
+<ul>
+<li>We can finally compute the test statistic for the Chi-Squared Test, <span class="math inline">\(Q\)</span>!</li>
+</ul>
+<p><span class="math display">\[
+Q = \sum_{k_1=1}^{K_1}\sum_{k_2=1}^{K_2}\frac{\left(f_{k_1,k_2} - \frac{f_{k_1,\cdot}f_{\cdot,k_2}}{N}\right)^2}{\frac{f_{k_1,\cdot}f_{\cdot, k_2}}{N}}
+\]</span></p>
+<ul>
+<li>This test statistic has (by construction) a <strong>Chi-Squared Distribution</strong> with <span class="math inline">\((K_1 - 1)(K_2 - 1)\)</span> degrees of freedom</li>
+</ul>
+</section>
+<section id="in-r-1" class="level2">
+<h2 class="anchored" data-anchor-id="in-r-1">In R</h2>
+<p>We can compute this test statistic (somewhat laboriously) in R as follows: first let’s create variables representing the <strong>supports</strong> <span class="math inline">\(\mathcal{R}_{X_1}\)</span> and <span class="math inline">\(\mathcal{R}_{X_2}\)</span> for our two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>:</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(L1 &lt;- sort(unique(artist_df$artist_name)))</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#K1 &lt;- length(L1)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we set this manually, rather than using unique(), so we can obtain a specific ordering that we want</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#(L2 &lt;- c("more negative", "Moderate", "more positive"))</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#K2 &lt;- length(L2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="computing-marginal-frequencies" class="level2">
+<h2 class="anchored" data-anchor-id="computing-marginal-frequencies">Computing Marginal Frequencies</h2>
+<ul>
+<li>Next we pre-compute the <strong>marginal frequencies</strong> for all possible <span class="math inline">\(X_1\)</span> values (all elements of <span class="math inline">\(\mathcal{R}_{X_1}\)</span>) and then for all possible <span class="math inline">\(X_2\)</span> values (all elements of <span class="math inline">\(\mathcal{R}_{X_2}\)</span>):</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section>
+<section id="computing-the-test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="computing-the-test-statistic">Computing the Test Statistic</h2>
+<ul>
+<li>Finally, we can compute the individual bin frequencies <span class="math inline">\(f_{i,j}\)</span> in a loop <em>(there are more efficient ways to do this, which we’d want to adopt instead if our dataset was much larger, for example)</em>:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># q_sum &lt;- 0</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for (k1 in 1:K1) {</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   artist_name_value &lt;- L1[k1]</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   artist_marginal_freq &lt;- L1_marginal_freqs[k1]</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   for (k2 in 1:K2) {</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     valence_value &lt;- L2[k2]</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     valence_marginal_freq &lt;- L2_marginal_freqs[k2]</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(paste0("(",artist_name_value,", ",valence_value,")"))</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#     # Compute the frequency in this bin</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     bin_df &lt;- artist_df |&gt; filter(artist_name == artist_name_value &amp; valence_C == valence_value)</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     print(nrow(bin_df))</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     # And now, since we precomputed the marginal frequencies, we have everything we need!</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     joint_freq &lt;- nrow(bin_df)</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     marginal_ratio &lt;- (artist_marginal_freq * valence_marginal_freq) / N</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     numer &lt;- (joint_freq - marginal_ratio)^2</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     denom &lt;- marginal_ratio</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#     cur_q_val &lt;- numer / denom</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#     q_sum &lt;- q_sum + cur_q_val</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   }</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># q_sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<ul>
+<li>Since we know this test statistic <span class="math inline">\(Q\)</span> follows (asymptotically/approximately) a chi-squared distribution with <span class="math inline">\((K_1 - 1)(K_2 - 1)\)</span> degrees of freedom, we can compute the <strong>probability</strong> of obtaining a test statistic value this high or higher (14.162598), using R’s built-in <code>dchisq()</code> function:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#(test_df &lt;- (K1 - 1) * (K2 - 2))</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#dchisq(q_sum, test_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="drawing-conclusions-in-classical-world" class="level2">
+<h2 class="anchored" data-anchor-id="drawing-conclusions-in-classical-world">Drawing Conclusions in Classical World</h2>
+<p>And so, finally: this tells us that under the <strong>null hypothesis</strong> that <code>artist_name</code> and <code>valence_C</code> represent draws from <strong>independent</strong> random variables, the likelihood of obtaining our dataset, or a dataset with a more extreme test statistic, is about 0.00042, or 0.042%.</p>
+<p>Therefore, if we are evaluating our hypothesis at the 5% confidence level (or 1% or even 0.1%, because this is a <strong>very low</strong> probability value/percentage), we conclude that we should <strong>reject</strong> the null hypothesis that artist name and valence are independent. Therefore (switching from a frequentist to a Bayesian interpretation, mercifully), we <strong>increase our degree of belief</strong> in the hypothesis that the valence of a song <strong>does</strong> depend upon the artist making the song.</p>
+</section>
+<section id="drawing-conclusions-in-modern-bayesian-world" class="level2">
+<h2 class="anchored" data-anchor-id="drawing-conclusions-in-modern-bayesian-world">Drawing Conclusions in Modern (Bayesian) World</h2>
+<p>This <strong>technical</strong> conclusion (which focuses only on the results of the statistical hypothesis test), combined with the Bayesian interpretation at the end, lets us say something about “what we’ve learned” about music:</p>
+<ul>
+<li>Our Bayesian <strong>prior</strong> on the null hypothesis, <span class="math inline">\(\Pr(H_0) = \Pr(V \perp A)\)</span>, was probably quite small: before performing this analysis, we probably did not think that these two variables are independent, since we know that some artists tend to make more <strong>sad</strong> songs, while other artists tend to make more <strong>happy</strong> songs (though there are obviously exceptions: bands that tend to make a mix of sad and happy songs).</li>
+<li>Then we performed the analysis, and <strong>failed to reject</strong> the hypothesis that these two variables are independent.</li>
+<li>Therefore, our Bayesian <strong>posterior</strong> on <span class="math inline">\(\Pr(V \perp A)\)</span> should be slightly <strong>lower</strong>: If our prior probability on <span class="math inline">\(H_0\)</span> was some value <span class="math inline">\(p\)</span>, our posterior probability now that we’ve performed the study and failed to reject the null hypothesis should be <span class="math inline">\(p - \varepsilon\)</span>, for some appropriate value <span class="math inline">\(\varepsilon\)</span> representing the <strong>relative balance</strong> between (our view of) the veracity of the prior vs.&nbsp;the veracity of the test we performed.</li>
+<li>To make it concrete: if we previously believed that <span class="math inline">\(p = \Pr(H_0) = 0.1\)</span>, perhaps now we can update our beliefs such that <span class="math inline">\(p = \Pr(H_0) = 0.05\)</span>. This would represent the case where we lend <strong>equal credence</strong> in our prior and in our experiement, since in that case</li>
+</ul>
+<p><span class="math display">\[
+p_{post} = \frac{1}{2}\Pr(H_0) + \frac{1}{2}\text{Test Result} = \frac{1}{2}(0.1) + \frac{1}{2}(0) = 0.05.
+\]</span></p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>From here onwards I drop the <span class="math inline">\((v)\)</span> superscript for brevity, but remember that we’re always talking about <span class="math inline">\(\mu^{(v)}_i\)</span>: the population mean of a <strong>particular variable</strong> <span class="math inline">\(v\)</span> in population <span class="math inline">\(i\)</span>!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
