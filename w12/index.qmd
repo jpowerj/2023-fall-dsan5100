@@ -430,7 +430,7 @@ And so, finally: this tells us that under the **null hypothesis** that `artist_n
 
 Therefore, if we are evaluating our hypothesis at the 5% confidence level (or 1% or even 0.1%, because this is a **very low** probability value/percentage), we conclude that we should **reject** the null hypothesis that artist name and valence are independent. Therefore (switching from a frequentist to a Bayesian interpretation, mercifully), we **increase our degree of belief** in the hypothesis that the valence of a song **does** depend upon the artist making the song.
 
-## Drawing Conclusions in Modern (Bayesian) World
+## Drawing Conclusions in Modern (Bayesian) World {.smaller}
 
 This **technical** conclusion (which focuses only on the results of the statistical hypothesis test), combined with the Bayesian interpretation at the end, lets us say something about "what we've learned" about music:
 
