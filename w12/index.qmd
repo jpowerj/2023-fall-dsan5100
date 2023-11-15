@@ -1,6 +1,6 @@
 ---
 title: "Week 12: Fancy Hypothesis Testing"
-date: "Thursday, November 2, 2023"
+date: "Thursday, November 9, 2023"
 date-format: full
 lecnum: 12
 categories:
