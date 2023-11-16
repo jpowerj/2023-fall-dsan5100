@@ -136,6 +136,14 @@ aside {
     text-align: center !important;
 }
 
+// centered table cells
+.centered-table td {
+    text-align: center !important;
+}
+.centered-table th {
+    text-align: center !important;
+}
+
 .coef-label {
     width: 100% !important;
     height: 100% !important;
@@ -227,10 +235,24 @@ aside {
     font-size: 1.08rem !important;
 }
 
+// p
+.crunch-p p {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+
 // quarto-layout-panel
 .crunch-quarto-layout-panel .quarto-layout-panel {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
+}
+
+// table (cells)
+.crunch-table td, th {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: 2px !important;
+    padding-top: 2px !important;
 }
 
 // title
@@ -423,10 +445,16 @@ transform: translateY(60px) !important;
 .smallish-math .math.display {
     font-size: 90% !important;
 }
+.smallish-inline .math.inline {
+    font-size: 90% !important;
+}
 .small-math .math.display {
     font-size: 85% !important;
 }
 .smaller-math .math.display {
+    font-size: 80% !important;
+}
+.smaller-inline .math.inline {
     font-size: 80% !important;
 }
 
@@ -529,6 +557,14 @@ summary {
 summary:hover {
     background-color: #fafafa !important;
     // border-bottom: 1px solid black !important;
+}
+
+// Vertical lines in tables
+.table-line-2-3 td:nth-child(2) {
+    border-right: 2px solid black !important;
+}
+.table-line-4-5 td:nth-child(4) {
+    border-right: 2px solid black !important;
 }
 
 .unnumbered h2 {

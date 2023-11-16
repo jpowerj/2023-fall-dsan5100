@@ -1,10 +1,262 @@
 [
   {
+    "objectID": "w13/slides.html#dr.-kerrie-carfagno",
+    "href": "w13/slides.html#dr.-kerrie-carfagno",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Dr. Kerrie Carfagno",
+    "text": "Dr. Kerrie Carfagno\n\n\n Kerrie Carfagno is the Program Director for Georgetown’s MS Program in Environment and Sustainability Management.\nDr. Carfagno has taught sustainable business and management communication courses with an emphasis on communication strategy, change management, leadership, ethics, and data visualization for more than 15 years.\nCarfagno is particularly interested in the financial and ethical impact of climate change on businesses at the industry, corporate, and societal levels. She focuses on how leaders can effectively communicate climate risk (and opportunity) to increase profitability, resiliency, and sustainability.\nShe employed these concepts in her global sustainability elective courses and her study abroad courses to Scandinavia in partnership with DIS. Carfagno is also a senior fellow at Generation 180, a non-profit org working to inspire and equip people to take action on clean energy."
+  },
+  {
+    "objectID": "w13/slides.html#what-makes-it-non-parametric",
+    "href": "w13/slides.html#what-makes-it-non-parametric",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "What Makes It “Non-Parametric”?",
+    "text": "What Makes It “Non-Parametric”?\n\nWe’ve talked about how the Normal distribution is “standard” in multiple senses:\n\nEmpirically: It arises from common processes in nature, like random walks\nTheoretically: It is the maximum-entropy distribution which encodes only knowledge of a mean \\(\\mu\\) and a variance \\(\\sigma^2\\)*\n\nThen we talked about estimating these parameters (\\(\\mu\\) and \\(\\sigma^2\\)) from data: different ways to amalgamate information from an observed sample \\(\\mathbf{X} = (X_1, \\ldots, X_n)\\) to estimate \\(\\mu\\) and \\(\\sigma^2\\) (unobserved) with minimal bias and variance\n\n\n\n\n\n\n\n\n\n\n\n\nWe therefore “funnel” all of the information contained in \\(\\mathbf{X}\\) down into estimates of \\(\\mu\\) and \\(\\sigma^2\\)\nBut… what if we’re wrong? What if the DGP is not drawing from a Normal distribution?\n\n\n\n\n\n\nRecall that any other distribution implicitly encodes additional assumptions, e.g., that the datapoints lie within some bounded range, or have all nonnegative values, etc."
+  },
+  {
+    "objectID": "w13/slides.html#what-if-were-wrong",
+    "href": "w13/slides.html#what-if-were-wrong",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "What If We’re Wrong?",
+    "text": "What If We’re Wrong?\n\nIt is this concern: the fact that all of our results, all of our confidence about our estimates thus far, come as a result of making distributional assumptions\nNon-parametric analysis aims to mitigate this potential catastrophe, by making as few distributional assumptions as possible\nRecall how the parameters of a distribution (by way of its Moment Generating Function) determine all of the information you could possibly want to know about the distribution:\n\n\n\n\n\n\n\n\n\n\n\nType of Distribution\n+\nParameter Values\n=\nAll Possible Info (MGF)\n\n\n\n\nNormal \\(\\mathcal{N}(\\mu, \\sigma^2)\\)\n+\n\\(\\mu = m\\), \\(\\sigma^2 = s\\)\n=\n\\(M_t(X) = \\exp[mt + s^2t^2/2]\\)\n\n\nUniform \\(\\mathcal{U}(\\alpha,\\beta)\\)\n+\n\\(\\alpha = a\\), \\(\\beta = b\\)\n=\n\\(M_t(X) = \\frac{e^{tb} - e^{ta}}{t(b-a)}\\)\n\n\nPoisson \\(\\mathcal{P}(\\lambda)\\)\n+\n\\(\\lambda = \\ell\\)\n=\n\\(M_t(X) = \\exp[\\ell(e^t - 1)]\\)"
+  },
+  {
+    "objectID": "w13/slides.html#avoiding-wrongness-disasters",
+    "href": "w13/slides.html#avoiding-wrongness-disasters",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Avoiding Wrongness Disasters",
+    "text": "Avoiding Wrongness Disasters\n\nInstead of trying to estimate all possible info about the underlying distribution, we only estimate one piece of information that we need to test a hypothesis\nExample: for populations \\(\\chi\\), \\(\\psi\\), if \\(H_A: \\mu_\\chi &gt; \\mu_\\psi\\), skip intermediate step of estimating distributions \\(\\mathcal{D}_\\chi(\\param{\\theta})\\), \\(\\mathcal{D}_\\psi(\\param{\\theta})\\) from samples \\(\\mathbf{X}\\), \\(\\mathbf{Y}\\)!\nInstead, just directly “extract” greater than vs. not greater than info from \\(\\mathbf{X}\\) and \\(\\mathbf{Y}\\)\nIt will help us to define a \\(\\text{Sign}(\\cdot)\\) function:\n\n\\[\n\\text{Sign}(x) = \\begin{cases}\\phantom{-}1 &\\text{if } x &gt; 0 \\\\ \\phantom{-}0 &\\text{if }x = 0 \\\\ -1 &\\text{if }x &lt; 0\\end{cases}\n\\]\n\nIf \\(\\mathbf{X} = (15, 7, 11, 3)\\), \\(\\mathbf{Y} = (-3, 4, 1, 4)\\), we can compute a “greater-than score”:\n\n\\[\n\\begin{align*}\n\\sum_{i=1}^N \\sign(X_i - Y_i) &= \\sign(15 - (-3)) + \\sign(7-4) + \\sign(11-1) + \\sign(3-4) \\\\\n&= 1 + 1 + 1 + -1 = 2\n\\end{align*}\n\\]\n\nSo long as slots are comparable (notice \\(\\mathbf{X}, \\mathbf{Y}\\) are ordered), we can compare this with \\(0\\), our expectation if \\(\\chi = \\psi\\), regardless of underlying distributions \\(\\mathcal{D}_\\chi, \\mathcal{D}_\\psi\\)."
+  },
+  {
+    "objectID": "w13/slides.html#procedure-in-general",
+    "href": "w13/slides.html#procedure-in-general",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Procedure in General",
+    "text": "Procedure in General\n\n\\(\\mathbf{X}\\): size-\\(N\\) sample from population \\(\\chi\\); \\(\\mathbf{Y}\\): size-\\(N\\) sample from population \\(\\psi\\)\n(Rather than estimating \\(\\mathcal{D}_\\chi\\) from \\(\\mathbf{X}\\) and \\(\\mathcal{D}_\\psi\\) from \\(\\mathbf{Y}\\)), we directly pair datapoints \\(X_i \\in \\mathbf{X}\\) and \\(Y_i \\in \\mathbf{Y}\\) and compute the sign of their difference:\n\n\\[\n\\text{GT}_i(X_i, Y_i) = \\text{Sign}(X_{i} - Y_{i}) = \\begin{cases}\n\\phantom{-}1 &\\text{if }X_{i} &gt; Y_{i}, \\\\\n\\phantom{-}0 &\\text{if }X_{i} = Y_{i}, \\\\\n-1 &\\text{if }X_{i} &lt; Y_{i}\n\\end{cases}\n\\]\n\nWe can then sum each pair’s score into an aggregate score:\n\\[\n  \\text{GT}(\\mathbf{X}, \\mathbf{Y}) = \\sum_{i=1}^NGT_i(X_i,Y_i)\n  \\]\nsuch that if \\(\\chi\\) and \\(\\psi\\) are in fact the same population, we expect \\(GT(\\mathbf{X}, \\mathbf{Y}) = 0\\) (positive and negative values of \\(GT_i\\) cancel each other out, for sufficiently large \\(N\\))\nNon-parametric tests which use this value as a test statistic are called Sign tests"
+  },
+  {
+    "objectID": "w13/slides.html#what-if-we-cant-pair-observations-one-to-one",
+    "href": "w13/slides.html#what-if-we-cant-pair-observations-one-to-one",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "What If We Can’t Pair Observations One-to-One?",
+    "text": "What If We Can’t Pair Observations One-to-One?\n\nFor example, what if samples aren’t the same size: \\(N_X = |\\mathbf{X}| \\neq N_Y = |\\mathbf{Y}|\\)?\nIntuition: If there is no “natural” one-to-one pairing of the observations, we can instead consider all possible pairs \\((X_{i}, Y_{j}) \\in \\mathbf{X} \\times \\mathbf{Y}\\)\nWe can then count how often \\(X_i &gt; Y_j\\), how often \\(Y_j &gt; X_i\\), and compare this to our expectation of how often these would occur if \\(\\chi = \\psi\\) (that is, if \\(\\mathbf{X}\\) and \\(\\mathbf{Y}\\) were in fact drawn from the same population)"
+  },
+  {
+    "objectID": "w13/slides.html#computational-efficiency",
+    "href": "w13/slides.html#computational-efficiency",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Computational Efficiency",
+    "text": "Computational Efficiency\n\nWe could just go ahead with this intuition, checking every pair and seeing how often \\(X_i &gt; Y_j\\) vs. how often \\(Y_j &gt; X_i\\), but this is computationally expensive for large samples (requiring \\(O(N_1N_2)\\) comparisons)\nSo, let’s walk through an example with pairwise comparisons, but try to think of an equivalent yet sub-quadratic method for achieving the same results!"
+  },
+  {
+    "objectID": "w13/slides.html#pairwise-comparison-mode",
+    "href": "w13/slides.html#pairwise-comparison-mode",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Pairwise Comparison Mode",
+    "text": "Pairwise Comparison Mode\n\nLet \\(\\mathbf{X} = \\{5, 9, 7\\}, \\mathbf{Y} = \\{7, 6\\}\\), and consider \\(X_i &gt; Y_j\\) vs. \\(Y_j &gt; X_i\\) for all pairs:\nGive 1 point to \\(\\mathbf{X}\\) if \\(X_i &gt; Y_j\\), 1 point to \\(\\mathbf{Y}\\) if \\(Y_j &gt; X_i\\), 0.5 points to both if \\(X_i = Y_j\\).\n\n\n\n\n\n\n\n\n\n\n\n\\(X_i\\)\n\\(Y_j\\)\n\\(&gt;\\)\n\\(=\\)\n\\(&lt;\\)\n\n\n\n\n5\n7\n\n\n+1\n\n\n5\n6\n\n\n+1\n\n\n9\n7\n+1\n\n\n\n\n9\n6\n+1\n\n\n\n\n7\n7\n\n+0.5\n\n\n\n7\n6\n+1\n\n\n\n\nFinal\nScore:\n\\(S_{\\mathbf{X}} = 3.5\\)\n\n\\(S_{\\mathbf{Y}} = 2.5\\)"
+  },
+  {
+    "objectID": "w13/slides.html#ranking-mode",
+    "href": "w13/slides.html#ranking-mode",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Ranking Mode",
+    "text": "Ranking Mode\n\nNow consider the combined dataset \\(\\mathbf{Z} = \\mathbf{X} \\oplus \\mathbf{Y} = (5_X, 9_X, 7_X, 7_Y, 6_Y)\\)\nLet’s see what we get when we rank the values in \\(\\mathbf{X}\\) and \\(\\mathbf{Y}\\) separately, then rank the same values within \\(\\mathbf{Z}\\), keeping track of whether each number is from \\(\\mathbf{X}\\) or \\(\\mathbf{Y}\\):\n\n\n\n\n\n\n\n\n\n\n\n\n\nValues\n\\(5_X\\)\n\\(6_Y\\)\n\\(7_X\\)\n\\(7_Y\\)\n\\(9_X\\)\n\n\n\nRank in \\(\\mathbf{X}\\)\n\\([1]_{X/\\mathbf{X}}\\)\n\n\\([2]_{X/\\mathbf{X}}\\)\n\n\\([3]_{X/\\mathbf{X}}\\)\n\\(\\Sigma_{X/\\mathbf{X}} = [6]\\)\n\n\nRank in \\(\\mathbf{Y}\\)\n\n\\([1]_{Y/\\mathbf{Y}}\\)\n\n\\([2]_{Y/\\mathbf{Y}}\\)\n\n\\(\\Sigma_{Y/\\mathbf{Y}} = [3]\\)\n\n\nRank in \\(\\mathbf{Z}\\)\n\\([1]_{X/\\mathbf{Z}}\\)\n \\([2]_{Y/\\mathbf{Z}}\\)\n\\([3.5]_{X/\\mathbf{Z}}\\)\n \\([3.5]_{Y/\\mathbf{Z}}\\)\n\\([5]_{X/\\mathbf{Z}}\\)\n\\(\\Sigma_{X/\\mathbf{Z}} = [9.5]\\)\\(\\Sigma_{Y/\\mathbf{Z}} = [5.5]\\)\n\n\n\n\nThus, by subtracting single-sample ranks from combined-sample ranks, we obtain:\n\\(S_{\\mathbf{X}} = \\Sigma_{X/\\mathbf{Z}} - \\Sigma_{X/\\mathbf{X}} = 9.5 - 6 = 3.5\\)\n\\(S_{\\mathbf{Y}} = \\Sigma_{Y/\\mathbf{Z}} - \\Sigma_{Y/\\mathbf{Y}} = 5.5 - 3 = 2.5\\) 🤯\nAnd yet, this runs in \\(O((N_1+N_2)\\log(N_1+N_2)) &lt; O(N_1N_2)\\)"
+  },
+  {
+    "objectID": "w13/slides.html#example-2022-world-cup",
+    "href": "w13/slides.html#example-2022-world-cup",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Example: 2022 World Cup",
+    "text": "Example: 2022 World Cup\n\nHeights (inches) of Welsh vs. US national football teams (\\(N = 22\\) players total):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWales\n78\n71\n76\n75\n72\n70\n68\n72\n69\n73\n67\n\\(\\overline{X} \\approx 71.91\\)\n\n\nUSA\n75\n68\n74\n68\n68\n70\n72\n67\n72\n72\n70\n\\(\\overline{Y} \\approx 70.55\\)\n\n\n\n\n\nCode\nlibrary(tidyverse)\nus_heights &lt;- tibble(height=c(75, 68, 74, 68, 68, 70, 72, 67, 72, 72, 70))\n# Go metric! Oh well\n#us_heights &lt;- tibble(height=c(190.5, 172.7, 188, 172.7, 172.7, 177.8, 182.9, 170.2, 182.9, 182.9, 177.8)\nmean_us &lt;- mean(us_heights$height)\n#print(mean_us)\nus_heights &lt;- us_heights |&gt; mutate(Team = \"US\")\nwales_heights &lt;- tibble(height=c(78, 71, 76, 75, 72, 70, 68, 72, 69, 73, 67))\nmean_wales &lt;- mean(wales_heights$height)\n#print(mean_wales)\nmean_df &lt;- tibble(mean_height = c(mean_us, mean_wales), Team = c(\"US\", \"Wales\"))\nwales_heights &lt;- wales_heights |&gt; mutate(Team = \"Wales\")\nplayers = bind_rows(us_heights, wales_heights)\nggplot(players, aes(x=height, fill=Team)) +\n  geom_density(\n    alpha=0.3, adjust=4/5\n  ) +\n  geom_vline(\n    data=mean_df,\n    aes(xintercept=mean_height, color=Team),\n    linetype = \"dashed\",\n    linewidth = g_linewidth\n  ) +\n  xlim(c(65,80)) +\n  dsan_theme(\"half\") +\n  scale_fill_manual(values=c(cbPalette[1], cbPalette[2])) +\n  labs(\n    title = \"Empirical Distribution of Team Heights\",\n    x = \"Height (inches)\",\n    y = \"Empirical Density\"\n  )"
+  },
+  {
+    "objectID": "w13/slides.html#samples-rightarrow-populations",
+    "href": "w13/slides.html#samples-rightarrow-populations",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Samples \\(\\rightarrow\\) Populations",
+    "text": "Samples \\(\\rightarrow\\) Populations\n\nWe know that the sampled heights of Welsh football players (\\(\\mathbf{X}\\)) are (on average) greater than the sampled heights of US football players (\\(\\mathbf{Y}\\)).\nBut are heights in fact greater among the population of Welsh football players (\\(\\chi\\)), relative to the population of US football players (\\(\\psi\\))?"
+  },
+  {
+    "objectID": "w13/slides.html#the-non-parametric-fork-in-the-road",
+    "href": "w13/slides.html#the-non-parametric-fork-in-the-road",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "The Non-Parametric Fork in the Road",
+    "text": "The Non-Parametric Fork in the Road\n\nRecall: in parametric tests, when comparing means, we analyzed the difference in the sample means relative to their variability and summarized the sample information in a test statistic: for example, \\(t = \\frac{\\overline{X} - \\mu_H}{\\widehat{\\sigma} / \\sqrt{N}}\\)\nWe could compute this test statistic, but it would implicitly depend on an assumption of the underlying DGP: that heights follow a Normal distribution.\nHere, instead, we produce a test statistic based on the ranks!\nTest statistics should measure how surprised we would be if we observed what we observed in a world where the null hypothesis is true\nEquivalently, it should be low if the observed difference could feasibly have occurred just due to random noise (i.e., if we’re looking at noisy data from world where null hypothesis is true)\nSo, let’s think in these terms about the ranks of each datapoint, to develop a non-parametric test statistic based on the ranks"
+  },
+  {
+    "objectID": "w13/slides.html#choosing-non-parametric-hypotheses",
+    "href": "w13/slides.html#choosing-non-parametric-hypotheses",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Choosing Non-Parametric Hypotheses",
+    "text": "Choosing Non-Parametric Hypotheses\n\nThe empirical distributions from the previous slide, and the small sample size (\\(N_1 = N_2 = 11\\)), motivate our use of a nonparametric test!\nAssuming \\(X \\sim \\mathcal{D}_1\\) and \\(Y \\sim \\mathcal{D}_2\\) (but not assuming the parametric forms of \\(\\mathcal{D}_1\\) or \\(\\mathcal{D}_2\\)!), we can test:\n\\(H_0: \\Pr(X &gt; Y) = \\Pr(Y &gt; X)\\)\n\\(H_1: \\Pr(X &gt; Y) \\neq \\Pr(Y &gt; X)\\)"
+  },
+  {
+    "objectID": "w13/slides.html#sorting-and-ranking-observations",
+    "href": "w13/slides.html#sorting-and-ranking-observations",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Sorting and Ranking Observations",
+    "text": "Sorting and Ranking Observations\n\n\n\nOriginal Data\nSorted Total Samples\nRank\n\n\nUSA\nWales\nUSA\nWales\nUSA\nWales\n\n\n\n\n75\n78\n67\n67\n1.5\n1.5\n\n\n68\n71\n68\n68\n4.5\n4.5\n\n\n74\n76\n68\n4.5\n\n\n68\n75\n68\n4.5\n\n\n68\n72\n\n69\n\n7\n\n\n70\n70\n70\n70\n9\n9\n\n\n72\n68\n70\n9\n\n\n67\n72\n\n71\n\n11\n\n\n72\n69\n72\n72\n14\n14\n\n\n\n\n72\n73\n72\n14\n\n\n72\n14\n\n\n72\n73\n72\n14\n\n\n\n\n\n\n\n73\n\n17\n\n\n\n\n74\n\n18\n\n\n\n\n\n75\n75\n19.5\n19.5\n\n\n\n\n\n76\n\n21\n\n\n\n\n\n78\n\n22"
+  },
+  {
+    "objectID": "w13/slides.html#our-rank-based-test-statistic",
+    "href": "w13/slides.html#our-rank-based-test-statistic",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Our Rank-Based Test Statistic",
+    "text": "Our Rank-Based Test Statistic\n\nSums of ranks relative to the combined dataset: \\(\\Sigma_{X/\\mathbf{Z}} = 112.5\\), \\(\\Sigma_{Y/\\mathbf{Z}} = 140.5\\).\nAnd then sum the ranks in each group, relative to the same group… In general, if we have \\(N\\) ranked datapoints (so, datapoints given labels \\(\\{1, 2, \\ldots, N\\}\\)), what will the sum of these individual ranks be?\n\n\\[\n\\sum_{i=1}^{N}i = \\underbrace{\\overbrace{(1 + N)}^{N + 1} + \\overbrace{(2 + (N-1))}^{N + 1} + \\cdots}_{N/2\\text{ terms}} = \\frac{N(N+1)}{2}\n\\]\n\nSo, in this case,\n\n\\[\n\\Sigma_{X/\\mathbf{X}} = \\Sigma_{Y/\\mathbf{Y}} = \\sum_{i=1}^{11}i = \\frac{11(12)}{2} = 66\n\\]\n\nGiving us the test statistics\n\n\\[\n\\begin{align*}\nU_X &= 112.5 - 66 = 46.5, \\; U_Y = 140.5 - 66 = 74.5 \\\\\nU &= \\min\\{U_X, U_Y\\} = \\min\\{46.5, 74.5\\} = 46.5\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w13/slides.html#simulating-one-null-hypothesis-world",
+    "href": "w13/slides.html#simulating-one-null-hypothesis-world",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Simulating (One) Null-Hypothesis World",
+    "text": "Simulating (One) Null-Hypothesis World\n\nOne simulation looks as follows:\n\n\n\n\n\nCode\nlibrary(tidyverse)\nN1 &lt;- 11\nN2 &lt;- 11\nN &lt;- N1 + N2\ntotalRankSum &lt;- (N * (N+1)) / 2\nwriteLines(paste0(\"N1 = \",N1,\", N2 = \",N2,\" =&gt; Sum(1...(N1+N2)) = \",totalRankSum))\n\n\nN1 = 11, N2 = 11 =&gt; Sum(1...(N1+N2)) = 253\n\n\nCode\ns_1 &lt;- runif(N1)\ndf_1 &lt;- tibble(x = s_1, team = \"A\")\ns_2 &lt;- runif(N2)\ndf_2 &lt;- tibble(x = s_2, team = \"B\")\ndf_combined &lt;- bind_rows(df_1, df_2)\ndf_combined['rank'] &lt;- rank(df_combined$x)\ndf_combined |&gt; arrange(rank) |&gt; head()\n\n\n\n\n\n\nx\nteam\nrank\n\n\n\n\n0.0281644\nB\n1\n\n\n0.0282184\nA\n2\n\n\n0.0730575\nB\n3\n\n\n0.1343398\nB\n4\n\n\n0.1351495\nB\n5\n\n\n0.1858087\nA\n6\n\n\n\n\n\n\n\n\nCode\ndf_combined |&gt; group_by(team) |&gt; summarize(ranksum = sum(rank)) |&gt; mutate(proportion = ranksum / totalRankSum)\n\n\n\n\n\n\nteam\nranksum\nproportion\n\n\n\n\nA\n144\n0.56917\n\n\nB\n109\n0.43083"
+  },
+  {
+    "objectID": "w13/slides.html#simulating-many-null-hypothesis-worlds",
+    "href": "w13/slides.html#simulating-many-null-hypothesis-worlds",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Simulating Many Null-Hypothesis Worlds",
+    "text": "Simulating Many Null-Hypothesis Worlds\n\nAnd we can repeat this process (say) 10K times:\n\n\n\n\n\nCode\nsimulate_ranksums &lt;- function(N1, N2) {\n  N &lt;- N1 + N2\n  totalRankSum &lt;- (N * (N+1)) / 2\n  s_1 &lt;- runif(N1)\n  df_1 &lt;- tibble(x = s_1, team = \"A\")\n  s_2 &lt;- runif(N2)\n  df_2 &lt;- tibble(x = s_2, team = \"B\")\n  df_combined &lt;- bind_rows(df_1, df_2)\n  df_combined['rank'] &lt;- rank(df_combined$x)\n  ranksum_df &lt;- df_combined |&gt; group_by(team) |&gt; summarize(ranksum = sum(rank))\n  return(ranksum_df$ranksum)\n}\nnum_sims &lt;- 1000\nresults &lt;- replicate(num_sims, simulate_ranksums(11,11))\nt(results[,0:10])\n\n\n      [,1] [,2]\n [1,]  133  120\n [2,]   98  155\n [3,]  115  138\n [4,]  166   87\n [5,]  137  116\n [6,]  140  113\n [7,]  146  107\n [8,]  157   96\n [9,]  119  134\n[10,]  106  147\n\n\nCode\nrowMeans(results)\n\n\n[1] 126.407 126.593\n\n\n\n\nCode\nranksum_A &lt;- tibble(ranksum=results[1,], team=\"A\")\nranksum_A_mean &lt;- mean(ranksum_A$ranksum)\nranksum_B &lt;- tibble(ranksum=results[2,], team=\"B\")\nranksum_B_mean &lt;- mean(ranksum_B$ranksum)\nmean_df &lt;- tibble(mean_value = c(ranksum_A_mean, ranksum_B_mean), team=c(\"A\",\"B\"))\nsim_df &lt;- bind_rows(ranksum_A, ranksum_B)\nggplot(sim_df, aes(x=ranksum, fill=team)) +\n  geom_density(linewidth = g_linewidth, alpha=0.2) +\n  geom_vline(\n    data=mean_df,\n    aes(xintercept = mean_value),\n    linewidth = g_linewidth\n  ) +\n  dsan_theme(\"half\") +\n  scale_fill_manual(values=c(cbPalette[1], cbPalette[2]))"
+  },
+  {
+    "objectID": "w13/slides.html#r-time",
+    "href": "w13/slides.html#r-time",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "R Time",
+    "text": "R Time\n\n\nCode\nwilcox.test(height ~ Team, data=players, exact = TRUE)\n\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  height by Team\nW = 46.5, p-value = 0.3705\nalternative hypothesis: true location shift is not equal to 0\n\n\n\nWe confirm our computed test statistic of 46.5, and obtain a p-value of about 0.37\nThus, under most confidence levels (like my favorite \\(\\alpha = 0.11\\)), we fail to reject the null hypothesis \\(\\mathcal{H}_0\\)\nPutting on our Bayes hats, we do not increase our degree of belief that height differs between the two populations.\n\n\n\nDSAN 5100 Week 13: Non-Parametric Methods"
+  },
+  {
     "objectID": "w13/index.html",
     "href": "w13/index.html",
     "title": "Week 13: Non-Parametric Methods",
     "section": "",
-    "text": "(Combined meeting: Sections 01 to 04)"
+    "text": "Open slides in new window →"
+  },
+  {
+    "objectID": "w13/index.html#dr.-kerrie-carfagno",
+    "href": "w13/index.html#dr.-kerrie-carfagno",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Dr. Kerrie Carfagno",
+    "text": "Dr. Kerrie Carfagno\n\n\n Kerrie Carfagno is the Program Director for Georgetown’s MS Program in Environment and Sustainability Management.\nDr. Carfagno has taught sustainable business and management communication courses with an emphasis on communication strategy, change management, leadership, ethics, and data visualization for more than 15 years.\nCarfagno is particularly interested in the financial and ethical impact of climate change on businesses at the industry, corporate, and societal levels. She focuses on how leaders can effectively communicate climate risk (and opportunity) to increase profitability, resiliency, and sustainability.\nShe employed these concepts in her global sustainability elective courses and her study abroad courses to Scandinavia in partnership with DIS. Carfagno is also a senior fellow at Generation 180, a non-profit org working to inspire and equip people to take action on clean energy."
+  },
+  {
+    "objectID": "w13/index.html#what-makes-it-non-parametric",
+    "href": "w13/index.html#what-makes-it-non-parametric",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "What Makes It “Non-Parametric”?",
+    "text": "What Makes It “Non-Parametric”?\n\nWe’ve talked about how the Normal distribution is “standard” in multiple senses:\n\nEmpirically: It arises from common processes in nature, like random walks\nTheoretically: It is the maximum-entropy distribution which encodes only knowledge of a mean \\(\\mu\\) and a variance \\(\\sigma^2\\)*\n\nThen we talked about estimating these parameters (\\(\\mu\\) and \\(\\sigma^2\\)) from data: different ways to amalgamate information from an observed sample \\(\\mathbf{X} = (X_1, \\ldots, X_n)\\) to estimate \\(\\mu\\) and \\(\\sigma^2\\) (unobserved) with minimal bias and variance\n\n\n\n\n\n\n\n\n\n\n\n\nWe therefore “funnel” all of the information contained in \\(\\mathbf{X}\\) down into estimates of \\(\\mu\\) and \\(\\sigma^2\\)\nBut… what if we’re wrong? What if the DGP is not drawing from a Normal distribution?\n\n\n\n\n\n\nRecall that any other distribution implicitly encodes additional assumptions, e.g., that the datapoints lie within some bounded range, or have all nonnegative values, etc."
+  },
+  {
+    "objectID": "w13/index.html#what-if-were-wrong",
+    "href": "w13/index.html#what-if-were-wrong",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "What If We’re Wrong?",
+    "text": "What If We’re Wrong?\n\nIt is this concern: the fact that all of our results, all of our confidence about our estimates thus far, come as a result of making distributional assumptions\nNon-parametric analysis aims to mitigate this potential catastrophe, by making as few distributional assumptions as possible\nRecall how the parameters of a distribution (by way of its Moment Generating Function) determine all of the information you could possibly want to know about the distribution:\n\n\n\n\n\n\n\n\n\n\n\nType of Distribution\n+\nParameter Values\n=\nAll Possible Info (MGF)\n\n\n\n\nNormal \\(\\mathcal{N}(\\mu, \\sigma^2)\\)\n+\n\\(\\mu = m\\), \\(\\sigma^2 = s\\)\n=\n\\(M_t(X) = \\exp[mt + s^2t^2/2]\\)\n\n\nUniform \\(\\mathcal{U}(\\alpha,\\beta)\\)\n+\n\\(\\alpha = a\\), \\(\\beta = b\\)\n=\n\\(M_t(X) = \\frac{e^{tb} - e^{ta}}{t(b-a)}\\)\n\n\nPoisson \\(\\mathcal{P}(\\lambda)\\)\n+\n\\(\\lambda = \\ell\\)\n=\n\\(M_t(X) = \\exp[\\ell(e^t - 1)]\\)"
+  },
+  {
+    "objectID": "w13/index.html#avoiding-wrongness-disasters",
+    "href": "w13/index.html#avoiding-wrongness-disasters",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Avoiding Wrongness Disasters",
+    "text": "Avoiding Wrongness Disasters\n\nInstead of trying to estimate all possible info about the underlying distribution, we only estimate one piece of information that we need to test a hypothesis\nExample: for populations \\(\\chi\\), \\(\\psi\\), if \\(H_A: \\mu_\\chi &gt; \\mu_\\psi\\), skip intermediate step of estimating distributions \\(\\mathcal{D}_\\chi(\\param{\\theta})\\), \\(\\mathcal{D}_\\psi(\\param{\\theta})\\) from samples \\(\\mathbf{X}\\), \\(\\mathbf{Y}\\)!\nInstead, just directly “extract” greater than vs. not greater than info from \\(\\mathbf{X}\\) and \\(\\mathbf{Y}\\)\nIt will help us to define a \\(\\text{Sign}(\\cdot)\\) function:\n\n\\[\n\\text{Sign}(x) = \\begin{cases}\\phantom{-}1 &\\text{if } x &gt; 0 \\\\ \\phantom{-}0 &\\text{if }x = 0 \\\\ -1 &\\text{if }x &lt; 0\\end{cases}\n\\]\n\nIf \\(\\mathbf{X} = (15, 7, 11, 3)\\), \\(\\mathbf{Y} = (-3, 4, 1, 4)\\), we can compute a “greater-than score”:\n\n\\[\n\\begin{align*}\n\\sum_{i=1}^N \\sign(X_i - Y_i) &= \\sign(15 - (-3)) + \\sign(7-4) + \\sign(11-1) + \\sign(3-4) \\\\\n&= 1 + 1 + 1 + -1 = 2\n\\end{align*}\n\\]\n\nSo long as slots are comparable (notice \\(\\mathbf{X}, \\mathbf{Y}\\) are ordered), we can compare this with \\(0\\), our expectation if \\(\\chi = \\psi\\), regardless of underlying distributions \\(\\mathcal{D}_\\chi, \\mathcal{D}_\\psi\\)."
+  },
+  {
+    "objectID": "w13/index.html#procedure-in-general",
+    "href": "w13/index.html#procedure-in-general",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Procedure in General",
+    "text": "Procedure in General\n\n\\(\\mathbf{X}\\): size-\\(N\\) sample from population \\(\\chi\\); \\(\\mathbf{Y}\\): size-\\(N\\) sample from population \\(\\psi\\)\n(Rather than estimating \\(\\mathcal{D}_\\chi\\) from \\(\\mathbf{X}\\) and \\(\\mathcal{D}_\\psi\\) from \\(\\mathbf{Y}\\)), we directly pair datapoints \\(X_i \\in \\mathbf{X}\\) and \\(Y_i \\in \\mathbf{Y}\\) and compute the sign of their difference:\n\n\\[\n\\text{GT}_i(X_i, Y_i) = \\text{Sign}(X_{i} - Y_{i}) = \\begin{cases}\n\\phantom{-}1 &\\text{if }X_{i} &gt; Y_{i}, \\\\\n\\phantom{-}0 &\\text{if }X_{i} = Y_{i}, \\\\\n-1 &\\text{if }X_{i} &lt; Y_{i}\n\\end{cases}\n\\]\n\nWe can then sum each pair’s score into an aggregate score:\n\\[\n  \\text{GT}(\\mathbf{X}, \\mathbf{Y}) = \\sum_{i=1}^NGT_i(X_i,Y_i)\n  \\]\nsuch that if \\(\\chi\\) and \\(\\psi\\) are in fact the same population, we expect \\(GT(\\mathbf{X}, \\mathbf{Y}) = 0\\) (positive and negative values of \\(GT_i\\) cancel each other out, for sufficiently large \\(N\\))\nNon-parametric tests which use this value as a test statistic are called Sign tests"
+  },
+  {
+    "objectID": "w13/index.html#what-if-we-cant-pair-observations-one-to-one",
+    "href": "w13/index.html#what-if-we-cant-pair-observations-one-to-one",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "What If We Can’t Pair Observations One-to-One?",
+    "text": "What If We Can’t Pair Observations One-to-One?\n\nFor example, what if samples aren’t the same size: \\(N_X = |\\mathbf{X}| \\neq N_Y = |\\mathbf{Y}|\\)?\nIntuition: If there is no “natural” one-to-one pairing of the observations, we can instead consider all possible pairs \\((X_{i}, Y_{j}) \\in \\mathbf{X} \\times \\mathbf{Y}\\)\nWe can then count how often \\(X_i &gt; Y_j\\), how often \\(Y_j &gt; X_i\\), and compare this to our expectation of how often these would occur if \\(\\chi = \\psi\\) (that is, if \\(\\mathbf{X}\\) and \\(\\mathbf{Y}\\) were in fact drawn from the same population)"
+  },
+  {
+    "objectID": "w13/index.html#computational-efficiency",
+    "href": "w13/index.html#computational-efficiency",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Computational Efficiency",
+    "text": "Computational Efficiency\n\nWe could just go ahead with this intuition, checking every pair and seeing how often \\(X_i &gt; Y_j\\) vs. how often \\(Y_j &gt; X_i\\), but this is computationally expensive for large samples (requiring \\(O(N_1N_2)\\) comparisons)\nSo, let’s walk through an example with pairwise comparisons, but try to think of an equivalent yet sub-quadratic method for achieving the same results!"
+  },
+  {
+    "objectID": "w13/index.html#pairwise-comparison-mode",
+    "href": "w13/index.html#pairwise-comparison-mode",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Pairwise Comparison Mode",
+    "text": "Pairwise Comparison Mode\n\nLet \\(\\mathbf{X} = \\{5, 9, 7\\}, \\mathbf{Y} = \\{7, 6\\}\\), and consider \\(X_i &gt; Y_j\\) vs. \\(Y_j &gt; X_i\\) for all pairs:\nGive 1 point to \\(\\mathbf{X}\\) if \\(X_i &gt; Y_j\\), 1 point to \\(\\mathbf{Y}\\) if \\(Y_j &gt; X_i\\), 0.5 points to both if \\(X_i = Y_j\\).\n\n\n\n\n\n\n\n\n\n\n\n\\(X_i\\)\n\\(Y_j\\)\n\\(&gt;\\)\n\\(=\\)\n\\(&lt;\\)\n\n\n\n\n5\n7\n\n\n+1\n\n\n5\n6\n\n\n+1\n\n\n9\n7\n+1\n\n\n\n\n9\n6\n+1\n\n\n\n\n7\n7\n\n+0.5\n\n\n\n7\n6\n+1\n\n\n\n\nFinal\nScore:\n\\(S_{\\mathbf{X}} = 3.5\\)\n\n\\(S_{\\mathbf{Y}} = 2.5\\)"
+  },
+  {
+    "objectID": "w13/index.html#ranking-mode",
+    "href": "w13/index.html#ranking-mode",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Ranking Mode",
+    "text": "Ranking Mode\n\nNow consider the combined dataset \\(\\mathbf{Z} = \\mathbf{X} \\oplus \\mathbf{Y} = (5_X, 9_X, 7_X, 7_Y, 6_Y)\\)\nLet’s see what we get when we rank the values in \\(\\mathbf{X}\\) and \\(\\mathbf{Y}\\) separately, then rank the same values within \\(\\mathbf{Z}\\), keeping track of whether each number is from \\(\\mathbf{X}\\) or \\(\\mathbf{Y}\\):\n\n\n\n\n\n\n\n\n\n\n\n\n\nValues\n\\(5_X\\)\n\\(6_Y\\)\n\\(7_X\\)\n\\(7_Y\\)\n\\(9_X\\)\n\n\n\nRank in \\(\\mathbf{X}\\)\n\\([1]_{X/\\mathbf{X}}\\)\n\n\\([2]_{X/\\mathbf{X}}\\)\n\n\\([3]_{X/\\mathbf{X}}\\)\n\\(\\Sigma_{X/\\mathbf{X}} = [6]\\)\n\n\nRank in \\(\\mathbf{Y}\\)\n\n\\([1]_{Y/\\mathbf{Y}}\\)\n\n\\([2]_{Y/\\mathbf{Y}}\\)\n\n\\(\\Sigma_{Y/\\mathbf{Y}} = [3]\\)\n\n\nRank in \\(\\mathbf{Z}\\)\n\\([1]_{X/\\mathbf{Z}}\\)\n \\([2]_{Y/\\mathbf{Z}}\\)\n\\([3.5]_{X/\\mathbf{Z}}\\)\n \\([3.5]_{Y/\\mathbf{Z}}\\)\n\\([5]_{X/\\mathbf{Z}}\\)\n\\(\\Sigma_{X/\\mathbf{Z}} = [9.5]\\)\\(\\Sigma_{Y/\\mathbf{Z}} = [5.5]\\)\n\n\n\n\nThus, by subtracting single-sample ranks from combined-sample ranks, we obtain:\n\\(S_{\\mathbf{X}} = \\Sigma_{X/\\mathbf{Z}} - \\Sigma_{X/\\mathbf{X}} = 9.5 - 6 = 3.5\\)\n\\(S_{\\mathbf{Y}} = \\Sigma_{Y/\\mathbf{Z}} - \\Sigma_{Y/\\mathbf{Y}} = 5.5 - 3 = 2.5\\) 🤯\nAnd yet, this runs in \\(O((N_1+N_2)\\log(N_1+N_2)) &lt; O(N_1N_2)\\)"
+  },
+  {
+    "objectID": "w13/index.html#example-2022-world-cup",
+    "href": "w13/index.html#example-2022-world-cup",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Example: 2022 World Cup",
+    "text": "Example: 2022 World Cup\n\nHeights (inches) of Welsh vs. US national football teams (\\(N = 22\\) players total):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWales\n78\n71\n76\n75\n72\n70\n68\n72\n69\n73\n67\n\\(\\overline{X} \\approx 71.91\\)\n\n\nUSA\n75\n68\n74\n68\n68\n70\n72\n67\n72\n72\n70\n\\(\\overline{Y} \\approx 70.55\\)\n\n\n\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ lubridate 1.9.2     ✔ tibble    3.2.1\n✔ purrr     1.0.2     ✔ tidyr     1.3.0\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nus_heights &lt;- tibble(height=c(75, 68, 74, 68, 68, 70, 72, 67, 72, 72, 70))\n# Go metric! Oh well\n#us_heights &lt;- tibble(height=c(190.5, 172.7, 188, 172.7, 172.7, 177.8, 182.9, 170.2, 182.9, 182.9, 177.8)\nmean_us &lt;- mean(us_heights$height)\n#print(mean_us)\nus_heights &lt;- us_heights |&gt; mutate(Team = \"US\")\nwales_heights &lt;- tibble(height=c(78, 71, 76, 75, 72, 70, 68, 72, 69, 73, 67))\nmean_wales &lt;- mean(wales_heights$height)\n#print(mean_wales)\nmean_df &lt;- tibble(mean_height = c(mean_us, mean_wales), Team = c(\"US\", \"Wales\"))\nwales_heights &lt;- wales_heights |&gt; mutate(Team = \"Wales\")\nplayers = bind_rows(us_heights, wales_heights)\nggplot(players, aes(x=height, fill=Team)) +\n  geom_density(\n    alpha=0.3, adjust=4/5\n  ) +\n  geom_vline(\n    data=mean_df,\n    aes(xintercept=mean_height, color=Team),\n    linetype = \"dashed\",\n    linewidth = g_linewidth\n  ) +\n  xlim(c(65,80)) +\n  dsan_theme(\"half\") +\n  scale_fill_manual(values=c(cbPalette[1], cbPalette[2])) +\n  labs(\n    title = \"Empirical Distribution of Team Heights\",\n    x = \"Height (inches)\",\n    y = \"Empirical Density\"\n  )"
+  },
+  {
+    "objectID": "w13/index.html#samples-rightarrow-populations",
+    "href": "w13/index.html#samples-rightarrow-populations",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Samples \\(\\rightarrow\\) Populations",
+    "text": "Samples \\(\\rightarrow\\) Populations\n\nWe know that the sampled heights of Welsh football players (\\(\\mathbf{X}\\)) are (on average) greater than the sampled heights of US football players (\\(\\mathbf{Y}\\)).\nBut are heights in fact greater among the population of Welsh football players (\\(\\chi\\)), relative to the population of US football players (\\(\\psi\\))?"
+  },
+  {
+    "objectID": "w13/index.html#the-non-parametric-fork-in-the-road",
+    "href": "w13/index.html#the-non-parametric-fork-in-the-road",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "The Non-Parametric Fork in the Road",
+    "text": "The Non-Parametric Fork in the Road\n\nRecall: in parametric tests, when comparing means, we analyzed the difference in the sample means relative to their variability and summarized the sample information in a test statistic: for example, \\(t = \\frac{\\overline{X} - \\mu_H}{\\widehat{\\sigma} / \\sqrt{N}}\\)\nWe could compute this test statistic, but it would implicitly depend on an assumption of the underlying DGP: that heights follow a Normal distribution.\nHere, instead, we produce a test statistic based on the ranks!\nTest statistics should measure how surprised we would be if we observed what we observed in a world where the null hypothesis is true\nEquivalently, it should be low if the observed difference could feasibly have occurred just due to random noise (i.e., if we’re looking at noisy data from world where null hypothesis is true)\nSo, let’s think in these terms about the ranks of each datapoint, to develop a non-parametric test statistic based on the ranks"
+  },
+  {
+    "objectID": "w13/index.html#choosing-non-parametric-hypotheses",
+    "href": "w13/index.html#choosing-non-parametric-hypotheses",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Choosing Non-Parametric Hypotheses",
+    "text": "Choosing Non-Parametric Hypotheses\n\nThe empirical distributions from the previous slide, and the small sample size (\\(N_1 = N_2 = 11\\)), motivate our use of a nonparametric test!\nAssuming \\(X \\sim \\mathcal{D}_1\\) and \\(Y \\sim \\mathcal{D}_2\\) (but not assuming the parametric forms of \\(\\mathcal{D}_1\\) or \\(\\mathcal{D}_2\\)!), we can test:\n\\(H_0: \\Pr(X &gt; Y) = \\Pr(Y &gt; X)\\)\n\\(H_1: \\Pr(X &gt; Y) \\neq \\Pr(Y &gt; X)\\)"
+  },
+  {
+    "objectID": "w13/index.html#sorting-and-ranking-observations",
+    "href": "w13/index.html#sorting-and-ranking-observations",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Sorting and Ranking Observations",
+    "text": "Sorting and Ranking Observations\n\n\n\nOriginal Data\nSorted Total Samples\nRank\n\n\nUSA\nWales\nUSA\nWales\nUSA\nWales\n\n\n\n\n75\n78\n67\n67\n1.5\n1.5\n\n\n68\n71\n68\n68\n4.5\n4.5\n\n\n74\n76\n68\n4.5\n\n\n68\n75\n68\n4.5\n\n\n68\n72\n\n69\n\n7\n\n\n70\n70\n70\n70\n9\n9\n\n\n72\n68\n70\n9\n\n\n67\n72\n\n71\n\n11\n\n\n72\n69\n72\n72\n14\n14\n\n\n\n\n72\n73\n72\n14\n\n\n72\n14\n\n\n72\n73\n72\n14\n\n\n\n\n\n\n\n73\n\n17\n\n\n\n\n74\n\n18\n\n\n\n\n\n75\n75\n19.5\n19.5\n\n\n\n\n\n76\n\n21\n\n\n\n\n\n78\n\n22"
+  },
+  {
+    "objectID": "w13/index.html#our-rank-based-test-statistic",
+    "href": "w13/index.html#our-rank-based-test-statistic",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Our Rank-Based Test Statistic",
+    "text": "Our Rank-Based Test Statistic\n\nSums of ranks relative to the combined dataset: \\(\\Sigma_{X/\\mathbf{Z}} = 112.5\\), \\(\\Sigma_{Y/\\mathbf{Z}} = 140.5\\).\nAnd then sum the ranks in each group, relative to the same group… In general, if we have \\(N\\) ranked datapoints (so, datapoints given labels \\(\\{1, 2, \\ldots, N\\}\\)), what will the sum of these individual ranks be?\n\n\\[\n\\sum_{i=1}^{N}i = \\underbrace{\\overbrace{(1 + N)}^{N + 1} + \\overbrace{(2 + (N-1))}^{N + 1} + \\cdots}_{N/2\\text{ terms}} = \\frac{N(N+1)}{2}\n\\]\n\nSo, in this case,\n\n\\[\n\\Sigma_{X/\\mathbf{X}} = \\Sigma_{Y/\\mathbf{Y}} = \\sum_{i=1}^{11}i = \\frac{11(12)}{2} = 66\n\\]\n\nGiving us the test statistics\n\n\\[\n\\begin{align*}\nU_X &= 112.5 - 66 = 46.5, \\; U_Y = 140.5 - 66 = 74.5 \\\\\nU &= \\min\\{U_X, U_Y\\} = \\min\\{46.5, 74.5\\} = 46.5\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w13/index.html#simulating-one-null-hypothesis-world",
+    "href": "w13/index.html#simulating-one-null-hypothesis-world",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Simulating (One) Null-Hypothesis World",
+    "text": "Simulating (One) Null-Hypothesis World\n\nOne simulation looks as follows:\n\n\n\n\n\nCode\nlibrary(tidyverse)\nN1 &lt;- 11\nN2 &lt;- 11\nN &lt;- N1 + N2\ntotalRankSum &lt;- (N * (N+1)) / 2\nwriteLines(paste0(\"N1 = \",N1,\", N2 = \",N2,\" =&gt; Sum(1...(N1+N2)) = \",totalRankSum))\n\n\nN1 = 11, N2 = 11 =&gt; Sum(1...(N1+N2)) = 253\n\n\nCode\ns_1 &lt;- runif(N1)\ndf_1 &lt;- tibble(x = s_1, team = \"A\")\ns_2 &lt;- runif(N2)\ndf_2 &lt;- tibble(x = s_2, team = \"B\")\ndf_combined &lt;- bind_rows(df_1, df_2)\ndf_combined['rank'] &lt;- rank(df_combined$x)\ndf_combined |&gt; arrange(rank) |&gt; head()\n\n\n# A tibble: 6 × 3\n       x team   rank\n   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;\n1 0.0282 B         1\n2 0.0282 A         2\n3 0.0731 B         3\n4 0.134  B         4\n5 0.135  B         5\n6 0.186  A         6\n\n\n\n\nCode\ndf_combined |&gt; group_by(team) |&gt; summarize(ranksum = sum(rank)) |&gt; mutate(proportion = ranksum / totalRankSum)\n\n\n# A tibble: 2 × 3\n  team  ranksum proportion\n  &lt;chr&gt;   &lt;dbl&gt;      &lt;dbl&gt;\n1 A         144      0.569\n2 B         109      0.431"
+  },
+  {
+    "objectID": "w13/index.html#simulating-many-null-hypothesis-worlds",
+    "href": "w13/index.html#simulating-many-null-hypothesis-worlds",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "Simulating Many Null-Hypothesis Worlds",
+    "text": "Simulating Many Null-Hypothesis Worlds\n\nAnd we can repeat this process (say) 10K times:\n\n\n\n\n\nCode\nsimulate_ranksums &lt;- function(N1, N2) {\n  N &lt;- N1 + N2\n  totalRankSum &lt;- (N * (N+1)) / 2\n  s_1 &lt;- runif(N1)\n  df_1 &lt;- tibble(x = s_1, team = \"A\")\n  s_2 &lt;- runif(N2)\n  df_2 &lt;- tibble(x = s_2, team = \"B\")\n  df_combined &lt;- bind_rows(df_1, df_2)\n  df_combined['rank'] &lt;- rank(df_combined$x)\n  ranksum_df &lt;- df_combined |&gt; group_by(team) |&gt; summarize(ranksum = sum(rank))\n  return(ranksum_df$ranksum)\n}\nnum_sims &lt;- 1000\nresults &lt;- replicate(num_sims, simulate_ranksums(11,11))\nt(results[,0:10])\n\n\n      [,1] [,2]\n [1,]  133  120\n [2,]   98  155\n [3,]  115  138\n [4,]  166   87\n [5,]  137  116\n [6,]  140  113\n [7,]  146  107\n [8,]  157   96\n [9,]  119  134\n[10,]  106  147\n\n\nCode\nrowMeans(results)\n\n\n[1] 126.407 126.593\n\n\n\n\nCode\nranksum_A &lt;- tibble(ranksum=results[1,], team=\"A\")\nranksum_A_mean &lt;- mean(ranksum_A$ranksum)\nranksum_B &lt;- tibble(ranksum=results[2,], team=\"B\")\nranksum_B_mean &lt;- mean(ranksum_B$ranksum)\nmean_df &lt;- tibble(mean_value = c(ranksum_A_mean, ranksum_B_mean), team=c(\"A\",\"B\"))\nsim_df &lt;- bind_rows(ranksum_A, ranksum_B)\nggplot(sim_df, aes(x=ranksum, fill=team)) +\n  geom_density(linewidth = g_linewidth, alpha=0.2) +\n  geom_vline(\n    data=mean_df,\n    aes(xintercept = mean_value),\n    linewidth = g_linewidth\n  ) +\n  dsan_theme(\"half\") +\n  scale_fill_manual(values=c(cbPalette[1], cbPalette[2]))"
+  },
+  {
+    "objectID": "w13/index.html#r-time",
+    "href": "w13/index.html#r-time",
+    "title": "Week 13: Non-Parametric Methods",
+    "section": "R Time",
+    "text": "R Time\n\n\nCode\nwilcox.test(height ~ Team, data=players, exact = TRUE)\n\n\nWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot\ncompute exact p-value with ties\n\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  height by Team\nW = 46.5, p-value = 0.3705\nalternative hypothesis: true location shift is not equal to 0\n\n\n\nWe confirm our computed test statistic of 46.5, and obtain a p-value of about 0.37\nThus, under most confidence levels (like my favorite \\(\\alpha = 0.11\\)), we fail to reject the null hypothesis \\(\\mathcal{H}_0\\)\nPutting on our Bayes hats, we do not increase our degree of belief that height differs between the two populations."
   },
   {
     "objectID": "w12/slides.html#differences-vs.-ratios",
