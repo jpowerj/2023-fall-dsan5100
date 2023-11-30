@@ -47,6 +47,8 @@ website:
         text: "Week 12: Nov 9"
       - href: w13/index.qmd
         text: "Week 13: Nov 16"
+      - href: w14/index.qmd
+        text: "Week 14: Nov 30"
       - href: recordings/index.qmd
         text: "Lecture Recordings"
       - "---"
@@ -56,6 +58,8 @@ website:
         text: "Extra Writeups"
       - href: cheatsheet-math.qmd
         text: "Math Cheatsheet"
+      - href: final-presentations.qmd
+        text: "Final Presentations"
       - "---"
       - href: "https://georgetown.instructure.com/courses/173333"
         text: "Course Canvas Page <i class='bi bi-box-arrow-up-right ps-1'></i>"
