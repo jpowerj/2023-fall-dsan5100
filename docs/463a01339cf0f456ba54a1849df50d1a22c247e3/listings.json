@@ -25,6 +25,7 @@
   {
     "listing": "/writeups/index.html",
     "items": [
+      "/writeups/bootstrap-hypothesis-testing/index.html",
       "/writeups/order-of-integration/index.html",
       "/writeups/sampling-from-df/index.html",
       "/writeups/marginalization/index.html",
@@ -34,10 +35,6 @@
       "/writeups/bayes-disease-tests/index.html",
       "/writeups/deriving-pdf/index.html"
     ]
-  },
-  {
-    "listing": "/docs/recordings/index.html",
-    "items": []
   },
   {
     "listing": "/extra-videos/index.html",
