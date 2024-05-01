@@ -1,0 +1,17 @@
+---
+title: "Loading Styles"
+---
+
+```{r}
+library(tidyverse)
+source("_globals.r")
+df <- tribble(
+    ~x, ~y,
+    0, 0,
+    1, 1,
+    0.5, 1.5
+)
+ggplot(df, aes(x=x, y=y)) +
+  geom_point() +
+  dsan_theme()
+```
